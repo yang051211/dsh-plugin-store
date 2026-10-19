@@ -1,21 +1,38 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import * as host from '../lib/index.js'
+import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, INDEX_ROUTE, DETAIL_ROUTE, DEFAULT_INDEX_URL, MAX_DETAIL_BYTES } from '../lib/test/host.js'
 
-const { createIndexFetch, MAX_INDEX_BYTES, INDEX_ROUTE } = host
-const INDEX_URL = 'https://example.com/index.json'
+const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 
-/** Run a route against a GET request and decode its JSON body. */
-async function call(route, reqUrl = `http://127.0.0.1${INDEX_ROUTE}`) {
-  const response = await route(new Request(reqUrl))
-  return { status: response.status, json: await response.json(), headers: response.headers }
+const doc = (plugins = [plugin('alpha', '>=0.2.0 <0.3.0-0'), plugin('beta', '>=0.3.0')]) => ({ format: 1, title: { en: 'T', zh: '市场' }, plugins, store: { schema: 1 } })
+function plugin(name, dsh) {
+  return { name, 'dist-tags': { latest: '1.0.0' }, versions: [{ version: '1.0.0', publishTimestamp: 1, source: { type: 'npm' }, engines: dsh ? { dsh } : {} }], store: { detail: `plugins/${name}.json` } }
+}
+
+/** A fetch stand-in serving `routes` (url → body or function) and counting calls. */
+function upstream(routes) {
+  const calls = []
+  const fetchImpl = async (url) => {
+    url = String(url); calls.push(url)
+    const route = routes[url]
+    if (route === undefined) return new Response('nope', { status: 404 })
+    const body = typeof route === 'function' ? route() : route
+    return body instanceof Response ? body : new Response(typeof body === 'string' ? body : JSON.stringify(body))
+  }
+  return { fetchImpl, calls }
+}
+
+const get = async (route, url) => {
+  const response = await route(new Request(`http://127.0.0.1${url}`))
+  return { status: response.status, json: await response.json() }
 }
 
 test('default index is the published catalog', () => {
-  assert.equal(host.DEFAULT_INDEX_URL, 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json')
+  assert.equal(DEFAULT_INDEX_URL, 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json')
 })
 
-test('registers the route through the authenticated connection channel, GET only', () => {
+test('registers both routes through the authenticated connection channel, GET only', () => {
   const registered = []
   const ctx = {
     connection: { fetch: { register: (route) => { registered.push(route); return async () => {} } } },
@@ -24,81 +41,107 @@ test('registers the route through the authenticated connection channel, GET only
   }
   host.apply(ctx)
   assert.deepEqual(host.inject, ['connection'])
-  assert.equal(registered.length, 1)
-  assert.equal(registered[0].path, INDEX_ROUTE)
-  assert.deepEqual(registered[0].methods, ['GET'])
-  assert.equal(registered[0].requestBody, 'buffered')
-  assert.equal(typeof registered[0].fetch, 'function')
+  assert.deepEqual(registered.map(r => r.path).sort(), [DETAIL_ROUTE, INDEX_ROUTE].sort())
+  for (const route of registered) {
+    assert.deepEqual(route.methods, ['GET'])
+    assert.equal(route.requestBody, 'buffered')
+  }
 })
 
-test('returns title and plugin count from the index', async () => {
-  const fetchImpl = async () => new Response(JSON.stringify({ format: 1, title: { en: 'X', zh: '某市场' }, plugins: [{}, {}, {}] }))
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(res.status, 200)
-  assert.equal(res.json.ok, true)
-  assert.equal(res.json.pluginCount, 3)
-  assert.deepEqual(res.json.title, { en: 'X', zh: '某市场' })
-  assert.equal(typeof res.json.fetchedAt, 'number')
-  assert.equal(res.headers.get('content-type'), 'application/json; charset=utf-8')
+test('the host module exports only what DSH loads', () => {
+  assert.deepEqual(Object.keys(host).sort(), ['apply', 'inject', 'name'])
 })
 
-test('reports a sample plugin with its install version', async () => {
-  const plugins = [
-    { name: 'other', versions: [{ version: '1.0.0' }] },
-    { name: 'dsh-chat-toc', 'dist-tags': { latest: '1.2.0' }, versions: [{ version: '1.1.0' }, { version: '1.2.0' }] },
-  ]
-  const fetchImpl = async () => new Response(JSON.stringify({ format: 1, title: 'T', plugins }))
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.deepEqual(res.json.sample, { name: 'dsh-chat-toc', version: '1.2.0' })
+test('index route returns the raw catalog with store extensions', async () => {
+  const { fetchImpl } = upstream({ [INDEX_URL]: doc() })
+  const route = createIndexFetch(createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL }), async () => '0.2.1-rc.2')
+  const { status, json } = await get(route, INDEX_ROUTE)
+  assert.equal(status, 200)
+  assert.equal(json.ok, true)
+  assert.deepEqual(json.index.store, { schema: 1 })
+  assert.equal(json.dshVersion, '0.2.1-rc.2')
+  assert.equal(json.stale, false)
+  assert.equal(typeof json.fetchedAt, 'number')
 })
 
-test('falls back to the first plugin and its last listed version', async () => {
-  const plugins = [{ name: 'alpha', versions: [{ version: '0.1.0' }, { version: '0.2.0' }] }]
-  const fetchImpl = async () => new Response(JSON.stringify({ format: 1, title: 'T', plugins }))
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.deepEqual(res.json.sample, { name: 'alpha', version: '0.2.0' })
+test('rejects a document that is not format 1', async () => {
+  for (const bad of [{ format: 2, plugins: [] }, { format: 1 }, { format: 1, plugins: [{ name: 'x', versions: [] }] }, [1, 2]]) {
+    const { fetchImpl } = upstream({ [INDEX_URL]: bad })
+    const route = createIndexFetch(createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL }), async () => null)
+    const { status, json } = await get(route, INDEX_ROUTE)
+    assert.equal(status, 502, JSON.stringify(bad))
+    assert.equal(json.ok, false)
+  }
 })
 
-test('returns 502 when upstream fails', async () => {
-  const fetchImpl = async () => { throw new TypeError('fetch failed') }
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(res.status, 502)
-  assert.equal(res.json.ok, false)
-  assert.match(res.json.error, /fetch failed/)
+test('serves the last good index when a refresh fails', async () => {
+  let fail = false
+  const { fetchImpl } = upstream({ [INDEX_URL]: () => (fail ? new Response('down', { status: 503 }) : new Response(JSON.stringify(doc()))) })
+  const cache = createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL })
+  await cache.index()
+  fail = true
+  const snapshot = await cache.index(true)
+  assert.equal(snapshot.stale, true)
+  assert.equal(snapshot.index.plugins.length, 2)
 })
 
-test('returns 502 when upstream answers with an error status', async () => {
-  const fetchImpl = async () => new Response('nope', { status: 404 })
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(res.status, 502)
-  assert.match(res.json.error, /404/)
+test('concurrent requests share one upstream fetch', async () => {
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: doc() })
+  const cache = createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL })
+  await Promise.all([cache.index(), cache.index(), cache.index()])
+  assert.equal(calls.length, 1)
 })
 
-test('releases the upstream body when the status is an error', async () => {
-  let cancelled = false
-  const body = new ReadableStream({ pull() {}, cancel() { cancelled = true } })
-  const fetchImpl = async () => new Response(body, { status: 500 })
-  await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(cancelled, true)
+test('cache expires after ttl', async () => {
+  let clock = 0
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: doc() })
+  const cache = createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL, ttlMs: 1000, now: () => clock })
+  await cache.index()
+  clock = 999
+  await cache.index()
+  assert.equal(calls.length, 1)
+  clock = 1001
+  await cache.index()
+  assert.equal(calls.length, 2)
 })
 
-test('returns 502 when upstream is not JSON', async () => {
-  const fetchImpl = async () => new Response('<html>blocked</html>')
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(res.status, 502)
-  assert.equal(res.json.ok, false)
+test('compatibility per plugin', () => {
+  const index = doc([plugin('fits', '>=0.2.0 <0.3.0-0'), plugin('too-new', '>=0.3.0'), plugin('open', null)])
+  assert.deepEqual(compatibilityOf(index, '0.2.1-rc.2'), { fits: 'compatible', 'too-new': 'incompatible', open: 'compatible' })
+  assert.deepEqual(compatibilityOf(index, null), { fits: 'unknown', 'too-new': 'unknown', open: 'compatible' })
 })
 
-test('rejects bodies over the size cap', async () => {
-  const fetchImpl = async () => new Response(new Uint8Array(MAX_INDEX_BYTES + 1))
-  const res = await call(createIndexFetch(fetchImpl, INDEX_URL))
-  assert.equal(res.status, 502)
-  assert.match(res.json.error, /too large/)
+test('runtimeVersion is null when app-boot cannot load', async () => {
+  assert.equal(await runtimeVersion(async () => { throw new Error('not found') }), null)
+  assert.equal(await runtimeVersion(async () => ({ getDshRuntimeVersion: () => '0.2.1-rc.2' })), '0.2.1-rc.2')
 })
 
-test('never fetches a client-supplied URL', async () => {
-  const seen = []
-  const fetchImpl = async (url) => { seen.push(String(url)); return new Response(JSON.stringify({ format: 1, title: 'T', plugins: [] })) }
-  await call(createIndexFetch(fetchImpl, INDEX_URL), `http://127.0.0.1${INDEX_ROUTE}?url=https://evil.example/x.json`)
-  assert.deepEqual(seen, [INDEX_URL])
+test('detail route serves only listed plugins', async () => {
+  const detailUrl = 'https://cdn.example/gh/o/r@main/market/plugins/alpha.json'
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: doc(), [detailUrl]: { schema: 1, name: 'alpha' } })
+  const route = createDetailFetch(createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL }))
+  const ok = await get(route, `${DETAIL_ROUTE}?name=alpha`)
+  assert.equal(ok.status, 200)
+  assert.equal(ok.json.detail.name, 'alpha')
+  const missing = await get(route, `${DETAIL_ROUTE}?name=${encodeURIComponent('https://evil.example')}`)
+  assert.equal(missing.status, 404)
+  assert.equal(calls.some(url => url.includes('evil')), false)
+})
+
+test('detail url must stay under the index directory', async () => {
+  const sneaky = doc([{ ...plugin('alpha', null), store: { detail: '../../secrets.json' } }])
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: sneaky })
+  const route = createDetailFetch(createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL }))
+  const { status } = await get(route, `${DETAIL_ROUTE}?name=alpha`)
+  assert.equal(status, 502)
+  assert.equal(calls.length, 1)
+})
+
+test('detail body over 4 MiB is rejected', async () => {
+  const detailUrl = 'https://cdn.example/gh/o/r@main/market/plugins/alpha.json'
+  const { fetchImpl } = upstream({ [INDEX_URL]: doc(), [detailUrl]: () => new Response(new Uint8Array(MAX_DETAIL_BYTES + 1)) })
+  const route = createDetailFetch(createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL }))
+  const { status, json } = await get(route, `${DETAIL_ROUTE}?name=alpha`)
+  assert.equal(status, 502)
+  assert.match(json.error, /too large/)
 })

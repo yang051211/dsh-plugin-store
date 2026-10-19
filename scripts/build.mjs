@@ -12,7 +12,7 @@
  *   imports, so the purity check fails the build if any reached the bundle.
  */
 import { build } from 'esbuild'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 
 const ID = 'dsh-plugin-store'
 const CLIENT_EXTERNALS = ['react', 'react/jsx-runtime']
@@ -47,15 +47,30 @@ const client = await build({
   footer: { js: 'return module.exports; } });' },
 })
 
-// Browser-only logic that Node tests import directly; lib/test/ is git-ignored and outside `files`.
-await build({
-  entryPoints: ['src/client/first-run.ts'],
-  bundle: true,
-  format: 'esm',
-  platform: 'neutral',
-  target: 'es2022',
-  outfile: 'lib/test/first-run.js',
-})
+// Test-only entries that Node tests import directly; lib/test/ is git-ignored and outside `files`.
+// React stays external so tests render with the same React that react-dom/server uses.
+const TEST_ENTRIES = {
+  'first-run': { entry: 'src/client/first-run.ts', platform: 'neutral' },
+  host: { entry: 'src/host/testing.ts', platform: 'node' },
+  model: { entry: 'src/client/model/testing.ts', platform: 'neutral' },
+  safe: { entry: 'src/client/safe/testing.ts', platform: 'neutral' },
+  ui: { entry: 'src/client/ui/testing.ts', platform: 'neutral' },
+  handoff: { entry: 'src/client/handoff.ts', platform: 'neutral' },
+}
+for (const [name, { entry, platform }] of Object.entries(TEST_ENTRIES)) {
+  if (!existsSync(entry)) continue
+  await build({
+    entryPoints: [entry],
+    bundle: true,
+    format: 'esm',
+    platform,
+    mainFields: ['module', 'main'],
+    target: 'es2022',
+    jsx: 'automatic',
+    outfile: `lib/test/${name}.js`,
+    external: ['react', 'react/jsx-runtime', 'react-dom', '@deepseek-ai/*'],
+  })
+}
 
 const clientText = client.outputFiles[0].text
 if (clientText.includes('@deepseek-ai/')) {

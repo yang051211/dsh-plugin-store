@@ -1,9 +1,9 @@
 /** dsh-plugin-store, Host half. The browser half lives in `./client.ts`. */
 import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-connection'
-import { createIndexFetch, DEFAULT_INDEX_URL, INDEX_ROUTE } from './host/index-route.ts'
-
-export { createIndexFetch, DEFAULT_INDEX_URL, FETCH_TIMEOUT_MS, INDEX_ROUTE, MAX_INDEX_BYTES } from './host/index-route.ts'
+import { createCatalogCache } from './host/catalog-cache.ts'
+import { createDetailFetch, createIndexFetch, DEFAULT_INDEX_URL, DETAIL_ROUTE, INDEX_ROUTE } from './host/index-route.ts'
+import { runtimeVersion } from './host/runtime-version.ts'
 
 export const name = 'plugin-store'
 
@@ -13,12 +13,13 @@ export const name = 'plugin-store'
  */
 export const inject = ['connection']
 
-/** Serve the market index route for the browser half. */
+/** Serve the catalog and detail routes for the browser half. */
 export function apply(ctx: Context): void {
+  const cache = createCatalogCache({ fetch, indexUrl: DEFAULT_INDEX_URL })
   ctx.effect(() => ctx.connection.fetch.register({
-    path: INDEX_ROUTE,
-    methods: ['GET'],
-    requestBody: 'buffered',
-    fetch: createIndexFetch(fetch, DEFAULT_INDEX_URL),
-  }), 'plugin-store: index route')
+    path: INDEX_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createIndexFetch(cache, () => runtimeVersion()),
+  }), 'plugin-store: catalog route')
+  ctx.effect(() => ctx.connection.fetch.register({
+    path: DETAIL_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createDetailFetch(cache),
+  }), 'plugin-store: detail route')
 }
