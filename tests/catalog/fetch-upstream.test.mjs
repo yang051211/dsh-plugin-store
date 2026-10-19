@@ -1,7 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { mkdtempSync, mkdirSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { gzipSync } from 'node:zlib'
 import { tmpdir } from 'node:os'
 import { join, dirname } from 'node:path'
 import * as tar from 'tar'
@@ -9,31 +10,46 @@ import { fetchUpstream, enginesDshOf, downloadTarball } from '../../tools/catalo
 
 const REGISTRY = 'https://registry.example/'
 
-/** Pack `files` (path → string | Buffer) under package/ into a gzipped tarball buffer. */
-async function pack(files) {
+/**
+ * Pack `files` (path → string | Buffer; undefined omits) under package/ into a gzipped tarball buffer.
+ * `typeflags` rewrites the header type of named entries, e.g. '7' (contiguous file) or '2' (symbolic link).
+ */
+async function pack(files, typeflags = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'pkg-'))
   for (const [path, body] of Object.entries(files)) {
+    if (body === undefined) continue
     mkdirSync(dirname(join(dir, 'package', path)), { recursive: true })
     writeFileSync(join(dir, 'package', path), body)
   }
-  const out = join(dir, 'out.tgz')
-  await tar.c({ gzip: true, cwd: dir, file: out, portable: true }, ['package'])
-  const { readFileSync } = await import('node:fs')
-  return readFileSync(out)
+  const out = join(dir, 'out.tar')
+  await tar.c({ gzip: false, cwd: dir, file: out, portable: true }, ['package'])
+  const raw = readFileSync(out)
+  for (const [path, flag] of Object.entries(typeflags)) {
+    const at = raw.indexOf(Buffer.from(`package/${path}\0`))
+    assert.ok(at >= 0 && at % 512 === 0, `header for ${path}`)
+    raw[at + 156] = flag.charCodeAt(0)
+    if (flag === '1' || flag === '2') raw.write('target.js\0', at + 157, 'latin1') // links need a link target
+    // Recompute the header checksum: sum of header bytes with the checksum field read as spaces.
+    raw.fill(0x20, at + 148, at + 156)
+    let sum = 0
+    for (let i = at; i < at + 512; i++) sum += raw[i]
+    raw.write(`${sum.toString(8).padStart(6, '0')}\0 `, at + 148, 'latin1')
+  }
+  return gzipSync(raw)
 }
 
 const integrity = buf => `sha512-${createHash('sha512').update(buf).digest('base64')}`
 const png = bytes => Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), Buffer.alloc(bytes - 8)])
 
 /** A registry + GitHub + downloads stand-in. */
-async function world({ files = {}, github = { status: 403 }, manifestOverrides = {} } = {}) {
+async function world({ files = {}, github = { status: 403 }, manifestOverrides = {}, typeflags = {}, tarballManifestOverrides = {}, tarballHeaders = {} } = {}) {
   const manifest = {
     name: 'alpha', version: '0.5.1', description: 'Alpha plugin', author: 'Ann Lee <ann@example.com> (https://ann.example)',
     homepage: 'https://alpha.example', repository: { type: 'git', url: 'git+https://github.com/ann/alpha.git', directory: 'pkg' },
     keywords: ['toc', 'ui'], icon: './icon.png', dsh: { bundle: { patch: './cordis.patch.yml' } }, engines: { dsh: ' >=0.2.0 ' },
     ...manifestOverrides,
   }
-  const tgz = await pack({ 'package.json': JSON.stringify(manifest), 'README.md': '# Alpha\nreadme from tarball', 'CHANGELOG.md': '## 0.5.1', ...files })
+  const tgz = await pack({ 'package.json': JSON.stringify({ ...manifest, ...tarballManifestOverrides }), 'README.md': '# Alpha\nreadme from tarball', 'CHANGELOG.md': '## 0.5.1', ...files }, typeflags)
   const packument = {
     name: 'alpha',
     'dist-tags': { latest: '0.6.0' },
@@ -50,7 +66,7 @@ async function world({ files = {}, github = { status: 403 }, manifestOverrides =
   const fetchImpl = async (url) => {
     url = String(url); seen.push(url)
     if (url === `${REGISTRY}alpha`) return Response.json(packument)
-    if (url.endsWith('.tgz')) return new Response(tgz)
+    if (url.endsWith('.tgz')) return new Response(tgz, { headers: tarballHeaders })
     if (url.startsWith('https://api.github.com/repos/ann/alpha')) return github.status === 200 ? Response.json({ stargazers_count: 42 }) : new Response('rate limited', { status: github.status })
     if (url === 'https://api.npmjs.org/downloads/point/last-week/alpha') return Response.json({ downloads: 1234 })
     return new Response('nope', { status: 404 })
@@ -118,12 +134,60 @@ test('a failing GitHub API leaves stars null without failing the fetch', async (
 test('keeps long paths that tar stores in pax headers', async () => {
   const deep = `${'very-long-directory-name/'.repeat(12)}CHANGELOG-notes.md`
   const { io, packument } = await world({ files: { [deep]: 'deep file' } })
-  const files = await downloadTarball(packument.versions['0.5.1'].dist, io)
+  const { files } = await downloadTarball(packument.versions['0.5.1'], io)
   assert.equal(files.get(deep)?.toString('utf8'), 'deep file')
 })
 
 test('rejects a tarball whose integrity does not match', async () => {
   const { io, packument } = await world()
   packument.versions['0.5.1'].dist.integrity = 'sha512-AAAA'
-  await assert.rejects(downloadTarball(packument.versions['0.5.1'].dist, io), /integrity/)
+  await assert.rejects(downloadTarball(packument.versions['0.5.1'], io), /integrity/)
+})
+
+test('records the reviewed version it describes', async () => {
+  const { io } = await world()
+  assert.equal((await fetchUpstream('alpha', '0.5.1', io)).reviewed.version, '0.5.1')
+})
+
+test('keeps contiguous-file entries, which npm installs as regular files', async () => {
+  const { io, packument } = await world({ files: { 'lib/b.js': "fetch('https://evil')" }, typeflags: { 'lib/b.js': '7' } })
+  const { files } = await downloadTarball(packument.versions['0.5.1'], io)
+  assert.equal(files.get('lib/b.js')?.toString('utf8'), "fetch('https://evil')")
+})
+
+test('reports the entries it skips', async () => {
+  const { io, packument } = await world({ files: { 'lib/link.js': 'x' }, typeflags: { 'lib/link.js': '2' } })
+  const { files, skipped } = await downloadTarball(packument.versions['0.5.1'], io)
+  assert.equal(files.has('lib/link.js'), false)
+  assert.ok(skipped.some(entry => entry.startsWith('lib/link.js')), JSON.stringify(skipped))
+})
+
+test('rejects a tarball whose manifest names another package or version', async () => {
+  const { io, packument } = await world({ tarballManifestOverrides: { name: 'evil' } })
+  await assert.rejects(downloadTarball(packument.versions['0.5.1'], io), /evil/)
+})
+
+test('rejects a tarball that announces a size over the cap', async () => {
+  const { io, packument } = await world({ tarballHeaders: { 'content-length': String(10 ** 9) } })
+  await assert.rejects(downloadTarball(packument.versions['0.5.1'], io), /too large/)
+})
+
+test('cleans repository URLs and directories', async () => {
+  const messy = await world({ manifestOverrides: { repository: { url: 'git+https://user:pw@github.com/ann/alpha.git?x=1#main', directory: './packages/x/' } } })
+  assert.deepEqual((await fetchUpstream('alpha', '0.5.1', messy.io)).reviewed.repository, { url: 'https://github.com/ann/alpha', directory: 'packages/x' })
+  const escaping = await world({ manifestOverrides: { repository: { url: 'https://github.com/ann/alpha', directory: '../x' } } })
+  assert.deepEqual((await fetchUpstream('alpha', '0.5.1', escaping.io)).reviewed.repository, { url: 'https://github.com/ann/alpha' })
+})
+
+test('finds README and CHANGELOG case-insensitively', async () => {
+  const { io } = await world({ files: { 'README.md': undefined, 'CHANGELOG.md': undefined, 'Readme.MD': '# mixed case', 'changelog.md': 'lower' } })
+  const up = await fetchUpstream('alpha', '0.5.1', io)
+  assert.equal(up.reviewed.readme, '# mixed case')
+  assert.equal(up.reviewed.changelog, 'lower')
+})
+
+test("uses the registry README only when it belongs to the reviewed version", async () => {
+  const { io } = await world({ files: { 'README.md': undefined } })
+  // The packument README describes the latest version (0.6.0), not the reviewed 0.5.1.
+  assert.equal((await fetchUpstream('alpha', '0.5.1', io)).reviewed.readme, '')
 })

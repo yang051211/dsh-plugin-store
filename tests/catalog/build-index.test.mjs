@@ -13,6 +13,7 @@ function upstream(overrides = {}) {
     name: 'alpha', fetchedAt: '2026-10-19T08:00:00.000Z', latest: '1.1.0',
     versions: { '1.0.0': { publishTimestamp: 1790000000, enginesDsh: '>=0.2.0 <0.3.0-0' }, '1.1.0': { publishTimestamp: 1791000000, enginesDsh: null } },
     reviewed: {
+      version: '1.0.0',
       description: 'Upstream description that must not be used', author: 'Ann', homepage: 'https://alpha.example',
       repository: { url: 'https://github.com/ann/alpha' }, keywords: ['toc'], icon: { file: 'alpha.svg', bytes: 100 },
       readme: '# Alpha', changelog: null,
@@ -49,6 +50,16 @@ test('only reviewed versions are listed', () => {
 test('fails when the reviewed version is missing upstream', () => {
   const missing = upstream({ versions: { '1.1.0': { publishTimestamp: 1791000000, enginesDsh: null } }, reviewed: null })
   assert.throws(() => buildIndex(curation(), missing, scans, NOW), /alpha@1\.0\.0/)
+})
+
+test('fails when the upstream facts describe another version than the reviewed one', () => {
+  const stale = upstream()
+  stale.get('alpha').reviewed = { ...stale.get('alpha').reviewed, version: '0.9.0' }
+  assert.throws(() => buildIndex(curation(), stale, scans, NOW), /alpha.*1\.0\.0.*0\.9\.0.*catalog:fetch/)
+})
+
+test('fails when an approved plugin has no scan of its reviewed version', () => {
+  assert.throws(() => buildIndex(curation(), upstream(), new Map(), NOW), /alpha@1\.0\.0.*catalog:scan/)
 })
 
 test('build reads human fields only from catalog.yaml', () => {

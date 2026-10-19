@@ -1,20 +1,22 @@
 #!/usr/bin/env node
 /**
  * Catalog maintenance commands, run on the maintainer's machine:
- *   fetch                      refresh catalog/upstream/*.json and market/icons/ for every curated plugin
+ *   fetch                      refresh catalog/upstream/*.json and the icon cache catalog/icons/ for every curated plugin
  *   scan <name>@<version>      write catalog/scan/<slug>@<version>.json (download and read only, never execute)
- *   build                      write market/index.json and market/plugins/*.json from the catalog
- *   check                      validate the catalog and the built index without writing
+ *   build                      make market/ exactly the published catalog: index, details, icons of listed plugins
+ *   check                      validate the catalog and confirm market/ matches what build would write
  * Options: --registry <url> (default: `npm config get registry`); GITHUB_TOKEN raises the GitHub API rate limit.
+ * Tools never write catalog/catalog.yaml (tests/catalog/curation.test.mjs guards every write call).
  */
 import { execSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
 import { buildIndex, INDEX_PUBLIC_URL } from './build-index.mjs'
-import { fileURLToPath } from 'node:url'
-import { join } from 'node:path'
 import { loadCuration } from './curation.mjs'
 import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
+import { mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
 import { scanPackage } from './scan.mjs'
 import { slugOf } from './slug.mjs'
 
@@ -22,10 +24,8 @@ const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 export const CURATION_FILE = join(ROOT, 'catalog', 'catalog.yaml')
 export const UPSTREAM_DIR = join(ROOT, 'catalog', 'upstream')
 export const SCAN_DIR = join(ROOT, 'catalog', 'scan')
+export const ICON_CACHE_DIR = join(ROOT, 'catalog', 'icons')
 export const MARKET_DIR = join(ROOT, 'market')
-
-/** Stable JSON for committed files. */
-export const toJson = value => `${JSON.stringify(value, null, 2)}\n`
 
 function option(args, name) {
   const at = args.indexOf(name)
@@ -33,22 +33,27 @@ function option(args, name) {
 }
 
 function io(args) {
-  const registry = option(args, '--registry')
-    ?? execSync('npm config get registry', { encoding: 'utf8' }).trim()
-  return { fetch, registry, githubToken: process.env.GITHUB_TOKEN }
+  const registry = option(args, '--registry') ?? execSync('npm config get registry', { encoding: 'utf8' }).trim()
+  return { fetch, registry: registry.endsWith('/') ? registry : `${registry}/`, githubToken: process.env.GITHUB_TOKEN }
 }
+
+const readJson = file => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : undefined)
 
 async function fetchAll(args) {
   const curation = loadCuration(CURATION_FILE)
   const context = io(args)
   mkdirSync(UPSTREAM_DIR, { recursive: true })
-  mkdirSync(join(MARKET_DIR, 'icons'), { recursive: true })
+  mkdirSync(ICON_CACHE_DIR, { recursive: true })
   for (const plugin of curation.plugins) {
+    const slug = slugOf(plugin.name)
     const upstream = await fetchUpstream(plugin.name, plugin.review.version, context)
-    writeFileSync(join(UPSTREAM_DIR, `${slugOf(plugin.name)}.json`), toJson(upstream))
-    if (upstream.iconData && upstream.reviewed?.icon) writeFileSync(join(MARKET_DIR, 'icons', upstream.reviewed.icon.file), upstream.iconData)
+    const { stats, warnings } = mergeStats(readJson(join(UPSTREAM_DIR, `${slug}.json`))?.stats, upstream.stats)
+    upstream.stats = stats
+    writeFileSync(join(UPSTREAM_DIR, `${slug}.json`), toJson(upstream))
+    if (upstream.iconData && upstream.reviewed?.icon) writeFileSync(join(ICON_CACHE_DIR, upstream.reviewed.icon.file), upstream.iconData)
     const reviewed = upstream.reviewed ? 'found' : 'MISSING'
-    console.log(`${plugin.name}: latest ${upstream.latest}, reviewed ${plugin.review.version} ${reviewed}, stars ${upstream.stats.stars}, weekly downloads ${upstream.stats.weeklyDownloads}`)
+    console.log(`${plugin.name}: latest ${upstream.latest}, reviewed ${plugin.review.version} ${reviewed}, stars ${stats.stars}, weekly downloads ${stats.weeklyDownloads}`)
+    for (const warning of warnings) console.warn(`  warning: ${warning}`)
   }
 }
 
@@ -59,12 +64,12 @@ async function scanOne(args) {
   const name = target.slice(0, at)
   const version = target.slice(at + 1)
   const context = io(args)
-  const registry = context.registry.endsWith('/') ? context.registry : `${context.registry}/`
-  const response = await fetch(`${registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
+  const response = await fetch(`${context.registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
   if (!response.ok) throw new Error(`${name}: registry answered HTTP ${response.status}`)
-  const dist = (await response.json()).versions?.[version]?.dist
-  if (!dist) throw new Error(`${name}@${version} is not published`)
-  const result = { name, version, scannedAt: new Date().toISOString(), ...scanPackage(await downloadTarball(dist, context)) }
+  const record = (await response.json()).versions?.[version]
+  if (!record?.dist) throw new Error(`${name}@${version} is not published`)
+  const { files, skipped } = await downloadTarball(record, context)
+  const result = { name, version, scannedAt: new Date().toISOString(), ...scanPackage(files), skippedEntries: skipped }
   mkdirSync(SCAN_DIR, { recursive: true })
   writeFileSync(join(SCAN_DIR, `${slugOf(name)}@${version}.json`), toJson(result))
   for (const kind of ['network', 'fileSystem', 'agentTools', 'childProcess', 'installScripts']) {
@@ -72,48 +77,63 @@ async function scanOne(args) {
   }
   console.log(`dependencies    ${result.dependencies}`)
   console.log(`minified files  ${result.minifiedFiles.join(', ') || 'none'}`)
+  console.log(`binary files    ${result.binaryFiles.join(', ') || 'none'}`)
+  console.log(`skipped entries ${skipped.join(', ') || 'none'}`)
 }
 
-/** Build the index in memory from the committed catalog files and validate it with the official reader. */
-function buildFromFiles() {
+/** Build the published files in memory from the committed catalog files, validated with the official reader. */
+function plannedFromFiles() {
   const curation = loadCuration(CURATION_FILE)
   const upstream = new Map()
   const scans = new Map()
   for (const plugin of curation.plugins.filter(p => p.review.status === 'approved')) {
     const slug = slugOf(plugin.name)
-    const upstreamFile = join(UPSTREAM_DIR, `${slug}.json`)
-    if (!existsSync(upstreamFile)) throw new Error(`${plugin.name}: ${upstreamFile} is missing (run catalog:fetch)`)
-    upstream.set(plugin.name, JSON.parse(readFileSync(upstreamFile, 'utf8')))
-    const scanFile = join(SCAN_DIR, `${slug}@${plugin.review.version}.json`)
-    if (existsSync(scanFile)) scans.set(plugin.name, JSON.parse(readFileSync(scanFile, 'utf8')))
+    const facts = readJson(join(UPSTREAM_DIR, `${slug}.json`))
+    if (!facts) throw new Error(`${plugin.name}: catalog/upstream/${slug}.json is missing (run catalog:fetch)`)
+    upstream.set(plugin.name, facts)
+    const scan = readJson(join(SCAN_DIR, `${slug}@${plugin.review.version}.json`))
+    if (scan) scans.set(plugin.name, scan)
   }
   // Stable output: the generation time is the newest upstream fetch, not the wall clock.
   const fetched = [...upstream.values()].map(u => Date.parse(u.fetchedAt)).filter(Number.isFinite)
-  const now = new Date(fetched.length > 0 ? Math.max(...fetched) : 0)
-  const built = buildIndex(curation, upstream, scans, now)
-  parseMarketIndex(structuredClone(built.index), INDEX_PUBLIC_URL)
-  return built
+  const { index, details } = buildIndex(curation, upstream, scans, new Date(fetched.length > 0 ? Math.max(...fetched) : 0))
+  parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
+  const readIcon = file => (existsSync(join(ICON_CACHE_DIR, file)) ? readFileSync(join(ICON_CACHE_DIR, file)) : null)
+  return { index, planned: plannedMarketFiles(index, details, readIcon) }
+}
+
+/** Paths of the files currently under market/plugins and market/icons, relative to market/. */
+function existingMarketFiles() {
+  const paths = []
+  for (const dir of ['plugins', 'icons']) {
+    if (!existsSync(join(MARKET_DIR, dir))) continue
+    for (const file of readdirSync(join(MARKET_DIR, dir))) paths.push(`${dir}/${file}`)
+  }
+  return paths
 }
 
 async function build() {
-  const { index, details } = buildFromFiles()
-  mkdirSync(join(MARKET_DIR, 'plugins'), { recursive: true })
-  writeFileSync(join(MARKET_DIR, 'index.json'), toJson(index))
-  for (const [name, detail] of details) writeFileSync(join(MARKET_DIR, 'plugins', `${slugOf(name)}.json`), toJson(detail))
-  console.log(`market/index.json: ${index.plugins.length} plugin(s): ${index.plugins.map(p => `${p.name}@${p['dist-tags'].latest}`).join(', ') || 'none'}`)
+  const { index, planned } = plannedFromFiles()
+  for (const [path, content] of planned) {
+    mkdirSync(dirname(join(MARKET_DIR, path)), { recursive: true })
+    writeFileSync(join(MARKET_DIR, path), content)
+  }
+  const stale = staleMarketFiles(existingMarketFiles(), planned)
+  for (const path of stale) rmSync(join(MARKET_DIR, path))
+  console.log(`market/: ${index.plugins.length} plugin(s): ${index.plugins.map(p => `${p.name}@${p['dist-tags'].latest}`).join(', ') || 'none'}`)
+  if (stale.length > 0) console.log(`removed: ${stale.join(', ')}`)
 }
 
 async function check() {
-  const { index, details } = buildFromFiles()
-  const stale = []
-  const committed = join(MARKET_DIR, 'index.json')
-  if (!existsSync(committed) || readFileSync(committed, 'utf8') !== toJson(index)) stale.push('market/index.json')
-  for (const [name, detail] of details) {
-    const file = join(MARKET_DIR, 'plugins', `${slugOf(name)}.json`)
-    if (!existsSync(file) || readFileSync(file, 'utf8') !== toJson(detail)) stale.push(`market/plugins/${slugOf(name)}.json`)
+  const { index, planned } = plannedFromFiles()
+  const problems = []
+  for (const [path, content] of planned) {
+    const file = join(MARKET_DIR, path)
+    if (!existsSync(file) || !readFileSync(file).equals(Buffer.from(content))) problems.push(`market/${path} is out of date`)
   }
-  if (stale.length > 0) throw new Error(`out of date (run catalog:build): ${stale.join(', ')}`)
-  console.log(`catalog OK: ${index.plugins.length} plugin(s), index valid and up to date`)
+  for (const path of staleMarketFiles(existingMarketFiles(), planned)) problems.push(`market/${path} should not be published`)
+  if (problems.length > 0) throw new Error(`${problems.join('; ')} (run catalog:build)`)
+  console.log(`catalog OK: ${index.plugins.length} plugin(s), index valid, market/ up to date`)
 }
 
 const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check }

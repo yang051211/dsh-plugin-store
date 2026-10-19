@@ -56,6 +56,23 @@ test('flags minified files with very long lines', () => {
   assert.deepEqual(result.minifiedFiles, ['lib/min.js'])
 })
 
+test('binding.gyp counts as an install script', () => {
+  const result = scanPackage(pkg({ 'binding.gyp': '{}' }))
+  assert.equal(result.installScripts.hit, true)
+  assert.match(result.installScripts.evidence[0].text, /binding\.gyp/)
+})
+
+test('scans .mts, .cts and .jsx sources too', () => {
+  for (const file of ['lib/a.mts', 'lib/a.cts', 'lib/a.jsx']) {
+    assert.equal(scanPackage(pkg({ [file]: 'await fetch(url)' })).network.hit, true, file)
+  }
+})
+
+test('lists native and wasm binaries it cannot read', () => {
+  const result = scanPackage(pkg({ 'build/addon.node': 'bin', 'lib/core.wasm': 'bin', 'lib/a.js': 'x' }))
+  assert.deepEqual(result.binaryFiles, ['build/addon.node', 'lib/core.wasm'])
+})
+
 test('ignores declaration files, source maps and node_modules', () => {
   const result = scanPackage(pkg({
     'lib/types.d.ts': 'declare function fetch(url: string): void',

@@ -14,4 +14,5 @@ try {
   console.error('\nlib/ is out of date with src/: commit the rebuilt lib/.')
   process.exit(1)
 }
+run('npm', ['run', 'catalog:check'])
 run('npm', ['test'])

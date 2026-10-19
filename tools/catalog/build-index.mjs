@@ -19,12 +19,21 @@ function localized(text) {
   return Object.fromEntries(Object.entries(text ?? {}).filter(([, value]) => typeof value === 'string' && value.trim() !== ''))
 }
 
-/** The reviewed upstream facts, or an error naming the plugin and version. */
-function reviewedFacts(plugin, upstream) {
+/**
+ * The reviewed upstream facts, or an error naming the plugin and version. The display fields must have been read
+ * from the reviewed version itself: changing review.version without re-fetching would publish the old README.
+ */
+function reviewedFacts(plugin, upstream, scans) {
   const facts = upstream.get(plugin.name)
   const version = String(plugin.review.version)
-  if (!facts?.reviewed || !facts.versions?.[version]) {
+  if (!facts?.versions?.[version]) {
     throw new Error(`${plugin.name}@${version} is approved but not published upstream (run catalog:fetch, or re-review)`)
+  }
+  if (facts.reviewed?.version !== version) {
+    throw new Error(`${plugin.name}: reviewed ${version} but the upstream facts describe ${facts.reviewed?.version ?? 'nothing'} (run catalog:fetch)`)
+  }
+  if (!scans.has(plugin.name)) {
+    throw new Error(`${plugin.name}@${version} is approved but was never scanned (run catalog:scan -- ${plugin.name}@${version})`)
   }
   return { facts, version }
 }
@@ -53,7 +62,7 @@ export function buildIndex(curation, upstream, scans, now) {
   const details = new Map()
 
   for (const plugin of listed) {
-    const { facts, version } = reviewedFacts(plugin, upstream)
+    const { facts, version } = reviewedFacts(plugin, upstream, scans)
     const shown = facts.reviewed
     const listedVersion = { version, publishTimestamp: facts.versions[version].publishTimestamp, source: { type: 'npm' } }
     listedVersion.engines = facts.versions[version].enginesDsh ? { dsh: facts.versions[version].enginesDsh } : {}
@@ -85,9 +94,14 @@ export function buildIndex(curation, upstream, scans, now) {
       features: plugin.features,
       screenshots: plugin.screenshots ?? [],
       permissions: plugin.review.permissions,
-      scanSummary: scan
-        ? { ...Object.fromEntries(PERMISSIONS.map(k => [k, Boolean(scan[k]?.hit)])), dependencies: scan.dependencies, minified: scan.minifiedFiles.length > 0 }
-        : null,
+      // Scan results, kept apart from the reviewer's verdict in `permissions` so the UI can show both.
+      scanSummary: {
+        ...Object.fromEntries(PERMISSIONS.map(k => [k, Boolean(scan[k]?.hit)])),
+        dependencies: scan.dependencies,
+        minified: scan.minifiedFiles.length > 0,
+        binaryFiles: scan.binaryFiles ?? [],
+        skippedEntries: scan.skippedEntries ?? [],
+      },
       review: { version, date: String(plugin.review.date), reviewer: plugin.review.reviewer, notes: plugin.review.notes ?? {} },
       readme: shown.readme,
       changelog: shown.changelog,

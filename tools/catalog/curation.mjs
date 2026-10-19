@@ -3,6 +3,7 @@
  * sections, the featured banner, and review verdicts. Tools only read it; see tests/catalog/curation.test.mjs.
  */
 import { readFileSync } from 'node:fs'
+import semver from 'semver'
 import { parse } from 'yaml'
 
 /** A curation file that breaks a rule; `message` names the YAML path. */
@@ -43,6 +44,11 @@ function checkPlugin(plugin, i, categoryIds) {
   const review = plugin.review
   need(isObject(review), `${at}.review`, 'is required')
   need(REVIEW_STATUSES.has(review.status), `${at}.review.status`, 'must be "pending" or "approved"')
+  if (review.version !== undefined) {
+    // Quote-free YAML turns 1.0 into a number; only a string that is an exact SemVer version names one release.
+    need(typeof review.version === 'string' && semver.valid(review.version) === review.version,
+      `${at}.review.version`, `must be an exact version such as "1.2.3" (got ${JSON.stringify(review.version)})`)
+  }
   if (review.status === 'approved') {
     need(isText(review.version), `${at}.review.version`, 'is required when approved')
     need(isText(String(review.date ?? '')) && review.date !== undefined, `${at}.review.date`, 'is required when approved')
@@ -70,12 +76,19 @@ export function loadCuration(path) {
     categoryIds.add(category.id)
   }
   need(Array.isArray(doc.plugins), 'plugins', 'must be a list')
-  doc.plugins.forEach((plugin, i) => checkPlugin(plugin, i, categoryIds))
-  const names = new Set(doc.plugins.map(p => p.name))
+  const names = new Set()
+  doc.plugins.forEach((plugin, i) => {
+    checkPlugin(plugin, i, categoryIds)
+    need(!names.has(plugin.name), `plugins[${i}].name`, `duplicates "${plugin.name}"`)
+    names.add(plugin.name)
+  })
   need(isObject(doc.featured) && names.has(doc.featured.plugin), 'featured.plugin', 'must name a curated plugin')
   need(Array.isArray(doc.sections), 'sections', 'must be a list')
+  const sectionIds = new Set()
   for (const [i, section] of doc.sections.entries()) {
     need(isText(section?.id), `sections[${i}].id`, 'is required')
+    need(!sectionIds.has(section.id), `sections[${i}].id`, `duplicates "${section.id}"`)
+    sectionIds.add(section.id)
     need(Array.isArray(section.plugins), `sections[${i}].plugins`, 'must be a list')
     section.plugins.forEach((name, j) => need(names.has(name), `sections[${i}].plugins[${j}]`, `"${name}" is not a curated plugin`))
   }

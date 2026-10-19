@@ -36,32 +36,59 @@ function authorName(author) {
   return typeof author?.name === 'string' && author.name.trim() !== '' ? author.name.trim() : null
 }
 
-/** Web page of a manifest repository field. */
+/** A package directory inside its repository, normalized; undefined when it is unusable (absolute or escaping). */
+function directoryOf(raw) {
+  if (typeof raw !== 'string') return undefined
+  const path = raw.trim().replace(/\\/g, '/').replace(/^\.\//, '').replace(/\/+$/, '')
+  if (path === '' || path === '.' || path.startsWith('/') || /^[a-z]:/i.test(path) || path.split('/').some(part => part === '..')) return undefined
+  return path
+}
+
+/** Web page of a manifest repository field, without credentials, query, fragment or `.git`. */
 function repositoryOf(repository) {
   const raw = typeof repository === 'string' ? repository : repository?.url
   if (typeof raw !== 'string') return null
-  let url = raw.trim()
-  const shorthand = /^(?:github:)?([\w.-]+)\/([\w.-]+)$/.exec(url)
-  if (shorthand) url = `https://github.com/${shorthand[1]}/${shorthand[2]}`
-  url = url.replace(/^git\+/, '').replace(/^git:\/\//, 'https://').replace(/^ssh:\/\/git@/, 'https://').replace(/#.*$/, '').replace(/\.git$/, '')
-  if (!/^https?:\/\//.test(url)) return null
-  const directory = typeof repository === 'object' && typeof repository?.directory === 'string' ? repository.directory : undefined
-  return directory ? { url, directory } : { url }
+  let text = raw.trim()
+  const shorthand = /^(?:github:)?([\w.-]+)\/([\w.-]+)$/.exec(text)
+  if (shorthand) text = `https://github.com/${shorthand[1]}/${shorthand[2]}`
+  text = text.replace(/^git\+/, '').replace(/^git:\/\//, 'https://').replace(/^ssh:\/\/git@/, 'https://')
+  let url
+  try {
+    url = new URL(text)
+  } catch {
+    return null
+  }
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') return null
+  const page = `${url.protocol}//${url.host}${url.pathname.replace(/\.git$/, '').replace(/\/+$/, '')}`
+  const directory = directoryOf(typeof repository === 'object' ? repository?.directory : undefined)
+  return directory ? { url: page, directory } : { url: page }
 }
 
 async function get(io, url, init = {}) {
   return io.fetch(url, { ...init, signal: AbortSignal.timeout(TIMEOUT_MS) })
 }
 
-/** Read a gzipped tarball into package-relative paths; only regular files outside node_modules are kept. */
+/** Entry types npm installs as regular files (node-tar unpacks all three the same way). */
+const FILE_TYPES = new Set(['File', 'OldFile', 'ContiguousFile'])
+
+/**
+ * Read a gzipped tarball into package-relative paths. Regular files outside node_modules are kept; every other
+ * entry (links, devices, escaping paths, duplicates) is listed in `skipped` for the reviewer.
+ */
 async function untar(tgz) {
   const data = gunzipSync(tgz, { maxOutputLength: MAX_TARBALL_BYTES })
   const files = new Map()
+  const skipped = []
   const parser = new tar.Parser({ strict: true })
   parser.on('entry', entry => {
     const path = String(entry.path).replace(/^[^/]+\//, '')
-    const keep = entry.type === 'File' && path !== '' && !path.split('/').some(part => part === '..' || part === 'node_modules')
-    if (!keep) { entry.resume(); return }
+    if (entry.type === 'Directory' || path === '') { entry.resume(); return }
+    const escapes = path.split('/').some(part => part === '..' || part === 'node_modules')
+    if (!FILE_TYPES.has(entry.type) || escapes || files.has(path)) {
+      skipped.push(`${path} (${files.has(path) ? 'duplicate' : escapes ? 'outside the package' : entry.type})`)
+      entry.resume()
+      return
+    }
     const chunks = []
     entry.on('data', chunk => chunks.push(chunk))
     entry.on('end', () => files.set(path, Buffer.concat(chunks)))
@@ -71,23 +98,67 @@ async function untar(tgz) {
     parser.on('error', reject)
     parser.end(data)
   })
-  return files
+  return { files, skipped }
+}
+
+/** Read a response body, aborting once it exceeds `limit` bytes. */
+async function readCapped(response, limit, what) {
+  const announced = Number(response.headers.get('content-length'))
+  if (Number.isFinite(announced) && announced > limit) {
+    await response.body?.cancel()
+    throw new Error(`${what} too large (${announced} bytes announced)`)
+  }
+  const chunks = []
+  let total = 0
+  if (response.body) {
+    const reader = response.body.getReader()
+    for (;;) {
+      const { done, value } = await reader.read()
+      if (done) break
+      total += value.byteLength
+      if (total > limit) {
+        await reader.cancel()
+        throw new Error(`${what} too large (over ${limit} bytes)`)
+      }
+      chunks.push(value)
+    }
+  }
+  return Buffer.concat(chunks)
 }
 
 /**
- * Download a version's tarball, check its integrity, and unpack it in memory.
- * @param dist - the version's `dist` record from the packument.
+ * Download one version's tarball, check its integrity and its manifest identity, and unpack it in memory.
+ * @param version - the version record from the packument (`name`, `version`, `dist`).
+ * @returns `{ files, skipped }`: package-relative path → contents, and the entries left out.
  */
-export async function downloadTarball(dist, io) {
+export async function downloadTarball(version, io) {
+  const { dist } = version
   const response = await get(io, dist.tarball)
   if (!response.ok) throw new Error(`tarball answered HTTP ${response.status}: ${dist.tarball}`)
-  const tgz = Buffer.from(await response.arrayBuffer())
-  if (tgz.length > MAX_TARBALL_BYTES) throw new Error(`tarball too large: ${dist.tarball}`)
+  const tgz = await readCapped(response, MAX_TARBALL_BYTES, `tarball ${dist.tarball}`)
   const [algorithm, expected] = String(dist.integrity ?? '').split('-', 2)
   if (!['sha512', 'sha256', 'sha1'].includes(algorithm) || createHash(algorithm).update(tgz).digest('base64') !== expected) {
     throw new Error(`tarball integrity mismatch: ${dist.tarball}`)
   }
-  return await untar(tgz)
+  const unpacked = await untar(tgz)
+  let manifest
+  try {
+    manifest = JSON.parse(unpacked.files.get('package.json')?.toString('utf8') ?? 'null')
+  } catch {
+    manifest = null
+  }
+  if (manifest?.name !== version.name || manifest?.version !== version.version) {
+    throw new Error(`tarball of ${version.name}@${version.version} contains ${manifest?.name}@${manifest?.version}`)
+  }
+  return unpacked
+}
+
+/** First file whose name, case-insensitively, is one of `names` at the package root. */
+function rootFile(files, names) {
+  for (const [path, body] of files) {
+    if (!path.includes('/') && names.includes(path.toLowerCase())) return body.toString('utf8')
+  }
+  return null
 }
 
 /** The icon a manifest declares, if it is a supported image inside the package. */
@@ -150,20 +221,22 @@ export async function fetchUpstream(name, reviewedVersion, io) {
   let reviewed = null
   let iconData
   if (manifest && versions[reviewedVersion]) {
-    const files = await downloadTarball(manifest.dist, io)
+    const { files } = await downloadTarball(manifest, io)
     const icon = pickIcon(manifest, files)
     iconData = icon?.data
-    const text = path => files.get(path)?.toString('utf8') ?? null
     const repository = repositoryOf(manifest.repository)
+    // The registry README describes dist-tags.latest; it stands in only when that is the reviewed version.
+    const registryReadme = packument['dist-tags']?.latest === reviewedVersion && typeof packument.readme === 'string' ? packument.readme : ''
     reviewed = {
+      version: reviewedVersion,
       description: typeof manifest.description === 'string' ? manifest.description : null,
       author: authorName(manifest.author),
       homepage: /^https?:\/\//.test(manifest.homepage ?? '') ? manifest.homepage : null,
       repository,
       keywords: Array.isArray(manifest.keywords) ? manifest.keywords.filter(k => typeof k === 'string') : [],
       icon: icon ? { file: `${slugOf(name)}${icon.ext}`, bytes: icon.data.length } : null,
-      readme: text('README.md') ?? text('readme.md') ?? (typeof packument.readme === 'string' ? packument.readme : ''),
-      changelog: text('CHANGELOG.md'),
+      readme: rootFile(files, ['readme.md', 'readme.markdown', 'readme']) ?? registryReadme,
+      changelog: rootFile(files, ['changelog.md', 'changelog.markdown', 'changelog', 'history.md']),
     }
   }
   const repository = reviewed?.repository ?? repositoryOf(packument.repository)

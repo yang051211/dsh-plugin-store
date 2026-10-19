@@ -77,13 +77,37 @@ test('features need three to five entries', () => {
   rejects(variant(d => { d.plugins[0].features.zh = ['1', '2', '3', '4', '5', '6'] }), /plugins\[0\]\.features\.zh/)
 })
 
+test('rejects duplicate plugin names', () => {
+  rejects(variant(d => { d.plugins[1].name = 'alpha' }), /plugins\[1\]\.name/)
+})
+
+test('rejects duplicate section ids', () => {
+  rejects(variant(d => { d.sections[1].id = 'ui-better' }), /sections\[1\]\.id/)
+})
+
+test('review.version must be an exact version string', () => {
+  rejects(variant(d => { d.plugins[0].review.version = 1.0 }), /plugins\[0\]\.review\.version.*exact version/)
+  rejects(variant(d => { d.plugins[0].review.version = '^1.0.0' }), /plugins\[0\]\.review\.version.*exact version/)
+})
+
+/** Write calls whose target is not one of the tool-owned directories (catalog.yaml is never among them). */
+const WRITE_CALL = /\b(writeFileSync|writeFile|appendFile\w*|createWriteStream|rmSync|unlinkSync|renameSync|copyFileSync)\(\s*/g
+const OWNED_TARGET = /^join\(\s*(UPSTREAM_DIR|SCAN_DIR|MARKET_DIR|ICON_CACHE_DIR)\b/
+function unsafeWrites(source) {
+  return [...source.matchAll(WRITE_CALL)]
+    .map(call => source.slice(call.index + call[0].length, call.index + call[0].length + 120))
+    .filter(target => !OWNED_TARGET.test(target))
+}
+
+test('the write guard flags writes outside tool-owned directories', () => {
+  assert.equal(unsafeWrites("writeFileSync(CURATION_FILE, 'x')").length, 1)
+  assert.equal(unsafeWrites("writeFileSync(join(ROOT, 'catalog', 'catalog.yaml'), x)").length, 1)
+  assert.equal(unsafeWrites("writeFileSync(join(MARKET_DIR, 'index.json'), x)").length, 0)
+})
+
 test('curation file is never written by tools', () => {
   const dir = new URL('../../tools/catalog/', import.meta.url)
   for (const file of readdirSync(dir).filter(f => f.endsWith('.mjs'))) {
-    const source = readFileSync(new URL(file, dir), 'utf8')
-    for (const call of source.matchAll(/(writeFile\w*|appendFile\w*|createWriteStream)\(([^)]*)\)/g)) {
-      assert.equal(call[2].includes('catalog.yaml'), false, `${file} writes catalog.yaml: ${call[0]}`)
-      assert.equal(/\bcurationPath\b/.test(call[2]), false, `${file} writes the curation path: ${call[0]}`)
-    }
+    assert.deepEqual(unsafeWrites(readFileSync(new URL(file, dir), 'utf8')), [], `${file} writes outside tool-owned directories`)
   }
 })

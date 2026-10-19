@@ -3,8 +3,10 @@
  * imported, evaluated or executed. Results are candidates; the reviewer records the verdict in catalog.yaml.
  */
 
-const SCANNED = /\.(?:js|mjs|cjs|ts|tsx|json)$/
-const SKIPPED = /(?:^|\/)node_modules\/|\.map$|\.d\.ts$/
+const SCANNED = /\.(?:js|mjs|cjs|jsx|ts|mts|cts|tsx|json)$/
+const SKIPPED = /(?:^|\/)node_modules\/|\.map$|\.d\.[mc]?ts$/
+/** Executable formats a text scan cannot read; listed for the reviewer. */
+const BINARY = /\.(?:node|wasm)$/
 const MAX_EVIDENCE = 5
 const MAX_TEXT = 160
 const MINIFIED_LINE = 5000
@@ -38,7 +40,7 @@ function note(finding, evidence) {
  * @returns evidence per permission kind, the runtime dependency count, and files that look minified.
  */
 export function scanPackage(files) {
-  const result = { network: empty(), fileSystem: empty(), agentTools: empty(), childProcess: empty(), installScripts: empty(), dependencies: 0, minifiedFiles: [] }
+  const result = { network: empty(), fileSystem: empty(), agentTools: empty(), childProcess: empty(), installScripts: empty(), dependencies: 0, minifiedFiles: [], binaryFiles: [] }
   let manifest = {}
   try {
     manifest = JSON.parse(files.get('package.json')?.toString('utf8') ?? '{}')
@@ -49,9 +51,14 @@ export function scanPackage(files) {
     const script = manifest.scripts?.[name]
     if (typeof script === 'string') note(result.installScripts, { file: 'package.json', line: 0, text: `scripts.${name}: ${script}`.slice(0, MAX_TEXT) })
   }
+  // npm runs `node-gyp rebuild` as an implicit install script when binding.gyp sits at the package root.
+  if (files.has('binding.gyp') && !manifest.scripts?.install && !manifest.scripts?.preinstall) {
+    note(result.installScripts, { file: 'binding.gyp', line: 0, text: 'binding.gyp: npm runs node-gyp rebuild on install' })
+  }
   result.dependencies = Object.keys(manifest.dependencies ?? {}).length
 
   for (const [path, body] of [...files].sort(([a], [b]) => a.localeCompare(b))) {
+    if (BINARY.test(path) && !SKIPPED.test(path)) { result.binaryFiles.push(path); continue }
     if (!SCANNED.test(path) || SKIPPED.test(path) || path === 'package.json') continue
     const lines = body.toString('utf8').split(/\r?\n/)
     if (/\.(?:js|mjs|cjs)$/.test(path) && lines.some(line => line.length > MINIFIED_LINE)) result.minifiedFiles.push(path)
