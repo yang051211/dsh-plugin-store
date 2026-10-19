@@ -21,7 +21,7 @@ featured:
 
 sections:
   - { id: ui-better, title: { zh: 让界面更顺手 }, plugins: [ dsh-chat-toc, dsh-better-sidebar, dsh-prompt-history, dsh-session-manager, "@yfwu2020/dsh-selection-explain" ] }
-  - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [ dsh-context, dsh-free-search, dsh-image-gen, dsh-vision-router, dsh-mcp-connector ] }
+  - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [ dsh-context, dsh-image-gen, dsh-vision-router, dsh-mcp-connector ] }
   - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
   - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck, dsh-remote ] }
   - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget ] }
@@ -175,78 +175,73 @@ plugins:
         zh: 调用你在 DSH 里配置的模型，不访问其他网络地址。读写文件：只在 ~/.dsh/selection-explain 下保存解读历史和窗口位置。子进程：仅 macOS 上用于「麦克风占用检测」——首次使用时用本机 clang 编译一个随包附带的小程序再运行，这个做法不常见，但只在本机、只读麦克风状态；Windows 上直接跳过。没有依赖。
       permissions: { network: false, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
       date: 2026-10-19
-  - name: dsh-free-search
-    source: npm
-    category: tools
-    title:
-      zh: （待起草）
-      en: dsh-free-search
-    tagline:
-      zh: （待起草）
-      en: (draft pending)
-    features:
-      zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
-    screenshots: []
-    review:
-      status: pending
-      version: 0.9.6
   - name: dsh-image-gen
     source: npm
     category: tools
-    title:
-      zh: （待起草）
-      en: dsh-image-gen
+    title: { zh: AI 图像创作, en: Image Gen }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 对话生图、画布创作、批量工作台和多模型对比，一个插件补齐图像创作
+      en: Chat image generation, a canvas, a batch studio and model comparison in one plugin
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 对话里文生图、图生图，连续修改和版本迭代
+        - AI 创作画布：草稿、参考图组合、空间创作
+        - 工作台批量生成，多图参考和高级参数
+        - 支持 Gemini、OpenAI、Seedream、通义、Grok、GLM 和本地 ComfyUI
+        - 灵感库和图库：搜索、收藏、下载、复用
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.9.1
+      reviewer: yang051211
+      notes:
+        zh: 联网：调用你选择的图像模型服务（自带 Key，或在插件里登录 ChatGPT、Grok、Google 订阅账号；后者是插件内自行登录，不读取其他软件的登录文件，但用订阅账号走第三方插件生图是否符合服务商条款需自行判断）。读写文件：生成结果按工作区存在 ~/.dsh 下。扫描到的 TLDRAW_LICENSE_KEY 等环境变量名来自它打包的白板库 tldraw，属于误报。prepare 脚本只在从 Git 源码安装时运行。无子进程。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-vision-router
     source: npm
     category: tools
-    title:
-      zh: （待起草）
-      en: dsh-vision-router
+    title: { zh: 视觉路由, en: Vision Router }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 给只能读文字的模型装上眼睛：内置免费识图链，加像素级的图片工具
+      en: "Eyes for text-only models: a built-in free vision chain plus pixel-level image tools"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 自动把图片交给视觉模型识别，再把结果交给当前模型
+        - 内置免费识图通道，也可以接你自己的视觉模型
+        - 像素级工具：裁剪、标注、OCR、矢量化
+        - 可切换为严格本地模式，图片不出本机
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 3.0.4
+      reviewer: yang051211
+      notes:
+        zh: ⚠ 默认会把图片发到云端：新装时启用了匿名的 OVHcloud 免费识图通道，图片、识图提示词和请求元数据会发给该服务，机密或受监管的材料请切换到严格本地模式（作者在 README 开头明确提示）。子进程：调用本机已安装的 tesseract 做 OCR、用本机 Chrome/Edge 截图、打开日志目录；自我更新时调用 DSH 官方命令 dsh plugin add，走 DSH 自己的安装流程。依赖 5 个（puppeteer-core、potrace、undici、zod、schemastery）。prepare 脚本只在从 Git 源码安装时运行。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-mcp-connector
     source: npm
     category: tools
-    title:
-      zh: （待起草）
-      en: dsh-mcp-connector
+    title: { zh: MCP 连接器, en: MCP Connector }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 上百个 MCP 连接器一站接入，跨连接搜索工具，出了问题能自己排查
+      en: Connect 100+ MCP servers, search tools across connections, and troubleshoot them
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 从连接器目录一键接入 MCP Server，支持 OAuth、API Key、HTTP 和 stdio
+        - 跨所有已启用连接搜索工具，查看参数、来源和缓存时间
+        - 连接检查、重新发现工具，鉴权失败自动暂停重试
+        - 可直接导入现有的 mcpServers JSON
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.2.75
+      reviewer: yang051211
+      notes:
+        zh: 联网：连接你配置的 MCP 服务，从 GitHub、jsDelivr 获取连接器目录，向 npm 查新版本。子进程：启动 stdio 类型的 MCP Server（这是 MCP 的标准做法），以及 OAuth 授权时打开浏览器。读写文件：在 DSH 数据目录保存授权记录。工具调用仍经过 DSH 的审批链。依赖 2 个（cross-spawn、undici）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-mnemon
     source: npm
     category: memory
