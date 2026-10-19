@@ -98,7 +98,12 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
     let live = true
     const refresh = () => {
       const id = ++seq.current.installed
-      services.loadInstalled().then(map => { if (live && id === seq.current.installed) setInstalled(map) }, () => {})
+      // A failed read falls back to "nothing installed": buttons stay usable, and DSH's own install dialog still
+      // refuses a plugin that is already there. Only the first read in flight keeps the buttons disabled.
+      services.loadInstalled().then(
+        map => { if (live && id === seq.current.installed) setInstalled(map) },
+        () => { if (live && id === seq.current.installed) setInstalled(prev => prev ?? new Map()) },
+      )
     }
     refresh()
     const unsubscribe = services.subscribeInstalled(refresh)

@@ -61,6 +61,16 @@ test('install buttons wait for the installed list', async () => {
   assert.ok(enabled.length >= 2)
 })
 
+test('install buttons recover when the installed list cannot be read', async () => {
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
+  })
+  await flush()
+  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn-primary') && !n.props.disabled)
+  assert.ok(enabled.length >= 2, 'a failed read must not leave every install button disabled forever')
+})
+
 test('retry after a failed load shows the new catalog', async () => {
   const first = deferred()
   const second = deferred()
