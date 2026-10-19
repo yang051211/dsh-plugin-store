@@ -25,7 +25,7 @@ sections:
   - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
   - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck, dsh-remote ] }
   - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget ] }
-  - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin, dsh-plugin-notify-sounds ] }
+  - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin ] }
 
 plugins:
   - name: dsh-chat-toc
@@ -89,75 +89,92 @@ plugins:
   - name: dsh-better-sidebar
     source: npm
     category: ui
-    title:
-      zh: （待起草）
-      en: dsh-better-sidebar
+    title: { zh: 增强侧栏, en: Better Sidebar }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 文件树、编辑器、Git、任务和侧边对话合进一栏，像 IDE 一样用 DSH
+      en: File tree, editor, Git, tasks and side chat in one column — an IDE-like DSH
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 带 Git 状态颜色的文件树，支持全局搜索、拖拽上传和批量操作
+        - 可编辑的代码编辑器，Markdown、Mermaid、HTML 预览
+        - Git 面板：暂存、提交、分支同步，加上只读的提交图
+        - 实时查看子 Agent 拓扑和后台任务
+        - 可选的「服务器」页：导入 ~/.ssh/config，打开 SSH 终端
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.28.0
+      reviewer: yang051211
+      notes:
+        zh: 联网：只在你使用相关功能时访问对应地址（例如服务器页的 SSH 连接）。读写文件：工作区文件的浏览、编辑、上传。子进程：调用本机 git 读取和提交改动、探测工具版本、在 WSL 下做路径转换；扫描中大量的 fork() 命中来自编辑器库代码，是误报。服务器页导入 ~/.ssh/config 需要你主动点击。依赖 33 个，主要是 CodeMirror、xterm.js、Mermaid 等界面库。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-prompt-history
     source: npm
     category: ui
-    title:
-      zh: （待起草）
-      en: dsh-prompt-history
+    title: { zh: 输入历史, en: Prompt History }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 像终端一样按 ↑ 翻出以前发过的话，输入前缀还能精确匹配
+      en: "Shell-style prompt history in the composer: press ↑, with prefix search"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 空输入时按 ↑ 召回上一条发送过的消息，↓ 往回翻
+        - 输入前缀后按 ↑，只翻以这个前缀开头的历史
+        - 翻到底自动恢复你原本正在输入的内容
+        - 终端式的复制粘贴和引用
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 1.4.2
+      reviewer: yang051211
+      notes:
+        zh: 纯浏览器端插件，历史保存在浏览器本地。只有可关闭的「上下文预测建议」会调用当前会话的模型，不访问其他网络地址。扫描命中的「执行命令」是会话 fork 接口的同名调用，属于误报。package.json 的 prepare 脚本（pnpm build）只在从 Git 源码安装时运行，从 npm 安装不会运行。没有依赖。
+      permissions: { network: false, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-session-manager
     source: npm
     category: ui
-    title:
-      zh: （待起草）
-      en: dsh-session-manager
+    title: { zh: 会话管理, en: Session Manager }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 批量整理会话和工作区：归档、移动、收藏、打标签、稍后再看
+      en: "Batch-manage sessions and workspaces: archive, move, favorite, tag, review later"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 删除、归档、恢复会话，删除前一定会确认
+        - 把会话移到别的工作区，历史和标题都保留
+        - 收藏、稍后再看、优先级、标签和备注
+        - 工作区归档和显隐，支持批量操作
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.7.3
+      reviewer: yang051211
+      notes:
+        zh: 联网：只向 npm 官方源或 npmmirror 查询新版本。读写文件：修改 DSH 会话数据（移动、归档、删除），删除不可恢复但每次都会确认。无子进程，没有依赖。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: "@yfwu2020/dsh-selection-explain"
     source: npm
     category: ui
-    title:
-      zh: （待起草）
-      en: "@yfwu2020/dsh-selection-explain"
+    title: { zh: 划词解读, en: Selection Explain }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 选中一段文字，就地看翻译和它在上下文里的意思，还能直接语音追问
+      en: Select text to see a translation and what it means in context, then ask by voice
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 选中文字后弹出按钮，流式显示专业的中英翻译
+        - 解释这段文字在当前上下文里的含义
+        - 在解读小窗里继续追问，支持语音输入
+        - 解读历史和小窗位置会记住
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.11.0
+      reviewer: yang051211
+      notes:
+        zh: 调用你在 DSH 里配置的模型，不访问其他网络地址。读写文件：只在 ~/.dsh/selection-explain 下保存解读历史和窗口位置。子进程：仅 macOS 上用于「麦克风占用检测」——首次使用时用本机 clang 编译一个随包附带的小程序再运行，这个做法不常见，但只在本机、只读麦克风状态；Windows 上直接跳过。没有依赖。
+      permissions: { network: false, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-free-search
     source: npm
     category: tools
@@ -345,57 +362,48 @@ plugins:
   - name: dsh-pet
     source: npm
     category: fun
-    title:
-      zh: （待起草）
-      en: dsh-pet
+    title: { zh: 大肥鱼桌宠, en: DSH Pet }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 一条住在 DSH 里的蓝色大肥鱼，会打盹、玩魔方、陪你写代码
+      en: A big blue fish that lives in DSH — dozing, playing with a Rubik's cube, coding along
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 97 个手绘透明动画：打瞌睡、玩魔方、写代码、吃火锅……
+        - 屏幕漫游、拖拽甩抛、点击回弹，右键点播动作
+        - 显示余额，偶尔碎碎念，也能和它对话
+        - 可以多开，也能脱离浏览器住到桌面上（透明置顶小窗）
+        - 支持添加全新的宠物种类
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.3.7
+      reviewer: yang051211
+      notes:
+        zh: 联网：查询 DeepSeek 等服务的余额，对话时调用你配置的模型。桌面模式第一次开启时会用 Electron 官方下载器（@electron/get，默认校验哈希）下载 Electron，体积较大；国内会走 npmmirror 镜像。子进程：启动一个独立的 Electron 小窗显示桌宠，并会检测 DSH 是否还在运行，DSH 退出时它也退出。没有读取其他软件的登录文件。依赖 2 个（@electron/get、extract-zip）。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-dream-skin
     source: npm
     category: fun
-    title:
-      zh: （待起草）
-      en: dsh-dream-skin
+    title: { zh: 幻梦皮肤, en: Dream Skin }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 8 套克制清透的原创主题，加弥散光壁纸和强调色，一键换肤
+      en: Eight restrained, airy original themes with diffused-light wallpapers and accents
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 8 套原创皮肤，浅色和深色都有
+        - 壁纸加弥散光背景，侧栏和输入框透明度可调
+        - 自定义强调色，可随时一键还原
+        - 主题包可以导入导出、分享给别人
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 10.16.0
-  - name: dsh-plugin-notify-sounds
-    source: npm
-    category: fun
-    title:
-      zh: （待起草）
-      en: dsh-plugin-notify-sounds
-    tagline:
-      zh: （待起草）
-      en: (draft pending)
-    features:
-      zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
-    screenshots: []
-    review:
-      status: pending
-      version: 1.7.0
+      reviewer: yang051211
+      notes:
+        zh: 纯样式插件，只调整 DSH 的 --dsw-* 主题变量，不修改安装包。联网：访问 uapis.cn 获取在线壁纸或文案（可选功能）。读写文件：在 DSH 数据目录保存皮肤设置。无子进程，没有依赖。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-ui-ux-pro-max
     source: npm
     category: dev
