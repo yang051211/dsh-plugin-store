@@ -114,7 +114,12 @@ test('install state', () => {
   assert.equal(installStateOf(beta, new Map([['beta', { version: '1.0.0' }]])), 'installed')
 })
 
-test('installedFrom keeps installed bundles only', () => {
-  const map = installedFrom([{ name: 'a', installed: true, version: '1.0.0' }, { name: 'b', installed: false }])
-  assert.deepEqual([...map.keys()], ['a'])
+test('installedFrom unwraps the Remote result and keeps installed bundles only', () => {
+  // ctx.remote.pluginManager.listBundles() resolves to { ok, value }, not to the bare array.
+  const map = installedFrom({ ok: true, value: [{ name: 'a', installed: true, version: '1.0.0' }, { name: 'b', installed: false }] })
+  assert.deepEqual([...map.entries()], [['a', { version: '1.0.0' }]])
+})
+
+test('installedFrom throws the Remote error instead of reporting nothing installed', () => {
+  assert.throws(() => installedFrom({ ok: false, error: new Error('plugin manager unavailable') }), /plugin manager unavailable/)
 })

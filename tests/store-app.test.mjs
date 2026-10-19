@@ -71,6 +71,16 @@ test('install buttons recover when the installed list cannot be read', async () 
   assert.ok(enabled.length >= 2, 'a failed read must not leave every install button disabled forever')
 })
 
+test('a failed installed-list read is shown, not silently treated as nothing installed', async () => {
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
+  })
+  await flush()
+  const notice = root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-unknown'))
+  assert.equal(notice.length, 1, 'the store must say it could not read which plugins are installed')
+})
+
 test('retry after a failed load shows the new catalog', async () => {
   const first = deferred()
   const second = deferred()

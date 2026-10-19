@@ -63,6 +63,7 @@ const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
 export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
   const [installed, setInstalled] = useState<Installed | null>(null)
+  const [installedUnknown, setInstalledUnknown] = useState(false)
   const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
   const [details, setDetails] = useState<Record<string, Load<PluginDetail>>>({})
   const [confirming, setConfirming] = useState<StorePlugin | null>(null)
@@ -101,8 +102,8 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
       // A failed read falls back to "nothing installed": buttons stay usable, and DSH's own install dialog still
       // refuses a plugin that is already there. Only the first read in flight keeps the buttons disabled.
       services.loadInstalled().then(
-        map => { if (live && id === seq.current.installed) setInstalled(map) },
-        () => { if (live && id === seq.current.installed) setInstalled(prev => prev ?? new Map()) },
+        map => { if (live && id === seq.current.installed) { setInstalled(map); setInstalledUnknown(false) } },
+        () => { if (live && id === seq.current.installed) { setInstalled(prev => prev ?? new Map()); setInstalledUnknown(true) } },
       )
     }
     refresh()
@@ -215,6 +216,11 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
         <div className="ps-notice ps-notice-bar">
           <span>{t('staleNotice')}</span>
           <button type="button" className="ps-link-btn" onClick={() => load(true)}>{t('refresh')}</button>
+        </div>
+      )}
+      {installedUnknown && (
+        <div className="ps-notice ps-notice-bar ps-installed-unknown">
+          <span>{t('installedUnknown')}</span>
         </div>
       )}
       {body}
