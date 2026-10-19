@@ -3,13 +3,13 @@
  * (reviewer verdict beside the scan result); the review; overview / changelog / versions / source tabs; related
  * plugins. Everything from the detail document is third-party text and goes through safe rendering.
  */
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { Catalog, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
 import { Markdown } from '../safe/markdown.tsx'
 import { npmFileBase, safeUrl } from '../safe/urls.ts'
-import { formatCount, formatDate, InstallButton, PluginCard, PluginIcon, type Translate } from './common.tsx'
+import { formatCount, formatDate, incompatibleReason, InstallButton, PluginCard, PluginIcon, type Translate } from './common.tsx'
 
 export type Load<T> = { status: 'loading' } | { status: 'ready'; data: T } | { status: 'error'; error: string }
 
@@ -35,7 +35,7 @@ export interface DetailViewProps {
   plugin: StorePlugin
   catalog: Catalog
   detail: Load<PluginDetail>
-  installed: Installed
+  installed: Installed | null
   lang: string
   t: Translate
   onBack: () => void
@@ -60,12 +60,18 @@ export function DetailView(props: DetailViewProps): ReactNode {
   const { plugin, catalog, detail, installed, lang, t, onBack, onOpenPlugin, onInstallClick, onRetryDetail } = props
   const [tab, setTab] = useState<Tab>(props.initialTab ?? 'readme')
   const [zoom, setZoom] = useState<string | null>(null)
+  useEffect(() => {
+    if (!zoom) return
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setZoom(null) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [zoom])
   const data = detail.status === 'ready' ? detail.data : null
   const compat = plugin.compatibility === 'compatible' ? 'compatible' : plugin.compatibility === 'incompatible' ? 'compatNo' : 'compatUnknown'
   const features = localizedList(data?.features, lang)
   const screenshots = (data?.screenshots ?? []).map(s => ({ url: safeUrl(s.url, null), caption: localize(s.caption, lang) })).filter(s => s.url) as Array<{ url: string; caption: string }>
-  const related = (data?.related ?? catalog.plugins.filter(p => p.category === plugin.category && p.name !== plugin.name).map(p => p.name))
-    .map(name => catalog.byName.get(name)).filter((p): p is StorePlugin => Boolean(p))
+  // Related plugins come from the catalog build (same category, then same author); shown once the detail is here.
+  const related = (data?.related ?? []).map(name => catalog.byName.get(name)).filter((p): p is StorePlugin => Boolean(p))
   const docsBase = npmFileBase(plugin.name, plugin.version)
 
   return (
@@ -78,7 +84,7 @@ export function DetailView(props: DetailViewProps): ReactNode {
           <h2>{localize(plugin.title, lang)} <span className="ps-muted ps-detail-name">{plugin.name}</span></h2>
           <p className="ps-detail-pitch">{localize(plugin.tagline, lang)}</p>
           <div className="ps-badges">
-            <span className="ps-badge ps-badge-ok">{t('reviewed', { date: plugin.review.date })}</span>
+            <span className="ps-badge ps-badge-ok">{plugin.review.date ? t('reviewed', { date: plugin.review.date }) : t('reviewedPlain')}</span>
             <span className={`ps-badge ${plugin.compatibility === 'incompatible' ? 'ps-badge-warn' : plugin.compatibility === 'compatible' ? 'ps-badge-ok' : ''}`}>{t(compat)}</span>
           </div>
         </div>
@@ -87,6 +93,7 @@ export function DetailView(props: DetailViewProps): ReactNode {
           <div className="ps-muted">v{plugin.version}</div>
         </div>
       </header>
+      {plugin.compatibility === 'incompatible' && <p className="ps-reason">{incompatibleReason(plugin, catalog.dshVersion, t)}</p>}
 
       <div className="ps-stats">
         <div><b>{formatCount(plugin.stats.stars)}</b><span>{t('stars')}</span></div>
@@ -112,8 +119,10 @@ export function DetailView(props: DetailViewProps): ReactNode {
               <h3>{t('screenshots')}</h3>
               <div className="ps-shots">
                 {screenshots.map(shot => (
-                  <figure key={shot.url} className="ps-shot" onClick={() => setZoom(shot.url)}>
-                    <img src={shot.url} alt={shot.caption} referrerPolicy="no-referrer" loading="lazy" />
+                  <figure key={shot.url} className="ps-shot">
+                    <button type="button" className="ps-shot-btn" onClick={() => setZoom(shot.url)} aria-label={shot.caption || t('screenshots')}>
+                      <img src={shot.url} alt={shot.caption} referrerPolicy="no-referrer" loading="lazy" />
+                    </button>
                     {shot.caption && <figcaption>{shot.caption}</figcaption>}
                   </figure>
                 ))}
@@ -122,10 +131,12 @@ export function DetailView(props: DetailViewProps): ReactNode {
           )}
 
           <div className="ps-columns">
-            <section className="ps-block">
-              <h3>{t('whatItDoes')}</h3>
-              <ul className="ps-features">{features.map(item => <li key={item}>{item}</li>)}</ul>
-            </section>
+            {features.length > 0 && (
+              <section className="ps-block">
+                <h3>{t('whatItDoes')}</h3>
+                <ul className="ps-features">{features.map(item => <li key={item}>{item}</li>)}</ul>
+              </section>
+            )}
 
             <section className="ps-block">
               <h3>{t('permissions')}</h3>
@@ -155,7 +166,7 @@ export function DetailView(props: DetailViewProps): ReactNode {
               <h3>{t('review')}</h3>
               <dl className="ps-facts">
                 <dt>{t('reviewer')}</dt><dd>{data.review?.reviewer ?? '—'}</dd>
-                <dt>{t('reviewDate')}</dt><dd>{data.review?.date ?? plugin.review.date}</dd>
+                <dt>{t('reviewDate')}</dt><dd>{data.review?.date || plugin.review.date || '—'}</dd>
                 <dt>{t('reviewedVersion')}</dt><dd>{data.review?.version ?? plugin.review.version}</dd>
               </dl>
               {localize(data.review?.notes, lang) && <p className="ps-review-notes">{localize(data.review?.notes, lang)}</p>}
@@ -203,7 +214,8 @@ export function DetailView(props: DetailViewProps): ReactNode {
       )}
 
       {zoom && (
-        <div className="ps-zoom" role="dialog" onClick={() => setZoom(null)}>
+        <div className="ps-zoom" role="dialog" aria-modal="true" onClick={() => setZoom(null)}>
+          <button type="button" className="ps-zoom-close" aria-label={t('close')} autoFocus onClick={() => setZoom(null)}>×</button>
           <img src={zoom} alt="" referrerPolicy="no-referrer" />
         </div>
       )}

@@ -14,3 +14,9 @@ export async function runtimeVersion(load: () => Promise<AppBoot> = () => import
     return null
   }
 }
+
+/** A reader that loads the version once and answers from memory afterwards. */
+export function createVersionReader(load?: () => Promise<AppBoot>): () => Promise<string | null> {
+  let version: Promise<string | null> | null = null
+  return () => (version ??= load ? runtimeVersion(load) : runtimeVersion())
+}

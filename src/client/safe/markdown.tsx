@@ -3,7 +3,7 @@
  * string. Raw HTML tokens are dropped, links and images pass through safeUrl, external links open without an
  * opener, and images load lazily without a referrer so a README cannot track who reads it.
  */
-import { Fragment, type ReactNode } from 'react'
+import { Fragment, useMemo, type ReactNode } from 'react'
 import { marked, type Token, type Tokens } from 'marked'
 import { safeUrl } from './urls.ts'
 
@@ -92,6 +92,6 @@ function blocks(tokens: Token[], ctx: Context): ReactNode[] {
 
 /** Render untrusted Markdown. `base` resolves relative links and images; null drops them. */
 export function Markdown({ source, base }: { source: string; base: string | null }): ReactNode {
-  const tokens = marked.lexer(source ?? '', { gfm: true })
-  return <div className="ps-md">{blocks(tokens, { base })}</div>
+  // A README can be megabytes; parse and build it only when the source or base changes.
+  return useMemo(() => <div className="ps-md">{blocks(marked.lexer(source ?? '', { gfm: true }), { base })}</div>, [source, base])
 }

@@ -16,7 +16,7 @@ import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots
 import zh from '../locale/zh.json'
 import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
-import { createHandoff } from './client/handoff.ts'
+import { createHandoff, openInstalledFrom } from './client/handoff.ts'
 import { loadCatalog, loadDetail } from './client/model/api.ts'
 import { installedFrom } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
@@ -77,11 +77,23 @@ export function apply(ctx: Context): void {
     loadDetail,
     loadInstalled: async () => installedFrom(await ctx.remote.pluginManager.listBundles()),
     subscribeInstalled: (onChange) => {
-      const stop = ctx.remote.$on('plugin-manager/changed', () => onChange())
-      return () => { stop() }
+      // A reconnect may have missed change events, so it also triggers a fresh read (as the official Discover does).
+      const stops = [ctx.remote.$on('plugin-manager/changed', () => onChange()), ctx.on('connection/reset', () => onChange())]
+      return () => { for (const stop of stops) stop() }
     },
   }
   const titleOf = (plugin: StorePlugin, lang: string) => localize(plugin.title, lang) || plugin.name
+  // The Plugins page provides `pluginNavigation` while it is mounted; read it when needed, never require it.
+  const openInstalled = openInstalledFrom({
+    navigation: () => {
+      try {
+        return ctx.get('pluginNavigation') as { openBundle: (name: string) => void } | undefined
+      } catch {
+        return undefined
+      }
+    },
+    selectPanel: id => ctx.layout.selectPanel(id as MainPanelId),
+  })
 
   function StoreTab(props: PropsRuntime<'plugins.tab'> & LocaleProps): ReactNode {
     const { lang, t: tr } = useCopy(props, ctx.locale)
@@ -104,7 +116,7 @@ export function apply(ctx: Context): void {
       t: tr,
       services,
       onInstall: (plugin: StorePlugin) => { handoff.request({ name: plugin.name, title: titleOf(plugin, lang) }); ctx.layout.selectPanel(PLUGINS_PANEL_ID) },
-      onOpenInstalled: () => ctx.layout.selectPanel(PLUGINS_PANEL_ID),
+      onOpenInstalled: (plugin: StorePlugin) => openInstalled(plugin.name),
     }) })
   }
 

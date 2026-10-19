@@ -3,10 +3,10 @@
  * back stack of views (home → list → detail) with their scroll positions, and routes install clicks. Only the tab
  * can install; it confirms first. The panel hands the install over (see client.ts).
  */
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
-import type { InstallState, Installed } from '../model/install-state.ts'
+import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
 import type { Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail } from './DetailView.tsx'
@@ -33,112 +33,179 @@ export interface StoreAppProps {
   takePending?: () => string | null
 }
 
-type View = { view: 'home' } | { view: 'list'; filter: ListFilter } | { view: 'detail'; name: string }
+export type View = { view: 'home' } | { view: 'list'; filter: ListFilter } | { view: 'detail'; name: string }
+export type Stack = Array<{ view: View; scroll: number }>
+
+/** Push `view`, remembering where the current view was scrolled. */
+export function navigate(stack: Stack, view: View, currentScroll: number): Stack {
+  return [...stack.slice(0, -1), { ...stack[stack.length - 1]!, scroll: currentScroll }, { view, scroll: 0 }]
+}
+
+/** Pop the current view; `restore` is the scroll position to return to, or null when already at the root. */
+export function goBack(stack: Stack): { stack: Stack; restore: number | null } {
+  if (stack.length <= 1) return { stack, restore: null }
+  const next = stack.slice(0, -1)
+  return { stack: next, restore: next[next.length - 1]!.scroll }
+}
+
+interface Scrollable { scrollHeight: number; clientHeight: number; parentElement: Scrollable | null }
+
+/** The nearest ancestor (or the element itself) that scrolls: overflow auto/scroll with content taller than it. */
+export function scrollParentOf<T extends Scrollable>(element: T | null, overflowOf: (el: T) => string): T | null {
+  for (let el: T | null = element; el; el = el.parentElement as T | null) {
+    if (/(auto|scroll)/.test(overflowOf(el)) && el.scrollHeight > el.clientHeight) return el
+  }
+  return null
+}
+
+const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
 
 export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
-  const [installed, setInstalled] = useState<Installed>(new Map())
-  const [stack, setStack] = useState<Array<{ view: View; scroll: number }>>([{ view: { view: 'home' }, scroll: 0 }])
+  const [installed, setInstalled] = useState<Installed | null>(null)
+  const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
   const [details, setDetails] = useState<Record<string, Load<PluginDetail>>>({})
   const [confirming, setConfirming] = useState<StorePlugin | null>(null)
-  const scroller = useRef<HTMLDivElement | null>(null)
+  const root = useRef<HTMLDivElement | null>(null)
+  const pendingScroll = useRef<number | null>(null)
+  // Each async read carries a sequence number; a response that is no longer the latest is dropped.
+  const seq = useRef({ catalog: 0, installed: 0, detail: {} as Record<string, number> })
   const current = stack[stack.length - 1]!.view
 
+  /** The element that actually scrolls: the panel root, or the Plugins page container around the tab. */
+  const scroller = useCallback((): HTMLElement | null => {
+    const el = root.current
+    if (!el) return null
+    if (mode === 'panel') return el
+    return scrollParentOf<HTMLElement>(el.parentElement, node => getComputedStyle(node).overflowY) ?? (document.scrollingElement as HTMLElement | null)
+  }, [mode])
+
   const load = useCallback((refresh = false) => {
+    const id = ++seq.current.catalog
     setCatalog(prev => (prev.status === 'ready' ? prev : { status: 'loading' }))
-    services.loadCatalog(refresh)
-      .then(snapshot => setCatalog({ status: 'ready', data: buildCatalog(snapshot) }))
-      .catch((error: unknown) => setCatalog(prev => (prev.status === 'ready' ? { status: 'ready', data: { ...prev.data, stale: true } } : { status: 'error', error: String((error as Error)?.message ?? error) })))
+    services.loadCatalog(refresh).then(
+      snapshot => { if (id === seq.current.catalog) setCatalog({ status: 'ready', data: buildCatalog(snapshot) }) },
+      (error: unknown) => {
+        if (id !== seq.current.catalog) return
+        setCatalog(prev => (prev.status === 'ready' ? { status: 'ready', data: { ...prev.data, stale: true } } : { status: 'error', error: messageOf(error) }))
+      },
+    )
   }, [services])
 
   useEffect(() => { load() }, [load])
 
   useEffect(() => {
     let live = true
-    const refresh = () => { services.loadInstalled().then(map => { if (live) setInstalled(map) }).catch(() => {}) }
+    const refresh = () => {
+      const id = ++seq.current.installed
+      services.loadInstalled().then(map => { if (live && id === seq.current.installed) setInstalled(map) }, () => {})
+    }
     refresh()
     const unsubscribe = services.subscribeInstalled(refresh)
     return () => { live = false; unsubscribe() }
   }, [services])
 
   const loadDetail = useCallback((name: string) => {
+    const id = (seq.current.detail[name] ?? 0) + 1
+    seq.current.detail[name] = id
     setDetails(prev => ({ ...prev, [name]: { status: 'loading' } }))
-    services.loadDetail(name)
-      .then(data => setDetails(prev => ({ ...prev, [name]: { status: 'ready', data } })))
-      .catch((error: unknown) => setDetails(prev => ({ ...prev, [name]: { status: 'error', error: String((error as Error)?.message ?? error) } })))
+    services.loadDetail(name).then(
+      data => { if (seq.current.detail[name] === id) setDetails(prev => ({ ...prev, [name]: { status: 'ready', data } })) },
+      (error: unknown) => { if (seq.current.detail[name] === id) setDetails(prev => ({ ...prev, [name]: { status: 'error', error: messageOf(error) } })) },
+    )
   }, [services])
 
   const go = useCallback((view: View) => {
-    const scroll = scroller.current?.scrollTop ?? 0
-    setStack(prev => [...prev.slice(0, -1), { ...prev[prev.length - 1]!, scroll }, { view, scroll: 0 }])
+    const scroll = scroller()?.scrollTop ?? 0
+    setStack(prev => navigate(prev, view, scroll))
+    pendingScroll.current = 0
     if (view.view === 'detail' && !details[view.name]) loadDetail(view.name)
-    scroller.current?.scrollTo?.({ top: 0 })
-  }, [details, loadDetail])
+  }, [details, loadDetail, scroller])
 
   const back = useCallback(() => {
     setStack(prev => {
-      if (prev.length <= 1) return prev
-      const next = prev.slice(0, -1)
-      const restore = next[next.length - 1]!.scroll
-      queueMicrotask(() => scroller.current?.scrollTo?.({ top: restore }))
+      const { stack: next, restore } = goBack(prev)
+      pendingScroll.current = restore
       return next
     })
   }, [])
 
-  // A plugin handed over from the panel: show it and ask for confirmation once the catalog is here.
+  // Apply a scroll change after the new view is committed, so it lands on the right content.
+  useLayoutEffect(() => {
+    if (pendingScroll.current === null) return
+    const top = pendingScroll.current
+    pendingScroll.current = null
+    const el = scroller()
+    if (el) el.scrollTop = top
+  }, [stack, scroller])
+
+  // A plugin handed over from the panel: once the catalog and install states are known, show it, and ask for
+  // confirmation only if it still needs installing.
+  const handedOver = useRef(false)
   useEffect(() => {
-    if (mode !== 'tab' || catalog.status !== 'ready' || !takePending) return
+    if (handedOver.current || mode !== 'tab' || !takePending || catalog.status !== 'ready' || installed === null) return
+    handedOver.current = true
     const name = takePending()
     const plugin = name ? catalog.data.byName.get(name) : undefined
-    if (plugin) { go({ view: 'detail', name: plugin.name }); setConfirming(plugin) }
-  }, [mode, catalog.status, takePending]) // eslint-disable-line react-hooks/exhaustive-deps
+    if (!plugin) return
+    go({ view: 'detail', name: plugin.name })
+    if (installStateOf(plugin, installed) === 'install') setConfirming(plugin)
+  }, [mode, takePending, catalog, installed, go])
 
   const onInstallClick = useCallback((plugin: StorePlugin, state: InstallState) => {
     if (state === 'installed' || state === 'update') onOpenInstalled(plugin)
     else if (state === 'install') { if (mode === 'tab') setConfirming(plugin); else onInstall(plugin) }
   }, [mode, onInstall, onOpenInstalled])
 
-  const handlers = {
+  const cancelConfirm = useCallback(() => setConfirming(null), [])
+  const acceptConfirm = useCallback(() => {
+    setConfirming(plugin => { if (plugin) queueMicrotask(() => onInstall(plugin)); return null })
+  }, [onInstall])
+
+  const handlers = useMemo(() => ({
     onOpenPlugin: (name: string) => go({ view: 'detail', name }),
     onOpenList: (filter: ListFilter) => go({ view: 'list', filter }),
     onSearch: (query: string) => go({ view: 'list', filter: { kind: 'search', query } }),
     onInstallClick,
     onBack: back,
-  }
+  }), [go, onInstallClick, back])
 
-  const body = useMemo(() => {
-    if (catalog.status === 'loading') return <div className="ps-pad ps-muted">{t('loading')}</div>
-    if (catalog.status === 'error') {
-      return (
-        <div className="ps-error ps-pad">
-          <span>{t('loadFailed')}：{catalog.error}</span>
-          <button type="button" className="ps-btn" onClick={() => load(true)}>{t('retry')}</button>
-        </div>
-      )
-    }
+  let body: ReactNode
+  if (catalog.status === 'loading') {
+    body = <div className="ps-pad ps-muted">{t('loading')}</div>
+  } else if (catalog.status === 'error') {
+    body = (
+      <div className="ps-error ps-pad">
+        <span>{t('loadFailed')}：{catalog.error}</span>
+        <button type="button" className="ps-btn" onClick={() => load(true)}>{t('retry')}</button>
+      </div>
+    )
+  } else {
     const data = catalog.data
     if (current.view === 'detail') {
       const plugin = data.byName.get(current.name)
-      if (!plugin) return <ListView title={t('empty')} plugins={[]} installed={installed} lang={lang} t={t} {...handlers} />
-      return <DetailView plugin={plugin} catalog={data} detail={details[plugin.name] ?? { status: 'loading' }} installed={installed} lang={lang} t={t} onRetryDetail={() => loadDetail(plugin.name)} {...handlers} />
-    }
-    if (current.view === 'list') {
+      body = plugin
+        ? <DetailView key={plugin.name} plugin={plugin} catalog={data} detail={details[plugin.name] ?? { status: 'loading' }} installed={installed} lang={lang} t={t} onRetryDetail={() => loadDetail(plugin.name)} {...handlers} />
+        : <ListView title={t('empty')} plugins={[]} installed={installed} lang={lang} t={t} {...handlers} />
+    } else if (current.view === 'list') {
       const filter = current.filter
-      const { title, plugins } = filter.kind === 'search'
-        ? { title: t('searchResults', { query: filter.query }), plugins: searchPlugins(data, filter.query) }
-        : filter.kind === 'all'
-          ? { title: t('allPlugins'), plugins: data.plugins }
-          : (() => {
-              const group = (filter.kind === 'category' ? data.categories : data.sections).find(g => g.id === filter.id)
-              return { title: group ? localize(group.title, lang) : '', plugins: group?.plugins ?? [] }
-            })()
-      return <ListView title={title} plugins={plugins} installed={installed} dshVersion={data.dshVersion} lang={lang} t={t} {...handlers} />
+      let title = ''
+      let plugins: StorePlugin[] = []
+      if (filter.kind === 'search') { title = t('searchResults', { query: filter.query }); plugins = searchPlugins(data, filter.query) }
+      else if (filter.kind === 'all') { title = t('allPlugins'); plugins = data.plugins }
+      else {
+        const group = (filter.kind === 'category' ? data.categories : data.sections).find(g => g.id === filter.id)
+        title = group ? localize(group.title, lang) : ''
+        plugins = group?.plugins ?? []
+      }
+      body = <ListView title={title} plugins={plugins} installed={installed} dshVersion={data.dshVersion} lang={lang} t={t} {...handlers} />
+    } else {
+      body = <Home catalog={data} installed={installed} lang={lang} t={t} {...handlers} />
     }
-    return <Home catalog={data} installed={installed} lang={lang} t={t} {...handlers} />
-  }, [catalog, current, details, installed, lang, t]) // eslint-disable-line react-hooks/exhaustive-deps
+  }
 
   return (
-    <div className={`ps-root ps-mode-${mode}`} ref={scroller}>
+    <div className={`ps-root ps-mode-${mode}`} ref={root}>
       {catalog.status === 'ready' && catalog.data.stale && (
         <div className="ps-notice ps-notice-bar">
           <span>{t('staleNotice')}</span>
@@ -146,9 +213,7 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
         </div>
       )}
       {body}
-      {confirming && (
-        <ConfirmInstall plugin={confirming} lang={lang} t={t} onCancel={() => setConfirming(null)} onConfirm={() => { const plugin = confirming; setConfirming(null); onInstall(plugin) }} />
-      )}
+      {confirming && <ConfirmInstall plugin={confirming} lang={lang} t={t} onCancel={cancelConfirm} onConfirm={acceptConfirm} />}
     </div>
   )
 }

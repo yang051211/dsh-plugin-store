@@ -25,7 +25,7 @@ const C = {
 }
 
 export const STYLE_TEXT = `
-.ps-root { color: ${C.text}; font-size: 14px; line-height: 1.55; height: 100%; overflow: auto; box-sizing: border-box; padding: 20px 28px 40px; }
+.ps-root { color: ${C.text}; font-size: 14px; line-height: 1.55; height: 100%; overflow: auto; box-sizing: border-box; padding: 20px 28px 40px; container-type: inline-size; }
 .ps-root *, .ps-root *::before, .ps-root *::after { box-sizing: border-box; }
 .ps-mode-tab { padding: 8px 0 32px; height: auto; overflow: visible; }
 .ps-muted { color: ${C.text3}; }
@@ -54,7 +54,7 @@ export const STYLE_TEXT = `
 .ps-section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
 .ps-section-head h3, .ps-block h3 { font-size: 16px; margin: 0 0 10px; }
 .ps-row, .ps-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-@media (min-width: 900px) { .ps-row, .ps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@container (min-width: 720px) { .ps-row, .ps-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .ps-card { border: 1px solid ${C.borderSoft}; border-radius: ${C.rLg}; padding: 14px; background: ${C.bg1}; cursor: pointer; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .ps-card:hover { background: ${C.hover}; }
 .ps-card-head { display: flex; gap: 12px; align-items: center; min-width: 0; }
@@ -90,7 +90,10 @@ export const STYLE_TEXT = `
 .ps-error { display: flex; align-items: center; gap: 12px; color: ${C.error}; margin: 12px 0; flex-wrap: wrap; }
 .ps-block { margin-top: 22px; }
 .ps-shots { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
-.ps-shot { margin: 0; flex: none; max-width: 420px; cursor: zoom-in; }
+.ps-shot { margin: 0; flex: none; max-width: 420px; }
+.ps-shot-btn { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
+.ps-reason { color: ${C.warn}; font-size: 13px; margin: 8px 0 0; }
+.ps-zoom-close { position: absolute; top: 16px; right: 20px; border: 0; background: rgba(0,0,0,.5); color: #fff; font-size: 24px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
 .ps-shot img { display: block; max-height: 240px; max-width: 420px; border-radius: ${C.rMd}; border: 1px solid ${C.borderSoft}; }
 .ps-shot figcaption { color: ${C.text3}; font-size: 12px; margin-top: 4px; }
 .ps-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }

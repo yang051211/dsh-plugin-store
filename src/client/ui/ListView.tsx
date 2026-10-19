@@ -7,7 +7,7 @@ import { PluginCard, type Translate } from './common.tsx'
 export interface ListViewProps {
   title: string
   plugins: StorePlugin[]
-  installed: Installed
+  installed: Installed | null
   dshVersion?: string | null
   lang: string
   t: Translate

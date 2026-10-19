@@ -3,7 +3,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-connection'
 import { createCatalogCache } from './host/catalog-cache.ts'
 import { createDetailFetch, createIndexFetch, DEFAULT_INDEX_URL, DETAIL_ROUTE, INDEX_ROUTE } from './host/index-route.ts'
-import { runtimeVersion } from './host/runtime-version.ts'
+import { createVersionReader } from './host/runtime-version.ts'
 
 export const name = 'plugin-store'
 
@@ -17,7 +17,7 @@ export const inject = ['connection']
 export function apply(ctx: Context): void {
   const cache = createCatalogCache({ fetch, indexUrl: DEFAULT_INDEX_URL })
   ctx.effect(() => ctx.connection.fetch.register({
-    path: INDEX_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createIndexFetch(cache, () => runtimeVersion()),
+    path: INDEX_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createIndexFetch(cache, createVersionReader()),
   }), 'plugin-store: catalog route')
   ctx.effect(() => ctx.connection.fetch.register({
     path: DETAIL_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createDetailFetch(cache),

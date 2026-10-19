@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import * as host from '../lib/index.js'
-import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, INDEX_ROUTE, DETAIL_ROUTE, DEFAULT_INDEX_URL, MAX_DETAIL_BYTES } from '../lib/test/host.js'
+import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, DEFAULT_INDEX_URL, MAX_DETAIL_BYTES } from '../lib/test/host.js'
 
 const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 
@@ -110,6 +110,44 @@ test('compatibility per plugin', () => {
   const index = doc([plugin('fits', '>=0.2.0 <0.3.0-0'), plugin('too-new', '>=0.3.0'), plugin('open', null)])
   assert.deepEqual(compatibilityOf(index, '0.2.1-rc.2'), { fits: 'compatible', 'too-new': 'incompatible', open: 'compatible' })
   assert.deepEqual(compatibilityOf(index, null), { fits: 'unknown', 'too-new': 'unknown', open: 'compatible' })
+})
+
+test('a blank or invalid engines range is incompatible, as DSH treats it', () => {
+  const index = doc([plugin('blank', ' '), plugin('broken', 'not a range')])
+  index.plugins[0].versions[0].engines = { dsh: ' ' }
+  assert.deepEqual(compatibilityOf(index, '0.2.1-rc.2'), { blank: 'incompatible', broken: 'incompatible' })
+})
+
+test('after a failed refresh the stale copy is served without hitting upstream again for a while', async () => {
+  let clock = 0
+  let fail = false
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: () => (fail ? new Response('down', { status: 503 }) : new Response(JSON.stringify(doc()))) })
+  const cache = createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL, ttlMs: 1000, now: () => clock })
+  await cache.index()
+  fail = true
+  clock = 2000
+  assert.equal((await cache.index()).stale, true)
+  assert.equal(calls.length, 2)
+  clock = 2500
+  assert.equal((await cache.index()).stale, true)
+  assert.equal(calls.length, 2, 'no second upstream attempt within the retry delay')
+})
+
+test('concurrent detail requests share one upstream fetch', async () => {
+  const detailUrl = 'https://cdn.example/gh/o/r@main/market/plugins/alpha.json'
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: doc(), [detailUrl]: { schema: 1, name: 'alpha' } })
+  const cache = createCatalogCache({ fetch: fetchImpl, indexUrl: INDEX_URL })
+  await cache.index()
+  await Promise.all([cache.detail('alpha'), cache.detail('alpha'), cache.detail('alpha')])
+  assert.equal(calls.filter(url => url === detailUrl).length, 1)
+})
+
+test('the DSH version is read once', async () => {
+  let loads = 0
+  const versionOf = createVersionReader(async () => { loads++; return { getDshRuntimeVersion: () => '0.2.1-rc.2' } })
+  assert.equal(await versionOf(), '0.2.1-rc.2')
+  assert.equal(await versionOf(), '0.2.1-rc.2')
+  assert.equal(loads, 1)
 })
 
 test('runtimeVersion is null when app-boot cannot load', async () => {

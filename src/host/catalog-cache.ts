@@ -13,6 +13,8 @@ export const MAX_DETAIL_BYTES = 4 * 1024 * 1024
 export const FETCH_TIMEOUT_MS = 15_000
 /** How long a successful read is reused. */
 export const CACHE_TTL_MS = 600_000
+/** After a failed refresh, how long the stale copy is served before upstream is tried again. */
+export const RETRY_DELAY_MS = 60_000
 
 export interface IndexPlugin {
   name: string
@@ -56,14 +58,17 @@ export interface CatalogCacheOptions {
 
 export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_TTL_MS, now = Date.now }: CatalogCacheOptions) {
   let good: CatalogSnapshot | null = null
+  let failedAt: number | null = null
   let inflight: Promise<CatalogSnapshot> | null = null
   const details = new Map<string, { at: number; doc: unknown }>()
+  const detailFlights = new Map<string, Promise<unknown>>()
   const indexDir = new URL('./', indexUrl)
 
   async function read(): Promise<CatalogSnapshot> {
     const doc = await fetchJson(fetchImpl, indexUrl, MAX_INDEX_BYTES, FETCH_TIMEOUT_MS, 'catalog')
     checkIndexShape(doc)
     good = { index: doc, fetchedAt: now(), stale: false }
+    failedAt = null
     details.clear()
     return good
   }
@@ -71,10 +76,13 @@ export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_T
   /** The catalog; `refresh` skips the cache. A failed read falls back to the last good copy, marked stale. */
   async function index(refresh = false): Promise<CatalogSnapshot> {
     if (!refresh && good && now() - good.fetchedAt < ttlMs) return good
+    // While upstream is down, answer from the stale copy instead of making every request wait for a timeout.
+    if (!refresh && good && failedAt !== null && now() - failedAt < RETRY_DELAY_MS) return { ...good, stale: true }
     inflight ??= read().finally(() => { inflight = null })
     try {
       return await inflight
     } catch (error) {
+      failedAt = now()
       if (good) return { ...good, stale: true }
       throw error
     }
@@ -84,6 +92,15 @@ export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_T
   async function detail(name: string): Promise<unknown> {
     const cached = details.get(name)
     if (cached && now() - cached.at < ttlMs) return cached.doc
+    let flight = detailFlights.get(name)
+    if (!flight) {
+      flight = readDetail(name).finally(() => { detailFlights.delete(name) })
+      detailFlights.set(name, flight)
+    }
+    return flight
+  }
+
+  async function readDetail(name: string): Promise<unknown> {
     const plugin = (await index()).index.plugins.find(p => p.name === name)
     if (!plugin) throw new NotListedError(`${name} is not in the catalog`)
     const target = new URL(plugin.store?.detail ?? '', indexUrl)

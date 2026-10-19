@@ -18,10 +18,12 @@ export function compatibilityOf(index: IndexDocument, dshVersion: string | null)
   for (const plugin of index.plugins) {
     const latest = plugin['dist-tags']?.latest
     const listed = plugin.versions.find(v => v.version === latest) ?? plugin.versions[0]
-    const range = listed?.engines?.dsh?.trim()
-    if (!range) result[plugin.name] = 'compatible'
-    else if (!dshVersion || !semver.validRange(range)) result[plugin.name] = 'unknown'
-    else result[plugin.name] = semver.satisfies(dshVersion, range, { includePrerelease: true }) ? 'compatible' : 'incompatible'
+    const declared = listed?.engines?.dsh
+    // DSH refuses a declared range that is blank or invalid, so the store does too; no declaration admits any version.
+    if (declared === undefined) result[plugin.name] = 'compatible'
+    else if (declared.trim() === '' || !semver.validRange(declared.trim())) result[plugin.name] = 'incompatible'
+    else if (!dshVersion) result[plugin.name] = 'unknown'
+    else result[plugin.name] = semver.satisfies(dshVersion, declared.trim(), { includePrerelease: true }) ? 'compatible' : 'incompatible'
   }
   return result
 }

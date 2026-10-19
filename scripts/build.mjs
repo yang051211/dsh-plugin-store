@@ -58,7 +58,7 @@ const TEST_ENTRIES = {
   handoff: { entry: 'src/client/handoff.ts', platform: 'neutral' },
 }
 for (const [name, { entry, platform }] of Object.entries(TEST_ENTRIES)) {
-  if (!existsSync(entry)) continue
+  if (!existsSync(entry)) throw new Error(`test entry ${entry} is missing; tests would run against stale lib/test/${name}.js`)
   await build({
     entryPoints: [entry],
     bundle: true,

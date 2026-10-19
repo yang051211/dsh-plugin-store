@@ -9,7 +9,7 @@ export type ListFilter = { kind: 'all' } | { kind: 'category'; id: string } | { 
 
 export interface HomeProps {
   catalog: Catalog
-  installed: Installed
+  installed: Installed | null
   lang: string
   t: Translate
   onOpenPlugin: (name: string) => void

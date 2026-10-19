@@ -46,25 +46,34 @@ export function PluginIcon({ plugin, lang, size = 44 }: { plugin: StorePlugin; l
 
 export interface InstallButtonProps {
   plugin: StorePlugin
-  installed: Installed
+  /** Null while the installed list is still loading or could not be read. */
+  installed: Installed | null
   dshVersion: string | null
   t: Translate
   onClick: (plugin: StorePlugin, state: InstallState) => void
   large?: boolean
 }
 
-/** Install / Installed / Update available / Incompatible (disabled, with the reason as a tooltip). */
+/** Why a plugin cannot be installed on the running DSH. */
+export function incompatibleReason(plugin: StorePlugin, dshVersion: string | null, t: Translate): string {
+  return t('incompatibleHint', { range: plugin.enginesDsh ?? '', version: dshVersion ?? '?' })
+}
+
+/**
+ * Install / Installed / Update available / Incompatible (disabled, reason as a tooltip). While the installed list
+ * is unknown the button is disabled, so an installed plugin never briefly offers "Install".
+ */
 export function InstallButton({ plugin, installed, dshVersion, t, onClick, large }: InstallButtonProps): ReactNode {
-  const state = installStateOf(plugin, installed)
-  const label = t(state)
-  const hint = state === 'incompatible' ? t('incompatibleHint', { range: plugin.enginesDsh ?? '', version: dshVersion ?? '?' }) : undefined
+  const state = installed ? installStateOf(plugin, installed) : null
+  const label = t(state ?? 'install')
+  const hint = state === 'incompatible' ? incompatibleReason(plugin, dshVersion, t) : undefined
   return (
     <button
       type="button"
       className={`ps-btn ${state === 'install' ? 'ps-btn-primary' : ''} ${large ? 'ps-btn-large' : ''}`}
-      disabled={state === 'incompatible'}
+      disabled={state === null || state === 'incompatible'}
       title={hint}
-      onClick={event => { event.stopPropagation(); onClick(plugin, state) }}
+      onClick={event => { event.stopPropagation(); if (state) onClick(plugin, state) }}
     >
       {label}
     </button>
@@ -73,7 +82,7 @@ export function InstallButton({ plugin, installed, dshVersion, t, onClick, large
 
 export interface CardProps {
   plugin: StorePlugin
-  installed: Installed
+  installed: Installed | null
   dshVersion: string | null
   lang: string
   t: Translate
@@ -84,7 +93,7 @@ export interface CardProps {
 /** A plugin card: icon, name, pitch, version · author · stars, and its install button. */
 export function PluginCard({ plugin, installed, dshVersion, lang, t, onOpenPlugin, onInstallClick }: CardProps): ReactNode {
   return (
-    <div className="ps-card" role="button" tabIndex={0} onClick={() => onOpenPlugin(plugin.name)} onKeyDown={e => { if (e.key === 'Enter') onOpenPlugin(plugin.name) }}>
+    <div className="ps-card" role="button" tabIndex={0} onClick={() => onOpenPlugin(plugin.name)} onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onOpenPlugin(plugin.name) } }}>
       <div className="ps-card-head">
         <PluginIcon plugin={plugin} lang={lang} />
         <div className="ps-card-text">

@@ -83,6 +83,35 @@ test('install button states', () => {
   assert.ok(blocked.includes('与当前的 0.2.1-rc.2 不兼容'))
 })
 
+test('install buttons are disabled while the installed list is unknown', () => {
+  const plugin = catalogWith().byName.get('dsh-chat-toc')
+  const out = html(createElement(InstallButton, { plugin, installed: null, dshVersion: '0.2.1-rc.2', t, onClick: noop }))
+  assert.match(out, /disabled/)
+})
+
+test('the detail page states why a plugin is incompatible', () => {
+  const catalog = catalogWith(doc => doc, { 'dsh-chat-toc': 'compatible', 'dsh-context': 'incompatible' })
+  const plugin = catalog.byName.get('dsh-context')
+  const out = html(createElement(DetailView, { plugin, catalog, detail: { status: 'ready', data: detailOf('dsh-context') }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.ok(out.includes('<p class="ps-reason">'), 'reason is visible text, not only a tooltip')
+})
+
+test('missing review date and features degrade gracefully', () => {
+  const catalog = catalogWith(doc => { doc.plugins[0].store.review.date = ''; return doc })
+  const plugin = catalog.byName.get('dsh-chat-toc')
+  const out = html(createElement(DetailView, { plugin, catalog, detail: { status: 'ready', data: { ...detailOf('dsh-chat-toc'), features: {} } }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.equal(out.includes('已审核 · <'), false)
+  assert.ok(out.includes('>已审核<'))
+  assert.equal(out.includes('能做什么'), false)
+})
+
+test('related plugins wait for the detail document', () => {
+  const catalog = catalogWith(doc => { doc.plugins[1].metadata.category = 'ui'; return doc })
+  const plugin = catalog.byName.get('dsh-chat-toc')
+  const out = html(createElement(DetailView, { plugin, catalog, detail: { status: 'loading' }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.equal(out.includes('同类插件'), false)
+})
+
 test('changelog empty state', () => {
   const catalog = catalogWith()
   const plugin = catalog.byName.get('dsh-chat-toc')
