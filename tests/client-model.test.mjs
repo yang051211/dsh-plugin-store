@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { localize, buildCatalog, searchPlugins, installStateOf, installedFrom } from '../lib/test/model.js'
+import { localize, buildCatalog, searchPlugins, installStateOf, installedFrom, selfUpdateOf } from '../lib/test/model.js'
 
 const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 
@@ -160,4 +160,23 @@ test('installedFrom unwraps the Remote result and keeps installed bundles only',
 
 test('installedFrom throws the Remote error instead of reporting nothing installed', () => {
   assert.throws(() => installedFrom({ ok: false, error: new Error('plugin manager unavailable') }), /plugin manager unavailable/)
+})
+
+test('the store offers its own update only when the installed copy is older', () => {
+  const installed = version => new Map([['dsh-plugin-store', version === undefined ? {} : { version }]])
+  assert.deepEqual(selfUpdateOf('0.1.4', installed('0.1.3')), { current: '0.1.3', latest: '0.1.4', spec: 'github:yang051211/dsh-plugin-store#v0.1.4' })
+  assert.equal(selfUpdateOf('0.1.4', installed('0.1.4')), null)
+  assert.equal(selfUpdateOf('0.1.3', installed('0.1.4')), null)
+  assert.equal(selfUpdateOf('0.1.4', installed(undefined)), null, 'no installed version, nothing to compare')
+  assert.equal(selfUpdateOf('0.1.4', new Map()), null, 'not installed through DSH (a development link), no prompt')
+  assert.equal(selfUpdateOf('0.1.4', null), null, 'installed list still loading')
+  assert.equal(selfUpdateOf(null, installed('0.1.3')), null, 'catalog without the store version')
+  assert.equal(selfUpdateOf('0.1.4#evil', installed('0.1.3')), null, 'only an exact version becomes an install spec')
+})
+
+test('the catalog carries the published store version', () => {
+  const doc = snapshot()
+  doc.index.store.self = { version: '0.1.4' }
+  assert.equal(buildCatalog(doc).storeVersion, '0.1.4')
+  assert.equal(buildCatalog(snapshot()).storeVersion, null)
 })

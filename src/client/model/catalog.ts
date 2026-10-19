@@ -42,6 +42,8 @@ export interface Catalog {
   categories: Grouping[]
   sections: Grouping[]
   featured: { plugin: StorePlugin; title: LocalizedText; subtitle: LocalizedText; gradient: [string, string] } | null
+  /** The store release the catalog was published with; null when the catalog does not say. */
+  storeVersion: string | null
   stale: boolean
   dshVersion: string | null
 }
@@ -127,6 +129,7 @@ export function buildCatalog(snapshot: CatalogSnapshot, now: Date = new Date()):
     categories,
     sections,
     featured: rotation.length > 0 ? rotation[weekNumber(now) % rotation.length] : banner(doc.store?.featured),
+    storeVersion: typeof doc.store?.self?.version === 'string' ? doc.store.self.version : null,
     stale: snapshot.stale,
     dshVersion: snapshot.dshVersion,
   }

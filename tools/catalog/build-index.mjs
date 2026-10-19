@@ -54,7 +54,7 @@ function relatedTo(plugin, listed, authorOf) {
  * @param now - the generation time.
  * @returns `{ index, details }`; details are keyed by plugin name.
  */
-export function buildIndex(curation, upstream, scans, now) {
+export function buildIndex(curation, upstream, scans, now, storeVersion) {
   const listed = curation.plugins.filter(p => p.review.status === 'approved')
   const names = new Set(listed.map(p => p.name))
   const authorOf = new Map(listed.map(p => [p.name, upstream.get(p.name)?.reviewed?.author ?? null]))
@@ -124,7 +124,7 @@ export function buildIndex(curation, upstream, scans, now) {
     ...(curation.market.description ? { description: localized(curation.market.description) } : {}),
     metadata: { categories: Object.fromEntries(curation.categories.map(c => [c.id, { title: localized(c.title) }])) },
     plugins,
-    store: { schema: 1, generatedAt: now.toISOString(), featured, featuredRotation, sections, categoryOrder: curation.categories.map(c => c.id) },
+    store: { schema: 1, generatedAt: now.toISOString(), ...(storeVersion ? { self: { version: storeVersion } } : {}), featured, featuredRotation, sections, categoryOrder: curation.categories.map(c => c.id) },
   }
   return { index, details }
 }

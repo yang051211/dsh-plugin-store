@@ -106,7 +106,9 @@ function plannedFromFiles() {
   }
   // Stable output: the generation time is the newest upstream fetch, not the wall clock.
   const fetched = [...upstream.values()].map(u => Date.parse(u.fetchedAt)).filter(Number.isFinite)
-  const { index, details } = buildIndex(curation, upstream, scans, new Date(fetched.length > 0 ? Math.max(...fetched) : 0))
+  // The store's own release rides along, so installed copies can offer the update.
+  const storeVersion = readJson(join(ROOT, 'package.json')).version
+  const { index, details } = buildIndex(curation, upstream, scans, new Date(fetched.length > 0 ? Math.max(...fetched) : 0), storeVersion)
   parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
   const readIcon = file => (existsSync(join(ICON_CACHE_DIR, file)) ? readFileSync(join(ICON_CACHE_DIR, file)) : null)
   return { index, planned: plannedMarketFiles(index, details, readIcon) }

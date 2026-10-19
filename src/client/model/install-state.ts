@@ -25,3 +25,20 @@ export function installStateOf(plugin: StorePlugin, installed: Installed): Insta
   }
   return plugin.compatibility === 'incompatible' ? 'incompatible' : 'install'
 }
+
+/** This plugin's own package name, as DSH lists it. */
+export const STORE_PACKAGE = 'dsh-plugin-store'
+/** Where this plugin is installed from; a release is the tag `v<version>`. */
+const STORE_REPO = 'github:yang051211/dsh-plugin-store'
+
+export interface SelfUpdate { current: string; latest: string; spec: string }
+
+/**
+ * The store's own update, offered when the installed copy is older than the published release. It is installed
+ * through DSH's own installer like any plugin, never by the store replacing its files.
+ */
+export function selfUpdateOf(latest: string | null, installed: Installed | null): SelfUpdate | null {
+  const current = installed?.get(STORE_PACKAGE)?.version
+  if (!current || !latest || semver.valid(current) !== current || semver.valid(latest) !== latest) return null
+  return semver.lt(current, latest) ? { current, latest, spec: `${STORE_REPO}#v${latest}` } : null
+}

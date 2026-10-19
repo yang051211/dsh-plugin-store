@@ -27,6 +27,11 @@ function upstream(overrides = {}) {
 
 const scans = new Map([['alpha', { network: { hit: false }, fileSystem: { hit: true }, agentTools: { hit: false }, childProcess: { hit: false }, installScripts: { hit: false }, dependencies: 1, minifiedFiles: [] }]])
 
+test('the index publishes the store version it was built with', () => {
+  const { index } = buildIndex(curation(), upstream(), scans, NOW, '0.1.4')
+  assert.deepEqual(index.store.self, { version: '0.1.4' })
+})
+
 test('pending plugins are left out', () => {
   const { index } = buildIndex(curation(), upstream(), scans, NOW)
   assert.deepEqual(index.plugins.map(p => p.name), ['alpha'])

@@ -136,3 +136,40 @@ test('scrollParentOf finds the nearest scrolling ancestor', () => {
   assert.equal(scrollParentOf(root, el => styles.get(el)), page)
   assert.equal(scrollParentOf({ scrollHeight: 10, clientHeight: 10, parentElement: null }, () => 'visible'), null)
 })
+
+const withStoreVersion = version => async () => { const s = snapshot(); s.index.store.self = { version }; return s }
+const selfBar = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-self-update'))
+
+test('an older installed store shows the update prompt, and its button asks for the new version', async () => {
+  const updates = []
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.3' }]]) }), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: u => updates.push(u) }))
+  })
+  await flush()
+  const [bar] = selfBar(root)
+  assert.ok(bar, 'prompt shown')
+  assert.ok(JSON.stringify(bar.children.map(c => c.props?.children ?? c)).includes('0.1.4'))
+  await act(async () => { bar.findByType('button').props.onClick() })
+  assert.deepEqual(updates, [{ current: '0.1.3', latest: '0.1.4', spec: 'github:yang051211/dsh-plugin-store#v0.1.4' }])
+})
+
+test('an up-to-date store shows no update prompt', async () => {
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.4' }]]) }), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: () => {} }))
+  })
+  await flush()
+  assert.equal(selfBar(root).length, 0)
+})
+
+test('a self-update handed over from the panel goes straight to the installer in the tab', async () => {
+  const updates = []
+  let installs = 0
+  await act(async () => {
+    TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.3' }]]) }), onInstall: () => { installs++ }, onOpenInstalled: () => {}, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-plugin-store' }))
+  })
+  await flush()
+  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-plugin-store#v0.1.4'])
+  assert.equal(installs, 0)
+})

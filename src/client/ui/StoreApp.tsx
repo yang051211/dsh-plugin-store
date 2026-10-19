@@ -6,7 +6,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
-import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
+import { installStateOf, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
 import type { Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail } from './DetailView.tsx'
@@ -27,6 +27,8 @@ export interface StoreAppProps {
   services: StoreServices
   /** Tab: called after the store's confirmation. Panel: starts the hand-over to the tab. */
   onInstall: (plugin: StorePlugin) => void
+  /** Install a newer release of the store itself through DSH's installer. */
+  onSelfUpdate: (update: SelfUpdate) => void
   /** Open an installed plugin's page in the Plugins manager. */
   onOpenInstalled: (plugin: StorePlugin) => void
   /** Tab only: the plugin a panel handed over, if any (taken once). */
@@ -60,7 +62,7 @@ export function scrollParentOf<T extends Scrollable>(element: T | null, overflow
 
 const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
 
-export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
+export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
   const [installed, setInstalled] = useState<Installed | null>(null)
   const [installedUnknown, setInstalledUnknown] = useState(false)
@@ -152,11 +154,16 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
     if (handedOver.current || mode !== 'tab' || !takePending || catalog.status !== 'ready' || installed === null) return
     handedOver.current = true
     const name = takePending()
+    if (name === STORE_PACKAGE) {
+      const update = selfUpdateOf(catalog.data.storeVersion, installed)
+      if (update) onSelfUpdate(update)
+      return
+    }
     const plugin = name ? catalog.data.byName.get(name) : undefined
     if (!plugin) return
     go({ view: 'detail', name: plugin.name })
     if (installStateOf(plugin, installed) === 'install') setConfirming(plugin)
-  }, [mode, takePending, catalog, installed, go])
+  }, [mode, takePending, catalog, installed, go, onSelfUpdate])
 
   const onInstallClick = useCallback((plugin: StorePlugin, state: InstallState) => {
     if (state === 'installed' || state === 'update') onOpenInstalled(plugin)
@@ -210,12 +217,20 @@ export function StoreApp({ mode, lang, t, services, onInstall, onOpenInstalled, 
     }
   }
 
+  const selfUpdate = catalog.status === 'ready' ? selfUpdateOf(catalog.data.storeVersion, installed) : null
+
   return (
     <div className={`ps-root ps-mode-${mode}`} ref={root}>
       {catalog.status === 'ready' && catalog.data.stale && (
         <div className="ps-notice ps-notice-bar">
           <span>{t('staleNotice')}</span>
           <button type="button" className="ps-link-btn" onClick={() => load(true)}>{t('refresh')}</button>
+        </div>
+      )}
+      {selfUpdate && (
+        <div className="ps-notice ps-notice-bar ps-self-update">
+          <span>{t('selfUpdate', { latest: selfUpdate.latest, current: selfUpdate.current })}</span>
+          <button type="button" className="ps-link-btn" onClick={() => onSelfUpdate(selfUpdate)}>{t('selfUpdateAction')}</button>
         </div>
       )}
       {installedUnknown && (

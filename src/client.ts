@@ -18,7 +18,7 @@ import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
 import { createHandoff, openInstalledFrom, selectTabWhenReady } from './client/handoff.ts'
 import { loadCatalog, loadDetail } from './client/model/api.ts'
-import { installedFrom } from './client/model/install-state.ts'
+import { installedFrom, STORE_PACKAGE, type SelfUpdate } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
 import type { StorePlugin } from './client/model/catalog.ts'
 import { makeTranslate } from './client/ui/common.tsx'
@@ -95,6 +95,14 @@ export function apply(ctx: Context): void {
     selectPanel: id => ctx.layout.selectPanel(id as MainPanelId),
   })
 
+  /** The panel cannot install; record the request and move to the Plugins page, whose tab takes it. */
+  function handOver(pending: { name: string; title: string }): void {
+    handoff.request(pending)
+    ctx.layout.selectPanel(PLUGINS_PANEL_ID)
+    // Switch the Plugins page to our tab ourselves; if that fails, the notice asks the user to click it.
+    void selectTabWhenReady(() => document, t('tab'))
+  }
+
   function StoreTab(props: PropsRuntime<'plugins.tab'> & LocaleProps): ReactNode {
     const { lang, t: tr } = useCopy(props, ctx.locale)
     return createElement(ErrorBoundary, { t: tr, children: createElement(StoreApp, {
@@ -103,6 +111,7 @@ export function apply(ctx: Context): void {
       t: tr,
       services,
       onInstall: (plugin: StorePlugin) => props.install({ spec: `${plugin.name}@${plugin.version}`, title: titleOf(plugin, lang), version: plugin.version }),
+      onSelfUpdate: (update: SelfUpdate) => props.install({ spec: update.spec, title: tr('selfUpdateTitle'), version: update.latest }),
       onOpenInstalled: (plugin: StorePlugin) => props.openPackage(plugin.name),
       takePending: handoff.take,
     }) })
@@ -115,12 +124,8 @@ export function apply(ctx: Context): void {
       lang,
       t: tr,
       services,
-      onInstall: (plugin: StorePlugin) => {
-        handoff.request({ name: plugin.name, title: titleOf(plugin, lang) })
-        ctx.layout.selectPanel(PLUGINS_PANEL_ID)
-        // Switch the Plugins page to our tab ourselves; if that fails, the notice asks the user to click it.
-        void selectTabWhenReady(() => document, t('tab'))
-      },
+      onInstall: (plugin: StorePlugin) => handOver({ name: plugin.name, title: titleOf(plugin, lang) }),
+      onSelfUpdate: () => handOver({ name: STORE_PACKAGE, title: tr('selfUpdateTitle') }),
       onOpenInstalled: (plugin: StorePlugin) => openInstalled(plugin.name),
     }) })
   }
