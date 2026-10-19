@@ -89,3 +89,27 @@ export function openInstalledFrom(deps: {
     else deps.selectPanel(PLUGINS_PANEL_ID)
   }
 }
+
+interface TabLike { textContent: string | null; getAttribute(name: string): string | null; click(): void }
+interface TabRoot { querySelectorAll(selector: string): ArrayLike<TabLike> | Iterable<TabLike> }
+
+/**
+ * Select the Plugins-page tab labelled `label` by clicking it, as a user would. DSH exposes no API to switch the
+ * Plugins page to a contributed tab, but the tab bar uses role="tab" and the label is ours. Returns false when the
+ * tab is not on the page, so the caller can fall back to asking the user.
+ */
+export function selectTabByLabel(root: TabRoot, label: string): boolean {
+  const tab = Array.from(root.querySelectorAll('[role="tab"]') as Iterable<TabLike>).find(el => el.textContent?.trim() === label)
+  if (!tab) return false
+  if (tab.getAttribute('aria-selected') !== 'true') tab.click()
+  return true
+}
+
+/** Retry selectTabByLabel while the Plugins page renders; resolves whether the tab was selected. */
+export async function selectTabWhenReady(root: () => TabRoot, label: string, { tries = 20, delayMs = 50 } = {}): Promise<boolean> {
+  for (let attempt = 0; attempt < tries; attempt++) {
+    if (selectTabByLabel(root(), label)) return true
+    await new Promise(resolve => setTimeout(resolve, delayMs))
+  }
+  return false
+}

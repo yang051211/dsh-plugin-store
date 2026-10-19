@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { createHandoff, HANDOFF_TTL_MS, openInstalledFrom } from '../lib/test/handoff.js'
+import { createHandoff, HANDOFF_TTL_MS, openInstalledFrom, selectTabByLabel, selectTabWhenReady } from '../lib/test/handoff.js'
 
 test('take returns the requested plugin once', () => {
   const handoff = createHandoff(() => 0)
@@ -79,4 +79,41 @@ test('installed pages open through plugin navigation when it is available', () =
   const fallback = openInstalledFrom({ navigation: () => undefined, selectPanel: id => calls.push(['panel', id]) })
   fallback('dsh-context')
   assert.deepEqual(calls, [['bundle', 'dsh-context'], ['panel', 'plugins']])
+})
+
+/** A minimal stand-in for the page: elements with role=tab, text, selection state and click counts. */
+function page(tabs) {
+  const nodes = tabs.map(([text, selected]) => ({ textContent: text, clicks: 0, getAttribute: name => (name === 'aria-selected' ? String(selected) : null), click() { this.clicks++ } }))
+  return { nodes, root: { querySelectorAll: selector => (selector === '[role="tab"]' ? nodes : []) } }
+}
+
+test('selectTabByLabel clicks the Store tab', () => {
+  const { nodes, root } = page([['已安装', true], ['发现', false], ['商城', false]])
+  assert.equal(selectTabByLabel(root, '商城'), true)
+  assert.deepEqual(nodes.map(n => n.clicks), [0, 0, 1])
+})
+
+test('selectTabByLabel leaves an already selected tab alone', () => {
+  const { nodes, root } = page([['已安装', false], ['商城', true]])
+  assert.equal(selectTabByLabel(root, '商城'), true)
+  assert.deepEqual(nodes.map(n => n.clicks), [0, 0])
+})
+
+test('selectTabByLabel reports a missing tab so the notice can take over', () => {
+  const { root } = page([['已安装', true], ['发现', false]])
+  assert.equal(selectTabByLabel(root, '商城'), false)
+})
+
+test('selectTabWhenReady retries until the tab appears, then stops', async () => {
+  const { nodes, root } = page([])
+  let attempts = 0
+  const done = selectTabWhenReady(() => { attempts++; if (attempts === 3) nodes.push(...page([['商城', false]]).nodes); return root }, '商城', { tries: 10, delayMs: 1 })
+  assert.equal(await done, true)
+  assert.equal(attempts, 3)
+  assert.equal(nodes[0].clicks, 1)
+})
+
+test('selectTabWhenReady gives up after its tries', async () => {
+  const { root } = page([])
+  assert.equal(await selectTabWhenReady(() => root, '商城', { tries: 3, delayMs: 1 }), false)
 })

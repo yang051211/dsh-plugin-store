@@ -16,7 +16,7 @@ import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots
 import zh from '../locale/zh.json'
 import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
-import { createHandoff, openInstalledFrom } from './client/handoff.ts'
+import { createHandoff, openInstalledFrom, selectTabWhenReady } from './client/handoff.ts'
 import { loadCatalog, loadDetail } from './client/model/api.ts'
 import { installedFrom } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
@@ -115,7 +115,12 @@ export function apply(ctx: Context): void {
       lang,
       t: tr,
       services,
-      onInstall: (plugin: StorePlugin) => { handoff.request({ name: plugin.name, title: titleOf(plugin, lang) }); ctx.layout.selectPanel(PLUGINS_PANEL_ID) },
+      onInstall: (plugin: StorePlugin) => {
+        handoff.request({ name: plugin.name, title: titleOf(plugin, lang) })
+        ctx.layout.selectPanel(PLUGINS_PANEL_ID)
+        // Switch the Plugins page to our tab ourselves; if that fails, the notice asks the user to click it.
+        void selectTabWhenReady(() => document, t('tab'))
+      },
       onOpenInstalled: (plugin: StorePlugin) => openInstalled(plugin.name),
     }) })
   }
