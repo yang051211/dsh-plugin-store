@@ -1,6 +1,7 @@
 /**
  * The catalog as the Host last read it: cached for a while, one upstream fetch for concurrent readers, and the last
- * good copy kept when a refresh fails. Detail documents are read only for plugins the catalog lists, and only from
+ * good copy kept when a refresh fails. The catalog is published in several places; they are tried in order and the
+ * first that answers serves the catalog and its details. Detail documents are read only for plugins the catalog lists, and only from
  * under the catalog's own directory, so a browser request can never make the Host fetch an arbitrary URL.
  */
 import { fetchJson } from './http.ts'
@@ -32,6 +33,15 @@ export interface CatalogSnapshot {
   fetchedAt: number
   /** True when this copy is served because a refresh failed. */
   stale: boolean
+  /** The source that served this copy; relative detail and icon paths resolve against it. */
+  indexUrl: string
+}
+
+/** One place the catalog is published. */
+export interface CatalogSource {
+  url: string
+  /** Deadline for one fetch from this source; defaults to FETCH_TIMEOUT_MS. */
+  timeoutMs?: number
 }
 
 /** A catalog document's minimal shape; throws on anything the store cannot read. */
@@ -51,26 +61,36 @@ export class NotListedError extends Error {}
 
 export interface CatalogCacheOptions {
   fetch: typeof fetch
-  indexUrl: string
+  /** Tried in order; the first that answers wins. */
+  sources: CatalogSource[]
   ttlMs?: number
   now?: () => number
 }
 
-export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_TTL_MS, now = Date.now }: CatalogCacheOptions) {
+const message = (error: unknown) => (error instanceof Error ? error.message : String(error))
+
+export function createCatalogCache({ fetch: fetchImpl, sources, ttlMs = CACHE_TTL_MS, now = Date.now }: CatalogCacheOptions) {
   let good: CatalogSnapshot | null = null
   let failedAt: number | null = null
   let inflight: Promise<CatalogSnapshot> | null = null
   const details = new Map<string, { at: number; doc: unknown }>()
   const detailFlights = new Map<string, Promise<unknown>>()
-  const indexDir = new URL('./', indexUrl)
 
   async function read(): Promise<CatalogSnapshot> {
-    const doc = await fetchJson(fetchImpl, indexUrl, MAX_INDEX_BYTES, FETCH_TIMEOUT_MS, 'catalog')
-    checkIndexShape(doc)
-    good = { index: doc, fetchedAt: now(), stale: false }
-    failedAt = null
-    details.clear()
-    return good
+    const failures: string[] = []
+    for (const source of sources) {
+      try {
+        const doc = await fetchJson(fetchImpl, source.url, MAX_INDEX_BYTES, source.timeoutMs ?? FETCH_TIMEOUT_MS, 'catalog')
+        checkIndexShape(doc)
+        good = { index: doc, fetchedAt: now(), stale: false, indexUrl: source.url }
+        failedAt = null
+        details.clear()
+        return good
+      } catch (error) {
+        failures.push(`${source.url}: ${message(error)}`)
+      }
+    }
+    throw new Error(`no catalog source answered (${failures.join('; ')})`)
   }
 
   /** The catalog; `refresh` skips the cache. A failed read falls back to the last good copy, marked stale. */
@@ -100,19 +120,37 @@ export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_T
     return flight
   }
 
-  async function readDetail(name: string): Promise<unknown> {
-    const plugin = (await index()).index.plugins.find(p => p.name === name)
-    if (!plugin) throw new NotListedError(`${name} is not in the catalog`)
+  /** Where `plugin`'s detail lives under the catalog at `indexUrl`; refuses anything outside that directory. */
+  function detailUrl(plugin: IndexPlugin, indexUrl: string): string {
+    const indexDir = new URL('./', indexUrl)
     const target = new URL(plugin.store?.detail ?? '', indexUrl)
     if (target.origin !== indexDir.origin || !target.pathname.startsWith(indexDir.pathname) || target.href === indexUrl) {
-      throw new Error(`${name}: detail location is outside the catalog`)
+      throw new Error(`${plugin.name}: detail location is outside the catalog`)
     }
-    const doc = await fetchJson(fetchImpl, target.href, MAX_DETAIL_BYTES, FETCH_TIMEOUT_MS, `detail of ${name}`)
-    details.set(name, { at: now(), doc })
-    return doc
+    return target.href
   }
 
-  return { index, detail, indexUrl }
+  async function readDetail(name: string): Promise<unknown> {
+    const snapshot = await index()
+    const plugin = snapshot.index.plugins.find(p => p.name === name)
+    if (!plugin) throw new NotListedError(`${name} is not in the catalog`)
+    // The source that served the catalog first, so the detail matches it; the others only if it cannot answer.
+    const ordered = [...sources].sort((a, b) => Number(b.url === snapshot.indexUrl) - Number(a.url === snapshot.indexUrl))
+    const failures: string[] = []
+    for (const source of ordered) {
+      const target = detailUrl(plugin, source.url)
+      try {
+        const doc = await fetchJson(fetchImpl, target, MAX_DETAIL_BYTES, source.timeoutMs ?? FETCH_TIMEOUT_MS, `detail of ${name}`)
+        details.set(name, { at: now(), doc })
+        return doc
+      } catch (error) {
+        failures.push(`${target}: ${message(error)}`)
+      }
+    }
+    throw new Error(`${name}: no source gave its detail (${failures.join('; ')})`)
+  }
+
+  return { index, detail }
 }
 
 export type CatalogCache = ReturnType<typeof createCatalogCache>

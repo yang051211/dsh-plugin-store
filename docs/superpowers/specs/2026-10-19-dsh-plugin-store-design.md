@@ -194,6 +194,7 @@ TypeScript + React，沿用 DSH 官方客户端插件的写法（以 `ui-plugin-
 - 截图存放：直接引用 README 里的外链，还是复制进仓库由 jsDelivr 提供。注意外链图片会把用户 IP 暴露给图片主机（官方加载图标时不发送 referrer，可参照）。
 - 测试策略，以及在 DSH 0.2.1-rc.2 桌面端上的实机验证方式。
 - jsDelivr 分支缓存（约 12 小时）带来的发布延迟处理（例如按 tag 发布或主动 purge）。
+  - 已定（v0.1.3）：2026-10-19 实测 purge 后 `@main` 仍解析到旧提交，各节点不一致。Host 改为按顺序读 raw.githubusercontent.com（5 秒超时）→ jsDelivr；详情跟随实际返回索引的那个源。
 
 ## 8. 讨论中的参考
 

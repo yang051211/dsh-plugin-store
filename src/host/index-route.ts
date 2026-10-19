@@ -1,6 +1,6 @@
 /** Host routes the browser half reads: the catalog with compatibility, and one plugin's detail document. */
 import semver from 'semver'
-import type { CatalogCache, IndexDocument } from './catalog-cache.ts'
+import type { CatalogCache, CatalogSource, IndexDocument } from './catalog-cache.ts'
 import { NotListedError } from './catalog-cache.ts'
 import { json } from './http.ts'
 
@@ -8,7 +8,14 @@ export const INDEX_ROUTE = '/api/plugin-store/index'
 export const DETAIL_ROUTE = '/api/plugin-store/detail'
 
 /** The store's own hand-reviewed catalog, published from market/ in this repository through jsDelivr. */
-export const DEFAULT_INDEX_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json'
+/**
+ * Where the published catalog is read from, in order. GitHub serves a push within minutes; jsDelivr's `@main` can
+ * keep resolving the branch to an older commit for hours, so it is the fallback for networks that cannot reach GitHub.
+ */
+export const INDEX_SOURCES: CatalogSource[] = [
+  { url: 'https://raw.githubusercontent.com/yang051211/dsh-plugin-store/main/market/index.json', timeoutMs: 5_000 },
+  { url: 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json', timeoutMs: 15_000 },
+]
 
 export type Compatibility = 'compatible' | 'incompatible' | 'unknown'
 
@@ -39,7 +46,7 @@ export function createIndexFetch(cache: CatalogCache, versionOf: () => Promise<s
       return json(200, {
         ok: true,
         index: snapshot.index,
-        indexUrl: cache.indexUrl,
+        indexUrl: snapshot.indexUrl,
         fetchedAt: snapshot.fetchedAt,
         stale: snapshot.stale,
         dshVersion,

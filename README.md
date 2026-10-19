@@ -21,8 +21,16 @@ github:yang051211/dsh-plugin-store#<tag>
 2. 打开「发现」→「添加索引源」，填写：
 
 ```text
+https://raw.githubusercontent.com/yang051211/dsh-plugin-store/main/market/index.json
+```
+
+连不上 GitHub 时改用 jsDelivr 地址。注意 jsDelivr 的 `@main` 可能要过几个小时才会跟上最新目录：
+
+```text
 https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json
 ```
+
+商城插件自己会先读 GitHub，几秒内连不上再退回 jsDelivr。
 
 目录里的每个插件都经过人工审核，只列出审核过的版本。
 
