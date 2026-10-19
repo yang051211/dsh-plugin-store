@@ -16,3 +16,4 @@
 | 2026-10-19 | dsh-subusage | 0.14.2 | 主动读取 Codex CLI（~/.codex）、Grok（~/.grok/auth.json）、Command Code（~/.commandcode/auth.json）的登录文件查询额度，并用 playwright-core 自动登录 MiMo 获取会话 Cookie，违反「不读取其他软件登录状态」规则。 |
 | 2026-10-19 | dsh-plugin-notify-sounds | 1.7.0 | 内置自我更新：点「更新」后自行从 npm 下载新版本并替换自己的安装目录，绕过 DSH 插件管理器，与排除插件市场的理由相同。 |
 | 2026-10-19 | dsh-free-search | 0.9.6 | 「一键升级」在 DSH 配置目录里直接执行 pnpm add dsh-free-search@latest，绕过 DSH 插件管理器并改写配置目录的依赖清单。 |
+| 2026-10-19 | dsh-remote | 0.8.46 | 默认开启自动更新（DEFAULT_UPDATE_MODE = auto）：自行从 npm 下载 tarball 覆盖自己的安装目录并热重载，绕过 DSH 插件管理器；另外每次加载都向作者的云函数发送匿名心跳（安装 ID 哈希、版本、平台），没有关闭开关，README 未说明。 |

@@ -23,7 +23,7 @@ sections:
   - { id: ui-better, title: { zh: 让界面更顺手 }, plugins: [ dsh-chat-toc, dsh-better-sidebar, dsh-prompt-history, dsh-session-manager, "@yfwu2020/dsh-selection-explain" ] }
   - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [ dsh-context, dsh-image-gen, dsh-vision-router, dsh-mcp-connector ] }
   - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
-  - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck, dsh-remote ] }
+  - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck ] }
   - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget ] }
   - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin ] }
 
@@ -513,90 +513,91 @@ plugins:
   - name: dsh-sql-workbench
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-sql-workbench
+    title: { zh: SQL 工作台, en: SQL Workbench }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: Navicat 风格的数据库工作台放进右侧栏，人和 Agent 都能查库、写 SQL
+      en: A Navicat-style database workbench in the sidebar, for you and the agent
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 连接 SQLite、PostgreSQL、MySQL/MariaDB、Doris、Oracle（Oracle 不需要装客户端）
+        - 对象树浏览库、表、视图、字段，双击分页预览数据，可排序、筛选
+        - 每个对话有自己的 SQL 草稿，常用查询可保存成查询库
+        - 右键把表、视图、查询加入对话，Agent 可以起草、修改和执行 SQL
+        - 中英文界面，支持侧栏、全屏、分屏和浮动标签
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.5.3
+      reviewer: yang051211
+      notes:
+        zh: 联网：只连接你自己配置的数据库。读写文件：连接信息保存在 ~/.dsh/sql-workbench.json（不含密码）；密码加密后存在同目录的 sql-workbench-secrets.json，但加密密钥 sql-workbench-secrets.key 也放在同一目录，能读这个目录的人或程序就能解出密码，等同于本机保存。⚠ 作者没有公开源码仓库，只能审查 npm 发布的包。Agent 执行 SQL 的工具能写库，生产库建议使用只读账号。无子进程；依赖 11 个，主要是 pg、mysql2、oracledb 三个数据库驱动和 CodeMirror 编辑器。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-api-client
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-api-client
+    title: { zh: API 调试, en: API Client }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: DSH 里的 Postman：调接口、管环境变量，Agent 也能用同一套工具发请求
+      en: "Postman inside DSH: send requests and manage environments, with agent tools on the same core"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 集合、文件夹、请求三级树，多标签编辑参数、请求头、认证和请求体
+        - 导入 Postman Collection v2.1，脚本只提示不执行
+        - 环境变量和密钥分开管理，界面和历史记录里密钥一律打码
+        - Agent 可以列出、查看、发送请求，高风险请求需要你审批
+        - 默认拒绝访问本机和内网地址，防止被诱导访问内部服务
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.2.0
+      reviewer: yang051211
+      notes:
+        zh: 联网：只向你（或经你审批的 Agent）发起的请求地址发送，默认拦截 localhost 和内网地址，重定向逐跳重新检查。读写文件：在 DSH 数据目录保存集合、历史和密钥（密钥目录权限 0700/0600）。无子进程；依赖 2 个（undici、schemastery）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-lsp-actions
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-lsp-actions
+    title: { zh: LSP 语言服务, en: LSP Actions }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 让 Agent 用上真正的语言服务器：诊断、格式化、补全、重命名，改完马上知道对不对
+      en: "Real language servers for the agent: diagnostics, formatting, completion and rename as it edits"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 8 个 lsp_* 工具：诊断、格式化、补全、代码操作、符号、签名提示、内嵌提示、重命名
+        - 使用和 IDE 相同的语言服务器，结果与编辑器一致
+        - 按项目配置用哪个语言服务器
+        - 提供稳定的编辑器协议，VS Code 等编辑器也能直接调用
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.5.15
+      reviewer: yang051211
+      notes:
+        zh: 子进程：通过 DSH 官方的子进程接口启动本机已安装的语言服务器（如 typescript-language-server），需要你自己装好对应语言的服务器。读写文件：格式化、重命名会修改工作区代码文件。不联网，也不调用模型。扫描命中的 spawn 来自仓库里的 VS Code 示例代码。prepare 脚本只在从 Git 源码安装时运行。
+      permissions: { network: false, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-doublecheck
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-doublecheck
+    title: { zh: 交付质量关卡, en: Doublecheck }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 先把需求问清楚，再用测试证明做完了：给 Agent 的交付加一道关卡
+      en: Grill the requirements, then prove the delivery with tests — a quality gate for agent work
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 动手前从 6 个维度追问需求，没达成共识不开工
+        - 把确定的需求规格写进会话和工作区
+        - 要求先有失败的测试，再有通过的测试，作为改动证据
+        - 派一个独立的审查子 Agent 对照规格挑错
+        - /gate 命令给出「可交付 / 需返工」的结论
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.9.28
-  - name: dsh-remote
-    source: npm
-    category: dev
-    title:
-      zh: （待起草）
-      en: dsh-remote
-    tagline:
-      zh: （待起草）
-      en: (draft pending)
-    features:
-      zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
-    screenshots: []
-    review:
-      status: pending
-      version: 0.8.46
+      reviewer: yang051211
+      notes:
+        zh: 纯流程约束插件：读写工作区里的需求规格文件，读取会话记录判断是否走完流程。自身不联网、不调用模型（审查阶段由 DSH 的子 Agent 执行，会消耗你的模型额度）。开启拦截模式后，没走完流程时会阻止 Agent 继续，适合需要严格交付的场景。prepare 脚本只在从 Git 源码安装时运行。
+      permissions: { network: false, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19

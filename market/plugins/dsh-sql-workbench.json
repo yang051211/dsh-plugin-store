@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "dsh-sql-workbench",
+  "features": {
+    "zh": [
+      "连接 SQLite、PostgreSQL、MySQL/MariaDB、Doris、Oracle（Oracle 不需要装客户端）",
+      "对象树浏览库、表、视图、字段，双击分页预览数据，可排序、筛选",
+      "每个对话有自己的 SQL 草稿，常用查询可保存成查询库",
+      "右键把表、视图、查询加入对话，Agent 可以起草、修改和执行 SQL",
+      "中英文界面，支持侧栏、全屏、分屏和浮动标签"
+    ]
+  },
+  "screenshots": [],
+  "permissions": {
+    "network": true,
+    "fileSystem": true,
+    "agentTools": true,
+    "childProcess": false,
+    "installScripts": false
+  },
+  "scanSummary": {
+    "network": true,
+    "fileSystem": true,
+    "agentTools": true,
+    "childProcess": false,
+    "installScripts": false,
+    "dependencies": 11,
+    "minified": true,
+    "binaryFiles": [],
+    "skippedEntries": []
+  },
+  "review": {
+    "version": "0.5.3",
+    "date": "2026-10-19",
+    "reviewer": "yang051211",
+    "notes": {
+      "zh": "联网：只连接你自己配置的数据库。读写文件：连接信息保存在 ~/.dsh/sql-workbench.json（不含密码）；密码加密后存在同目录的 sql-workbench-secrets.json，但加密密钥 sql-workbench-secrets.key 也放在同一目录，能读这个目录的人或程序就能解出密码，等同于本机保存。⚠ 作者没有公开源码仓库，只能审查 npm 发布的包。Agent 执行 SQL 的工具能写库，生产库建议使用只读账号。无子进程；依赖 11 个，主要是 pg、mysql2、oracledb 三个数据库驱动和 CodeMirror 编辑器。"
+    }
+  },
+  "readme": "# dsh-sql-workbench\n\nA Navicat-style SQL workbench for DeepSeek Harness. It runs as an independent npm plugin and contributes one Database page type to the official DSH right Sidebar.\n\n## Features\n\n- Right-side Navicat layout: connection selector, object tree, query tabs, SQL editor, and result grid.\n- SQLite 3.x, PostgreSQL 12-18, MySQL 5.7/8.0/8.4, MariaDB 10.6/10.11/11.x, Apache Doris 2.x/3.x, and Oracle 12c-23ai connections.\n- Latest pg 8.23 and mysql2 3.24 drivers; Oracle uses oracledb 7 Thin mode without requiring Oracle Client.\n- Database, schema, table, view, and column discovery.\n- Single-click database/object details and double-click server-paginated data preview.\n- Clickable column sorting, per-column parameterized filters, total row count, page navigation, and page-size controls.\n- Query drafts scoped to each DSH conversation.\n- One default current query per conversation.\n- Saved query library and editable working copies.\n- Context menus for adding databases, tables, views, saved queries, and drafts to the conversation.\n- AI tools that create a draft, keep editing the current draft by default, inspect catalogs, and execute SQL.\n- Official right Sidebar push, fullscreen, split-pane, and floating-tab presentations.\n- Chinese and English UI following the active DSH locale.\n\n## Install\n\nRequires DSH 0.2.1-alpha.2 or newer. The DSH peers are ranges rather than exact pins, so a\nnewer runtime satisfies them without republishing this plugin.\n\n    dsh plugin --profile web add dsh-sql-workbench@0.5.3\n\nRestart dsh web, refresh the browser, expand the right Sidebar, then choose Database from its Guide.\n\n### Install from this checkout\n\n    pnpm install\n    pnpm run build\n    dsh plugin --profile web add file:/absolute/path/to/dsh-sql-workbench\n\n## User workflow\n\n1. Open the Database tab and add a connection.\n2. Browse the object tree or right-click a table or view to create a query.\n3. Run SQL and inspect the result grid.\n4. Save a draft when it should become a saved query.\n5. Right-click a database, table, view, draft, or saved query and choose Add to conversation.\n6. Ask the model to generate SQL for a connection. The model creates an unsaved draft and makes it current.\n7. Follow-up requests modify that same current draft unless the user explicitly requests a new query.\n\nOpening a saved query creates a working copy. Model edits change the working copy. Only the UI Save command updates the saved query.\n\n## AI tools\n\n- sql_list_connections\n- sql_list_catalog\n- sql_get_current_query\n- sql_create_query\n- sql_update_current_query\n- sql_run_query\n\nsql_update_current_query always addresses the current query of the calling conversation. sql_create_query replaces that default only when a new draft is explicitly created.\n\n## Persistence\n\nThe plugin stores non-secret connection metadata, saved queries, drafts, and conversation-to-current-query bindings in:\n\n    ~/.dsh/sql-workbench.json\n\nPasswords are encrypted with AES-256-GCM in `~/.dsh/sql-workbench-secrets.json`. The independent key is stored in `~/.dsh/sql-workbench-secrets.key`; both files are created with mode `0600`. Passwords are never returned through browser state or model tools. Existing plaintext passwords are migrated automatically on first load.\n\nRecent query results, object details, and preview pages live in the running DSH process and are scoped by conversation.\n\n## Development\n\n    pnpm install\n    pnpm run typecheck\n    pnpm run build\n\nThe browser bundle follows the DSH module-loader contract and inlines CodeMirror, Zustand, and the workbench UI. React and Cordis resolve from the DSH client module table. The host half exposes /dsh-sql-workbench/api/* and /dsh-sql-workbench/ws.\n\n## License\n\nMIT\n",
+  "changelog": null,
+  "related": [
+    "dsh-ui-ux-pro-max",
+    "dsh-genui",
+    "dsh-code-security",
+    "dsh-file-review",
+    "dsh-ghidra",
+    "dsh-api-client"
+  ]
+}
