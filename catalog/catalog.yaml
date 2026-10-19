@@ -402,93 +402,114 @@ plugins:
   - name: dsh-ui-ux-pro-max
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-ui-ux-pro-max
+    title: { zh: UI/UX 设计库, en: UI/UX Pro Max }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 88 种设计风格、192 套配色、74 组字体搭配，让 Agent 做界面时有据可依
+      en: 88 design styles, 192 palettes and 74 font pairings for agents building UI
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 88 种设计风格、192 个调色板、74 组字体搭配
+        - 195 条交互规范、25 种图表类型
+        - 按产品类型直接给出完整设计配方
+        - 完全离线，中文优先
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 1.4.1
+      reviewer: yang051211
+      notes:
+        zh: 纯离线的设计知识库，给 Agent 注册设计推荐、检索类工具。扫描命中的「联网」只是文档里的链接文字，代码不发起网络请求。无子进程，没有依赖。
+      permissions: { network: false, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-genui
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-genui
+    title: { zh: 生成式界面, en: GenUI }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 把回复里的大段文字变成能点的界面：计算器、表单、图表直接出现在对话里
+      en: Turns text replies into interfaces you can click — calculators, forms and charts in the chat
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 回复里直接生成计算器、下拉框、表单等交互组件
+        - 图表带真实坐标轴，可交互
+        - 你点的、填的内容会回传给对话，AI 接着处理
+        - 不修改 DSH 源码
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.3.1
+      reviewer: yang051211
+      notes:
+        zh: ⚠ 供应链风险：界面运行时直接注入 DSH 主页面执行（没有 iframe 沙箱），使用时还会从 registry.npmmirror.com 动态加载 OpenTiny 组件库，版本写成 ~3.20 这类「自动取最新补丁版」，没有钉死。若 npm 上出现恶意补丁版本，代码会在 DSH 页面中运行。没有依赖。
+      permissions: { network: true, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-code-security
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-code-security
+    title: { zh: 代码安全检查, en: Code Security }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 本地扫描代码和 Git 改动里的安全问题，跟踪到修复为止
+      en: Local static security checks on code and Git changes, tracked until fixed
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 扫描文件、目录或 Git diff，报告规则、位置和代码证据
+        - 在设置里查看新增问题、检查覆盖、复查修复结果
+        - 可选接入 Betterleaks 密钥检测、Semgrep 数据流规则、OSV 依赖漏洞审计
+        - 导出 Markdown、SARIF，维护基线，可按项目开启自动检查
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.5.0
+      reviewer: yang051211
+      notes:
+        zh: 本身就是安全扫描器：会读取项目文件（包括 .npmrc 等配置）查找密钥和漏洞，报告里的证据会脱敏。子进程：通过 DSH 官方的子进程接口调用本机安装的 Semgrep、OSV-Scanner 等工具。联网：可选的 OSV 漏洞库下载。依赖 5 个（Babel 解析器、proper-lockfile、smol-toml）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-file-review
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-file-review
+    title: { zh: 改动审查, en: File Review }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: Agent 改了哪些文件，在侧栏逐个看 diff、撤销、批注，再让它接着改
+      en: Review every file the agent changed in sidebar diffs — undo, comment and iterate
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 在 Diff 面板里逐个查看 Agent 刚改过的文件
+        - 撤销修改过和新建的文件
+        - 在改动行上批注，让 Agent 按意见继续修改或回答问题
+        - 支持标准、PTC 和 Creator 模式，中英文界面
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.8.10
+      reviewer: yang051211
+      notes:
+        zh: 只读写当前工作区里 Agent 改过的文件（用于撤销）。不联网、无子进程；扫描命中的 exec 来自 diff 库里同名的函数，属于误报。package.json 的 prepare 脚本（husky）只在从 Git 源码安装时运行。暂不支持 Minimal 模式，也不能撤销删除的文件。依赖 4 个。
+      permissions: { network: false, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-ghidra
     source: npm
     category: dev
-    title:
-      zh: （待起草）
-      en: dsh-ghidra
+    title: { zh: Ghidra 逆向, en: Ghidra Bridge }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 把 Ghidra 接进 DSH：导入二进制、反编译、交叉引用、恶意样本初筛都能让 Agent 来做
+      en: "Ghidra inside DSH: import binaries, decompile, walk xrefs and triage malware via agent tools"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 导入并分析二进制，反编译函数，列出函数、字符串、导入导出
+        - 交叉引用、调用图、反汇编、内存读取
+        - 重命名、注释、修改函数原型并持久保存
+        - 恶意样本初筛：加密常量、可疑 API、IOC、反分析线索
+        - ghidra_doctor 一键检查本机环境
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.11.4
+      reviewer: yang051211
+      notes:
+        zh: 需要本机已安装 Ghidra 12.x 和 Python 3.13 + pyghidra。子进程：启动 pyghidra 和 Ghidra 无头分析，查找残留进程（Windows 上用 PowerShell）。联网：只向 GitHub 查询版本；访问 GitHub 时按「插件配置 → 环境变量 GH_TOKEN/GITHUB_TOKEN → 本机 gh 命令行的登录令牌（gh auth token）」的顺序取令牌，最后一项是兜底借用，只发往 GitHub 官方接口。没有依赖。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-sql-workbench
     source: npm
     category: dev
