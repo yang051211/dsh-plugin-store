@@ -34,6 +34,14 @@ test('home shows banner, sections and categories', () => {
   assert.ok(out.includes(`linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`))
 })
 
+test('categories sit under the banner, above the theme sections', () => {
+  const out = html(createElement(Home, { catalog: catalogWith(), installed: new Map(), lang: 'zh', t, ...handlers }))
+  const chips = out.indexOf('class="ps-chips"')
+  assert.ok(chips > out.indexOf('class="ps-banner"'), 'after the banner')
+  assert.ok(chips < out.indexOf('让界面更顺手'), 'before the theme sections')
+  assert.ok(out.indexOf('按分类浏览') < chips, 'with its heading')
+})
+
 test('home hides the banner without a featured plugin', () => {
   const catalog = catalogWith(doc => { doc.store.featured = null; delete doc.store.featuredRotation; return doc })
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))

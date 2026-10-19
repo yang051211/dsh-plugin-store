@@ -1,4 +1,4 @@
-/** The store's front page: search, the featured banner, theme sections, and categories. */
+/** The store's front page: search, the featured banner, categories, and theme sections. */
 import { useState, type ReactNode } from 'react'
 import type { Catalog, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
@@ -50,6 +50,18 @@ export function Home({ catalog, installed, lang, t, onOpenPlugin, onOpenList, on
         </div>
       )}
 
+      <section className="ps-section">
+        <div className="ps-section-head"><h3>{t('browseCategories')}</h3></div>
+        <nav className="ps-chips" aria-label={t('browseCategories')}>
+          <button type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'all' })}>{t('allPlugins')} · {catalog.plugins.length}</button>
+          {catalog.categories.map(category => (
+            <button key={category.id} type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'category', id: category.id })}>
+              {localize(category.title, lang)} · {category.plugins.length}
+            </button>
+          ))}
+        </nav>
+      </section>
+
       {catalog.sections.map(section => (
         <section key={section.id} className="ps-section">
           <div className="ps-section-head">
@@ -61,18 +73,6 @@ export function Home({ catalog, installed, lang, t, onOpenPlugin, onOpenList, on
           </div>
         </section>
       ))}
-
-      <section className="ps-section">
-        <div className="ps-section-head"><h3>{t('browseCategories')}</h3></div>
-        <div className="ps-chips">
-          <button type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'all' })}>{t('allPlugins')} · {catalog.plugins.length}</button>
-          {catalog.categories.map(category => (
-            <button key={category.id} type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'category', id: category.id })}>
-              {localize(category.title, lang)} · {category.plugins.length}
-            </button>
-          ))}
-        </div>
-      </section>
     </div>
   )
 }
