@@ -37,6 +37,7 @@ export function createIndexFetch(cache: CatalogCache, versionOf: () => Promise<s
       return json(200, {
         ok: true,
         index: snapshot.index,
+        indexUrl: cache.indexUrl,
         fetchedAt: snapshot.fetchedAt,
         stale: snapshot.stale,
         dshVersion,

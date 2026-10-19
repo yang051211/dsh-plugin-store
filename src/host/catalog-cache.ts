@@ -95,7 +95,7 @@ export function createCatalogCache({ fetch: fetchImpl, indexUrl, ttlMs = CACHE_T
     return doc
   }
 
-  return { index, detail }
+  return { index, detail, indexUrl }
 }
 
 export type CatalogCache = ReturnType<typeof createCatalogCache>

@@ -60,6 +60,7 @@ test('index route returns the raw catalog with store extensions', async () => {
   assert.equal(json.ok, true)
   assert.deepEqual(json.index.store, { schema: 1 })
   assert.equal(json.dshVersion, '0.2.1-rc.2')
+  assert.equal(json.indexUrl, INDEX_URL)
   assert.equal(json.stale, false)
   assert.equal(typeof json.fetchedAt, 'number')
 })

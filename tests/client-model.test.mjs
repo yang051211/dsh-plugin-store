@@ -1,0 +1,120 @@
+import { test } from 'node:test'
+import assert from 'node:assert/strict'
+import { localize, buildCatalog, searchPlugins, installStateOf, installedFrom } from '../lib/test/model.js'
+
+const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
+
+function entry(name, overrides = {}) {
+  return {
+    name,
+    title: { zh: `${name}-中文`, en: `${name}-en` },
+    description: { zh: `${name} 卖点`, en: `${name} pitch` },
+    author: 'Ann',
+    metadata: { category: 'ui', keywords: ['toc'] },
+    'dist-tags': { latest: '1.0.0' },
+    versions: [{ version: '1.0.0', publishTimestamp: 1790000000, source: { type: 'npm' }, engines: { dsh: '>=0.2.0' } }],
+    store: { tagline: { zh: `${name} 卖点`, en: `${name} pitch` }, detail: `plugins/${name}.json`, review: { version: '1.0.0', date: '2026-10-19' }, stats: { stars: 3, weeklyDownloads: 10, fetchedAt: '2026-10-19T00:00:00Z' } },
+    ...overrides,
+  }
+}
+
+function snapshot(overrides = {}) {
+  return {
+    indexUrl: INDEX_URL,
+    stale: false,
+    dshVersion: '0.2.1-rc.2',
+    compatibility: { alpha: 'compatible', beta: 'incompatible' },
+    index: {
+      format: 1,
+      title: { zh: '精选插件商城', en: 'Curated' },
+      metadata: { categories: { ui: { title: { zh: '界面与体验', en: 'UI' } }, tools: { title: { zh: '工具与能力', en: 'Tools' } }, empty: { title: { en: 'Empty' } } } },
+      plugins: [entry('alpha', { icon: 'icons/alpha.svg' }), entry('beta', { metadata: { category: 'tools', keywords: ['context', '上下文'] } })],
+      store: {
+        featured: { plugin: 'alpha', title: { zh: '精选' }, subtitle: { zh: '副标题' }, gradient: ['#123456', '#abc'] },
+        sections: [{ id: 's1', title: { zh: '分区一' }, plugins: ['alpha', 'ghost'] }],
+        categoryOrder: ['tools', 'ui', 'empty'],
+      },
+      ...overrides,
+    },
+  }
+}
+
+test('localize falls back from the requested language to zh, en, then any', () => {
+  assert.equal(localize({ zh: '中', en: 'en' }, 'zh-CN'), '中')
+  assert.equal(localize({ zh: '中', en: 'en' }, 'en-US'), 'en')
+  assert.equal(localize({ en: 'en' }, 'zh'), 'en')
+  assert.equal(localize({ fr: 'fr' }, 'zh'), 'fr')
+  assert.equal(localize('plain', 'zh'), 'plain')
+  assert.equal(localize(undefined, 'zh'), '')
+})
+
+test('categories follow the store order and drop empty ones', () => {
+  const catalog = buildCatalog(snapshot())
+  assert.deepEqual(catalog.categories.map(c => c.id), ['tools', 'ui'])
+  assert.deepEqual(catalog.categories[0].plugins.map(p => p.name), ['beta'])
+})
+
+test('sections skip names the catalog does not list', () => {
+  const catalog = buildCatalog(snapshot())
+  assert.deepEqual(catalog.sections[0].plugins.map(p => p.name), ['alpha'])
+})
+
+test('featured resolves its plugin and keeps valid colors', () => {
+  const { featured } = buildCatalog(snapshot())
+  assert.equal(featured.plugin.name, 'alpha')
+  assert.deepEqual(featured.gradient, ['#123456', '#abc'])
+})
+
+test('invalid gradient colors fall back to the default', () => {
+  const doc = snapshot()
+  doc.index.store.featured.gradient = ['red; background:url(x)', '#fff']
+  assert.deepEqual(buildCatalog(doc).featured.gradient, ['#4338ca', '#db2777'])
+})
+
+test('featured is null when the catalog has none or it is unlisted', () => {
+  const none = snapshot()
+  none.index.store.featured = null
+  assert.equal(buildCatalog(none).featured, null)
+  const ghost = snapshot()
+  ghost.index.store.featured.plugin = 'ghost'
+  assert.equal(buildCatalog(ghost).featured, null)
+})
+
+test('relative icons resolve against the catalog URL', () => {
+  const catalog = buildCatalog(snapshot())
+  assert.equal(catalog.byName.get('alpha').icon, 'https://cdn.example/gh/o/r@main/market/icons/alpha.svg')
+  assert.equal(catalog.byName.get('beta').icon, null)
+})
+
+test('plugins carry version, compatibility and review facts', () => {
+  const beta = buildCatalog(snapshot()).byName.get('beta')
+  assert.equal(beta.version, '1.0.0')
+  assert.equal(beta.enginesDsh, '>=0.2.0')
+  assert.equal(beta.compatibility, 'incompatible')
+  assert.deepEqual(beta.review, { version: '1.0.0', date: '2026-10-19' })
+  assert.equal(beta.upstreamLatest, null)
+})
+
+test('search matches names, both languages and keywords', () => {
+  const catalog = buildCatalog(snapshot())
+  assert.deepEqual(searchPlugins(catalog, 'ALPHA-EN').map(p => p.name), ['alpha'])
+  assert.deepEqual(searchPlugins(catalog, '中文').map(p => p.name), ['alpha', 'beta'])
+  assert.deepEqual(searchPlugins(catalog, '上下文').map(p => p.name), ['beta'])
+  assert.deepEqual(searchPlugins(catalog, '  ').length, 2)
+})
+
+test('install state', () => {
+  const catalog = buildCatalog(snapshot())
+  const alpha = catalog.byName.get('alpha')
+  const beta = catalog.byName.get('beta')
+  assert.equal(installStateOf(alpha, new Map()), 'install')
+  assert.equal(installStateOf(alpha, new Map([['alpha', { version: '1.0.0' }]])), 'installed')
+  assert.equal(installStateOf(alpha, new Map([['alpha', { version: '0.9.0' }]])), 'update')
+  assert.equal(installStateOf(beta, new Map()), 'incompatible')
+  assert.equal(installStateOf(beta, new Map([['beta', { version: '1.0.0' }]])), 'installed')
+})
+
+test('installedFrom keeps installed bundles only', () => {
+  const map = installedFrom([{ name: 'a', installed: true, version: '1.0.0' }, { name: 'b', installed: false }])
+  assert.deepEqual([...map.keys()], ['a'])
+})
