@@ -7,8 +7,8 @@
 /** Path the browser half reads. */
 export const INDEX_ROUTE = '/api/plugin-store/index'
 
-/** Index read until the store ships its own (spike default; the user added it in Discover before). */
-export const DEFAULT_INDEX_URL = 'https://raw.githubusercontent.com/fareyuu-ops/dsh-plugin-market/main/index.json'
+/** The store's own hand-reviewed catalog, published from market/ in this repository through jsDelivr. */
+export const DEFAULT_INDEX_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json'
 
 /** Largest index body accepted. */
 export const MAX_INDEX_BYTES = 8 * 1024 * 1024

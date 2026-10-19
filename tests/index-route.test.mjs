@@ -11,6 +11,10 @@ async function call(route, reqUrl = `http://127.0.0.1${INDEX_ROUTE}`) {
   return { status: response.status, json: await response.json(), headers: response.headers }
 }
 
+test('default index is the published catalog', () => {
+  assert.equal(host.DEFAULT_INDEX_URL, 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json')
+})
+
 test('registers the route through the authenticated connection channel, GET only', () => {
   const registered = []
   const ctx = {
