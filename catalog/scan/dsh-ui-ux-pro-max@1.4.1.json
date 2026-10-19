@@ -1,0 +1,72 @@
+{
+  "name": "dsh-ui-ux-pro-max",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-19T08:43:48.943Z",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "data/index.json",
+        "line": 1,
+        "text": "n { skipped: true }; const data = await fetch()\",\"Code Example Bad\":\"const data = await fetch(); if (skip) return { skipped: true }\",\"Severity\":\"Critical\"},{\"No"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin/skill.js",
+        "line": 9,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/plugin/skill.js",
+        "line": 76,
+        "text": "const { data } = splitFrontmatter(await readFile(SKILL_BODY_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/plugin/skill.js",
+        "line": 92,
+        "text": "const { data, body } = splitFrontmatter(await readFile(filePath, 'utf8'))"
+      },
+      {
+        "file": "lib/repo/stats.js",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/repo/stats.js",
+        "line": 33,
+        "text": "const meta = JSON.parse(readFileSync(META_URL, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin/index.js",
+        "line": 66,
+        "text": "ctx.tools.register(tool)"
+      },
+      {
+        "file": "lib/plugin/meta.js",
+        "line": 8,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,107 @@
+{
+  "name": "dsh-pet",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-19T08:43:41.005Z",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 393,
+        "text": "const res = await fetch(baseUrl, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 473,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1045,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1543,
+        "text": "const r = await fetch(\"/dsh-pet-7340/config\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2291,
+        "text": "fetch(\"/dsh-pet-7340/config/meta\").then((r) => r.ok ? r.json() : null).then((p) => setPaths(p)).catch(() => console.warn(\"[dsh-pet] 读取配置文件路径失败\"));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { createReadStream, existsSync, fstatSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 726,
+        "text": "const raw = JSON.parse(stripJsonc(readFileSync(path, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1129,
+        "text": "const raw = readFileSync(paths.defaultFile, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1130,
+        "text": "mkdirSync(dirname(paths.userFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2132,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/standalone.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/standalone.js",
+        "line": 622,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 50,
+        "text": "const { execFileSync } = require('node:child_process');"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "skippedEntries": []
+}

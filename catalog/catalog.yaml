@@ -8,16 +8,24 @@ market:
 categories:
   - { id: ui, title: { zh: 界面与体验, en: UI & Experience } }
   - { id: tools, title: { zh: 工具与能力, en: Tools & Capabilities } }
+  - { id: memory, title: { zh: 记忆与上下文, en: Memory & Context } }
+  - { id: dev, title: { zh: 开发者工具, en: Developer Tools } }
+  - { id: cost, title: { zh: 费用与用量, en: Cost & Usage } }
+  - { id: fun, title: { zh: 娱乐与个性化, en: Fun & Personalization } }
 
 featured:
   plugin: dsh-chat-toc
   title: { zh: 长对话一键导航 }
   subtitle: { zh: 为每轮对话生成目录，长会话不再翻滚轮 }
-  gradient: ['#4338ca', '#db2777']
+  gradient: [ '#4338ca', '#db2777' ]
 
 sections:
-  - { id: ui-better, title: { zh: 让界面更顺手 }, plugins: [dsh-chat-toc] }
-  - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [dsh-context] }
+  - { id: ui-better, title: { zh: 让界面更顺手 }, plugins: [ dsh-chat-toc, dsh-better-sidebar, dsh-prompt-history, dsh-session-manager, "@yfwu2020/dsh-selection-explain" ] }
+  - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [ dsh-context, dsh-free-search, dsh-image-gen, dsh-vision-router, dsh-mcp-connector ] }
+  - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
+  - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck, dsh-remote ] }
+  - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget, dsh-subusage ] }
+  - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin, dsh-plugin-notify-sounds ] }
 
 plugins:
   - name: dsh-chat-toc
@@ -76,9 +84,491 @@ plugins:
       reviewer: yang051211
       notes:
         zh: >-
-          联网三处：调用自己的 /api/dsh-context 接口；每小时向 npm 官方源或 npmmirror 查询自身最新版本；
-          用 DSH 里配置的 DeepSeek 接口地址和 API Key 请求 /user/balance 查询账户余额（从代码看，密钥只发往你配置的接口地址）。
-          读写文件：为上下文浏览器把会话附件用硬链接或复制的方式存到自己的目录。
-          package.json 里的 prepare 脚本（husky && tsdown）只在从 Git 源码安装时运行，从 npm 安装不会运行。
-          发布的代码是压缩过的，以上结论来自对压缩代码的抽查。依赖 1 个（zod）。
+          联网三处：调用自己的 /api/dsh-context 接口；每小时向 npm 官方源或 npmmirror 查询自身最新版本； 用 DSH 里配置的 DeepSeek 接口地址和 API Key 请求 /user/balance 查询账户余额（从代码看，密钥只发往你配置的接口地址）。 读写文件：为上下文浏览器把会话附件用硬链接或复制的方式存到自己的目录。 package.json 里的 prepare 脚本（husky && tsdown）只在从 Git 源码安装时运行，从 npm 安装不会运行。 发布的代码是压缩过的，以上结论来自对压缩代码的抽查。依赖 1 个（zod）。
       permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+  - name: dsh-better-sidebar
+    source: npm
+    category: ui
+    title:
+      zh: （待起草）
+      en: dsh-better-sidebar
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.28.0
+  - name: dsh-prompt-history
+    source: npm
+    category: ui
+    title:
+      zh: （待起草）
+      en: dsh-prompt-history
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 1.4.2
+  - name: dsh-session-manager
+    source: npm
+    category: ui
+    title:
+      zh: （待起草）
+      en: dsh-session-manager
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.7.3
+  - name: "@yfwu2020/dsh-selection-explain"
+    source: npm
+    category: ui
+    title:
+      zh: （待起草）
+      en: "@yfwu2020/dsh-selection-explain"
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.11.0
+  - name: dsh-free-search
+    source: npm
+    category: tools
+    title:
+      zh: （待起草）
+      en: dsh-free-search
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.9.6
+  - name: dsh-image-gen
+    source: npm
+    category: tools
+    title:
+      zh: （待起草）
+      en: dsh-image-gen
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.9.1
+  - name: dsh-vision-router
+    source: npm
+    category: tools
+    title:
+      zh: （待起草）
+      en: dsh-vision-router
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 3.0.4
+  - name: dsh-mcp-connector
+    source: npm
+    category: tools
+    title:
+      zh: （待起草）
+      en: dsh-mcp-connector
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.2.75
+  - name: dsh-mnemon
+    source: npm
+    category: memory
+    title:
+      zh: （待起草）
+      en: dsh-mnemon
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.5.32
+  - name: dsh-prime-memory
+    source: npm
+    category: memory
+    title:
+      zh: （待起草）
+      en: dsh-prime-memory
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.26.4
+  - name: sage-mem
+    source: npm
+    category: memory
+    title:
+      zh: （待起草）
+      en: sage-mem
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 1.0.2
+  - name: dsh-cost-meter
+    source: npm
+    category: cost
+    title:
+      zh: （待起草）
+      en: dsh-cost-meter
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 1.9.12
+  - name: dsh-whale-widget
+    source: npm
+    category: cost
+    title:
+      zh: （待起草）
+      en: dsh-whale-widget
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.4.2
+  - name: dsh-subusage
+    source: npm
+    category: cost
+    title:
+      zh: （待起草）
+      en: dsh-subusage
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.14.2
+  - name: dsh-pet
+    source: npm
+    category: fun
+    title:
+      zh: （待起草）
+      en: dsh-pet
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.3.7
+  - name: dsh-dream-skin
+    source: npm
+    category: fun
+    title:
+      zh: （待起草）
+      en: dsh-dream-skin
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 10.16.0
+  - name: dsh-plugin-notify-sounds
+    source: npm
+    category: fun
+    title:
+      zh: （待起草）
+      en: dsh-plugin-notify-sounds
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 1.7.0
+  - name: dsh-ui-ux-pro-max
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-ui-ux-pro-max
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 1.4.1
+  - name: dsh-genui
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-genui
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.3.1
+  - name: dsh-code-security
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-code-security
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.5.0
+  - name: dsh-file-review
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-file-review
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.8.10
+  - name: dsh-ghidra
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-ghidra
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.11.4
+  - name: dsh-sql-workbench
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-sql-workbench
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.5.3
+  - name: dsh-api-client
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-api-client
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.2.0
+  - name: dsh-lsp-actions
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-lsp-actions
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.5.15
+  - name: dsh-doublecheck
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-doublecheck
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.9.28
+  - name: dsh-remote
+    source: npm
+    category: dev
+    title:
+      zh: （待起草）
+      en: dsh-remote
+    tagline:
+      zh: （待起草）
+      en: (draft pending)
+    features:
+      zh:
+        - （待起草）
+        - （待起草）
+        - （待起草）
+    screenshots: []
+    review:
+      status: pending
+      version: 0.8.46

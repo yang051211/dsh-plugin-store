@@ -1,0 +1,84 @@
+{
+  "name": "dsh-file-review",
+  "version": "0.8.10",
+  "scannedAt": "2026-10-19T08:43:56.034Z",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { link, lstat, open, readFile, realpath, rename, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "const bytes = await readFile(filename);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 208,
+        "text": "const current = await readFile(image.filename);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "await handle.writeFile(image.text, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "await unlink(temp).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 775,
+        "text": "callView = ctx.tools.get(exec.name, agent)?.presentCall?.(exec.arguments);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 796,
+        "text": "const resultView = ctx.tools.get(exec.name, agent)?.presentResult?.(exec.arguments, result);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 896,
+        "text": "const definition = ctx.tools.get(dispatch.name, dispatch.agent);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 944,
+        "text": "const inject = [\"systemPrompt\", \"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "skippedEntries": []
+}

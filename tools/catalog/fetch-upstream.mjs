@@ -15,6 +15,8 @@ export const MAX_TARBALL_BYTES = 64 * 1024 * 1024
 export const MAX_ICON_BYTES = 256 * 1024
 const ICON_TYPES = { '.svg': 'svg', '.png': 'png', '.jpg': 'jpg', '.jpeg': 'jpg', '.webp': 'webp' }
 const TIMEOUT_MS = 30_000
+/** Tarballs can carry images and fonts; give them longer than metadata requests. */
+const TARBALL_TIMEOUT_MS = 120_000
 
 /** `engines.dsh` of a manifest, else the conjunction of its DSH peer ranges; null when nothing constrains. */
 export function enginesDshOf(manifest) {
@@ -64,8 +66,8 @@ function repositoryOf(repository) {
   return directory ? { url: page, directory } : { url: page }
 }
 
-async function get(io, url, init = {}) {
-  return io.fetch(url, { ...init, signal: AbortSignal.timeout(TIMEOUT_MS) })
+async function get(io, url, init = {}, timeoutMs = TIMEOUT_MS) {
+  return io.fetch(url, { ...init, signal: AbortSignal.timeout(timeoutMs) })
 }
 
 /** Entry types npm installs as regular files (node-tar unpacks all three the same way). */
@@ -133,7 +135,7 @@ async function readCapped(response, limit, what) {
  */
 export async function downloadTarball(version, io) {
   const { dist } = version
-  const response = await get(io, dist.tarball)
+  const response = await get(io, dist.tarball, {}, TARBALL_TIMEOUT_MS)
   if (!response.ok) throw new Error(`tarball answered HTTP ${response.status}: ${dist.tarball}`)
   const tgz = await readCapped(response, MAX_TARBALL_BYTES, `tarball ${dist.tarball}`)
   const [algorithm, expected] = String(dist.integrity ?? '').split('-', 2)

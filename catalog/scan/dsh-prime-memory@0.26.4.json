@@ -1,0 +1,133 @@
+{
+  "name": "dsh-prime-memory",
+  "version": "0.26.4",
+  "scannedAt": "2026-10-19T08:43:26.211Z",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 2959,
+        "text": "response = await fetch(`/dsh-memory/rpc/${shortMethod(endpoint)}`, {"
+      },
+      {
+        "file": "dist/llm.js",
+        "line": 274,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "dist/store/download-queue.js",
+        "line": 20,
+        "text": "import { fetch as undiciFetch, ProxyAgent } from 'undici';"
+      },
+      {
+        "file": "dist/store/download-queue.js",
+        "line": 258,
+        "text": "/** 单次尝试:续传探测 → fetch(attempt>0 追加缓存键参数)→ 落盘 → 尺寸与 sha256 校验 → rename。 */"
+      },
+      {
+        "file": "dist/store/embedding.js",
+        "line": 116,
+        "text": "const res = await fetch(`${base}/embeddings`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/memport/scan.js",
+        "line": 15,
+        "text": "import { readdir, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/memport/scan.js",
+        "line": 71,
+        "text": "text = await readFile(f, 'utf8');"
+      },
+      {
+        "file": "dist/pipeline/md-sync.js",
+        "line": 33,
+        "text": "import { opendir, readFile, realpath, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/pipeline/md-sync.js",
+        "line": 288,
+        "text": "const text = await readFile(abs, 'utf8');"
+      },
+      {
+        "file": "dist/pipeline/md-sync.js",
+        "line": 326,
+        "text": "text = cached ?? await readFile(abs, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 68,
+        "text": "export const inject = ['llm', 'tools', 'systemPrompt', 'connection', 'webServer'];"
+      },
+      {
+        "file": "dist/tools/index.js",
+        "line": 183,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/index.js",
+        "line": 254,
+        "text": "reg('room', () => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/index.js",
+        "line": 400,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/index.js",
+        "line": 448,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/keyword-backfill.js",
+        "line": 226,
+        "text": "spawn();"
+      },
+      {
+        "file": "dist/redistill-backfill.js",
+        "line": 356,
+        "text": "spawn();"
+      },
+      {
+        "file": "dist/store/runtime-installer.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/store/runtime-installer.js",
+        "line": 43,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "dist/store/runtime-installer.js",
+        "line": 60,
+        "text": "const tk = spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "skippedEntries": []
+}

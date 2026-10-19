@@ -44,9 +44,18 @@ async function fetchAll(args) {
   const context = io(args)
   mkdirSync(UPSTREAM_DIR, { recursive: true })
   mkdirSync(ICON_CACHE_DIR, { recursive: true })
+  const failed = []
   for (const plugin of curation.plugins) {
     const slug = slugOf(plugin.name)
-    const upstream = await fetchUpstream(plugin.name, plugin.review.version, context)
+    let upstream
+    try {
+      upstream = await fetchUpstream(plugin.name, plugin.review.version, context)
+    } catch (error) {
+      // One unreachable plugin must not stop the others; the run still fails at the end.
+      failed.push(plugin.name)
+      console.error(`${plugin.name}: FAILED ${error.message}`)
+      continue
+    }
     const { stats, warnings } = mergeStats(readJson(join(UPSTREAM_DIR, `${slug}.json`))?.stats, upstream.stats)
     upstream.stats = stats
     writeFileSync(join(UPSTREAM_DIR, `${slug}.json`), toJson(upstream))
@@ -55,6 +64,7 @@ async function fetchAll(args) {
     console.log(`${plugin.name}: latest ${upstream.latest}, reviewed ${plugin.review.version} ${reviewed}, stars ${stats.stars}, weekly downloads ${stats.weeklyDownloads}`)
     for (const warning of warnings) console.warn(`  warning: ${warning}`)
   }
+  if (failed.length > 0) throw new Error(`fetch failed for: ${failed.join(', ')} (their previous upstream files are unchanged)`)
 }
 
 async function scanOne(args) {

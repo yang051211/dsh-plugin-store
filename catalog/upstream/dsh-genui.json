@@ -1,0 +1,69 @@
+{
+  "name": "dsh-genui",
+  "fetchedAt": "2026-10-19T08:42:22.912Z",
+  "latest": "0.3.1",
+  "versions": {
+    "0.1.0": {
+      "publishTimestamp": 1788232224,
+      "enginesDsh": null
+    },
+    "0.1.1": {
+      "publishTimestamp": 1788265311,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+    },
+    "0.1.2": {
+      "publishTimestamp": 1788320607,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+    },
+    "0.1.3": {
+      "publishTimestamp": 1788953245,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+    },
+    "0.2.0": {
+      "publishTimestamp": 1788959992,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+    },
+    "0.2.1": {
+      "publishTimestamp": 1789007619,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
+    },
+    "0.3.1": {
+      "publishTimestamp": 1791537182,
+      "enginesDsh": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.3.0-0"
+    }
+  },
+  "reviewed": {
+    "version": "0.3.1",
+    "description": "GenUI for DeepSeek Harness: interactive charts, forms, calculators, dashboards, and mini apps rendered inline in assistant replies, with actions that flow back to the model.",
+    "author": null,
+    "homepage": "https://lhuans.github.io/dsh-genui/",
+    "repository": {
+      "url": "https://github.com/lhuans/dsh-genui"
+    },
+    "keywords": [
+      "dsh-plugin",
+      "dsh",
+      "deepseek-harness",
+      "deepseek",
+      "harness",
+      "genui",
+      "generative-ui",
+      "chat",
+      "assistant",
+      "vue",
+      "opentiny",
+      "forms",
+      "charts",
+      "dashboard",
+      "schemajson",
+      "plugin"
+    ],
+    "icon": null,
+    "readme": "# dsh-genui\n\n**English** · [简体中文](https://github.com/lhuans/dsh-genui/blob/main/README.zh-CN.md)\n\n> Turn [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) replies from a wall of text into an interface you can actually click.\n\nYou ask the AI to run a calculation and get back a formula. You ask it to file a request and get eight Markdown bullets. You ask about last week's traffic and get numbers lined up as plain text.\n\nNothing is wrong — but you still do the work yourself: copy, paste, do the math in your head, then type another message saying \"I'll take the second one.\"\n\n**dsh-genui** is a plugin for DeepSeek Harness (DSH). Install it, ask the same questions, and the answer grows a real interface: calculator keys you can press, dropdowns you can pick from, charts with actual axes. Whatever you click or fill in flows back into the conversation, and the AI picks up from there.\n\nOne command to install. No changes to DSH source.\n\n---\n\n## Three real examples\n\nAll three screenshots are from a live DSH session — not mockups.\n\n### \"Generate a calculator\"\n\n![A calculator rendered inside a DSH conversation](./public/computer.webp)\n\nDigits, operators, parentheses, backspace, clear — every key works. That 666 was typed on the keypad, not written into the text by the model.\n\n### \"Generate a form\"\n\n![A project proposal form rendered inside a DSH conversation](./public/form.webp)\n\nOne sentence produces a full project proposal form: required-field validation, radio group, dropdown, headcount stepper, date picker, toggle, checkboxes, long text.\n\nHit **Submit** and your answers go back into the conversation, so the AI can rank the priority, draft a schedule, or write the proposal for you.\n\n### \"Show the last 7 days of traffic as a line chart\"\n\n![A traffic line chart rendered inside a DSH conversation](./public/chat.webp)\n\nTwo series, legend, axes, gridlines — a rendered chart, not ASCII art.\n\n---\n\n## Before and after\n\n| Situation | Plain chat | With dsh-genui |\n|---|---|---|\n| You need a tool | The AI hands you code to run yourself | The tool appears in the reply, usable right away |\n| Collecting input | \"Please provide the following 8 items\", typed one by one | One form: pick, fill, submit |\n| Reading data | Text tables, trends left to imagination | Lines, bars, pies — the trend is obvious |\n| Making a choice | You reply \"option B\" | Click a button, the choice carries into the next turn |\n| Setup cost | — | One `dsh plugin add`, no source changes |\n\n---\n\n## What you can ask for\n\nJust talk normally. You never write JSON or learn a syntax. Each category below includes a prompt you can copy as-is.\n\n### Data: charts\n\nBar, line, pie, ring, radar, gauge, funnel, scatter, waterfall, and other common chart types.\n\n> \"Chart revenue for the last three quarters as bars, and mark year-over-year growth\"\n>\n> \"Show the order split by channel as a pie chart\"\n>\n> \"Build a conversion funnel: 100k impressions, 8k clicks, 600 orders, 520 payments\"\n\nGood for weekly reports, retros, review decks, and anytime you'd rather not open a spreadsheet.\n\n### Input: forms\n\nText fields, textareas, dropdowns, radios, checkboxes, toggles, number steppers, date pickers, search boxes, transfer lists. Submitted values return to the conversation automatically.\n\n> \"Make a time-off request form with leave type, start and end date, days, and reason\"\n>\n> \"Build a survey asking which features people use most and how satisfied they are\"\n>\n> \"Give me a customer intake form, phone number required\"\n\nMuch nicer than being interrogated over eight turns — fill it in once and you're done.\n\n### Tools: little apps\n\nThe fun category. One sentence, and the AI builds you something that actually works.\n\n> \"Generate a calculator\"\n>\n> \"Make a BMI calculator — enter height and weight, get the result\"\n>\n> \"Build a currency converter between USD and CNY\"\n>\n> \"Give me a to-do list for today with checkboxes\"\n>\n> \"Make a raffle picker for the team, I'll paste the names next\"\n\n### Structure: tables, lists, layout\n\nTables (with paging and search), tree views, timelines, breadcrumbs, tabs, collapsible panels, cards, carousels, tooltips.\n\n> \"Put these options in a comparison table: price, timeline, risk\"\n>\n> \"Lay out the project milestones on a timeline\"\n>\n> \"Split the frontend, backend, and QA schedules into tabs\"\n\n### Flow: multi-turn interaction\n\nInteractions travel back to the model, so you can build \"you click, I continue\" flows.\n\n> \"Give me three options as cards — expand whichever one I click\"\n>\n> \"Walk me through a setup wizard, then generate the config file\"\n>\n> \"Quiz me with five multiple-choice questions and grade my answers\"\n\n### One more thing\n\nWhen you're not sure what to ask for, just say \"answer me with an interface\" and let the AI decide whether a chart, a table, or a form fits best.\n\n---\n\n## Install\n\n### Prerequisites\n\n- Node.js installed\n- `pnpm` installed (DSH uses it to manage plugins). If you don't have it, run `corepack enable` or `npm i -g pnpm`, then **open a new terminal** and check that `pnpm -v` prints a version\n- DSH running: `npx @deepseek-ai/dsh web`, default at `http://127.0.0.1:3080`\n\n### Option 1: let the AI install it (easiest if you avoid the terminal)\n\nThe DSH assistant can run shell commands. Open a conversation and tell it:\n\n> Install the dsh-genui plugin from npm into the web profile: run `dsh plugin --profile web add dsh-genui`\n\nIt will run the command in front of you, possibly asking you to approve it. Then follow the restart steps below.\n\n### Option 2: run it yourself\n\nIn a new terminal:\n\n```sh\ndsh plugin --profile web add dsh-genui\n```\n\nThis pulls from the public npm registry — no npm account, no cloning the repo.\n\n### Restart afterwards (don't skip this)\n\nDSH locks in its plugin set at startup, so **nothing changes in the UI until you restart**.\n\n1. Go back to the terminal running DSH and press `Ctrl+C`\n2. Start it again: `dsh web`\n3. Refresh the browser\n4. **Start a new conversation**\n\n### GenUI authoring prompt\n\nGenUI authoring starts on by default and remembers your last choice across DSH restarts. Use the sparkle button in the composer tool row if you want to turn the authoring guidance off. Card rendering stays installed either way.\n\n### Check that it worked\n\nIn the new conversation, say:\n\n> Generate a calculator\n\nIf a working calculator appears in the reply, you're set. If you only see a code block, the plugin isn't active — see the FAQ below.\n\nTo verify before restarting:\n\n```sh\ndsh --profile web --dump-config\n```\n\nYou should see a `dsh-genui` layer in the output.\n\n### Uninstall\n\n```sh\ndsh plugin --profile web remove dsh-genui\n```\n\nThis also requires a restart to take effect.\n\n---\n\n## FAQ\n\n**Still showing a code block after installing?**\n\nNine times out of ten you skipped the restart or you're still in an old session. Run through all four steps: stop, restart, refresh, new conversation.\n\n**Why do I see raw `<schemaJson>` tags or backticks instead of a rendered card?**\n\nGenUI accepts two formats for the schema block:\n\n- ````schemaJson … ```` (backtick fence — GenUI-native format)\n- `<schemaJson> … </schemaJson>` (XML-style tags — DSH boot-context format)\n\nBoth are rendered identically if the model uses either one. If you see *neither* format rendered and the raw code is visible, the plugin isn't active yet — follow the restart steps above.\n\n**`pnpm not found on PATH`?**\n\nDSH needs pnpm to manage plugins. Run `corepack enable` (or `npm i -g pnpm`), then **open a new terminal** — PATH won't update in the old one.\n\n**The AI doesn't use interfaces on its own?**\n\nIf the sparkle toggle is off, the model has no GenUI authoring guidance. Turn it back on, then say something like \"give me a form / chart / interface.\"\n\n**Does this change how DSH normally works?**\n\nNo. Questions that don't need an interface get regular text answers, exactly as before.\n\n**Does it uninstall cleanly?**\n\nYes. Run `dsh plugin remove`, restart, and DSH is back to its original state with no leftover config.\n\n---\n\n## How it works\n\nIn short: the model no longer writes only text — it also writes a *description of an interface*, and the browser renders that description into real components.\n\nA bit more detail: the plugin adds a prompt section teaching the model to emit structured JSON (inside a `schemaJson` code block) when an interface would help. The composer sparkle toggle controls that section and is enabled by default. The DSH web client picks up the JSON and hands it to a renderer. It's streaming, so the interface appears as the model writes it — no waiting for the full reply.\n\nThe components come from [OpenTiny GenUI SDK](https://opentiny.design/genui-sdk) and the OpenTiny Vue library — OpenTiny's generative-UI stack, a spec plus rendering engine for letting LLMs produce interfaces. dsh-genui wires that into the DSH conversation flow.\n\nOn safety: the model can only use whitelisted components. It cannot inject HTML or scripts, so nothing strange ends up in your conversation.\n\n---\n\n## Links\n\n- Changelog: <https://github.com/lhuans/dsh-genui/releases>\n- npm package: <https://www.npmjs.com/package/dsh-genui>\n- OpenTiny GenUI SDK: <https://github.com/opentiny/genui-sdk>\n- DeepSeek Harness: <https://github.com/deepseek-ai/deepseek-harness>\n\nLicense: MIT\n\n---\n\nDSH handles agents, sessions, and tools. dsh-genui adds the last piece: replies you can click, not just read.\n\nOne command, one restart, then say \"generate a calculator\" — thirty seconds to see the difference.\n",
+    "changelog": null
+  },
+  "stats": {
+    "stars": 23,
+    "weeklyDownloads": 1414
+  }
+}
