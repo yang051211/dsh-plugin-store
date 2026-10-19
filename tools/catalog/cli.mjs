@@ -12,7 +12,8 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
 import { loadCuration } from './curation.mjs'
-import { fetchUpstream } from './fetch-upstream.mjs'
+import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
+import { scanPackage } from './scan.mjs'
 import { slugOf } from './slug.mjs'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
@@ -49,7 +50,29 @@ async function fetchAll(args) {
   }
 }
 
-const COMMANDS = { fetch: fetchAll }
+async function scanOne(args) {
+  const target = args.find(arg => !arg.startsWith('--') && arg !== option(args, '--registry'))
+  const at = target?.lastIndexOf('@') ?? -1
+  if (!target || at <= 0) throw new Error('usage: scan <name>@<version>')
+  const name = target.slice(0, at)
+  const version = target.slice(at + 1)
+  const context = io(args)
+  const registry = context.registry.endsWith('/') ? context.registry : `${context.registry}/`
+  const response = await fetch(`${registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
+  if (!response.ok) throw new Error(`${name}: registry answered HTTP ${response.status}`)
+  const dist = (await response.json()).versions?.[version]?.dist
+  if (!dist) throw new Error(`${name}@${version} is not published`)
+  const result = { name, version, scannedAt: new Date().toISOString(), ...scanPackage(await downloadTarball(dist, context)) }
+  mkdirSync(SCAN_DIR, { recursive: true })
+  writeFileSync(join(SCAN_DIR, `${slugOf(name)}@${version}.json`), toJson(result))
+  for (const kind of ['network', 'fileSystem', 'agentTools', 'childProcess', 'installScripts']) {
+    console.log(`${kind.padEnd(15)} ${result[kind].hit ? 'HIT ' : 'none'} ${result[kind].evidence.map(e => `${e.file}:${e.line}`).join(', ')}`)
+  }
+  console.log(`dependencies    ${result.dependencies}`)
+  console.log(`minified files  ${result.minifiedFiles.join(', ') || 'none'}`)
+}
+
+const COMMANDS = { fetch: fetchAll, scan: scanOne }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [command, ...args] = process.argv.slice(2)
