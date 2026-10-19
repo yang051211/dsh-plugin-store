@@ -45,6 +45,16 @@ await build({
   footer: { js: 'return module.exports; } });' },
 })
 
+// Browser-only logic that Node tests import directly; lib/test/ is git-ignored and outside `files`.
+await build({
+  entryPoints: ['src/client/first-run.ts'],
+  bundle: true,
+  format: 'esm',
+  platform: 'neutral',
+  target: 'es2022',
+  outfile: 'lib/test/first-run.js',
+})
+
 if (readFileSync('lib/client.js', 'utf8').includes('@deepseek-ai/')) {
   throw new Error('client bundle purity: @deepseek-ai packages must be imported with `import type` only')
 }

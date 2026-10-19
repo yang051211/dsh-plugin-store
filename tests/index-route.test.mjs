@@ -27,6 +27,23 @@ test('returns title and plugin count from the index', async () => {
   assert.equal(typeof res.json.fetchedAt, 'number')
 })
 
+test('reports a sample plugin with its install version', async () => {
+  const plugins = [
+    { name: 'other', versions: [{ version: '1.0.0' }] },
+    { name: 'dsh-chat-toc', 'dist-tags': { latest: '1.2.0' }, versions: [{ version: '1.1.0' }, { version: '1.2.0' }] },
+  ]
+  const fetchImpl = async () => new Response(JSON.stringify({ format: 1, title: 'T', plugins }))
+  const res = await call(createIndexHandler(fetchImpl, INDEX_URL))
+  assert.deepEqual(res.json.sample, { name: 'dsh-chat-toc', version: '1.2.0' })
+})
+
+test('falls back to the first plugin and its last listed version', async () => {
+  const plugins = [{ name: 'alpha', versions: [{ version: '0.1.0' }, { version: '0.2.0' }] }]
+  const fetchImpl = async () => new Response(JSON.stringify({ format: 1, title: 'T', plugins }))
+  const res = await call(createIndexHandler(fetchImpl, INDEX_URL))
+  assert.deepEqual(res.json.sample, { name: 'alpha', version: '0.2.0' })
+})
+
 test('returns 502 when upstream fails', async () => {
   const fetchImpl = async () => { throw new TypeError('fetch failed') }
   const res = await call(createIndexHandler(fetchImpl, INDEX_URL))

@@ -35,6 +35,25 @@ async function readCapped(response: Response, limit: number): Promise<string> {
   return Buffer.concat(chunks).toString('utf8')
 }
 
+/** Name of the plugin the spike's install check prefers. */
+export const SAMPLE_PLUGIN = 'dsh-chat-toc'
+
+interface IndexPlugin {
+  name?: unknown
+  'dist-tags'?: { latest?: unknown }
+  versions?: Array<{ version?: unknown }>
+}
+
+/** Pick the plugin and version the install check offers: the preferred plugin, else the first one. */
+function pickSample(plugins: IndexPlugin[]): { name: string; version: string } | null {
+  const plugin = plugins.find(entry => entry?.name === SAMPLE_PLUGIN) ?? plugins[0]
+  if (!plugin || typeof plugin.name !== 'string') return null
+  const latest = plugin['dist-tags']?.latest
+  const last = Array.isArray(plugin.versions) ? plugin.versions.at(-1)?.version : undefined
+  const version = typeof latest === 'string' ? latest : typeof last === 'string' ? last : null
+  return version ? { name: plugin.name, version } : null
+}
+
 /** Send a JSON body with the given status. */
 function sendJson(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' })
@@ -58,8 +77,14 @@ export function createIndexHandler(fetchImpl: typeof fetch, indexUrl: string): (
       } catch {
         throw new Error('index is not valid JSON')
       }
-      const plugins = Array.isArray(index.plugins) ? index.plugins : []
-      sendJson(res, 200, { ok: true, title: index.title ?? null, pluginCount: plugins.length, fetchedAt: Date.now() })
+      const plugins: IndexPlugin[] = Array.isArray(index.plugins) ? index.plugins : []
+      sendJson(res, 200, {
+        ok: true,
+        title: index.title ?? null,
+        pluginCount: plugins.length,
+        sample: pickSample(plugins),
+        fetchedAt: Date.now(),
+      })
     } catch (error) {
       sendJson(res, 502, { ok: false, error: error instanceof Error ? error.message : String(error) })
     }
