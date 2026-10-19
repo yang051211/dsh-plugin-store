@@ -24,20 +24,61 @@ plugins:
     source: npm
     category: ui
     title: { zh: 对话目录, en: Chat TOC }
-    tagline: { zh: （待起草）, en: (draft pending) }
-    features: { zh: [（待起草）, （待起草）, （待起草）] }
-    screenshots: []
+    tagline:
+      zh: 把对话右侧的消息刻度变成能预览、搜索和收藏的目录
+      en: Turns the chat's turn rail into an outline you can preview, search and bookmark
+    features:
+      zh:
+        - 鼠标悬停刻度就能预览这一轮的提问和回答，并一键收藏或复制
+        - 关键词搜索，长对话会自动往前翻页，直到定位到历史消息
+        - 一键只看含代码或含工具调用的轮次，或只看收藏
+        - 收藏在刷新、重启后都保留，会话删除时才清除
+        - 一键把整场对话导出成 Markdown 大纲
+    screenshots:
+      - url: https://cdn.jsdelivr.net/gh/a792883583/dsh-chat-toc@f6d43a9b381b/docs/toc-pop.png
+        caption: { zh: 悬停卡片：提问和回答预览，可收藏和复制 }
+      - url: https://cdn.jsdelivr.net/gh/a792883583/dsh-chat-toc@f6d43a9b381b/docs/toc-bar.png
+        caption: { zh: 收藏过滤：已收藏的轮次高亮显示 }
     review:
-      status: pending
+      status: approved
       version: 0.5.1
+      date: 2026-10-19
+      reviewer: yang051211
+      notes:
+        zh: 纯前端增强。扫描未发现联网、文件读写、Agent 工具、子进程或安装脚本，没有依赖。它靠 DSH 官方界面上的数据属性定位消息，DSH 界面大改版时可能暂时失效。
+      permissions: { network: false, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }
 
   - name: dsh-context
     source: npm
     category: tools
-    title: { zh: 上下文洞察, en: Context Insight }
-    tagline: { zh: （待起草）, en: (draft pending) }
-    features: { zh: [（待起草）, （待起草）, （待起草）] }
-    screenshots: []
+    title: { zh: 上下文洞察, en: Context Insights }
+    tagline:
+      zh: 看清 Agent 的上下文窗口里装了什么、怎么增长、花了多少钱
+      en: See what fills the agent's context window, how it grows, and what it costs
+    features:
+      zh:
+        - 侧边栏「上下文洞察」总览页：用量、费用、缓存命中率、每日活跃热力图和各会话画像
+        - 会话内「上下文」标签：当前上下文构成、每次请求的增长趋势、压缩事件和文件操作
+        - 「Fleet」标签：当前 Agent、它的上级和所有子 Agent 的实时卡片
+        - /context 命令：在对话里直接弹出上下文构成和浏览器
+        - 按官方价格估算费用，支持 DeepSeek 峰谷计价
+    screenshots:
+      - url: https://cdn.jsdelivr.net/gh/bowenliang123/dsh-context@c22ccb203915/docs/context-dashboard.png
+        caption: { zh: 侧边栏的上下文洞察总览页 }
+      - url: https://cdn.jsdelivr.net/gh/bowenliang123/dsh-context@c22ccb203915/docs/context-overview.png
+        caption: { zh: 会话内的上下文标签 }
+      - url: https://cdn.jsdelivr.net/gh/bowenliang123/dsh-context@c22ccb203915/docs/context-trend.png
+        caption: { zh: 上下文随请求增长的趋势 }
     review:
-      status: pending
+      status: approved
       version: 0.73.3
+      date: 2026-10-19
+      reviewer: yang051211
+      notes:
+        zh: >-
+          联网三处：调用自己的 /api/dsh-context 接口；每小时向 npm 官方源或 npmmirror 查询自身最新版本；
+          用 DSH 里配置的 DeepSeek 接口地址和 API Key 请求 /user/balance 查询账户余额（从代码看，密钥只发往你配置的接口地址）。
+          读写文件：为上下文浏览器把会话附件用硬链接或复制的方式存到自己的目录。
+          package.json 里的 prepare 脚本（husky && tsdown）只在从 Git 源码安装时运行，从 npm 安装不会运行。
+          发布的代码是压缩过的，以上结论来自对压缩代码的抽查。依赖 1 个（zod）。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
