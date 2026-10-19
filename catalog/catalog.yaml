@@ -24,7 +24,7 @@ sections:
   - { id: insight, title: { zh: 看清 Agent 在做什么 }, plugins: [ dsh-context, dsh-free-search, dsh-image-gen, dsh-vision-router, dsh-mcp-connector ] }
   - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
   - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck, dsh-remote ] }
-  - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget, dsh-subusage ] }
+  - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget ] }
   - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin, dsh-plugin-notify-sounds ] }
 
 plugins:
@@ -233,111 +233,115 @@ plugins:
   - name: dsh-mnemon
     source: npm
     category: memory
-    title:
-      zh: （待起草）
-      en: dsh-mnemon
+    title: { zh: 分层记忆, en: Mnemon Memory }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 可组合、看得见的分层记忆：常用的常驻上下文，长期资料需要时再检索
+      en: "Composable, visible layered memory: the essentials stay in context, long-term material is searched on demand"
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 偏好和工作事实常驻上下文，项目文档和长期资料只在需要时检索
+        - 每条回复下方列出这一轮读写了哪些记忆，一键打开查看和编辑
+        - 一键把对话里值得保留的事实存进记忆，自动去重提炼
+        - 在插件页自由组合记忆来源和策略，可选接入 mem0、supermemory 等外部记忆服务
+        - 记忆可以通过 Git 仓库同步到多台机器
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.5.32
+      reviewer: yang051211
+      notes:
+        zh: 联网：向 npm 和 GitHub 查询新版本；只有在你选择外部记忆服务（mem0、supermemory 等 9 家适配）后，记忆才会发往对应服务；开启 Git 同步后推送到你配置的仓库（可用环境变量 MNEMON_SYNC_GIT_TOKEN 提供令牌）。读写文件：记忆保存在本地 DSH 数据目录。子进程：调用本机已安装的 mnemon 命令行；在 Windows 上只读查询一次注册表（reg.exe）。依赖 22 个，大多是它自家的来源、策略和服务适配包。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-prime-memory
     source: npm
     category: memory
-    title:
-      zh: （待起草）
-      en: dsh-prime-memory
+    title: { zh: 分层蒸馏记忆, en: Prime Memory }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 对话在后台自动沉淀成四层记忆，模型每一步前自动召回相关内容
+      en: Distills conversations into four memory layers and recalls what is relevant before every model step
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 自动捕获对话，逐层提炼成原子记忆、场景块和核心画像
+        - 模型每一步前自动把相关记忆注入上下文
+        - 关键词和向量混合检索，带中文分词
+        - 可选本地嵌入模型，不必调用在线嵌入接口
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.26.4
+      reviewer: yang051211
+      notes:
+        zh: 联网：调用你在 DSH 里配置的模型做记忆提炼，调用嵌入接口；开启本地嵌入时从 hf-mirror.com 下载模型并校验 sha256。子进程：只在你主动开启本地嵌入时，在它自己的数据目录执行一次 npm ci --ignore-scripts，安装钉死版本的 @huggingface/transformers 4.2.0（带锁文件、禁止安装脚本）。依赖 4 个（undici、sqlite-vec、jieba、schemastery）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: sage-mem
     source: npm
     category: memory
-    title:
-      zh: （待起草）
-      en: sage-mem
+    title: { zh: 文件记忆, en: Sage Memory }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 跨会话记忆就是几份 Markdown 文件，不要数据库，也不要后台进程
+      en: Cross-session memory as plain Markdown files — no database, no worker
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 记忆以 Markdown 文件保存，随时可以直接打开修改
+        - 按需检索记忆注入对话，并提供检索、读取记忆的工具
+        - 写入前有安全检查，防止误覆盖
+        - 可以把 Claude Code 的记忆迁移过来
+        - 「Autodream」定期自动整理记忆
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 1.0.2
+      reviewer: yang051211
+      notes:
+        zh: 联网：只向 GitHub 查询新版本（可用 GITHUB_TOKEN 或 GH_TOKEN 提高查询额度）。读写文件：记忆存放在 ~/.sage-mem/memory，并读取 DSH 会话记录判断是否需要整理。无子进程、无安装脚本，依赖 1 个（zod）。扫描未命中联网是因为它的请求写法不在扫描规则里，审核时看代码确认有联网。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: false, installScripts: false }
+      date: 2026-10-19
   - name: dsh-cost-meter
     source: npm
     category: cost
-    title:
-      zh: （待起草）
-      en: dsh-cost-meter
+    title: { zh: 费用统计, en: Cost Meter }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 本会话和当天花了多少钱一目了然，带预算提醒和官方价格同步
+      en: See what this session and today cost, with budgets and official price sync
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 实时显示本会话成本和当日费用，带历史看板
+        - 内置 170 多个模型的价格，一键同步官方价格，支持峰谷计价
+        - 设置预算，接近或超出时提醒
+        - 查询 DeepSeek 等官方账户余额和 coding plan 额度
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 1.9.12
+      reviewer: yang051211
+      notes:
+        zh: 联网：从各家官方页面同步价格，查询余额和额度。⚠ 会读取其他软件的登录凭据：查询 Anthropic coding plan 额度时，如果 DSH 凭据库和环境变量里都没有密钥，会读取 Claude Code 的登录文件 ~/.claude/.credentials.json 作为兜底；也支持读取 OpenCode 的认证信息。子进程：调用本机命令行工具查询额度（输出全部丢弃），以及读取进程启动时间的系统命令。依赖 2 个（acorn、zod）。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-whale-widget
     source: npm
     category: cost
-    title:
-      zh: （待起草）
-      en: dsh-whale-widget
+    title: { zh: 余额小鲸鱼, en: Balance Whale }
     tagline:
-      zh: （待起草）
-      en: (draft pending)
+      zh: 右下角的小鲸鱼挂件，随时看余额、今日用量和峰谷时段
+      en: A little whale in the corner showing balance, today's spend and peak/off-peak pricing
     features:
       zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
+        - 显示 DeepSeek 余额、今日已用和当前峰谷时段
+        - 支持查询多家模型服务的余额
+        - 自定义点击气泡、文字样式和字体
+        - 复制诊断信息时自动脱敏，不含 API Key
     screenshots: []
     review:
-      status: pending
+      status: approved
       version: 0.4.2
-  - name: dsh-subusage
-    source: npm
-    category: cost
-    title:
-      zh: （待起草）
-      en: dsh-subusage
-    tagline:
-      zh: （待起草）
-      en: (draft pending)
-    features:
-      zh:
-        - （待起草）
-        - （待起草）
-        - （待起草）
-    screenshots: []
-    review:
-      status: pending
-      version: 0.14.2
+      reviewer: yang051211
+      notes:
+        zh: 联网：用 DSH 中配置的密钥查询各家官方余额接口。子进程：执行固定命令 npm view dsh-whale-widget version 检查新版本。读写文件：DSH 数据目录。没有依赖。诊断信息只输出白名单字段，路径会脱敏。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-19
   - name: dsh-pet
     source: npm
     category: fun
