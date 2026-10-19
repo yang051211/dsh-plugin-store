@@ -1,6 +1,6 @@
 # dsh-plugin-store
 
-应用商店式的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 插件商城，配一份人工审核的插件目录。当前版本 0.1.2。
+应用商店式的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 插件商城，配一份人工审核的插件目录。当前版本 0.1.3。
 
 适用于 DSH 0.2.1-rc.2 至 0.2.x（不含 0.3 系列，包括其预发布版）。安装：插件页 →「添加插件」→ 填写：
 
