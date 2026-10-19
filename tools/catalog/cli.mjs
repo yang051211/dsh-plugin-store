@@ -8,7 +8,9 @@
  * Options: --registry <url> (default: `npm config get registry`); GITHUB_TOKEN raises the GitHub API rate limit.
  */
 import { execSync } from 'node:child_process'
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
+import { buildIndex, INDEX_PUBLIC_URL } from './build-index.mjs'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
 import { loadCuration } from './curation.mjs'
@@ -72,7 +74,49 @@ async function scanOne(args) {
   console.log(`minified files  ${result.minifiedFiles.join(', ') || 'none'}`)
 }
 
-const COMMANDS = { fetch: fetchAll, scan: scanOne }
+/** Build the index in memory from the committed catalog files and validate it with the official reader. */
+function buildFromFiles() {
+  const curation = loadCuration(CURATION_FILE)
+  const upstream = new Map()
+  const scans = new Map()
+  for (const plugin of curation.plugins.filter(p => p.review.status === 'approved')) {
+    const slug = slugOf(plugin.name)
+    const upstreamFile = join(UPSTREAM_DIR, `${slug}.json`)
+    if (!existsSync(upstreamFile)) throw new Error(`${plugin.name}: ${upstreamFile} is missing (run catalog:fetch)`)
+    upstream.set(plugin.name, JSON.parse(readFileSync(upstreamFile, 'utf8')))
+    const scanFile = join(SCAN_DIR, `${slug}@${plugin.review.version}.json`)
+    if (existsSync(scanFile)) scans.set(plugin.name, JSON.parse(readFileSync(scanFile, 'utf8')))
+  }
+  // Stable output: the generation time is the newest upstream fetch, not the wall clock.
+  const fetched = [...upstream.values()].map(u => Date.parse(u.fetchedAt)).filter(Number.isFinite)
+  const now = new Date(fetched.length > 0 ? Math.max(...fetched) : 0)
+  const built = buildIndex(curation, upstream, scans, now)
+  parseMarketIndex(structuredClone(built.index), INDEX_PUBLIC_URL)
+  return built
+}
+
+async function build() {
+  const { index, details } = buildFromFiles()
+  mkdirSync(join(MARKET_DIR, 'plugins'), { recursive: true })
+  writeFileSync(join(MARKET_DIR, 'index.json'), toJson(index))
+  for (const [name, detail] of details) writeFileSync(join(MARKET_DIR, 'plugins', `${slugOf(name)}.json`), toJson(detail))
+  console.log(`market/index.json: ${index.plugins.length} plugin(s): ${index.plugins.map(p => `${p.name}@${p['dist-tags'].latest}`).join(', ') || 'none'}`)
+}
+
+async function check() {
+  const { index, details } = buildFromFiles()
+  const stale = []
+  const committed = join(MARKET_DIR, 'index.json')
+  if (!existsSync(committed) || readFileSync(committed, 'utf8') !== toJson(index)) stale.push('market/index.json')
+  for (const [name, detail] of details) {
+    const file = join(MARKET_DIR, 'plugins', `${slugOf(name)}.json`)
+    if (!existsSync(file) || readFileSync(file, 'utf8') !== toJson(detail)) stale.push(`market/plugins/${slugOf(name)}.json`)
+  }
+  if (stale.length > 0) throw new Error(`out of date (run catalog:build): ${stale.join(', ')}`)
+  console.log(`catalog OK: ${index.plugins.length} plugin(s), index valid and up to date`)
+}
+
+const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [command, ...args] = process.argv.slice(2)
