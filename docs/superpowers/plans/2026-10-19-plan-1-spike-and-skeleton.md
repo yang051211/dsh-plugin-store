@@ -21,7 +21,7 @@
 ## Global Constraints
 
 - 包名 `dsh-plugin-store`；patch 行 id `plugin-store`；标签页 id `store`、显示名「商城」；主面板与侧边栏入口 id `plugin-store`。
-- `engines.dsh`: `">=0.2.1-rc.2 <0.3.0"`。
+- `engines.dsh`: `">=0.2.1-rc.2 <0.3.0-0"`（`-0` 把 0.3.0 的预发布版也挡在外面，因为 DSH 用 includePrerelease 判断；评审后修正）。
 - 不发布到 npm。通过 GitHub 安装，`lib/` 构建产物**提交进仓库**，**不得**设置 `prepare` 脚本（设计 §6.1.1）。
 - 浏览器端构建产物里不得出现字符串 `@deepseek-ai/`：所有 DSH 包一律只用 `import type`，否则会把宿主运行时再打包一份进来。
 - 商城不得自己执行安装、卸载、更新、重启，也不得改写 profile 或 `cordis.patch.yml`（设计 §4）。安装只能调用 `plugins.tab` owner 提供的 `install()`。

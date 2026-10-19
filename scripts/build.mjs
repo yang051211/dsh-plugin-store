@@ -12,7 +12,7 @@
  *   imports, so the purity check fails the build if any reached the bundle.
  */
 import { build } from 'esbuild'
-import { mkdirSync, readFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync } from 'node:fs'
 
 const ID = 'dsh-plugin-store'
 const CLIENT_EXTERNALS = ['react', 'react/jsx-runtime']
@@ -29,9 +29,11 @@ await build({
   external: ['@deepseek-ai/*'],
 })
 
-await build({
+// Built in memory first: an impure bundle must never land in the committed lib/.
+const client = await build({
   entryPoints: ['src/client.ts'],
   bundle: true,
+  write: false,
   format: 'cjs',
   platform: 'browser',
   target: 'es2022',
@@ -55,8 +57,10 @@ await build({
   outfile: 'lib/test/first-run.js',
 })
 
-if (readFileSync('lib/client.js', 'utf8').includes('@deepseek-ai/')) {
+const clientText = client.outputFiles[0].text
+if (clientText.includes('@deepseek-ai/')) {
   throw new Error('client bundle purity: @deepseek-ai packages must be imported with `import type` only')
 }
+writeFileSync('lib/client.js', clientText)
 
 console.log('built lib/index.js and lib/client.js')

@@ -58,5 +58,5 @@ export function apply(ctx: Context): void {
   ctx.slots.inject('sidebar.panellist', () => ctx.slots.register({
     name: 'sidebar.panellist', id: PANEL_ID, order: 1, label: () => t('tab'), locale: NS,
   }, StoreIcon))
-  if (shouldAutoOpen(window.localStorage)) ctx.layout.selectPanel(PANEL_ID)
+  if (shouldAutoOpen(() => window.localStorage)) ctx.layout.selectPanel(PANEL_ID)
 }
