@@ -54,7 +54,7 @@ sections:
   - { id: memory, title: { zh: 让 Agent 记住你的项目 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
   - { id: dev, title: { zh: 开发者必备 }, plugins: [ dsh-ui-ux-pro-max, dsh-genui, dsh-code-security, dsh-file-review, dsh-ghidra, dsh-sql-workbench, dsh-api-client, dsh-lsp-actions, dsh-doublecheck ] }
   - { id: cost, title: { zh: 花钱心里有数 }, plugins: [ dsh-cost-meter, dsh-whale-widget ] }
-  - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet, dsh-dream-skin ] }
+  - { id: fun, title: { zh: 让 DSH 更有趣 }, plugins: [ dsh-pet ] }
 
 plugins:
   - name: dsh-chat-toc
@@ -405,28 +405,6 @@ plugins:
       notes:
         zh: 联网：查询 DeepSeek 等服务的余额，对话时调用你配置的模型。桌面模式第一次开启时会用 Electron 官方下载器（@electron/get，默认校验哈希）下载 Electron，体积较大；国内会走 npmmirror 镜像。子进程：启动一个独立的 Electron 小窗显示桌宠，并会检测 DSH 是否还在运行，DSH 退出时它也退出。没有读取其他软件的登录文件。依赖 2 个（@electron/get、extract-zip）。
       permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
-      date: 2026-10-19
-  - name: dsh-dream-skin
-    source: npm
-    category: fun
-    title: { zh: 幻梦皮肤, en: Dream Skin }
-    tagline:
-      zh: 8 套克制清透的原创主题，加弥散光壁纸和强调色，一键换肤
-      en: Eight restrained, airy original themes with diffused-light wallpapers and accents
-    features:
-      zh:
-        - 8 套原创皮肤，浅色和深色都有
-        - 壁纸加弥散光背景，侧栏和输入框透明度可调
-        - 自定义强调色，可随时一键还原
-        - 主题包可以导入导出、分享给别人
-    screenshots: []
-    review:
-      status: approved
-      version: 10.16.0
-      reviewer: yang051211
-      notes:
-        zh: 纯样式插件，只调整 DSH 的 --dsw-* 主题变量，不修改安装包。联网：访问 uapis.cn 获取在线壁纸或文案（可选功能）。读写文件：在 DSH 数据目录保存皮肤设置。无子进程，没有依赖。
-      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
       date: 2026-10-19
   - name: dsh-ui-ux-pro-max
     source: npm
