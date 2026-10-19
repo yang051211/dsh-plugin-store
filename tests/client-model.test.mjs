@@ -71,6 +71,44 @@ test('invalid gradient colors fall back to the default', () => {
   assert.deepEqual(buildCatalog(doc).featured.gradient, ['#4338ca', '#db2777'])
 })
 
+const rotation = () => [
+  { plugin: 'alpha', title: { zh: '甲周' }, subtitle: { zh: '甲' }, gradient: ['#111111', '#222222'] },
+  { plugin: 'beta', title: { zh: '乙周' }, subtitle: { zh: '乙' }, gradient: ['#333333', '#444444'] },
+]
+const withRotation = entries => { const doc = snapshot(); doc.index.store.featuredRotation = entries; return doc }
+/** The featured plugin on a local calendar day (month is 1-based). */
+const pick = (doc, year, month, day) => buildCatalog(doc, new Date(year, month - 1, day, 10)).featured.plugin.name
+
+test('featured rotates once a week, Monday to Sunday', () => {
+  const doc = withRotation(rotation())
+  const monday = pick(doc, 2026, 10, 19)
+  for (let day = 20; day <= 25; day++) assert.equal(pick(doc, 2026, 10, day), monday, `2026-10-${day} is the same week`)
+  assert.notEqual(pick(doc, 2026, 10, 26), monday, 'the next Monday moves on')
+  assert.notEqual(pick(doc, 2026, 10, 18), monday, 'the Sunday before belongs to the previous week')
+  assert.equal(pick(doc, 2026, 11, 2), monday, 'two entries repeat every two weeks')
+})
+
+test('the rotation carries on across a year boundary', () => {
+  const doc = withRotation(rotation())
+  const names = [[2026, 12, 21], [2026, 12, 28], [2027, 1, 4], [2027, 1, 11]].map(d => pick(doc, ...d))
+  assert.notEqual(names[0], names[1])
+  assert.deepEqual(names, [names[0], names[1], names[0], names[1]])
+})
+
+test('the rotation entry supplies the banner text and colors', () => {
+  const { featured } = buildCatalog(withRotation(rotation()), new Date(2026, 9, 19, 10))
+  const own = rotation().find(r => r.plugin === featured.plugin.name)
+  assert.deepEqual(featured.title, own.title)
+  assert.deepEqual(featured.gradient, own.gradient)
+})
+
+test('the rotation skips unlisted plugins and falls back to the single featured entry', () => {
+  const ghost = withRotation([{ plugin: 'ghost' }, rotation()[1]])
+  for (const day of [19, 26]) assert.equal(pick(ghost, 2026, 10, day), 'beta')
+  assert.equal(pick(withRotation([]), 2026, 10, 19), 'alpha')
+  assert.equal(pick(withRotation([{ plugin: 'ghost' }]), 2026, 10, 19), 'alpha')
+})
+
 test('featured is null when the catalog has none or it is unlisted', () => {
   const none = snapshot()
   none.index.store.featured = null

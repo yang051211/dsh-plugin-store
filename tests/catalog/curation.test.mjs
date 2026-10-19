@@ -51,7 +51,16 @@ test('rejects an undeclared plugin category', () => {
 })
 
 test('rejects a featured plugin that is not curated', () => {
-  rejects(variant(d => { d.featured.plugin = 'ghost' }), /featured\.plugin/)
+  rejects(variant(d => { d.featured[1].plugin = 'ghost' }), /featured\[1\]\.plugin/)
+})
+
+test('rejects a featured banner that is not a non-empty list', () => {
+  rejects(variant(d => { d.featured = d.featured[0] }), /^featured: must be a non-empty list/)
+  rejects(variant(d => { d.featured = [] }), /^featured: must be a non-empty list/)
+})
+
+test('rejects a plugin featured twice', () => {
+  rejects(variant(d => { d.featured.push({ ...d.featured[0] }) }), /featured\[2\]\.plugin: duplicates "alpha"/)
 })
 
 test('rejects a section plugin that is not curated', () => {

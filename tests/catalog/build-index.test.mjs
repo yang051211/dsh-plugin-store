@@ -36,6 +36,9 @@ test('sections and the banner only name listed plugins', () => {
   const { index } = buildIndex(curation(), upstream(), scans, NOW)
   assert.deepEqual(index.store.sections.map(s => s.id), ['ui-better'])
   assert.equal(index.store.featured.plugin, 'alpha')
+  // beta is still pending, so the rotation keeps alpha only.
+  assert.deepEqual(index.store.featuredRotation.map(f => f.plugin), ['alpha'])
+  assert.deepEqual(index.store.featuredRotation[0].gradient, ['#4338ca', '#db2777'])
 })
 
 test('only reviewed versions are listed', () => {

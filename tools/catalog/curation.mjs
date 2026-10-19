@@ -82,7 +82,13 @@ export function loadCuration(path) {
     need(!names.has(plugin.name), `plugins[${i}].name`, `duplicates "${plugin.name}"`)
     names.add(plugin.name)
   })
-  need(isObject(doc.featured) && names.has(doc.featured.plugin), 'featured.plugin', 'must name a curated plugin')
+  need(Array.isArray(doc.featured) && doc.featured.length > 0, 'featured', 'must be a non-empty list')
+  const featuredNames = new Set()
+  for (const [i, entry] of doc.featured.entries()) {
+    need(isObject(entry) && names.has(entry.plugin), `featured[${i}].plugin`, 'must name a curated plugin')
+    need(!featuredNames.has(entry.plugin), `featured[${i}].plugin`, `duplicates "${entry.plugin}"`)
+    featuredNames.add(entry.plugin)
+  }
   need(Array.isArray(doc.sections), 'sections', 'must be a list')
   const sectionIds = new Set()
   for (const [i, section] of doc.sections.entries()) {

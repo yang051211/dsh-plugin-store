@@ -24,15 +24,18 @@ test('translate interpolates parameters', () => {
 })
 
 test('home shows banner, sections and categories', () => {
-  const out = html(createElement(Home, { catalog: catalogWith(), installed: new Map(), lang: 'zh', t, ...handlers }))
-  for (const text of ['本周精选', '长对话一键导航', '让界面更顺手', '看清 Agent 在做什么', '按分类浏览', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
+  // The banner rotates weekly, so check whichever entry this week picked.
+  const catalog = catalogWith()
+  const { title, gradient } = catalog.featured
+  const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
+  for (const text of ['本周精选', title.zh, '让界面更顺手', '看清 Agent 在做什么', '按分类浏览', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
     assert.ok(out.includes(text), `missing ${text}`)
   }
-  assert.match(out, /linear-gradient\(135deg, #4338ca, #db2777\)/)
+  assert.ok(out.includes(`linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`))
 })
 
 test('home hides the banner without a featured plugin', () => {
-  const catalog = catalogWith(doc => { doc.store.featured = null; return doc })
+  const catalog = catalogWith(doc => { doc.store.featured = null; delete doc.store.featuredRotation; return doc })
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
   assert.equal(out.includes('本周精选'), false)
   assert.ok(out.includes('让界面更顺手'))

@@ -88,8 +88,17 @@ function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
   }
 }
 
-/** Build the store's catalog from the Host snapshot. */
-export function buildCatalog(snapshot: CatalogSnapshot): Catalog {
+const DAY_MS = 86_400_000
+/** Monday 1970-01-05, the first day of week 0. */
+const FIRST_MONDAY = Date.UTC(1970, 0, 5)
+
+/** Whole weeks since Monday 1970-01-05 on the local calendar, so the banner turns over at local Monday midnight. */
+function weekNumber(now: Date): number {
+  return Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - FIRST_MONDAY) / DAY_MS / 7)
+}
+
+/** Build the store's catalog from the Host snapshot; `now` picks this week's featured banner. */
+export function buildCatalog(snapshot: CatalogSnapshot, now: Date = new Date()): Catalog {
   const doc = snapshot.index
   const plugins: StorePlugin[] = doc.plugins.map((entry: any) => toPlugin(entry, snapshot))
   const byName = new Map(plugins.map(p => [p.name, p]))
@@ -102,18 +111,22 @@ export function buildCatalog(snapshot: CatalogSnapshot): Catalog {
   const sections = (Array.isArray(doc.store?.sections) ? doc.store.sections : [])
     .map((s: any) => ({ id: s.id, title: s.title ?? s.id, plugins: (s.plugins ?? []).map((n: string) => byName.get(n)).filter(Boolean) }))
     .filter((s: Grouping) => s.plugins.length > 0)
-  const raw = doc.store?.featured
-  const featuredPlugin = raw ? byName.get(raw.plugin) : undefined
-  const gradient: [string, string] = Array.isArray(raw?.gradient) && raw.gradient.length === 2 && raw.gradient.every((c: unknown) => typeof c === 'string' && HEX_COLOR.test(c))
-    ? [raw.gradient[0], raw.gradient[1]]
-    : DEFAULT_GRADIENT
+  const banner = (raw: any): Catalog['featured'] => {
+    const plugin = raw ? byName.get(raw.plugin) : undefined
+    if (!plugin) return null
+    const gradient: [string, string] = Array.isArray(raw.gradient) && raw.gradient.length === 2 && raw.gradient.every((c: unknown) => typeof c === 'string' && HEX_COLOR.test(c))
+      ? [raw.gradient[0], raw.gradient[1]]
+      : DEFAULT_GRADIENT
+    return { plugin, title: raw.title ?? '', subtitle: raw.subtitle ?? '', gradient }
+  }
+  const rotation = (Array.isArray(doc.store?.featuredRotation) ? doc.store.featuredRotation : []).map(banner).filter(Boolean)
   return {
     title: doc.title,
     plugins,
     byName,
     categories,
     sections,
-    featured: featuredPlugin ? { plugin: featuredPlugin, title: raw.title ?? '', subtitle: raw.subtitle ?? '', gradient } : null,
+    featured: rotation.length > 0 ? rotation[weekNumber(now) % rotation.length] : banner(doc.store?.featured),
     stale: snapshot.stale,
     dshVersion: snapshot.dshVersion,
   }

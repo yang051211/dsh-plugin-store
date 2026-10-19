@@ -112,9 +112,11 @@ export function buildIndex(curation, upstream, scans, now) {
   const sections = curation.sections
     .map(section => ({ id: section.id, title: localized(section.title), plugins: section.plugins.filter(name => names.has(name)) }))
     .filter(section => section.plugins.length > 0)
-  const featured = names.has(curation.featured.plugin)
-    ? { plugin: curation.featured.plugin, title: localized(curation.featured.title), subtitle: localized(curation.featured.subtitle), gradient: curation.featured.gradient ?? [] }
-    : null
+  // The store picks one entry per week; `featured` keeps the first for clients that predate the rotation.
+  const featuredRotation = curation.featured
+    .filter(entry => names.has(entry.plugin))
+    .map(entry => ({ plugin: entry.plugin, title: localized(entry.title), subtitle: localized(entry.subtitle), gradient: entry.gradient ?? [] }))
+  const featured = featuredRotation[0] ?? null
 
   const index = {
     format: 1,
@@ -122,7 +124,7 @@ export function buildIndex(curation, upstream, scans, now) {
     ...(curation.market.description ? { description: localized(curation.market.description) } : {}),
     metadata: { categories: Object.fromEntries(curation.categories.map(c => [c.id, { title: localized(c.title) }])) },
     plugins,
-    store: { schema: 1, generatedAt: now.toISOString(), featured, sections, categoryOrder: curation.categories.map(c => c.id) },
+    store: { schema: 1, generatedAt: now.toISOString(), featured, featuredRotation, sections, categoryOrder: curation.categories.map(c => c.id) },
   }
   return { index, details }
 }
