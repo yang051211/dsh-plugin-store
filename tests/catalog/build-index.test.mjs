@@ -79,6 +79,14 @@ test('a curated section may not reuse the generated "hot" id', () => {
   assert.throws(() => buildIndex(c, upstream(), scans, NOW), error => error.message.startsWith('sections[2].id: "hot" is reserved'))
 })
 
+test('a curated icon replaces the author icon in the index', () => {
+  const c = curation()
+  c.plugins[0].icon = 'alpha-curated.svg'
+  const { index } = buildIndex(c, upstream(), scans, NOW)
+  assert.equal(index.plugins[0].icon, 'icons/alpha-curated.svg')
+  assert.equal(buildIndex(curation(), upstream(), scans, NOW).index.plugins[0].icon, 'icons/alpha.svg', 'author icon otherwise')
+})
+
 test('only reviewed versions are listed', () => {
   const { index } = buildIndex(curation(), upstream(), scans, NOW)
   const [alpha] = index.plugins

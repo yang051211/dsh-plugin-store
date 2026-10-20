@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { readFileSync, readdirSync, writeFileSync, mkdtempSync } from 'node:fs'
+import { readFileSync, readdirSync, writeFileSync, mkdtempSync, mkdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { parse, stringify } from 'yaml'
@@ -119,5 +119,36 @@ test('curation file is never written by tools', () => {
   const dir = new URL('../../tools/catalog/', import.meta.url)
   for (const file of readdirSync(dir).filter(f => f.endsWith('.mjs'))) {
     assert.deepEqual(unsafeWrites(readFileSync(new URL(file, dir), 'utf8')), [], `${file} writes outside tool-owned directories`)
+  }
+})
+
+/** A variant of the valid fixture with curated icon files next to it. */
+function variantWithIcons(mutate, icons) {
+  const file = variant(mutate)
+  const dir = join(file, '..', 'icons-curated')
+  mkdirSync(dir)
+  for (const [name, content] of Object.entries(icons)) writeFileSync(join(dir, name), content)
+  return file
+}
+const SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#123"/></svg>'
+
+test('accepts a curated icon file next to the catalog', () => {
+  const doc = loadCuration(variantWithIcons(d => { d.plugins[0].icon = 'alpha.svg' }, { 'alpha.svg': SVG }))
+  assert.equal(doc.plugins[0].icon, 'alpha.svg')
+})
+
+test('rejects a curated icon that is missing, outside the icon folder, or not svg/png', () => {
+  rejects(variantWithIcons(d => { d.plugins[0].icon = 'ghost.svg' }, {}), /plugins\[0\]\.icon: .*not found/)
+  rejects(variantWithIcons(d => { d.plugins[0].icon = '../alpha.svg' }, { 'alpha.svg': SVG }), /plugins\[0\]\.icon: must be a file name/)
+  rejects(variantWithIcons(d => { d.plugins[0].icon = 'alpha.gif' }, { 'alpha.gif': 'GIF89a' }), /plugins\[0\]\.icon: must be a file name/)
+})
+
+test('rejects a curated SVG icon that carries script, handlers or external references', () => {
+  for (const bad of [
+    SVG.replace('</svg>', '<script>alert(1)</script></svg>'),
+    SVG.replace('<rect ', '<rect onload="x()" '),
+    SVG.replace('</svg>', '<image href="https://evil.example/x.png"/></svg>'),
+  ]) {
+    rejects(variantWithIcons(d => { d.plugins[0].icon = 'alpha.svg' }, { 'alpha.svg': bad }), /plugins\[0\]\.icon: .*active content/)
   }
 })

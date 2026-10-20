@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
 import { buildIndex, INDEX_PUBLIC_URL } from './build-index.mjs'
-import { loadCuration } from './curation.mjs'
+import { CURATED_ICON_DIR, loadCuration } from './curation.mjs'
 import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
 import { mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
 import { scanPackage } from './scan.mjs'
@@ -25,6 +25,7 @@ export const CURATION_FILE = join(ROOT, 'catalog', 'catalog.yaml')
 export const UPSTREAM_DIR = join(ROOT, 'catalog', 'upstream')
 export const SCAN_DIR = join(ROOT, 'catalog', 'scan')
 export const ICON_CACHE_DIR = join(ROOT, 'catalog', 'icons')
+export const CURATED_ICONS = join(ROOT, 'catalog', CURATED_ICON_DIR)
 export const MARKET_DIR = join(ROOT, 'market')
 
 function option(args, name) {
@@ -110,7 +111,8 @@ function plannedFromFiles() {
   const storeVersion = readJson(join(ROOT, 'package.json')).version
   const { index, details } = buildIndex(curation, upstream, scans, new Date(fetched.length > 0 ? Math.max(...fetched) : 0), storeVersion)
   parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
-  const readIcon = file => (existsSync(join(ICON_CACHE_DIR, file)) ? readFileSync(join(ICON_CACHE_DIR, file)) : null)
+  // Curated icons first: a reviewer-supplied file shadows a cached author icon of the same name.
+  const readIcon = file => [CURATED_ICONS, ICON_CACHE_DIR].map(dir => join(dir, file)).filter(path => existsSync(path)).map(path => readFileSync(path))[0] ?? null
   return { index, planned: plannedMarketFiles(index, details, readIcon) }
 }
 

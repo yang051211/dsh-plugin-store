@@ -2,7 +2,9 @@
  * The curation file (catalog/catalog.yaml) holds every human-written field: names, pitches, features,
  * sections, the featured banner, and review verdicts. Tools only read it; see tests/catalog/curation.test.mjs.
  */
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, statSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import semver from 'semver'
 import { parse } from 'yaml'
 
@@ -25,8 +27,24 @@ function need(condition, path, reason) {
   if (!condition) throw new CurationError(path, reason)
 }
 
+/** Folder next to catalog.yaml holding icons the reviewer supplies for plugins whose authors ship none. */
+export const CURATED_ICON_DIR = 'icons-curated'
+/** Largest curated icon accepted, the same cap as an author icon. */
+const MAX_CURATED_ICON_BYTES = 256 * 1024
+/** Anything in an SVG that could run or load: script, event handlers, javascript: URLs, external references. */
+const ACTIVE_SVG = /<script|<foreignObject|\son[a-z]+\s*=|javascript:|(?:xlink:)?href\s*=\s*["']\s*(?:https?:|\/\/|data:)/i
+
+/** A curated icon: a plain svg/png file name inside the curated icon folder, present and inert. */
+function checkCuratedIcon(icon, at, iconDir) {
+  need(typeof icon === 'string' && /^[A-Za-z0-9][A-Za-z0-9._-]*\.(?:svg|png)$/.test(icon), at, `must be a file name ending in .svg or .png inside catalog/${CURATED_ICON_DIR}/`)
+  const file = join(iconDir, icon)
+  need(existsSync(file), at, `${CURATED_ICON_DIR}/${icon} not found`)
+  need(statSync(file).size <= MAX_CURATED_ICON_BYTES, at, `is larger than ${MAX_CURATED_ICON_BYTES} bytes`)
+  if (icon.endsWith('.svg')) need(!ACTIVE_SVG.test(readFileSync(file, 'utf8')), at, 'SVG carries active content (script, handlers or external references)')
+}
+
 /** Validate one plugin entry. */
-function checkPlugin(plugin, i, categoryIds) {
+function checkPlugin(plugin, i, categoryIds, iconDir) {
   const at = `plugins[${i}]`
   need(isObject(plugin), at, 'must be a mapping')
   need(isText(plugin.name), `${at}.name`, 'is required')
@@ -37,6 +55,7 @@ function checkPlugin(plugin, i, categoryIds) {
   const features = plugin.features?.zh
   need(Array.isArray(features) && features.length >= 3 && features.length <= 5 && features.every(isText),
     `${at}.features.zh`, 'needs 3 to 5 non-empty entries')
+  if (plugin.icon !== undefined) checkCuratedIcon(plugin.icon, `${at}.icon`, iconDir)
   need(plugin.screenshots === undefined || Array.isArray(plugin.screenshots), `${at}.screenshots`, 'must be a list')
   for (const [j, shot] of (plugin.screenshots ?? []).entries()) {
     need(isObject(shot) && /^https:\/\//.test(shot.url ?? ''), `${at}.screenshots[${j}].url`, 'must be an https URL')
@@ -65,6 +84,7 @@ function checkPlugin(plugin, i, categoryIds) {
  */
 export function loadCuration(path) {
   const doc = parse(readFileSync(path, 'utf8'), { schema: 'core' })
+  const iconDir = join(dirname(path instanceof URL ? fileURLToPath(path) : path), CURATED_ICON_DIR)
   need(isObject(doc), '(root)', 'must be a mapping')
   need(isObject(doc.market) && isObject(doc.market.title) && isText(doc.market.title.en), 'market.title.en', 'is required')
   need(Array.isArray(doc.categories) && doc.categories.length > 0, 'categories', 'needs at least one entry')
@@ -78,7 +98,7 @@ export function loadCuration(path) {
   need(Array.isArray(doc.plugins), 'plugins', 'must be a list')
   const names = new Set()
   doc.plugins.forEach((plugin, i) => {
-    checkPlugin(plugin, i, categoryIds)
+    checkPlugin(plugin, i, categoryIds, iconDir)
     need(!names.has(plugin.name), `plugins[${i}].name`, `duplicates "${plugin.name}"`)
     names.add(plugin.name)
   })

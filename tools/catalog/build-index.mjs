@@ -75,7 +75,8 @@ export function buildIndex(curation, upstream, scans, now, storeVersion) {
       name: plugin.name,
       title: localized(plugin.title),
       description: localized(plugin.tagline),
-      ...(shown.icon ? { icon: `icons/${shown.icon.file}` } : {}),
+      // A reviewer-supplied icon (catalog/icons-curated/) wins over the author's; it fills in for authors who ship none.
+      ...(plugin.icon ? { icon: `icons/${plugin.icon}` } : shown.icon ? { icon: `icons/${shown.icon.file}` } : {}),
       ...(shown.author ? { author: shown.author } : {}),
       ...(shown.homepage ? { homepage: shown.homepage } : {}),
       ...(shown.repository ? { repository: shown.repository } : {}),
