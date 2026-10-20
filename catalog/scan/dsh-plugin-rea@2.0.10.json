@@ -1,0 +1,81 @@
+{
+  "name": "dsh-plugin-rea",
+  "version": "2.0.10",
+  "scannedAt": "2026-10-20T02:14:05.331Z",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 39,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\").replace(/^\\uFEFF/, \"\"));"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 163,
+        "text": "text = readFileSync(patch, \"utf8\");"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 191,
+        "text": "const raw = readFileSync(lock, \"utf8\").trim();"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 263,
+        "text": "rmSync(lock, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 17,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 284,
+        "text": "const child = spawn(process.execPath, [setupScript, \"--root\", root], {"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 527,
+        "text": "spawnSync(taskkill, [\"/pid\", String(pid), \"/T\", \"/F\"], {"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 561,
+        "text": "* Absolute on purpose: `spawn(comspec())` is resolved against the CHILD's PATH,"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 618,
+        "text": "? spawn(comspec(), [\"/d\", \"/s\", \"/c\", `\"${[cmdQuote(file), \"--version\"].join(\" \")}\"`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "skippedEntries": []
+}
