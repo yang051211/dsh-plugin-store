@@ -45,4 +45,11 @@ npm run catalog:build                    # 生成 market/index.json 和 market/p
 npm run catalog:check                    # 校验目录，并确认 market/ 是最新的
 ```
 
+首页第一个分区「本周热门」由 `catalog:build` 按 npm 最近 7 天下载量自动生成，不在 catalog.yaml 里。数字只在 `catalog:fetch` 时刷新，所以每周刷新一次：
+
+```sh
+npm run catalog:fetch && npm run catalog:build && npm run catalog:check
+git add catalog market && git commit -m "catalog: weekly stats refresh" && git push
+```
+
 设计文档见 [docs/superpowers/specs](docs/superpowers/specs/)。

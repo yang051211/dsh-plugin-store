@@ -9,6 +9,11 @@ import { slugOf } from './slug.mjs'
 /** Where the index is published; relative icon paths resolve against it. */
 export const INDEX_PUBLIC_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json'
 
+/** The generated home section ranked by weekly downloads; curated sections may not reuse the id. */
+export const HOT_SECTION_ID = 'hot'
+/** How many plugins the trending section lists (the home page shows one row of six). */
+export const HOT_SECTION_SIZE = 6
+
 /** Most related plugins listed on a detail page. */
 const MAX_RELATED = 6
 
@@ -109,8 +114,21 @@ export function buildIndex(curation, upstream, scans, now, storeVersion) {
     })
   }
 
-  const sections = curation.sections
-    .map(section => ({ id: section.id, title: localized(section.title), plugins: section.plugins.filter(name => names.has(name)) }))
+  curation.sections.forEach((section, i) => {
+    if (section.id === HOT_SECTION_ID) throw new Error(`sections[${i}].id: "${HOT_SECTION_ID}" is reserved for the generated trending section`)
+  })
+  // Trending leads the home page: listed plugins by npm's last-7-day downloads, unknown counts last. The numbers are
+  // only as fresh as the last catalog:fetch, so the section follows the data, not the wall clock.
+  const downloadsOf = name => upstream.get(name)?.stats?.weeklyDownloads ?? null
+  const hot = {
+    id: HOT_SECTION_ID,
+    title: { zh: '本周热门', en: 'Trending this week' },
+    plugins: [...names]
+      .sort((a, b) => ((downloadsOf(b) ?? -1) - (downloadsOf(a) ?? -1)) || a.localeCompare(b))
+      .slice(0, HOT_SECTION_SIZE),
+  }
+  const sections = [hot, ...curation.sections
+    .map(section => ({ id: section.id, title: localized(section.title), plugins: section.plugins.filter(name => names.has(name)) }))]
     .filter(section => section.plugins.length > 0)
   // The store picks one entry per week; `featured` keeps the first for clients that predate the rotation.
   const featuredRotation = curation.featured

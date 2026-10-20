@@ -39,11 +39,44 @@ test('pending plugins are left out', () => {
 
 test('sections and the banner only name listed plugins', () => {
   const { index } = buildIndex(curation(), upstream(), scans, NOW)
-  assert.deepEqual(index.store.sections.map(s => s.id), ['ui-better'])
+  assert.deepEqual(index.store.sections.map(s => s.id), ['hot', 'ui-better'])
   assert.equal(index.store.featured.plugin, 'alpha')
   // beta is still pending, so the rotation keeps alpha only.
   assert.deepEqual(index.store.featuredRotation.map(f => f.plugin), ['alpha'])
   assert.deepEqual(index.store.featuredRotation[0].gradient, ['#4338ca', '#db2777'])
+})
+
+/** The fixture with beta approved too, and beta downloaded more than alpha. */
+function twoListed(betaDownloads = 50) {
+  const c = curation()
+  c.plugins[1].review.status = 'approved'
+  const up = upstream()
+  const beta = up.get('@scope/beta')
+  up.set('@scope/beta', { ...beta, reviewed: { ...beta.reviewed, version: '0.2.0' }, stats: { stars: 1, weeklyDownloads: betaDownloads } })
+  const sc = new Map([...scans, ['@scope/beta', scans.get('alpha')]])
+  return { c, up, sc }
+}
+
+test('a generated "trending this week" section leads the home sections, ordered by weekly downloads', () => {
+  const { c, up, sc } = twoListed(50)
+  const { index } = buildIndex(c, up, sc, NOW)
+  const [hot, ...rest] = index.store.sections
+  assert.equal(hot.id, 'hot')
+  assert.deepEqual(hot.title, { zh: '本周热门', en: 'Trending this week' })
+  assert.deepEqual(hot.plugins, ['@scope/beta', 'alpha'])
+  assert.deepEqual(rest.map(s => s.id), ['ui-better', 'insight'])
+})
+
+test('plugins without a download count sort last in the trending section', () => {
+  const { c, up, sc } = twoListed(null)
+  const { index } = buildIndex(c, up, sc, NOW)
+  assert.deepEqual(index.store.sections[0].plugins, ['alpha', '@scope/beta'])
+})
+
+test('a curated section may not reuse the generated "hot" id', () => {
+  const c = curation()
+  c.sections.push({ id: 'hot', title: { zh: '手写' }, plugins: ['alpha'] })
+  assert.throws(() => buildIndex(c, upstream(), scans, NOW), error => error.message.startsWith('sections[2].id: "hot" is reserved'))
 })
 
 test('only reviewed versions are listed', () => {
