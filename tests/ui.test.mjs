@@ -28,7 +28,7 @@ test('home shows banner, sections and categories', () => {
   const catalog = catalogWith()
   const { title, gradient } = catalog.featured
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  for (const text of ['本周精选', title.zh, '让界面更顺手', '看清 Agent 在做什么', '按分类浏览', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
+  for (const text of ['本周精选', title.zh, '新装必备', '长对话不迷路', '按分类浏览', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
     assert.ok(out.includes(text), `missing ${text}`)
   }
   assert.ok(out.includes(`linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`))
@@ -38,7 +38,7 @@ test('categories sit under the banner, above the theme sections', () => {
   const out = html(createElement(Home, { catalog: catalogWith(), installed: new Map(), lang: 'zh', t, ...handlers }))
   const chips = out.indexOf('class="ps-chips"')
   assert.ok(chips > out.indexOf('class="ps-banner"'), 'after the banner')
-  assert.ok(chips < out.indexOf('让界面更顺手'), 'before the theme sections')
+  assert.ok(chips < out.indexOf('新装必备'), 'before the theme sections')
   assert.ok(out.indexOf('按分类浏览') < chips, 'with its heading')
 })
 
@@ -46,7 +46,7 @@ test('home hides the banner without a featured plugin', () => {
   const catalog = catalogWith(doc => { doc.store.featured = null; delete doc.store.featuredRotation; return doc })
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
   assert.equal(out.includes('本周精选'), false)
-  assert.ok(out.includes('让界面更顺手'))
+  assert.ok(out.includes('新装必备'))
 })
 
 test('list shows an empty state', () => {
