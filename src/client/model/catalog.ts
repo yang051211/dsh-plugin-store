@@ -31,7 +31,11 @@ export interface StorePlugin {
   compatibility: Compatibility
   repository: { url: string; directory?: string } | null
   homepage: string | null
+  /** After installing: where to find it, what to try, and a step it still needs; null when the catalog has none. */
+  usage: PluginUsage | null
 }
+
+export interface PluginUsage { where: LocalizedText; try: LocalizedText; setup?: LocalizedText }
 
 export interface Grouping { id: string; title: LocalizedText; plugins: StorePlugin[] }
 
@@ -62,6 +66,11 @@ const absolute = (ref: unknown, base: string): string | null => {
   }
 }
 
+function usageOf(raw: any): PluginUsage | null {
+  if (!raw || typeof raw !== 'object' || !raw.where || !raw.try) return null
+  return { where: raw.where, try: raw.try, ...(raw.setup ? { setup: raw.setup } : {}) }
+}
+
 function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
   const latest = entry['dist-tags']?.latest
   const listed = entry.versions.find((v: any) => v.version === latest) ?? entry.versions[0]
@@ -87,6 +96,7 @@ function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
     compatibility: snapshot.compatibility[entry.name] ?? 'unknown',
     repository: entry.repository ?? null,
     homepage: entry.homepage ?? null,
+    usage: usageOf(store.usage),
   }
 }
 

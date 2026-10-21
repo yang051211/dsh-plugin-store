@@ -73,6 +73,22 @@ test('detail shows review verdict next to a disagreeing scan result', () => {
   assert.ok(out.includes('扫描结果来自自动扫描源码'))
 })
 
+const withUsage = (name, usage) => catalogWith(doc => { doc.plugins.find(p => p.name === name).store.usage = usage; return doc })
+
+test('detail shows how to use the plugin once installed, before the detail loads', () => {
+  const catalog = withUsage('dsh-chat-toc', { where: { zh: '对话右侧的消息刻度' }, try: { zh: '把鼠标移到刻度上' } })
+  const out = html(createElement(DetailView, { plugin: catalog.byName.get('dsh-chat-toc'), catalog, detail: { status: 'loading' }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  for (const text of ['装完怎么用', '对话右侧的消息刻度', '把鼠标移到刻度上']) assert.ok(out.includes(text), `missing ${text}`)
+  assert.equal(out.includes('ps-usage-setup'), false, 'no setup step, no warning')
+})
+
+test('detail warns about a setup step the plugin needs after install', () => {
+  const catalog = withUsage('dsh-chat-toc', { where: { zh: '对话里' }, try: { zh: '问一句' }, setup: { zh: '先运行一次安装脚本' } })
+  const out = html(createElement(DetailView, { plugin: catalog.byName.get('dsh-chat-toc'), catalog, detail: { status: 'loading' }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.match(out, /class="[^"]*ps-usage-setup[^"]*"/)
+  assert.ok(out.includes('还差一步') && out.includes('先运行一次安装脚本'))
+})
+
 test('detail degrades to index fields when the detail fails', () => {
   const catalog = catalogWith()
   const plugin = catalog.byName.get('dsh-chat-toc')

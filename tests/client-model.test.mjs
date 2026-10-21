@@ -180,3 +180,11 @@ test('the catalog carries the published store version', () => {
   assert.equal(buildCatalog(doc).storeVersion, '0.1.4')
   assert.equal(buildCatalog(snapshot()).storeVersion, null)
 })
+
+test('plugins carry their usage guide, null when the catalog has none', () => {
+  const doc = snapshot()
+  doc.index.plugins[0].store.usage = { where: { zh: '右侧' }, try: { zh: '试试' }, setup: { zh: '先装' } }
+  const catalog = buildCatalog(doc)
+  assert.deepEqual(catalog.byName.get('alpha').usage, { where: { zh: '右侧' }, try: { zh: '试试' }, setup: { zh: '先装' } })
+  assert.equal(catalog.byName.get('beta').usage, null)
+})

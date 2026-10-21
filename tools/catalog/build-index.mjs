@@ -20,6 +20,11 @@ const MAX_RELATED = 6
 const PERMISSIONS = ['network', 'fileSystem', 'agentTools', 'childProcess', 'installScripts']
 
 /** A format-1 LocalizedText from a curation text, keeping only non-empty strings. */
+/** The post-install guide: where to find the plugin, what to try first, and any step it still needs. */
+function usageOf(usage) {
+  return { where: localized(usage.where), try: localized(usage.try), ...(usage.setup ? { setup: localized(usage.setup) } : {}) }
+}
+
 function localized(text) {
   return Object.fromEntries(Object.entries(text ?? {}).filter(([, value]) => typeof value === 'string' && value.trim() !== ''))
 }
@@ -87,6 +92,7 @@ export function buildIndex(curation, upstream, scans, now, storeVersion) {
         tagline: localized(plugin.tagline),
         detail: `plugins/${slugOf(plugin.name)}.json`,
         review: { version, date: String(plugin.review.date) },
+        ...(plugin.usage ? { usage: usageOf(plugin.usage) } : {}),
         stats: { ...facts.stats, fetchedAt: facts.fetchedAt },
         ...(facts.latest && semver.valid(facts.latest) && semver.gt(facts.latest, version) ? { upstreamLatest: facts.latest } : {}),
       },

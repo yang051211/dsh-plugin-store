@@ -9,7 +9,7 @@ import { localize } from '../model/localize.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
 import { Markdown } from '../safe/markdown.tsx'
 import { npmFileBase, safeUrl } from '../safe/urls.ts'
-import { formatCount, formatDate, incompatibleReason, InstallButton, PluginCard, PluginIcon, type Translate } from './common.tsx'
+import { formatCount, formatDate, incompatibleReason, InstallButton, PluginCard, PluginIcon, UsageGuide, type Translate } from './common.tsx'
 
 export type Load<T> = { status: 'loading' } | { status: 'ready'; data: T } | { status: 'error'; error: string }
 
@@ -103,6 +103,13 @@ export function DetailView(props: DetailViewProps): ReactNode {
       </div>
 
       {plugin.upstreamLatest && <div className="ps-notice">{t('upstreamPending', { version: plugin.upstreamLatest })}</div>}
+
+      {plugin.usage && (
+        <section className="ps-block ps-usage-block">
+          <h3>{t('usageTitle')}</h3>
+          <UsageGuide usage={plugin.usage} lang={lang} t={t} />
+        </section>
+      )}
 
       {detail.status === 'loading' && <div className="ps-muted ps-pad">{t('loading')}</div>}
       {detail.status === 'error' && (

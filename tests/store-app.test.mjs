@@ -173,3 +173,31 @@ test('a self-update handed over from the panel goes straight to the installer in
   assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-plugin-store#v0.1.4'])
   assert.equal(installs, 0)
 })
+
+const withUsage = async () => {
+  const s = snapshot()
+  for (const p of s.index.plugins) p.store.usage = { where: { zh: `${p.name} 的入口` }, try: { zh: '试一句' } }
+  return s
+}
+const installedNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-notice'))
+
+test('a plugin installed while the store is open gets a how-to-use notice', async () => {
+  let installed = new Map([['dsh-context', { version: '0.73.3' }]])
+  let changed
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withUsage, loadInstalled: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } }), onInstall: () => {}, onSelfUpdate: () => {}, onOpenInstalled: () => {} }))
+  })
+  await flush()
+  assert.equal(installedNotice(root).length, 0, 'plugins already installed when the store opened get no notice')
+  installed = new Map([...installed, ['dsh-chat-toc', { version: '0.5.1' }]])
+  await act(async () => { changed() })
+  await flush()
+  const [notice] = installedNotice(root)
+  assert.ok(notice, 'notice shown')
+  const textIn = node => node.children.map(c => (typeof c === 'string' ? c : textIn(c))).join('')
+  const text = textIn(notice)
+  assert.ok(text.includes('dsh-chat-toc 的入口') && text.includes('试一句'), text)
+  await act(async () => { notice.findByProps({ className: 'ps-link-btn' }).props.onClick() })
+  assert.equal(installedNotice(root).length, 0, 'dismissed')
+})

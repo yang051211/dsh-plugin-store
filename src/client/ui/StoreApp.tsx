@@ -7,7 +7,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, typ
 import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
-import type { Translate } from './common.tsx'
+import { UsageGuide, type Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail } from './DetailView.tsx'
 import { Home, type ListFilter } from './Home.tsx'
@@ -66,6 +66,9 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
   const [installed, setInstalled] = useState<Installed | null>(null)
   const [installedUnknown, setInstalledUnknown] = useState(false)
+  // The plugin that became installed while the store was open; its guide is shown until dismissed.
+  const [justInstalled, setJustInstalled] = useState<string | null>(null)
+  const lastInstalled = useRef<Installed | null>(null)
   const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
   const [details, setDetails] = useState<Record<string, Load<PluginDetail>>>({})
   const [confirming, setConfirming] = useState<StorePlugin | null>(null)
@@ -104,7 +107,16 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
       // A failed read falls back to "nothing installed": buttons stay usable, and DSH's own install dialog still
       // refuses a plugin that is already there. Only the first read in flight keeps the buttons disabled.
       services.loadInstalled().then(
-        map => { if (live && id === seq.current.installed) { setInstalled(map); setInstalledUnknown(false) } },
+        map => {
+          if (!live || id !== seq.current.installed) return
+          // Only a change seen after the first read counts: plugins installed before the store opened need no notice.
+          const before = lastInstalled.current
+          const fresh = before ? [...map.keys()].filter(name => !before.has(name)) : []
+          if (fresh.length > 0) setJustInstalled(fresh[fresh.length - 1]!)
+          lastInstalled.current = map
+          setInstalled(map)
+          setInstalledUnknown(false)
+        },
         () => { if (live && id === seq.current.installed) { setInstalled(prev => prev ?? new Map()); setInstalledUnknown(true) } },
       )
     }
@@ -218,6 +230,7 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
   }
 
   const selfUpdate = catalog.status === 'ready' ? selfUpdateOf(catalog.data.storeVersion, installed) : null
+  const justPlugin = justInstalled && catalog.status === 'ready' ? catalog.data.byName.get(justInstalled) ?? null : null
 
   return (
     <div className={`ps-root ps-mode-${mode}`} ref={root}>
@@ -231,6 +244,15 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
         <div className="ps-notice ps-notice-bar ps-self-update">
           <span>{t('selfUpdate', { latest: selfUpdate.latest, current: selfUpdate.current })}</span>
           <button type="button" className="ps-link-btn" onClick={() => onSelfUpdate(selfUpdate)}>{t('selfUpdateAction')}</button>
+        </div>
+      )}
+      {justPlugin && (
+        <div className="ps-notice ps-notice-bar ps-installed-notice">
+          <div className="ps-installed-notice-body">
+            <b>{t('installedNotice', { title: localize(justPlugin.title, lang) || justPlugin.name })}</b>
+            {justPlugin.usage && <UsageGuide usage={justPlugin.usage} lang={lang} t={t} />}
+          </div>
+          <button type="button" className="ps-link-btn" onClick={() => setJustInstalled(null)}>{t('dismiss')}</button>
         </div>
       )}
       {installedUnknown && (

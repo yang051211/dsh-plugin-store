@@ -87,6 +87,14 @@ test('a curated icon replaces the author icon in the index', () => {
   assert.equal(buildIndex(curation(), upstream(), scans, NOW).index.plugins[0].icon, 'icons/alpha.svg', 'author icon otherwise')
 })
 
+test('the usage guide reaches the index, setup only when given', () => {
+  const { index } = buildIndex(curation(), upstream(), scans, NOW)
+  assert.deepEqual(index.plugins[0].store.usage, { where: { zh: '对话右侧' }, try: { zh: '打开一段长对话' } })
+  const c = curation()
+  c.plugins[0].usage.setup = { zh: '先运行安装脚本' }
+  assert.deepEqual(buildIndex(c, upstream(), scans, NOW).index.plugins[0].store.usage.setup, { zh: '先运行安装脚本' })
+})
+
 test('only reviewed versions are listed', () => {
   const { index } = buildIndex(curation(), upstream(), scans, NOW)
   const [alpha] = index.plugins

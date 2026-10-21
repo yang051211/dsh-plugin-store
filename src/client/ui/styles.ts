@@ -66,6 +66,12 @@ export const STYLE_TEXT = `
 .ps-icon { flex: none; object-fit: contain; }
 .ps-icon-tile { display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
 .ps-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.ps-usage { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; }
+.ps-usage dt { color: ${C.text3}; }
+.ps-usage dd { margin: 0; }
+.ps-usage .ps-usage-setup { color: ${C.warn}; font-weight: 600; }
+.ps-installed-notice { align-items: flex-start; }
+.ps-installed-notice-body { display: grid; gap: 6px; }
 .ps-chip { border: 1px solid ${C.border}; background: ${C.bg2}; color: ${C.text}; border-radius: 999px; padding: 4px 14px; cursor: pointer; font-size: 13px; }
 .ps-chip:hover { background: ${C.hover}; }
 .ps-list-title { font-size: 20px; margin: 0 0 16px; }

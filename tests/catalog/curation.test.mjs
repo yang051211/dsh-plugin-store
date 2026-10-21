@@ -152,3 +152,13 @@ test('rejects a curated SVG icon that carries script, handlers or external refer
     rejects(variantWithIcons(d => { d.plugins[0].icon = 'alpha.svg' }, { 'alpha.svg': bad }), /plugins\[0\]\.icon: .*active content/)
   }
 })
+
+test('an approved plugin needs a usage guide: where to find it and what to try', () => {
+  rejects(variant(d => { delete d.plugins[0].usage }), /^plugins\[0\]\.usage\.where\.zh: is required when approved/)
+  rejects(variant(d => { d.plugins[0].usage.try = {} }), /^plugins\[0\]\.usage\.try\.zh: is required when approved/)
+})
+
+test('a usage setup step, when given, must be text', () => {
+  rejects(variant(d => { d.plugins[0].usage.setup = { zh: ' ' } }), /^plugins\[0\]\.usage\.setup\.zh: must be non-empty text/)
+  assert.equal(loadCuration(variant(d => { d.plugins[0].usage.setup = { zh: '先运行安装脚本' } })).plugins[0].usage.setup.zh, '先运行安装脚本')
+})

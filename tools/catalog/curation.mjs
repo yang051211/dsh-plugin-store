@@ -56,6 +56,9 @@ function checkPlugin(plugin, i, categoryIds, iconDir) {
   need(Array.isArray(features) && features.length >= 3 && features.length <= 5 && features.every(isText),
     `${at}.features.zh`, 'needs 3 to 5 non-empty entries')
   if (plugin.icon !== undefined) checkCuratedIcon(plugin.icon, `${at}.icon`, iconDir)
+  if (plugin.usage?.setup !== undefined) {
+    need(isObject(plugin.usage.setup) && isText(plugin.usage.setup.zh), `${at}.usage.setup.zh`, 'must be non-empty text')
+  }
   need(plugin.screenshots === undefined || Array.isArray(plugin.screenshots), `${at}.screenshots`, 'must be a list')
   for (const [j, shot] of (plugin.screenshots ?? []).entries()) {
     need(isObject(shot) && /^https:\/\//.test(shot.url ?? ''), `${at}.screenshots[${j}].url`, 'must be an https URL')
@@ -69,6 +72,10 @@ function checkPlugin(plugin, i, categoryIds, iconDir) {
       `${at}.review.version`, `must be an exact version such as "1.2.3" (got ${JSON.stringify(review.version)})`)
   }
   if (review.status === 'approved') {
+    // The store's promise: after installing, the user knows where the plugin lives and what to try first.
+    for (const key of ['where', 'try']) {
+      need(isObject(plugin.usage?.[key]) && isText(plugin.usage[key].zh), `${at}.usage.${key}.zh`, 'is required when approved')
+    }
     need(isText(review.version), `${at}.review.version`, 'is required when approved')
     need(isText(String(review.date ?? '')) && review.date !== undefined, `${at}.review.date`, 'is required when approved')
     need(isText(review.reviewer), `${at}.review.reviewer`, 'is required when approved')

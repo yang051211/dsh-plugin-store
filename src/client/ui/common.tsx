@@ -1,6 +1,6 @@
 /** Small shared pieces of the store UI: translation, formatting, plugin icons, install buttons and cards. */
 import type { ReactNode } from 'react'
-import type { StorePlugin } from '../model/catalog.ts'
+import type { PluginUsage, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
 
@@ -107,5 +107,16 @@ export function PluginCard({ plugin, installed, dshVersion, lang, t, onOpenPlugi
         <InstallButton plugin={plugin} installed={installed} dshVersion={dshVersion} t={t} onClick={onInstallClick} />
       </div>
     </div>
+  )
+}
+
+/** Where to find an installed plugin and what to try, with any step it still needs called out. */
+export function UsageGuide({ usage, lang, t }: { usage: PluginUsage; lang: string; t: Translate }): ReactNode {
+  return (
+    <dl className="ps-usage">
+      <dt>{t('usageWhere')}</dt><dd>{localize(usage.where, lang)}</dd>
+      <dt>{t('usageTry')}</dt><dd>{localize(usage.try, lang)}</dd>
+      {usage.setup && <><dt className="ps-usage-setup">⚠ {t('usageSetup')}</dt><dd className="ps-usage-setup">{localize(usage.setup, lang)}</dd></>}
+    </dl>
   )
 }
