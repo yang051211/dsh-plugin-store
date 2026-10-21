@@ -167,3 +167,33 @@ test('lists prebuilt DLLs, executables and shared libraries too (dsh-ops ships t
   const result = scanPackage(pkg({ 'runtime/win32-x64/bash-ipc/opsipc.dll': 'MZ', 'bin/helper.exe': 'MZ', 'lib/libx.so': '', 'lib/libx.dylib': '', 'lib/index.js': '' }))
   assert.deepEqual(result.binaryFiles, ['bin/helper.exe', 'lib/libx.dylib', 'lib/libx.so', 'runtime/win32-x64/bash-ipc/opsipc.dll'])
 })
+
+test('requiredServices: rows the patch ships disabled do not count until enabled (dsh-ops tui row)', () => {
+  const files = new Map(Object.entries({
+    'package.json': JSON.stringify({ name: 'x', exports: { './shell': './lib/shell.js', './tui': './lib/tui.js' } }),
+    'cordis.patch.yml': '- insert:\n    - id: x-shell\n      name: x/shell\n      config:\n        enabled: true\n    - id: x-tui\n      name: x/tui\n      disabled: true\n',
+    'lib/shell.js': "export const inject = ['tools']",
+    'lib/tui.js': "export const inject = ['tuiPanels']",
+  }).map(([k, v]) => [k, Buffer.from(v)]))
+  assert.deepEqual(scanPackage(files).requiredServices, ['tools'])
+})
+
+test('requiredServices: a patch with custom YAML tags still yields its rows (dsh-plugin-rea uses !!js)', () => {
+  const files = new Map(Object.entries({
+    'package.json': JSON.stringify({ name: 'x', main: 'index.mjs' }),
+    'cordis.patch.yml': "- insert:\n    - id: x\n      name: 'x'\n      config:\n        command: !!js process.execPath\n",
+    'index.mjs': "export const inject = ['tools']",
+  }).map(([k, v]) => [k, Buffer.from(v)]))
+  assert.deepEqual(scanPackage(files).requiredServices, ['tools'])
+})
+
+test('lists extensionless executables by their header (dsh-ops ships macOS and Linux workers)', () => {
+  const files = new Map([
+    ['package.json', Buffer.from(JSON.stringify({ name: 'x' }))],
+    ['runtime/linux-x64/dsh-ops-worker', Buffer.from([0x7f, 0x45, 0x4c, 0x46, 2, 1])],
+    ['runtime/darwin-arm64/dsh-ops-worker', Buffer.from([0xcf, 0xfa, 0xed, 0xfe, 7, 0])],
+    ['bin/launch', Buffer.from('#!/bin/sh\necho hi\n')],
+    ['LICENSE', Buffer.from('MIT License')],
+  ])
+  assert.deepEqual(scanPackage(files).binaryFiles, ['runtime/darwin-arm64/dsh-ops-worker', 'runtime/linux-x64/dsh-ops-worker'])
+})

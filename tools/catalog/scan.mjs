@@ -2,6 +2,7 @@
  * Permission evidence for a reviewer: pattern matches over a package's files. It only reads text — nothing is
  * imported, evaluated or executed. Results are candidates; the reviewer records the verdict in catalog.yaml.
  */
+import { parse } from 'yaml'
 
 const SCANNED = /\.(?:js|mjs|cjs|jsx|ts|mts|cts|tsx|json|ps1|sh|bat|cmd|ya?ml)$/
 /**
@@ -69,7 +70,7 @@ export function scanPackage(files) {
   const entries = entryFiles(manifest, files)
 
   for (const [path, body] of [...files].sort(([a], [b]) => a.localeCompare(b))) {
-    if (BINARY.test(path) && !SKIPPED.test(path)) { result.binaryFiles.push(path); continue }
+    if ((BINARY.test(path) || executableHeader(body)) && !SKIPPED.test(path)) { result.binaryFiles.push(path); continue }
     const isReadme = /^README(?:\.[\w-]+)?\.md$/i.test(path)
     if (isReadme || /^cordis\.patch\.ya?ml$/.test(path)) {
       body.toString('utf8').split(/\r?\n/).forEach((line, index) => {
@@ -95,6 +96,36 @@ export function scanPackage(files) {
   return result
 }
 
+/** A native executable whatever its name: ELF (Linux), Mach-O (macOS, 32/64-bit and fat) or PE (Windows "MZ"). */
+function executableHeader(body) {
+  if (body.length < 4) return false
+  const magic = body.readUInt32BE(0)
+  return magic === 0x7f454c46 || [0xfeedface, 0xfeedfacf, 0xcefaedfe, 0xcffaedfe, 0xcafebabe].includes(magic) || (body[0] === 0x4d && body[1] === 0x5a && body[2] <= 0x90)
+}
+
+/**
+ * Module names of the rows a bundle patch loads by default: rows shipped with `disabled: true` wait for the user to
+ * enable them, so what they inject cannot keep the plugin from starting. Custom tags such as `!!js` are read as
+ * plain text — the YAML is parsed, never evaluated.
+ */
+function enabledRowNames(text) {
+  let doc
+  try {
+    doc = parse(text, { logLevel: 'silent' })
+  } catch {
+    return []
+  }
+  const names = []
+  const walk = value => {
+    if (Array.isArray(value)) value.forEach(walk)
+    else if (value && typeof value === 'object') {
+      if (typeof value.name === 'string') { if (value.disabled !== true) names.push(value.name) } else Object.values(value).forEach(walk)
+    }
+  }
+  walk(doc)
+  return names
+}
+
 /**
  * The modules DSH loads from this package: each bundle-patch row naming the package or one of its subpaths, plus the
  * browser half when `dsh.client` is declared. Other files are internals or optional companions; what they inject
@@ -104,9 +135,9 @@ function entryFiles(manifest, files) {
   const own = manifest.name
   const patch = files.get('cordis.patch.yml')?.toString('utf8') ?? files.get('cordis.patch.yaml')?.toString('utf8') ?? ''
   const subpaths = new Set()
-  for (const match of patch.matchAll(/^\s*name:\s*['"]?([^'"\s#]+)/gm)) {
-    if (match[1] === own) subpaths.add('.')
-    else if (own && match[1].startsWith(`${own}/`)) subpaths.add(`./${match[1].slice(own.length + 1)}`)
+  for (const name of enabledRowNames(patch)) {
+    if (name === own) subpaths.add('.')
+    else if (own && name.startsWith(`${own}/`)) subpaths.add(`./${name.slice(own.length + 1)}`)
   }
   if (manifest.dsh?.client) subpaths.add('./client')
   const entries = new Set()
