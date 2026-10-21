@@ -71,6 +71,10 @@ function checkPlugin(plugin, i, categoryIds, iconDir) {
     need(typeof review.version === 'string' && semver.valid(review.version) === review.version,
       `${at}.review.version`, `must be an exact version such as "1.2.3" (got ${JSON.stringify(review.version)})`)
   }
+  if (review.preflight !== undefined) {
+    need(isObject(review.preflight), `${at}.review.preflight`, 'must map issue ids to reviewer notes')
+    for (const [id, note] of Object.entries(review.preflight)) need(isText(note), `${at}.review.preflight.${id}`, 'must be non-empty text')
+  }
   if (review.status === 'approved') {
     // The store's promise: after installing, the user knows where the plugin lives and what to try first.
     for (const key of ['where', 'try']) {

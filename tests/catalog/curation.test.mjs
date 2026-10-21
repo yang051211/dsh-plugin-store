@@ -162,3 +162,8 @@ test('a usage setup step, when given, must be text', () => {
   rejects(variant(d => { d.plugins[0].usage.setup = { zh: ' ' } }), /^plugins\[0\]\.usage\.setup\.zh: must be non-empty text/)
   assert.equal(loadCuration(variant(d => { d.plugins[0].usage.setup = { zh: '先运行安装脚本' } })).plugins[0].usage.setup.zh, '先运行安装脚本')
 })
+
+test('review.preflight notes must be non-empty text per issue id', () => {
+  rejects(variant(d => { d.plugins[0].review.preflight = { services: '' } }), /^plugins\[0\]\.review\.preflight\.services: must be non-empty text/)
+  assert.equal(loadCuration(variant(d => { d.plugins[0].review.preflight = { setup: '只是可选的加速组件' } })).plugins[0].review.preflight.setup, '只是可选的加速组件')
+})

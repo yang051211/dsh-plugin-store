@@ -4,7 +4,8 @@
  *   fetch                      refresh catalog/upstream/*.json and the icon cache catalog/icons/ for every curated plugin
  *   scan <name>@<version>      write catalog/scan/<slug>@<version>.json (download and read only, never execute)
  *   build                      make market/ exactly the published catalog: index, details, icons of listed plugins
- *   check                      validate the catalog and confirm market/ matches what build would write
+ *   check                      validate the catalog, run the preflight checks, and confirm market/ matches build
+ *   services <dir>             write catalog/scan/dsh-services.json from an installed DSH's @deepseek-ai packages directory
  * Options: --registry <url> (default: `npm config get registry`); GITHUB_TOKEN raises the GitHub API rate limit.
  * Tools never write catalog/catalog.yaml (tests/catalog/curation.test.mjs guards every write call).
  */
@@ -16,7 +17,8 @@ import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
 import { buildIndex, INDEX_PUBLIC_URL } from './build-index.mjs'
 import { CURATED_ICON_DIR, loadCuration } from './curation.mjs'
 import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
-import { mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
+import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
+import { preflightIssues, servicesProvidedBy } from './preflight.mjs'
 import { scanPackage } from './scan.mjs'
 import { slugOf } from './slug.mjs'
 
@@ -24,6 +26,8 @@ const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 export const CURATION_FILE = join(ROOT, 'catalog', 'catalog.yaml')
 export const UPSTREAM_DIR = join(ROOT, 'catalog', 'upstream')
 export const SCAN_DIR = join(ROOT, 'catalog', 'scan')
+/** Services an installed DSH provides, a tool-owned scan fact next to the package scans. */
+export const DSH_SERVICES_NAME = 'dsh-services.json'
 export const ICON_CACHE_DIR = join(ROOT, 'catalog', 'icons')
 export const CURATED_ICONS = join(ROOT, 'catalog', CURATED_ICON_DIR)
 export const MARKET_DIR = join(ROOT, 'market')
@@ -57,8 +61,11 @@ async function fetchAll(args) {
       console.error(`${plugin.name}: FAILED ${error.message}`)
       continue
     }
-    const { stats, warnings } = mergeStats(readJson(join(UPSTREAM_DIR, `${slug}.json`))?.stats, upstream.stats)
+    const previous = readJson(join(UPSTREAM_DIR, `${slug}.json`))
+    const { stats, warnings } = mergeStats(previous?.stats, upstream.stats)
     upstream.stats = stats
+    // Weekly snapshots accumulate so star growth can be ranked later; only the current stats are published.
+    upstream.statsHistory = appendStatsHistory(previous?.statsHistory, stats, upstream.fetchedAt)
     writeFileSync(join(UPSTREAM_DIR, `${slug}.json`), toJson(upstream))
     if (upstream.iconData && upstream.reviewed?.icon) writeFileSync(join(ICON_CACHE_DIR, upstream.reviewed.icon.file), upstream.iconData)
     const reviewed = upstream.reviewed ? 'found' : 'MISSING'
@@ -90,6 +97,8 @@ async function scanOne(args) {
   console.log(`minified files  ${result.minifiedFiles.join(', ') || 'none'}`)
   console.log(`binary files    ${result.binaryFiles.join(', ') || 'none'}`)
   console.log(`skipped entries ${skipped.join(', ') || 'none'}`)
+  console.log(`services        ${result.requiredServices.join(', ') || 'none'}`)
+  console.log(`setup hints     ${result.setupHints.map(h => `${h.file}:${h.line}`).join(', ') || 'none'}`)
 }
 
 /** Build the published files in memory from the committed catalog files, validated with the official reader. */
@@ -138,8 +147,43 @@ async function build() {
   if (stale.length > 0) console.log(`removed: ${stale.join(', ')}`)
 }
 
+/** Preflight issues of every approved plugin, as "name: [id] message" lines. */
+function preflightProblems() {
+  const curation = loadCuration(CURATION_FILE)
+  const dsh = readJson(join(SCAN_DIR, DSH_SERVICES_NAME)) ?? null
+  const problems = []
+  for (const plugin of curation.plugins.filter(p => p.review.status === 'approved')) {
+    const scan = readJson(join(SCAN_DIR, `${slugOf(plugin.name)}@${plugin.review.version}.json`))
+    for (const issue of preflightIssues(plugin, scan, dsh)) problems.push(`${plugin.name}: [${issue.id}] ${issue.message}`)
+  }
+  return problems
+}
+
+/** Record the services an installed DSH provides, so scans can flag plugins that wait for one it lacks. */
+async function services(args) {
+  const dir = args.find(arg => !arg.startsWith('--'))
+  if (!dir || !existsSync(dir)) throw new Error('usage: services <path to node_modules/@deepseek-ai of an installed DSH>')
+  const files = new Map()
+  const walk = path => {
+    for (const entry of readdirSync(path, { withFileTypes: true })) {
+      const full = join(path, entry.name)
+      if (entry.isDirectory()) { if (entry.name !== 'node_modules') walk(full) } else if (/\.(?:js|mjs|cjs)$/.test(entry.name)) files.set(full, readFileSync(full, 'utf8'))
+    }
+  }
+  for (const pkg of readdirSync(dir)) if (existsSync(join(dir, pkg, 'lib'))) walk(join(dir, pkg, 'lib'))
+  const dshVersion = readJson(join(dir, 'dsh', 'package.json'))?.version ?? 'unknown'
+  const list = servicesProvidedBy(files)
+  writeFileSync(join(SCAN_DIR, DSH_SERVICES_NAME), toJson({ dshVersion, services: list }))
+  console.log(`catalog/scan/dsh-services.json: DSH ${dshVersion}, ${list.length} services from ${files.size} files`)
+}
+
 async function check() {
   const { index, planned } = plannedFromFiles()
+  const preflight = preflightProblems()
+  if (preflight.length > 0) {
+    const list = preflight.map(line => `\n  ${line}`).join('')
+    throw new Error(`preflight: ${preflight.length} unresolved issue(s) — fix the entry or explain it in review.preflight.<id>:${list}`)
+  }
   const problems = []
   for (const [path, content] of planned) {
     const file = join(MARKET_DIR, path)
@@ -150,7 +194,7 @@ async function check() {
   console.log(`catalog OK: ${index.plugins.length} plugin(s), index valid, market/ up to date`)
 }
 
-const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check }
+const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check, services }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [command, ...args] = process.argv.slice(2)

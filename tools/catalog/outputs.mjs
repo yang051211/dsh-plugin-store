@@ -35,6 +35,16 @@ export function staleMarketFiles(existing, planned) {
  * Popularity stats after a fetch: a value the fetch could not get keeps the previous one instead of turning null.
  * @returns the merged stats and a warning per kept value.
  */
+/** Most popularity snapshots kept per plugin: about a year of weekly fetches. */
+const MAX_HISTORY = 52
+
+/** Append one day's stars and weekly downloads; a second fetch the same day replaces that day's snapshot. */
+export function appendStatsHistory(history, stats, at) {
+  const date = String(at).slice(0, 10)
+  const kept = (Array.isArray(history) ? history : []).filter(entry => entry.date !== date)
+  return [...kept, { date, stars: stats.stars ?? null, weeklyDownloads: stats.weeklyDownloads ?? null }].slice(-MAX_HISTORY)
+}
+
 export function mergeStats(previous, next) {
   const stats = { ...next }
   const warnings = []

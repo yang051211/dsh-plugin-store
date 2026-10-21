@@ -81,3 +81,79 @@ test('ignores declaration files, source maps and node_modules', () => {
   }))
   assert.equal(result.network.hit, false)
 })
+
+test('network: an imported https request, a PowerShell download and curl count', () => {
+  for (const [file, line] of [
+    ['scripts/setup.mjs', 'import { request as httpsRequest } from "node:https";'],
+    ['scripts/boot.ps1', 'Invoke-WebRequest -Uri $nodeUrl -OutFile $partial'],
+    ['scripts/get.sh', 'curl -fsSL https://example.com/x.tar.gz -o x.tar.gz'],
+  ]) assert.equal(scanPackage(pkg({ [file]: line })).network.hit, true, file)
+})
+
+test('agentTools: a bundle patch that mounts the MCP client registers agent tools', () => {
+  const result = scanPackage(pkg({ 'cordis.patch.yml': "- insert:\n    - id: mcp-rea\n      name: '@deepseek-ai/dsh-mcp-client'\n" }))
+  assert.equal(result.agentTools.hit, true)
+  assert.equal(result.agentTools.evidence[0].file, 'cordis.patch.yml')
+})
+
+/** A bundle: package.json with exports, a patch whose rows load some of them, and the module sources. */
+const bundle = (manifest, patchRows, sources) => new Map(Object.entries({
+  'package.json': JSON.stringify({ name: 'x', ...manifest }),
+  'cordis.patch.yml': '- insert:\n' + patchRows.map(row => '    - id: r\n      name: ' + "'" + row + "'" + '\n').join(''),
+  ...sources,
+}).map(([k, v]) => [k, Buffer.from(v)]))
+
+test('requiredServices: what the loaded rows inject, required only, first segment of dotted names', () => {
+  const host = bundle({ main: 'lib/index.js' }, ['x'], { 'lib/index.js': 'export const inject = ["webServer", "webRuntime"];' })
+  assert.deepEqual(scanPackage(host).requiredServices, ['webRuntime', 'webServer'])
+  const client = bundle({ exports: { '.': './lib/index.js', './client': { import: './lib/client.js' } }, dsh: { client: { platform: 'web' } } }, ['x'], {
+    'lib/index.js': 'export function apply() {}',
+    'lib/client.js': "export const inject = ['slots', 'remote.pluginManager']",
+  })
+  assert.deepEqual(scanPackage(client).requiredServices, ['remote', 'slots'])
+  const optional = bundle({ main: 'lib/index.js' }, ['x'], { 'lib/index.js': "export const inject = { required: ['tools'], optional: ['llm'] }" })
+  assert.deepEqual(scanPackage(optional).requiredServices, ['tools'])
+})
+
+test('requiredServices: a module the patch never loads does not count (dsh-doublecheck invariant companion)', () => {
+  const pkg = bundle({ exports: { './grill': './lib/grill/index.js', './guard': './lib/guard/index.js', './invariant': './lib/invariant.js' } }, ['x/grill', 'x/guard'], {
+    'lib/grill/index.js': "export const inject = ['skills', 'tools'];",
+    'lib/guard/index.js': "export const inject = ['commands'];\nctx.inject(['invariants'], () => {})",
+    'lib/invariant.js': "export const inject = ['invariants'];",
+  })
+  assert.deepEqual(scanPackage(pkg).requiredServices, ['commands', 'skills', 'tools'])
+})
+
+test('requiredServices: rows that mount another package add nothing of this one', () => {
+  const pkg = bundle({ main: 'index.mjs' }, ['@deepseek-ai/dsh-mcp-client'], { 'index.mjs': "export const inject = ['never']" })
+  assert.deepEqual(scanPackage(pkg).requiredServices, [])
+})
+
+test('setupHints: README and patch lines that say something must be set up first', () => {
+  const result = scanPackage(pkg({
+    'README.md': '# X\n\nRequirements: Python 3.13 with pyghidra (pip install pyghidra)\n\nRun `node scripts/setup.mjs` once, then restart.\n\nNice colors.\n',
+    'cordis.patch.yml': "args: [\"(process.env.DSH_HOME) + '/plugins/rea-bundle/bin/rea-shim.mjs'\"]\n",
+  }))
+  assert.deepEqual(result.setupHints.map(h => `${h.file}:${h.line}`), ['cordis.patch.yml:1', 'README.md:3', 'README.md:5'])
+  assert.deepEqual(scanPackage(pkg({ 'README.md': '# Y\n\nJust install and go.\n' })).setupHints, [])
+})
+
+test('setupHints: host prerequisites, credits and tables about other plugins are not setup steps', () => {
+  // Each line is a real false positive from a listed plugin's README.
+  const readme = [
+    '这是 DSH 环境中的插件。请先安装 DSH、配置一个可用模型，再运行：',
+    'Requirements: DeepSeek Harness Desktop or web profile, and Node.js 20 or later.',
+    '> Requirements: Node.js ≥ 20 + DeepSeek Harness (`npm install -g @deepseek-ai/dsh`) + **pnpm on the DSH process\'s PATH**',
+    '### Prerequisites',
+    'npm install --global pnpm',
+    '- `pnpm` installed. If you do not have it, run `corepack enable` or `npm i -g pnpm`, then open a new terminal',
+    '- **1024 store channel**: `npm i -g dsh1024` once, then `dsh1024 plugin --profile web add dsh-doublecheck`',
+    '| **[dsh-lsp-actions](https://github.com/x/dsh-lsp-actions)** | LSP diagnostics, formatting and rename over language servers |  |',
+  ].join('\n')
+  assert.deepEqual(scanPackage(pkg({ 'README.md': readme })).setupHints, [])
+})
+
+test('setupHints: a global CLI the plugin needs counts', () => {
+  const result = scanPackage(pkg({ 'README.md': 'For Memory Spaces, install the Mnemon CLI with `npm install --global @mnemon-dev/mnemon`.' }))
+  assert.equal(result.setupHints.length, 1)
+})
