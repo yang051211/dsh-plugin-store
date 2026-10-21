@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "name": "@stardustlc/dsh-docker",
+  "features": {
+    "zh": [
+      "查看容器、镜像、日志和资源占用",
+      "在容器里执行命令，常用管理操作",
+      "执行命令和破坏性操作都要你审批"
+    ]
+  },
+  "screenshots": [],
+  "permissions": {
+    "network": false,
+    "fileSystem": false,
+    "agentTools": true,
+    "childProcess": true,
+    "installScripts": false
+  },
+  "scanSummary": {
+    "network": false,
+    "fileSystem": false,
+    "agentTools": true,
+    "childProcess": true,
+    "installScripts": false,
+    "dependencies": 0,
+    "minified": false,
+    "binaryFiles": [],
+    "skippedEntries": []
+  },
+  "review": {
+    "version": "0.4.2",
+    "date": "2026-10-21",
+    "reviewer": "yang051211",
+    "notes": {
+      "zh": "通过 DSH 官方的子进程接口调用本机 docker 命令，执行命令和删除等破坏性操作需要你审批。不联网，没有依赖。和「代码安全检查」是同一作者。"
+    }
+  },
+  "readme": "# dsh-docker\n\n[English](README.en.md)\n\n![dsh-docker 鲸鱼娘插件封面](https://raw.githubusercontent.com/STARDUSTLC666/dsh-docker/master/assets/cover-whale-girl.png)\n\n在 DSH 中查看和管理本机 Docker 容器与镜像。\n\n[![npm](https://img.shields.io/npm/v/@stardustlc/dsh-docker)](https://www.npmjs.com/package/@stardustlc/dsh-docker) [![downloads](https://raw.githubusercontent.com/STARDUSTLC666/dsh-suite/npm-downloads/assets/dsh-docker-downloads.svg)](https://www.npmjs.com/package/@stardustlc/dsh-docker)\n\n欢迎使用，遇到问题或有改进建议，请提交 [issues](https://github.com/STARDUSTLC666/dsh-docker/issues) 和 [PR](https://github.com/STARDUSTLC666/dsh-docker/pulls)。\n\n## 功能\n\n- 查看容器、镜像、日志和资源状态。\n- 运行容器内命令，执行常用管理操作。\n- 执行和破坏性操作遵循宿主审批。\n\n## 安装\n\n桌面版可在「插件」面板按包名 `@stardustlc/dsh-docker` 安装。已配置 dsh 命令时也可使用：\n\n```bash\ndsh plugin --profile desktop add @stardustlc/dsh-docker\n```\n\n网页版把命令中的 `desktop` 改为 `web`。安装后重启 DSH。\n\n## 开始使用\n\n安装后可说：“检查这个容器为什么退出，先查看状态和日志。”\n\n## 依赖与配置\n\n需要已安装且可访问的 Docker CLI 与 Docker 服务。\n\n详细配置、工具参数与排错见[使用说明](docs/USAGE.md)。从源码独立开发时，Node 要求以 [package.json](package.json) 为准。\n\n## 文档\n\n- [使用与排错](docs/USAGE.md)\n- [更新记录](CHANGELOG.md)\n- [验证范围与历史记录](docs/VALIDATION.md)\n- [问题反馈与功能建议](https://github.com/STARDUSTLC666/dsh-docker/issues)\n\n## License\n\n[MIT](LICENSE)\n",
+  "changelog": "# 更新记录\n\n[返回简介](README.md) · [使用说明](docs/USAGE.md) · [验证记录](docs/VALIDATION.md)\n\n## 0.4.2（2026-10-17）\n\n- 补 `publishConfig.access: \"public\"`：与其余 scoped 包保持一致，避免发布时因默认 restricted 访问级别失败（不影响运行时行为）。\n## 0.4.1 (2026-10-05)\n\n- 修复旧版 DSH 生成 PTC SDK 时不支持的数组约束；仍在执行前严格限制 argv 的 128 项与总长度，保留精确参数和审批。\n\n## 0.4.0 (2026-10-05)\n\n- docker_exec 增加 argv 精确参数数组，修复空参数、相邻引号与转义；拒绝未闭合命令，并在启动前处理取消。argv 同样显示完整审批内容。\n\n## 0.3.4 (2026-09-28)\n\n- 更新官方 Harness 0.2.0-rc.1 的兼容声明和共同加载验证；运行时代码未变。验证范围见[验证记录](docs/VALIDATION.md)。\n\n## 更早的改动\n\n完整历史可查阅 [GitHub 提交记录](https://github.com/STARDUSTLC666/dsh-docker/commits/master)。\n",
+  "related": [
+    "dsh-ui-ux-pro-max",
+    "dsh-genui",
+    "dsh-code-security",
+    "dsh-file-review",
+    "dsh-ghidra",
+    "dsh-sql-workbench"
+  ]
+}

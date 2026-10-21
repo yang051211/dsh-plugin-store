@@ -1,10 +1,16 @@
 {
   "name": "dsh-ops",
-  "version": "0.3.0",
-  "scannedAt": "2026-10-21T03:57:09.987Z",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-21T04:57:01.351Z",
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli/panel.js",
+        "line": 25,
+        "text": "import http from 'node:http';"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
@@ -16,22 +22,22 @@
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 13,
+        "line": 15,
         "text": "const {exports}=patchMsys(fs.readFileSync(source))"
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 25,
+        "line": 27,
         "text": "fs.writeFileSync(path.join(scratch,name+'.def'),proxyDefinition(names,dll))"
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 28,
+        "line": 30,
         "text": "const file=path.join(scratch,'build.cmd');fs.writeFileSync(file,commands.join('\\r\\n')+'\\r\\n')"
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 31,
+        "line": 33,
         "text": "fs.mkdirSync(destination,{recursive:true})"
       }
     ]
@@ -40,29 +46,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "lib/discovery/index.js",
+        "line": 81,
+        "text": "entry.disposers.push(await registerNativeProvider(entry.ctx, [registration], tool => entry.ctx.tools.register(tool), { inheritable: false, priority: 10 }));"
+      },
+      {
+        "file": "lib/discovery/index.js",
+        "line": 145,
+        "text": "entry.disposers.push(entry.ctx.tools.restrict({ deny }));"
+      },
+      {
+        "file": "lib/discovery/index.js",
+        "line": 173,
+        "text": "entry.fiber = agent.ctx.plugin({ inject: ['tools'], apply(scoped) { entry.ctx = scoped; } });"
+      },
+      {
         "file": "lib/file/runtime.js",
-        "line": 22,
-        "text": "this.disposers.push(this.ctx.tools.register(definition(rawName, (args, exec) => this.call(rawName, args, exec))))"
+        "line": 38,
+        "text": "this.unregisterProvider = await registerNativeProvider(this.ctx, definitions, tool => this.ctx.tools.register(tool));"
       },
       {
         "file": "lib/index.js",
-        "line": 48,
-        "text": "if (names.length) lifts.set(agent, agent.ctx.tools.restrict({ deny: names }))"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 61,
-        "text": "if (typeof ctx.tools.guard === 'function') {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 62,
-        "text": "ctx.effect(() => ctx.tools.guard(exec => hostShellRefusal({ toolName: String(exec?.name ?? ''), denied })?.reason), 'dsh-ops: host shell guard')"
-      },
-      {
-        "file": "lib/ptc/index.js",
-        "line": 52,
-        "text": "for (const tool of PTC_TOOLS) entry.disposers.push(entry.ctx.tools.register(definition(tool, async (args, exec) => {"
+        "line": 45,
+        "text": "const names = (ctx.tools.schemas(agent) ?? []).map(tool => tool.name).filter(name => denied.has(name));"
       }
     ]
   },
@@ -76,12 +82,12 @@
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 18,
+        "line": 20,
         "text": "nst discovered=fs.existsSync(vswhere) ? spawnSync(vswhere,['-latest','-products','*','-requires','Microsoft.VisualStudio.Component.VC.Tools.x86.x64','-property'"
       },
       {
         "file": "bin/build-bash-ipc.mjs",
-        "line": 29,
+        "line": 31,
         "text": "const build=spawnSync('cmd.exe',['/d','/c',file],{stdio:'inherit',windowsHide:true})"
       },
       {
@@ -91,8 +97,8 @@
       },
       {
         "file": "bin/check-release.mjs",
-        "line": 14,
-        "text": "const check=spawnSync(process.execPath,[path.join(root,'bin/native-runtime.mjs'),'check'],{stdio:'inherit'})"
+        "line": 41,
+        "text": "const check = spawnSync(process.execPath, [path.join(root, 'bin/native-runtime.mjs'), 'check', '--root', root], { stdio: 'inherit' })"
       }
     ]
   },
@@ -103,6 +109,8 @@
   "dependencies": 0,
   "minifiedFiles": [],
   "binaryFiles": [
+    "runtime/darwin-arm64/dsh-ops-worker",
+    "runtime/linux-x64/dsh-ops-worker",
     "runtime/win32-x64/bash-ipc/opsipc.dll",
     "runtime/win32-x64/bash-ipc/opsnt.dll",
     "runtime/win32-x64/dsh-ops-worker.exe"

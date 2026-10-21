@@ -52,12 +52,13 @@ featured:
 sections:
   - { id: starter, title: { zh: 新装必备 }, plugins: [ dsh-chat-toc, dsh-better-sidebar, dsh-cost-meter, dsh-file-review, dsh-context ] }
   - { id: long-chat, title: { zh: 长对话不迷路 }, plugins: [ dsh-chat-toc, dsh-context, dsh-prime-memory, dsh-session-manager ] }
-  - { id: coding, title: { zh: 写代码更稳 }, plugins: [ dsh-file-review, dsh-lsp-actions, dsh-doublecheck, dsh-code-security, dsh-ui-ux-pro-max ] }
+  - { id: coding, title: { zh: 写代码更稳 }, plugins: [ dsh-file-review, dsh-lsp-actions, dsh-doublecheck, dsh-code-security, dsh-ui-ux-pro-max, dsh-rewind-plugin ] }
   - { id: security, title: { zh: 安全审计与逆向 }, plugins: [ dsh-code-security, dsh-ghidra, dsh-plugin-rea ] }
   - { id: multimodal, title: { zh: 图像与多模态 }, plugins: [ dsh-image-gen, dsh-vision-router, dsh-genui ] }
   - { id: data-api, title: { zh: 连数据库与接口 }, plugins: [ dsh-sql-workbench, dsh-api-client, dsh-mcp-connector ] }
+  - { id: ops, title: { zh: 服务器与运维 }, plugins: [ dsh-ssh-ops, dsh-vps-manager, "@stardustlc/dsh-docker", dsh-ops ] }
   - { id: memory, title: { zh: 三种记忆方案，按需选一个 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
-  - { id: personal, title: { zh: 个性化你的 DSH }, plugins: [ dsh-pet, dsh-prompt-history, "@yfwu2020/dsh-selection-explain", dsh-whale-widget ] }
+  - { id: personal, title: { zh: 个性化你的 DSH }, plugins: [ dsh-pet, dsh-prompt-history, "@yfwu2020/dsh-selection-explain", dsh-whale-widget, dsh-plugin-wallpaper-engine, dsh-opencode-palette, dsh-bili-music, dsh-status-rotator ] }
 
 plugins:
   - name: dsh-chat-toc
@@ -790,3 +791,255 @@ plugins:
         zh: "⚠ 装完还不能用：需要手动运行一次安装脚本，在 PowerShell 里执行 powershell -ExecutionPolicy Bypass -File \"$env:USERPROFILE/.dsh/profiles/<你的配置名>/node_modules/dsh-plugin-rea/scripts/rea-bundle-bootstrap.ps1\" -Reuse（-Reuse 表示复用本机已有的 Ghidra/JDK），然后重启 DSH。在此之前插件页会显示「运行中」，但对话里没有 REA 工具。脚本会从官方发布地址下载约 800MB 的工具链（Node、JDK 21、Ghidra 12、Apktool、jadx、Android 平台工具、rea-agents），版本锁定并校验 sha256，装到 ~/.dsh/plugins/rea-bundle/，装好后占用约 1.6GB，另有约 800MB 下载缓存（cache 目录，可删除，重装时会重新下载）；下载中断时重跑同一条命令即可续装；装过一次之后，缺失的组件会在后台自动补装，设置环境变量 REA_BUNDLE_AUTO_PROVISION=0 可关闭。⚠ 卸载插件后需手动删除 ~/.dsh/plugins/rea-bundle/。⚠ 与 dsh-rea 注册同名的 rea 服务，两者只能装一个。分析能力来自上游 REA（rea-agents 6.7.0，MIT，已审：无遥测，更新需手动执行 rea update）；启动子进程、调试与抓包是逆向工具的本职。插件本身没有自我更新，check-updates.ps1 只检查不安装。没有依赖。已在隔离的 DSH 0.2.1-rc.2 与桌面端实测可安装，安装脚本已在桌面端试运行核对计划。"
       permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
       date: 2026-10-20
+  - name: dsh-plugin-wallpaper-engine
+    source: npm
+    category: fun
+    title: { zh: 动态壁纸, en: Wallpaper Engine }
+    tagline:
+      zh: 把 Wallpaper Engine 的动态壁纸铺到 DSH 背景，再加一层液态玻璃界面
+      en: Wallpaper Engine backgrounds for DSH, with a liquid-glass interface on top
+    features:
+      zh:
+        - 渲染本机 Wallpaper Engine 的视频、网页、场景壁纸作背景
+        - 没有 Wallpaper Engine 也可以上传自己的图片和视频
+        - 液态玻璃：设置窗口、对话区、侧栏可调透明度和雾化
+        - 可选点击和拖尾特效、壁纸视差
+        - Windows、macOS、Linux 通用
+    usage:
+      where:
+        zh: 设置 → Wallpaper Engine → 壁纸库
+      try:
+        zh: 选一张壁纸，再到液态玻璃里调透明度和雾化
+    screenshots: []
+    review:
+      status: approved
+      version: 1.3.3
+      reviewer: yang051211
+      notes:
+        zh: 联网：只读查询本插件在 GitHub 的 star 数；需要转码时下载 ffmpeg（约 70MB，锁定版本并校验 sha256，国内走 npmmirror 镜像）。子进程：调用 ffmpeg 转码；音频可视化时采集系统声音（Windows 用 ffmpeg、Linux 用 pactl、macOS 在本机编译一个 Swift 小程序）。读写文件：壁纸缓存在 ~/.dsh-wallpaper-engine，选择壁纸目录时可浏览本机文件夹。有 1 个压缩过的前端文件。依赖 2 个（webwallgl、x11）。Wallpaper Engine 本身要在 Steam 购买安装；macOS 没有官方客户端，可上传图片和视频。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-opencode-palette
+    source: npm
+    category: fun
+    icon: dsh-opencode-palette.svg
+    title: { zh: 经典配色皮肤, en: OpenCode Palette }
+    tagline:
+      zh: 38 款经典配色一键换肤：东京夜色、德古拉、复古工坊、黑客帝国数字雨……
+      en: 38 classic color themes for DSH, switched in one click
+    features:
+      zh:
+        - 38 款皮肤按色系分组，可搜索
+        - 点一下即换，重启后保留
+        - 可选用本机已安装的字体
+        - 中英文界面，跟随 DSH 语言
+    usage:
+      where:
+        zh: 设置 → 插件 → OpenCode Palette
+      try:
+        zh: 挑一款皮肤点一下，界面立刻换色
+    screenshots: []
+    review:
+      status: approved
+      version: 2.1.9
+      reviewer: yang051211
+      notes:
+        zh: 联网：只有点「检查更新」时才查询 npm。更新由依赖包 dsh-plugin-update 0.18.38（已审）完成，安装走 DSH 官方插件管理器（installBundle）或官方 dsh plugin add 命令，不自己调 pnpm、不替换自己的文件。读写文件：保存皮肤设置、自定义皮肤和更新日志（在 DSH 数据目录下）。代码里的 opencode.ai 只是配色出处的文档链接。有 1 个压缩过的前端文件。依赖 2 个（dsh-log、dsh-plugin-update）。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-bili-music
+    source: npm
+    category: fun
+    icon: dsh-bili-music.svg
+    title: { zh: B 站音乐, en: Bili Music }
+    tagline:
+      zh: 在 DSH 里搜歌听歌：侧栏音乐面板加顶部迷你播放条，音源来自哔哩哔哩
+      en: "Search and play Bilibili audio in DSH: a music panel and a mini player bar"
+    features:
+      zh:
+        - 按歌名、歌手、UP 主搜索，支持队列和电台续播
+        - 每日推荐，按口味自动生成歌单
+        - 迷你播放条可拖动，靠边吸附成悬浮球
+        - Windows 上可用全局热键控制播放
+    usage:
+      where:
+        zh: 侧边栏的「音乐」面板，以及顶部的迷你播放条
+      try:
+        zh: 搜一首歌播放，再打开电台模式让它接着放
+    screenshots: []
+    review:
+      status: approved
+      version: 0.1.15
+      reviewer: yang051211
+      notes:
+        zh: 联网：只访问哔哩哔哩接口（api.bilibili.com、www.bilibili.com），用匿名会话请求，不读取你浏览器里的 B 站登录态。子进程：Windows 上第一次用全局热键时，用系统自带的 C# 编译器在本机编译一个热键小程序，并通过 PowerShell 的 WMI 接口启动它（让它脱离 DSH 进程单独运行），这种写法不常见，但只在本机运行。音源版权归 B 站和上传者，插件走的是 B 站公开接口，是否合规请自行判断。没有依赖。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-status-rotator
+    source: npm
+    category: fun
+    icon: dsh-status-rotator.svg
+    title: { zh: 状态栏梗语, en: Status Rotator }
+    tagline:
+      zh: 回复时的状态栏不再只写「思考中」：1317 句梗语轮播，还有小鲸鱼尾巴动画
+      en: 1317 rotating status phrases and a whale-tail animation while DSH works
+    features:
+      zh:
+        - 按回复阶段切换文案，打字机效果
+        - 小鲸鱼尾巴动画和弹幕
+        - 多个文案包可选，也能自己改
+        - 跟随明暗主题的渐变配色
+    usage:
+      where:
+        zh: 回复时的状态栏；设置 → 状态文案
+      try:
+        zh: 发一条消息，看回复过程中状态栏的文案和小鲸鱼
+    screenshots: []
+    review:
+      status: approved
+      version: 0.37.0
+      reviewer: yang051211
+      notes:
+        zh: 联网：经 jsDelivr 从作者 GitHub 仓库的 main 分支拉取在线词库，内容没有锁定版本，但只当文字显示；也可以改用本地词库文件（环境变量 DSH_STATUS_ROTATOR_BANK）。读写文件：词库和设置存在 ~/.dsh/status-rotator。无子进程，没有依赖。
+      permissions: { network: true, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-ssh-ops
+    source: npm
+    category: dev
+    title: { zh: SSH 运维, en: SSH Ops }
+    tagline:
+      zh: SSH 终端、SFTP 和数据库连接放进侧栏，Agent 也能登上服务器帮你干活
+      en: SSH terminals, SFTP and database connections in the sidebar, usable by the agent
+    features:
+      zh:
+        - SSH 终端，可从 ~/.ssh/config 导入主机
+        - SFTP 传文件，目录批量上传下载
+        - 隧道、跳板机、Agent 转发、双因素认证
+        - 连接 MySQL、PostgreSQL、MongoDB、Redis
+        - AI 执行命令分三档：标准、自定义放行、全部放行
+    usage:
+      where:
+        zh: 左侧的「SSH 资源」标签和右侧的终端
+      try:
+        zh: 添加一台服务器（或从 ~/.ssh/config 导入），连上终端，再让 Agent 看看磁盘占用
+    screenshots: []
+    review:
+      status: approved
+      version: 0.3.22
+      reviewer: yang051211
+      notes:
+        zh: 密码和私钥口令存进 DSH 官方的凭据服务，只在后台解析，不回传给界面。读取 ~/.ssh/config 需要你主动点「导入」，只读。联网：只连接你配置的服务器和数据库，另外查询 npm 上的新版本。⚠ 更新时调用 DSH 官方命令 dsh plugin add，但加了 --config.minimumReleaseAge=0，会跳过 pnpm 对新发布版本的冷静期。AI 可以在服务器上执行命令，默认「标准」档要你确认，选「全部放行」风险自负。prepare 脚本只在从 Git 源码安装时运行。有 1 个压缩过的前端文件。依赖 8 个（ssh2、mysql2、pg、mongodb、redis 等）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-vps-manager
+    source: npm
+    category: dev
+    icon: dsh-vps-manager.svg
+    title: { zh: VPS 管家, en: VPS Manager }
+    tagline:
+      zh: 管理你的 VPS：不花 token 的 /vps- 命令看状态，跟 AI 说一句就登上去干活
+      en: "Manage your VPS: zero-token /vps- commands and risk-tiered AI operations"
+    features:
+      zh:
+        - 22 条 /vps- 命令看状态、装软件、重启，不走模型
+        - 对话里的状态页：服务失败、磁盘、证书、安全更新一目了然
+        - AI 操作服务器按风险分级确认
+        - 添加机器只填一次密码，自动放好专用密钥，密码不保存
+        - 网络检测：IP、路由、流媒体和 AI 服务解锁
+    usage:
+      where:
+        zh: 设置页添加机器；对话里输入 /vps- 开头的命令
+      try:
+        zh: 添加一台机器后输入 /vps-doctor 做一次体检
+    screenshots: []
+    review:
+      status: approved
+      version: 0.6.8
+      reviewer: yang051211
+      notes:
+        zh: 生成插件专用密钥 ~/.ssh/dsh_vps_ed25519 并放到服务器的 authorized_keys，密码不保存；卸载时可一键从服务器撤销这把钥匙。可从 ~/.ssh/config 导入主机（只读）。联网：连接你的服务器；网络检测时访问 ipinfo.io、ip-api.com、globalping，以及 Netflix、YouTube、OpenAI 等做解锁检测；查询 GitHub 和 npm 上的新版本，更新只在设置页提示，点「更新」后由 DSH 官方插件管理器（installBundle）安装。有 1 个压缩过的前端文件。依赖 2 个（ws、yaml）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-21
+  - name: "@stardustlc/dsh-docker"
+    source: npm
+    category: dev
+    icon: stardustlc__dsh-docker.svg
+    title: { zh: Docker 管理, en: Docker }
+    tagline:
+      zh: 在 DSH 里查看和管理本机的 Docker 容器与镜像
+      en: Inspect and manage local Docker containers and images from DSH
+    features:
+      zh:
+        - 查看容器、镜像、日志和资源占用
+        - 在容器里执行命令，常用管理操作
+        - 执行命令和破坏性操作都要你审批
+    usage:
+      where:
+        zh: 在对话里让 Agent 查看和管理容器
+      try:
+        zh: 说「检查这个容器为什么退出，先查看状态和日志」
+      setup:
+        zh: 需要本机已安装并运行 Docker
+    screenshots: []
+    review:
+      status: approved
+      version: 0.4.2
+      reviewer: yang051211
+      notes:
+        zh: 通过 DSH 官方的子进程接口调用本机 docker 命令，执行命令和删除等破坏性操作需要你审批。不联网，没有依赖。和「代码安全检查」是同一作者。
+      permissions: { network: false, fileSystem: false, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-rewind-plugin
+    source: npm
+    category: ui
+    title: { zh: 对话回退, en: Rewind }
+    tagline:
+      zh: 回到任意一条消息重来：对话和 Agent 改过的文件一起还原
+      en: Rewind to any message, restoring the files the agent changed
+    features:
+      zh:
+        - 每条消息都有「↶ 回退」按钮，也可以输入 /rewind
+        - 可选只回退对话，或连同代码一起还原
+        - 追踪 Agent 改过的文件，外部改动也能还原
+        - 会话日志只追加回退标记，不删改原记录
+    usage:
+      where:
+        zh: 每条用户消息操作行上的「↶ 回退」按钮，或在输入框输入 /rewind
+      try:
+        zh: 让 Agent 改一个文件，然后回退那一轮并选「回退对话和代码」
+    screenshots: []
+    review:
+      status: approved
+      version: 0.17.1
+      reviewer: yang051211
+      notes:
+        zh: 读写文件：备份并还原 Agent 改过的工作区文件。回退本身不能撤销，但被撤回的内容仍保留在会话日志里。不联网、无子进程、没有依赖。扫描命中的「Agent 工具」：它依赖 tools 服务，用来监听 Agent 每次调用工具的前后事件，在写文件前做备份，不给模型新增工具。prepare 脚本只在从 Git 源码安装时运行。
+      permissions: { network: false, fileSystem: true, agentTools: false, childProcess: false, installScripts: false }
+      date: 2026-10-21
+  - name: dsh-ops
+    source: npm
+    category: dev
+    title: { zh: 命令行增强, en: DSH Ops }
+    tagline:
+      zh: 给 Agent 一个真正的 bash 和一组 Rust 高速文件工具，Windows、macOS、Linux 都能用
+      en: A real bash and fast Rust file tools for agents on Windows, macOS and Linux
+    features:
+      zh:
+        - 独立的 bash，Windows 上 Agent 不再和 PowerShell 打架
+        - Rust 编写的快速批量读文件、查找工具
+        - 按需读取 CSV、DOCX 正文和 PDF 文本
+        - 七个组件可以单独开关，文件操作遵循 DSH 权限
+    usage:
+      where:
+        zh: 没有单独界面，Agent 多了 ops_bash 等工具
+      try:
+        zh: 让 Agent 用 ops_bash 列出当前目录并统计文件数
+    screenshots: []
+    review:
+      status: approved
+      version: 0.4.1
+      reviewer: yang051211
+      notes:
+        zh: 支持 Windows x64、macOS（Apple 芯片）和 Linux x64。⚠ 带预编译程序（Windows 上是 dsh-ops-worker.exe、opsipc.dll、opsnt.dll，另两个平台各有对应的 worker），附 Rust 源码和溯源记录，但无法逐字节核对程序和源码一致；Windows 的 bash 来自可选依赖 @dsh-ops/bash-win32-x64（打包自 Git for Windows）。命令行另带三个需要你手动运行的命令：profile-install（调用官方 dsh plugin add 安装）、panel（只监听本机 127.0.0.1）、provision-shells（从官方 GitHub Release 下载锁定版本并校验 sha256，要用本机 curl）。插件运行时不联网。0.4.1 相对 0.3.0 几乎重写，已按 0.4.1 重新审核。
+      permissions: { network: false, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-21
