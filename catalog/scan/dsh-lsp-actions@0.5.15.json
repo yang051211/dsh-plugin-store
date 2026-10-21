@@ -1,7 +1,7 @@
 {
   "name": "dsh-lsp-actions",
   "version": "0.5.15",
-  "scannedAt": "2026-10-19T08:44:09.294Z",
+  "scannedAt": "2026-10-21T03:37:53.588Z",
   "network": {
     "hit": false,
     "evidence": []
@@ -25,6 +25,11 @@
     "hit": true,
     "evidence": [
       {
+        "file": "examples/vscode/backend/cordis.yml",
+        "line": 19,
+        "text": "# The official tool registry (provides ctx.tools; lsp-actions injects it)."
+      },
+      {
         "file": "lib/extra-tools.js",
         "line": 30,
         "text": "ctx.tools.register(defineTool({"
@@ -43,11 +48,6 @@
         "file": "lib/extra-tools.js",
         "line": 342,
         "text": "ctx.tools.register(defineTool({"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 37,
-        "text": "export const inject = ['tools', 'fs', 'subprocess'];"
       }
     ]
   },
@@ -89,5 +89,37 @@
   "dependencies": 0,
   "minifiedFiles": [],
   "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 2,
+      "text": "# help, inlay hints, and rename over language servers."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 3,
+      "text": "# Default config activates no servers (empty table); add one entry per language server."
+    },
+    {
+      "file": "README.md",
+      "line": 4,
+      "text": "- **1024 store channel**: `npm i -g dsh1024` once, then `dsh1024 plugin --profile web add dsh-lsp-actions` (counts toward the [deepseek1024.com](https://deepsee"
+    },
+    {
+      "file": "README.md",
+      "line": 9,
+      "text": "**The LSP action surface for DeepSeek Harness — real language servers, real feedback, and the IDE integration backend for editors.**"
+    },
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "The LSP action surface for DeepSeek Harness — real language servers, real feedback, and the IDE integration backend for editors."
+    }
+  ],
   "skippedEntries": []
 }

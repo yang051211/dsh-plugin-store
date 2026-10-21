@@ -1,10 +1,36 @@
 {
   "name": "dsh-plugin-rea",
   "version": "2.0.10",
-  "scannedAt": "2026-10-20T02:14:05.331Z",
+  "scannedAt": "2026-10-21T03:37:56.884Z",
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "check-updates.ps1",
+        "line": 166,
+        "text": "try { $latest = (Invoke-RestMethod \"$r/rea-agents/latest\" -TimeoutSec 20).version; Info \"最新版本($r): $latest\"; break }"
+      },
+      {
+        "file": "check-updates.ps1",
+        "line": 228,
+        "text": "$rel = Invoke-RestMethod 'https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest' -TimeoutSec 25 -Headers @{ 'User-Agent' = 'rea-check' }"
+      },
+      {
+        "file": "scripts/rea-bundle-bootstrap.ps1",
+        "line": 166,
+        "text": "# Invoke-WebRequest buffers the whole body before writing, so a slow mirror"
+      },
+      {
+        "file": "scripts/rea-bundle-bootstrap.ps1",
+        "line": 168,
+        "text": "Invoke-WebRequest -Uri $nodeUrl -OutFile $partial -UseBasicParsing -TimeoutSec 1800"
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 30,
+        "text": "import { request as httpRequest } from \"node:http\";"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
@@ -37,8 +63,34 @@
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/make-screenshots.ps1",
+        "line": 113,
+        "text": "Draw-Text $g \"@deepseek-ai/dsh-mcp-client`nserverName = rea / transport = stdio`ncommand = 当前 Node 可执行文件`nargs[0] = <DSH_HOME>/plugins/rea-bundle/`n            "
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 32,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 5,
+        "text": "* `@deepseek-ai/dsh-mcp-client` that launches `bin/rea-shim.mjs`, and that row is"
+      },
+      {
+        "file": "index.mjs",
+        "line": 16,
+        "text": "*     package this one mounts (`@deepseek-ai/dsh-mcp-client`) is part of the"
+      },
+      {
+        "file": "scripts/setup.test.mjs",
+        "line": 948,
+        "text": "ert:\", \"    - id: rea-mcp\", \"      name: '@deepseek-ai/dsh-mcp-client'\", \"      config:\", \"        serverName: rea\", \"        transport: stdio\", \"\"].join(\"\\n\"),"
+      }
+    ]
   },
   "childProcess": {
     "hit": true,
@@ -77,5 +129,33 @@
   "dependencies": 0,
   "minifiedFiles": [],
   "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 5,
+      "text": "# `scripts/setup.mjs` and exports exactly the variables REA reads."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 20,
+      "text": "#     and setup.mjs use — `<home>/.dsh` — never to the bare home directory."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 44,
+      "text": "          - !!js \"(process.env.DSH_HOME && process.env.DSH_HOME.trim() !== '' ? process.env.DSH_HOME : (process.env.USERPROFILE || process.env.HOME || '') + '/."
+    },
+    {
+      "file": "README.md",
+      "line": 8,
+      "text": "> JDK, Ghidra) and then wires the row: install the plugin, run `scripts/setup.mjs` once, restart dsh."
+    },
+    {
+      "file": "README.md",
+      "line": 23,
+      "text": "`scripts/setup.mjs` wrote and starts the REA CLI it provisioned. There is no analysis code here, and the"
+    }
+  ],
   "skippedEntries": []
 }

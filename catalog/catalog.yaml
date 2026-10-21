@@ -357,6 +357,8 @@ plugins:
         zh: 联网：向 npm 和 GitHub 查询新版本；只有在你选择外部记忆服务（mem0、supermemory 等 9 家适配）后，记忆才会发往对应服务；开启 Git 同步后推送到你配置的仓库（可用环境变量 MNEMON_SYNC_GIT_TOKEN 提供令牌）。读写文件：记忆保存在本地 DSH 数据目录。子进程：调用本机已安装的 mnemon 命令行；在 Windows 上只读查询一次注册表（reg.exe）。依赖 22 个，大多是它自家的来源、策略和服务适配包。
       permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
       date: 2026-10-19
+      preflight:
+        setup: 可选增强：Memory Spaces 需要另装 Mnemon CLI（npm install --global @mnemon-dev/mnemon）或在 Memory Spaces 页启用其他 Provider；默认的分层策略不需要，装完即可用。
   - name: dsh-prime-memory
     source: npm
     category: memory
@@ -497,6 +499,8 @@ plugins:
         zh: 联网：查询 DeepSeek 等服务的余额，对话时调用你配置的模型。桌面模式第一次开启时会用 Electron 官方下载器（@electron/get，默认校验哈希）下载 Electron，体积较大；国内会走 npmmirror 镜像。子进程：启动一个独立的 Electron 小窗显示桌宠，并会检测 DSH 是否还在运行，DSH 退出时它也退出。没有读取其他软件的登录文件。依赖 2 个（@electron/get、extract-zip）。
       permissions: { network: true, fileSystem: true, agentTools: false, childProcess: true, installScripts: false }
       date: 2026-10-19
+      preflight:
+        setup: 可选玩法：README 里的 npm install -g dsh-pet 只用于「完全不打开 DSH」的独立运行模式；在 DSH 里使用桌宠不需要这一步。
   - name: dsh-ui-ux-pro-max
     source: npm
     category: dev

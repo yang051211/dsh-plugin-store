@@ -1,10 +1,20 @@
 {
   "name": "dsh-mcp-connector",
   "version": "0.2.75",
-  "scannedAt": "2026-10-19T08:43:19.656Z",
+  "scannedAt": "2026-10-21T03:36:18.896Z",
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "install.sh",
+        "line": 5,
+        "text": "#   远端：  bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)"
+      },
+      {
+        "file": "lib/callback-server.js",
+        "line": 6,
+        "text": "import { createServer } from 'node:http';"
+      },
       {
         "file": "lib/catalog.js",
         "line": 6,
@@ -19,16 +29,6 @@
         "file": "lib/client.js",
         "line": 467,
         "text": "const response = await window.fetch(\"/mcp-connector/api\", {"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 518,
-        "text": "return readResponse(await window.fetch(path, {"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 529,
-        "text": "const response = await window.fetch(capabilitiesUrl, { headers: { accept: \"application/json\" } });"
       }
     ]
   },
@@ -129,5 +129,12 @@
   "dependencies": 2,
   "minifiedFiles": [],
   "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "storageDomain",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
   "skippedEntries": []
 }

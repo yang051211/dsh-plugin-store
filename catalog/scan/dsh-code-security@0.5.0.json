@@ -1,7 +1,7 @@
 {
   "name": "dsh-code-security",
   "version": "0.5.0",
-  "scannedAt": "2026-10-19T08:43:53.800Z",
+  "scannedAt": "2026-10-21T03:37:42.257Z",
   "network": {
     "hit": true,
     "evidence": [
@@ -79,6 +79,16 @@
         "file": "lib/runner.js",
         "line": 16,
         "text": "const handle = spawn({"
+      },
+      {
+        "file": "rules/semgrep.yml",
+        "line": 18,
+        "text": "- pattern: execSync($CMD, ...)"
+      },
+      {
+        "file": "rules/semgrep.yml",
+        "line": 20,
+        "text": "- pattern: $CP.execSync($CMD, ...)"
       }
     ]
   },
@@ -89,5 +99,10 @@
   "dependencies": 5,
   "minifiedFiles": [],
   "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
   "skippedEntries": []
 }
