@@ -15,7 +15,7 @@ const SETUP = /\bpip3? install\b|\bnpm (?:i|install) (?:-g|--global) (?!(?:@deep
 const TABLE_ROW = /^\s*\|/
 const SKIPPED = /(?:^|\/)node_modules\/|\.map$|\.d\.[mc]?ts$/
 /** Executable formats a text scan cannot read; listed for the reviewer. */
-const BINARY = /\.(?:node|wasm)$/
+const BINARY = /\.(?:node|wasm|dll|exe|so|dylib)$/
 const MAX_EVIDENCE = 5
 const MAX_TEXT = 160
 const MINIFIED_LINE = 5000

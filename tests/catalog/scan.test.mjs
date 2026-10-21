@@ -162,3 +162,8 @@ test('requiredServices: a class plugin declares them with static inject (dsh-ssh
   const pkg = bundle({ main: 'lib/index.js' }, ['x'], { 'lib/index.js': 'class SshOps extends Service {\n  static inject = ["tools", "storageDomain", "credentials"];\n}' })
   assert.deepEqual(scanPackage(pkg).requiredServices, ['credentials', 'storageDomain', 'tools'])
 })
+
+test('lists prebuilt DLLs, executables and shared libraries too (dsh-ops ships two DLLs)', () => {
+  const result = scanPackage(pkg({ 'runtime/win32-x64/bash-ipc/opsipc.dll': 'MZ', 'bin/helper.exe': 'MZ', 'lib/libx.so': '', 'lib/libx.dylib': '', 'lib/index.js': '' }))
+  assert.deepEqual(result.binaryFiles, ['bin/helper.exe', 'lib/libx.dylib', 'lib/libx.so', 'runtime/win32-x64/bash-ipc/opsipc.dll'])
+})
