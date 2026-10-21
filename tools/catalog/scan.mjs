@@ -119,10 +119,13 @@ function entryFiles(manifest, files) {
   return new Set([...entries].filter(path => files.has(path)))
 }
 
-/** Services named by `export const inject = [...]` or `{ required: [...] }`; optional ones do not block loading. */
+/**
+ * Services named by `export const inject` or a class plugin's `static inject`, as a list or `{ required: [...] }`;
+ * optional ones do not block loading.
+ */
 function injectedServices(text) {
   const names = []
-  for (const match of text.matchAll(/export\s+const\s+inject\s*=\s*(\[[^\]]*\]|\{[^}]*\})/g)) {
+  for (const match of text.matchAll(/(?:export\s+const|\bstatic)\s+inject\s*=\s*(\[[^\]]*\]|\{[^}]*\})/g)) {
     const declared = match[1].startsWith('[') ? match[1] : (/required\s*:\s*(\[[^\]]*\])/.exec(match[1])?.[1] ?? '[]')
     for (const name of declared.matchAll(/['"]([^'"]+)['"]/g)) names.push(name[1].split('.')[0])
   }

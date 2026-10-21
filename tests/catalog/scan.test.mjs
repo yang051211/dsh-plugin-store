@@ -157,3 +157,8 @@ test('setupHints: a global CLI the plugin needs counts', () => {
   const result = scanPackage(pkg({ 'README.md': 'For Memory Spaces, install the Mnemon CLI with `npm install --global @mnemon-dev/mnemon`.' }))
   assert.equal(result.setupHints.length, 1)
 })
+
+test('requiredServices: a class plugin declares them with static inject (dsh-ssh-ops)', () => {
+  const pkg = bundle({ main: 'lib/index.js' }, ['x'], { 'lib/index.js': 'class SshOps extends Service {\n  static inject = ["tools", "storageDomain", "credentials"];\n}' })
+  assert.deepEqual(scanPackage(pkg).requiredServices, ['credentials', 'storageDomain', 'tools'])
+})
