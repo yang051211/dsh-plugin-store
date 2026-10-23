@@ -59,6 +59,7 @@ sections:
   - { id: ops, title: { zh: 服务器与运维 }, plugins: [ dsh-ssh-ops, dsh-vps-manager, "@stardustlc/dsh-docker", dsh-ops ] }
   - { id: memory, title: { zh: 三种记忆方案，按需选一个 }, plugins: [ dsh-mnemon, dsh-prime-memory, sage-mem ] }
   - { id: personal, title: { zh: 个性化你的 DSH }, plugins: [ dsh-pet, dsh-prompt-history, "@yfwu2020/dsh-selection-explain", dsh-whale-widget, dsh-plugin-wallpaper-engine, dsh-opencode-palette, dsh-bili-music, dsh-status-rotator ] }
+  - { id: im, title: { zh: 在聊天软件里用 DSH }, plugins: [ "@tencent-connect/dsh-qqbot" ] }
 
 plugins:
   - name: dsh-chat-toc
@@ -1043,3 +1044,35 @@ plugins:
         zh: 支持 Windows x64、macOS（Apple 芯片）和 Linux x64。⚠ 带预编译程序（Windows 上是 dsh-ops-worker.exe、opsipc.dll、opsnt.dll，另两个平台各有对应的 worker），附 Rust 源码和溯源记录，但无法逐字节核对程序和源码一致；Windows 的 bash 来自可选依赖 @dsh-ops/bash-win32-x64（打包自 Git for Windows）。命令行另带三个需要你手动运行的命令：profile-install（调用官方 dsh plugin add 安装）、panel（只监听本机 127.0.0.1）、provision-shells（从官方 GitHub Release 下载锁定版本并校验 sha256，要用本机 curl）。插件运行时不联网。0.4.1 相对 0.3.0 几乎重写，已按 0.4.1 重新审核。
       permissions: { network: false, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
       date: 2026-10-21
+  - name: "@tencent-connect/dsh-qqbot"
+    source: npm
+    category: tools
+    icon: tencent-connect__dsh-qqbot.svg
+    title: { zh: QQ 机器人, en: QQ Bot }
+    tagline:
+      zh: 把 DSH 接进 QQ 官方机器人：私聊直接聊，群里 @ 它就回答，扫码即绑定
+      en: Bring DSH to an official QQ Bot — chat in DMs or @-mention it in groups, bound with one QR scan
+    features:
+      zh:
+        - 扫码绑定，AppID 和密钥自动保存，不用手填
+        - 私聊直接聊，群里 @ 机器人触发，每个人、每个群各一条独立会话
+        - 流式回复、Markdown 分段，图片和文件双向收发
+        - /new、/model、/preset、/stop 等指令，单选题变成内联按钮
+        - 私聊和群聊白名单，关键操作在 QQ 里点「允许 / 拒绝」确认
+    usage:
+      where:
+        zh: 右侧栏的「QQ Bot 绑定」页（装好后首次启动会自动打开）；绑定后在 QQ 私聊里直接发消息，或在群里 @ 机器人
+      try:
+        zh: 扫码绑定后，在 QQ 私聊里发一句「你好」，再发一张图片让它描述
+      setup:
+        zh: 需要一个 QQ 开放平台（q.qq.com）的机器人，扫码流程会引导你创建或选择；绑定后把配置里的 access.c2cMode 和 access.groupMode 改成 allowlist 并填入白名单，否则任何加了机器人的人都能驱动你本机的 Agent
+    screenshots: []
+    review:
+      status: approved
+      version: 0.5.2
+      reviewer: yang051211
+      notes:
+        zh: >-
+          腾讯 QQ 开放平台官方出品。联网：经腾讯官方 SDK 只连 QQ 开放平台接口（api.bot.qq.com），另外下载 QQ 用户发来的图片和文件，视觉工具会按模型给出的地址取图。写文件：⚠ 扫码绑定后把 AppID 和 AppSecret 明文写进本 profile 的 cordis.patch.yml（不走 DSH 凭据服务）；⚠ 打开视觉理解时会改 ~/.dsh/settings.yaml，给所选模型补上 input: [text, image]；收到的媒体和模型偏好放在 ~/.dsh-qqbot，到期清理只删自己目录里的文件。子进程：没有端内页时用系统命令打开浏览器显示二维码。Agent 工具：注册「发文件」和「看图」两个工具，发文件默认只限媒体目录和工作目录。⚠ QQ 里的人能驱动你本机的 Agent（读写文件、跑命令），默认私聊和群聊都是开放模式，上线前务必改白名单。有 1 个压缩过的前端文件。依赖 4 个（腾讯官方 qqbot-nodejs 与 qqbot-connector、qrcode、js-yaml）。
+      permissions: { network: true, fileSystem: true, agentTools: true, childProcess: true, installScripts: false }
+      date: 2026-10-23
