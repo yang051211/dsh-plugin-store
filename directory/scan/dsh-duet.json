@@ -1,0 +1,84 @@
+{
+  "name": "dsh-duet",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:06:17.133Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client/browser.mjs",
+        "line": 174,
+        "text": "ws = new WebSocket(voiceSocketUrl({ mode, plugin_version: PLUGIN_VERSION, client_trace_id: connectionTraceId, page_id: pageId }), identityVoiceProtocols())"
+      },
+      {
+        "file": "src/client/browser.mjs",
+        "line": 363,
+        "text": "const response = await fetch(`/duplex-control/api/${path}`, { cache: 'no-store',"
+      },
+      {
+        "file": "src/client/identity.mjs",
+        "line": 12,
+        "text": "if (!desktop()) return globals.fetch(path, options)"
+      },
+      {
+        "file": "src/client/identity.mjs",
+        "line": 14,
+        "text": "return globals.fetch(path, options)"
+      },
+      {
+        "file": "src/client/identity.mjs",
+        "line": 22,
+        "text": "const response = await globals.fetch(path, {...options, headers, credentials:'same-origin', cache:'no-store'})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/endpoint-discovery.mjs",
+        "line": 4,
+        "text": "import {readFileSync, statSync} from 'node:fs'"
+      },
+      {
+        "file": "src/host/endpoint-discovery.mjs",
+        "line": 5,
+        "text": "import {mkdir, writeFile, rename, unlink} from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host/endpoint-discovery.mjs",
+        "line": 61,
+        "text": "const data=JSON.parse(readFileSync(cachePath,'utf8'))"
+      },
+      {
+        "file": "src/host/endpoint-discovery.mjs",
+        "line": 78,
+        "text": "await mkdir(dirname(this.cachePath),{recursive:true,mode:0o700})"
+      },
+      {
+        "file": "src/host/endpoint-discovery.mjs",
+        "line": 79,
+        "text": "await writeFile(temp,JSON.stringify(data)+'\\n',{mode:0o600,flag:'wx'})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,87 @@
+{
+  "name": "dsh-claude-code-provider",
+  "version": "0.0.1",
+  "scannedAt": "2026-10-26T10:06:24.293Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 18,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 127,
+        "text": "out.push({ type: 'image', data: (await readFile(path)).toString('base64'), mimeType: block.attachment.mediaType });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/content.js",
+        "line": 8,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/content.js",
+        "line": 81,
+        "text": "const data = (await readFile(path)).toString('base64');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 43,
+        "text": "schemas = agent.ctx.tools.schemas(agent);"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 368,
+        "text": "definition = agent.ctx.tools.get(call.dsh.name, agent);"
+      },
+      {
+        "file": "lib/interact.js",
+        "line": 30,
+        "text": "if (toolName === 'AskUserQuestion' && agent.ctx.tools.get('ask_user_question', agent) !== undefined) {"
+      },
+      {
+        "file": "lib/interact.js",
+        "line": 38,
+        "text": "if (toolName === 'ExitPlanMode' && agent.ctx.tools.get('exit_plan_mode', agent) !== undefined) {"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 237,
+        "text": "return agent.ctx.tools.get('bash', agent) !== undefined || agent.ctx.tools.get('pwsh', agent) !== undefined;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

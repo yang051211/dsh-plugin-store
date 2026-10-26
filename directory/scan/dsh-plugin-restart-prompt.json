@@ -1,0 +1,95 @@
+{
+  "name": "dsh-plugin-restart-prompt",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:06:56.534Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 94,
+        "text": "return fetch(PREFIX + path, { method: 'POST', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 250,
+        "text": "fetch(PREFIX + '/changes.json', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 288,
+        "text": "fetch(PREFIX + '/state.json', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "return fs.readFileSync(target, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "fs.appendFileSync(RELAUNCH_LOG, `[${new Date().toISOString()}] ${message}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 409,
+        "text": "fs.mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 412,
+        "text": "fs.writeFileSync(relaunchScript, buildRelaunchVbs({ exePath, exeArgs }), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 381,
+        "text": "// 实测该机 PATH 里既没有 pwsh 也没有 powershell：`spawn('powershell')` 只会异步发一个"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 421,
+        "text": "const result = spawnSync(wscript, ['//B', '//Nologo', launcherScript], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "const child = spawn(host, args, { detached: true, stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "dsh-tool-visual-primitives",
+  "version": "1.5.4",
+  "scannedAt": "2026-10-26T10:06:56.313Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 172,
+        "text": "const response = await fetch(targetUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 269,
+        "text": "const response = await fetch(SETTINGS_ROUTE_PATH, { headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 289,
+        "text": "const response = await fetch(MODEL_MODALITIES_ROUTE_PATH, { headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 298,
+        "text": "const response = await fetch(VISION_MODEL_CATALOG_ROUTE_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 322,
+        "text": "const res = await fetch(TEST_ROUTE_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vision/image-source.mjs",
+        "line": 4,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "vision/image-source.mjs",
+        "line": 263,
+        "text": "data = Buffer.from(await readFile(join(attachments.root, \"objects\", hash.slice(0, 2), hash), { signal }));"
+      },
+      {
+        "file": "vision/image-source.mjs",
+        "line": 338,
+        "text": "const fs = ctx.get(\"fs\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/tool-adapter.mjs",
+        "line": 18,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 7,
+        "text": "export const inject = [\"tools\", \"llm\", \"attachments\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

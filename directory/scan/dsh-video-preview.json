@@ -1,0 +1,68 @@
+{
+  "name": "dsh-video-preview",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:06:26.910Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/route.test.mjs",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "test/route.test.mjs",
+        "line": 46,
+        "text": "const req = (path, opts = {}) => fetch(path, opts).then(async (res) => ({ status: res.status, headers: res.headers, buf: Buffer.from(await res.arrayBuffer()) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { createReadStream } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "test/route.test.mjs",
+        "line": 12,
+        "text": "import { mkdtempSync, writeFileSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "test/route.test.mjs",
+        "line": 24,
+        "text": "writeFileSync(file, bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "webRuntime",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

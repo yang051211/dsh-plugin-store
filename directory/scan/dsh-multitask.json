@@ -1,0 +1,95 @@
+{
+  "name": "dsh-multitask",
+  "version": "1.2.22",
+  "scannedAt": "2026-10-26T10:06:55.844Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/multitask/approval-gate.mjs",
+        "line": 128,
+        "text": "*   1. PTC 程序体内**直连 Node 的效果**（`require('fs').writeFileSync`、"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 90,
+        "text": "* `[\"tools\",\"fs\",\"systemPrompt\"]`）：没有 fs 服务时，本工具**无法**取得任何元数据，"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 97,
+        "text": "export const inject = ['tools', 'fs']"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 503,
+        "text": "// `inject: ['tools','fs']` 已经保证真实宿主里两者都在（缺 fs 时 cordis 会把本行挂住，"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/multitask/coordinator-guard.mjs",
+        "line": 100,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 38,
+        "text": "* `ctx.tools.register()` 的校验只有四件事（`dsh-tools/lib/index.js:2878-2887`）："
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 97,
+        "text": "export const inject = ['tools', 'fs']"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 254,
+        "text": "* ⚠️ 为什么必须自己校验：`ctx.tools.register()` **不代验参数**（只校验 output 与名字），"
+      },
+      {
+        "file": "presets/multitask/file-info.mjs",
+        "line": 493,
+        "text": "* @param ctx - preset scope 的插件上下文（`ctx.fs` 与 `ctx.tools` 都在它上面）。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/multitask/workspace-acl.mjs",
+        "line": 59,
+        "text": "* 「零 import」是本仓预设模块的约定，所以这里用**动态** `import('node:child_process')`："
+      },
+      {
+        "file": "presets/multitask/workspace-acl.mjs",
+        "line": 241,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "presets/multitask/workspace-acl.mjs",
+        "line": 263,
+        "text": "child = spawn(exe, ['-NoProfile', '-NonInteractive', '-EncodedCommand', encoded], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "dsh-skill-studio",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:06:42.653Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 33,
+        "text": "response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/extractor.js",
+        "line": 321,
+        "text": "const res = await fetch(`${base}/chat/completions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extractor.js",
+        "line": 8,
+        "text": "import { readdir, readFile, writeFile, mkdir, stat, rename } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/extractor.js",
+        "line": 9,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/extractor.js",
+        "line": 150,
+        "text": "return parse(JSON.parse(await readFile(configPath(), \"utf8\")));"
+      },
+      {
+        "file": "lib/extractor.js",
+        "line": 156,
+        "text": "await mkdir(dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/extractor.js",
+        "line": 158,
+        "text": "await writeFile(tmp, JSON.stringify(cfg, null, 2), { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "const inject = [\"skills\", \"tools\", \"systemPrompt\", \"webServer\", \"timer\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1109,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extractor.js",
+        "line": 12,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

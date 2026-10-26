@@ -1,0 +1,118 @@
+{
+  "name": "dsh-unified-market",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:06:34.436Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 18,
+        "text": "return fetch('/api/dsh-unified-market', {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 596,
+        "text": "const r = await fetch(`${base}/${owner}/${repo}/HEAD/package.json`, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1048,
+        "text": "const r = await fetch(REGISTRY_URL, { redirect: 'follow', signal: AbortSignal.timeout(ONLINE_TIMEOUT_MS) })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1055,
+        "text": "const r = await fetch(siteCatalogUrl(locale), { redirect: 'follow', signal: AbortSignal.timeout(ONLINE_TIMEOUT_MS) })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1062,
+        "text": "const r = await fetch(CATALOG_PAGE_URL, { redirect: 'follow', signal: AbortSignal.timeout(ONLINE_TIMEOUT_MS) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/allow-builds.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/allow-builds.mjs",
+        "line": 85,
+        "text": "text = fs.readFileSync(workspacePath, 'utf8');"
+      },
+      {
+        "file": "lib/allow-builds.mjs",
+        "line": 131,
+        "text": "text = fs.readFileSync(workspacePath, 'utf8');"
+      },
+      {
+        "file": "lib/allow-builds.mjs",
+        "line": 185,
+        "text": "fs.writeFileSync(workspacePath, out, 'utf8');"
+      },
+      {
+        "file": "lib/artifact-keep.mjs",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, copyFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "data/catalog-snapshot.json",
+        "line": 3058,
+        "text": "\"desc\": \"官方 MCP 客户端（dsh-mcp-client）的只读运行时管理面板：/mcp 命令与设置页 MCP 页签展示连接状态、已注册工具、错误与重连计数，脱敏展示并提供启停 patch 建议。\","
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 28,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 345,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 400,
+        "text": "const child = spawn(inv.file, [...inv.args, 'plugin', '--profile', profile, kind === 'uninstall' ? 'remove' : 'add', target], {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 690,
+        "text": "const child = spawn(exe, args, { cwd, env, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1955,
+        "text": "r = spawnSync(process.execPath, [cli, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

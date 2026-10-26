@@ -1,0 +1,99 @@
+{
+  "name": "dsh-markitdown",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:17.104Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 314,
+        "text": "const response = await fetch(url, { signal: combined, redirect: 'follow' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { access, mkdir, open, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 246,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 362,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 386,
+        "text": "await mkdir(dirname(absolute), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exec.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/exec.js",
+        "line": 34,
+        "text": "execFile(executable, argv.slice(1), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 108,
+      "text": "pip install \"markitdown[all]\"     # or"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 102,
+      "text": "pip install \"markitdown[all]\"     # 或者"
+    }
+  ],
+  "skippedEntries": []
+}

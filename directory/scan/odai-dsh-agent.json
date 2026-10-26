@@ -1,0 +1,124 @@
+{
+  "name": "odai-dsh-agent",
+  "version": "0.2.56",
+  "scannedAt": "2026-10-26T10:06:29.044Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preset/odai/runtime/control-center-runtime.mjs",
+        "line": 15,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 3,
+        "text": "import { mkdir, readFile, realpath, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 13,
+        "text": "const parsedMetadata = JSON.parse(await readFile(resolve(packageRoot, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 37,
+        "text": "return await readFile(path);"
+      },
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 162,
+        "text": "const presetMetadata = JSON.parse(await readFile(resolve(dirname(manifestPath), \"preset/odai/package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 275,
+        "text": "await mkdir(root, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preset/odai/runtime/index.mjs",
+        "line": 20,
+        "text": "export const inject = [\"systemPrompt\", \"tools\", \"subagents\", \"sessions\", \"llm\"];"
+      },
+      {
+        "file": "preset/odai/runtime/prompt-runtime.mjs",
+        "line": 206,
+        "text": "tiveToolSchemas(pending.assembly, syncNamesFor(agent, pending.context), ctx.tools.schemas?.(agent) ?? [], installedDependencies.executionRestrictionFor(agent));"
+      },
+      {
+        "file": "preset/odai/runtime/prompt-runtime.mjs",
+        "line": 259,
+        "text": "const executableSchemas = typeof ctx.tools.schemas === \"function\" ? ctx.tools.schemas(agent) : [];"
+      },
+      {
+        "file": "preset/odai/runtime/prompt-runtime.mjs",
+        "line": 266,
+        "text": "const finalExecutableSchemas = typeof ctx.tools.schemas === \"function\" ? ctx.tools.schemas(agent) : [];"
+      },
+      {
+        "file": "preset/odai/runtime/tool-runtime.mjs",
+        "line": 84,
+        "text": "ctx.tools.register(createReviewEvidenceTool(managedReviewEvidenceReader));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/src/control-center-installer.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "build/src/dsh-version.mjs",
+        "line": 1,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "build/src/dsh-version.mjs",
+        "line": 12,
+        "text": "return spawn(command_, args, options_);"
+      },
+      {
+        "file": "preset/odai/skills/odai-orchestration/scripts/install-routing.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "preset/odai/skills/odai-orchestration/scripts/install-routing.mjs",
+        "line": 138,
+        "text": "const result = spawnSync(process.execPath, command, { encoding: \"utf8\", windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run prepare:artifact"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

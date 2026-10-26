@@ -1,0 +1,129 @@
+{
+  "name": "dsh-s-m-c-center",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:06:27.626Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 254,
+        "text": "const response = await fetch(path, payload === void 0 ? { method } : {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2708,
+        "text": "return unwrap(await fetch(path, payload === void 0 ? { method } : {"
+      },
+      {
+        "file": "src/client/shared/api.ts",
+        "line": 49,
+        "text": "const response = await fetch(path, payload === undefined"
+      },
+      {
+        "file": "src/client/shared/useAsyncList.ts",
+        "line": 52,
+        "text": "// in-place update, not a teardown. Only the very first fetch (handled by"
+      },
+      {
+        "file": "src/client/shell/sidebar.ts",
+        "line": 108,
+        "text": "const response = await fetch(path, payload === undefined"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2069,
+        "text": "skills.unlink(skill);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": ",unlinkSync as p,writeFileSync as m}from\"node:fs\";import{basename as h,dirname as g,extname as ee,join as _,parse as te,resolve as v,sep as ne}from\"node:path\";i"
+      },
+      {
+        "file": "src/client/features/skills/SkillsPanel.tsx",
+        "line": 335,
+        "text": "<Button variant=\"danger\" disabled={isBusy} title={t('tipUnlink')} onClick={() => { skills.unlink(skill) }}>"
+      },
+      {
+        "file": "src/features/cli/manager.ts",
+        "line": 16,
+        "text": "import { existsSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "src/features/cli/probe.ts",
+        "line": 12,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 7,
+        "text": "# @deepseek-ai/dsh-mcp-client, /api/dsh-s-m-c-center routes), and the"
+      },
+      {
+        "file": "dsh.plugin.json",
+        "line": 5,
+        "text": "s）、MCP 服务器、本地 CLI 工具；MCP 经 @deepseek-ai/dsh-mcp-client 真实连接并注册 mcp__<server>__<tool>；技能走统一储存库与目录联接；另附使用说明页。CLI 版与桌面版均支持（MIT）。 / DSH plugin: one settings page fo"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1011,
+        "text": "guideConnectP: \"激活的服务器经 @deepseek-ai/dsh-mcp-client 真正连接，工具注册为 mcp__<server>__<tool>——不是只写了一份配置。连接失败会在那一行显示原因。\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1235,
+        "text": "e really connected through @deepseek-ai/dsh-mcp-client and register their tools as mcp__<server>__<tool> — not merely a config entry. A failed connection shows "
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": ":crypto\";import*as se from\"@deepseek-ai/dsh-mcp-client\";import ce from\"schemastery\";function le(){return process.env.DSH_HOME||_(re(),`.dsh`)}function y(){let e"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "rom\"node:os\";import{spawnSync as ie}from\"node:child_process\";import{defineTool as ae}from\"@deepseek-ai/dsh-tools\";import{createHash as oe}from\"node:crypto\";impo"
+      },
+      {
+        "file": "src/features/cli/probe.ts",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/features/cli/probe.ts",
+        "line": 45,
+        "text": "const r = spawnSync(cmd, args, { encoding: 'utf8', timeout: timeoutMs, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

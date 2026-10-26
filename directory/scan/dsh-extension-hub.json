@@ -1,0 +1,121 @@
+{
+  "name": "dsh-extension-hub",
+  "version": "0.2.19",
+  "scannedAt": "2026-10-26T10:06:37.571Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog.mjs",
+        "line": 51,
+        "text": "res = await fetch(CATALOG_URL, { signal: AbortSignal.timeout(15000) })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 383,
+        "text": "const res = await fetch('https://registry.npmjs.org/dsh-extension-hub/latest', { signal: AbortSignal.timeout(8000) })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 396,
+        "text": "const fres = await fetch(`https://registry.npmjs.org/${encoded}/latest`, { signal: AbortSignal.timeout(8000) })"
+      },
+      {
+        "file": "lib/plugins.mjs",
+        "line": 390,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "lib/plugins.mjs",
+        "line": 560,
+        "text": "const res = await fetch(`https://registry.npmjs.org/${encoded}/latest`, { signal: AbortSignal.timeout(10000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cli.mjs",
+        "line": 20,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "cli.mjs",
+        "line": 90,
+        "text": "if (flags.bodyFile) return fs.readFileSync(flags.bodyFile, 'utf8')"
+      },
+      {
+        "file": "lib/atomic.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/atomic.mjs",
+        "line": 28,
+        "text": "fs.writeFileSync(tmp, content, 'utf8')"
+      },
+      {
+        "file": "lib/atomic.mjs",
+        "line": 35,
+        "text": "try { fs.rmSync(tmp, { force: true }) } catch { /* keep going */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/convert.mjs",
+        "line": 3,
+        "text": "// dsh-mcp-client requires serverName to match [A-Za-z0-9_-]{1,32}."
+      },
+      {
+        "file": "lib/convert.mjs",
+        "line": 13,
+        "text": "// Convert a discovered MCP item into a dsh-mcp-client config object."
+      },
+      {
+        "file": "lib/convert.mjs",
+        "line": 30,
+        "text": "return { id, name: '@deepseek-ai/dsh-mcp-client', config }"
+      },
+      {
+        "file": "lib/list.mjs",
+        "line": 16,
+        "text": "const MCP_CLIENT = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/mcp.mjs",
+        "line": 18,
+        "text": "const MCP_CLIENT = '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 23,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/plugins.mjs",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

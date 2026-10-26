@@ -1,0 +1,103 @@
+{
+  "name": "dsh-fishpai",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:06:30.481Z",
+  "icon": "dsh-fishpai.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 64,
+        "text": "const res = await fetch(`${PREFIX}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 290,
+        "text": "const res = await fetch(api.assetUrl(state.sessionId, docKey, img.src));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/core/render.mjs",
+        "line": 974,
+        "text": "return import('node:fs').then((fs) => {"
+      },
+      {
+        "file": "plugin/core/render.mjs",
+        "line": 975,
+        "text": "const text = input === '-' ? fs.readFileSync(0, 'utf8') : fs.readFileSync(input, 'utf8')"
+      },
+      {
+        "file": "plugin/core/render.mjs",
+        "line": 978,
+        "text": "fs.writeFileSync(out, html, 'utf8')"
+      },
+      {
+        "file": "plugin/core/runtime.mjs",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "plugin/core/runtime.mjs",
+        "line": 26,
+        "text": "const load = (f) => vm.runInContext(fs.readFileSync(path.join(VENDOR, f), 'utf8'), box, { filename: f })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/host/tools.mjs",
+        "line": 4,
+        "text": "* 用 **raw JSON-Schema 注册**（`ctx.tools.register({name, description, parameters, output, execute})`），"
+      },
+      {
+        "file": "plugin/host/tools.mjs",
+        "line": 147,
+        "text": "* @param {object} ctx 宿主 cordis 上下文（需要 ctx.tools）"
+      },
+      {
+        "file": "plugin/host/tools.mjs",
+        "line": 156,
+        "text": "const dispose = ctx.tools.register(tool)"
+      },
+      {
+        "file": "plugin/host/tools.mjs",
+        "line": 527,
+        "text": "// 走 `register()` 而不是直接 `ctx.tools.register()`：它把卸载函数收进 disposers，"
+      },
+      {
+        "file": "plugin/index.mjs",
+        "line": 22,
+        "text": "export const inject = ['webServer', 'sessions', 'tools', 'skills']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "plugin/vendor/highlight.min.js",
+    "plugin/vendor/markdown-it.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

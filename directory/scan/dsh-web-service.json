@@ -1,0 +1,111 @@
+{
+  "name": "dsh-web-service",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:06:56.366Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api-keys-page.js",
+        "line": 558,
+        "text": "res = await fetch(BASE + path, {"
+      },
+      {
+        "file": "lib/api-keys-page.js",
+        "line": 1493,
+        "text": "const r = await fetch(BASE + '/system/updates', { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/api-keys-page.js",
+        "line": 1560,
+        "text": "// ---------- curl ----------"
+      },
+      {
+        "file": "lib/api-keys-page.js",
+        "line": 1564,
+        "text": "'curl -H \"Authorization: Bearer <key>\" ' + url + '/system/status\\\\n\\\\n' +"
+      },
+      {
+        "file": "lib/api-keys-page.js",
+        "line": 1566,
+        "text": "'curl -H \"X-API-Key: <key>\" ' + url + '/system/status';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api-keys-store.js",
+        "line": 16,
+        "text": "import { chmod, copyFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/api-keys-store.js",
+        "line": 176,
+        "text": "await mkdir(this.dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/api-keys-store.js",
+        "line": 185,
+        "text": "raw = await readFile(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/api-keys-store.js",
+        "line": 280,
+        "text": "return await readFile(`${this.file}.bak`, 'utf8');"
+      },
+      {
+        "file": "lib/api-keys-store.js",
+        "line": 321,
+        "text": "const raw = (await readFile(this.adminTokenFile, 'utf8')).trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 431,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skill-utils.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/skills.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/swagger-ui/swagger-ui-bundle.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

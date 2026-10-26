@@ -1,0 +1,98 @@
+{
+  "name": "dsh-plugin-notepad",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:21.987Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 18,
+        "text": "import { appendFile, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 296,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 297,
+        "text": "await appendFile(file, `${JSON.stringify(note)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 353,
+        "text": "await rm(file, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* It registers three model-facing tools on `ctx.tools` and, when the deployment"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "* @param {import('@deepseek-ai/cordis').Context} ctx - plugin context. `ctx.tools` is required; `ctx.commands` is used when present."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 149,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 281,
+      "text": "本只在 `node_modules/@deepseek-ai` 建一个指向 `$DSH_HOME/profiles/node_modules/@deepseek-ai` 的 junction，不复制、不安装任何包。插件装进 profile 后不依赖它：那时 Node 会从 `<profile>/plugins/note"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-solution-explorer",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:06:28.267Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 8503,
+        "text": "const result = await (await fetch(\"/solution-explorer/read?root=\" + encodeURIComponent(root) + \"&file=\" + encodeURIComponent(path))).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9647,
+        "text": "const response = await fetch(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9657,
+        "text": "const request = new XMLHttpRequest();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9661,
+        "text": "if (request.readyState !== XMLHttpRequest.DONE) return;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 16410,
+        "text": "async fetch({ kind, filename }) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 16846,
+        "text": "const data = await process.getBuiltinModule(\"fs/promises\").readFile(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 20716,
+        "text": "const fs = process.getBuiltinModule(\"fs\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 20734,
+        "text": "process.getBuiltinModule(\"fs/promises\").lstat(url).then((stat) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import * as fsp from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1106,
+        "text": "const child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

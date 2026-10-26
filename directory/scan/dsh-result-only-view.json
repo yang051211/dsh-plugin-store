@@ -1,0 +1,64 @@
+{
+  "name": "dsh-result-only-view",
+  "version": "1.7.0",
+  "scannedAt": "2026-10-26T10:06:46.380Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify.mjs",
+        "line": 3,
+        "text": "import { readFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 10,
+        "text": "const pkg = JSON.parse(readFileSync(join(root, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 33,
+        "text": "const client = readFileSync(join(root, \"lib/client.js\"), \"utf8\");"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 41,
+        "text": "const patch = readFileSync(join(root, \"cordis.patch.yml\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 27,
+        "text": "const res = spawnSync(process.execPath, [\"--check\", join(root, file)], { encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

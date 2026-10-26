@@ -1,0 +1,71 @@
+{
+  "name": "dsh-attention-health",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:06:58.605Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 105,
+        "text": "const response = await fetch(url, { headers: { accept: 'application/json' }, cache: 'no-store' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1159,
+        "text": "* （curl / Invoke-WebRequest / 自动验证脚本）不带 Origin，两者都放行。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "handoff.mjs",
+        "line": 25,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "handoff.mjs",
+        "line": 54,
+        "text": "const buffer = fs.readFileSync(file);"
+      },
+      {
+        "file": "handoff.mjs",
+        "line": 243,
+        "text": "fs.mkdirSync(path.dirname(outPath), { recursive: true });"
+      },
+      {
+        "file": "handoff.mjs",
+        "line": 244,
+        "text": "fs.writeFileSync(outPath, markdown, 'utf8');"
+      },
+      {
+        "file": "lib/guard-log.js",
+        "line": 26,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

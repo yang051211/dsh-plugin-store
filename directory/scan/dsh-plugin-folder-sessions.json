@@ -1,0 +1,66 @@
+{
+  "name": "dsh-plugin-folder-sessions",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:30.665Z",
+  "icon": "dsh-plugin-folder-sessions.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 486,
+        "text": "const fetchImpl = env.fetch ?? ((input, init) => globalThis.fetch(input, init))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/config.js",
+        "line": 18,
+        "text": "import { mkdir, readFile, realpath, rename, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "host/config.js",
+        "line": 83,
+        "text": "const text = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "host/config.js",
+        "line": 96,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "host/config.js",
+        "line": 98,
+        "text": "await writeFile(tmp, `${JSON.stringify(value, null, 2)}\\n`, { encoding: 'utf8', mode: 0o644 })"
+      },
+      {
+        "file": "host/config.js",
+        "line": 205,
+        "text": "await mkdir(normalized, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

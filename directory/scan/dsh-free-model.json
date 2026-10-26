@@ -1,0 +1,117 @@
+{
+  "name": "dsh-free-model",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:06:55.090Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 950,
+        "text": "const response = await fetch(`${API}${path}`, { ...fetchOptions, redirect: 'error', signal: ctrl.signal })"
+      },
+      {
+        "file": "src/chan-relay.js",
+        "line": 22,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/chan-relay.js",
+        "line": 146,
+        "text": "const target = http.request({"
+      },
+      {
+        "file": "src/egress.js",
+        "line": 54,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/egress.js",
+        "line": 105,
+        "text": "if (relay === null) return fetch(url, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "return String(JSON.parse(fs.readFileSync(path.join(PKG_DIR, 'package.json'), 'utf8')).version ?? '')"
+      },
+      {
+        "file": "index.js",
+        "line": 86,
+        "text": "fs.mkdirSync(dataDir, { recursive: true })"
+      },
+      {
+        "file": "src/chan-relay.js",
+        "line": 23,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/chan-relay.js",
+        "line": 70,
+        "text": "const stored = fs.readFileSync(file, 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/egress.js",
+        "line": 58,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/egress.js",
+        "line": 162,
+        "text": "child = spawn(binary, ['-d', dir, '-f', configPath], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 986,
+        "text": "import { spawn, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 1077,
+        "text": "const child = spawn(\"cmd\", args, { detached: true, stdio: \"ignore\", windowsVerbatimArguments: true });"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 1088,
+        "text": "const child = spawn(cmd, [url], { detached: true, stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js",
+    "vendor/channel-pack/pack.js"
+  ],
+  "binaryFiles": [
+    "vendor/channel-pack/qoder-auth-wasm.wasm"
+  ],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

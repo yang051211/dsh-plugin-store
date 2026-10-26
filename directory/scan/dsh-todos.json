@@ -1,0 +1,85 @@
+{
+  "name": "dsh-todos",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:06:21.319Z",
+  "icon": "dsh-todos.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 489,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 4,
+        "text": "* 客户端半用**文档相对路径** `fetch('api/dsh-todos/...')` 调这里"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 16,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 274,
+        "text": "const text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 284,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 298,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 300,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(state, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "const disposers = definitions.map((definition) => toolCtx.tools.register(definition));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* 由 `ctx.tools.register()` 直接接收（与已安装的 WeKnora 插件同构）。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 113,
+        "text": "* @returns {Array<object>} 可直接交给 `ctx.tools.register()` 的定义。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

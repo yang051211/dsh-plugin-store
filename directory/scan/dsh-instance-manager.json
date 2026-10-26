@@ -1,0 +1,95 @@
+{
+  "name": "dsh-instance-manager",
+  "version": "0.12.0",
+  "scannedAt": "2026-10-26T10:06:41.259Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 384,
+        "text": "const res = await fetch('/dsh-instance-manager/api?' + q, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "const req = http.get({ host: '127.0.0.1', port, path: API_PATH + '?' + query, timeout: timeoutMs, method: method || 'GET' }, (res) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 433,
+        "text": "const req = http.get({ host: '127.0.0.1', port, path: '/', timeout: 1500 }, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 133,
+        "text": "const existing = fs.readFileSync(file, 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "fs.mkdirSync(dshHome(), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "fs.writeFileSync(file, fleetIdCache + '\\n')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "const prev = fs.readFileSync(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 683,
+        "text": "child = spawn(process.execPath,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 692,
+        "text": "// spawn() 本身抛出（坏的 fd、错误的参数）：什么都没启动，因此关闭刚打开的"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

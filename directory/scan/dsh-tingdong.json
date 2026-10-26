@@ -1,0 +1,122 @@
+{
+  "name": "dsh-tingdong",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:06:56.179Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-tingdong.js",
+        "line": 14,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/cli-llm.js",
+        "line": 27,
+        "text": "const r = await fetch(baseURL.replace(/\\/+$/, '') + '/models', {"
+      },
+      {
+        "file": "lib/llm.js",
+        "line": 47,
+        "text": "const res = await fetch(base + '/chat/completions', {"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 66,
+        "text": "const res = await fetch(origin + asset.path, { signal, redirect: 'follow' })"
+      },
+      {
+        "file": "lib/voices.js",
+        "line": 83,
+        "text": "const res = await fetch(m.url, { signal, redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-llm.js",
+        "line": 7,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cli-llm.js",
+        "line": 15,
+        "text": "const cfg = JSON.parse(await readFile(join(root, 'config.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/cli-llm.js",
+        "line": 16,
+        "text": "const yaml = await readFile(join(root, 'engine.yaml'), 'utf8')"
+      },
+      {
+        "file": "lib/drill.js",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/drill.js",
+        "line": 9,
+        "text": "import { mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/tools.js",
+        "line": 160,
+        "text": "return defs.map(def => (deps.effect ? deps.effect(() => tools.register(def)) : tools.register(def)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/asr-worker.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/asr-worker.js",
+        "line": 60,
+        "text": "const ff = spawn(opt.ffmpeg, ['-hide_banner', '-nostdin', '-i', opt.file, '-vn', '-ac', '1', '-ar', String(RATE), '-f', 'f32le', 'pipe:1'],"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 26,
+        "text": "const child = spawn(process.execPath, [WORKER, JSON.stringify(args)], {"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 103,
+        "text": "const child = spawn(ffmpeg, ['-hide_banner', '-nostdin', '-y', '-i', src, '-vn', '-map_metadata', '-1', '-ac', '1', '-ar', '44100',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 15,
+      "text": "npm i -g dsh-tingdong                            # 命令行版：不开 DSH 也能用"
+    }
+  ],
+  "skippedEntries": []
+}

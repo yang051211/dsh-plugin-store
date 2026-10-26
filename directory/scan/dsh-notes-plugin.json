@@ -1,0 +1,105 @@
+{
+  "name": "dsh-notes-plugin",
+  "version": "0.6.3",
+  "scannedAt": "2026-10-26T10:06:36.346Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7,
+        "text": "//   · RPC          ：fetch('/dsh-notes', POST {method, args}) —— index.mjs 的 webServer exact 路由"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2875,
+        "text": "fetch('/dsh-notes', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 20,
+        "text": "import fsNode from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 29,
+        "text": "export const inject = ['fs', 'sandboxPolicy', 'webServer', 'tools', 'agents', 'workspaceRegistry', 'sessionPersistence', 'sessionQuery', 'sessionTitle']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 1362,
+        "text": "if (pp) { await fsNode.promises.unlink(pp); return }"
+      },
+      {
+        "file": "index.mjs",
+        "line": 2587,
+        "text": "const fsM = await import('node:fs')"
+      },
+      {
+        "file": "index.mjs",
+        "line": 2612,
+        "text": "try { return new Response(await fsM.promises.readFile(pathM.join.apply(null, [BGE_MODEL_CACHE_DIR].concat(rel.split('/'))))) } catch (e) { return undefined }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 15,
+        "text": "//      handler 退到 `ctx.webServer.register({kind:'exact', path:'/dsh-notes'})`、工具退到 `ctx.tools.register`"
+      },
+      {
+        "file": "index.mjs",
+        "line": 29,
+        "text": "export const inject = ['fs', 'sandboxPolicy', 'webServer', 'tools', 'agents', 'workspaceRegistry', 'sessionPersistence', 'sessionQuery', 'sessionTitle']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 100,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "index.mjs",
+        "line": 7607,
+        "text": "// 仅在 harness 缺失时回退到 ctx.tools.register（task-board 的服务路径）。两通道互斥，不会重复注册。"
+      },
+      {
+        "file": "index.mjs",
+        "line": 7615,
+        "text": "const d = tools.register(defineTool(def))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "sandboxPolicy",
+    "sessionPersistence",
+    "sessionQuery",
+    "sessionTitle",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

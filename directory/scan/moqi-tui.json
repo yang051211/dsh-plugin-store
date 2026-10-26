@@ -1,0 +1,112 @@
+{
+  "name": "moqi-tui",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:06:34.034Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4090,
+        "text": "const response = await fetch(`${stripTrailingSlashes(registry)}/${packageName}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/moqi.mjs",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/moqi.mjs",
+        "line": 29,
+        "text": "const { name } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "bin/moqi.mjs",
+        "line": 51,
+        "text": "const { version } = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/cross-find.js",
+        "line": 14,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cross-find.js",
+        "line": 96,
+        "text": "raw = readFileSync(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1323,
+        "text": "registered = memoryTools(() => tab.memory).map((tool) => tools.register(tool));"
+      },
+      {
+        "file": "lib/permissions.js",
+        "line": 70,
+        "text": "* Harness packages (`ctx.tools.register(defineTool({ name }))` in each"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/moqi.mjs",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/fleet-sources.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/fleet-sources.js",
+        "line": 88,
+        "text": "execFile('ssh', // NOSONAR — the user's ssh from PATH is the intended tool."
+      },
+      {
+        "file": "lib/git-workspace.js",
+        "line": 21,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git-workspace.js",
+        "line": 51,
+        "text": "execFile('git', ['-C', cwd, ...args], { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "cmdlineArgs",
+    "sessions"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "npm install -g moqi-tui"
+    }
+  ],
+  "skippedEntries": []
+}

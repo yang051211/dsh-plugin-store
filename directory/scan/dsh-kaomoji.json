@@ -1,0 +1,66 @@
+{
+  "name": "dsh-kaomoji",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:34.126Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 217,
+        "text": "const doFetch = typeof fetchImpl === \"function\" ? fetchImpl : (...args) => fetch(...args);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 233,
+        "text": "const raw = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 246,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 257,
+        "text": "writeFileSync(tmp, payload, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 262,
+        "text": "rmSync(tmp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,78 @@
+{
+  "name": "dsh-pathlink",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:06:46.917Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 14942,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 14950,
+        "text": "const response = await fetch(`${HOST_BASE}/save?name=${encodeURIComponent(file2.name)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { existsSync, mkdirSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { readdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 274,
+        "text": "mkdirSync(this.drop.dropDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 289,
+        "text": "writeFileSync(target, body);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 59,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

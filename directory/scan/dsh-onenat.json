@@ -1,0 +1,112 @@
+{
+  "name": "dsh-onenat",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:39.541Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const response = await globalThis.fetch(`${apiPrefix()}${path}`, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 74,
+        "text": "const response = await globalThis.fetch(`${apiPrefix()}${path}`, {"
+      },
+      {
+        "file": "lib/onenat.js",
+        "line": 119,
+        "text": "const res = await fetch(`${this.baseUrl}/api/v1/resources`, {"
+      },
+      {
+        "file": "lib/onenat.js",
+        "line": 256,
+        "text": "const res = await fetch(`${this.baseUrl}/api/v1/mappings/${encodeURIComponent(mappingId)}/credentials`, {"
+      },
+      {
+        "file": "lib/onenat.js",
+        "line": 291,
+        "text": "const res = await fetch(`${cleanBaseUrl(baseUrl)}/system/status`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ssh-store.js",
+        "line": 8,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ssh-store.js",
+        "line": 22,
+        "text": "const parsed = JSON.parse(readFileSync(this.filePath, 'utf-8'));"
+      },
+      {
+        "file": "lib/ssh-store.js",
+        "line": 35,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/ssh-store.js",
+        "line": 36,
+        "text": "writeFileSync(this.filePath, JSON.stringify({ resources: this.resources }, null, 2), 'utf-8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 32,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 179,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 466,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 505,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

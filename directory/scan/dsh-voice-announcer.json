@@ -1,0 +1,103 @@
+{
+  "name": "dsh-voice-announcer",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:06:33.033Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 344,
+        "text": "const resp = await fetch(\"/voice-announcer/preview\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 842,
+        "text": "fetch(\"/voice-announcer/active\", {"
+      },
+      {
+        "file": "lib/websocket.js",
+        "line": 8,
+        "text": "import { request } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "appendFileSync(DIAG_LOG, '[' + new Date().toISOString() + '] [diag] ' + msg + '\\n');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 391,
+        "text": "appendFileSync(BOOT_LOG, '[' + new Date().toISOString() + '] MODULE-LOAD v5\\n');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 450,
+        "text": "appendFileSync(BOOT_LOG, '[' + new Date().toISOString() + '] APPLY v5\\n');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 473,
+        "text": "mkdirSync(join(process.env.DSH_HOME || join(homedir(), '.dsh'), 'super-injector'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 340,
+        "text": "const player = spawn('ffplay', ['-nodisp', '-autoexit', '-loglevel', 'quiet', '-i', '-'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 552,
+        "text": "const player = spawn('ffplay', ['-nodisp', '-autoexit', '-loglevel', 'quiet', '-i', '-'], { stdio: ['pipe', 'ignore', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/sapi.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/sapi.js",
+        "line": 39,
+        "text": "child = spawn('powershell', ['-NoProfile', '-NonInteractive', '-EncodedCommand', encoded], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

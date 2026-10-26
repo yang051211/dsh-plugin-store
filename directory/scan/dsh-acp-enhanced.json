@@ -1,0 +1,113 @@
+{
+  "name": "dsh-acp-enhanced",
+  "version": "0.11.1",
+  "scannedAt": "2026-10-26T10:06:18.005Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 255,
+        "text": "const manifest = JSON.parse(process.getBuiltinModule('node:fs').readFileSync(anchor, 'utf8'))"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 274,
+        "text": "const manifest = JSON.parse(process.getBuiltinModule('node:fs').readFileSync(anchor, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "import { writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "const parsed = JSON.parse(readFileSync(effortMemoryFile, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "export const inject = ['agents', 'llm', 'approval', 'tools', 'commands', 'skills', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 448,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1733,
+        "text": "clientToolDisposers.push(tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1761,
+        "text": "clientToolDisposers.push(tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1783,
+        "text": "clientToolDisposers.push(tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/acp-doctor.mjs",
+        "line": 33,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/acp-doctor.mjs",
+        "line": 94,
+        "text": "const which = spawnSync('dsh', ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/acp-doctor.mjs",
+        "line": 100,
+        "text": "const cliVersion = cli.path === undefined ? undefined : (spawnSync(cli.path, ['--version'], { encoding: 'utf8' }).stdout ?? '').trim()"
+      },
+      {
+        "file": "scripts/acp-doctor.mjs",
+        "line": 184,
+        "text": "const child = spawn('bash', [launcher], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "commands",
+    "llm",
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "dsh-glass-ranswork",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:06:29.175Z",
+  "icon": "dsh-glass-ranswork.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 805,
+        "text": "*   `fetch()` 走的正是插件设置读写已经在用的那条通道，拿到的 Blob 再"
+      },
+      {
+        "file": "client.js",
+        "line": 827,
+        "text": "const response = await fetch(direct);"
+      },
+      {
+        "file": "client.js",
+        "line": 1324,
+        "text": "const response = await fetch(API_BG, {"
+      },
+      {
+        "file": "client.js",
+        "line": 2863,
+        "text": "fetch(API_VERSION, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 2947,
+        "text": "fetch(API_BG, { method: 'DELETE' }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 43,
+        "text": "import { mkdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 511,
+        "text": "const text = await readFile(new URL('./package.json', import.meta.url), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 598,
+        "text": "const text = await readFile(await pathOf(), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 613,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

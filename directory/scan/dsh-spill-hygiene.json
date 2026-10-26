@@ -1,0 +1,48 @@
+{
+  "name": "dsh-spill-hygiene",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:28.243Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sweep.js",
+        "line": 9,
+        "text": "import { lstatSync, readdirSync, rmdirSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/sweep.js",
+        "line": 167,
+        "text": "unlinkSync(path);"
+      },
+      {
+        "file": "lib/sweep.js",
+        "line": 179,
+        "text": "* 用 `rmdirSync` 而不是 `rmSync(..., { recursive: true })`：前者在内核层面"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

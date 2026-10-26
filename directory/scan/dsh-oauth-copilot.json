@@ -1,0 +1,106 @@
+{
+  "name": "dsh-oauth-copilot",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:06:31.526Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/dsh-copilot-auth.mjs",
+        "line": 68,
+        "text": "const res = await fetch(\"https://api.individual.githubcopilot.com/models\", { headers, signal: AbortSignal.timeout(10000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credential-store.js",
+        "line": 133,
+        "text": "const { existsSync } = await import('node:fs');"
+      },
+      {
+        "file": "scripts/dsh-copilot-auth.mjs",
+        "line": 15,
+        "text": "import { readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/dsh-copilot-auth.mjs",
+        "line": 79,
+        "text": "const raw = readFileSync(CRED_FILE, 'utf8')"
+      },
+      {
+        "file": "scripts/dsh-copilot-auth.mjs",
+        "line": 87,
+        "text": "function exists() { try { readFileSync(CRED_FILE); return true } catch { return false } }"
+      },
+      {
+        "file": "scripts/dsh-copilot-auth.mjs",
+        "line": 90,
+        "text": "mkdirSync(dirname(CRED_FILE), { recursive: true, mode: 0o700 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['llm', 'tools', 'credentials', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/login-tool.js",
+        "line": 128,
+        "text": "disposers.push(ctx.tools.register(login));"
+      },
+      {
+        "file": "lib/login-tool.js",
+        "line": 158,
+        "text": "disposers.push(ctx.tools.register(status));"
+      },
+      {
+        "file": "lib/login-tool.js",
+        "line": 172,
+        "text": "disposers.push(ctx.tools.register(logout));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 54,
+      "text": "npm install -g dsh-oauth-copilot"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "text": "(`npm install -g dsh-oauth-copilot`) or invoke `npx -y dsh-oauth-copilot login`."
+    },
+    {
+      "file": "README.md",
+      "line": 117,
+      "text": "- **How do I update the plugin?** `npm install -g dsh-oauth-copilot@latest && dsh plugin --profile"
+    }
+  ],
+  "skippedEntries": []
+}

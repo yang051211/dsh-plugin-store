@@ -1,0 +1,136 @@
+{
+  "name": "dsh-search-enhance",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:06:36.463Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 191,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/providers/direct-http.js",
+        "line": 1,
+        "text": "import * as http from 'node:http';"
+      },
+      {
+        "file": "lib/providers/direct-http.js",
+        "line": 2,
+        "text": "import * as https from 'node:https';"
+      },
+      {
+        "file": "lib/providers/direct-http.js",
+        "line": 30,
+        "text": "? https.request(url, options, callback)"
+      },
+      {
+        "file": "lib/providers/direct-http.js",
+        "line": 31,
+        "text": ": http.request(url, options, callback);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/research/profile.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, mkdtemp, rename, rm, symlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/research/profile.js",
+        "line": 12,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/research/profile.js",
+        "line": 14,
+        "text": "await mkdir(join(dir, 'node_modules'), { mode: 0o700 });"
+      },
+      {
+        "file": "lib/research/profile.js",
+        "line": 23,
+        "text": "{ id: 'fs', name: '@deepseek-ai/dsh-fs-local' },"
+      },
+      {
+        "file": "lib/research/profile.js",
+        "line": 40,
+        "text": "await writeFile(`${path}.new`, JSON.stringify(value), { mode: 0o600, flag: 'wx' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "export const inject = ['agents', 'configEditor', 'credentials', 'llm', 'storageDomain', 'subagents', 'systemPrompt', 'tools'];"
+      },
+      {
+        "file": "lib/research/child.js",
+        "line": 11,
+        "text": "export const inject = ['agents', 'llm', 'storageDomain', 'systemPrompt', 'tools'];"
+      },
+      {
+        "file": "lib/research/child.js",
+        "line": 48,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/research/child.js",
+        "line": 53,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/research/child.js",
+        "line": 87,
+        "text": "ctx.tools.guard(denial);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/smart-direct-child.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/providers/smart-direct-child.js",
+        "line": 315,
+        "text": "const child = spawn(process.execPath, ['--input-type=module', '--eval', SMART_DIRECT_CHILD_SOURCE], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 28,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "configEditor",
+    "credentials",
+    "llm",
+    "storageDomain",
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

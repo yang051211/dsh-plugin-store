@@ -1,0 +1,59 @@
+{
+  "name": "dsh-session-cleaner",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:06:33.496Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 50,
+        "text": "const res = await fetch(\"/api-ext/session.delete\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 72,
+        "text": "const res = await fetch(\"/api/session.list\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { access, readdir, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "await rm(dir, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

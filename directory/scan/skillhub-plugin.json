@@ -1,0 +1,129 @@
+{
+  "name": "skillhub-plugin",
+  "version": "0.2.16",
+  "scannedAt": "2026-10-26T10:06:46.816Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 703,
+        "text": "const res = await fetch(pluginUrl(\"\"), {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 23,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 30,
+        "text": "const raw = JSON.parse(readFileSync(overlayPath(), 'utf8'));"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 39,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 40,
+        "text": "writeFileSync(path, `${JSON.stringify(publicConfig(cfg), null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 6,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 12,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 26,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 81,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 104,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 144,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 255,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 258,
+        "text": "return spawn(comspec, ['/d', '/s', '/c', `\"${cmdCommandLine([file, ...args])}\"`], {"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 142,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,147 @@
+{
+  "name": "search-boost",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:06:18.544Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 142,
+        "text": "async fetch(request, signal) {"
+      },
+      {
+        "file": "lib/jev/client.mjs",
+        "line": 411,
+        "text": "const { Response } = await import('undici')"
+      },
+      {
+        "file": "lib/search/ipv4-fetch.js",
+        "line": 45,
+        "text": "let undiciLoader = () => import('undici')"
+      },
+      {
+        "file": "lib/search/ipv4-fetch.js",
+        "line": 48,
+        "text": "undiciLoader = loader ?? (() => import('undici'))"
+      },
+      {
+        "file": "lib/search/ipv4-fetch.js",
+        "line": 57,
+        "text": "'undici transport unavailable: refusing to fall back to plain fetch (it would bypass the configured proxy and address policy)',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 21,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 64,
+        "text": "text = renderResearchTemplate(readFileSync(promptPath('dsh'), 'utf8')).trim()"
+      },
+      {
+        "file": "adapters/mcp/server.mjs",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "adapters/mcp/server.mjs",
+        "line": 15,
+        "text": "if (path) return readFileSync(path, 'utf8').trim()"
+      },
+      {
+        "file": "adapters/pi/index.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 53,
+        "text": "export const inject = ['web', 'tools', 'systemPrompt', 'timer', 'commands']"
+      },
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 693,
+        "text": "tools: ctx.tools,"
+      },
+      {
+        "file": "adapters/dsh/schema.js",
+        "line": 67,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/pi/search-parallel-subagent.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "adapters/pi/search-parallel-subagent.js",
+        "line": 207,
+        "text": "const proc = spawn(invocation.command, invocation.args, {"
+      },
+      {
+        "file": "lib/dsh-windows-registry.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mcp-entry.mjs",
+        "line": 2,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mcp-entry.mjs",
+        "line": 13,
+        "text": "execSync(process.platform === 'win32' ? `where ${cmd}` : `which ${cmd}`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 129,
+      "text": "npm install -g search-boost"
+    },
+    {
+      "file": "README.md",
+      "line": 152,
+      "text": "npm install -g search-boost@latest --prefer-online"
+    },
+    {
+      "file": "README.md",
+      "line": 177,
+      "text": "npm install -g search-boost@latest --prefer-online"
+    },
+    {
+      "file": "README.md",
+      "line": 499,
+      "text": "npm link        # or: npm install -g ."
+    }
+  ],
+  "skippedEntries": []
+}

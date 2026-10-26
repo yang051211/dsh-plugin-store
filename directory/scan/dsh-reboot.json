@@ -1,0 +1,93 @@
+{
+  "name": "dsh-reboot",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:06:26.069Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 30,
+        "text": "const response = await fetch(new URL(`restart/api/${method}`, apiBase()).href, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "writeFileSync(script, WATCHDOG_SCRIPT);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "yield ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/argv.js",
+        "line": 44,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/argv.js",
+        "line": 57,
+        "text": "const child = spawn(execPath, args, {"
+      },
+      {
+        "file": "lib/argv.js",
+        "line": 65,
+        "text": "const child = spawn(process.execPath, [script, ...sub], {"
+      },
+      {
+        "file": "lib/argv.js",
+        "line": 79,
+        "text": "spawn('taskkill', ['/PID', String(pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

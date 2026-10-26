@@ -1,0 +1,104 @@
+{
+  "name": "dsh-plugin-jules",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:45.057Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 12,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/link-dsh-deps.mjs",
+        "line": 27,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "scripts/link-dsh-deps.mjs",
+        "line": 32,
+        "text": "const MANIFEST = JSON.parse(readFileSync(join(PACKAGE_ROOT, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/link-dsh-deps.mjs",
+        "line": 106,
+        "text": "mkdirSync(dirname(link), { recursive: true })"
+      },
+      {
+        "file": "scripts/link-dsh-deps.mjs",
+        "line": 112,
+        "text": "rmSync(link, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 259,
+        "text": "text: ({ scope }) => ctx.tools.get('jules_create', scope) === undefined"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 261,
+        "text": ": julesGuidance(ctx.tools.get('jules_watch', scope) !== undefined)"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 237,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 274,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 33,
+        "text": "const result = spawnSync(process.execPath, [tsc, '-p', join(PACKAGE_ROOT, 'tsconfig.json'), ...process.argv.slice(2)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/link-dsh-deps.mjs --optional && node scripts/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

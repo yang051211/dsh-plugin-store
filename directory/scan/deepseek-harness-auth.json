@@ -1,0 +1,87 @@
+{
+  "name": "deepseek-harness-auth",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:06:46.090Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 174,
+        "text": "await fetch(\"/auth/logout\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 221,
+        "text": "fetch(\"/auth/account\").then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 248,
+        "text": "const response = await fetch(\"/auth/account/password\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "const response = await fetch(\"/auth/account/whitelist\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 311,
+        "text": "const response = await fetch(\"/auth/account/captcha\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 3,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 133,
+        "text": "const packageVersion = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 7,
+        "text": "import { writeSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, stat, writeFile, chmod } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 97,
+        "text": "return parseState(JSON.parse(await readFile(this.file, 'utf8')));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "authCenter",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

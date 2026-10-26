@@ -1,0 +1,62 @@
+{
+  "name": "rulemux-dsh",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:06:20.978Z",
+  "icon": "rulemux-dsh.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 71,
+        "text": "import { appendFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.mjs",
+        "line": 535,
+        "text": "appendFileSync(join(homedir(), \".rulemux-dsh-load.log\"), `${new Date().toISOString()} ${line}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 69,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "index.mjs",
+        "line": 150,
+        "text": "child = spawn(cmd, args, { cwd, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 89,
+      "text": "`npm install -g --force` (which overrides a `rulemux` binary that was copied onto PATH by hand,"
+    }
+  ],
+  "skippedEntries": []
+}

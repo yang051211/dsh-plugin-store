@@ -1,0 +1,86 @@
+{
+  "name": "dsh-answer-reviewer",
+  "version": "0.7.6",
+  "scannedAt": "2026-10-26T10:06:16.405Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 239,
+        "text": "fetch(HEALTH_URL, { mode: \"no-cors\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 368,
+        "text": "fetch(REVIEWS_URL, { cache: \"no-store\", credentials: \"same-origin\" })"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 10,
+        "text": "*     is usable from `curl -X POST` for automation."
+      },
+      {
+        "file": "lib/server.js",
+        "line": 39,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 461,
+        "text": "const res = await fetch('/api/recent');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 26,
+        "text": "import { writeFile, rename, readFile, mkdir, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 96,
+        "text": "raw = await readFile(filePath, 'utf8')"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 158,
+        "text": "await unlink(filePath)"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 171,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 173,
+        "text": "await writeFile(tmp, `${JSON.stringify(over, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

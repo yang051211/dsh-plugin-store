@@ -1,0 +1,131 @@
+{
+  "name": "prts-terrarchive",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:06:46.513Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/preview-rhine.mjs",
+        "line": 3,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "bin/preview-rhine.mjs",
+        "line": 31,
+        "text": "point,payload,signal)=>{const res=await fetch('/rpc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({endpoint,payload}),signal})"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1243,
+        "text": "return await fetch(url, { ...init, signal: controller.signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4020,
+        "text": "const response = await fetch('/api/prts-corpus/rpc', {"
+      },
+      {
+        "file": "lib/rhine/rhine.js",
+        "line": 24,
+        "text": "l}),o=this.mimeType,l=this.responseType;fetch(a).then(c=>{if(c.status===200||c.status===0){if(c.status===0&&Ot(\"FileLoader: HTTP Status 0 received.\"),typeof Rea"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bake-rhine-details.mjs",
+        "line": 2,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/bake-rhine-details.mjs",
+        "line": 6,
+        "text": "const bytes = await readFile(new URL('../lib/rhine/assets/archive-cassette.glb', import.meta.url));"
+      },
+      {
+        "file": "bin/bake-rhine-details.mjs",
+        "line": 31,
+        "text": "await writeFile(new URL('../ui/rhine/original/array-detail-data.ts', import.meta.url),"
+      },
+      {
+        "file": "bin/build-runtime.mjs",
+        "line": 2,
+        "text": "import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/build-runtime.mjs",
+        "line": 10,
+        "text": "const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 5,
+        "text": "* ctx.tools 注册原始 ToolDefinition。模型使用扁平参数（title 或关卡代号 + 行动前后"
+      },
+      {
+        "file": "src/index.js",
+        "line": 157,
+        "text": "/** ---- 模型可见参数（DSH ctx.tools 的 JSON Schema 子集：无 anyOf/$defs/pattern/数值边界） ---- */"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1129,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1148,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1210,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/check-runtime.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/check-runtime.mjs",
+        "line": 43,
+        "text": "const result = spawnSync(process.execPath, [probe], {"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/rhine/rhine.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

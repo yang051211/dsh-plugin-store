@@ -1,0 +1,92 @@
+{
+  "name": "dsh-deepseek-web-free",
+  "version": "1.0.10",
+  "scannedAt": "2026-10-26T10:06:52.758Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 43,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 876,
+        "text": "const ws = new WebSocket(url);"
+      },
+      {
+        "file": "wasm/deepseek_web_core.js",
+        "line": 512,
+        "text": "module_or_path = fetch(module_or_path);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, readFile, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 6,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 213,
+        "text": "const bytes = new Uint8Array(await readFile(wasmPath));"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 1076,
+        "text": "await mkdir(join(this.path, \"..\"), { recursive: true });"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 1077,
+        "text": "const handle = await import(\"node:fs/promises\").then((fs) => fs.open(this.path, \"wx\").catch(async (error) => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 8,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 1170,
+        "text": "const child = spawn(options.executable, args, {"
+      },
+      {
+        "file": "lib/config-DACadRbL.js",
+        "line": 1201,
+        "text": "const killer = spawn(\"taskkill\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "wasm/deepseek_web_core_bg.wasm"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

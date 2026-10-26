@@ -1,0 +1,95 @@
+{
+  "name": "dsh-kimi-tide",
+  "version": "2.2.4",
+  "scannedAt": "2026-10-26T10:06:49.772Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6369,
+        "text": "response = await fetch(`/api/kimi-tide/panel?sessionId=${encodeURIComponent(sessionId)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/commands.js",
+        "line": 32,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 353,
+        "text": "const raw = YAML.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { copyFileSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 532,
+        "text": "const text = readFileSync(join(home, 'settings.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/settings-migration.js",
+        "line": 2,
+        "text": "import { existsSync, renameSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 77,
+        "text": "守栏人是宿主 ctx.tools.guard —— 它**只能拒绝、不能改派**，所以文案必须自带"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 807,
+        "text": "The guard is host `ctx.tools.guard` — deny only, never reroute — so the copy must"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 832,
+        "text": "* 语义边界（宿主原文）：`ctx.tools.guard` 是 `tools/pre-execute` 之后的**单调"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 900,
+        "text": "* ctx.tools.guard 的宿主回调（同步、必须永不抛）：委托给 guard.ts 的纯函数。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1441,
+        "text": "// 派发护栏的宿主服务补挂（修复路线③）：`ctx.tools` 是**可选服务**——未挂工具流水线"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "llm",
+    "sessionProjections",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

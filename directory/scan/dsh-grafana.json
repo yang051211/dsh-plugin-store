@@ -1,0 +1,79 @@
+{
+  "name": "dsh-grafana",
+  "version": "0.18.2",
+  "scannedAt": "2026-10-26T10:06:35.861Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 172,
+        "text": "response = await fetch(`${baseUrl}${path}`, { ...init, redirect: 'error', signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 324,
+        "text": "raw = readFileSync(importedSettingsPath(), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'systemPrompt', 'credentials']"
+      },
+      {
+        "file": "index.js",
+        "line": 505,
+        "text": "ctx.tools.register(defineGrafanaGetTool(rt))"
+      },
+      {
+        "file": "index.js",
+        "line": 508,
+        "text": "ctx.tools.register(defineGrafanaPushTool(rt))"
+      },
+      {
+        "file": "index.js",
+        "line": 509,
+        "text": "ctx.tools.register(defineGrafanaCloneTool(rt))"
+      },
+      {
+        "file": "index.js",
+        "line": 511,
+        "text": "ctx.tools.register(defineGrafanaPanelQueryTool(rt))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,71 @@
+{
+  "name": "dsh-chatterbox",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:37.350Z",
+  "icon": "dsh-chatterbox.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 145,
+        "text": "appendFileSync(path, line, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "const content = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 149,
+        "text": "writeFileSync(path, `${lines.slice(Math.floor(lines.length / 2)).join('\\n')}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/make-release.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/make-release.mjs",
+        "line": 67,
+        "text": "const packed = spawnSync(packCommand, { cwd: ROOT, encoding: 'utf8', shell: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

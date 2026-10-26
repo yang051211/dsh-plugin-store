@@ -1,0 +1,112 @@
+{
+  "name": "dsh-remote-tunnel",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:26.748Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/bootstrap-remote.sh",
+        "line": 8,
+        "text": "#   curl -fsSL <this file> | sh          # or: ssh <host> 'sh -s' < this-file"
+      },
+      {
+        "file": "scripts/bootstrap-remote.sh",
+        "line": 49,
+        "text": "curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -"
+      },
+      {
+        "file": "scripts/bootstrap-remote.sh",
+        "line": 53,
+        "text": "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash"
+      },
+      {
+        "file": "src/client.js",
+        "line": 48,
+        "text": "if (typeof fetch === \"function\") fetch(query, { headers: { accept: \"application/json\" } }).catch(function () {});"
+      },
+      {
+        "file": "src/client.js",
+        "line": 57,
+        "text": "var response = await fetch(ROUTE + action, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/config.js",
+        "line": 76,
+        "text": "mkdirSync(home, { recursive: true });"
+      },
+      {
+        "file": "src/config.js",
+        "line": 78,
+        "text": "writeFileSync(path, \"# dsh-remote-tunnel config — see README.md for every option.\\n\" + yaml.dump(structuredClone(DEFAULT_CONFIG), { lineWidth: 100 }), \"utf8\");"
+      },
+      {
+        "file": "src/config.js",
+        "line": 82,
+        "text": "user = yaml.load(readFileSync(path, \"utf8\")) ?? {};"
+      },
+      {
+        "file": "src/config.js",
+        "line": 176,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/local/ports.js",
+        "line": 3,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "src/local/ports.js",
+        "line": 79,
+        "text": "execFile(file, args, { timeout: timeoutMs, windowsHide: true }, (error, stdout) => {"
+      },
+      {
+        "file": "src/local/tunnel.js",
+        "line": 50,
+        "text": "this.spawn();"
+      },
+      {
+        "file": "src/local/tunnel.js",
+        "line": 54,
+        "text": "spawn() {"
+      },
+      {
+        "file": "src/local/tunnel.js",
+        "line": 101,
+        "text": "this.timer = setTimeout(() => this.spawn(), delay);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "cmdlineArgs"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

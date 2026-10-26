@@ -1,0 +1,119 @@
+{
+  "name": "dsh-comfyui-image",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:06:50.429Z",
+  "icon": "dsh-comfyui-image.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comfy/client.js",
+        "line": 44,
+        "text": "const response = await fetch(target, { ...init, signal: linked.signal });"
+      },
+      {
+        "file": "src/comfy/client.ts",
+        "line": 104,
+        "text": "const response = await fetch(target, { ...init, signal: linked.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 66,
+        "text": "const raw = fs.readFileSync(CONFIG_FILE, 'utf8').replace(/^\\uFEFF/, '');"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 78,
+        "text": "fs.mkdirSync(path.dirname(CONFIG_FILE), { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 79,
+        "text": "fs.writeFileSync(CONFIG_FILE, `${JSON.stringify(next, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* `inject = ['tools']` 保证 `ctx.reflect.get('tools')` 拿得到工具注册表。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "* `tools.register()` 接受普通对象，所以完全不需要类型导入。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "tools.register(createGenerateImageTool(config));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 5,
+        "text": "* `inject = ['tools']` 保证 `ctx.reflect.get('tools')` 拿得到工具注册表。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 32,
+        "text": "const result = spawnSync(process.execPath, ['--test', ...files], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 84,
+      "text": "> `pip install \"rembg[cpu]\"` (without `[cpu]` there is no onnxruntime backend — a pitfall found by testing)."
+    },
+    {
+      "file": "README.md",
+      "line": 84,
+      "text": "> 具体命令见 [docs/INSTALL.md](./docs/INSTALL.md)；注意依赖要写 `pip install \"rembg[cpu]\"`"
+    }
+  ],
+  "skippedEntries": []
+}

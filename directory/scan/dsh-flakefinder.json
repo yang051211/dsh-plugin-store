@@ -1,0 +1,88 @@
+{
+  "name": "dsh-flakefinder",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:06:22.616Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/args.js",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/args.js",
+        "line": 30,
+        "text": "if (/\\[tool\\.pytest(\\.ini_options)?\\]/.test(fs.readFileSync(pyproject, 'utf8')))"
+      },
+      {
+        "file": "lib/args.js",
+        "line": 41,
+        "text": "return /\\[tool:pytest\\]/.test(fs.readFileSync(setupCfg, 'utf8'));"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 6,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 65,
+        "text": "fileText = await fs.readFile(plan.reportPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "/** cordis 服务注入：apply 里要用 ctx.subprocess 与 ctx.tools。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['subprocess', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "const runner = createSubprocessRunner((spec) => ctx.subprocess.spawn(spec), cfg.graceMs, cfg.timeoutMs);"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 20,
+        "text": "handle = spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

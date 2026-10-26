@@ -1,0 +1,107 @@
+{
+  "name": "dsh-database-explorer",
+  "version": "0.9.25",
+  "scannedAt": "2026-10-26T10:06:21.238Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "const response = await fetch(api(path), { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 62,
+        "text": "const response = await fetch(api(path), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1414,
+        "text": "const response = await fetch(api(\"/dsh-database/api/export\"), {"
+      },
+      {
+        "file": "lib/nosql.js",
+        "line": 66,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connections.js",
+        "line": 13,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, existsSync, copyFileSync, renameSync, unlinkSync, chmodSync, appendFileSync, statSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/connections.js",
+        "line": 561,
+        "text": "try { rmSync(join(this.dataDir, 'audit-log.1.jsonl'), { force: true }); } catch { /* 首轮无旧文件 */ }"
+      },
+      {
+        "file": "lib/connections.js",
+        "line": 564,
+        "text": "appendFileSync(this.auditPath, JSON.stringify(record) + '\\n', { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/connections.js",
+        "line": 576,
+        "text": "const lines = readFileSync(path, 'utf8').split('\\n').filter((l) => l.trim() !== '');"
+      },
+      {
+        "file": "lib/connections.js",
+        "line": 600,
+        "text": "const lines = existsSync(this.auditPath) ? readFileSync(this.auditPath, 'utf8').split('\\n') : [];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 4,
+        "text": "* 把连接管理器的操作以宿主原生工具（ctx.tools.register + defineTool）暴露给"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 257,
+        "text": "for (const def of registered) yield ctx.tools.register(def);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connections.js",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/connections.js",
+        "line": 394,
+        "text": "const r = spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 73,
+      "text": "npm install -g dsh-database-explorer   # 或"
+    }
+  ],
+  "skippedEntries": []
+}

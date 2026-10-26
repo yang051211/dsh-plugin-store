@@ -1,0 +1,64 @@
+{
+  "name": "dsh-notify-zeta",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:06:45.007Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import {readFileSync,writeFileSync,renameSync,mkdirSync} from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "ry{settings=validateSettings(JSON.parse(readFileSync(settingsPath,'utf8')),undefined,activeLanguage());}catch(error){if(error.code!=='ENOENT')nativeError=s().se"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "mkdirSync(dirname(settingsPath),{recursive:true});"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "writeFileSync(temp,JSON.stringify(center.snapshot().settings,null,2)+'\\n',{mode:0o600});renameSync(temp,settingsPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/native.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "jobs",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

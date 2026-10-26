@@ -1,0 +1,110 @@
+{
+  "name": "sapbuddy-dsh",
+  "version": "0.0.6",
+  "scannedAt": "2026-10-26T10:06:52.436Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 37,
+        "text": "const r = await fetch(API);"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 42,
+        "text": "const r = await fetch(path, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 49,
+        "text": "const req = https.request(url, {"
+      },
+      {
+        "file": "dist/sap-tools/adtManager.js",
+        "line": 398,
+        "text": "const res = await fetch(oauth.tokenUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/sap-tools/auditLog.js",
+        "line": 3,
+        "text": "import { mkdirSync, appendFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/sap-tools/auditLog.js",
+        "line": 8,
+        "text": "mkdirSync(LOG_DIR, { recursive: true });"
+      },
+      {
+        "file": "dist/sap-tools/auditLog.js",
+        "line": 16,
+        "text": "appendFileSync(join(LOG_DIR, `audit-${today}.jsonl`), JSON.stringify({ ...entry, ts: now.toISOString() }) + \"\\n\");"
+      },
+      {
+        "file": "dist/sap-tools/config.js",
+        "line": 8,
+        "text": "import { readFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/sap-tools/config.js",
+        "line": 54,
+        "text": "const raw = JSON.parse(readFileSync(path, \"utf-8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/sap-tools/gate.js",
+        "line": 5,
+        "text": "* 1. ctx.tools.guard()：同步单调硬规则（只读 / 连接变更 / 命名空间）——不可被绕过"
+      },
+      {
+        "file": "dist/sap-tools/gate.js",
+        "line": 17,
+        "text": "/** 敏感配置文件清单（禁止 AI 读写；位置无关）。MCP 配置由 DSH 内置 dsh-mcp-client 管理（profile patch），不在本目录保护范围内。 */"
+      },
+      {
+        "file": "dist/sap-tools/register.js",
+        "line": 5,
+        "text": "* 写门禁由 gate.ts（ctx.tools.guard + tools/pre-execute + inbox 确认词）承担，"
+      },
+      {
+        "file": "dist/sap-tools/register.js",
+        "line": 6,
+        "text": "* 工具注册由 index.ts（ctx.tools.register）承担。"
+      },
+      {
+        "file": "dist/sap-tools/sapbuddy-home.js",
+        "line": 6,
+        "text": "* 在 ~/.SapBuddy 多处。（MCP 服务器配置由 DSH 内置 dsh-mcp-client 在 profile patch"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

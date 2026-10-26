@@ -1,0 +1,140 @@
+{
+  "name": "bgjobs",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:06:44.499Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 554,
+        "text": "fetch(\"/bgjobs/uiprefs?sidebarEntry=\" + (next ? 1 : 0), { method: \"POST\" }).then((r) => r.json()).then((d) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 610,
+        "text": "fetch(\"/bgjobs/uiprefs\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 625,
+        "text": "const persistDisplay = (next) => fetch(\"/bgjobs/uiprefs\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 641,
+        "text": "fetch(\"/bgjobs/uiprefs\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 654,
+        "text": "fetch(\"/bgjobs/uiprefs?action=resetDisplay\", { method: \"POST\" }).then((r) => r.json()).then(applyHostPrefs).catch(() => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/jobs.js",
+        "line": 4,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/core/jobs.js",
+        "line": 136,
+        "text": "[jobDir, sandboxTemp].filter(Boolean).map((p) => fsp.rm(p, { recursive: true, force: true }).catch(() => {})),"
+      },
+      {
+        "file": "lib/core/jobs.js",
+        "line": 140,
+        "text": "await fsp.mkdir(jobDir, { recursive: true })"
+      },
+      {
+        "file": "lib/core/jobs.js",
+        "line": 272,
+        "text": "try { await fsp.mkdir(sandboxTemp, { recursive: true }) } catch (e) {"
+      },
+      {
+        "file": "lib/core/jobs.js",
+        "line": 291,
+        "text": "await fsp.writeFile(meta.scriptPath, Buffer.concat([bom, Buffer.from(buildPs1(job), 'utf8')]))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "\"settings.mcp.exportDesc\": \"导出 DSH 兼容片段（@deepseek-ai/dsh-mcp-client，可直接并入 cordis.patch.yml）或 bgjobs 原生 JSON（备份/迁移，可被下方「导入」原样吃回）。\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 181,
+        "text": "\"settings.mcp.importDesc\": \"粘贴或选择文件：支持 DSH 的 cordis.patch.yml 片段（@deepseek-ai/dsh-mcp-client）、bgjobs 导出的 JSON，或单个/多个 server 配置对象（需带 serverName）。\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 390,
+        "text": " a DSH-compatible snippet (@deepseek-ai/dsh-mcp-client, paste into cordis.patch.yml) or bgjobs-native JSON (backup/migration; the import box below reads it back"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 401,
+        "text": "or pick a file: a DSH cordis.patch.yml snippet (@deepseek-ai/dsh-mcp-client), bgjobs-exported JSON, or one/more server config objects (each needs serverName).\","
+      },
+      {
+        "file": "lib/core/mcp.js",
+        "line": 3,
+        "text": "// 工具数/工具名来源优先级：live 工具注册表 ctx.tools.schemas() 的 `mcp__<server>__*`（零"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gui-launch.js",
+        "line": 25,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/gui-launch.js",
+        "line": 48,
+        "text": "let guiExec = (file, args, options, cb) => execFile(file, args, options, cb)"
+      },
+      {
+        "file": "lib/runners.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runners.js",
+        "line": 30,
+        "text": "child = spawn(argv[0], argv.slice(1), { cwd, windowsHide: true })"
+      },
+      {
+        "file": "lib/runners.js",
+        "line": 316,
+        "text": "child = spawn(nodeExe, ['--version'], { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

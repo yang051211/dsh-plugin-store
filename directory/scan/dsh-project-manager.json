@@ -1,0 +1,111 @@
+{
+  "name": "dsh-project-manager",
+  "version": "0.20.1",
+  "scannedAt": "2026-10-26T10:06:57.629Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 22,
+        "text": "res = await fetch(API + path, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4910,
+        "text": "fetch(DSM + \"/capabilities\", { cache: \"no-store\" }).then((r) => r.json()).then((b) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4944,
+        "text": "r = await (await fetch(DSM + \"/delete\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hub.js",
+        "line": 8,
+        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, readlinkSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 18,
+        "text": "mkdirSync(repos, { recursive: true });"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 36,
+        "text": "rmSync(gp);"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 45,
+        "text": "rmSync(lp);"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 50,
+        "text": "mkdirSync(join(lp, '..'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "export const inject = ['webServer', 'tools', 'workspaceRegistry', 'sessions', 'permissionPresets', 'sessionTitle', 'systemPrompt'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 539,
+        "text": "execFile('osascript', script.flatMap((l) => ['-e', l]), { timeout: 10 * 60_000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/landfill.js",
+        "line": 6,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/landfill.js",
+        "line": 151,
+        "text": "        const child = spawn(python, [tool, ...args], { env: { ...process.env, AI_MEMORY_ROOT: aiRoot, AI_MEMORY_WRITER: 'dsh-project-manager' }, stdio: ['pipe',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "permissionPresets",
+    "sessionTitle",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,113 @@
+{
+  "name": "dsh-vision-mix",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:06:45.712Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 656,
+        "text": "const [settingsResponse, modelsResponse] = await Promise.all([fetch(\"/vision-mix/settings\", request), fetch(\"/vision-mix/models\", request)]);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 678,
+        "text": "const response = await fetch(\"/vision-mix/settings\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 706,
+        "text": "const response = await fetch(\"/vision-mix/vision-setup\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 734,
+        "text": "const response = await fetch(\"/vision-mix/generation-setup\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1031,
+        "text": "const response = await fetch(callsUrl(sessionId), { signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { appendFile, mkdir, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "await mkdir(this.root, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 184,
+        "text": "await appendFile(sessionFile$1(this.root, record.sessionId), `${JSON.stringify(record)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "raw = await readFile(sessionFile$1(this.root, sessionId), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "await mkdir(this.root, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1682,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1725,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1761,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1860,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

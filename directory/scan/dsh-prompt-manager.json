@@ -1,0 +1,68 @@
+{
+  "name": "dsh-prompt-manager",
+  "version": "1.5.2",
+  "scannedAt": "2026-10-26T10:06:35.358Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 908,
+        "text": "return window.fetch(path, options).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { chmod, mkdir, readFile, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "const text = await readFile(libraryFile(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 261,
+        "text": "await writeFile(temp, JSON.stringify({ version: 1, revision, savedAt: savedAt || Date.now(), prompts }), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 274,
+        "text": "await unlink(temp).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

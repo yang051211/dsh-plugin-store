@@ -1,0 +1,106 @@
+{
+  "name": "dsh-office-toolkit",
+  "version": "0.3.33",
+  "scannedAt": "2026-10-26T10:06:16.020Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/pdfjs/pdf.min.mjs",
+        "line": 21,
+        "text": "hUrl(t,document.baseURI)){const i=await fetch(t);if(!i.ok)throw new Error(i.statusText);switch(e){case\"arraybuffer\":return i.arrayBuffer();case\"blob\":return i.b"
+      },
+      {
+        "file": "vendor/pdfjs/pdf.worker.min.mjs",
+        "line": 21,
+        "text": "n a instanceof Ref&&this.xref?this.xref.fetch(a,this.suppressEncryption):a}async getAsync(e,t,i){let a=this._map.get(e);if(void 0===a&&void 0!==t){a=this._map.g"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/converters.js",
+        "line": 4,
+        "text": "import { writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/converters.js",
+        "line": 51,
+        "text": "await writeFile(outputPath, content);"
+      },
+      {
+        "file": "lib/core/converters.js",
+        "line": 56,
+        "text": "await writeFile(outputPath, html);"
+      },
+      {
+        "file": "lib/core/converters.js",
+        "line": 60,
+        "text": "await writeFile(outputPath, textToRtf(content));"
+      },
+      {
+        "file": "lib/core/converters.js",
+        "line": 64,
+        "text": "await writeFile(outputPath, await word.writeDocx({ html }, { title: '转换文档', readImage: opts.readImage }));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 708,
+        "text": "const tools = ctx.tools || ctx.get('tools');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 717,
+        "text": "const dispose = tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/legacy-external.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 9,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 27,
+        "text": "const child = spawn(exe, args, { stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [
+    "vendor/pdfjs/pdf.min.mjs",
+    "vendor/pdfjs/pdf.worker.min.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

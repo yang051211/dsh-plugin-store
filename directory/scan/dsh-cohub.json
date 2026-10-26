@@ -1,0 +1,90 @@
+{
+  "name": "dsh-cohub",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:06:17.730Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 82,
+        "text": "#   client api: session/prompt failed: Failed to fetch (gateway/internal)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFileSync as readFileSync3 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "out[relative(dir, full).split(\"\\\\\").join(\"/\")] = createHash(\"sha256\").update(readFileSync(full)).digest(\"hex\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "mkdirSync(dst, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "mkdirSync(dirname(to), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/co-cordis-plugin.js",
+        "line": 4,
+        "text": "var inject = [\"tools\", \"cordisInspect\", \"dynamicCordisRunner\"];"
+      },
+      {
+        "file": "lib/co-cordis-plugin.js",
+        "line": 11,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/co-cordis-plugin.js",
+        "line": 20,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/co-cordis-plugin.js",
+        "line": 36,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/co-cordis-plugin.js",
+        "line": 87,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

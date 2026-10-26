@@ -1,0 +1,69 @@
+{
+  "name": "the-binding-of-dsh",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:06:32.545Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-peer-client.js",
+        "line": 41,
+        "text": "this.createWebSocket = options.createWebSocket ?? ((url, protocol) => new WebSocket(url, protocol));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 640,
+        "text": "const response = await fetch(new URL(CONNECTION_OPEN_PATH, baseUrl()), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 766,
+        "text": "const socket = new WebSocket(url, generation.id);"
+      },
+      {
+        "file": "lib/host/connection.js",
+        "line": 41,
+        "text": "const response = await fetchHandler.fetch(new Request(`http://dsh.internal${channel}/${endpoint}`, {"
+      },
+      {
+        "file": "lib/host/connection.js",
+        "line": 81,
+        "text": "fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "patches/connection.patch.cjs",
+        "line": 237,
+        "text": "const { readFileSync } = require('node:fs')"
+      },
+      {
+        "file": "patches/connection.patch.cjs",
+        "line": 240,
+        "text": "const version = manifest ? JSON.parse(readFileSync(manifest, 'utf8')).version : '0.1.1-rc.2'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

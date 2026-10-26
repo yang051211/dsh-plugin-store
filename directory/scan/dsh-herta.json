@@ -1,0 +1,139 @@
+{
+  "name": "dsh-herta",
+  "version": "0.1.11",
+  "scannedAt": "2026-10-26T10:06:25.128Z",
+  "icon": "dsh-herta.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 10838,
+        "text": "fetch(\"/herta-voice/index.json\").then((r) => r.ok ? r.json() : null).then((data) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11273,
+        "text": "const res = await fetch(VOICE_MODEL_URL, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11285,
+        "text": "const res = await fetch(VOICE_MODEL_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11545,
+        "text": "const res = await fetch(MINIMAX_STATE_URL, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11554,
+        "text": "const res = await fetch(MINIMAX_STATE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bundle-verify.js",
+        "line": 5,
+        "text": "import { createReadStream } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bundle-verify.js",
+        "line": 6,
+        "text": "import { readFile, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/bundle-verify.js",
+        "line": 47,
+        "text": "const parsed = JSON.parse(await readFile(join(root, \"manifest.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/dream.js",
+        "line": 39,
+        "text": "import { mkdir, open, readFile, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/dream.js",
+        "line": 81,
+        "text": "raw = await readFile(manifestPath(cwd), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `dsh-herta: tool ${tool.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fish-tts.js",
+        "line": 25,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/fish-tts.js",
+        "line": 322,
+        "text": "child = spawn(process.execPath, [\"--use-env-proxy\", FETCH_SCRIPT, \"-\"], {"
+      },
+      {
+        "file": "lib/herta-ui/herta-ui.js",
+        "line": 89975,
+        "text": "var changedColl = this.spawn(changedEles);"
+      },
+      {
+        "file": "lib/herta-ui/herta-ui.js",
+        "line": 90023,
+        "text": "return this.spawn(sources, true).filter(selector);"
+      },
+      {
+        "file": "lib/herta-ui/herta-ui.js",
+        "line": 90056,
+        "text": "return this.spawn(elements2, true);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/herta-ui/assets/pdf.worker.min.mjs",
+    "lib/herta-ui/herta-ui.js"
+  ],
+  "binaryFiles": [
+    "assets/tts-runtime/sherpa-onnx-win-x64/onnxruntime_providers_shared.dll",
+    "assets/tts-runtime/sherpa-onnx-win-x64/onnxruntime.dll",
+    "assets/tts-runtime/sherpa-onnx-win-x64/sherpa-onnx-c-api.dll",
+    "assets/tts-runtime/sherpa-onnx-win-x64/sherpa-onnx-cxx-api.dll",
+    "assets/tts-runtime/sherpa-onnx-win-x64/sherpa-onnx.node"
+  ],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

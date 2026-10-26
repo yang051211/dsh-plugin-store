@@ -1,0 +1,121 @@
+{
+  "name": "dsh-vsceditor",
+  "version": "0.5.6",
+  "scannedAt": "2026-10-26T10:06:46.777Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 776,
+        "text": "return fetch(STATE_URL, { cache: 'no-store' }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 811,
+        "text": "return fetch(ACTION_URL, {"
+      },
+      {
+        "file": "lib/cs-supervisor.js",
+        "line": 19,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "lib/cs-supervisor.js",
+        "line": 107,
+        "text": "const req = http.get(stateUrl, { timeout: Math.min(3000, WATCH_MS) }, (res) => {"
+      },
+      {
+        "file": "scripts/install-code-server.ps1",
+        "line": 69,
+        "text": "Invoke-WebRequest -Uri $nodeUrl -OutFile $paths.NodeZip"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 18,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 31,
+        "text": "try { return JSON.parse(fs.readFileSync(path.join(EXT_SRC_DIR, 'package.json'), 'utf8')).version || '0.0.0' } catch (e) { return '0.0.0' }"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 776,
+        "text": "try { return await fs.promises.readFile(p, 'utf8') } catch (e) { return undefined }"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1090,
+        "text": "fs.mkdirSync(BRIDGE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1100,
+        "text": "fs.writeFileSync(tmp, payload, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cs-supervisor.js",
+        "line": 18,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "lib/cs-supervisor.js",
+        "line": 48,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' }).on('error', () => {})"
+      },
+      {
+        "file": "lib/cs-supervisor.js",
+        "line": 71,
+        "text": "child = spawn(childArgv[0], childArgv.slice(1), {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1119,
+        "text": "proc = subprocess.spawn({ argv, stdio: { stdin: 'ignore', stdout: { maxBytes: 65536 }, stderr: { maxBytes: 16384 } } })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1339,
+        "text": "proc = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 111,
+      "text": "/code-server/issues/1397), and a plain `npm install -g code-server` is broken on Windows (both the postinstall script and argon2 native compilation fail). This "
+    },
+    {
+      "file": "README.zh.md",
+      "line": 109,
+      "text": "com/coder/code-server/issues/1397)，且直接 `npm install -g code-server` 在 Windows 上是坏的（postinstall 脚本与 argon2 原生编译都会失败）。本插件提供 `scripts/install-code-server.ps1` 绕过这两"
+    }
+  ],
+  "skippedEntries": []
+}

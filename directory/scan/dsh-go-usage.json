@@ -1,0 +1,85 @@
+{
+  "name": "dsh-go-usage",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:36.292Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "go-prices.js",
+        "line": 143,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), headers: { Accept: \"text/plain\" } });"
+      },
+      {
+        "file": "index.js",
+        "line": 225,
+        "text": "res = await fetch(baseUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "go-prices.js",
+        "line": 17,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "go-prices.js",
+        "line": 174,
+        "text": "return parseGoPrices(await readFile(p, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 94,
+        "text": "const raw = JSON.parse(await readFile(authPath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "go-prices.js",
+        "line": 18,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "go-prices.js",
+        "line": 126,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessionQuery",
+    "settings",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

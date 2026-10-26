@@ -1,0 +1,93 @@
+{
+  "name": "dsh-roles-zeta",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:06:41.947Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 232,
+        "text": "const response = await fetch(PREFIX + path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 25,
+        "text": "import { mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 99,
+        "text": "const parsed = JSON.parse(readFileSync(join(rolesDir, SEED_MANIFEST), 'utf8'))"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 108,
+        "text": "writeFileSync(join(rolesDir, SEED_MANIFEST), `${JSON.stringify(manifest, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 160,
+        "text": "const packagedCopy = readFileSync(join(packagedDir, `${role.id}.md`), 'utf8')"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 161,
+        "text": "managed = hashOf(readFileSync(role.file, 'utf8')) === hashOf(packagedCopy)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "export const inject = ['tools', 'subagents']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "const schemas = agent === undefined ? ctx.tools.schemas() : ctx.tools.schemas(agent)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "agent.ctx.tools.restrict(filter)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "agent.ctx.tools.restrict(filter)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 735,
+        "text": "registration = ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

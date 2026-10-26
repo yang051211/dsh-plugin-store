@@ -1,0 +1,118 @@
+{
+  "name": "gord-dsh-worktree",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:06:22.413Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1011,
+        "text": "return fetch(API + '?action=' + encodeURIComponent(action), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive.js",
+        "line": 45,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 46,
+        "text": "import { lstat, mkdir, open, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 135,
+        "text": "return parseSessionWorktreeRecord(await readFile(sessionWorktreeRecordPath(), 'utf8')) ?? emptySessionWorktreeRecord()"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 164,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 165,
+        "text": "await writeFile(temporary, `${JSON.stringify(record, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 279,
+        "text": "const list = ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 371,
+        "text": "const create = ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 485,
+        "text": "const status = ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 555,
+        "text": "const remove = ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "spawnSync(process.execPath, [fileURLToPath(new URL(`../tools/${tool}`, import.meta.url)), ...args], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 40,
+        "text": "execFile("
+      },
+      {
+        "file": "tools/patch-concurrency.mjs",
+        "line": 34,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

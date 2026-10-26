@@ -1,0 +1,100 @@
+{
+  "name": "dsh-hindsight-gui",
+  "version": "1.4.3",
+  "scannedAt": "2026-10-26T10:06:24.557Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 2863,
+        "text": "const response = fetch(url, { ...init, signal: controller.signal }).then(async (res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2869,
+        "text": "const response = fetch(url, { ...init, signal: controller.signal }).then(async (res) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 314,
+        "text": "    const response = await fetch(url, { signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal, headers: { accept: 'application/json'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 335,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 545,
+        "text": "const response = await fetch(baseUrl + '/', { signal: signal ? AbortSignal.any([controller.signal, signal]) : controller.signal, redirect: 'manual' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "import { closeSync, existsSync, openSync, readSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "import { copyFile, mkdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 477,
+        "text": "text = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 506,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 510,
+        "text": "await writeFile(temporary, `${JSON.stringify(next, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600, flag: 'wx' })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 380,
+        "text": "const child = spawn(command, args, { windowsHide: true, stdio: [options.input === undefined ? 'ignore' : 'pipe', 'pipe', 'pipe'], env: options.env })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1515,
+        "text": "child = spawn(launch.command, launch.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

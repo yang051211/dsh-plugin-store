@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-liquid-glass",
+  "version": "0.1.70",
+  "scannedAt": "2026-10-26T10:06:19.869Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "artifacts/bootstrap.js",
+        "line": 63,
+        "text": "fetch('/dsh-glass/log', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 365,
+        "text": "fetch('/dsh-glass/restart', { method: 'POST' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 817,
+        "text": "fetch('/dsh-glass/update?channel=' + channel)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1038,
+        "text": "fetch('/dsh-glass/restart', { method: 'POST' }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1384,
+        "text": "fetch('/dsh-glass/log', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "embed/install.js",
+        "line": 31,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "embed/install.js",
+        "line": 48,
+        "text": "try { return fs.readFileSync(path.join(DIR, file), 'utf8'); } catch (e) { return ''; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "fs.mkdirSync(ARTIFACT_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 75,
+        "text": "fs.appendFileSync(path.join(ARTIFACT_DIR, 'startup-timeline.log'), line, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

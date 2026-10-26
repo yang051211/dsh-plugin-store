@@ -1,0 +1,74 @@
+{
+  "name": "dsh-mcp-pill",
+  "version": "0.2.13",
+  "scannedAt": "2026-10-26T10:06:41.403Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 501,
+        "text": "return await fetch(url, Object.assign({}, init, { signal: controller.signal }))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['webServer', 'fs', 'tools']"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# tells the host which cordis.patch.yml holds the dsh-mcp-client rows; it is"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['webServer', 'fs', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "const MCP_NAME = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "if (!block.includes(MCP_NAME)) return { ok: false, error: '条目 ' + id + ' 不是 dsh-mcp-client 条目' }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 304,
+        "text": "const schemas = ctx.tools.schemas()"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "dsh-generative-ui",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:28.538Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4962,
+        "text": "module_or_path = fetch(module_or_path);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8056,
+        "text": "const response = await fetch(`${WEB_SEARCH_PATH}?cwd=${encodeURIComponent(cwd)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8074,
+        "text": "  const response = await fetch(`${FS_PATH}?${query}`, content === undefined ? { method } : { method, headers: { \"content-type\": \"application/json\" }, body: JSON"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8082,
+        "text": "  const response = await fetch(`${EXEC_PATH}?${query}`, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ command }), si"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8089,
+        "text": "const response = await fetch(`${AI_STREAM_PATH}?cwd=${encodeURIComponent(cwd)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4989,
+        "text": "const wasmBytes = await Deno.readFile(wasmUrl);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFile, readdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 148,
+        "text": "var readSkill = (relative) => readFileSync(new URL(`../skill/${relative}`, import.meta.url), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: bun scripts/gen-standalone.ts && bun scripts/build.ts && tsc -p tsconfig.types.json"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

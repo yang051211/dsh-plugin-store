@@ -1,0 +1,127 @@
+{
+  "name": "dsh-mcp",
+  "version": "1.14.1",
+  "scannedAt": "2026-10-26T10:06:20.563Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 14,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/system-ca.js",
+        "line": 124,
+        "text": "/** Memoized scoped fetch (see {@link systemFetch}). */"
+      },
+      {
+        "file": "lib/system-ca.js",
+        "line": 156,
+        "text": "const { Agent, fetch: undiciFetch } = require(\"undici\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 23,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 260,
+        "text": "patches = parsePatchArray(readFileSync(layer.path, \"utf8\"));"
+      },
+      {
+        "file": "lib/patch-writer.js",
+        "line": 16,
+        "text": "import { copyFileSync, existsSync, readFileSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/patch-writer.js",
+        "line": 28,
+        "text": "return existsSync(path) ? readFileSync(path, \"utf8\") : \"\";"
+      },
+      {
+        "file": "lib/patch-writer.js",
+        "line": 123,
+        "text": "writeFileSync(staging, next);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 5,
+        "text": "#             @deepseek-ai/dsh-mcp-client, credential injection, connection probes)"
+      },
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 4,
+        "text": "* `@deepseek-ai/dsh-mcp-client` rows mount straight from the composition, so"
+      },
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 32,
+        "text": "\"@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 33,
+        "text": "\"dsh-mcp-client\""
+      },
+      {
+        "file": "lib/cordis-servers.js",
+        "line": 117,
+        "text": "* @param row - one decoded `@deepseek-ai/dsh-mcp-client` row."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 15,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/oauth.js",
+        "line": 100,
+        "text": "const child = spawn(command, [url], { detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "scripts/test.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test.mjs",
+        "line": 54,
+        "text": "const result = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "storageDomain",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

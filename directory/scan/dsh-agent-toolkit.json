@@ -1,0 +1,110 @@
+{
+  "name": "dsh-agent-toolkit",
+  "version": "0.4.13",
+  "scannedAt": "2026-10-26T10:06:49.327Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "const res = await fetch(`/dsh-agent-toolkit/api/delegate/active?session=${encodeURIComponent(sessionId)}&role=${encodeURIComponent(role)}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const res = await fetch(`/dsh-agent-toolkit/api/delegate/route?session=${encodeURIComponent(sessionId)}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 320,
+        "text": "const res = init === void 0 ? await fetch(input) : await fetch(input, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 344,
+        "text": "const res = init === void 0 ? await fetch(input) : await fetch(input, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4099,
+        "text": "const res = init === void 0 ? await fetch(input) : await fetch(input, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { lstat, readFile, readdir, realpath, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "const record = parseRoleYaml(await readFile(ref.path, \"utf8\"), ref.path, ref.fileName);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2005,
+        "text": "unlinkSync(join(dir, name));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2011,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 441,
+        "text": "const global = new Set(ctx.tools.schemas().map((s) => s.name));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 442,
+        "text": "return ctx.tools.schemas(key).map((s) => s.name).filter((n) => !global.has(n) && n !== RUN_CODE_NAME).sort();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 449,
+        "text": "return ctx.tools.schemas().map((s) => s.name).filter((n) => n !== RUN_CODE_NAME);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1367,
+        "text": "* @returns defineTool 产物，交给 ctx.tools.register。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1574,
+        "text": "if (disposeTool === void 0) disposeTool = ctx.tools.register(createDelegateTool(toolName, {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

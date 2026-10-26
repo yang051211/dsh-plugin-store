@@ -1,0 +1,49 @@
+{
+  "name": "dsh-sieve",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:06:25.666Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/measurement/tasks.js",
+        "line": 53,
+        "text": "const longBuild = `import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/measurement/tasks.js",
+        "line": 60,
+        "text": "if (process.env.${BUILD_LOG_ENV}) appendFileSync(process.env.${BUILD_LOG_ENV}, id + '\\\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "child.plugin({ name: 'sieve-admission', inject: ['tools', 'spillStore'], apply: (feature) => { registerAdmission(feature, this, runtime); } });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

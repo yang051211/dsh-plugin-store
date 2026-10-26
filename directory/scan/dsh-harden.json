@@ -1,0 +1,77 @@
+{
+  "name": "dsh-harden",
+  "version": "0.0.3",
+  "scannedAt": "2026-10-26T10:06:31.734Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 15,
+        "text": "function y(E,m){try{const f=await(await fetch(`${fe}?session=${encodeURIComponent(E)}`)).json();if((f==null?void 0:f.ok)!==!0||E!==p.current||m!==g.current)retu"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 247,
+        "text": "const response = await fetch(VERSION_ENDPOINT_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session-repair.js",
+        "line": 43,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/session-repair.js",
+        "line": 44,
+        "text": "import { readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/session-repair.js",
+        "line": 103,
+        "text": "文件内容 = await readFile(文件路径);"
+      },
+      {
+        "file": "lib/session-repair.js",
+        "line": 167,
+        "text": "await writeFile(临时路径, encodeSessionFile(解码结果.lines, 解码结果.frameLineCounts));"
+      },
+      {
+        "file": "lib/session-repair.js",
+        "line": 173,
+        "text": "await rm(临时路径, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/job-background.js",
+        "line": 356,
+        "text": "unregister = tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

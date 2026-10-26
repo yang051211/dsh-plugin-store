@@ -1,0 +1,112 @@
+{
+  "name": "dsh-webcode-bridge",
+  "version": "0.22.3",
+  "scannedAt": "2026-10-26T10:06:38.838Z",
+  "icon": "dsh-webcode-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-driver.js",
+        "line": 208,
+        "text": "if (!(XMLHttpRequest.prototype.send && XMLHttpRequest.prototype.send.__wcCap)) {"
+      },
+      {
+        "file": "lib/browser-driver.js",
+        "line": 209,
+        "text": "const origOpen = XMLHttpRequest.prototype.open;"
+      },
+      {
+        "file": "lib/browser-driver.js",
+        "line": 210,
+        "text": "const origSend = XMLHttpRequest.prototype.send;"
+      },
+      {
+        "file": "lib/browser-driver.js",
+        "line": 211,
+        "text": "XMLHttpRequest.prototype.open = function (method, url) {"
+      },
+      {
+        "file": "lib/browser-driver.js",
+        "line": 233,
+        "text": "XMLHttpRequest.prototype.send = wrappedSend;"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/account-cache.js",
+        "line": 26,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/account-cache.js",
+        "line": 96,
+        "text": "return normalizeIdentityCache(JSON.parse(fs.readFileSync(identityCachePathFor(profileDir), 'utf8')));"
+      },
+      {
+        "file": "lib/account-cache.js",
+        "line": 113,
+        "text": "fs.mkdirSync(String(profileDir), { recursive: true });"
+      },
+      {
+        "file": "lib/account-cache.js",
+        "line": 114,
+        "text": "fs.writeFileSync(identityCachePathFor(profileDir), JSON.stringify(identity), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/bridge-lock.js",
+        "line": 76,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-driver.js",
+        "line": 53,
+        "text": "import child_process from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser-runtime.js",
+        "line": 28,
+        "text": "import child_process from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser-runtime.js",
+        "line": 198,
+        "text": "child = child_process.spawn(process.execPath, [cli, 'install', 'chromium'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3265,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3285,
+        "text": "const child = spawn(step.cmd, step.args, { stdio: 'ignore', windowsHide: true, detached: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

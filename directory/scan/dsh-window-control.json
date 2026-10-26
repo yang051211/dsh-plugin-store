@@ -1,0 +1,69 @@
+{
+  "name": "dsh-window-control",
+  "version": "1.4.2",
+  "scannedAt": "2026-10-26T10:06:20.357Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "_bridge-selftest.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "_bridge-selftest.mjs",
+        "line": 72,
+        "text": "fs.writeFileSync(file, Buffer.concat([head, json, ...data]))"
+      },
+      {
+        "file": "_bridge-selftest.mjs",
+        "line": 146,
+        "text": "fs.writeFileSync(small, 'hello 世界')"
+      },
+      {
+        "file": "_bridge-selftest.mjs",
+        "line": 147,
+        "text": "check('fileSha256 与 crypto 一致', engine.fileSha256(small) === sha256(fs.readFileSync(small)))"
+      },
+      {
+        "file": "_bridge-selftest.mjs",
+        "line": 154,
+        "text": "const originalBytes = fs.readFileSync(archive)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/asar-bridge.js",
+        "line": 38,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/asar-bridge.js",
+        "line": 178,
+        "text": "*   spawn(electronExe, [entry, runtimeDir, projectDir, ...])"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

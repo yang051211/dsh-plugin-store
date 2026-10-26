@@ -1,0 +1,73 @@
+{
+  "name": "dsh-filesnap",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:06:48.003Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/route.js",
+        "line": 200,
+        "text": "const response = await fetch(request);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/binary.js",
+        "line": 18,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/migrate-session-logs.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/migrate-session-logs.js",
+        "line": 3,
+        "text": "import { copyFile, lstat, open, readFile, readdir, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/migrate-session-logs.js",
+        "line": 81,
+        "text": "const before = await readFile(path);"
+      },
+      {
+        "file": "lib/migrate-session-logs.js",
+        "line": 94,
+        "text": "await target.writeFile(repaired.bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 159,
+        "text": "const handle = ctx.subprocess.spawn(spec);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

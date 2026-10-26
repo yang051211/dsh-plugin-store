@@ -1,0 +1,113 @@
+{
+  "name": "codsh-bundle",
+  "version": "0.27.0",
+  "scannedAt": "2026-10-26T10:06:49.960Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21049,
+        "text": "const response = await fetch(`${config.baseUrl}/chat/completions`, {"
+      },
+      {
+        "file": "lib/web/ship-web.js",
+        "line": 74,
+        "text": "out(()=>C?.abort(),5e3);try{let w=await fetch(\"/graph.json\",{cache:\"no-store\",signal:C.signal});if(!w.ok)throw new Error(`HTTP ${w.status}`);let M=await w.json("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": " existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, readlinkSync, renameSync, rmSync, unlinkSync, writeFileSync, writeSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 261,
+        "text": "await writeFile(path, `${JSON.stringify({ allow: file.allow }, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "text = await readFile(path, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23658,
+        "text": "call: (toolName, args) => ctx.tools.get(toolName, agent)?.presentCall?.(args),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23660,
+        "text": "const fromTool = ctx.tools.get(toolName, agent)?.presentResult?.(args, result);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFile, spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "const child = spawn(file, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8558,
+        "text": "const result = spawnSync(command[0] ?? \"\", command.slice(1), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8571,
+        "text": "const child = spawn(command[0] ?? \"\", command.slice(1), { stdio: ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8784,
+        "text": "execFile(command, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 40,
+  "minifiedFiles": [
+    "lib/web/ship-web.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

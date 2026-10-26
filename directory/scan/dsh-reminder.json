@@ -1,0 +1,110 @@
+{
+  "name": "dsh-reminder",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:06:40.026Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.ts",
+        "line": 26,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 92,
+        "text": "response = await fetch(`/peon/api/${method}`, {"
+      },
+      {
+        "file": "lib/src/client/PeonSettingsSection.js",
+        "line": 37,
+        "text": "response = await fetch(`/peon/api/${method}`, {"
+      },
+      {
+        "file": "lib/src/config.js",
+        "line": 22,
+        "text": "fetch(ICON_URL, { signal: AbortSignal.timeout(5000) })"
+      },
+      {
+        "file": "lib/src/packs.js",
+        "line": 69,
+        "text": "const resp = await fetch(REGISTRY_URL, { signal: AbortSignal.timeout(10000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/audio.js",
+        "line": 2,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/src/config.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/src/config.js",
+        "line": 15,
+        "text": "mkdirSync(DATA_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/src/config.js",
+        "line": 16,
+        "text": "mkdirSync(PACKS_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/src/config.js",
+        "line": 30,
+        "text": "writeFileSync(DEFAULT_ICON_PATH, Buffer.from(buf));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/audio.js",
+        "line": 1,
+        "text": "import { execSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/src/audio.js",
+        "line": 54,
+        "text": "execSync(\"command -v paplay\", { stdio: \"pipe\", ...NO_CONSOLE_WINDOW });"
+      },
+      {
+        "file": "lib/src/audio.js",
+        "line": 112,
+        "text": "return spawn(psBin, [\"-NoProfile\", \"-NonInteractive\", \"-Command\", cmd], {"
+      },
+      {
+        "file": "lib/src/audio.js",
+        "line": 130,
+        "text": "const child = spawn(\"paplay\", [`--volume=${paVol}`, file], {"
+      },
+      {
+        "file": "lib/src/audio.js",
+        "line": 164,
+        "text": "child = spawn(\"afplay\", [\"-v\", String(volume), file], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,110 @@
+{
+  "name": "dsh-eval-control",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:06:57.389Z",
+  "icon": "dsh-eval-control.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/broker_main.js",
+        "line": 4601,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 4602,
+        "text": "import { createServer as createTlsServer } from \"node:https\";"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 5417,
+        "text": "response = await fetch(this.#url, {"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 5638,
+        "text": "response = await fetch(this.#url, {"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 5942,
+        "text": "response = await fetch(endpoint, { method: \"POST\", headers, body, redirect: \"error\", signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/broker_main.js",
+        "line": 4,
+        "text": "import { readFileSync as readFileSync2, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 4034,
+        "text": "return this.ctx.get(\"fs\")?.processPathFromHostPath(hostPath);"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 4605,
+        "text": "import { lstatSync, readFileSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 4882,
+        "text": " server = tls ? createTlsServer({ ...serverOptions, key: readFileSync(tls.key), cert: readFileSync(tls.cert) }, handler) : createServer(serverOptions, handler);"
+      },
+      {
+        "file": "dist/broker_main.js",
+        "line": 5012,
+        "text": "writeFileSync(path, token, { mode: 384, flag: \"wx\" });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 49,
+        "text": "export const inject = ['llm', 'tools', 'sessions', 'evalBroker'];"
+      },
+      {
+        "file": "dist/variable_inject.js",
+        "line": 26,
+        "text": "if (ctx.tools.get(RUN_CODE_NAME, agent) !== undefined) {"
+      },
+      {
+        "file": "dist/variable_inject.js",
+        "line": 62,
+        "text": "ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 91,
+        "text": "export const inject = ['llm', 'tools', 'sessions', 'evalBroker'];"
+      },
+      {
+        "file": "src/variable_inject.ts",
+        "line": 33,
+        "text": "if (ctx.tools.get(RUN_CODE_NAME, agent) !== undefined) {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

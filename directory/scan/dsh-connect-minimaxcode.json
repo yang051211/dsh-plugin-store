@@ -1,0 +1,69 @@
+{
+  "name": "dsh-connect-minimaxcode",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:06:23.640Z",
+  "icon": "dsh-connect-minimaxcode.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 163,
+        "text": "const response = await fetch(STATUS_PATH, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 265,
+        "text": "await fetch(`${ACTION_PATH}?action=${encodeURIComponent(action)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 165,
+        "text": "text = await readFile(authPath(env), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "text = readFileSync(authPath(env), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 648,
+        "text": "resolveImageAccess: (attachments, ref) => resolveImageAttachmentAccess(attachments, (hostPath) => ctx.get(\"fs\")?.processPathFromHostPath(hostPath), ref)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,110 @@
+{
+  "name": "dsh-store",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:55.200Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 841,
+        "text": "fetch('/plugin-store/api/readme?name=' + encodeURIComponent(name)).then(function (r) { return r.json(); }).then(function (d) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 862,
+        "text": "fetch('/plugin-store/api/restart', { method: 'POST' }).then(function (r) { return r.json(); }).then(function (d) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 873,
+        "text": "fetch('/plugin-store/api/toggle', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 886,
+        "text": "fetch('/plugin-store/api/' + kind, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 912,
+        "text": "fetch('/plugin-store/api/catalog').then(function (r) { return r.json(); }).then(function (d) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "const d = JSON.parse(readFileSync(CONFIG_FILE, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "mkdirSync(STORE_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "mkdirSync(VERIFY_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "const cached = JSON.parse(readFileSync(AWESOME_CACHE, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { execFile, spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "execFile(\"curl\", args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "execFile(\"curl\", args, { encoding: \"utf8\", env, windowsHide: true, timeout: 4e4 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "execFile(\"curl\", [\"-sS\", \"--max-time\", \"30\", url], { encoding: \"utf8\", env, windowsHide: true, timeout: 4e4 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 403,
+        "text": "const r = spawnSync(process.execPath, [bin, \"plugin\", \"--profile\", profile, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

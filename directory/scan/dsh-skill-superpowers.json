@@ -1,0 +1,98 @@
+{
+  "name": "dsh-skill-superpowers",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:06:56.584Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/helper.js",
+        "line": 80,
+        "text": "ws = new WebSocket(websocketUrl());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 2,
+        "text": "const http = require('http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 196,
+        "text": "cached = composeBootstrap(readFileSync(file, 'utf8'), { skillsDir, toolMapping })"
+      },
+      {
+        "file": "index.js",
+        "line": 241,
+        "text": "return readFileSync(file, 'utf8').trim()"
+      },
+      {
+        "file": "scripts/check-upstream.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-upstream.mjs",
+        "line": 31,
+        "text": "const pkg = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-upstream.mjs",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/sync-skills.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

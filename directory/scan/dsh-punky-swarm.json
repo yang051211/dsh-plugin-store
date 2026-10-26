@@ -1,0 +1,140 @@
+{
+  "name": "dsh-punky-swarm",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:23.879Z",
+  "icon": "dsh-punky-swarm.jpg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acps/discovery-client.js",
+        "line": 155,
+        "text": "const requestImpl = request ?? ((url, options) => fetch(url, options));"
+      },
+      {
+        "file": "lib/acps/registry-client.js",
+        "line": 24,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/acps/registry-client.js",
+        "line": 25,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "lib/acps/server.js",
+        "line": 33,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "lib/bridge/trajectory.js",
+        "line": 162,
+        "text": "const res = await fetch(baseUrl + '/api/alerts?since=' + lastPollSince);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acps/certs.js",
+        "line": 30,
+        "text": "import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/acps/certs.js",
+        "line": 265,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/acps/certs.js",
+        "line": 274,
+        "text": "caCertPem = readFileSync(caFile, 'utf8');"
+      },
+      {
+        "file": "lib/acps/certs.js",
+        "line": 275,
+        "text": "caKeyPem = readFileSync(caKeyFile, 'utf8');"
+      },
+      {
+        "file": "lib/acps/certs.js",
+        "line": 280,
+        "text": "writeFileSync(caFile, caCertPem, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 91,
+        "text": "# 分层：任务级=ctx.tools.guard 难度门禁（派发前治理）；调用级=本 hook（执行时治理）。"
+      },
+      {
+        "file": "lib/governance/wiring.js",
+        "line": 28,
+        "text": "// 与 ctx.tools.guard（难度门禁）组合：kernel 判 ALLOW → next() 透传，难度门禁照常生效"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "export const inject = ['tools', 'webServer', 'subagents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1061,
+        "text": "tools.register();"
+      },
+      {
+        "file": "lib/tools/register.js",
+        "line": 76,
+        "text": "for (const t of tools) ctx.tools.register(t);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state/command-exec.js",
+        "line": 21,
+        "text": "//       D1 起含「写盘路径」面——见下方 WRITE_* 常量；`gate:` 命令以 spawnSync(shell:true) 直跑子进程、"
+      },
+      {
+        "file": "lib/state/command-exec.js",
+        "line": 29,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/state/command-exec.js",
+        "line": 82,
+        "text": "// 缺口（盲审 D1）：本黑名单原只含破坏性/部署类模式，而 `gate:` 命令由 spawnSync(shell:true) 直跑子进程、"
+      },
+      {
+        "file": "lib/state/command-exec.js",
+        "line": 179,
+        "text": "const r = spawnSync(command, {"
+      },
+      {
+        "file": "lib/tools/git-utils.js",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

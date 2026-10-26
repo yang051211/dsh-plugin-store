@@ -1,0 +1,98 @@
+{
+  "name": "tabellio-dsh",
+  "version": "0.39.5",
+  "scannedAt": "2026-10-26T10:06:20.615Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/semantic.js",
+        "line": 28,
+        "text": "const response = await fetch(endpoint, {"
+      },
+      {
+        "file": "src/semantic.js",
+        "line": 202,
+        "text": "const response = await fetch(url, { headers: authHeaders(apiKey), signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "tools/judge-eval.mjs",
+        "line": 34,
+        "text": "const response = await fetch(`${baseUrl}/chat/completions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/audit.js",
+        "line": 9,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 53,
+        "text": "mkdirSync(join(store.store, 'runs'), { recursive: true });"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 54,
+        "text": "appendFileSync(auditPath(store, entry.at), JSON.stringify(entry) + '\\n', 'utf8');"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 68,
+        "text": "const lines = readFileSync(file, 'utf8').split('\\n').filter(Boolean);"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 101,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 946,
+        "text": "ctx.tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/cross-host-check.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "tools/cross-host-check.mjs",
+        "line": 28,
+        "text": "const child = spawn(process.execPath, args, { stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

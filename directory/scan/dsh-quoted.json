@@ -1,0 +1,66 @@
+{
+  "name": "dsh-quoted",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:22.713Z",
+  "icon": "dsh-quoted.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 440,
+        "text": "const response = await fetch(ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { mkdir, readdir, stat, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 226,
+        "text": "await unlink(file).catch(() => undefined)"
+      },
+      {
+        "file": "index.js",
+        "line": 251,
+        "text": "if (now - info.mtimeMs > ORPHAN_AGE_MS) await unlink(file)"
+      },
+      {
+        "file": "index.js",
+        "line": 417,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 420,
+        "text": "await writeFile(join(directory, '.gitignore'), '*\\n', 'utf8').catch(() => undefined)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,124 @@
+{
+  "name": "dsh-workspace-enhancement",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:06:28.461Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core-vendor.js",
+        "line": 179,
+        "text": "/** Actionable text for a failed fetch (official address + manual escape hatch). */"
+      },
+      {
+        "file": "lib/web-channel.js",
+        "line": 95,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 111,
+        "text": "return readFileSync(expanded, 'utf8');"
+      },
+      {
+        "file": "lib/core-deploy.js",
+        "line": 15,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core-deploy.js",
+        "line": 79,
+        "text": "sftp.writeFile(remote, data, (error) => {"
+      },
+      {
+        "file": "lib/core-deploy.js",
+        "line": 261,
+        "text": "await sftpWrite(sftp, temp, readFileSync(outcome.path));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exec-tools.js",
+        "line": 1138,
+        "text": "const disposer = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/exec-tools.js",
+        "line": 1314,
+        "text": "const disposer = target.tools.register(tool);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 543,
+        "text": "const disposer = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/web.js",
+        "line": 35,
+        "text": "export const inject = ['connection', 'tools', 'systemPrompt'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core-vendor.js",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core-vendor.js",
+        "line": 149,
+        "text": "const run = spawnSync('curl', args, { stdio: ['ignore', 'ignore', fd] });"
+      },
+      {
+        "file": "lib/credential.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/credential.js",
+        "line": 25,
+        "text": "execFile(bin, args, { timeout: TIMEOUT, maxBuffer: 1 << 20, ...(input !== undefined ? { input } : {}) }, (error, stdout, _stderr) => {"
+      },
+      {
+        "file": "lib/exec-tools.js",
+        "line": 471,
+        "text": "handle = env.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client/machine-form.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "ssh",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

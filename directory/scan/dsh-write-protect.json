@@ -1,0 +1,80 @@
+{
+  "name": "dsh-write-protect",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:06:55.207Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 168,
+        "text": "fetch(PREVIEW_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 617,
+        "text": "const response = await fetch(GRANTS_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/containment-CwZXGzMh.mjs",
+        "line": 2,
+        "text": "import { stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/policy.mjs",
+        "line": 5,
+        "text": "import { closeSync, existsSync, fstatSync, lstatSync, openSync, readFileSync, watch } from \"node:fs\";"
+      },
+      {
+        "file": "lib/policy.mjs",
+        "line": 9,
+        "text": "import { lstat, readdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/policy.mjs",
+        "line": 671,
+        "text": "return parseReadOnlyFile(readFileSync(fd, { encoding: \"utf8\" }), target, workspaceRoot, maxEntries, warnings);"
+      },
+      {
+        "file": "lib/provider.mjs",
+        "line": 3,
+        "text": "import { existsSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/policy.mjs",
+        "line": 1183,
+        "text": "* 注册 `request_writable_path`. 只在组合里有 `ctx.tools` 时调用."
+      },
+      {
+        "file": "lib/policy.mjs",
+        "line": 1189,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

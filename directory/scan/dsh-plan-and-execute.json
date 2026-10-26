@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plan-and-execute",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:06:45.926Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from \"fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "const raw = await readFile(join(planDir, STATE_FILE), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "await mkdir(planDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "await writeFile(tmp, `${JSON.stringify(state)}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "await rm(planDir, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1482,
+        "text": "var inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1556,
+        "text": "dispose = agent.ctx.tools.restrict({ deny: [\"exit_plan_mode\"] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1731,
+        "text": "ctx.tools.register(createSubmitPlanTool(lookup));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1732,
+        "text": "ctx.tools.register(createReportStepTool(lookup));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky || true"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

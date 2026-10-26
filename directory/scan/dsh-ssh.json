@@ -1,0 +1,76 @@
+{
+  "name": "dsh-ssh",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:06:32.960Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection.js",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 19,
+        "text": "return readFileSync(expanded, 'utf8');"
+      },
+      {
+        "file": "lib/filesystem-final.js",
+        "line": 410,
+        "text": "sftp.readFile(route.path, (error, value) => { if (error !== undefined)"
+      },
+      {
+        "file": "lib/filesystem-final.js",
+        "line": 458,
+        "text": "sftp.mkdir(stagingDirectory, error => { if (error !== undefined)"
+      },
+      {
+        "file": "lib/filesystem-final.js",
+        "line": 465,
+        "text": "sftp.writeFile(temporary, content, error => { if (error !== undefined)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/subprocess.js",
+        "line": 104,
+        "text": "spawn(spec) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 9,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client/form.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "ssh"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

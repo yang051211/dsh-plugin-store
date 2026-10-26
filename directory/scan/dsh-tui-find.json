@@ -1,0 +1,71 @@
+{
+  "name": "dsh-tui-find",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:43.969Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/clipboard.js",
+        "line": 18,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/scan.js",
+        "line": 68,
+        "text": "import { closeSync, lstatSync, mkdirSync, openSync, readFileSync, readSync, readdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/scan.js",
+        "line": 393,
+        "text": "const parsed = JSON.parse(readFileSync(this.watermarkPath, 'utf8'));"
+      },
+      {
+        "file": "dist/core/scan.js",
+        "line": 462,
+        "text": "mkdirSync(dirname(this.watermarkPath), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "dist/core/scan.js",
+        "line": 464,
+        "text": "writeFileSync(temporary, serialized, { mode: 0o600, flag: 'w' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/clipboard.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/clipboard.js",
+        "line": 49,
+        "text": "const child = spawn(command, [], { stdio: ['pipe', 'ignore', 'ignore'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

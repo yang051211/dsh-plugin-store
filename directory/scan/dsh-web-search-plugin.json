@@ -1,0 +1,79 @@
+{
+  "name": "dsh-web-search-plugin",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:06:33.125Z",
+  "icon": "dsh-web-search-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/brave.js",
+        "line": 14,
+        "text": "import { ProxyAgent } from \"undici\";"
+      },
+      {
+        "file": "lib/brave.js",
+        "line": 89,
+        "text": "response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1079,
+        "text": "const response = await fetch(force ? \"/dsh-web-search/usage?force=1\" : \"/dsh-web-search/usage\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/deepseek.js",
+        "line": 136,
+        "text": "response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/rest.js",
+        "line": 19,
+        "text": "import { ProxyAgent } from \"undici\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/usage.js",
+        "line": 18,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 211,
+        "text": "const raw = JSON.parse(await readFile(USAGE_FILE, \"utf8\"));"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 363,
+        "text": "mkdir(dirname(USAGE_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 364,
+        "text": ".then(() => writeFile(USAGE_FILE, payload))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

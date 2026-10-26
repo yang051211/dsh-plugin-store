@@ -1,0 +1,73 @@
+{
+  "name": "dsh-region",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:06:27.267Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "const res = await fetch(`${BASE}${path}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "const res = await fetch(`${url.replace(/\\/+$/, '')}/${probePackage}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "const parsed = JSON.parse(readFileSync(statePath(), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "mkdirSync(dshHome(), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "writeFileSync(statePath(), JSON.stringify(state, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "const raw = readFileSync(npmrcPath(), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

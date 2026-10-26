@@ -1,0 +1,123 @@
+{
+  "name": "imgpost",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:06:58.485Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 40,
+        "text": "const res = await fetch(ENDPOINT, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 386,
+        "text": "// 子进程 stderr 可能带上游响应体（Invoke-RestMethod 会把错误正文原样吐出），"
+      },
+      {
+        "file": "src/host.js",
+        "line": 630,
+        "text": "const resp = await fetch(url, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1451,
+        "text": "const resp = await fetch(current.href, { signal: signal, redirect: 'manual' });"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1493,
+        "text": "      \"  $resp=Invoke-RestMethod -Method Post -Uri \\\"$($env:IMG_BASE)/images/generations\\\" -Headers @{Authorization=\\\"Bearer $($env:IMG_KEY)\\\"} -ContentType 'ap"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 25,
+        "text": "export const inject = ['attachments', 'subprocess', 'fs', 'webServer', 'tools', 'llm'];"
+      },
+      {
+        "file": "src/host.js",
+        "line": 43,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1947,
+        "text": "const fsp = await import('node:fs/promises');"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1949,
+        "text": "await fsp.mkdir(path.dirname(targetPath), { recursive: true });"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1951,
+        "text": "await fsp.writeFile(tmp, text, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 25,
+        "text": "export const inject = ['attachments', 'subprocess', 'fs', 'webServer', 'tools', 'llm'];"
+      },
+      {
+        "file": "src/host.js",
+        "line": 2115,
+        "text": "ctx.tools.register(sendImageTool),"
+      },
+      {
+        "file": "src/host.js",
+        "line": 2116,
+        "text": "ctx.tools.register(generateImageTool),"
+      },
+      {
+        "file": "src/host.js",
+        "line": 2117,
+        "text": "ctx.tools.register(readImageTool),"
+      },
+      {
+        "file": "src/host.js",
+        "line": 2118,
+        "text": "ctx.tools.register(checkBackendTool),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 357,
+        "text": "handle = subprocess.spawn(makeSpec(exe));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "fs",
+    "llm",
+    "subprocess",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-whale-atelier",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:06:24.783Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 697,
+        "text": "const response = await fetch(ROUTE + \"packs/index.json&t=\" + Date.now());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 713,
+        "text": "const response = await fetch(ROUTE_SKINS, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 736,
+        "text": "const response = await fetch(ROUTE + \"wallpaper.css\");"
+      },
+      {
+        "file": "tests/test_pack_routes.mjs",
+        "line": 8,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "tests/test_pack_routes.mjs",
+        "line": 91,
+        "text": "const response = await fetch(base + url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { createReadStream, existsSync, readFileSync, readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "tests/_layout.mjs",
+        "line": 6,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "tests/test_normalize_pref.mjs",
+        "line": 5,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "tests/test_normalize_pref.mjs",
+        "line": 9,
+        "text": "const source = readFileSync(pluginFile(\"lib\", \"client.js\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/run.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "tests/run.mjs",
+        "line": 12,
+        "text": "const result = spawnSync(process.execPath, [path.join(HERE, name)], { stdio: \"inherit\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

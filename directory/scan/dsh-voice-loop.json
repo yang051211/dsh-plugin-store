@@ -1,0 +1,96 @@
+{
+  "name": "dsh-voice-loop",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:17.370Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/voice-loop.js",
+        "line": 310,
+        "text": "fetch('/dsh-voice-loop/speech', { cache: 'no-store' }).then(function (res) {"
+      },
+      {
+        "file": "assets/voice-loop.js",
+        "line": 710,
+        "text": "fetch('/dsh-voice-loop/speech', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "fs.appendFileSync(LOG_FILE, new Date().toISOString() + ' [host] ' + String(message) + '\\n')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "const raw = fs.readFileSync(SETTINGS_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 209,
+        "text": "const text = fs.readFileSync(PAGE_SCRIPT, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 560,
+        "text": "fs.appendFileSync(logFile, new Date().toISOString() + ' ' + String(text).trim() + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 293,
+        "text": "child = spawn("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "const proc = spawn(python, [worker], { windowsHide: true, stdio: ['pipe', 'pipe', 'ignore'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 31,
+      "text": "python -m pip install --user edge-tts"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "text": "- 在线合成需要联网并已安装依赖：`python -m pip install --user edge-tts`。合成失败会自动回退到系统语音。"
+    }
+  ],
+  "skippedEntries": []
+}

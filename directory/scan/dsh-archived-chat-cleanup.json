@@ -1,0 +1,71 @@
+{
+  "name": "dsh-archived-chat-cleanup",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:06:23.080Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core.js",
+        "line": 19,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "core.js",
+        "line": 153,
+        "text": "await fs.rm(from, { recursive: true, force: true });"
+      },
+      {
+        "file": "core.js",
+        "line": 159,
+        "text": "await fs.mkdir(path.dirname(target), { recursive: true });"
+      },
+      {
+        "file": "core.js",
+        "line": 160,
+        "text": "await fs.writeFile(temporary, JSON.stringify(value, null, 2), 'utf8');"
+      },
+      {
+        "file": "core.js",
+        "line": 484,
+        "text": "await fs.mkdir(quarantine, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 487,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

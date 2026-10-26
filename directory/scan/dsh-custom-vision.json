@@ -1,0 +1,87 @@
+{
+  "name": "dsh-custom-vision",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:19.934Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 102,
+        "text": "fetch(CONFIG_URL, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 128,
+        "text": "fetch(CONFIG_URL, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 153,
+        "text": "fetch(TEST_URL, { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 15,
+        "text": "import { readFile, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 155,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf-8'))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 164,
+        "text": "mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 166,
+        "text": "writeFileSync(tmp, JSON.stringify(next, null, 2), 'utf-8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 40,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 815,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

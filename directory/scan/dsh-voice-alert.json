@@ -1,0 +1,131 @@
+{
+  "name": "dsh-voice-alert",
+  "version": "0.4.18",
+  "scannedAt": "2026-10-26T10:06:21.196Z",
+  "icon": "dsh-voice-alert.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 20,
+        "text": "// Electron renderer carries the capability header automatically, so fetch() from"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 177,
+        "text": "return fetch(BASE + path, init).then(function (response) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 734,
+        "text": "return fetch(BASE + \"/sfx/download?name=\" + encodeURIComponent(key), { headers: {} }).then("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 771,
+        "text": "fetch(BASE + \"/sfx/import?name=\" + encodeURIComponent(key), { method: \"POST\", headers: { \"content-type\": \"audio/mpeg\" }, body: file }).then("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 801,
+        "text": "return fetch(url, { method: \"GET\" }).then("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 13,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 498,
+        "text": "const raw = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 514,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 515,
+        "text": "writeFileSync(file, JSON.stringify(DEFAULT_CONFIG, null, 2) + \"\\n\", { encoding: \"utf8\" }); // utf8 -> no BOM"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 657,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/edgevoice.js",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 64,
+        "text": "* 阻塞式 `spawnSync(\"ffmpeg\",\"-version\")` 探一次（实测 3 次 GET = 3 次探测）。"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 82,
+        "text": "const probe = spawnSync(\"ffmpeg\", [\"-version\"], { windowsHide: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 94,
+        "text": "child = spawn(ffmpegPath, args, { windowsHide: true, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 364,
+      "text": "2. **装过 edge-tts**：`pip install edge-tts`（国内建议 `pip install edge-tts -i https://mirrors.aliyun.com/pypi/simple/`）；"
+    },
+    {
+      "file": "README.md",
+      "line": 369,
+      "text": "有 Python 但缺模块 → 「⚠ 本机已装 Python，但缺 edge-tts 模块：在终端执行 `pip install edge-tts` 后即可试听」），"
+    },
+    {
+      "file": "README.md",
+      "line": 371,
+      "text": "（`edge-python-missing` / `edge-tts-not-installed`（并附「装一下：pip install edge-tts」）/"
+    },
+    {
+      "file": "README.md",
+      "line": 375,
+      "text": "这样用户照着提示 `pip install edge-tts` 装完，刷新页面立刻就能看到 `✓可用`，不会还顶着「缺 edge-tts」。"
+    }
+  ],
+  "skippedEntries": []
+}

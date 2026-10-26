@@ -1,0 +1,101 @@
+{
+  "name": "dsh-task-worktree",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-26T10:06:38.545Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 85,
+        "text": "const raw = await fs.promises.readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 99,
+        "text": "await fs.promises.mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 102,
+        "text": "await fs.promises.writeFile(tmp, `${JSON.stringify(manifest, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 158,
+        "text": "const existing = await fs.promises.readFile(ignoreFile, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'commands', 'subprocess']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 22,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 78,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 131,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 35,
+        "text": "const handle = ctx.get('subprocess').spawn({"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 57,
+        "text": "* Runner over child_process.execFile (no harness). Never shell-interpreted."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

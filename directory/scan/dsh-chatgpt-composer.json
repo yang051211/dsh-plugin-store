@@ -1,0 +1,103 @@
+{
+  "name": "dsh-chatgpt-composer",
+  "version": "0.2.1-mirror.6",
+  "scannedAt": "2026-10-26T10:06:22.479Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-launcher.js",
+        "line": 34,
+        "text": "const response = await fetch(`${base}/json/version`, { signal: AbortSignal.timeout(2500), redirect: 'error' })"
+      },
+      {
+        "file": "lib/cdp.js",
+        "line": 1235,
+        "text": "const response = await fetch(url, { method: 'GET' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-launcher.js",
+        "line": 23,
+        "text": "import { access, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { readFileSync, mkdirSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "const HOST_VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "const { port } = JSON.parse(readFileSync(CONNECTION_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "mkdirSync(dirname(CONNECTION_FILE), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 241,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-launcher.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/browser-launcher.js",
+        "line": 146,
+        "text": "const child = spawn(process.execPath, ['--input-type=module', '-e', source], {"
+      },
+      {
+        "file": "lib/browser-launcher.js",
+        "line": 231,
+        "text": "    const child = spawn('powershell.exe', ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', script], { windowsHide: true, stdio: ['ignore', 'pipe', 'igno"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

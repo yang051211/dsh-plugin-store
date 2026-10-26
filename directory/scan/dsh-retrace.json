@@ -1,0 +1,116 @@
+{
+  "name": "dsh-retrace",
+  "version": "0.4.134",
+  "scannedAt": "2026-10-26T10:06:20.930Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.bundle.js",
+        "line": 218,
+        "text": "unction\")return wire(op,payload);return fetch(`${ROUTE_BASE}/${op}`,{method:\"POST\",headers:{\"Content-Type\":\"application/json\",...retraceConfigHeaders()},body:JS"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 182,
+        "text": "return fetch(`${ROUTE_BASE}/${op}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2642,
+        "text": "return fetch(`${ROUTE_BASE}${path}`, { headers: retraceConfigHeaders() }).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4250,
+        "text": "return fetch(`${ROUTE_BASE}/runningState`, {"
+      },
+      {
+        "file": "lib/dynamic-client.js",
+        "line": 224,
+        "text": "unction\")return wire(op,payload);return fetch(`${ROUTE_BASE}/${op}`,{method:\"POST\",headers:{\"Content-Type\":\"application/json\",...retraceConfigHeaders()},body:JS"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/retrace.mjs",
+        "line": 22,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/retrace.mjs",
+        "line": 80,
+        "text": "fs.mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "bin/retrace.mjs",
+        "line": 83,
+        "text": "fs.writeFileSync(`${outDir}/${p.callId.replace(/[^a-zA-Z0-9_-]/g, '_')}.txt`, p.text);"
+      },
+      {
+        "file": "lib/adapter/dsh.js",
+        "line": 220,
+        "text": "const { statSync } = await import('node:fs')"
+      },
+      {
+        "file": "lib/artifact-store.js",
+        "line": 26,
+        "text": "import { constants } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git-adapter.js",
+        "line": 35,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/identity/shortcode.js",
+        "line": 28,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/rollback.js",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/rollback.js",
+        "line": 280,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.bundle.js",
+    "lib/dynamic-client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "jobs",
+    "sandboxPolicy",
+    "sessions",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

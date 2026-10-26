@@ -1,0 +1,102 @@
+{
+  "name": "dsh-pet-lan",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:35.874Z",
+  "icon": "dsh-pet-lan.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 212,
+        "text": "fetch(DUCK_PRESS_URL, { credentials: 'same-origin', cache: 'force-cache' }).then((r) => {"
+      },
+      {
+        "file": "client.js",
+        "line": 216,
+        "text": "fetch(DUCK_RELEASE_URL, { credentials: 'same-origin', cache: 'force-cache' }).then((r) => {"
+      },
+      {
+        "file": "client.js",
+        "line": 278,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 308,
+        "text": "localConfigPromise = fetch(PET_CONFIG_URL, { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 466,
+        "text": "const response = await fetch('/api/pet-lan' + query, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 408,
+        "text": "await mkdir(dshHome(), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 410,
+        "text": "await writeFile(tmp, JSON.stringify(config, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 421,
+        "text": "const parsed = JSON.parse(await readFile(configPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 757,
+        "text": "child = spawn(electron, [main], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 843,
+        "text": "spawn('taskkill', ['/pid', String(current.pid), '/t', '/f'], { windowsHide: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

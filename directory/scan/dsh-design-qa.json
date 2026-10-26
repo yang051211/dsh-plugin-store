@@ -1,0 +1,121 @@
+{
+  "name": "dsh-design-qa",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:06:44.099Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { request } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { request as request$1 } from \"node:https\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 250,
+        "text": "origin}（经代理时域名拼错也会报成连接被重置，先核对地址）。`) + \" 网络不通或该站点需要登录态时，最省事的办法是**先把图下载到本地，再把本地路径传给本工具**，例如 `curl -L -o /tmp/x.png <地址>`。 不要改用读源码、猜内容或自己做像素分析来代替看图 —— 那既慢又不可靠。\"));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 48,
+        "text": "import { request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 49,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 30,
+        "text": "import { readFile, readlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 31,
+        "text": " { readdirSync, statSync, existsSync, readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, symlinkSync, copyFileSync, realpathSync, openSync } from 'node:fs'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 65,
+        "text": "for (const { entry } of mine.slice(0, -2)) rmSync(join(dir, entry), { force: true })"
+      },
+      {
+        "file": "install.mjs",
+        "line": 77,
+        "text": "rmSync(linkPath, { recursive: true, force: true })"
+      },
+      {
+        "file": "install.mjs",
+        "line": 186,
+        "text": "try { harvest(await readFile(`/proc/${pid}/environ`, 'utf8'), '\\0'); return names } catch { /* 权限不足 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 419,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 63,
+        "text": "export const inject = ['tools', 'llm', 'attachments'] as const"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 576,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 29,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 361,
+        "text": "const child = spawn(process.execPath, [fileURLToPath(import.meta.url), '--relaunch-worker'], {"
+      },
+      {
+        "file": "install.mjs",
+        "line": 403,
+        "text": "if (argvJson === undefined) spawn(command, { cwd, detached: true, stdio, shell: true }).unref()"
+      },
+      {
+        "file": "install.mjs",
+        "line": 406,
+        "text": "spawn(argv[0], argv.slice(1), { cwd, detached: true, stdio, shell: false }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

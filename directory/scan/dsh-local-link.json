@@ -1,0 +1,79 @@
+{
+  "name": "dsh-local-link",
+  "version": "1.2.4",
+  "scannedAt": "2026-10-26T10:06:45.880Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1514,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1526,
+        "text": "fetch(\"/__dsh-local-link/admin/diagnostics/event\", {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 6,
+        "text": "import { createServer, request } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 577,
+        "text": "const request=new XMLHttpRequest();request.open('POST',location.pathname);request.timeout=12000;request.setRequestHeader('content-type','application/json');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 8,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 178,
+        "text": "const parsed = JSON.parse(await readFile(this.file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 269,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 271,
+        "text": "await writeFile(temporary, `${JSON.stringify(snapshot, null, 2)}\\n`, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 394,
+        "text": "const parsed = JSON.parse(await readFile(this.file, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

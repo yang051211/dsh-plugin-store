@@ -1,0 +1,110 @@
+{
+  "name": "dsh-clean-desktop-shell",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:06:55.362Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "electron/service.js",
+        "line": 117,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), redirect: 'manual' })"
+      },
+      {
+        "file": "electron/update.js",
+        "line": 238,
+        "text": "const res = await fetch(RELEASES_API, {"
+      },
+      {
+        "file": "electron/update.js",
+        "line": 283,
+        "text": "const res = await fetch(NPM_REGISTRY_API, { signal: AbortSignal.timeout(8000) })"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 196,
+        "text": "const res = await fetch(shasumsUrl, { signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 294,
+        "text": "const res = await fetch(c.url, { signal: AbortSignal.timeout(3000), method: 'HEAD' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "electron/config.js",
+        "line": 15,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, renameSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "electron/config.js",
+        "line": 41,
+        "text": "const parsed = JSON.parse(readFileSync(configPath(), 'utf8'))"
+      },
+      {
+        "file": "electron/config.js",
+        "line": 58,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "electron/config.js",
+        "line": 63,
+        "text": "writeFileSync(tmp, JSON.stringify(cached, null, 2), 'utf8')"
+      },
+      {
+        "file": "electron/config.js",
+        "line": 70,
+        "text": "rmSync(file, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "electron/service.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "electron/service.js",
+        "line": 199,
+        "text": "spawned = spawn(command, [...resolved.args, 'web'], {"
+      },
+      {
+        "file": "electron/service.js",
+        "line": 382,
+        "text": "const p = spawn(cmd, args, { windowsHide: true })"
+      },
+      {
+        "file": "electron/service.js",
+        "line": 408,
+        "text": "const p = spawn('tasklist', ['/FI', `PID eq ${pid}`, '/FO', 'CSV', '/NH'], {"
+      },
+      {
+        "file": "electron/service.js",
+        "line": 430,
+        "text": "const p = spawn(cmd, args, { windowsHide: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

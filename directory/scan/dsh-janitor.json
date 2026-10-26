@@ -1,0 +1,82 @@
+{
+  "name": "dsh-janitor",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:17.814Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vendor/aj-core/config.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/vendor/aj-core/config.js",
+        "line": 42,
+        "text": "raw = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/vendor/aj-core/plan.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/vendor/aj-core/plan.js",
+        "line": 99,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/vendor/aj-core/plan.js",
+        "line": 102,
+        "text": "fs.writeFileSync(jsonPath, JSON.stringify(plan, null, 2) + '\\n', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vendor/aj-core/git.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/vendor/aj-core/git.js",
+        "line": 21,
+        "text": "const res = spawnSync('git', [...BASE_ARGS, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

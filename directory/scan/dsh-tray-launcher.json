@@ -1,0 +1,80 @@
+{
+  "name": "dsh-tray-launcher",
+  "version": "1.5.2",
+  "scannedAt": "2026-10-26T10:06:50.292Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.ps1",
+        "line": 124,
+        "text": "Invoke-WebRequest -Uri $rawUrl -OutFile $traySource -UseBasicParsing"
+      },
+      {
+        "file": "install.ps1",
+        "line": 135,
+        "text": "Invoke-WebRequest -Uri $launcherUrl -OutFile $launcherDest -UseBasicParsing"
+      },
+      {
+        "file": "install.ps1",
+        "line": 148,
+        "text": "Invoke-WebRequest -Uri $iconUrl -OutFile (Join-Path $iconDir $f) -UseBasicParsing"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-tray-install.js",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-tray-install.js",
+        "line": 11,
+        "text": "const child = spawn(\"powershell.exe\", args, { stdio: \"inherit\" });"
+      },
+      {
+        "file": "bin/dsh-tray.js",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-tray.js",
+        "line": 16,
+        "text": "const child = spawn(\"powershell.exe\", psArgs, { stdio: \"inherit\" });"
+      },
+      {
+        "file": "bin/dsh-tray.js",
+        "line": 21,
+        "text": "const child = spawn(\"powershell.exe\", [\"-WindowStyle\", \"Hidden\", ...psArgs], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 77,
+      "text": "npm install -g dsh-tray-launcher"
+    }
+  ],
+  "skippedEntries": []
+}

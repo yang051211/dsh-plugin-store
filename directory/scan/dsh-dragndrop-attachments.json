@@ -1,0 +1,138 @@
+{
+  "name": "dsh-dragndrop-attachments",
+  "version": "1.3.1",
+  "scannedAt": "2026-10-26T10:06:55.815Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1446,
+        "text": "const response = await fetch(chunkRequestUrl(sessionId, uploadId, index), {"
+      },
+      {
+        "file": "lib/types/client/index.js",
+        "line": 36,
+        "text": "const response = await fetch(chunkRequestUrl(sessionId, uploadId, index), {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 63,
+        "text": "const response = await fetch(chunkRequestUrl(sessionId, uploadId, index), {"
+      },
+      {
+        "file": "src/rpc.ts",
+        "line": 1,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "tests/rpc.spec.ts",
+        "line": 1,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 1,
+        "text": "import { constants, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 8,
+        "text": "import { access, appendFile, chmod, link, mkdir, mkdtemp, open, readFile, readdir, rename, rm, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 355,
+        "text": "await mkdir(this.root, {"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 366,
+        "text": "await mkdir(directory, {"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 374,
+        "text": "await handle.writeFile(data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 3919,
+        "text": "const properties = ctx.tools.get(\"read\", exec.agent)?.output.schema.properties;"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 3930,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 4307,
+        "text": "ctx.tools.guard((exec) => attachmentDiscoveryDenial(exec.name, exec.arguments, state.current()?.records ?? []));"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 4308,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 4333,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-dragndrop-attachments.js",
+        "line": 1437,
+        "text": "const handle = this.runtime().spawn({"
+      },
+      {
+        "file": "lib/types/engine.js",
+        "line": 940,
+        "text": "const handle = this.runtime().spawn({"
+      },
+      {
+        "file": "scripts/build-release.mjs",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/build-release.mjs",
+        "line": 8,
+        "text": "const result = spawnSync(command, args, { stdio: 'inherit', ...options })"
+      },
+      {
+        "file": "scripts/verify-package.mjs",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/officecli/darwin-arm64/officecli"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

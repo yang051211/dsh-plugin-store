@@ -1,0 +1,83 @@
+{
+  "name": "dsh-mnemos-continuity",
+  "version": "1.6.1",
+  "scannedAt": "2026-10-26T10:06:24.491Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/init-constitution.mjs",
+        "line": 23,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "scripts/init-constitution.mjs",
+        "line": 43,
+        "text": "? await fs.readFile(contentArg.slice('--content='.length), 'utf8')"
+      },
+      {
+        "file": "src/boot-log.js",
+        "line": 25,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "src/boot-log.js",
+        "line": 126,
+        "text": "await fsp.mkdir(path.dirname(logFile), { recursive: true })"
+      },
+      {
+        "file": "src/boot-log.js",
+        "line": 132,
+        "text": "const old = await fsp.readFile(logFile, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 82,
+        "text": "export const inject = ['tools', 'subagents', 'skills']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1438,
+        "text": "//   平台层面没有\"按 agent 隐藏某个工具\"的接口（`ctx.tools.register` 是全局的，"
+      },
+      {
+        "file": "src/index.js",
+        "line": 2020,
+        "text": "return ctx.tools.register(tool)"
+      },
+      {
+        "file": "src/learner-loop.js",
+        "line": 788,
+        "text": "* 平台没有\"按 agent 隐藏某个工具\"的接口（`ctx.tools.register` 是全局的，也没有独立的工具策略插件），"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

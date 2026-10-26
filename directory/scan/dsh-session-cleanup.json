@@ -1,0 +1,79 @@
+{
+  "name": "dsh-session-cleanup",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:49.732Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/dsh/delete-session.js",
+        "line": 1,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/src/orphaned.js",
+        "line": 1,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/src/trash.js",
+        "line": 2,
+        "text": "import { existsSync, renameSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/src/trash.js",
+        "line": 207,
+        "text": "rmSync(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/src/trash.js",
+        "line": 209,
+        "text": "rm(targetPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/trash.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/src/trash.js",
+        "line": 72,
+        "text": "child = spawn(command, [...args], {"
+      },
+      {
+        "file": "src/trash.ts",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "src/trash.ts",
+        "line": 117,
+        "text": "      child = spawn(command, [...args], { // nosemgrep: javascript.lang.security.detect-child-process.detect-child-process -- command is checked against the har"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

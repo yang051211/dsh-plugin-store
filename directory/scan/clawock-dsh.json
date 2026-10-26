@@ -1,0 +1,100 @@
+{
+  "name": "clawock-dsh",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:06:28.386Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/balance.js",
+        "line": 359,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/balance.js",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 309,
+        "text": "const parsed = JSON.parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 320,
+        "text": "cfg = JSON.parse(readFileSync(configPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 348,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 350,
+        "text": "writeFileSync(tmp, JSON.stringify({ snapshot }), { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/balance.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 530,
+        "text": "const child = spawn(command, [\"app-server\"], { stdio: ["
+      },
+      {
+        "file": "lib/taskqueue.js",
+        "line": 5,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/taskqueue.js",
+        "line": 58,
+        "text": "execFile(\"python3\", ["
+      },
+      {
+        "file": "lib/taskqueue.js",
+        "line": 84,
+        "text": "execFile(command, args, { timeout: COMMAND_TIMEOUT_MS }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 52,
+      "text": "python -m pip install clawock"
+    }
+  ],
+  "skippedEntries": []
+}

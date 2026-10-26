@@ -1,0 +1,121 @@
+{
+  "name": "dsh-browser-service",
+  "version": "0.8.3",
+  "scannedAt": "2026-10-26T10:06:37.876Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/client.js",
+        "line": 874,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 1483,
+        "text": "const res = await fetch(url, { cache: 'no-store' });"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 1523,
+        "text": "const res = await fetch(LIVE_STATE_PATH, { cache: 'no-store' });"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 1546,
+        "text": "void fetch(LIVE_INPUT_PATH, { method: 'DELETE' }).catch(() => {});"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 1551,
+        "text": "if (paused || !started) void fetch(LIVE_INPUT_PATH, { method: 'DELETE' }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 13,
+        "text": "import { copyFileSync, existsSync, openSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 57,
+        "text": "return readFileSync(`/proc/${pid}/cmdline`, 'utf8').replace(/\\0/g, ' ').trim();"
+      },
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 175,
+        "text": "rmSync(stateFile(cfg.root), { force: true });"
+      },
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 186,
+        "text": "const lines = readFileSync(file, 'utf8').split('\\n').filter(Boolean);"
+      },
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 346,
+        "text": "data = JSON.parse(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-bundle.mjs",
+        "line": 208,
+        "text": "out.noApply = v({ browserModule: bm, toolModule: { name: 'tool-browser', inject: ['tools', 'browser'] }, hostVersion: out.versions.host });"
+      },
+      {
+        "file": "scripts/verify-bundle.mjs",
+        "line": 209,
+        "text": "out.missingInject = v({ browserModule: bm, toolModule: { name: 'tool-browser', apply() {}, inject: ['tools'] }, hostVersion: out.versions.host });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "bin/browsersvc.mjs",
+        "line": 102,
+        "text": "const child = spawn(process.execPath, [BIN, 'run', ...toFlagArgs(flags)], {"
+      },
+      {
+        "file": "plugin/lib/index.js",
+        "line": 7,
+        "text": "import { exec } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/lib/host-peers.mjs",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/lib/host-peers.mjs",
+        "line": 19,
+        "text": "const which = spawnSync('sh', ['-c', `command -v ${dshBin}`], { encoding: 'utf8' }).stdout.trim();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

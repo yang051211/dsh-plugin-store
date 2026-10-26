@@ -1,0 +1,95 @@
+{
+  "name": "dsh-recommend",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:49.017Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 478,
+        "text": "const res = await fetch(\"/dsh-recommend/registry.json\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 58,
+        "text": "const res = await fetch(config.dataUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/index.mjs",
+        "line": 1,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 30,
+        "text": "const raw = await readFile(cachePath, \"utf8\");"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 63,
+        "text": "await mkdir(dirname(cachePath), { recursive: true });"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 64,
+        "text": "await writeFile(cachePath, text, \"utf8\");"
+      },
+      {
+        "file": "lib/host/web.mjs",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/index.mjs",
+        "line": 14,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 38,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 72,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 162,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/index.mjs",
+        "line": 215,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

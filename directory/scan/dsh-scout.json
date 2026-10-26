@@ -1,0 +1,113 @@
+{
+  "name": "dsh-scout",
+  "version": "0.9.3",
+  "scannedAt": "2026-10-26T10:06:23.855Z",
+  "icon": "dsh-scout.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 251,
+        "text": "const fsService = () => ctx.get('fs');"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 64,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 75,
+        "text": "const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 297,
+        "text": "const text = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8')"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 388,
+        "text": "const lines = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8').split('\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 425,
+        "text": "yield ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 456,
+        "text": "yield ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 498,
+        "text": "yield ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 663,
+        "text": "yield ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 63,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 192,
+        "text": "const result = spawnSync(command(program), args, { env, stdio: 'inherit' })"
+      },
+      {
+        "file": "scripts/profile-smoke.mjs",
+        "line": 128,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/profile-smoke.mjs",
+        "line": 217,
+        "text": "const result = spawnSync(command(program), args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

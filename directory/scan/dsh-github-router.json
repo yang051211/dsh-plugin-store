@@ -1,0 +1,121 @@
+{
+  "name": "dsh-github-router",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:06:29.649Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guidance.js",
+        "line": 13,
+        "text": "'Do not fight shell-side GitHub failures (curl / gh / git / Invoke-WebRequest) with retries or sandbox escalation — ' +"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 76,
+        "text": "/** Headers projection compatible with both fetch (Headers) and the tunnel (plain object). */"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 128,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/skill.js",
+        "line": 13,
+        "text": " issue triage, file inspection, repo metadata) and especially when shell-side curl / gh / git / Invoke-WebRequest fails with TLS, proxy, or permission errors.',"
+      },
+      {
+        "file": "lib/tools/api.js",
+        "line": 46,
+        "text": "forceRefresh: { type: 'boolean', description: 'Bypass the plugin cache and re-fetch (default false).' },"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 8,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 38,
+        "text": "const entry = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 62,
+        "text": "mkdirSync(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 63,
+        "text": "writeFileSync(tmp, JSON.stringify({ v: 1, ts: now, ttlMs, value }), 'utf8')"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 66,
+        "text": "try { unlinkSync(tmp) } catch { /* best effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "export const inject = ['tools', 'subprocess', 'skills', 'systemPrompt']"
+      },
+      {
+        "file": "lib/tools/api.js",
+        "line": 38,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/file.js",
+        "line": 11,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/issue.js",
+        "line": 11,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/pr.js",
+        "line": 14,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/util.js",
+        "line": 138,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

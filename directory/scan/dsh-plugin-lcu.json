@@ -1,0 +1,114 @@
+{
+  "name": "dsh-plugin-lcu",
+  "version": "0.3.8",
+  "scannedAt": "2026-10-26T10:06:33.194Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app.js",
+        "line": 15,
+        "text": "import { accessSync, constants, existsSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 58,
+        "text": "const text = readFileSync(plist, 'utf8');"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 125,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, 'utf8'));"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 198,
+        "text": "const { mkdtempSync, chmodSync, existsSync } = await import('node:fs');"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 464,
+        "text": "void import('node:fs').then(({ rmSync }) => { rmSync(directory, { recursive: true, force: true }); }).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "diag(`agent/created id=${String(agent.id)} agentCtxTools=${describe(agent.ctx.tools)}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 370,
+        "text": "diag(`  -> attach done, connections=${String(connections.size)}, tools=${JSON.stringify(agent.ctx.tools.schemas(agent).map((t) => t.name).slice(-4))}`);"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 439,
+        "text": "const disposers = definitions.map((definition) => agentCtx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection.js",
+        "line": 190,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 236,
+        "text": "child = spawn(this.#options.command, [...this.#options.args ?? []], {"
+      },
+      {
+        "file": "lib/host-guard.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host-guard.js",
+        "line": 49,
+        "text": "execFile(command, [...args], { timeout: 5_000 }, (error, stdout) => {"
+      },
+      {
+        "file": "scripts/probe-lcu.mjs",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

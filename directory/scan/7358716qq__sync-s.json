@@ -1,0 +1,85 @@
+{
+  "name": "@7358716qq/sync-s",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:26.424Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "return fetch(API + path, Object.assign({ cache: 'no-store' }, init || {})).then(function (res) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bootstrap.mjs",
+        "line": 16,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bootstrap.mjs",
+        "line": 52,
+        "text": "const j = JSON.parse(fs.readFileSync(path.join(root, n, 'package.json'), 'utf8').replace(/^\\uFEFF/, ''));"
+      },
+      {
+        "file": "bootstrap.mjs",
+        "line": 125,
+        "text": "try { return JSON.parse(fs.readFileSync(f, 'utf8').replace(/^\\uFEFF/, '')); } catch { return null; }"
+      },
+      {
+        "file": "bootstrap.mjs",
+        "line": 150,
+        "text": "try { patchHasRow = fs.readFileSync(patch, 'utf8').includes('dsh-sync'); } catch { /* 无 patch */ }"
+      },
+      {
+        "file": "bootstrap.mjs",
+        "line": 208,
+        "text": "fs.mkdirSync(STATE_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bootstrap.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bootstrap.mjs",
+        "line": 97,
+        "text": "const r = spawnSync('git', [...base, ...args], {"
+      },
+      {
+        "file": "lib/gitnet.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gitnet.js",
+        "line": 32,
+        "text": "child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

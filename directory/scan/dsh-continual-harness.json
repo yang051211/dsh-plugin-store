@@ -1,0 +1,82 @@
+{
+  "name": "dsh-continual-harness",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:06:51.689Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/audit.js",
+        "line": 8,
+        "text": "import { appendFileSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/types/audit.js",
+        "line": 14,
+        "text": "mkdirSync(home, { recursive: true });"
+      },
+      {
+        "file": "lib/types/audit.js",
+        "line": 15,
+        "text": "appendFileSync(join(home, REVIEWS_FILE_NAME), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/types/audit.js",
+        "line": 24,
+        "text": "text = readFileSync(join(home, REVIEWS_FILE_NAME), 'utf8');"
+      },
+      {
+        "file": "lib/types/benchmark-actions.js",
+        "line": 7,
+        "text": "import { readdirSync, mkdirSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/index.js",
+        "line": 35,
+        "text": "export const inject = ['agents', 'tools'];"
+      },
+      {
+        "file": "lib/types/tool-benchmark.js",
+        "line": 112,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/types/tool.js",
+        "line": 150,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/types/tool.js",
+        "line": 200,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

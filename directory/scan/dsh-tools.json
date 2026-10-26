@@ -1,0 +1,139 @@
+{
+  "name": "dsh-tools",
+  "version": "1.1.5",
+  "scannedAt": "2026-10-26T10:06:48.623Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 370,
+        "text": "response = await fetch(base + \"/\" + method, {"
+      },
+      {
+        "file": "lib/client/core.js",
+        "line": 352,
+        "text": "response = await fetch(base + \"/\" + method, {"
+      },
+      {
+        "file": "lib/features/github-ref.js",
+        "line": 97,
+        "text": "return await fetch(GITHUB_API_BASE + path, { headers, signal: controller.signal });"
+      },
+      {
+        "file": "lib/features/github-ref.js",
+        "line": 168,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "lib/features/github-ref.js",
+        "line": 194,
+        "text": "const response = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 20,
+        "text": "import { mkdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 21,
+        "text": "import { readdir, stat, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 47,
+        "text": "const text = await readFile(SIZE_CACHE_FILE(), \"utf8\");"
+      },
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 62,
+        "text": "mkdirSync(pluginsDataDir(), { recursive: true });"
+      },
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 63,
+        "text": "await writeFile(SIZE_CACHE_FILE(), JSON.stringify({ sessions: sizeCache }, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/wechat-openclaw.js",
+        "line": 447,
+        "text": "// 注意：定义形状必须满足宿主 tools.register() 的契约 —— 它强制要求"
+      },
+      {
+        "file": "lib/features/wechat-openclaw.js",
+        "line": 458,
+        "text": "const disposeTool = tools.register(defineTool({"
+      },
+      {
+        "file": "lib/wechat/vendor/weixin/gateway.js",
+        "line": 8,
+        "text": "export const inject = ['weixinStartup', 'agentDefaultModel', 'agents', 'sessions', 'tools'];"
+      },
+      {
+        "file": "lib/wechat/vendor/weixin/gateway.js",
+        "line": 13,
+        "text": "if (ctx.tools) {"
+      },
+      {
+        "file": "lib/wechat/vendor/weixin/gateway.js",
+        "line": 15,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 379,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/features/delete-chat.js",
+        "line": 430,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/features/harness-check.js",
+        "line": 11,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/features/harness-check.js",
+        "line": 54,
+        "text": "? spawnSync(process.env.ComSpec || \"cmd.exe\", [\"/d\", \"/s\", \"/c\", \"npm root -g\"], { encoding: \"utf8\", windowsHide: true })"
+      },
+      {
+        "file": "lib/features/harness-check.js",
+        "line": 55,
+        "text": ": spawnSync(\"npm\", [\"root\", \"-g\"], { encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

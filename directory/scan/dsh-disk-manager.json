@@ -1,0 +1,115 @@
+{
+  "name": "dsh-disk-manager",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:06:48.879Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 145,
+        "text": ".then(() => fetch(\"/dsh-disk-manager/drives\", { headers: { accept: \"application/json\" }, credentials: \"same-origin\" }))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "config.mjs",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "config.mjs",
+        "line": 51,
+        "text": "file = JSON.parse(readFileSync(configPath(), \"utf8\"));"
+      },
+      {
+        "file": "config.mjs",
+        "line": 61,
+        "text": "mkdirSync(configDir(), { recursive: true });"
+      },
+      {
+        "file": "config.mjs",
+        "line": 62,
+        "text": "writeFileSync(configPath(), JSON.stringify(config, null, 2), \"utf8\");"
+      },
+      {
+        "file": "config.mjs",
+        "line": 73,
+        "text": "return JSON.parse(readFileSync(classifyCachePath(), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 12,
+        "text": "export const inject = [\"tools\", \"llm\", \"commands\"];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 132,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 142,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 156,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 175,
+        "text": "ctx.tools.register(textTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/active.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "core/executor.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "core/scanner.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "index.mjs",
+        "line": 9,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

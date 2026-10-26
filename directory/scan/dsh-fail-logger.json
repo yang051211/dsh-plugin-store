@@ -1,0 +1,60 @@
+{
+  "name": "dsh-fail-logger",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:39.066Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { closeSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync, writeSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "writeFileSync(tmp, data);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "for (const f of readdirSync(LOG_DIR)) if (f.includes('.tmp-')) { try { unlinkSync(join(LOG_DIR, f)); } catch {} }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 122,
+        "text": "unlinkSync(probe);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

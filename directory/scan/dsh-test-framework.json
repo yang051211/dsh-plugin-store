@@ -1,0 +1,84 @@
+{
+  "name": "dsh-test-framework",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:06:26.099Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 11,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 22,
+        "text": "return JSON.parse(fs.readFileSync(path.join(PLUGIN_DIR, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 220,
+        "text": "knownMenus = [...fs.readFileSync(routeMd, 'utf8').matchAll(/\\|\\s*([^|\\n]{2,20}?)\\s*\\|/g)].map((m) => m[1])"
+      },
+      {
+        "file": "lib/docx.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/docx.js",
+        "line": 227,
+        "text": "buf = fs.readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/framework.js",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/framework.js",
+        "line": 1394,
+        "text": "const probe = spawnSync('git', ['--version'], { encoding: 'utf8', timeout: 8000, windowsHide: true })"
+      },
+      {
+        "file": "lib/framework.js",
+        "line": 1396,
+        "text": "const run = spawnSync('git', ['init', '--quiet'], { cwd, encoding: 'utf8', timeout: 20000, windowsHide: true })"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 44,
+        "text": "const r = spawnSync(command, args, { encoding: 'utf8', ...base })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

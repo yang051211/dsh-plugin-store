@@ -1,0 +1,107 @@
+{
+  "name": "dsh-python-env",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:47.720Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/envdir.js",
+        "line": 10,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/envdir.js",
+        "line": 29,
+        "text": "await mkdir(cacheDir(ws), { recursive: true })"
+      },
+      {
+        "file": "lib/envdir.js",
+        "line": 30,
+        "text": "await mkdir(tmpDir(ws), { recursive: true })"
+      },
+      {
+        "file": "lib/envdir.js",
+        "line": 32,
+        "text": "await writeFile(join(root, '.gitignore'), CACHE_DIR_NAME + '/\\n' + TMP_DIR_NAME + '/\\n', { flag: 'wx' })"
+      },
+      {
+        "file": "lib/layout.js",
+        "line": 9,
+        "text": "import { readdir, stat } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "export const inject = ['tools', 'skills', 'subprocess', 'jobs', 'sandboxPolicy', 'systemPrompt']"
+      },
+      {
+        "file": "lib/tools/create.js",
+        "line": 38,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/discover.js",
+        "line": 31,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/install.js",
+        "line": 87,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools/remove.js",
+        "line": 29,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pip.js",
+        "line": 247,
+        "text": "const handle = subprocess.spawn(signal === undefined ? spec : { ...spec, signal })"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 54,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 37,
+        "text": "const handle = subprocess.spawn(signal === undefined ? spec : { ...spec, signal })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "sandboxPolicy",
+    "skills",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

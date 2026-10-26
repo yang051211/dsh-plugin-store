@@ -1,0 +1,80 @@
+{
+  "name": "dsh-vision-tools",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:38.690Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.bundle.js",
+        "line": 42,
+        "text": "return fetch(\"/api/vision-paste\", {"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 212,
+        "text": "res = await fetch(cfg.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 19,
+        "text": "import { mkdir, writeFile, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 59,
+        "text": "text = await readFile(p, 'utf8')"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 112,
+        "text": "const bytes = await readFile(p)"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 153,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 155,
+        "text": "await writeFile(abs, Buffer.from(base64, 'base64'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 172,
+        "text": "inject: ['tools', 'webServer'],"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 263,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

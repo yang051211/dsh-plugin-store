@@ -1,0 +1,104 @@
+{
+  "name": "dsh-hooks",
+  "version": "0.14.4",
+  "scannedAt": "2026-10-26T10:06:27.450Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/notify-feishu.mjs",
+        "line": 262,
+        "text": "response = await fetch(url, init)"
+      },
+      {
+        "file": "examples/notify-webhook.mjs",
+        "line": 169,
+        "text": "return await fetch(url, {"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 189,
+        "text": "return await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/notify-feishu.mjs",
+        "line": 40,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "examples/notify-feishu.mjs",
+        "line": 97,
+        "text": "file = JSON.parse(readFileSync(configPath, 'utf8'))"
+      },
+      {
+        "file": "lib/dry-run.js",
+        "line": 6,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/dry-run.js",
+        "line": 63,
+        "text": "entries = YAML.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/feishu.js",
+        "line": 12,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-hooks.mjs",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-hooks.mjs",
+        "line": 63,
+        "text": "const child = spawn(command.executable, command.args, { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 281,
+        "text": "child = spawn(argv[0], argv.slice(1), { stdio: 'ignore', env: { ...process.env, ...env }, windowsHide: true });"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,68 @@
+{
+  "name": "dsh-multi-folder",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:06:20.370Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "import { mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "export const inject = ['fs', 'sandboxPolicy', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 383,
+        "text": "await mkdir(target)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 439,
+        "text": "child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 601,
+        "text": "child = spawn(command, [absolute], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "sandboxPolicy",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

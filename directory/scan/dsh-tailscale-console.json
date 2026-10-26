@@ -1,0 +1,60 @@
+{
+  "name": "dsh-tailscale-console",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-26T10:06:37.189Z",
+  "icon": "dsh-tailscale-console.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 14,
+        "text": "fetch(`/tsctl/api/${method}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import http from \"node:http\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "\"  curl -fsSL https://tailscale.com/install.sh | sh >/tmp/ts-install.log 2>&1\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 394,
+        "text": "const page = await run(`curl -s -o /dev/null -w '%{http_code}' --noproxy '*' --max-time 6 ${base}/`, 15000)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/icons.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

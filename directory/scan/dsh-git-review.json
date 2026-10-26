@@ -1,0 +1,93 @@
+{
+  "name": "dsh-git-review",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:06:43.787Z",
+  "icon": "dsh-git-review.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1541,
+        "text": "const res = await fetch(\"/dsh-git-review/api/\" + encodeURIComponent(action), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { lstat, mkdtemp, open, readdir, realpath, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2324,
+        "text": "await writeFile(patchFile, patch, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2332,
+        "text": "await rm(dir, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2784,
+        "text": "await rm(absPath, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 534,
+        "text": "execFile(\"git\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1282,
+        "text": "const child = spawn(\"git\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1690,
+        "text": "execFile(\"git\", [\"init\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2010,
+        "text": "execFile(\"git\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

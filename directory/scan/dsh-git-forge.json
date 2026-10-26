@@ -1,0 +1,120 @@
+{
+  "name": "dsh-git-forge",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:06:43.629Z",
+  "icon": "dsh-git-forge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 197,
+        "text": "const response = await fetch(API + \"/\" + method, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 337,
+        "text": "const res = await fetch(url, { headers, redirect: 'follow', signal: ac.signal })"
+      },
+      {
+        "file": "scripts/smoke-test.mjs",
+        "line": 101,
+        "text": "classifyGitWriteCommand('node -e \"fetch(\\'http://127.0.0.1:3080/dsh-git-forge/api/health\\')\"').kind,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "writeFileSync(path, JSON.stringify(data, null, 2) + '\\n', { mode })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 817,
+        "text": "prev = readFileSync(GITCONFIG_PATH, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "// Register a raw JSON-Schema tool definition via ctx.tools.register instead of defineTool."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "export const inject = ['webServer', 'sessions', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 574,
+        "text": "if (!ctx.tools || typeof ctx.tools.guard !== 'function') return () => {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 575,
+        "text": "return ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 632,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== 'function') {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/shared/remote-resolve.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/shared/remote-resolve.js",
+        "line": 13,
+        "text": "const r = spawnSync('git', args, {"
+      },
+      {
+        "file": "scripts/smoke-test.mjs",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

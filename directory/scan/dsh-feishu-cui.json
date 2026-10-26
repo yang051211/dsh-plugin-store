@@ -1,0 +1,64 @@
+{
+  "name": "dsh-feishu-cui",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:06:44.630Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/settings/client.js",
+        "line": 287,
+        "text": "const response = await fetch(STATE_ROUTE, { credentials: 'same-origin' });"
+      },
+      {
+        "file": "lib/settings/client.js",
+        "line": 308,
+        "text": "const response = await fetch(CREDENTIALS_ROUTE, {"
+      },
+      {
+        "file": "lib/settings/client.js",
+        "line": 334,
+        "text": "const response = await fetch(UNBIND_USER_ROUTE, { method: 'POST', credentials: 'same-origin' });"
+      },
+      {
+        "file": "lib/settings/client.js",
+        "line": 350,
+        "text": "const response = await fetch(SLEEP_GUARD_ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/infra/system/sleep-guard.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/infra/system/sleep-guard.js",
+        "line": 40,
+        "text": "const proc = spawn(CAFFEINATE, [...CAFFEINATE_ARGS, '-w', String(process.pid)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,129 @@
+{
+  "name": "dsh-cursor-dev",
+  "version": "0.12.5",
+  "scannedAt": "2026-10-26T10:06:19.460Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 244,
+        "text": "fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 360,
+        "text": "fetch(STATUS_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 16,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 165,
+        "text": "const request = http.request({"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 235,
+        "text": "const request = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attribution.js",
+        "line": 24,
+        "text": "import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/attribution.js",
+        "line": 76,
+        "text": "raw = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/attribution.js",
+        "line": 117,
+        "text": "raw = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : { version: 1 };"
+      },
+      {
+        "file": "lib/attribution.js",
+        "line": 139,
+        "text": "writeFileSync(temporary, `${JSON.stringify(raw, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/changes.js",
+        "line": 10,
+        "text": "import { readdir, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['tools', 'subprocess'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 266,
+        "text": "const disposeTool = ctx.tools.register({ ...tool, name: config.toolName });"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 88,
+        "text": "* The tool definition, registered through `ctx.tools.register`."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 132,
+        "text": "const handle = spawn({"
+      },
+      {
+        "file": "lib/cursor-session.js",
+        "line": 270,
+        "text": "await this.#spawn(signal);"
+      },
+      {
+        "file": "lib/cursor-session.js",
+        "line": 292,
+        "text": "await this.#spawn(options.signal);"
+      },
+      {
+        "file": "lib/cursor-session.js",
+        "line": 311,
+        "text": "async #spawn(signal) {"
+      },
+      {
+        "file": "lib/cursor-session.js",
+        "line": 314,
+        "text": "const handle = config.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

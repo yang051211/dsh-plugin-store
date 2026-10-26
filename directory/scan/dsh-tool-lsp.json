@@ -1,0 +1,75 @@
+{
+  "name": "dsh-tool-lsp",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:49.568Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "export const inject = ['tools', 'fs', 'subprocess'];"
+      },
+      {
+        "file": "lib/patch-config.js",
+        "line": 11,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/patch-config.js",
+        "line": 58,
+        "text": "const text = readFileSync(patchPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "export const inject = ['tools', 'fs', 'subprocess'];"
+      },
+      {
+        "file": "index.js",
+        "line": 133,
+        "text": "for (const tool of createTools(toolCtx)) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 103,
+        "text": "(spec) => ctx.subprocess.spawn(spec),"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 118,
+      "text": "The language servers themselves must be on PATH; this plugin does not install them."
+    }
+  ],
+  "skippedEntries": []
+}

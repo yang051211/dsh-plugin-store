@@ -1,0 +1,112 @@
+{
+  "name": "dsh-theme-mediascape",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:06:58.549Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-parts/foundation/utils-upload.js",
+        "line": 189,
+        "text": "// 创建 XMLHttpRequest + 全部事件回调，返回 { promise, abort }。"
+      },
+      {
+        "file": "lib/client-parts/foundation/utils-upload.js",
+        "line": 195,
+        "text": "xhr = new XMLHttpRequest();"
+      },
+      {
+        "file": "lib/client-parts/foundation/utils.js",
+        "line": 38,
+        "text": "const resp = await fetch(\"/theme-mediascape-assets/media-token\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client-parts/foundation/utils.js",
+        "line": 80,
+        "text": "if (!timeoutMs) return fetch(url, opts);"
+      },
+      {
+        "file": "lib/client-parts/foundation/utils.js",
+        "line": 92,
+        "text": "return fetch(url, { ...opts, signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap.js",
+        "line": 16,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 30,
+        "text": "const cfg = JSON.parse(readFileSync(DIRS_CONFIG_FILE, 'utf8'));"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 59,
+        "text": "mkdirSync(join(dst, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 71,
+        "text": "mkdirSync(join(d, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 77,
+        "text": "mkdirSync(dst, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 217,
+        "text": "const child = spawn('bash', [join(ROOT, STUDIO_DIR, 'start.sh'), 'start'], {"
+      },
+      {
+        "file": "theme-studio/start-preview.mjs",
+        "line": 30,
+        "text": "import { execSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "theme-studio/start-preview.mjs",
+        "line": 776,
+        "text": "const child = spawn('bash', [startSh, 'restart'], {"
+      },
+      {
+        "file": "theme-studio/start-preview.mjs",
+        "line": 920,
+        "text": "buildOut = execSync(`PATH=\"${dirname(process.execPath)}:$PATH\" DSH_THEME_NO_RESTART=1 node build.cjs`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

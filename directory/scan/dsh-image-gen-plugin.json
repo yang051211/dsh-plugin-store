@@ -1,0 +1,82 @@
+{
+  "name": "dsh-image-gen-plugin",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:06:27.892Z",
+  "icon": "dsh-image-gen-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 562,
+        "text": "const response = await fetch(RECORDS_ROUTE, {"
+      },
+      {
+        "file": "index.js",
+        "line": 395,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 257,
+        "text": "const bytes = await readFile(filePath);"
+      },
+      {
+        "file": "index.js",
+        "line": 508,
+        "text": "await writeFile(filePath, bytes, { flag: 'wx' });"
+      },
+      {
+        "file": "index.js",
+        "line": 518,
+        "text": "await mkdir(outputDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 927,
+        "text": "return ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

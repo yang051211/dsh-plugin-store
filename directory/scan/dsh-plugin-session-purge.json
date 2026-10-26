@@ -1,0 +1,68 @@
+{
+  "name": "dsh-plugin-session-purge",
+  "version": "1.3.4",
+  "scannedAt": "2026-10-26T10:06:52.428Z",
+  "icon": "dsh-plugin-session-purge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 858,
+        "text": "const response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 57,
+        "text": "import { createReadStream } from 'node:fs'"
+      },
+      {
+        "file": "host.js",
+        "line": 58,
+        "text": "import { mkdir, readdir, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "host.js",
+        "line": 528,
+        "text": "await mkdir(dirname(destination), { recursive: true })"
+      },
+      {
+        "file": "host.js",
+        "line": 549,
+        "text": "await mkdir(dirname(destination), { recursive: true })"
+      },
+      {
+        "file": "host.js",
+        "line": 726,
+        "text": "await rm(join(this.trashRoot(), entry.projectDir, entry.id), { recursive: true, force: true, maxRetries: 3 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionPersistence",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

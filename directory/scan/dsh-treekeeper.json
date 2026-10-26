@@ -1,0 +1,107 @@
+{
+  "name": "dsh-treekeeper",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:06:49.877Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 610,
+        "text": "fetch('/dsh-treekeeper/api' + snapshotQuery(rootSessionId), { headers: { accept: 'application/json' }, signal: signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 617,
+        "text": "fetch('/dsh-treekeeper/api?action=census', { headers: { accept: 'application/json' }, signal: signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 620,
+        "text": "const res = await fetch('/dsh-treekeeper/api?action=config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1038,
+        "text": "const res = await fetch('/dsh-treekeeper/api?action=kill', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1056,
+        "text": "const res = await fetch('/dsh-treekeeper/api?action=release', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 9,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 69,
+        "text": "await fs.mkdir(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 70,
+        "text": "await fs.appendFile(this.file, JSON.stringify({ at: Date.now(), ...record }) + '\\n')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 89,
+        "text": "const lines = (await fs.readFile(this.file, 'utf8')).trim().split('\\n')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 91,
+        "text": "await fs.writeFile(this.file, keep.length ? keep.join('\\n') + '\\n' : '')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/act.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/act.js",
+        "line": 15,
+        "text": "execFile(cmd, args, options, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/sampler.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/sampler.js",
+        "line": 44,
+        "text": "execFile(cmd, args, options, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-ui-sound",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:23.492Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 261,
+        "text": "fetch(API_BASE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 271,
+        "text": "fetch(API_BASE, { cache: \"no-store\" }).then((res) => res.json()).then((data) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "return normalizePrefs(JSON.parse(readFileSync(path, 'utf8')))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "writeFileSync(temporary, `${JSON.stringify(prefs, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-bundle.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "vendor/uisfx-0.4.0.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

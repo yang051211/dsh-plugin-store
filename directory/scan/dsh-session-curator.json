@@ -1,0 +1,84 @@
+{
+  "name": "dsh-session-curator",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:06:20.726Z",
+  "icon": "dsh-session-curator.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "const response = await fetch(url.slice(1), {"
+      },
+      {
+        "file": "lib/host/update.js",
+        "line": 43,
+        "text": "const response = await fetch(`${UPDATE_REGISTRY}/${PLUGIN_NAME}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/delete.js",
+        "line": 26,
+        "text": "import { promises as fsp } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/delete.js",
+        "line": 70,
+        "text": "await fsp.rm(info.dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/host/delete.js",
+        "line": 79,
+        "text": "await fsp.rm(projCacheFile(sessionId), { force: true });"
+      },
+      {
+        "file": "lib/host/fs-utils.js",
+        "line": 2,
+        "text": "import { promises as fsp } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/fs-utils.js",
+        "line": 78,
+        "text": "const parsed = JSON.parse(await fsp.readFile(file, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/open.js",
+        "line": 19,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host/open.js",
+        "line": 58,
+        "text": "const child = spawn(command.command, [...command.args, path], { detached: true, stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

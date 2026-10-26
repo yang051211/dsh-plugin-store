@@ -1,0 +1,75 @@
+{
+  "name": "dsh-vitals",
+  "version": "0.1.19",
+  "scannedAt": "2026-10-26T10:06:43.028Z",
+  "icon": "dsh-vitals.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 214,
+        "text": "const res = await fetch(DATA_URL, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readdirSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "const m = readFileSync(\"/proc/cpuinfo\", \"utf8\").match(/model name\\s*:\\s*(.+)/);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const now = parseStat(readFileSync(\"/proc/stat\", \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "for (const line of readFileSync(\"/proc/meminfo\", \"utf8\").split(\"\\n\")) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "const type = readFileSync(`/sys/class/thermal/${z}/type`, \"utf8\").trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "execFile(cmd, args, { timeout, windowsHide: true }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

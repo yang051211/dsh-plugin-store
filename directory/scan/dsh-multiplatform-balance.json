@@ -1,0 +1,68 @@
+{
+  "name": "dsh-multiplatform-balance",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:06:28.198Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/balance.js",
+        "line": 260,
+        "text": "const testRes = await fetch(testUrl, { headers: testHeaders, signal: AbortSignal.timeout(3000) });"
+      },
+      {
+        "file": "lib/balance.js",
+        "line": 306,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "content: await readFile(SKILL_BODY_URL, \"utf8\")"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "export const inject = [\"skills\", \"tools\"]"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

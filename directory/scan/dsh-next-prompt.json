@@ -1,0 +1,64 @@
+{
+  "name": "dsh-next-prompt",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:06:24.043Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 265,
+        "text": "request = window.fetch(RPC_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 15,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 65,
+        "text": "parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 89,
+        "text": "await mkdir(dirname(file), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 90,
+        "text": "await writeFile(temp, body, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

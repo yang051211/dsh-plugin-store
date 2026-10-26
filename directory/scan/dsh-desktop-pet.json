@@ -1,0 +1,99 @@
+{
+  "name": "dsh-desktop-pet",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:23.809Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/neutralino/resources/neutralino.js",
+        "line": 1,
+        "text": "?\"127.0.0.1\":window.location.hostname;a=new WebSocket(`ws://${o}:${window.NL_PORT}?connectToken=${e}`),function(){if(t(\"ready\",async()=>{if(await f(c),!window.N"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1635,
+        "text": "const ws = new WebSocket(url);"
+      },
+      {
+        "file": "scripts/install-neutralino.mjs",
+        "line": 13,
+        "text": "import { get } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 423,
+        "text": "raw = readFileSync(manifestPath, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 471,
+        "text": "mkdirSync(dest, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 476,
+        "text": "rmSync(dest, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 692,
+        "text": "if (existsSync(target)) rmSync(target, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { execSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1775,
+        "text": "const child = spawn(binary, [`--path=${workDir}`, \"--res-mode=directory\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1793,
+        "text": "execSync(`taskkill /F /T /PID ${child.pid}`, { stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/install-neutralino.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "assets/neutralino/resources/neutralino.js",
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

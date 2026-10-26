@@ -1,0 +1,95 @@
+{
+  "name": "dsh-plugin-cron-scheduler",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:06:54.875Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 172,
+        "text": "fetch(SESSIONS_URL)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 191,
+        "text": "fetch(isEdit ? `${JOBS_URL}/${job.id}` : JOBS_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 234,
+        "text": "fetch(`${JOBS_URL}/${job.id}`, { method: 'DELETE' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 298,
+        "text": "fetch(JOBS_URL)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 319,
+        "text": "fetch(`${JOBS_URL}/${job.id}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync, renameSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 85,
+        "text": "const raw = JSON.parse(readFileSync(this.path, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 103,
+        "text": "mkdirSync(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 105,
+        "text": "writeFileSync(tmp, JSON.stringify(this.jobs, null, 2) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['sessions', 'agents', 'tools', 'timer']"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 11,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

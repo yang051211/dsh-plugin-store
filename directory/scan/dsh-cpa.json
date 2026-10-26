@@ -1,0 +1,97 @@
+{
+  "name": "dsh-cpa",
+  "version": "0.1.11",
+  "scannedAt": "2026-10-26T10:06:45.759Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 595,
+        "text": "const response = await fetch(SUMMARY_URL, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 604,
+        "text": "const response = await fetch(DIAGNOSTICS_URL, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 613,
+        "text": "const response = await fetch(REPORT_URL, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 746,
+        "text": "const response = await fetch(`${EXECUTION_STATUS_URL}?sessionId=${encodeURIComponent(sessionId)}`, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 1053,
+        "text": "const response = await fetch(SETTINGS_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/config.js",
+        "line": 3,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "src/core/config.js",
+        "line": 4,
+        "text": "import { access, chmod, mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/core/config.js",
+        "line": 124,
+        "text": "raw = await readFile(settingsPath, 'utf8');"
+      },
+      {
+        "file": "src/core/config.js",
+        "line": 135,
+        "text": "await mkdir(dirname(settingsPath), { recursive: true });"
+      },
+      {
+        "file": "src/core/config.js",
+        "line": 136,
+        "text": "await writeFile(settingsPath, `${JSON.stringify(settings, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/config.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/core/config.js",
+        "line": 334,
+        "text": "const child = spawn(bin, ['--config', configPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

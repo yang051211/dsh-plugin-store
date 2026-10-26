@@ -1,0 +1,108 @@
+{
+  "name": "bili-duty",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:06:29.078Z",
+  "icon": "bili-duty.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bili-api.js",
+        "line": 280,
+        "text": "response = await fetch('https://api.bilibili.com/x/v2/reply/add', {"
+      },
+      {
+        "file": "lib/bili-login.js",
+        "line": 19,
+        "text": "* Node 的 fetch(undici) 会**优先使用 IPv6**，而 `api.bilibili.com` 确实有 AAAA 记录"
+      },
+      {
+        "file": "lib/bili-login.js",
+        "line": 150,
+        "text": "return await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 86,
+        "text": "const res = await fetch(url, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 93,
+        "text": "const res = await fetch(url, { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 151,
+        "text": "fs.writeFileSync(handle, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "fs.rmSync(tmp, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 877,
+        "text": "writeApplyProbe(ctx, { phase: 'apply-start', inject: ['timer', 'tools'], createUserMessage: createUserMessageSource })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1758,
+        "text": "tools.register(wrapped)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2342,
+        "text": "export const inject = ['timer', 'tools']"
+      },
+      {
+        "file": "tools/smoke-test.mjs",
+        "line": 211,
+        "text": "check('导出了 inject=[timer, tools]', JSON.stringify(mod.inject) === '[\"timer\",\"tools\"]', mod.inject)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

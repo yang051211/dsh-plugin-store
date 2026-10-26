@@ -1,0 +1,109 @@
+{
+  "name": "dsh-memory-delta",
+  "version": "1.3.4",
+  "scannedAt": "2026-10-26T10:06:46.242Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 490,
+        "text": "return fetch(STATE_URL, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 536,
+        "text": "return fetch(SEARCH_URL, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1051,
+        "text": "return fetch(ACTION_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/mem.mjs",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/mem.mjs",
+        "line": 103,
+        "text": "return JSON.parse(fs.readFileSync(f, 'utf8'));"
+      },
+      {
+        "file": "bin/mem.mjs",
+        "line": 232,
+        "text": "fs.writeFileSync(file, STORAGE_README, 'utf8');"
+      },
+      {
+        "file": "bin/mem.mjs",
+        "line": 238,
+        "text": "for (const d of ['facts', 'decisions', 'inbox', 'archive']) fs.mkdirSync(path.join(root, d), { recursive: true });"
+      },
+      {
+        "file": "bin/mem.mjs",
+        "line": 484,
+        "text": "const { data, extra, body, hasFrontmatter } = parseFrontmatter(fs.readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.mjs",
+        "line": 26,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 238,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 367,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/panel.mjs",
+        "line": 16,
+        "text": "* 要恢复的话：宿主侧需要白名单 + `spawn(..., {stdio:'ignore'})`（沙箱禁命名管道）。"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 155,
+      "text": "> Also published on **npm** as `dsh-memory-delta`: `npm i -g dsh-memory-delta` gives you the `mem` CLI"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 139,
+      "text": "> **npm 上也有一份**（`dsh-memory-delta`）：`npm i -g dsh-memory-delta` 装的是 `mem` 这个 CLI"
+    }
+  ],
+  "skippedEntries": []
+}

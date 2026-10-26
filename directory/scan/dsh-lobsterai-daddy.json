@@ -1,0 +1,110 @@
+{
+  "name": "dsh-lobsterai-daddy",
+  "version": "0.9.8",
+  "scannedAt": "2026-10-26T10:06:46.770Z",
+  "icon": "dsh-lobsterai-daddy.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "// `fetch()` from the page works because it is a JS call routed by the client"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 215,
+        "text": "return fetch(STATUS_PATH, { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 869,
+        "text": "// console's own 15s refreshes. `fetch()` has no such restriction (verified live:"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1130,
+        "text": "return fetch(HEALTH_PATH, { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1151,
+        "text": "return fetch(CURRENT_PATH, { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFileSync, appendFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "return JSON.parse(readFileSync(join(here, \"..\", \"package.json\"), \"utf8\")).version;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 194,
+        "text": "return JSON.parse(readFileSync(p, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "try { cache = JSON.parse(readFileSync(LD_CHECKIN_CACHE, \"utf8\")) || {}; } catch (e) { cache = {}; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "try { files = require(\"node:fs\").readdirSync(LD_ACCOUNTS_DIR).filter((f) => f.endsWith(\".json\")); } catch (e) { files = []; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 565,
+        "text": "var cp = require(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 666,
+        "text": "var cp = require(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 679,
+        "text": "var cp = require(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 694,
+        "text": "* 🔴🔴 第三轮事故修正（2026-10-11）：`spawn(exe)` **起不来**！"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

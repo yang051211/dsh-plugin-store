@@ -1,0 +1,80 @@
+{
+  "name": "dsh-market-gist-autosync",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:43.447Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 19,
+        "text": "return fetch(api(\"/dsh-market-gist-autosync/rpc\"), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { request } from \"node:https\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "writeFileSync(temp, content);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "rmSync(temp, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "const text = readFileSync(configFilePath(), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 875,
+        "text": "child = spawn(cmd, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,108 @@
+{
+  "name": "dsh-disk-doctor",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:06:26.349Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1475,
+        "text": "fetch(`${OPEN_ROUTE}?path=${encodeURIComponent(target)}`, { method: 'POST' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1493,
+        "text": "fetch(`${REPORT_ROUTE}?top=${PANEL_TOP}`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1511,
+        "text": "fetch(CLEANUP_ROUTE, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1532,
+        "text": "fetch(`${CLEANUP_ROUTE}?action=move`, { method: 'POST' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1581,
+        "text": "fetch(`${CLEANUP_ROUTE}?action=undo&id=${encodeURIComponent(id)}`, { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cleanup.js",
+        "line": 32,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 33,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 306,
+        "text": "fs.mkdirSync(batchDir, { recursive: true })"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 329,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 406,
+        "text": "fs.mkdirSync(batchDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 497,
+        "text": "ctx.tools.register(defineDiskReport(settings, current))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/serve.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/serve.js",
+        "line": 153,
+        "text": "const child = spawn(command, [directory], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

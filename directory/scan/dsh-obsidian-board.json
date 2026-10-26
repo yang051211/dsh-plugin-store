@@ -1,0 +1,77 @@
+{
+  "name": "dsh-obsidian-board",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:06:43.775Z",
+  "icon": "dsh-obsidian-board.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { readFile, readdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 375,
+        "text": "const raw = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 519,
+        "text": "const { readFile } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 520,
+        "text": "let raw = await readFile(this._stateFile(), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 772,
+        "text": "spawn(\"explorer\", [vaultPath], { detached: true, stdio: \"ignore\" }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 776,
+        "text": "spawn(cmd, [vaultPath], { detached: true, stdio: \"ignore\" }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

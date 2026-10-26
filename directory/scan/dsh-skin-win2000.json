@@ -1,0 +1,112 @@
+{
+  "name": "dsh-skin-win2000",
+  "version": "1.3.1",
+  "scannedAt": "2026-10-26T10:06:53.127Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/capture.mjs",
+        "line": 44,
+        "text": "const res = await fetch(`http://127.0.0.1:${PORT}/json/version`);"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 56,
+        "text": "const ws = new WebSocket(wsUrl, { perMessageDeflate: false, maxPayload: 256 * 1024 * 1024 });"
+      },
+      {
+        "file": "tools/hunt-bold-classes.mjs",
+        "line": 26,
+        "text": "const json = await (await fetch(`http://127.0.0.1:${PORT}/json/version`)).json();"
+      },
+      {
+        "file": "tools/hunt-bold-classes.mjs",
+        "line": 34,
+        "text": "const ws = new WebSocket(await endpoint(), { perMessageDeflate: false, maxPayload: 256 * 1024 * 1024 });"
+      },
+      {
+        "file": "tools/inspect-highlight.mjs",
+        "line": 26,
+        "text": "const json = await (await fetch(`http://127.0.0.1:${PORT}/json/version`)).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { createReadStream, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 6,
+        "text": "import { mkdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 25,
+        "text": "rmSync(PROFILE, { recursive: true, force: true });"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 26,
+        "text": "mkdirSync(OUT, { recursive: true });"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 125,
+        "text": "writeFileSync(`${OUT}/${name}`, Buffer.from(data, \"base64\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/capture.mjs",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "tools/capture.mjs",
+        "line": 28,
+        "text": "const chrome = spawn(CHROME, ["
+      },
+      {
+        "file": "tools/hunt-bold-classes.mjs",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "tools/hunt-bold-classes.mjs",
+        "line": 17,
+        "text": "const chrome = spawn(CHROME, ["
+      },
+      {
+        "file": "tools/inspect-highlight.mjs",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

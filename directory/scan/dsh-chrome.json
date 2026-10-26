@@ -1,0 +1,92 @@
+{
+  "name": "dsh-chrome",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:06:43.325Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "extension/src/background.js",
+        "line": 106,
+        "text": "sock = new WebSocket(`${dshUrl.replace(/^http/, \"ws\")}/dsh-agent/bridge`);"
+      },
+      {
+        "file": "extension/src/background.js",
+        "line": 271,
+        "text": "res = await fetch(`http://127.0.0.1:${CDP_PORT}/json/list`, { signal });"
+      },
+      {
+        "file": "extension/src/background.js",
+        "line": 307,
+        "text": "ws = new WebSocket(wsUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.js",
+        "line": 20,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 47,
+        "text": "return JSON.parse(fs.readFileSync(join(pkgRoot, \"package.json\"), \"utf8\")).version;"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 60,
+        "text": "fs.rmSync(dst, { recursive: true, force: true });"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 61,
+        "text": "fs.mkdirSync(dirname(dst), { recursive: true });"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 80,
+        "text": "fs.rmSync(dst, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/browser-tools.js",
+        "line": 34,
+        "text": "export const inject = [\"tools\", \"dshAgentBridge\", \"systemPrompt\"];"
+      },
+      {
+        "file": "host/browser-tools.js",
+        "line": 66,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "clientModules",
+    "dshAgentBridge",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

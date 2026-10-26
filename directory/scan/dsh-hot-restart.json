@@ -1,0 +1,110 @@
+{
+  "name": "dsh-hot-restart",
+  "version": "0.3.16",
+  "scannedAt": "2026-10-26T10:06:52.852Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ui.js",
+        "line": 255,
+        "text": "return fetch(API + '/diagnose', {"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 349,
+        "text": "fetch(API + '/diagnose/cancel', {"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 366,
+        "text": "fetch(API + '/status.json', { credentials: 'same-origin', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 450,
+        "text": "fetch(API + '/status.json', { credentials: 'same-origin', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 553,
+        "text": "fetch(API + '/restart', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const parsed = JSON.parse(fs.readFileSync(path.join(HERE, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "try { fs.mkdirSync(dir, { recursive: true }) } catch { /* 只读也不致命，日志降级为丢弃 */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "if (stat.size > 256 * 1024) fs.writeFileSync(file, '')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "fs.appendFileSync(file, `${new Date().toISOString()} [dsh-hot-restart] ${line}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 312,
+        "text": "const child = spawn('explorer.exe', [wrapper], { detached: true, stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 413,
+        "text": "const child = spawn('taskkill', args, { stdio: 'ignore', detached: true, windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 479,
+        "text": "const killer = spawn('taskkill', ['/F', '/T', '/PID', String(pid)], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 505,
+        "text": "child = spawn(POWERSHELL, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

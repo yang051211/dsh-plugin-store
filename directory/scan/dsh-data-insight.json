@@ -1,0 +1,66 @@
+{
+  "name": "dsh-data-insight",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:06:29.638Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/data-insight-runbook/scripts/setup-duckdb.ps1",
+        "line": 18,
+        "text": "$v = (Invoke-WebRequest -Uri \"https://duckdb.org/data/latest_stable_version.txt\" -UseBasicParsing -TimeoutSec 20).Content.Trim()"
+      },
+      {
+        "file": "skills/data-insight-runbook/scripts/setup-duckdb.ps1",
+        "line": 60,
+        "text": "Invoke-WebRequest -Uri $url -OutFile $zip -UseBasicParsing -TimeoutSec 120"
+      },
+      {
+        "file": "skills/data-insight-runbook/scripts/setup-duckdb.sh",
+        "line": 16,
+        "text": "v=$(curl -fsSL --max-time 20 https://duckdb.org/data/latest_stable_version.txt 2>/dev/null || true)"
+      },
+      {
+        "file": "skills/data-insight-runbook/scripts/setup-duckdb.sh",
+        "line": 70,
+        "text": "curl -fSL --max-time 120 -o \"$TMP/duckdb.zip\" \"$URL\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/data-insight-runbook/scripts/csv-profile.mjs",
+        "line": 19,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "skills/data-insight-runbook/scripts/csv-profile.mjs",
+        "line": 47,
+        "text": "const buf = readFileSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,126 @@
+{
+  "name": "dsh-molbio-tools",
+  "version": "0.22.1",
+  "scannedAt": "2026-10-26T10:06:47.467Z",
+  "icon": "dsh-molbio-tools.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/cdp-drive.mjs",
+        "line": 25,
+        "text": "const targets = await (await fetch(`${CDP_BASE}/json/list`)).json();"
+      },
+      {
+        "file": "build/cdp-drive.mjs",
+        "line": 28,
+        "text": "const socket = new WebSocket(page.webSocketDebuggerUrl);"
+      },
+      {
+        "file": "build/cdp.mjs",
+        "line": 21,
+        "text": "const response = await fetch(`${CDP_BASE}/json/list`);"
+      },
+      {
+        "file": "build/cdp.mjs",
+        "line": 27,
+        "text": "const socket = new WebSocket(page.webSocketDebuggerUrl);"
+      },
+      {
+        "file": "build/cdp.mjs",
+        "line": 53,
+        "text": "const response = await fetch(`${CDP_BASE}/json/list`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "benchmark/_freeze-trace.mjs",
+        "line": 31,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "benchmark/_freeze-trace.mjs",
+        "line": 49,
+        "text": "const report = JSON.parse(await readFile(resolve(source), 'utf8'));"
+      },
+      {
+        "file": "benchmark/_freeze-trace.mjs",
+        "line": 81,
+        "text": "const existing = JSON.parse(await readFile(target, 'utf8'));"
+      },
+      {
+        "file": "benchmark/_freeze-trace.mjs",
+        "line": 120,
+        "text": "await writeFile(target, `${JSON.stringify(out, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "benchmark/changed.mjs",
+        "line": 38,
+        "text": "import { readFileSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.mjs",
+        "line": 50,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 155,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 7687,
+        "text": "for (const tool of tools) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "benchmark/changed.mjs",
+        "line": 37,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "benchmark/harness.mjs",
+        "line": 21,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "benchmark/run.mjs",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "benchmark/run.mjs",
+        "line": 94,
+        "text": "const child = spawn(node, args, {"
+      },
+      {
+        "file": "benchmark/run.mjs",
+        "line": 117,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], { windowsHide: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,64 @@
+{
+  "name": "dsh-rea-mcp",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:06:21.810Z",
+  "icon": "dsh-rea-mcp.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# (`@deepseek-ai/dsh-mcp-client`) and points it at REA — the"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 11,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 17,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 34,
+        "text": "const fromPath = spawnSync('npx', ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 44,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 64,
+        "text": "const child = spawn(npx.cmd, ['-y', SPEC, MCP_SUBCOMMAND], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

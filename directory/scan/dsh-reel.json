@@ -1,0 +1,90 @@
+{
+  "name": "dsh-reel",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:48.295Z",
+  "icon": "dsh-reel.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/assets/app.js",
+        "line": 177,
+        "text": "const response = await fetch(`${BASE}${path}`, { headers: { accept: 'application/json' }, ...options })"
+      },
+      {
+        "file": "lib/reel.js",
+        "line": 30,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media.js",
+        "line": 10,
+        "text": "import { createReadStream } from 'node:fs'"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 11,
+        "text": "import { open, readdir, realpath, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 308,
+        "text": "* @returns {Promise<import('node:fs/promises').FileHandle|null>} an open handle, or null."
+      },
+      {
+        "file": "lib/media.js",
+        "line": 331,
+        "text": "* @returns {import('node:fs').ReadStream} the stream; the caller owns errors."
+      },
+      {
+        "file": "lib/reel.js",
+        "line": 28,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync, appendFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/reel.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/reel.js",
+        "line": 1379,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "lib/reel.js",
+        "line": 1744,
+        "text": "child = spawn(binary, args, { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/reel.js",
+        "line": 1788,
+        "text": "child = spawn(binary, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

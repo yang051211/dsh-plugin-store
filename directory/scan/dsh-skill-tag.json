@@ -1,0 +1,85 @@
+{
+  "name": "dsh-skill-tag",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:06:18.192Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "const r = await fetch(API + path, { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 27,
+        "text": "const r = await fetch(API + path, {"
+      },
+      {
+        "file": "tools/auto-tag.mjs",
+        "line": 37,
+        "text": "const res = await fetch(API + path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/preview/render-conv-preview.mjs",
+        "line": 9,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "docs/preview/render-conv-preview.mjs",
+        "line": 16,
+        "text": "const SOURCE = fs.readFileSync(path.join(ROOT, \"lib\", \"client.js\"), \"utf8\");"
+      },
+      {
+        "file": "docs/preview/render-conv-preview.mjs",
+        "line": 326,
+        "text": "fs.writeFileSync(path.join(HERE, \"对话管理标签-preview.html\"), head + htmls.join(\"\") + \"</body></html>\");"
+      },
+      {
+        "file": "docs/preview/render-manage-preview.mjs",
+        "line": 10,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "docs/preview/render-manage-preview.mjs",
+        "line": 17,
+        "text": "const SOURCE = fs.readFileSync(path.join(ROOT, \"lib\", \"client.js\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/reveal.js",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "skills",
+    "storageDomain",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

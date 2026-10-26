@@ -1,0 +1,97 @@
+{
+  "name": "dsh-plugin-usage-meter",
+  "version": "1.10.0",
+  "scannedAt": "2026-10-26T10:06:16.841Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 568,
+        "text": "fetch(\"/usage-meter/update-check\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 587,
+        "text": "fetch(\"/usage-meter/update\", { method: \"POST\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 598,
+        "text": "fetch(\"/usage-meter/state\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 630,
+        "text": "fetch(\"/usage-meter/balance/refresh\", { method: \"POST\" })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 677,
+        "text": "const res = await fetch(PRICING_URL, { signal: AbortSignal.timeout(PRICING_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "const pkg = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), \"..\", \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "buf = readFileSync(join(dir, f));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "text = readFileSync(SETTINGS_PATH, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 850,
+        "text": "child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

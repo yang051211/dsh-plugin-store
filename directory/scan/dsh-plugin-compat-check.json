@@ -1,0 +1,96 @@
+{
+  "name": "dsh-plugin-compat-check",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:06:26.283Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3582,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4490,
+        "text": "var response = await fetch("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4725,
+        "text": "var response = await fetch(\"/plugin-compat-check/reviews\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 776,
+        "text": "readFileSync(join(dir, \"package.json\"), \"utf8\"),"
+      },
+      {
+        "file": "index.js",
+        "line": 1510,
+        "text": "readFileSync(new URL(\"./package.json\", import.meta.url), \"utf8\"),"
+      },
+      {
+        "file": "index.js",
+        "line": 2116,
+        "text": "const raw = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "kernel/lib/execution-environment.mjs",
+        "line": 1,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1908,
+        "text": "const dispose = scope.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "kernel/lib/owned-process.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "kernel/lib/owned-process.mjs",
+        "line": 57,
+        "text": "const r = spawnSync(\"/bin/ps\", args, {"
+      },
+      {
+        "file": "scripts/prepublish-check.mjs",
+        "line": 4,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

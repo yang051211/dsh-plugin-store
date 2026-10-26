@@ -1,0 +1,110 @@
+{
+  "name": "dsh-concise",
+  "version": "0.11.3",
+  "scannedAt": "2026-10-26T10:06:51.356Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 303,
+        "text": "return (await fetch(\"/dsh-concise/api/open\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 320,
+        "text": "const res = await fetch(\"/dsh-concise/api/cwd?sessionId=\" + encodeURIComponent(sid));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 334,
+        "text": "const res = await fetch(\"/dsh-concise/api/verify-paths?sessionId=\" + encodeURIComponent(sid), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 554,
+        "text": "const response = await fetch(STATE_URL + qs, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 612,
+        "text": "const response = await fetch(TOGGLE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "const raw = JSON.parse(readFileSync(stateFile(), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "writeFileSync(tmp, JSON.stringify(state, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "const raw = readFileSync(styleFile(), 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 150,
+        "text": "spawn('open', [path], opts).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 152,
+        "text": "spawn('cmd', ['/c', 'start', '', path], { ...opts, windowsVerbatimArguments: true }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 154,
+        "text": "spawn('xdg-open', [path], opts).unref();"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

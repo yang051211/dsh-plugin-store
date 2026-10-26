@@ -1,0 +1,79 @@
+{
+  "name": "fitmeet-dsh-plugin-zh",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:06:57.729Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 4,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "const content = stripSkillFrontmatter(await readFile(SKILL_URL, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* behavior of `@deepseek-ai/dsh-mcp-client`, while adding an interactive"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['tools', 'credentials'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 119,
+        "text": "disposers.set(publicName, ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/oauth.js",
+        "line": 358,
+        "text": "const child = spawn(command.file, command.args, { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

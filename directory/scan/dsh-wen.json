@@ -1,0 +1,130 @@
+{
+  "name": "dsh-wen",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:06:58.432Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "image.js",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "image.js",
+        "line": 35,
+        "text": "return { buf: readFileSync(raw), from: 'path', path: raw }"
+      },
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { readFile, writeFile, mkdir, stat, rename, open, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "stsSync, mkdirSync, readFileSync, writeFileSync, statSync, readdirSync, rmSync, openSync, readSync, closeSync, writeSync, renameSync, fsyncSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 235,
+        "text": "return readFile(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 4552,
+        "text": "tools.register(defineToolLite({"
+      },
+      {
+        "file": "index.js",
+        "line": 4662,
+        "text": "tools.register(defineToolLite({"
+      },
+      {
+        "file": "index.js",
+        "line": 4807,
+        "text": "tools.register(defineToolLite({"
+      },
+      {
+        "file": "index.js",
+        "line": 4845,
+        "text": "tools.register(defineToolLite({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 3195,
+        "text": "let res = spawnSync('powershell.exe', args, opts)"
+      },
+      {
+        "file": "index.js",
+        "line": 3197,
+        "text": "if (res.error && /EPERM|EACCES/.test(String(res.error.code))) res = spawnSync('powershell.exe', args, { ...opts, stdio: 'ignore' })"
+      },
+      {
+        "file": "rapidocr.js",
+        "line": 29,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "rapidocr.js",
+        "line": 304,
+        "text": "const r = spawnSync('tasklist', ['/FI', `PID eq ${pid}`, '/NH'], { windowsHide: true, timeout: 8000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/RapidOCR-json_v0.2.0/RapidOCR-json.exe"
+  ],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 73,
+      "text": "- 安装位置：`${DSH_HOME}/plugins/dsh-wen/`（本机为 `${DSH_HOME}/plugins/dsh-wen\\`）"
+    },
+    {
+      "file": "README.md",
+      "line": 76,
+      "text": "`${DSH_HOME}/plugins/dsh-wen/index.js` 与 `${DSH_HOME}/plugins/dsh-wen/skill.js`"
+    },
+    {
+      "file": "README.md",
+      "line": 245,
+      "text": "再删除 `${DSH_HOME}/plugins/dsh-wen/` 目录即可；也可只把这两行 `disabled: true` 临时停用。"
+    }
+  ],
+  "skippedEntries": []
+}

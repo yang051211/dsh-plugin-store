@@ -1,0 +1,141 @@
+{
+  "name": "wechat-clawbot",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-26T10:06:23.375Z",
+  "icon": "wechat-clawbot.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 383,
+        "text": "fetch(MODELS_URL, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 397,
+        "text": "fetch(BRIDGE_URL, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 422,
+        "text": "fetch(CALENDAR_URL, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 472,
+        "text": "const res = await fetch(MEMORY_OPEN_URL, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: \"{}\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 491,
+        "text": "const res = await fetch(url, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: \"{}\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backlog.js",
+        "line": 16,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/backlog.js",
+        "line": 230,
+        "text": "const parsed = JSON.parse(fs.readFileSync(this.file, \"utf-8\"));"
+      },
+      {
+        "file": "lib/backlog.js",
+        "line": 242,
+        "text": "fs.mkdirSync(path.dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/backlog.js",
+        "line": 244,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(data, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync, unlinkSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 1563,
+        "text": "register: (definition) => record(tools.register(definition)),"
+      },
+      {
+        "file": "lib/claude-peer.js",
+        "line": 1451,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/claude-peer.js",
+        "line": 1530,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/claude-peer.js",
+        "line": 1584,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/codex-peer.js",
+        "line": 269,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-peer.js",
+        "line": 30,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/claude-peer.js",
+        "line": 53,
+        "text": "const child = execFile(bin, [...args], {"
+      },
+      {
+        "file": "lib/claude-peer.js",
+        "line": 168,
+        "text": "* A bare `execFile(\"claude\", …)` looks it up on PATH, and that is exactly what"
+      },
+      {
+        "file": "lib/codex-rpc.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/codex-rpc.js",
+        "line": 63,
+        "text": "const child = spawn(this.options.command, this.options.args ?? [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

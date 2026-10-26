@@ -1,0 +1,102 @@
+{
+  "name": "dsh-light-tool",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-26T10:06:56.572Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 602,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 8,
+        "text": "import { existsSync, promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 417,
+        "text": "await fsp.writeFile(scriptPath, buildMsvcScript(env, realProgram, realArgs), 'utf8')"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 762,
+        "text": "const raw = await fsp.readFile(cachePath(cacheDir), 'utf8')"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 771,
+        "text": "await fsp.mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 772,
+        "text": "await fsp.writeFile(file, JSON.stringify(table, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "const disposer = tools.register(definition)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1325,
+        "text": "// 装卸，并登记每个 tools.register() 的 disposer（关掉开关就能立刻撤下）。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 430,
+        "text": "child = spawn(realProgram, realArgs, {"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 454,
+        "text": "spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 168,
+      "text": "pip install pymupdf pypdf python-docx openpyxl pdf2docx pywin32"
+    },
+    {
+      "file": "README.md",
+      "line": 172,
+      "text": "> `pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pdf2docx`"
+    }
+  ],
+  "skippedEntries": []
+}

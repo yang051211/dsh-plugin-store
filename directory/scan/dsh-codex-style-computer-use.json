@@ -1,0 +1,116 @@
+{
+  "name": "dsh-codex-style-computer-use",
+  "version": "1.2.3",
+  "scannedAt": "2026-10-26T10:06:22.595Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 1,
+        "text": "import { appendFileSync, readFileSync, lstatSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 10,
+        "text": "writeFileSync(path, bytes, { flag: 'wx' })"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 12,
+        "text": "  try { appendFileSync(manifest(dir), JSON.stringify({ file: basename(path), sha256: digest(bytes), size: bytes.length, createdAt: Date.now() }) + '\\n') } catch"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 19,
+        "text": "try { lines = readFileSync(manifest(dir), 'utf8').split('\\n') } catch { return { dryRun, files: [], bytes: 0 } }"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 29,
+        "text": "if (!stat.isFile() || stat.isSymbolicLink() || stat.size !== record.size || digest(readFileSync(path)) !== record.sha256) continue"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exposure.js",
+        "line": 13,
+        "text": "const inherited = execution.filter(d => ctx.tools.get(d.name, agent)).map(d => d.name)"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 14,
+        "text": "if (inherited.length) boundaries.set(agent, agent.ctx.tools.restrict({ deny: inherited }))"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 26,
+        "text": "for (const definition of execution) disposers.push(agent.ctx.tools.register(definition))"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 45,
+        "text": "if (!enabled || ALWAYS.has(definition.name)) globalDisposers.push(ctx.tools.register(definition))"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 48,
+        "text": "globalDisposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attention-native.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/attention-native.js",
+        "line": 37,
+        "text": "const child = spawn(binary, [this.journal], { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 12,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 123,
+        "text": "this.proc = spawn(this.workerExe, [], { env, windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/core/native-runtime.js",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/bin/attention-worker.exe",
+    "lib/core/bin/dsh-computer-use-worker.exe"
+  ],
+  "requiredServices": [
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

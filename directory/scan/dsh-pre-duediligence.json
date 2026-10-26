@@ -1,0 +1,116 @@
+{
+  "name": "dsh-pre-duediligence",
+  "version": "0.1.40",
+  "scannedAt": "2026-10-26T10:06:40.152Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 70,
+        "text": "const res = await fetch(path, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1669,
+        "text": "const response = await fetch(root + query, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ format }) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1672,
+        "text": "const file = await fetch(`${root}/${encodeURIComponent(result.file.id)}${query}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2853,
+        "text": "  const response = await fetch(`/previsit/api/tasks/${encodeURIComponent(taskId)}?sessionId=${encodeURIComponent(sessionId)}`, { headers: { accept: \"application"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2860,
+        "text": "const response = await fetch(hostedTaskListUrl(scope), { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "import { mkdir, rmdir, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 167,
+        "text": "await mkdir(this.imageRoot, { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "await writeFile(path, decoded.bytes, { mode: 384, flag: \"wx\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 263,
+        "text": "await unlink(path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 353,
+        "text": "import { readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1582,
+        "text": "disposers.push(ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1588,
+        "text": "disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1887,
+        "text": "    const tools = ctx.tools.schemas(agent).filter((s) => s.name === `mcp__qcc_${server}__${tool}` || s.name === `mcp__qcc-${server}__${tool}` || s.name === `mcp"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1909,
+        "text": "      const result = await ctx.tools.execute({ callId, rootCallId: exec.rootCallId, parent: exec.token, name: selected.name, arguments: parameters, agent, signa"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1989,
+        "text": "var inject = [\"skills\", \"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

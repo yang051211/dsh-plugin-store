@@ -1,0 +1,103 @@
+{
+  "name": "dsh-chat-cost",
+  "version": "0.6.11",
+  "scannedAt": "2026-10-26T10:06:44.412Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 64,
+        "text": "\t\t\tentry.inflight = window.fetch(SUMMARY_PATH + \"?sessionId=\" + encodeURIComponent(entry.sessionId) + \"&language=\" + language, { headers: { accept: \"application"
+      },
+      {
+        "file": "scripts/build-prices.mjs",
+        "line": 65,
+        "text": "const response = await fetch(SOURCE, { headers: { 'user-agent': 'dsh-chat-cost price snapshot' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "catalog = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 170,
+        "text": "const { mkdir, appendFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 175,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 178,
+        "text": "await appendFile(file, payload, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* `ctx.tools`. The model plans; this module prices, packs, records and reports."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/prose-check.mjs",
+        "line": 35,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/prose-check.mjs",
+        "line": 55,
+        "text": "const result = spawnSync(command, args, { cwd: root, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/prose-check.mjs",
+        "line": 66,
+        "text": "const result = spawnSync('git', args, { cwd: root, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/reconcile.mjs",
+        "line": 36,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/reconcile.test.mjs",
+        "line": 12,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

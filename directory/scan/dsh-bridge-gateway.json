@@ -1,0 +1,110 @@
+{
+  "name": "dsh-bridge-gateway",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:06:47.321Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 3252,
+        "text": "const res = await fetch(url, { method: \"POST\" });"
+      },
+      {
+        "file": "client/index.js",
+        "line": 2890,
+        "text": "const res = await fetch(url, { method: 'POST' });"
+      },
+      {
+        "file": "lib/auth/login-template.js",
+        "line": 483,
+        "text": "fetch('/__dsh_bridge__/login', {"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 8,
+        "text": "import { get as httpsGet } from 'node:https';"
+      },
+      {
+        "file": "lib/feishu/lark-bundled.mjs",
+        "line": 10250,
+        "text": "request = https.request(options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 12,
+        "text": "const loaderId = JSON.parse(readFileSync(resolve(packageRoot, 'package.json'), 'utf8')).name;"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 41,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 42,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 1,
+        "text": "import { spawn, execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 93,
+        "text": "execSync(`\"${bin}\" --version`, { stdio: 'ignore', timeout: 3000 });"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 192,
+        "text": "try { execSync(`xattr -d com.apple.quarantine \"${binPath}\"`, { stdio: 'ignore' }); } catch {}"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 196,
+        "text": "execSync(`\"${binPath}\" --version`, { stdio: 'ignore', timeout: 3000 });"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 224,
+        "text": "execSync(`tar -xzf \"${tempPath}\" -C \"${binDir}\"`);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

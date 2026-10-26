@@ -1,0 +1,95 @@
+{
+  "name": "dsh-net-proxy",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:06:45.334Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 592,
+        "text": "fetch(LOG_API + \"?full=\" + id + \"&side=\" + side).then(function (r) { return r.json(); }).then(function (j) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 699,
+        "text": "fetch(LOG_API + \"?limit=\" + limit).then(function (r) { return r.json(); }).then(function (j) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 710,
+        "text": "fetch(LOG_API, { method: \"POST\", headers: { \"Content-Type\": \"application/json\", \"X-DSH-Net-Proxy\": \"1\" }, body: JSON.stringify({ action: \"clearLog\" }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 908,
+        "text": "fetch(LOG_API + \"?limit=500\").then(function (r) { return r.json(); }).then(function (j) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1041,
+        "text": "fetch(API).then(function (r) { return r.json(); }).then(function (j) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 29,
+        "text": "let raw = fs.readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 49,
+        "text": "if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 51,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(merged, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/system-proxy.js",
+        "line": 12,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/system-proxy.js",
+        "line": 19,
+        "text": "execFile(cmd, args, { timeout: timeoutMs, windowsHide: true }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

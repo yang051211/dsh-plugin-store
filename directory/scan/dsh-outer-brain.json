@@ -1,0 +1,108 @@
+{
+  "name": "dsh-outer-brain",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:06:22.875Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 1364,
+        "text": "const r = await fetch(endpoint, {"
+      },
+      {
+        "file": "dsh/jev.mjs",
+        "line": 53,
+        "text": "const r = await fetch(ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, appendFileSync, statSync, readdirSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 171,
+        "text": "return normalizeState(JSON.parse(readFileSync(file, 'utf8')))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 188,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 190,
+        "text": "writeFileSync(tmp, JSON.stringify(st, null, 1), 'utf8')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 202,
+        "text": "mkdirSync(dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 2148,
+        "text": "const _register = (...a) => ctx.tools.register(...a)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 5,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 3277,
+        "text": "const out = execSync('git status --porcelain', { cwd: dir, timeout: 15000, stdio: 'pipe', shell: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 3303,
+        "text": "const out = execSync(cmd, { cwd: workDir, timeout: 120000, stdio: 'pipe', shell: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 4573,
+        "text": "const out = execSync('git status --porcelain', { cwd: dir, timeout: 15000, stdio: 'pipe', shell: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 4618,
+        "text": "const out2 = execSync('git status --porcelain', { cwd: dir2, timeout: 15000, stdio: 'pipe', shell: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

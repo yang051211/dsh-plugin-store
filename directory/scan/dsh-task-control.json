@@ -1,0 +1,106 @@
+{
+  "name": "dsh-task-control",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-26T10:06:42.868Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 284,
+        "text": "const response = await fetch(\"/dsh-task-control/kill\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 427,
+        "text": "const response = await fetch(\"/dsh-task-control/kill\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 504,
+        "text": "return /pip install|curl|wget|Invoke-WebRequest|\\biwr\\b|-o\\s|--output|OutFile/i.test(argsRaw);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 512,
+        "text": "const response = await fetch(\"/dsh-task-control/download-status\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 526,
+        "text": "const response = await fetch(\"/dsh-task-control/pwsh-status\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, rmSync, lstatSync, copyFileSync, readdirSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "const pkg = JSON.parse(readFileSync(join(PKG_DIR, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "mkdirSync(dst, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 180,
+        "text": "mkdirSync(tmp, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 181,
+        "text": "writeFileSync(join(tmp, \"pkg.tgz\"), tgz);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "result = spawnSync("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "const tar = spawnSync(tarExe, [\"-xzf\", join(tmp, \"pkg.tgz\"), \"-C\", tmp], { timeout: 2e4 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 16,
+      "text": "- pip（`pip install torch` 等 2.5GB 大包）、GitHub（大文件下载）、curl 下载卡住/超时时，原生的停止按钮和暂停**都被排在卡住的工具返回值后面，毫无反应**；"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,128 @@
+{
+  "name": "dsh-sidebar",
+  "version": "0.8.4",
+  "scannedAt": "2026-10-26T10:06:52.457Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dynamic/client.js",
+        "line": 304,
+        "text": "fetch(url, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "dynamic/dsh-sidebar.dynamic.json",
+        "line": 7,
+        "text": "ew.sessionId, seq: review.seq })\\n      fetch(url, { credentials: 'same-origin' })\\n        .then((response) => (response.ok ? response.json() : null))\\n       "
+      },
+      {
+        "file": "lib/client.js",
+        "line": 548,
+        "text": "fetch(url, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "scripts/live-auth.mjs",
+        "line": 80,
+        "text": "response = await fetch(exchange, { redirect: 'manual' })"
+      },
+      {
+        "file": "scripts/live-auth.mjs",
+        "line": 117,
+        "text": "return fetch(new URL(path, baseUrl), { ...init, headers })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2114,
+        "text": "git.readFile(cwd(), tab.path).then((result) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2246,
+        "text": "git.readFile(cwd(), path).then((result) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 464,
+        "text": "async readFile(cwdArg, pathArg) {"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 303,
+        "text": "readFile(cwd, path) { return this.controller.readFile(cwd, path) }"
+      },
+      {
+        "file": "scripts/build-nerd-icons.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-nerd-icons.mjs",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-branch-switch.mjs",
+        "line": 16,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-branch-switch.mjs",
+        "line": 75,
+        "text": "const r = spawnSync('bash', ['-c', req.command], { env, encoding: 'utf8', input: req.stdin })"
+      },
+      {
+        "file": "scripts/test-diff-preview.mjs",
+        "line": 15,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-diff-preview.mjs",
+        "line": 74,
+        "text": "const r = spawnSync('/bin/sh', ['-c', String((req && req.command) || '')], { encoding: 'utf8', maxBuffer: 128 * 1024 * 1024 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run bundle:dynamic"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dynamic/client.js",
+    "lib/client.js",
+    "lib/vendor/prism/prism-bash.min.js",
+    "lib/vendor/prism/prism-core.min.js",
+    "lib/vendor/prism/prism-csharp.min.js",
+    "lib/vendor/prism/prism-markdown.min.js",
+    "lib/vendor/xterm/xterm.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "subprocess",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,100 @@
+{
+  "name": "dsh-call-session",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:06:23.587Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1992,
+        "text": "fetch('/plugins/dsh-call-session/telemetry?' + query.toString()).then(function (res) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3756,
+        "text": "return fetch('/plugins/dsh-call-session/telemetry?' + query.toString()).then(function (res) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/board-store.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/board-store.mjs",
+        "line": 8,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/board-store.mjs",
+        "line": 120,
+        "text": "mkdirSync(path.dirname(storagePath), { recursive: true });"
+      },
+      {
+        "file": "lib/board-store.mjs",
+        "line": 181,
+        "text": "unlinkSync(path.join(dir, entry));"
+      },
+      {
+        "file": "lib/board-store.mjs",
+        "line": 198,
+        "text": "const raw = readFileSync(this.storagePath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 71,
+        "text": "export const inject = ['agents', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tools-registry.mjs",
+        "line": 546,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "lib/tools-registry.mjs",
+        "line": 552,
+        "text": "const existing = typeof ctx.tools?.get === 'function' ? ctx.tools.get(toolDef.name) : null;"
+      },
+      {
+        "file": "lib/tools-registry.mjs",
+        "line": 559,
+        "text": "ctx.tools.register(toolDef);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/install-hooks.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

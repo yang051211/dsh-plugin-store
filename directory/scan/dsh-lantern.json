@@ -1,0 +1,82 @@
+{
+  "name": "dsh-lantern",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:06:52.884Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/listen.js",
+        "line": 17,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/rpc.js",
+        "line": 761,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 26,
+        "text": "import { readdir, readFile, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 229,
+        "text": "const buf = await readFile(file)"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 271,
+        "text": "const buf = await readFile(objectPathOf(digest))"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 339,
+        "text": "await rm(objectPathOf(entry.digest))"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 23,
+        "text": "import { mkdir, readFile, rename, writeFile, readdir, stat, unlink } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rpc.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/rpc.js",
+        "line": 122,
+        "text": "const child = spawn('cmd.exe', ['/c', 'start', '', filePath], { detached: true, stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

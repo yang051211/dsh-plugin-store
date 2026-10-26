@@ -1,0 +1,128 @@
+{
+  "name": "dsh-sticky-notes-desktop",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:32.529Z",
+  "icon": "dsh-sticky-notes-desktop.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.bundle.js",
+        "line": 113,
+        "text": "return fetch(NS.API + path, options)"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 169,
+        "text": "const response = await fetch(url, { redirect: 'follow' });"
+      },
+      {
+        "file": "lib/ui/core.js",
+        "line": 100,
+        "text": "return fetch(NS.API + path, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "electron/capture.mjs",
+        "line": 20,
+        "text": "import { writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "electron/capture.mjs",
+        "line": 141,
+        "text": "mkdirSync(base, { recursive: true });"
+      },
+      {
+        "file": "electron/capture.mjs",
+        "line": 156,
+        "text": "writeFileSync(result.filePath, bytes);"
+      },
+      {
+        "file": "electron/capture.mjs",
+        "line": 189,
+        "text": "mkdirSync(base, { recursive: true });"
+      },
+      {
+        "file": "electron/capture.mjs",
+        "line": 191,
+        "text": "writeFileSync(imagePath, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 8,
+        "text": "* inside `ctx.inject(['tools'], (toolCtx) => toolCtx.tools.register(…))`, but an injected context"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 14,
+        "text": "* So: services are declared through the `inject` export and reached as `ctx.tools`, which is the"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 57,
+        "text": "* `ctx.tools.register` directly never trips it, which is why the bug is silent."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "* `ctx.tools` is present by construction rather than by a `try` that can silently swallow a"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "export const inject = ['tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/runtime.js",
+        "line": 31,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 283,
+        "text": "this.#spawn(options);"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 308,
+        "text": "#spawn(options) {"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 309,
+        "text": "const child = spawn(options.exe, [options.script], {"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 691,
+        "text": "* @param {import('node:child_process').ChildProcess} child"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

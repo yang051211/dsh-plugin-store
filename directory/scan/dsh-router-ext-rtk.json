@@ -1,0 +1,77 @@
+{
+  "name": "dsh-router-ext-rtk",
+  "version": "0.3.22",
+  "scannedAt": "2026-10-26T10:06:52.990Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 157,
+        "text": "detail: ready ? void 0 : \"本机未装 rtk:brew install rtk 或 curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh\""
+      },
+      {
+        "file": "src/rtk.ts",
+        "line": 166,
+        "text": ": '本机未装 rtk:brew install rtk 或 curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { accessSync, constants } from \"node:fs\";"
+      },
+      {
+        "file": "src/intercept.test.ts",
+        "line": 13,
+        "text": "import { mkdtempSync, writeFileSync, chmodSync } from 'node:fs'"
+      },
+      {
+        "file": "src/intercept.test.ts",
+        "line": 22,
+        "text": "writeFileSync(fp, '#!/bin/sh\\necho \"RTK($2)\"\\n')"
+      },
+      {
+        "file": "src/rtk.ts",
+        "line": 35,
+        "text": "import { accessSync, constants } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/rtk.ts",
+        "line": 34,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

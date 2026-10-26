@@ -1,0 +1,113 @@
+{
+  "name": "dsh-py-codeact",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:06:33.525Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/kernel.js",
+        "line": 12,
+        "text": "import { mkdir, mkdtemp, readdir, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 88,
+        "text": "await rm(join(tmpdir(), entry), { recursive: true, force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 205,
+        "text": "await Promise.all(['security', 'pid', 'log', 'startup'].map((dir) => mkdir(join(ipythonDir, 'profile_default', dir), { recursive: true, mode: 0o700 })))"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 210,
+        "text": "if (this.ephemeralRoot !== undefined) await rm(this.ephemeralRoot, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 235,
+        "text": "rm(this.ephemeralRoot, { recursive: true, force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 692,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 743,
+        "text": "const visibleSchemas = (scope) => ctx.tools.sdkSchemas(scope).filter((schema) => schema.name !== toolName)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 777,
+        "text": "p every other schema from the request. `ctx.tools.restrict()` cannot do this — it masks GLOBAL tools only, and in a preset the tools are scope-local (\"scoped re"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 785,
+        "text": "ctx.effect(() => ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 836,
+        "text": "content = await ctx.waterfall(scopeTarget(ctx.tools, exec.agent), 'tools/ptc-dispatch-log', dispatch, () => Promise.resolve(working))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/kernel.js",
+        "line": 9,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 180,
+        "text": "this.ready = this.#spawn(toolSpecs, shell)"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 198,
+        "text": "async #spawn(toolSpecs, shell) {"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 216,
+        "text": "const proc = this.subprocess === undefined ? spawn(bin, argv, {"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 269,
+        "text": "    const handle = this.subprocess.spawn({ argv, cwd: this.cwd ?? process.cwd(), env, stdio: { stdin: 'ignore', stdout: 'pipe', stderr: 'pipe', control: 'pipe' "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,112 @@
+{
+  "name": "dsh-theme",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:06:36.582Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 254,
+        "text": "const index = await (await fetch(base + \"/\")).text();"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 259,
+        "text": "css += await (await fetch(base + asset)).text();"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 103,
+        "text": "curl -s http://127.0.0.1:3080/ | grep '\"id\":\"dsh-theme\"'"
+      },
+      {
+        "file": "scripts/plugintest.mjs",
+        "line": 37,
+        "text": "try { version = await (await fetch(`http://127.0.0.1:${port}/json/version`)).json(); break; }"
+      },
+      {
+        "file": "scripts/plugintest.mjs",
+        "line": 44,
+        "text": "const ws = new WebSocket(version.webSocketDebuggerUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 18,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 268,
+        "text": "const template = readFileSync(join(SRC, \"client.template.js\"), \"utf8\");"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 276,
+        "text": "const themes = JSON.parse(readFileSync(join(SRC, \"themes.json\"), \"utf8\")).themes;"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 293,
+        "text": "mkdirSync(THEMES_DIR, { recursive: true });"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 294,
+        "text": "mkdirSync(LIB_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/plugintest.mjs",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/plugintest.mjs",
+        "line": 29,
+        "text": "const proc = spawn(SHELL, ["
+      },
+      {
+        "file": "scripts/screenshot.mjs",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/screenshot.mjs",
+        "line": 60,
+        "text": "const proc = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

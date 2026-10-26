@@ -1,0 +1,101 @@
+{
+  "name": "kimi-webbridge-dsh",
+  "version": "1.4.12",
+  "scannedAt": "2026-10-26T10:06:24.454Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "return `run \\\"curl -fsSL https://cdn.kimi.com/webbridge/install.sh | bash\\\" (or install from ${page})`;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 307,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 357,
+        "text": "const response = await fetch(url, { signal: controller.signal });"
+      },
+      {
+        "file": "scripts/fetch-upstream-skill.mjs",
+        "line": 106,
+        "text": "const response = await fetch(url, { redirect: \"follow\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { createWriteStream, existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { chmod, mkdir, readFile, rename, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "const { description, version, body } = parseFrontmatter(readFileSync(SKILL_PATH, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 396,
+        "text": "await mkdir(dirname(bin), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 413,
+        "text": "const actual = createHash(\"sha256\").update(await readFile(tmp)).digest(\"hex\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "const inject = [\"tools\", \"systemPrompt\", \"skills\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 520,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 431,
+        "text": "const child = spawn(daemonBinPath(), [\"start\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

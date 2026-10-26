@@ -1,0 +1,95 @@
+{
+  "name": "dsh-model-metadata",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:06:29.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 719,
+        "text": "response = await fetch(url, { headers: { accept: \"application/json\" }, cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1046,
+        "text": "* A HEAD probe (a health check, `curl -I`, a link checker) is answered from"
+      },
+      {
+        "file": "lib/snapshot.mjs",
+        "line": 181,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "lib/snapshot.mjs",
+        "line": 205,
+        "text": "const response = await fetch(url, { headers, signal: AbortSignal.timeout(timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dev-paths.mjs",
+        "line": 15,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 45,
+        "text": "import { copyFileSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, renameSync, rmdirSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 81,
+        "text": "const ROW_ID = JSON.parse(readFileSync(join(HERE, \"package.json\"), \"utf8\")).name;"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 234,
+        "text": "return readFileSync(patchFile, \"utf8\");"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 391,
+        "text": "const rows = yaml.load(readFileSync(patchFile, \"utf8\")) ?? [];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dev-paths.mjs",
+        "line": 14,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 46,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "install-plugin.mjs",
+        "line": 556,
+        "text": "const reload = spawnSync(\"systemctl\", [\"--user\", \"daemon-reload\"], { encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

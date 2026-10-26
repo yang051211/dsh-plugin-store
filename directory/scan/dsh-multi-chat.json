@@ -1,0 +1,121 @@
+{
+  "name": "dsh-multi-chat",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:06:31.332Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 68,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 174,
+        "text": "const res = await fetch(`${base}/multi/api/ports`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 180,
+        "text": "const res = await fetch(`${base}/multi/api/status?ports=${ports.join(\",\")}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 186,
+        "text": "const res = await fetch(`${base}/multi/api/stop?port=${port}`, { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 200,
+        "text": "const res = await fetch(`${base}/multi/api/create`, { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, openSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 148,
+        "text": "try { text = readFileSync(logFile, 'utf8') } catch { /* not created yet */ }"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 170,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 171,
+        "text": "writeFileSync(file, JSON.stringify({ updatedAt: new Date().toISOString(), tokens }, null, 2), 'utf8')"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 184,
+        "text": "writeFileSync(STATE_FILE, JSON.stringify(state, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 33,
+        "text": "// Node ≥22 warns about spawn(shell:true, args[]) (DEP0190). The args here are"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 50,
+        "text": "const result = spawnSync(file, args, { cwd, shell: isWin, encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 94,
+        "text": "const child = spawn(file, args, {"
+      },
+      {
+        "file": "bin/dsh-multi-chat.mjs",
+        "line": 116,
+        "text": "const lookup = spawnSync(isWin ? 'where' : 'which', ['dsh'], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 210,
+      "text": "npm i -g dsh-multi-chat"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 206,
+      "text": "npm i -g dsh-multi-chat"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "dsh-image-hunt",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-26T10:06:20.207Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import httpMod from 'node:http'"
+      },
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import httpsMod from 'node:https'"
+      },
+      {
+        "file": "index.js",
+        "line": 226,
+        "text": "const r = await fetch(url, { headers: { 'User-Agent': UA, ...(opts.headers || {}) }, signal: AbortSignal.timeout(opts.timeout || 20000) })"
+      },
+      {
+        "file": "index.js",
+        "line": 269,
+        "text": "const r = await fetch(url, { headers: { 'User-Agent': UA, Referer: 'https://image.baidu.com/' }, signal: AbortSignal.timeout(20000) })"
+      },
+      {
+        "file": "index.js",
+        "line": 298,
+        "text": ": await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8' }, signal: AbortSignal.timeout(20000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 761,
+        "text": "mkdirSync(destDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 780,
+        "text": "writeFileSync(file, got.data)"
+      },
+      {
+        "file": "index.js",
+        "line": 792,
+        "text": "writeFileSync(file, got.data)"
+      },
+      {
+        "file": "index.js",
+        "line": 801,
+        "text": "  writeFileSync(path.join(destDir, 'meta.json'), JSON.stringify({ query, sources, count: files.length, fetchedAt: new Date().toISOString(), files, skipped: skip"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'skills', 'attachments']"
+      },
+      {
+        "file": "index.js",
+        "line": 903,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 934,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 951,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,107 @@
+{
+  "name": "dsh-agy",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:06:21.565Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli/index.mjs",
+        "line": 12,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/proxy-B7VnbAfO.mjs",
+        "line": 2,
+        "text": "import { EnvHttpProxyAgent, ProxyAgent } from \"undici\";"
+      },
+      {
+        "file": "lib/proxy-B7VnbAfO.mjs",
+        "line": 323,
+        "text": "/** fetch() that respects per-account proxyUrl (when given) otherwise env. */"
+      },
+      {
+        "file": "lib/proxy-B7VnbAfO.mjs",
+        "line": 329,
+        "text": "if (!proxyUrl) return fetch(input, {"
+      },
+      {
+        "file": "lib/proxy-B7VnbAfO.mjs",
+        "line": 334,
+        "text": "if (targetStr && isLoopbackUrl(targetStr)) return fetch(input, cleanInit);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accounts-DtIsWCeF.mjs",
+        "line": 6,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/accounts-DtIsWCeF.mjs",
+        "line": 407,
+        "text": "const text = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/accounts-DtIsWCeF.mjs",
+        "line": 520,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/accounts-DtIsWCeF.mjs",
+        "line": 521,
+        "text": "const existingText = existsSync(file) ? readFileSync(file, \"utf8\") : \"\";"
+      },
+      {
+        "file": "lib/accounts-DtIsWCeF.mjs",
+        "line": 525,
+        "text": "writeFileSync(tmp, next, { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli/index.mjs",
+        "line": 88,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/cli/index.mjs",
+        "line": 98,
+        "text": "const child = spawn(command[0], command.slice(1), { stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 85,
+      "text": "npm install -g dsh-agy"
+    }
+  ],
+  "skippedEntries": []
+}

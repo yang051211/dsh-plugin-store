@@ -1,0 +1,75 @@
+{
+  "name": "dsh-plugin-mobile-link",
+  "version": "0.6.6",
+  "scannedAt": "2026-10-26T10:06:18.415Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 130,
+        "text": "response = await fetch(path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 24,
+        "text": "import { rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 35,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 15,
+        "text": "import { mkdirSync, openSync, closeSync, writeSync, renameSync, rmSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 52,
+        "text": "mkdirSync(this.directory, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 61,
+        "text": "rmSync(this.staging, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 81,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-review-checkout",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:06:36.622Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { readFile, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync, existsSync, appendFileSync, realpathSync, statSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 181,
+        "text": "writeFileSync(tmp, gzipSync(Buffer.from(text, 'utf8'), { level: 6 }))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "rmSync(tmp, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "const inject = ['agents', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2417,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2420,
+        "text": "ctx.tools.register(m.defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2462,
+        "text": "diag('revert tool skipped: ctx.tools unavailable')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1782,
+        "text": "child = spawn(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', '\"' + inner + '\"'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1786,
+        "text": "child = spawn(bin, args, { stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

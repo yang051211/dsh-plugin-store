@@ -1,0 +1,99 @@
+{
+  "name": "dsh-pv-home",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:49.373Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 243,
+        "text": "fetch(MANIFEST, { cache: 'no-store' })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 241,
+        "text": "fetch(MANIFEST, { cache: 'no-store' })"
+      },
+      {
+        "file": "tools/verify-routes.mjs",
+        "line": 10,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build-client.mjs",
+        "line": 12,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 17,
+        "text": "const id = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 23,
+        "text": "const source = readFileSync(join(root, 'src', 'client.js'), 'utf8')"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 29,
+        "text": "mkdirSync(join(root, 'lib'), { recursive: true })"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 30,
+        "text": "writeFileSync(join(root, 'lib', 'client.js'), bundle)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "entry.js",
+        "line": 51,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "entry.js",
+        "line": 421,
+        "text": "const result = spawnSync(executable, ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-Command', '-'], {"
+      },
+      {
+        "file": "tools/verify-all.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/verify-all.mjs",
+        "line": 85,
+        "text": "const result = spawnSync(process.execPath, [join(ROOT, 'tools', script)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "screensaver/build/PvScreensaver.scr"
+  ],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

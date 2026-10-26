@@ -1,0 +1,98 @@
+{
+  "name": "lume-dsh-plugin",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:06:38.893Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/diag.js",
+        "line": 10,
+        "text": "import { appendFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/diag.js",
+        "line": 43,
+        "text": "appendFileSync(join(home, file), `${message}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/host/llm-aux.js",
+        "line": 2,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/llm-aux.js",
+        "line": 106,
+        "text": "const existing = readFileSync(deps.llmDumpPath, \"utf8\");"
+      },
+      {
+        "file": "lib/host/llm-aux.js",
+        "line": 115,
+        "text": "writeFileSync(deps.llmDumpPath, JSON.stringify(dumps, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/capabilities.js",
+        "line": 26,
+        "text": "toolsRegister: hasFn(ctx.tools, \"register\"),"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 19,
+        "text": "deps.ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 32,
+        "text": "deps.ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 45,
+        "text": "deps.ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "export const inject = [\"systemPrompt\", \"connection\", \"storageDomain\", \"tools\", \"llm\", \"agentDefaultModel\", \"settings\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "connection",
+    "llm",
+    "settings",
+    "storageDomain",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "dsh-plugin-office-markdown",
+  "version": "1.2.5",
+  "scannedAt": "2026-10-26T10:06:58.615Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "return fetch(API + path, { headers: { accept: \"application/json\" } }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 57,
+        "text": "return fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/convert.js",
+        "line": 18,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 146,
+        "text": "const body = fs.readFileSync(dstPath, 'utf8')"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 161,
+        "text": "fs.writeFileSync(dstPath, marker + body, 'utf8')"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 671,
+        "text": "try { fs.rmSync(dstPath, { force: true }) } catch { /* ignore */ }"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 750,
+        "text": "try { fs.rmSync(dstPath, { force: true }) } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1357,
+        "text": "ctx.effect(() => tools.register(buildDefinition(ctx, cfg)), PROVIDER + ': tool ' + TOOL_NAME)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/convert.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 356,
+        "text": "const killer = spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/convert.js",
+        "line": 380,
+        "text": "child = spawn(cmd, args, {"
+      },
+      {
+        "file": "lib/removal-watchdog.js",
+        "line": 33,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/removal-watchdog.js",
+        "line": 363,
+        "text": "const child = spawn(options.python, [scriptPath, configPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

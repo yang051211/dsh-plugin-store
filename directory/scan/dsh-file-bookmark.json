@@ -1,0 +1,104 @@
+{
+  "name": "dsh-file-bookmark",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:06:58.142Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 24,
+        "text": "const res = await fetch(`${url}/api/bookmarks`, { method: 'GET', signal: ctrl.signal });"
+      },
+      {
+        "file": "dist/client/shared.js",
+        "line": 13,
+        "text": "const res = await fetch(`${url}/api/bookmarks`, { method: 'GET', signal: ctrl.signal });"
+      },
+      {
+        "file": "dist/server.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/bookmarks.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/bookmarks.js",
+        "line": 13,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "dist/bookmarks.js",
+        "line": 32,
+        "text": "const raw = readFileSync(filePath, 'utf-8');"
+      },
+      {
+        "file": "dist/bookmarks.js",
+        "line": 46,
+        "text": "writeFileSync(filePath, JSON.stringify(bookmarks, null, 2), 'utf-8');"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 5,
+        "text": "import { appendFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 38,
+        "text": "export const inject = ['tools', 'workspaceRegistry'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 44,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/platform.js",
+        "line": 1,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/platform.js",
+        "line": 52,
+        "text": "child = spawn(command, args, options);"
+      },
+      {
+        "file": "dist/project-templates.js",
+        "line": 3,
+        "text": "import { exec, execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

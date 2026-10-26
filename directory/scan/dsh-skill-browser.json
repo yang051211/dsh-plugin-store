@@ -1,0 +1,95 @@
+{
+  "name": "dsh-skill-browser",
+  "version": "1.9.10",
+  "scannedAt": "2026-10-26T10:06:27.442Z",
+  "icon": "dsh-skill-browser.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 479,
+        "text": "fetch(apiBase() + \"/skills\" + (refresh ? \"?refresh=1\" : \"\"))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 502,
+        "text": "fetch(apiBase() + \"/groups\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 598,
+        "text": "fetch(apiBase() + \"/groups\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 880,
+        "text": "fetch(apiBase() + \"/ledger\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 910,
+        "text": "fetch(apiBase() + \"/ledger/stats?\" + qs.join(\"&\"))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/groups.js",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/groups.js",
+        "line": 65,
+        "text": "var parsed = JSON.parse(String(readFileSync(STORE_FILE, \"utf8\")).replace(/^\\uFEFF/, \"\"));"
+      },
+      {
+        "file": "lib/groups.js",
+        "line": 113,
+        "text": "mkdirSync(dirname(STORE_FILE), { recursive: true });"
+      },
+      {
+        "file": "lib/groups.js",
+        "line": 117,
+        "text": "var prev = readFileSync(STORE_FILE, \"utf8\");"
+      },
+      {
+        "file": "lib/groups.js",
+        "line": 118,
+        "text": "if (prev && prev.trim()) writeFileSync(STORE_FILE + \".bak\", prev, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "child = spawn(\"powershell.exe\", [\"-NoProfile\", \"-STA\", \"-WindowStyle\", \"Hidden\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", script], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

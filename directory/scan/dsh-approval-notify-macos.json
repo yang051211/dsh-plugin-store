@@ -1,0 +1,59 @@
+{
+  "name": "dsh-approval-notify-macos",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:32.143Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { accessSync, appendFileSync, constants, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 403,
+        "text": "appendFileSync(logPath, `${JSON.stringify(full)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 239,
+        "text": "child = spawn(file, args, { stdio: ['ignore', 'pipe', 'ignore'] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 285,
+        "text": "child = spawn(file, args, { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

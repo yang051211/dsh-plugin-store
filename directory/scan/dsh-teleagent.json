@@ -1,0 +1,112 @@
+{
+  "name": "dsh-teleagent",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:06:16.674Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 116,
+        "text": "const r = await fetch(BRIDGE);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 131,
+        "text": "const r = await fetch(BRIDGE + \"/login\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ action: \"pending\" }) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 145,
+        "text": "const r = await fetch(BRIDGE + \"/mutate\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" },"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 157,
+        "text": "const r = await fetch(BRIDGE + \"/login\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" },"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 174,
+        "text": "const r = await fetch(BRIDGE + \"/login\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" },"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 149,
+        "text": "fs.mkdirSync(path.dirname(statusPath(engine)), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 150,
+        "text": "fs.writeFileSync(statusPath(engine), JSON.stringify(report, null, 2), { mode: 0o600 })"
+      },
+      {
+        "file": "regression.mjs",
+        "line": 64,
+        "text": "const fs = await import('node:fs')"
+      },
+      {
+        "file": "regression.mjs",
+        "line": 69,
+        "text": "const src = fs.readFileSync(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/engine.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 515,
+        "text": "this.startPromise = this.#spawn().finally(() => { this.startPromise = null })"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 519,
+        "text": "async #spawn() {"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 562,
+        "text": "const child = spawn(kernel, [], {"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 599,
+        "text": "* not spawn (a kernel from an earlier DSH run, or one started externally)."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-cron-panel",
+  "version": "0.1.13",
+  "scannedAt": "2026-10-26T10:06:55.593Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 43,
+        "text": "response = await fetch(path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 471,
+        "text": "curl -s -m 10 -X POST http://127.0.0.1:3080/gateway/push -H 'content-type: application/json' -d \"$BODY\" >/dev/null 2>&1 || true"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "const { existsSync, readFileSync, writeFileSync, mkdirSync } = await import(\"node:fs\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "return { exitCode: 0, stdout: readFileSync(file, \"utf8\"), stderr: \"\" };"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "writeFileSync(file, stdin, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "const { mkdirSync, writeFileSync } = await import(\"node:fs\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "const handle = ctx.subprocess.spawn(spec);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 638,
+        "text": "const handle = ctx.subprocess.spawn(spec);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

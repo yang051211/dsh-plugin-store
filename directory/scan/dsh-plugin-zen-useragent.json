@@ -1,0 +1,79 @@
+{
+  "name": "dsh-plugin-zen-useragent",
+  "version": "1.6.0",
+  "scannedAt": "2026-10-26T10:06:39.549Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "import { accessSync, constants, existsSync, readFileSync, realpathSync, renameSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "writeFileSync(tmp, source); // 若此步中途抛错，tmp 可能残留；属极端情况，忽略"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "writeFileSync(target, source);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 106,
+        "text": "try { unlinkSync(tmp); } catch { /* tmp may already be gone */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "const raw = readFileSync(target, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/zen-session.js",
+        "line": 14,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/zen-session.js",
+        "line": 334,
+        "text": "return spawnSync("
+      },
+      {
+        "file": "lib/zen-session.js",
+        "line": 341,
+        "text": "return spawnSync(\"cmd\", [\"/c\", bin, ...args], opts);"
+      },
+      {
+        "file": "lib/zen-session.js",
+        "line": 343,
+        "text": "return spawnSync(bin, args, opts);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

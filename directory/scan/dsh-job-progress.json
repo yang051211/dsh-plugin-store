@@ -1,0 +1,73 @@
+{
+  "name": "dsh-job-progress",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:06:42.330Z",
+  "icon": "dsh-job-progress.png",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-progress.mjs",
+        "line": 44,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/dsh-progress.mjs",
+        "line": 70,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(record));"
+      },
+      {
+        "file": "lib/dsh-progress.mjs",
+        "line": 83,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/dsh-progress.mjs",
+        "line": 93,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/dsh-progress.mjs",
+        "line": 214,
+        "text": "fs.rmSync(path.join(dir, name), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/preflight-progress.mjs",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/preflight-progress.mjs",
+        "line": 44,
+        "text": "const result = spawnSync(node, [helper, ...args], { stdio: ['ignore', fd, fd] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

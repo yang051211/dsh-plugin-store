@@ -1,0 +1,110 @@
+{
+  "name": "rainskills",
+  "version": "0.1.46",
+  "scannedAt": "2026-10-26T10:06:35.677Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/delivery-probe.js",
+        "line": 4,
+        "text": "const http = require(\"node:http\");"
+      },
+      {
+        "file": "bin/delivery-probe.js",
+        "line": 5,
+        "text": "const https = require(\"node:https\");"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 4,
+        "text": "const http = require(\"node:http\");"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 5,
+        "text": "const https = require(\"node:https\");"
+      },
+      {
+        "file": "bin/rainskills.js",
+        "line": 808,
+        "text": "\"请升级到 Node.js 22/24，或改用：bash <(curl -fsSL https://get.rainbond.com/rainskills/install.sh)\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 3,
+        "text": "const fs = require(\"node:fs\");"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 478,
+        "text": "fs.mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 500,
+        "text": "const manifest = JSON.parse(fs.readFileSync(skillManifestPath(config), \"utf8\"));"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 567,
+        "text": "manifest = JSON.parse(fs.readFileSync(target, \"utf8\"));"
+      },
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 641,
+        "text": "fs.writeFileSync(temporary, `${JSON.stringify(record)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rainskills-tools.js",
+        "line": 9,
+        "text": "const { spawnSync } = require(\"node:child_process\");"
+      },
+      {
+        "file": "bin/rainskills.js",
+        "line": 6,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      },
+      {
+        "file": "bin/rainskills.js",
+        "line": 832,
+        "text": "const child = spawn(invocation.executable, invocation.args, {"
+      },
+      {
+        "file": "bin/runtime-smoke.js",
+        "line": 7,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      },
+      {
+        "file": "bin/runtime-smoke.js",
+        "line": 32,
+        "text": "const child = spawn(process.execPath, [bridge, ...args, \"--input\", \"-\", \"--skill-id\", \"rainbond-app-assistant\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

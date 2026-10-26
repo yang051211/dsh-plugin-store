@@ -1,0 +1,59 @@
+{
+  "name": "dsh-approval-llm",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:06:28.403Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skill.js",
+        "line": 10,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/skill.js",
+        "line": 42,
+        "text": "content: await readFile(SKILL_BODY_URL, 'utf8'),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/context.js",
+        "line": 34,
+        "text": "return ctx.tools.schemas().find(schema => schema.name === toolName)?.description;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['llm', 'tools', 'permissionPresets', 'skills'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "permissionPresets",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

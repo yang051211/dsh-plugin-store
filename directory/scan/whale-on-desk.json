@@ -1,0 +1,129 @@
+{
+  "name": "whale-on-desk",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-26T10:06:43.442Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 708,
+        "text": "fetch('/whale/poke', { method: 'POST', body: JSON.stringify({ antics: Math.random() < 0.6 ? 'chase-fish' : 'bubble-ring' }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 721,
+        "text": "fetch('/whale/poke', { method: 'POST', body: '{\"antics\":\"hide-and-seek\"}' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 757,
+        "text": "fetch('/whale/state').then((r) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 773,
+        "text": "fetch('/whale/assets/manifest.json', { cache: 'no-store' }).then("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 777,
+        "text": "fetch('/whale/assets/scale.json', { cache: 'no-store' }).then("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "growth = JSON.parse(fs.readFileSync(growthFile, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "fs.mkdirSync(path.dirname(growthFile), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "fs.writeFileSync(growthFile, JSON.stringify(growth, null, 2) + '\\n')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 322,
+        "text": "const saved = fs.readFileSync(activePetFile, 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['webServer', 'agents', 'commands', 'skills', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 479,
+        "text": "const child = spawn(exePath, [], {"
+      },
+      {
+        "file": "tools/measure-scales.mjs",
+        "line": 12,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/process-sprites.mjs",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/process-sprites.mjs",
+        "line": 105,
+        "text": "const res = spawnSync('ffmpeg', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "desktop/whale-on-desk-desktop.exe"
+  ],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
