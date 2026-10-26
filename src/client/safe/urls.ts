@@ -1,6 +1,6 @@
 /** URL rules for third-party content: only http(s) leaves the page, relative paths resolve against a known base. */
 
-/** jsDelivr's view of a published npm version: README-relative files of exactly the reviewed version. */
+/** jsDelivr's view of a published npm version: README-relative files of exactly the listed version. */
 export function npmFileBase(name: string, version: string): string {
   return `https://cdn.jsdelivr.net/npm/${name}@${version}/`
 }

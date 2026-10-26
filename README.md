@@ -1,6 +1,8 @@
 # dsh-plugin-store
 
-应用商店式的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 插件商城，配一份人工审核的插件目录。当前版本 0.1.7。
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的插件目录「生态家园」：收录 npm 上符合条件的 DSH 插件，每天自动更新，可以按分类、热度、更新时间浏览，并在 DSH 里一键安装。当前版本 0.2.0。
+
+**插件未经审核。** 它们由各自的作者发布；商店只标出「自动检测」的结果（会不会联网、读写文件、执行命令等），这是程序扫描源码得出的提示，可能不准，不代表安全审查。请只安装你信任的插件。
 
 适用于 DSH 0.2.1-rc.2 至 0.2.x（不含 0.3 系列，包括其预发布版）。安装：插件页 →「添加插件」→ 填写：
 
@@ -15,7 +17,7 @@ github:yang051211/dsh-plugin-store#<tag>
 
 ## 只想要插件目录？加到官方「发现」页
 
-商城读取的插件目录本身就是一份标准的 DSH 插件市场索引。不装本插件，也可以在 DSH 官方的「发现」页里使用它：
+商城读取的目录本身就是一份标准的 DSH 插件市场索引。不装本插件，也可以在 DSH 官方的「发现」页里使用它：
 
 1. 插件页 →「实验性插件」→「更多」→ 启用「自定义插件市场」；
 2. 打开「发现」→「添加索引源」，填写：
@@ -32,24 +34,30 @@ https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json
 
 商城插件自己会先读 GitHub，几秒内连不上再退回 jsDelivr。
 
-目录里的每个插件都经过人工审核，只列出审核过的版本。
+## 收录条件
 
-## 维护插件目录
+同时满足以下条件的 npm 包都会收录，不满足的自动下架，重新满足后自动回来：
 
-人写的内容（中文名、卖点、要点、截图、审核结论）都在 [catalog/catalog.yaml](catalog/catalog.yaml)，脚本只读不写。
+1. 是 DSH 插件包（最新版的 package.json 声明了 `dsh.bundle.patch`），且没有被废弃；
+2. 有源码仓库或主页；
+3. `engines.dsh` 为空，或兼容 [directory/config.json](directory/config.json) 里的 `dshVersion`；
+4. 最近 `recentDays`（90）天内发布过新版本。
+
+候选包名来自 npm 搜索（`keywords` 里的关键词），并合并 `seedIndexes` 里其他目录列出的包名。npm 搜索每个查询最多只返回约 1 万条模糊结果，单靠它会漏掉一部分插件。其他目录只提供包名，是否收录仍按上面的条件看包本身。
+
+## 每日更新
+
+[.github/workflows/directory.yml](.github/workflows/directory.yml) 定时运行，也可以在本地手动跑：
 
 ```sh
-npm run catalog:fetch                    # 抓取版本、图标、README、星标、周下载（可设置 GITHUB_TOKEN）
-npm run catalog:scan -- <名字>@<版本>     # 只读扫描源码，列出联网、读写文件等权限证据
-npm run catalog:build                    # 生成 market/index.json 和 market/plugins/*.json
-npm run catalog:check                    # 校验目录，并确认 market/ 是最新的
+npm run directory:discover   # 搜索候选包名，写入 directory/names.json（只增不减）
+npm run directory:refresh    # 最新版本有变化的包重新读取包信息，写入 directory/packages/
+npm run directory:stats      # 周下载量；按轮换刷新一部分 GitHub 星标（可设置 GITHUB_TOKEN）
+npm run directory:scan       # 对还没检测的最新版本做自动检测（只下载读取，不运行），顺带取图标
+npm run directory:build      # 生成 market/index.json、market/plugins/*.json、market/icons/
+npm run directory:check      # 确认 market/ 和状态文件一致，索引能被官方读取器解析
 ```
 
-首页第一个分区「本周热门」由 `catalog:build` 按 npm 最近 7 天下载量自动生成，不在 catalog.yaml 里。数字只在 `catalog:fetch` 时刷新，所以每周刷新一次：
-
-```sh
-npm run catalog:fetch && npm run catalog:build && npm run catalog:check
-git add catalog market && git commit -m "catalog: weekly stats refresh" && git push
-```
+`directory/config.json` 只由人编辑（DSH 版本、关键词、每轮检测上限、分类和分类关键词），工具从不写它。
 
 设计文档见 [docs/superpowers/specs](docs/superpowers/specs/)。

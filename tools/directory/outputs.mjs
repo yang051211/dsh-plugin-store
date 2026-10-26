@@ -20,7 +20,7 @@ export function plannedMarketFiles(index, details, readIcon) {
     if (!plugin.icon) continue
     const file = plugin.icon.replace(/^icons\//, '')
     const data = readIcon(file)
-    if (!data) throw new Error(`${plugin.name}: icon ${file} is missing from the icon cache (run catalog:fetch)`)
+    if (!data) throw new Error(`${plugin.name}: icon ${file} is missing from market/icons (run directory:scan)`)
     planned.set(`icons/${file}`, data)
   }
   return planned
