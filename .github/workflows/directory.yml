@@ -1,0 +1,64 @@
+# Rebuild the open directory from npm: discover candidates, re-read changed packages, refresh weekly downloads and a
+# slice of GitHub stars, run automatic detection on new latest versions (a capped number per run), and publish market/.
+# Nothing here is a review: listing follows the rules in tools/directory/packages.mjs and directory/config.json.
+name: directory
+
+on:
+  schedule:
+    - cron: '23 */6 * * *' # every 6 hours while the first detection backfill runs; daily is enough afterwards
+  workflow_dispatch:
+  push:
+    branches: [directory] # first backfill only; remove before merging into main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: directory-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Discover candidates
+        run: npm run directory:discover -- --registry https://registry.npmjs.org/
+
+      # Failed packages keep their previous facts; the step itself only fails on a broken run.
+      - name: Refresh changed packages
+        run: npm run directory:refresh -- --registry https://registry.npmjs.org/
+
+      - name: Refresh popularity
+        run: npm run directory:stats -- --registry https://registry.npmjs.org/
+
+      # Detection runs in rounds, and each round is published and pushed, so a long backfill that hits the job timeout
+      # keeps every finished round. A round that scans nothing ends the loop.
+      - name: Detect and publish in rounds
+        run: |
+          publish() {
+            npm run directory:build
+            npm run directory:check
+            git add directory market
+            if git diff --cached --quiet; then echo "nothing changed"; return 0; fi
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "directory: rebuild ($1)"
+            git push
+          }
+          publish "facts and stats"
+          for round in $(seq 1 12); do
+            npm run --silent directory:scan -- --registry https://registry.npmjs.org/ | tee "$RUNNER_TEMP/scan.log"
+            publish "detection round $round"
+            if grep -q '^scan: 0 scanned' "$RUNNER_TEMP/scan.log"; then break; fi
+          done
