@@ -1,0 +1,97 @@
+{
+  "name": "dsh-sacc-translator-cuda",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:05:17.197Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 1,
+        "text": "import {readdir, lstat, unlink, rmdir} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 13,
+        "text": "if (info.isSymbolicLink()) { if(clear)await unlink(path); return; }"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 19,
+        "text": "if(clear)await unlink(path);"
+      },
+      {
+        "file": "lib/gpu-component.js",
+        "line": 2,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "lib/gpu-component.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, link, copyFile, rename, rm } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 98,
+        "text": "      if (process.platform === 'win32') spawn('taskkill', ['/PID', String(running.child.pid), '/T', '/F'], {windowsHide:true, stdio:'ignore'}).on('error', () =>"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 143,
+        "text": "const worker=spawn(join(runtime,'translator-worker.exe'),[],{windowsHide:true,cwd:runtime,stdio:['pipe','pipe','pipe'],env:{...process.env,PYTHONUTF8:'1'}});"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 146,
+        "text": "(process.platform==='win32'&&worker.pid)spawn('taskkill',['/PID',String(worker.pid),'/T','/F'],{windowsHide:true,stdio:'ignore'}).on('error',()=>worker.kill());"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 168,
+        "text": "const child = spawn(worker, [], {windowsHide: true, cwd: runtime, stdio: ['pipe','pipe','pipe'],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [
+    "native/sacc-screen-translator.exe"
+  ],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "attachments",
+    "connection",
+    "fileUploads",
+    "llm",
+    "sessionController",
+    "sessionProjections"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,96 @@
+{
+  "name": "dsh-bill-ilife",
+  "version": "0.3.85",
+  "scannedAt": "2026-10-26T10:04:41.720Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 100,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/skill-provider.js",
+        "line": 15,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/skill-provider.js",
+        "line": 72,
+        "text": "raw = await readFile(join(dir, SKILL_FILE), 'utf8');"
+      },
+      {
+        "file": "dist/skill-tool.js",
+        "line": 13,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/skill-tool.js",
+        "line": 38,
+        "text": "export function resolveSkillEntry(packageDir, readFile = (p) => readFileSync(p, 'utf8')) {"
+      },
+      {
+        "file": "dist/skill-tool.js",
+        "line": 42,
+        "text": "manifest = JSON.parse(readFile(manifestPath));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 19,
+        "text": "export const inject = ['skills', 'connection', 'webServer', 'tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 73,
+        "text": "const disposeTool = ctx.tools?.register(createSkillTool());"
+      },
+      {
+        "file": "dist/skill-tool.js",
+        "line": 69,
+        "text": "/** 造工具定义（宿主 `ctx.tools.register` 消费；形状与 `defineTool` 产物一致，见 dsh-ctx 出处）。 */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/skill-tool.js",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/skill-tool.js",
+        "line": 66,
+        "text": "const r = spawnSync(bin, [...argv], { encoding: 'utf8', timeout: SPAWN_TIMEOUT_MS, env, windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

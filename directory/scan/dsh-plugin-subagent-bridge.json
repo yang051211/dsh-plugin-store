@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-subagent-bridge",
+  "version": "0.7.4",
+  "scannedAt": "2026-10-26T10:04:57.220Z",
+  "icon": "dsh-plugin-subagent-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version ?? '0.0.0'"
+      },
+      {
+        "file": "index.js",
+        "line": 1045,
+        "text": "parsed = JSON.parse(await readFile(settings.workersFile, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 1091,
+        "text": "await mkdir(dirname(settings.workersFile), { recursive: true, mode: 0o700 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 274,
+        "text": "toolCtx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 486,
+        "text": "return ok(id, text(await api.spawn({ taskName, message, forkTurns, from: args.from, cwd: args.cwd })))"
+      },
+      {
+        "file": "index.js",
+        "line": 594,
+        "text": "async spawn({ taskName, message, forkTurns, from, cwd }) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,136 @@
+{
+  "name": "dsh-mcp-skill-hub",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:05:03.810Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "fixtures/oauth-test-mcp.mjs",
+        "line": 19,
+        "text": "*   curl -s http://127.0.0.1:9981/__state"
+      },
+      {
+        "file": "fixtures/oauth-test-mcp.mjs",
+        "line": 21,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "const res = await fetch(API + path, opt);"
+      },
+      {
+        "file": "lib/oauth-provider.js",
+        "line": 150,
+        "text": "const res = await fetch(regUrl.toString(), {"
+      },
+      {
+        "file": "lib/oauth-server.js",
+        "line": 21,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth-store.js",
+        "line": 19,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "lib/auth-store.js",
+        "line": 73,
+        "text": "try { raw = readFileSync(filePath, \"utf8\"); } catch { return {}; }"
+      },
+      {
+        "file": "lib/auth-store.js",
+        "line": 102,
+        "text": "mkdirSync(dir, { recursive: true, mode: DIR_MODE });"
+      },
+      {
+        "file": "lib/auth-store.js",
+        "line": 109,
+        "text": "writeFileSync(tmp, JSON.stringify(data, null, 2) + \"\\n\", { mode: FILE_MODE });"
+      },
+      {
+        "file": "lib/auth-store.js",
+        "line": 114,
+        "text": "try { rmSync(tmp, { force: true }); } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "uninstallNoBackup: \"没有找到可信的原版备份,不能还原 bundle。请先确认 dsh-mcp-client 的 .bak-* 备份存在。\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 124,
+        "text": "uninstallNoBackup: \"No trustworthy original backup found, so the bundle cannot be restored. Make sure a .bak-* backup of dsh-mcp-client exists.\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "*     `@deepseek-ai/dsh-mcp-client` composition rows in the active profile's"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const MCP_PKG = \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "* non-empty lines contain `name: '@deepseek-ai/dsh-mcp-client'`. The block"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/self-heal.mjs",
+        "line": 31,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/uninstall.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/uninstall.js",
+        "line": 212,
+        "text": "const { execFileSync } = require('node:child_process')"
+      },
+      {
+        "file": "test-oauth-fixture.mjs",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "test-oauth-fixture.mjs",
+        "line": 48,
+        "text": "serverProc = spawn(process.execPath, [FIXTURE], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

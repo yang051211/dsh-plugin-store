@@ -1,0 +1,96 @@
+{
+  "name": "dsh-offpeak",
+  "version": "3.3.7",
+  "scannedAt": "2026-10-26T10:05:03.791Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1049,
+        "text": "const body = await (await fetch(`/session-guard/state?session=${encodeURIComponent(sessionId)}`)).json().catch(() => null);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1083,
+        "text": "const body = await (await fetch(\"/session-guard/rpc\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1446,
+        "text": "elsRes, settingsRes] = await Promise.allSettled([fetch(\"/session-guard/models\").then((r) => r.json()), fetch(\"/session-guard/settings\").then((r) => r.json())]);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1457,
+        "text": "await fetch(\"/session-guard/rpc\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1475,
+        "text": "const res = await fetch(\"/session-guard/rpc\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config-file.js",
+        "line": 21,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/config-file.js",
+        "line": 360,
+        "text": "export function loadConfigFile({ env = process.env, cwd = process.cwd(), pluginDir, exists = existsSync, readFile = (p) => readFileSync(p, 'utf8') } = {}) {"
+      },
+      {
+        "file": "src/config-file.js",
+        "line": 367,
+        "text": "text = readFile(path)"
+      },
+      {
+        "file": "src/config-file.js",
+        "line": 401,
+        "text": " exists = existsSync, readFile = (p) => readFileSync(p, 'utf8'), writeFile = (p, text) => writeFileSync(p, text, 'utf8'), mkdir = (p) => mkdirSync(p, { recursiv"
+      },
+      {
+        "file": "src/config-file.js",
+        "line": 419,
+        "text": "text = readFile(existing)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "goals",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

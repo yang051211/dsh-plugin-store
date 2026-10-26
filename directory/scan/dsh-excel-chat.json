@@ -1,0 +1,106 @@
+{
+  "name": "dsh-excel-chat",
+  "version": "0.43.0",
+  "scannedAt": "2026-10-26T10:05:08.574Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/doctor.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/doctor.js",
+        "line": 117,
+        "text": "const ownManifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "dist/agent.js",
+        "line": 1,
+        "text": "import { copyFile, mkdtemp, readFile, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/agent.js",
+        "line": 176,
+        "text": "await rm(dir, { recursive: true, force: true }).catch(() => { });"
+      },
+      {
+        "file": "dist/agent.js",
+        "line": 237,
+        "text": "const cells = await readWorkbookCells(await readFile(path));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/registration.js",
+        "line": 113,
+        "text": "const disposer = host.tools.register(definition);"
+      },
+      {
+        "file": "dist/tools/audit.js",
+        "line": 14,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/audit.js",
+        "line": 34,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/audit.js",
+        "line": 57,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/chart-visual.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/chart-visual.js",
+        "line": 154,
+        "text": "const child = spawn(POWERSHELL_PATH, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "dist-client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

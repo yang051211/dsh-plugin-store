@@ -1,0 +1,133 @@
+{
+  "name": "dsh-ego-browser",
+  "version": "0.9.2",
+  "scannedAt": "2026-10-26T10:04:39.969Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 3,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 5387,
+        "text": "const response = await fetch(`http://127.0.0.1:${state.port}/json/version`, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 5404,
+        "text": "const response = await fetch(`http://127.0.0.1:${active.port}/json/list`, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 403,
+        "text": "fetch(\"/api/ego/window-size\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 536,
+        "text": "fetch(\"/ego/api/get\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 4,
+        "text": "import { constants, mkdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 8,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 5374,
+        "text": "return JSON.parse(await import(\"node:fs/promises\").then((fs) => fs.readFile(BROWSER_STATE_FILE, \"utf8\")));"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 5600,
+        "text": "rmSync(CAST_STATE_FILE, { force: true });"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 5896,
+        "text": "mkdirSync(STATE_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4284,
+        "text": "const inject = [\"tools\", \"subprocess\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5029,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "runtime/ego-browser/dist/out/index.js",
+        "line": 6468,
+        "text": "www.google.com/search?q=test'); console.log(ctx.tools); const results = await site.runTool('google', 'search_and_extract', { query: 'openai', maxResults: 5 })\","
+      },
+      {
+        "file": "runtime/ego-browser/dist/out/index.js",
+        "line": 6493,
+        "text": "const ctx = await site.learnContext('https://x.com/home'); console.log(ctx.tools); const post = await site.runBrowserTool('x-com', 'post_from_active_element')\","
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 7,
+        "text": "import { execFile, execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 4730,
+        "text": "child = spawn(path, argv, {"
+      },
+      {
+        "file": "bin/ego-cast-worker.mjs",
+        "line": 4945,
+        "text": "const child = this.spawn(path, argv, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { execFile, execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 528,
+        "text": "srcHandle = deps.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "runtime/ego-browser/dist/out/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

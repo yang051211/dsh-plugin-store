@@ -1,0 +1,143 @@
+{
+  "name": "dsh-ai-library",
+  "version": "0.3.39",
+  "scannedAt": "2026-10-26T10:04:54.370Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/anysearch.js",
+        "line": 30,
+        "text": "const res = await fetch(BASE + '/v1/search', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4,
+        "text": "fetch(\"/api/ai-library/log\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 16,
+        "text": "fetch(\"/api/ai-library/log\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 61,
+        "text": "fetch(LOG_ROUTE, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(payload) }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 640,
+        "text": "fetch(src, { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters.js",
+        "line": 33,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 13,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 30,
+        "text": "const text = readFileSync(file, 'utf8').replace(/^\\uFEFF/, '')"
+      },
+      {
+        "file": "lib/dsweb.js",
+        "line": 28,
+        "text": "import { existsSync, readFileSync, mkdirSync, writeFileSync, readdirSync, statSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/dsweb.js",
+        "line": 49,
+        "text": "const txt = readFileSync(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1218,
+        "text": "/* ⚠️ 不要在这里读 ctx.tools：inject 里没有的服务，Cordis 的 Proxy 一碰就抛"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1223,
+        "text": "return !!ctx.tools"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 48,
+        "text": "* @param ctx Cordis 上下文（需 inject: ['tools']）"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 2024,
+        "text": "ons.electron || null, hasCtx: !!ctx, hasTools: !!(ctx && ctx.tools), registerType: typeof (ctx && ctx.tools && ctx.tools.register) }) + String.fromCharCode(10),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1682,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1686,
+        "text": "? spawn('explorer.exe', [abs], { detached: true, stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1688,
+        "text": "? spawn('open', [abs], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1689,
+        "text": ": spawn('xdg-open', [abs], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/pdf.min.mjs",
+    "vendor/pdf.worker.min.mjs",
+    "vendor/three/three.module.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

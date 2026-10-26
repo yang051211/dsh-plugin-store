@@ -1,0 +1,86 @@
+{
+  "name": "dsh-autotier",
+  "version": "0.2.19",
+  "scannedAt": "2026-10-26T10:05:10.331Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1059,
+        "text": "description: \"wget | sh: remote script execution\","
+      },
+      {
+        "file": "src/guard-rules.ts",
+        "line": 142,
+        "text": "{ id: 'wget-pipe-shell', description: 'wget | sh: remote script execution', pattern: /wget\\s+[^\\n]*\\|\\s*(sudo\\s+)?(ba)?sh\\b/ },"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 951,
+        "text": "const RECURSIVE_FORCE_RM = new RegExp(\"(^|[;&|]\\\\s*|\\\\b(\" + ARG_RUNNERS + \")\\\\s+(?:\\\\S+\\\\s+)*\" + \"|\\\\b(\" + DIRECT_RUNNERS + \")\\\\s+\" + \")\\\\\\\\?rm(\\\\s+)\", \"i\");"
+      },
+      {
+        "file": "src/guard-rules.ts",
+        "line": 48,
+        "text": "')\\\\\\\\?rm(\\\\s+)',"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3153,
+        "text": "ctx.tools.register(tierStatusTool(services));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3154,
+        "text": "ctx.tools.register(tierRouteTool(services));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 128,
+        "text": "export const inject = ['settings', 'llm', 'tools', 'commands', 'sessions']"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 126,
+        "text": "ctx.tools.register(tierStatusTool(services))"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 127,
+        "text": "ctx.tools.register(tierRouteTool(services))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "dsh-mimo-connect",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:05:11.833Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 142,
+        "text": "return fetch(QUOTA_ROUTE, { signal })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 142,
+        "text": "return fetch(QUOTA_ROUTE, { signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.js",
+        "line": 235,
+        "text": "const { existsSync, unlinkSync } = await import('node:fs')"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 240,
+        "text": "unlinkSync(path)"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 300,
+        "text": "const { existsSync } = await import('node:fs')"
+      },
+      {
+        "file": "src/adapter.js",
+        "line": 313,
+        "text": "*   (hostPath) => ctx.get('fs')?.processPathFromHostPath(hostPath),"
+      },
+      {
+        "file": "src/credential.js",
+        "line": 33,
+        "text": "} from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node tools/build-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

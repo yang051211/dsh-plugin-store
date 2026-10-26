@@ -1,0 +1,77 @@
+{
+  "name": "dsh-image-generation",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:05:09.054Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 218,
+        "text": "const response = await fetch(url, { redirect: 'follow', signal })"
+      },
+      {
+        "file": "index.js",
+        "line": 334,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 692,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 698,
+        "text": "await writeFile(join(directory, name), image.data)"
+      },
+      {
+        "file": "index.js",
+        "line": 779,
+        "text": "const data = await readFile(abs, signal !== undefined ? { signal } : {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 839,
+        "text": "ctx.tools.register(createImageGenerateTool(ctx, () => currentCatalog(), () => currentRuntime()))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,79 @@
+{
+  "name": "dsh-genshin-lisa-notice",
+  "version": "0.15.2",
+  "scannedAt": "2026-10-26T10:05:17.793Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 193,
+        "text": "var res = await fetch(POLL_PATH, { method: \"GET\", cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 256,
+        "text": "fetch(VOICES_PATH, { cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 362,
+        "text": "var res = await fetch(UPLOAD_PATH + \"?kind=\" + field, { method: \"POST\", body: buf });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 307,
+        "text": "const post = (body) => fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { existsSync, mkdirSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 336,
+        "text": "const bytes = await readFile(target)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 453,
+        "text": "mkdirSync(storageDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 455,
+        "text": "await writeFile(filePath, bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

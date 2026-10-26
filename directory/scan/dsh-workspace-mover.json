@@ -1,0 +1,90 @@
+{
+  "name": "dsh-workspace-mover",
+  "version": "2.4.1",
+  "scannedAt": "2026-10-26T10:05:16.427Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync, readdirSync, rmSync, statSync, cpSync, copyFileSync, statfsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 323,
+        "text": "if (location?.kind === 'filesystem') return readFileSync(location.artifact);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 328,
+        "text": "mkdirSync(dirname(location.artifact), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 529,
+        "text": "writeFileSync(tmp, buffer);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4035,
+        "text": "toolsCtx.tools.register(tool);"
+      },
+      {
+        "file": "test/e2e-sandbox.test.mjs",
+        "line": 2483,
+        "text": "ctx.tools = { register: (def) => registered.push(def) };"
+      },
+      {
+        "file": "test/host-services.test.mjs",
+        "line": 269,
+        "text": "test('a host without inject still gets tools from ctx.tools and approval from ctx.approval', async () => {"
+      },
+      {
+        "file": "test/workspace-tools.test.mjs",
+        "line": 258,
+        "text": "if (tools) ctx.tools = { register: (def) => { registered.push(def); return () => {}; } };"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "test/release-downloads.test.mjs",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

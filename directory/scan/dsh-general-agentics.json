@@ -1,0 +1,128 @@
+{
+  "name": "dsh-general-agentics",
+  "version": "0.3.0-alpha.3",
+  "scannedAt": "2026-10-26T10:04:52.299Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1020,
+        "text": "gaStatusPromise = fetch(`${STATUS_URL}?plugins=1`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1157,
+        "text": "const response = await fetch(`${STATUS_URL}${query}`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1184,
+        "text": "fetch(`${STATUS_URL}?usage=1`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1201,
+        "text": "const response = await fetch(`${STATUS_URL}?preview=1`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1214,
+        "text": "const response = await fetch(`${STATUS_URL}?action=rollback`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/diagnostics.mjs",
+        "line": 11,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/diagnostics.mjs",
+        "line": 117,
+        "text": "const buffer = readFileSync(entry.file)"
+      },
+      {
+        "file": "lib/health.mjs",
+        "line": 11,
+        "text": "import { accessSync, constants } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { appendFileSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 151,
+        "text": "raw = readFileSync(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 73,
+        "text": "# dsh-mcp-client lib/index.js:788). Setting it true makes a server that"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 79,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "* @deepseek-ai/dsh-mcp-client row per server), not in code."
+      },
+      {
+        "file": "mcp/ga-status-server.mjs",
+        "line": 7,
+        "text": "* pre-configuration story (one `@deepseek-ai/dsh-mcp-client` row per server"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      },
+      {
+        "file": "skills/writing-skills/render-graphs.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-longterm-memory",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:05:06.498Z",
+  "icon": "dsh-longterm-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 804,
+        "text": "response = await fetch(`${ROUTE_PREFIX}/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/core/discover.js",
+        "line": 13,
+        "text": "import { readdir, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host/core/discover.js",
+        "line": 65,
+        "text": "return await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/host/core/discover.js",
+        "line": 122,
+        "text": "const raw = await readFile(layout.marker, 'utf8').catch(() => null);"
+      },
+      {
+        "file": "lib/host/core/discover.js",
+        "line": 315,
+        "text": "const indexNote = await readFile(join(dir, 'Index', 'all-memories.md'), 'utf8').catch(() => null);"
+      },
+      {
+        "file": "lib/host/core/discover.js",
+        "line": 332,
+        "text": "const raw = await readFile(marker, 'utf8').catch(() => null);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/dsh/tools.js",
+        "line": 451,
+        "text": "* Register the memory tools on `ctx.tools`."
+      },
+      {
+        "file": "lib/host/dsh/tools.js",
+        "line": 460,
+        "text": "notes['tools'] = '宿主未提供 ctx.tools，模型无法主动调用记忆工具（自动提取与提示词注入不受影响）。';"
+      },
+      {
+        "file": "lib/host/dsh/tools.js",
+        "line": 469,
+        "text": "disposers.push(tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/core/service.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/core/service.js",
+        "line": 1686,
+        "text": "const child = execFile(command, [path], { windowsHide: false }, (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

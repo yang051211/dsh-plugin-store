@@ -1,0 +1,116 @@
+{
+  "name": "dsh-deepseek-web-login",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:04:50.776Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 953,
+        "text": "return await (await fetch(API + path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4375,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}${endpoint}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4458,
+        "text": "resp = await fetch('/api/v0/users/login', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4918,
+        "text": "* 机制：启动一个 headless 浏览器（独立 profile），通过 CDP 在页面上下文里调用 `fetch()`，"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFileSync, chmodSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 211,
+        "text": "mkdirSync(join(file, \"..\"), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "writeFileSync(tmp, JSON.stringify(value, null, 2), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "rmSync(tmp, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4539,
+        "text": "child = spawn(browser.path, buildBrowserArgs(profileDir, `${DS_BASE}/`), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5076,
+        "text": "execFile(\"taskkill\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5383,
+        "text": "const child = spawn(browser.path, transportBrowserArgs(PROFILE_DIR, transportPageUserAgent()), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10083,
+        "text": "* ⚠️ 2026-09-13 第二轮审计 N10：旧实现在 `spawn(...)` 之后立刻 `return {ok:true}`，"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

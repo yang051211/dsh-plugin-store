@@ -1,0 +1,126 @@
+{
+  "name": "clearai-dsh",
+  "version": "0.5.7",
+  "scannedAt": "2026-10-26T10:04:57.164Z",
+  "icon": "clearai-dsh.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2392,
+        "text": "fetch(url)"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 271,
+        "text": "() => connectionCtx.connection.fetch.register({ path, methods, requestBody: 'buffered', fetch: (request) => Promise.resolve(fetch(request)) }),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/clearai.mjs",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 243,
+        "text": "const manifest = JSON.parse(readFileSync(join(PKG_DIR, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 299,
+        "text": "else if (command === 'version' || flag('version')) console.log(JSON.parse(readFileSync(join(PKG_DIR, 'package.json'), 'utf8')).version)"
+      },
+      {
+        "file": "presets/clearai/plugins/audit-material.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "presets/clearai/plugins/audit-material.js",
+        "line": 22,
+        "text": "try { return contentDigest(readFileSync(file)) } catch { return 'missing-or-unreadable' }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/clearai/plugins/clearai-evaluator-face.js",
+        "line": 21,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "presets/clearai/plugins/clearai-evaluator-face.js",
+        "line": 30,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "presets/clearai/plugins/clearai-kernel.js",
+        "line": 39,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "presets/clearai/plugins/clearai-kernel.js",
+        "line": 1356,
+        "text": "* 就问**已经存在的那个权威**:工具注册表(`ctx.tools.get(name, scope)`)。"
+      },
+      {
+        "file": "presets/clearai/plugins/clearai-kernel.js",
+        "line": 2703,
+        "text": "* 这里只登记定义,真正 `ctx.tools.register` 由末尾的贡献表驱动——"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/clearai.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 180,
+        "text": "return spawnSync(process.env.ComSpec ?? 'cmd.exe', ['/d', '/s', '/c', line], { ...options, windowsVerbatimArguments: true })"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 182,
+        "text": "return spawnSync(bin, args, options)"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 195,
+        "text": "? spawnSync('npx', ['--no-install', '@deepseek-ai/dsh', ...args], { encoding: 'utf8', env, timeout: 120000, stdio: ['ignore', 'pipe', 'ignore'] })"
+      },
+      {
+        "file": "bin/clearai.mjs",
+        "line": 260,
+        "text": "nst dsh = (args) => (dshPath === null ? spawnSync('npx', ['--yes', '@deepseek-ai/dsh', ...args], { env, stdio: 'inherit', timeout: 900000 }) : spawnOnPath(dshPa"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

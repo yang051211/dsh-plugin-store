@@ -1,0 +1,66 @@
+{
+  "name": "better-dsh-session-deletetool",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:05:04.731Z",
+  "icon": "better-dsh-session-deletetool.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 225,
+        "text": "const response = await fetch(`${INSPECT_PATH}?sessionId=${encodeURIComponent(sessionId)}`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 239,
+        "text": "const response = await fetch(DELETE_PATH, {"
+      },
+      {
+        "file": "client.js",
+        "line": 251,
+        "text": "const response = await fetch(CATALOG_PATH, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 263,
+        "text": "const response = await fetch(BATCH_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 66,
+        "text": "import { rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "host.js",
+        "line": 700,
+        "text": "await rm(directory, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

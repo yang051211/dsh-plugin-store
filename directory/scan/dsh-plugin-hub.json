@@ -1,0 +1,114 @@
+{
+  "name": "dsh-plugin-hub",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:05:06.943Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/catalog-sync.js",
+        "line": 5,
+        "text": "const res = await fetch(CATALOG_URL, { signal: AbortSignal.timeout(15_000) });"
+      },
+      {
+        "file": "lib/host/github.js",
+        "line": 51,
+        "text": "const res = await fetch(url, { headers: { ...this.headers(), ...extraHeaders }, signal: AbortSignal.timeout(20000) });"
+      },
+      {
+        "file": "lib/host/github.js",
+        "line": 71,
+        "text": "const res = await fetch(url, { headers: { 'User-Agent': 'dsh-plugin-hub' }, signal: AbortSignal.timeout(20000) });"
+      },
+      {
+        "file": "lib/host/github.js",
+        "line": 131,
+        "text": "const res = await fetch(`${NPM_API}/downloads/point/last-month/${encodeURIComponent(packageName)}`, { signal: AbortSignal.timeout(10000) });"
+      },
+      {
+        "file": "lib/host/index.js",
+        "line": 577,
+        "text": "const res = await fetch(`https://registry.npmjs.org/${encodeURIComponent(packageName)}`, { signal: AbortSignal.timeout(10000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/backup.js",
+        "line": 13,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/backup.js",
+        "line": 52,
+        "text": "const parsed = JSON.parse(readFileSync(manifestPath, 'utf8'));"
+      },
+      {
+        "file": "lib/host/backup.js",
+        "line": 73,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/host/backup.js",
+        "line": 79,
+        "text": "rmSync(target, { force: true });"
+      },
+      {
+        "file": "lib/host/backup.js",
+        "line": 104,
+        "text": "mkdirSync(profileDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/index.js",
+        "line": 43,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/index.js",
+        "line": 1135,
+        "text": "                const child = spawn(process.execPath, [bin, ...args], { cwd: benchPkg, env: { ...process.env, DSH_HOME: resolveDshHome() }, stdio: 'ignore', win"
+      },
+      {
+        "file": "lib/host/installer.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/installer.js",
+        "line": 89,
+        "text": "? spawn(`${cmd} ${cmdArgs.map(escapeWinArg).join(' ')}`, { cwd, shell: true, windowsHide: true, env: { ...process.env, NO_COLOR: '1' } })"
+      },
+      {
+        "file": "lib/host/installer.js",
+        "line": 90,
+        "text": ": spawn(cmd, cmdArgs, { cwd, shell: false, windowsHide: true, env: { ...process.env, NO_COLOR: '1' } });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

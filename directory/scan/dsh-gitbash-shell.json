@@ -1,0 +1,138 @@
+{
+  "name": "dsh-gitbash-shell",
+  "version": "0.43.2",
+  "scannedAt": "2026-10-26T10:04:40.792Z",
+  "icon": "dsh-gitbash-shell.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 2273,
+        "text": "fetch(TOOLS_URL + \"?job=1\", { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 2647,
+        "text": "return fetch(TOOLS_URL, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 2696,
+        "text": "fetch(TOOLS_URL + \"?action=run\", {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 2716,
+        "text": "return fetch(TOOLS_URL + \"?action=cancel\", { method: \"POST\", headers: { \"content-type\": \"application/json\" } })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 2924,
+        "text": "Promise.resolve(fetch(API_PATH, { headers: { accept: \"application/json\" } }))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 52,
+        "text": "''; const fs = process.getBuiltinModule('node:fs'); const pf = (process.env.ProgramFiles ?? process.env.PROGRAMFILES ?? 'C:\\\\Program Files').replace(/[\\\\/]+$/, "
+      },
+      {
+        "file": "src/bash-path.js",
+        "line": 24,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/fastctx-bridge.js",
+        "line": 90,
+        "text": "const { existsSync } = req('node:fs')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 55,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 344,
+        "text": "files[rel] = createHash('sha256').update(readFileSync(join(root, rel))).digest('hex')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bash-tool.js",
+        "line": 345,
+        "text": "inject: ['tools', 'systemPrompt', 'shellEnv'],"
+      },
+      {
+        "file": "src/bash-tool.js",
+        "line": 622,
+        "text": "ctx.tools.register(bashTool(undefined))"
+      },
+      {
+        "file": "src/bash-tool.js",
+        "line": 625,
+        "text": "let foregroundOnly = ctx.get('jobs') === undefined ? ctx.tools.register(bashTool(undefined)) : undefined"
+      },
+      {
+        "file": "src/bash-tool.js",
+        "line": 629,
+        "text": "const unregister = ctx.tools.register(bashTool(jobCtx.jobs))"
+      },
+      {
+        "file": "src/bash-tool.js",
+        "line": 634,
+        "text": "if (ctx.fiber?.state === 2) foregroundOnly = ctx.tools.register(bashTool(undefined))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bash-path.js",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/bash-path.js",
+        "line": 358,
+        "text": "// spawnSync (not execFileSync): the sync-exec family LEAKS a failing"
+      },
+      {
+        "file": "src/bash-path.js",
+        "line": 364,
+        "text": "const result = spawnSync(file, args, { encoding: 'utf8', timeout: 5000, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "src/fastctx-bridge.js",
+        "line": 119,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "src/fastctx-bridge.js",
+        "line": 122,
+        "text": "this.child = spawn(this.file, this.args, { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

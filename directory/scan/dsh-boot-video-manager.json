@@ -1,0 +1,84 @@
+{
+  "name": "dsh-boot-video-manager",
+  "version": "1.3.1",
+  "scannedAt": "2026-10-26T10:04:49.571Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 209,
+        "text": "var response = await fetch(API + path, options)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 227,
+        "text": "var request = new XMLHttpRequest()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/coldstart.js",
+        "line": 14,
+        "text": "import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/coldstart.js",
+        "line": 50,
+        "text": "source = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/coldstart.js",
+        "line": 60,
+        "text": "writeFileSync(file, result.source, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "rmSync(from)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 517,
+        "text": "const child = spawn('explorer.exe', [assetDir], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/coldstart-patch.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

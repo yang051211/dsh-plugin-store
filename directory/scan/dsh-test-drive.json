@@ -1,0 +1,76 @@
+{
+  "name": "dsh-test-drive",
+  "version": "0.3.24",
+  "scannedAt": "2026-10-26T10:04:54.797Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { access, mkdir, mkdtemp, readFile, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 366,
+        "text": "const text = newest.zstd ? decodeZstdFrames(await readFile(newest.path)) : await readFile(newest.path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 491,
+        "text": "const target = parseNpmShim(found, await readFile(found, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 590,
+        "text": "await mkdir(profileDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 592,
+        "text": "await writeFile(join(profileDir, \"pnpm-workspace.yaml\"), `allowBuilds:\\n  '${key}': true\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2632,
+        "text": "for (const tool of allTools(services)) ctx.effect(() => ctx.tools.register(tool), `dsh-test-drive: ${tool.name} tool`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 550,
+        "text": "handle = this.deps.ctx.subprocess.spawn(spec);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

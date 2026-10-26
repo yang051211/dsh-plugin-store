@@ -1,0 +1,114 @@
+{
+  "name": "dsh-qq-plugin",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:04:56.679Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 148,
+        "text": "void fetch(`${PREFIX}/client-error`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 507,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 174,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(30_000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/log.js",
+        "line": 11,
+        "text": "import { appendFileSync, mkdirSync, renameSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 46,
+        "text": "mkdirSync(dirname(logFile), { recursive: true })"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 70,
+        "text": "appendFileSync(logFile, line)"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 23,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 73,
+        "text": "mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 2252,
+        "text": "tools.register("
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 2267,
+        "text": "tools.register("
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 2279,
+        "text": "tools.register("
+      },
+      {
+        "file": "lib/session-tool.js",
+        "line": 39,
+        "text": "* 宿主作用域下 `ctx.tools.register` 的名字是**全局唯一**的：重名会抛"
+      },
+      {
+        "file": "tools/check-cross-plugin.mjs",
+        "line": 8,
+        "text": "* 2. **宿主作用域的工具名**（`ctx.tools.register` 的名字全局唯一）"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/check-doc-counts.mjs",
+        "line": 70,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/check-doc-counts.mjs",
+        "line": 681,
+        "text": "const run = spawnSync(process.execPath, [script], { cwd: root, encoding: 'utf8', maxBuffer: 1 << 28 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

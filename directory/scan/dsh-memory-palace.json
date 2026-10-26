@@ -1,0 +1,101 @@
+{
+  "name": "dsh-memory-palace",
+  "version": "1.8.2",
+  "scannedAt": "2026-10-26T10:04:53.649Z",
+  "icon": "dsh-memory-palace.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 157,
+        "text": "const resp = await fetch(\"/memory-palace/api/settings.get\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "const resp = await fetch(\"/memory-palace/api/settings.update\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/common/logger.mjs",
+        "line": 20,
+        "text": "import { appendFile, mkdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/common/logger.mjs",
+        "line": 80,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/common/logger.mjs",
+        "line": 89,
+        "text": "await appendFile(file, text, { encoding: \"utf8\", mode: 0o600 });"
+      },
+      {
+        "file": "lib/common/paths.mjs",
+        "line": 5,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/common/records.mjs",
+        "line": 7,
+        "text": "import { mkdir, readdir, writeFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hybrid/tools.mjs",
+        "line": 105,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/hybrid/tools.mjs",
+        "line": 191,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/hybrid/tools.mjs",
+        "line": 272,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "export const inject = [\"systemPrompt\", \"tools\", \"llm\", \"webServer\", \"webStartup\"];"
+      },
+      {
+        "file": "lib/tools.mjs",
+        "line": 70,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "systemPrompt",
+    "tools",
+    "webServer",
+    "webStartup"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,94 @@
+{
+  "name": "dsh-diff-approval",
+  "version": "0.36.1",
+  "scannedAt": "2026-10-26T10:04:58.580Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 33695,
+        "text": "const response = await fetch(MANIFEST_URL, { credentials: \"same-origin\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { existsSync, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1193,
+        "text": "remove: (staged) => rm(staged, { force: true }),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1197,
+        "text": "await io.mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1199,
+        "text": "await io.writeFile(staged, JSON.stringify(value), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3247,
+        "text": "* The definition to hand to `ctx.tools.register`."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4239,
+        "text": "const dispose = tools.register(annotateToolDefinition(annotateRun(deps)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2863,
+        "text": "const child = spawn(command, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -b tsconfig.json && tsdown --env.DSH_BUILD_FACE client"
+      }
+    ]
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

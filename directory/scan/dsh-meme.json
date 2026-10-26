@@ -1,0 +1,115 @@
+{
+  "name": "dsh-meme",
+  "version": "0.1.63",
+  "scannedAt": "2026-10-26T10:04:37.686Z",
+  "icon": "dsh-meme.jpg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 235,
+        "text": "return (await fetch('/dsh-memes-api?' + qs.toString())).json()"
+      },
+      {
+        "file": "client.js",
+        "line": 270,
+        "text": "const res = await (await fetch('/dsh-memes-api', {"
+      },
+      {
+        "file": "client.js",
+        "line": 609,
+        "text": "const response = await fetch('/dsh-memes-export?packId=' + encodeURIComponent(id))"
+      },
+      {
+        "file": "client.js",
+        "line": 676,
+        "text": "const res = await fetch('/dsh-memes-api?packId=' + encodeURIComponent(row.packId)).then((r) => r.json())"
+      },
+      {
+        "file": "client.js",
+        "line": 844,
+        "text": "const response = await fetch('/dsh-memes-export?packId=' + encodeURIComponent(pack.id))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { readFileSync, writeFileSync, unlinkSync, mkdirSync, existsSync, rmSync, readdirSync, renameSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 507,
+        "text": "const pkg = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 513,
+        "text": "try { return JSON.parse(readFileSync(settingsFile, 'utf8')) } catch (e) { return {} }"
+      },
+      {
+        "file": "index.js",
+        "line": 517,
+        "text": "mkdirSync(join(dshHome(), '.dsh'), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 518,
+        "text": "writeFileSync(settingsFile, JSON.stringify({ ...readSettings(), ...patch }, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 224,
+        "text": "export const inject = ['tools', 'webServer', 'agentDefaultModel', 'attachments']"
+      },
+      {
+        "file": "index.js",
+        "line": 435,
+        "text": "* dsh 0.2.1-rc.x 冷启动时,apply 同步路径里 ctx.tools 可能还没对 agent 平面生效:"
+      },
+      {
+        "file": "index.js",
+        "line": 440,
+        "text": "*   * 宿主有 ctx.inject:整体挪进 inject(['tools']) 回调,tools 服务 ACTIVE 后再注册,"
+      },
+      {
+        "file": "index.js",
+        "line": 451,
+        "text": "* @param {() => void} register 真正执行注册的 thunk(ctx.tools.register 自带生命周期挂接)"
+      },
+      {
+        "file": "index.js",
+        "line": 1044,
+        "text": "// 与 send_meme 一样走 registerToolWhenReady:冷启动时 ctx.tools 未就绪,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "attachments",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

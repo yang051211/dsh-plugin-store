@@ -1,0 +1,123 @@
+{
+  "name": "dsh-remote-plugin",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:04:52.118Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 155,
+        "text": "var response = await fetch('/remote/admin/api/browser-launch', { method: 'POST', credentials: 'same-origin',"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 31,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 32,
+        "text": "const https = require('node:https')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 203,
+        "text": "const https = require('node:https')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 220,
+        "text": "    const request = https.request(url, { method: 'POST', ca, headers: { 'content-type': 'application/json', 'content-length': data.length }, timeout: 12000 }, r"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "doctor-skill.mjs",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "doctor-skill.mjs",
+        "line": 22,
+        "text": "const raw = readFileSync(SKILL_PATH, 'utf8').replace(/^\\uFEFF/, '')"
+      },
+      {
+        "file": "doctor-target.mjs",
+        "line": 2,
+        "text": "import {readFileSync,realpathSync} from 'node:fs'"
+      },
+      {
+        "file": "doctor-target.mjs",
+        "line": 17,
+        "text": "try { const pkg=JSON.parse(readFileSync(join(DOCTOR_PLUGIN_ROOT,'package.json'),'utf8'));if(pkg.name==='dsh-remote-plugin')version=pkg.version } catch {}"
+      },
+      {
+        "file": "file-delivery.mjs",
+        "line": 3,
+        "text": "import { realpathSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "file-delivery.mjs",
+        "line": 81,
+        "text": "for (const definition of createDeliveryTools(scoped, request)) child.effect(() => tools.register(definition), 'dsh-remote: ' + definition.name)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gateway-stats.cjs",
+        "line": 23,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 319,
+        "text": "child = this.spawn('zstd', ['-dc', file], { windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] })"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 33,
+        "text": "const { execFile, spawn } = require('node:child_process')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 767,
+        "text": "le,args)=>new Promise((resolve,reject)=>execFile(file,args,{windowsHide:true,timeout:5000,maxBuffer:64*1024,encoding:'utf8',env:{...process.env,LC_ALL:'C'}},(er"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 902,
+        "text": "    try{worker=spawn(process.execPath,args,{cwd:process.cwd(),env,windowsHide:true,stdio:['ignore','inherit','inherit']})}catch(error){recordCrash('gateway','re"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "public/vendor/gsap/gsap.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

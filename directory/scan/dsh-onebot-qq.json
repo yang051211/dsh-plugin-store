@@ -1,0 +1,109 @@
+{
+  "name": "dsh-onebot-qq",
+  "version": "0.9.6",
+  "scannedAt": "2026-10-26T10:04:40.164Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection.js",
+        "line": 374,
+        "text": "socket = new WebSocket(url, { headers, handshakeTimeout: 10_000, maxPayload: MAX_FRAME_BYTES });"
+      },
+      {
+        "file": "lib/media.js",
+        "line": 170,
+        "text": "const response = await fetch(current, { redirect: 'manual', signal: AbortSignal.timeout(Math.max(0, deadline - Date.now())) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 11,
+        "text": "import { realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 4,
+        "text": "import { readFile, readdir, realpath, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 1155,
+        "text": "const text = await readFile(join(root, entry.name, 'preset.yml'), 'utf8');"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 1177,
+        "text": "const pkg = JSON.parse(readFileSync(join(dirname(dirname(fileURLToPath(import.meta.url))), 'package.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "export const inject = ['tools', 'systemPrompt', 'agents', 'sessions', 'agentDefaultModel', 'agentPresets', 'sessionPersistence', 'workspaceRegistry', 'commands'"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 89,
+        "text": "disposers.push(ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/commands.js",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/stt.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/stt.js",
+        "line": 18,
+        "text": "const child = spawn(program, args, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "commands",
+    "configEditor",
+    "llm",
+    "profileContext",
+    "sessionPersistence",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

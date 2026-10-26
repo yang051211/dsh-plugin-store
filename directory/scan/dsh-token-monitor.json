@@ -1,0 +1,114 @@
+{
+  "name": "dsh-token-monitor",
+  "version": "1.0.12",
+  "scannedAt": "2026-10-26T10:05:17.606Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1654,
+        "text": "fetch(\"/token-monitor/sync/pending\", { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1670,
+        "text": "fetch(\"/token-monitor/import/cc-switch\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1715,
+        "text": "fetch(useForce ? OVERVIEW_URL + \"?force=1\" : OVERVIEW_URL, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1749,
+        "text": "fetch(\"/token-monitor/overview/current?provider=\" + encodeURIComponent(pid) + (force ? \"&force=1\" : \"\"), { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1771,
+        "text": "fetch(\"/token-monitor/overview/current?provider=\" + encodeURIComponent(p.id) + (force ? \"&force=1\" : \"\"), { headers: { accept: \"application/json\" } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "const raw = JSON.parse(fs.readFileSync(PLUGIN_CONFIG_PATH, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 453,
+        "text": "fs.mkdirSync(path.dirname(PLUGIN_CONFIG_PATH), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 454,
+        "text": "fs.writeFileSync(PLUGIN_CONFIG_PATH,"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1326,
+        "text": "spawn(opener[0], opener[1](dir), { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/util/market-upgrade.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/util/market-upgrade.js",
+        "line": 211,
+        "text": "if (!viaShell) return spawn(file, fullArgs, { ...spawnOpts, shell: false });"
+      },
+      {
+        "file": "lib/util/market-upgrade.js",
+        "line": 214,
+        "text": "return spawn(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', `\"${line}\"`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/util/echarts.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

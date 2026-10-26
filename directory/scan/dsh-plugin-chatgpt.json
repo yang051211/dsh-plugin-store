@@ -1,0 +1,92 @@
+{
+  "name": "dsh-plugin-chatgpt",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:04:47.422Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api/client.js",
+        "line": 88,
+        "text": "const response = await fetch(`${baseOf(endpoints)}/models`, {"
+      },
+      {
+        "file": "lib/api/client.js",
+        "line": 159,
+        "text": "const response = await fetch(`${baseOf(options.endpoints)}/responses`, {"
+      },
+      {
+        "file": "lib/auth/callback-server.js",
+        "line": 24,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/auth/refresh.js",
+        "line": 54,
+        "text": "const response = await fetch(options.tokenUrl ?? TOKEN_URL, {"
+      },
+      {
+        "file": "lib/auth/revoke.js",
+        "line": 41,
+        "text": "const response = await fetch(options.discoveryUrl ?? DISCOVERY_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth/host-id.js",
+        "line": 20,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auth/host-id.js",
+        "line": 27,
+        "text": "text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/auth/host-id.js",
+        "line": 56,
+        "text": "mkdirSync(dirname(options.file), { recursive: true });"
+      },
+      {
+        "file": "lib/auth/host-id.js",
+        "line": 59,
+        "text": "writeFileSync(options.file, `${id}\\n`, { encoding: 'utf8', flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/auth/store.js",
+        "line": 19,
+        "text": "import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

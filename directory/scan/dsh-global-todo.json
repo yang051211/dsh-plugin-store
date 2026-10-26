@@ -1,0 +1,80 @@
+{
+  "name": "dsh-global-todo",
+  "version": "0.19.0",
+  "scannedAt": "2026-10-26T10:04:48.225Z",
+  "icon": "dsh-global-todo.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 888,
+        "text": "void fetch(`${API}/diagnostics`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 918,
+        "text": "const response = await fetch(`${API}/${path}${query}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic.js",
+        "line": 17,
+        "text": "import { open, rename, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 62,
+        "text": "await handle.writeFile(payload, 'utf8')"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 75,
+        "text": "if (!renamed) await io.unlink(temp).catch(() => {})"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 12,
+        "text": "import { appendFile, readFile, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 41,
+        "text": "const text = await readFile(options.file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 540,
+        "text": "const disposers = selected.map((definition) => toolCtx.tools.register(definition))"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 329,
+        "text": "* @returns {object[]} definitions for `ctx.tools.register`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

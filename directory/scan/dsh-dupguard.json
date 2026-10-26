@@ -1,0 +1,69 @@
+{
+  "name": "dsh-dupguard",
+  "version": "1.12.2",
+  "scannedAt": "2026-10-26T10:05:05.604Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2029,
+        "text": "const response = await fetch(NOTIFY_BASE + 'notifications', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2046,
+        "text": "const response = await fetch(NOTIFY_BASE + 'notifications/action', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "const nodeFs = require('fs')"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 11,
+        "text": "const nodeFs = require('fs')"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 392,
+        "text": "values = extractEntryConfig(nodeFs.readFileSync(file, 'utf8'), ['dupguard', 'dsh-dupguard', SETTINGS_NS])"
+      },
+      {
+        "file": "lib/stop-log.js",
+        "line": 25,
+        "text": "//   - 动态入口 plugin/host.js 是 `new Function` 求值的代码体、不能 require('fs')，"
+      },
+      {
+        "file": "lib/stop-log.js",
+        "line": 29,
+        "text": "const nodeFs = require('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

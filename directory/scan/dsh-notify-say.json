@@ -1,0 +1,110 @@
+{
+  "name": "dsh-notify-say",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:04:37.818Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "jump-handler.ps1",
+        "line": 89,
+        "text": "$v = Invoke-RestMethod -Uri (\"http://127.0.0.1:\" + $p + \"/api/dsh-notify-say/version\") -TimeoutSec 1"
+      },
+      {
+        "file": "jump-handler.ps1",
+        "line": 102,
+        "text": "$null = Invoke-RestMethod -Uri (\"http://127.0.0.1:\" + $p + \"/api/dsh-notify-say/pending-jump\") `"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 98,
+        "text": "return fetch(cfgUrl('pending-jump'), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 117,
+        "text": "return fetch(apiUrl('consume'), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 156,
+        "text": "return fetch(apiUrl('voicepacks/index'), { cache: 'no-store', credentials: 'same-origin' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-route.js",
+        "line": 27,
+        "text": "import { existsSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-route.js",
+        "line": 140,
+        "text": "if (existsSync(p)) unlinkSync(p);"
+      },
+      {
+        "file": "lib/config-schema.js",
+        "line": 43,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 32,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, renameSync, existsSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 349,
+        "text": "text = readFileSync(p, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1153,
+        "text": "child = spawn(POWERSHELL_EXE, args, { stdio: ['ignore', 'ignore', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1202,
+        "text": "spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1249,
+        "text": "const c = spawn(POWERSHELL_EXE, ["
+      },
+      {
+        "file": "test/audio-wiring.test.mjs",
+        "line": 35,
+        "text": "* 插件用 `spawn(POWERSHELL_EXE, args, ...)`；这里没法替换已 import 的 spawn，"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

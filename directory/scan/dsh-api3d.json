@@ -1,0 +1,95 @@
+{
+  "name": "dsh-api3d",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:05:15.144Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 918,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1883,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/direct-fetch.js",
+        "line": 1,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/direct-fetch.js",
+        "line": 2,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 29,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/self-update.js",
+        "line": 26,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 59,
+        "text": "const raw = fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8')"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 70,
+        "text": "fs.mkdirSync(dshHome(), { recursive: true })"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 71,
+        "text": "fs.appendFileSync(UPDATE_LOG_FILE, '[' + new Date().toISOString() + '] ' + String(text).slice(0, 2000) + '\\n')"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 110,
+        "text": "const j = JSON.parse(fs.readFileSync(pj, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/self-update.js",
+        "line": 30,
+        "text": "import { exec, execFile, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 348,
+        "text": "const child = execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

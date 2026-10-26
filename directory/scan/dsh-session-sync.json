@@ -1,0 +1,106 @@
+{
+  "name": "dsh-session-sync",
+  "version": "0.2.31",
+  "scannedAt": "2026-10-26T10:04:51.943Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 487,
+        "text": "const fetched = await this.#git.fetch({ signal: opts.signal })"
+      },
+      {
+        "file": "lib/engine.mjs",
+        "line": 188,
+        "text": "const fetched = await this.#deps.git.fetch({ signal: opts.signal })"
+      },
+      {
+        "file": "lib/git.mjs",
+        "line": 264,
+        "text": "async fetch(opts = {}) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 17,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 63,
+        "text": "map.set(rel, await fs.readFile(path.join(root, ...rel.split('/'))))"
+      },
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 71,
+        "text": "if (!map.has(rel)) await fs.unlink(path.join(root, ...rel.split('/')))"
+      },
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 75,
+        "text": "await fs.mkdir(path.dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/encrypted.mjs",
+        "line": 76,
+        "text": "await fs.writeFile(target, content)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 837,
+        "text": "toolCtx.tools.register(makeSyncStatusTool(engine, ensureMeta))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 838,
+        "text": "toolCtx.tools.register(makeSyncPullTool({ engine, ctx, confirmVia: resolved.confirmVia, eventGate, logger }))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 839,
+        "text": "toolCtx.tools.register(makeSyncPushTool({ engine, ctx, confirmVia: resolved.confirmVia, eventGate, logger }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 245,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 309,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessions",
+    "storageDomain",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

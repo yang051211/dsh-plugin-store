@@ -1,0 +1,104 @@
+{
+  "name": "dsh-omarchy-agent",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-26T10:04:43.280Z",
+  "icon": "dsh-omarchy-agent.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.sh",
+        "line": 107,
+        "text": "meta=\"$(curl -fsSL --max-time 15 'https://registry.npmjs.org/@deepseek-ai%2fdsh' 2>/dev/null)\" || meta=\"\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/inspect.js",
+        "line": 1,
+        "text": "import { access, readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 119,
+        "text": "parsed = JSON.parse(await readFile(file, 'utf8'));"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 151,
+        "text": "defaultAgent = (await readFile(DEFAULT_AGENT_FILE, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 167,
+        "text": "supportsDsh = /\\bdsh\\b/.test(await readFile(launcher, 'utf8'));"
+      },
+      {
+        "file": "lib/source.js",
+        "line": 1,
+        "text": "import { readdir, readFile, realpath, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 61,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 186,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 237,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/inspect.js",
+        "line": 268,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exec.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/exec.js",
+        "line": 12,
+        "text": "execFile(bin, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

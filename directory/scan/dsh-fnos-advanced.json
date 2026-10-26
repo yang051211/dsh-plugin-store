@@ -1,0 +1,95 @@
+{
+  "name": "dsh-fnos-advanced",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:05:08.614Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 536,
+        "text": "const response = await fetch(pluginURL(\"fnos-advanced/config\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 573,
+        "text": "const response = await fetch(pluginURL(\"fnos-advanced/settings\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 606,
+        "text": "const response = await fetch(pluginURL(\"fnos-advanced/settings\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 631,
+        "text": "const response = await fetch(pluginURL(\"fnos-advanced/health\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 648,
+        "text": "const response = await fetch(pluginURL(\"fnos-advanced/workspaces\"), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/images.js",
+        "line": 14,
+        "text": "import { closeSync, createReadStream, fstatSync, openSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 96,
+        "text": "const raw = readFileSync(settingsFilePath(), 'utf8');"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 106,
+        "text": "mkdirSync(dirname(file), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 108,
+        "text": "writeFileSync(tmp, `${JSON.stringify({ version: 1, ...settings }, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 33,
+        "text": "const result = spawnSync(command, args, { cwd: root, stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

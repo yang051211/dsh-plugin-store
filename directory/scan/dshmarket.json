@@ -1,0 +1,144 @@
+{
+  "name": "dshmarket",
+  "version": "1.70.2",
+  "scannedAt": "2026-10-26T10:04:34.420Z",
+  "icon": "dshmarket.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 2776,
+        "text": "const res = await fetch(candidate.url, { signal: controller.signal });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 4686,
+        "text": "const response = await fetch(api(\"/dsh-market/recovery\"), { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 4706,
+        "text": "const response = await fetch(api(\"/dsh-market/recovery/apply\"), {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 4740,
+        "text": "const body = await (await fetch(api(\"/dsh-market/status\"), { cache: \"no-store\" })).json();"
+      },
+      {
+        "file": "client/client.js",
+        "line": 4943,
+        "text": "fetch(api(\"/dsh-market/host-recovery\"), { cache: \"no-store\" }).then((res) => res.json()).then((body) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backup.js",
+        "line": 9,
+        "text": "import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 74,
+        "text": "const manifest = JSON.parse(readFileSync(manifestFile, 'utf8'));"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 107,
+        "text": "files.push({ path, lines: readFileSync(resolve(root, path), 'utf8').split(/\\r?\\n/) });"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 116,
+        "text": "const content = readFileSync(resolve(root, path), 'utf8');"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 183,
+        "text": "mkdirSync(root, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/check.js",
+        "line": 44,
+        "text": "// as a bundle, `dsh-mcp-client` as a loader — and every name a Desktop build"
+      },
+      {
+        "file": "lib/check.js",
+        "line": 1356,
+        "text": "// ones we happen to have seen. `dsh-mcp-client` was that list's only"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 1314,
+        "text": "// uses. A carrier naming an in-box package (@deepseek-ai/dsh-mcp-client and"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 1327,
+        "text": "// (@deepseek-ai/dsh-mcp-client and the like) therefore failed every root"
+      },
+      {
+        "file": "src/check.ts",
+        "line": 46,
+        "text": "// as a bundle, `dsh-mcp-client` as a loader — and every name a Desktop build"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 9,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 269,
+        "text": "const out = spawnSync('git', ['config', '--get', 'core.sshCommand'], {"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 448,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false, windowsHide: true });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 451,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false, windowsHide: true });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 453,
+        "text": "return spawn(COMSPEC, ['/d', '/s', '/c', `\"${cmdCommandLine([file, ...args])}\"`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

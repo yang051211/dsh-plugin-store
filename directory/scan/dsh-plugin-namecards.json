@@ -1,0 +1,73 @@
+{
+  "name": "dsh-plugin-namecards",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-26T10:05:02.003Z",
+  "icon": "dsh-plugin-namecards.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "const response = await fetch(BASE + path, { headers: { Accept: \"application/json\" }, credentials: \"same-origin\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const response = await fetch(BASE + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "mkdirSync(iconsDir(), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "const seed = JSON.parse(readFileSync(seedPath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "return normalizeStore(JSON.parse(readFileSync(file, 'utf8')))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 242,
+        "text": "const bytes = readFileSync(join(iconsDir(), name))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,76 @@
+{
+  "name": "dsh-web-search-free",
+  "version": "1.9.0",
+  "scannedAt": "2026-10-26T10:04:51.619Z",
+  "icon": "dsh-web-search-free.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 168,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 671,
+        "text": "async fetch(request, signal) {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 679,
+        "text": "return local.fetch(request, signal);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 684,
+        "text": "return local.fetch(request, signal);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 693,
+        "text": "result = hit ?? await runChain('fetch', attempts, signal, (provider, key, scoped) => provider.fetch(request.url, key, scoped), weak);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 182,
+        "text": "text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 326,
+        "text": "return JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version ?? '';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "dsh-email",
+  "version": "0.19.0",
+  "scannedAt": "2026-10-26T10:04:47.874Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 254,
+        "text": "const res = await fetch(ROUTE, { ...init, signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 289,
+        "text": "const res = await fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2335,
+        "text": "            const response = await fetch(MAILBOX_ROUTE, { credentials: \"same-origin\", method: \"POST\", headers: { \"Content-Type\": \"application/json\", \"x-dsh-emai"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2464,
+        "text": "const response = await fetch(upload ? DRAFT_ROUTE + \"/upload\" : DRAFT_ROUTE, init), result = await response.json();"
+      },
+      {
+        "file": "lib/draft-web.js",
+        "line": 333,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agentmail.js",
+        "line": 2,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "lib/agentmail.js",
+        "line": 3,
+        "text": "import { mkdir, open, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/agentmail.js",
+        "line": 289,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/agentmail.js",
+        "line": 293,
+        "text": "await handle.writeFile(content);"
+      },
+      {
+        "file": "lib/agentmail.js",
+        "line": 298,
+        "text": "await unlink(path).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['settings', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "ctx.tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth2-storage.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/oauth2-storage.js",
+        "line": 28,
+        "text": "const result = spawnSync(executable, ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(script, 'utf16le').toString('base64')], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

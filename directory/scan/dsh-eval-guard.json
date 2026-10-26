@@ -1,0 +1,165 @@
+{
+  "name": "dsh-eval-guard",
+  "version": "0.7.10",
+  "scannedAt": "2026-10-26T10:04:44.477Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/index.js",
+        "line": 192,
+        "text": "fetch(\"/api/eval-guard/job?id=\" + encodeURIComponent(id)).then(readJson).then(setJob).catch(() => void 0);"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 199,
+        "text": "fetch(\"/api/eval-guard/jobs?workspaceId=\" + encodeURIComponent(workspace) + \"&task=\" + encodeURIComponent(task)).then(readJson).then((items) => {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 231,
+        "text": "fetch(STATE_ROUTE).then(readJson).then(setState).catch(() => setState(null));"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 237,
+        "text": "fetch(EVENTS_ROUTE + \"?since=\" + String(since)).then(readJson).then((data) => {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 324,
+        "text": "fetch(STATE_ROUTE).then(readJson).then((latest) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 558,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 796,
+        "text": "fs.writeFileSync(file, lines.join(\"\\n\") + \"\\n\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1011,
+        "text": "fs.mkdirSync(guardRoot(), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1521,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3701,
+        "text": "tools.register(submit);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3702,
+        "text": "tools.register(test);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3706,
+        "text": "if (ctx.tools !== void 0) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3707,
+        "text": "install(ctx.tools);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3710,
+        "text": "if (typeof ctx.inject === \"function\") ctx.inject([\"tools\"], (child) => {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFileSync, spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 506,
+        "text": "const version = spawnSync(\"bwrap\", [\"--version\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 511,
+        "text": "const probe = spawnSync(\"bwrap\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1858,
+        "text": "child = spawn(options.command[0], options.command.slice(1), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2825,
+        "text": "const child = spawn(\"python3\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "assets/neural-pendulum/sim_agent",
+    "assets/neural-pendulum/sim_eval",
+    "eval/arena/land/workspace/anchors/.build/greedy_f2e6d2dea5ca",
+    "eval/arena/land/workspace/starter/.build/bot_be32b45b4699",
+    "native/dsh-eval-supervisor",
+    "neural-pendulum-eval/sim_eval"
+  ],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 44,
+      "text": " 安装时自动把 workspace.zip 解压到工作区根目录，并在完成后移除 setup.sh；agent 从根目录的 CMakeLists.txt 开始。工作区只包含 TASK.md、CMakeLists.txt 和 include/nn/nn.hpp；实现在 src/ 中从零完成，纯 C++17，无 Python"
+    },
+    {
+      "file": "README.md",
+      "line": 70,
+      "text": "lone 仓库、创建 .venv 并安装依赖；安装完成后会清理 `.git`、`setup.sh`、`remove.patch`、`spec.pdf.bz2` 等安装产物，工作区只保留任务本身素材。Commit0 的 `pytest.ini` 会去掉 coverage 参数，保证默认测试命令在沙箱内可运行。agent "
+    },
+    {
+      "file": "README.md",
+      "line": 98,
+      "text": "- pip 代理：只用于 pip install。"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,82 @@
+{
+  "name": "dsh-jev-interceptor",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:05:07.119Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 367,
+        "text": "const response = await fetch(API + path, { headers: { \"cache-control\": \"no-store\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 377,
+        "text": "const response = await fetch(`${API}/config`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1652,
+        "text": "\t\t\t\tconst [sr, tr] = await Promise.all([fetch(\"/api/jev-interceptor/status\", { headers: { \"cache-control\": \"no-store\" } }), fetch(\"/api/jev-interceptor/stats\", "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { appendFile, mkdir, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1752,
+        "text": "this.writeQueue = this.writeQueue.then(() => this.ready()).then(() => appendFile(this.file, line, \"utf8\")).catch(() => {});"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1761,
+        "text": "const raw = await readFile(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1775,
+        "text": "this.dirReady ??= mkdir(dirname(this.file), { recursive: true }).then(() => void 0, () => void 0);"
+      },
+      {
+        "file": "lib/jev-DjH1-ce-.js",
+        "line": 2,
+        "text": "import { appendFile, mkdir, open, readFile, rename, stat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionQuery"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

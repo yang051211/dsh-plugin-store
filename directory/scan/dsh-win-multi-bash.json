@@ -1,0 +1,113 @@
+{
+  "name": "dsh-win-multi-bash",
+  "version": "0.7.3",
+  "scannedAt": "2026-10-26T10:05:04.540Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 7,
+        "text": "import { existsSync, lstatSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 421,
+        "text": "rmSync(target, { force: true });"
+      },
+      {
+        "file": "lib/bash-ssh/index.js",
+        "line": 44,
+        "text": "import { lstatSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bash-wsl/index.js",
+        "line": 8,
+        "text": "import { existsSync, lstatSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bash-wsl/index.js",
+        "line": 361,
+        "text": "rmSync(target, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "export const inject = ['systemPrompt', 'tools'];"
+      },
+      {
+        "file": "lib/tool-bash/types/factory.js",
+        "line": 340,
+        "text": "inject: ['tools', 'subprocess', 'sandbox', 'sandboxPolicy'],"
+      },
+      {
+        "file": "lib/tool-bash/types/factory.js",
+        "line": 693,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-bash/types/shell-family.js",
+        "line": 18,
+        "text": "*    (`ctx.tools.get(name, scope)`, read at every assembly), which is what"
+      },
+      {
+        "file": "lib/tool-bash/types/shell-family.js",
+        "line": 252,
+        "text": "tools = ctx.get?.('tools') ?? ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 1,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 209,
+        "text": "const run = spawnSync(\"reg\", [\"query\", \"HKLM\\\\SOFTWARE\\\\GitForWindows\", \"/v\", \"InstallPath\"], {"
+      },
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 398,
+        "text": "const child = spawn(confined.argv[0], confined.argv.slice(1), {"
+      },
+      {
+        "file": "lib/bash-git/index.js",
+        "line": 459,
+        "text": "const child = spawn(runner, confined.argv.slice(1), {"
+      },
+      {
+        "file": "lib/shell-executor.js",
+        "line": 37,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

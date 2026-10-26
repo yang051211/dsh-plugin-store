@@ -1,0 +1,97 @@
+{
+  "name": "dsh-remote-mobile",
+  "version": "1.10.1",
+  "scannedAt": "2026-10-26T10:05:01.083Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "return fetch(url, options).then(function(res) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4046,
+        "text": "    fetch(\"https://registry.npmjs.org/dsh-remote-mobile/latest\", { cache: \"no-store\" }).then((res) => res.ok ? res.json() : Promise.reject(new Error(\"npm regist"
+      },
+      {
+        "file": "lib/gateway/server.js",
+        "line": 11,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/gateway/server.js",
+        "line": 353,
+        "text": "const proxyReq = http.request({"
+      },
+      {
+        "file": "lib/gateway/server.js",
+        "line": 459,
+        "text": "const proxyReq = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth/crypto.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auth/crypto.js",
+        "line": 10,
+        "text": "const content = readFileSync(RSA_KEY_FILE, 'utf8');"
+      },
+      {
+        "file": "lib/auth/crypto.js",
+        "line": 31,
+        "text": "mkdirSync(dirname(RSA_KEY_FILE), { recursive: true });"
+      },
+      {
+        "file": "lib/auth/crypto.js",
+        "line": 32,
+        "text": "writeFileSync(RSA_KEY_FILE, JSON.stringify(pair, null, 2), { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/auth/token.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, renameSync, unlinkSync, chmodSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth/tailscale.js",
+        "line": 1,
+        "text": "import { execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/auth/tailscale.js",
+        "line": 65,
+        "text": "const out = execSync('tailscale ip -4', { encoding: 'utf8', timeout: 800, stdio: ['ignore', 'pipe', 'ignore'] }).trim();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

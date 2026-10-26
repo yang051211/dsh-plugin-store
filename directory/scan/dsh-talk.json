@@ -1,0 +1,89 @@
+{
+  "name": "dsh-talk",
+  "version": "0.3.26",
+  "scannedAt": "2026-10-26T10:04:57.152Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 830,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { copyFile, mkdir, mkdtemp, readFile, readdir, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "await mkdir(policy.dir, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "await writeFile(file, data);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 262,
+        "text": "await unlink(join(dir, name));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 739,
+        "text": "const bytes = await readFile(join(dir, name));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1766,
+        "text": "const inject = [\"tools\", \"subprocess\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1783,
+        "text": "ctx.effect(() => ctx.tools.register(speakTool(service, resolved.maxSpeakChars)), \"dsh-talk: speak tool\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 717,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

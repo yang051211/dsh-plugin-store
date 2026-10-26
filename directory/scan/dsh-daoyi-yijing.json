@@ -1,0 +1,123 @@
+{
+  "name": "dsh-daoyi-yijing",
+  "version": "0.9.8",
+  "scannedAt": "2026-10-26T10:04:52.198Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/quote.mjs",
+        "line": 120,
+        "text": "const res = await fetch(url)"
+      },
+      {
+        "file": "lib/yijing/cloud-model.mjs",
+        "line": 310,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/yijing/cloud-model.mjs",
+        "line": 598,
+        "text": "const res = await fetch(cfg.cloudModelEndpoint, {"
+      },
+      {
+        "file": "lib/yijing/license.mjs",
+        "line": 298,
+        "text": "const resp = await fetch(url, {"
+      },
+      {
+        "file": "scripts/_mock_llm_test.mjs",
+        "line": 4,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 28,
+        "text": "const pkg = JSON.parse(readFileSync(fileURLToPath(new URL('./package.json', import.meta.url)), 'utf8'))"
+      },
+      {
+        "file": "lib/yijing/baselines.mjs",
+        "line": 15,
+        "text": "import { readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/yijing/baselines.mjs",
+        "line": 38,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/yijing/baselines.mjs",
+        "line": 132,
+        "text": "readFileSync(fileURLToPath(new URL('../../package.json', import.meta.url)), 'utf8'),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "scripts/test_v091_features.mjs",
+        "line": 314,
+        "text": "*  - inject=['tools'] → tools 可直读；logger/get 等为 Context 内置成员；"
+      },
+      {
+        "file": "tools/yijing/divine.mjs",
+        "line": 577,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "tools/yijing/factor-prompt.mjs",
+        "line": 84,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "tools/yijing/model-list.mjs",
+        "line": 42,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/quote.mjs",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "adapters/quote.mjs",
+        "line": 143,
+        "text": "const p = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

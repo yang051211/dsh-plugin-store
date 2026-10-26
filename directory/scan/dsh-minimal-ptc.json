@@ -1,0 +1,83 @@
+{
+  "name": "dsh-minimal-ptc",
+  "version": "0.5.7",
+  "scannedAt": "2026-10-26T10:05:16.776Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "marker = readFileSync(join(dir, MARKER), 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "let content = readFileSync(join(presetSourceDir, file), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "writeFileSync(join(dir, file), content)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = ['appReady', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "const status = schedulerKeyStatus(ctx.tools)"
+      },
+      {
+        "file": "presets/ptc-minimal/schedule-tools.mjs",
+        "line": 5,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/ptc-minimal/gitbash-executor.mjs",
+        "line": 201,
+        "text": "return subprocess.spawn(spawnSpec("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "appReady",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

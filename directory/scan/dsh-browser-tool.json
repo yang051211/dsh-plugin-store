@@ -1,0 +1,104 @@
+{
+  "name": "dsh-browser-tool",
+  "version": "0.1.11",
+  "scannedAt": "2026-10-26T10:05:19.325Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/relay/server.js",
+        "line": 5,
+        "text": "import * as http from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/asset.js",
+        "line": 7,
+        "text": "import * as fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/asset.js",
+        "line": 28,
+        "text": "return fs.readFileSync(assetPath(...segments), \"utf8\");"
+      },
+      {
+        "file": "lib/browsers/donor-chromium.js",
+        "line": 12,
+        "text": "import * as fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/browsers/donor-chromium.js",
+        "line": 152,
+        "text": "fs.rmSync(tempDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/browsers/donor-chromium.js",
+        "line": 160,
+        "text": "fs.mkdirSync(path.dirname(destDir), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = [\"tools\", \"attachments\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browsers/image-worker-client.js",
+        "line": 11,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/browsers/launch.js",
+        "line": 10,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/browsers/launch.js",
+        "line": 95,
+        "text": "const child = execFile(p, [\"--version\"], { timeout: probeTimeoutMs + 500 }, (error, out) => {"
+      },
+      {
+        "file": "lib/browsers/process.js",
+        "line": 13,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/browsers/process.js",
+        "line": 150,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "dsh-wsl-tool",
+  "version": "2.2.2",
+  "scannedAt": "2026-10-26T10:04:59.965Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap.js",
+        "line": 46,
+        "text": "if curl -fsS \"https://nodejs.org/dist/index.json\" -o \"$index\" 2>/dev/null; then"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 64,
+        "text": "if curl -fsS \"https://nodejs.org/dist/latest-v$line.x/SHASUMS256.txt\" -o \"$shasums\" 2>/dev/null; then"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 75,
+        "text": "curl -fsS \"$base/SHASUMS256.txt\" -o \"$shasums\""
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 85,
+        "text": "curl -fsS \"$base/$file\" -o \"$tmp/node.tar.xz\""
+      },
+      {
+        "file": "lib/channel.js",
+        "line": 37,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 344,
+        "text": "rmSync(join(dir, entry.name), { force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 368,
+        "text": "text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 423,
+        "text": "original = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 467,
+        "text": "writeFileSync(file, original, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 66,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "index.js",
+        "line": 729,
+        "text": "mountedTools.set(name, ctx.tools.register(factory()))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 63,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 794,
+        "text": "execFile('wsl.exe', args, {"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 164,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

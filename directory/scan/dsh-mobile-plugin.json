@@ -1,0 +1,119 @@
+{
+  "name": "dsh-mobile-plugin",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:04:43.078Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const response = await fetch(DESKTOP_VIEW_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 186,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/git/read.js",
+        "line": 403,
+        "text": "const response = await fetch(`https://api.github.com/repos/${target.owner}/${target.repo}`, {"
+      },
+      {
+        "file": "lib/mobile/relay-control.js",
+        "line": 226,
+        "text": "const response = await fetch(`${url}/healthz`, { signal: controller.signal, redirect: 'follow' });"
+      },
+      {
+        "file": "lib/relay/core.js",
+        "line": 94,
+        "text": "* 这类缺协议的输入会生成一个 `new WebSocket()` 直接拒绝的字符串，错误要等到"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-mobile-credentials/lib/credentials.js",
+        "line": 20,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "dsh-mobile-credentials/lib/credentials.js",
+        "line": 77,
+        "text": "const data = JSON.parse(fs.readFileSync(FILE, 'utf8'));"
+      },
+      {
+        "file": "dsh-mobile-credentials/lib/credentials.js",
+        "line": 97,
+        "text": "fs.mkdirSync(path.dirname(FILE), { recursive: true });"
+      },
+      {
+        "file": "dsh-mobile-credentials/lib/credentials.js",
+        "line": 99,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(records, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "host.js",
+        "line": 14,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mobile/extensions.js",
+        "line": 174,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/session-cleanup.cjs",
+        "line": 420,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git/exec.js",
+        "line": 21,
+        "text": "const { execFile } = require('node:child_process');"
+      },
+      {
+        "file": "lib/git/exec.js",
+        "line": 68,
+        "text": "execFile('git', args, {"
+      },
+      {
+        "file": "lib/sidecar-facade.cjs",
+        "line": 17,
+        "text": "const { fork } = require('node:child_process')"
+      },
+      {
+        "file": "lib/update-install.cjs",
+        "line": 26,
+        "text": "const { spawn } = require('node:child_process');"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

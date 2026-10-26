@@ -1,0 +1,67 @@
+{
+  "name": "dsh-always-on-top",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:05:07.699Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 71,
+        "text": "return fetch(API + path, options).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "const parsed = JSON.parse(await readFile(STATE_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "await mkdir(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "await writeFile(STATE_FILE, `${JSON.stringify({ pinned: desired }, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

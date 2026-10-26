@@ -1,0 +1,112 @@
+{
+  "name": "dsh-whale-pet-plugin",
+  "version": "1.0.6-up",
+  "scannedAt": "2026-10-26T10:04:55.302Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 121,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 741,
+        "text": "fetch('/api/dsh-whale-pet/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 757,
+        "text": "fetch('/api/dsh-whale-pet/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ settings: next }) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 701,
+        "text": "const req = https.get(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "voiceManifest = JSON.parse(readFileSync(join(VOICES_DIR, 'manifest.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 406,
+        "text": "try { prev = readFileSync(join(DATA_DIR, 'whale.log'), 'utf8') } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 407,
+        "text": "writeFileSync(join(DATA_DIR, 'whale.log'), prev + String(msg) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 414,
+        "text": "const child = spawn(cmd, args, Object.assign({ stdio: 'ignore', windowsHide: true }, opts || {}))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1227,
+        "text": "      spawn('C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden', '-File', sc"
+      },
+      {
+        "file": "test/pet-e2e.mjs",
+        "line": 5,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/pet-e2e.mjs",
+        "line": 42,
+        "text": "const child = spawn('C:\\\\WINDOWS\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden', '-F"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

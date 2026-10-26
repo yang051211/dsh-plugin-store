@@ -1,0 +1,129 @@
+{
+  "name": "dsh-comfyui",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-26T10:04:51.995Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 633,
+        "text": "const data = await (await fetch(\"/comfyui/queue\", { headers: { accept: \"application/json\" } })).json();"
+      },
+      {
+        "file": "client/client.js",
+        "line": 681,
+        "text": "fetch(\"/comfyui/workflows\", { headers: { accept: \"application/json\" } }).then(async (response) => await response.json()).then((data) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 717,
+        "text": "const data = await (await fetch(\"/comfyui/assets\", { headers: { accept: \"application/json\" } })).json();"
+      },
+      {
+        "file": "client/client.js",
+        "line": 727,
+        "text": "const data = await (await fetch(`/comfyui/jobs/media?promptId=${encodeURIComponent(promptId)}`, { headers: { accept: \"application/json\" } })).json();"
+      },
+      {
+        "file": "client/client.js",
+        "line": 872,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/routes.js",
+        "line": 6,
+        "text": "import { unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 70,
+        "text": "await unlink(target);"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 696,
+        "text": "const file = await runtime.skillPacks.readFile(id, path);"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 770,
+        "text": "const result = await runtime.skillPacks.writeFile(id, path, text);"
+      },
+      {
+        "file": "lib/skillpack.js",
+        "line": 25,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "* into, so the fiber must wait for it: reading `ctx.tools` without declaring"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 970,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 974,
+        "text": "disposers.push(tools.register(workflowDefinition(runtime, ctx)));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 975,
+        "text": "disposers.push(tools.register(skillDefinition(runtime)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/routes.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 875,
+        "text": "const child = spawn(opener, [pack.dir], { detached: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

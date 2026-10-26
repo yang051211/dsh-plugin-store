@@ -1,0 +1,132 @@
+{
+  "name": "dsh-drawai",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:04:50.832Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 9184,
+        "text": "const raw = await fetch(SAVE_ENDPOINT, { method: 'POST', headers: { 'content-type': 'application/json', [SAVE_HEADER]: '1' }, signal: pending.signal,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9315,
+        "text": "const raw = await fetch(SAVE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9464,
+        "text": "raw = await fetch(SAVE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9610,
+        "text": "raw = await fetch(SAVE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9658,
+        "text": "raw = await fetch(SAVE_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync, copyFileSync, existsSync, mkdirSync, renameSync, mkdtempSync, rmSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 109,
+        "text": "const output = await pool.run(readFileSync(job.input), { ...job.options, mode: 'image', profile: perf?.enabled }, { token: job.id })"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 123,
+        "text": "const out = join(job.directory, 'stills'); mkdirSync(out, { recursive: true })"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 141,
+        "text": "rmSync(backup, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 142,
+        "text": "} finally { rmSync(stage, { recursive: true, force: true }) }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2291,
+        "text": "export const inject = ['tools', 'fs', 'sessions', 'sandboxPolicy', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5740,
+        "text": "ctx.effect(() => ctx.tools.register(readTool))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5741,
+        "text": "ctx.effect(() => ctx.tools.register({ ...applyTool, execute: async (args, exec) => {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 16,
+        "text": "const child = spawn(binary, ['-hide_banner', '-nostdin', '-nostats', ...args], { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/drawing-runner.js",
+        "line": 77,
+        "text": "const child = spawn(binary || ffmpegBinary(), ['-hide_banner', '-nostdin', '-loglevel', 'error',"
+      },
+      {
+        "file": "lib/video-export.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/video-export.js",
+        "line": 15,
+        "text": "const child = spawn(binary, args, { windowsHide: true, shell: false, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "sandboxPolicy",
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

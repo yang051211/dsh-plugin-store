@@ -1,0 +1,143 @@
+{
+  "name": "dsh-noname-kit",
+  "version": "1.10.6",
+  "scannedAt": "2026-10-26T10:05:03.937Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 691,
+        "text": "return fetch('/noname-kit-api/tasks').then(function (r) { return r.json() }).then(function (body) {"
+      },
+      {
+        "file": "client.js",
+        "line": 708,
+        "text": "fetch('/noname-kit-api/history').then(function (r) { return r.json() }).then(function (body) {"
+      },
+      {
+        "file": "client.js",
+        "line": 723,
+        "text": "fetch('/noname-kit-api/entries?folder=' + encodeURIComponent(folder) + '&kind=' + kind).then(function (r) { return r.json() }).then(function (b) {"
+      },
+      {
+        "file": "client.js",
+        "line": 746,
+        "text": "        fetch('/noname-kit-api/entry-skills?folder=' + encodeURIComponent(folder) + '&id=' + encodeURIComponent(entryId)).then(function (r) { return r.json() })"
+      },
+      {
+        "file": "client.js",
+        "line": 793,
+        "text": "fetch('/noname-kit-api/extension?folder=' + encodeURIComponent(folder)).then(function (r) { return r.json() }).then(function (body) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { statSync, readFileSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "online-kernel/keepalive/carrier.js",
+        "line": 2,
+        "text": "const path=require('node:path'),fs=require('node:fs'),ipc=require('electron').ipcRenderer;"
+      },
+      {
+        "file": "online-kernel/keepalive/carrier.js",
+        "line": 10,
+        "text": "const metadata=fs.readFileSync(path.join(info.root,'extension/联机助手/extension.js'),'utf8');"
+      },
+      {
+        "file": "online-kernel/keepalive/entry.js",
+        "line": 2,
+        "text": "const fs=require('node:fs'),path=require('node:path');"
+      },
+      {
+        "file": "online-kernel/keepalive/entry.js",
+        "line": 40,
+        "text": "const bridge=fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8')):null;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "export const inject = ['tools', 'systemPrompt', 'dshHomePath']"
+      },
+      {
+        "file": "index.js",
+        "line": 238,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 283,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 313,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 386,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "online-kernel/lib/batch-files.cjs",
+        "line": 3,
+        "text": "const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{spawnSync,spawn}=require('node:child_process');"
+      },
+      {
+        "file": "online-kernel/lib/batch-files.cjs",
+        "line": 44,
+        "text": "  const r=spawnSync(path.join(process.env.SystemRoot,'System32/WindowsPowerShell/v1.0/powershell.exe'),['-NoProfile','-NonInteractive','-Command','[Threading.Th"
+      },
+      {
+        "file": "online-kernel/lib/batch-files.cjs",
+        "line": 54,
+        "text": "  const child=spawn(path.join(process.env.SystemRoot,'System32/WindowsPowerShell/v1.0/powershell.exe'),['-NoProfile','-NonInteractive','-Command','& { '+script+"
+      },
+      {
+        "file": "online-kernel/lib/batch-files.cjs",
+        "line": 84,
+        "text": "  const r=spawnSync(path.join(process.env.SystemRoot,'System32/WindowsPowerShell/v1.0/powershell.exe'),['-NoProfile','-NonInteractive','-Command','[Console]::Ou"
+      },
+      {
+        "file": "online-kernel/lib/batch-files.cjs",
+        "line": 163,
+        "text": "  const child=spawn(path.join(process.env.SystemRoot,'System32/WindowsPowerShell/v1.0/powershell.exe'),['-NoProfile','-NonInteractive','-Command','& { '+PUBLISH"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "client.js",
+    "online-kernel/lib/mqtt.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "dshHomePath",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

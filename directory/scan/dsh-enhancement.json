@@ -1,0 +1,120 @@
+{
+  "name": "dsh-enhancement",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:05:10.816Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 55,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 11,
+        "text": "import { createServer, request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 12,
+        "text": "import { createServer as createHttpsServer } from 'node:https';"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 112,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "src/control.ts",
+        "line": 11,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/control.js",
+        "line": 8,
+        "text": "import { existsSync, mkdirSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/control.js",
+        "line": 439,
+        "text": "mkdirSync(ICONS_DIR, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/control.js",
+        "line": 456,
+        "text": "unlinkSync(path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { readFileSync, realpathSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/notify.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 51,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 108,
+        "text": "const child = spawn('notify-send', args, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "src/notify.ts",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/notify.ts",
+        "line": 96,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

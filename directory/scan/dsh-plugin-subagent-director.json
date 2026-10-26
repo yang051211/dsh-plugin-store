@@ -1,0 +1,55 @@
+{
+  "name": "dsh-plugin-subagent-director",
+  "version": "0.6.0-beta.2",
+  "scannedAt": "2026-10-26T10:05:02.691Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools', 'subagents', 'llm', 'settings'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "ctx.effect(() => ctx.tools.register(createCloseSubagentTool({ ctx })), 'subagent-director: close_subagent tool');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "disposeTool = ctx.tools.register(createDelegationTool({ ctx, config, provider, getSettings }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "settings",
+    "subagents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

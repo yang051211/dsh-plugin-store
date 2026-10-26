@@ -1,0 +1,71 @@
+{
+  "name": "dsh-conversation-recycle-bin",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-26T10:04:57.613Z",
+  "icon": "dsh-conversation-recycle-bin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 552,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/host/feedback.js",
+        "line": 338,
+        "text": "throw new DeleteError('E_FEEDBACK_TRANSPORT', 'This Host runtime provides no fetch() to deliver feedback.', { transport: 'http' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/audit.js",
+        "line": 14,
+        "text": "import { appendFile, mkdir, open, readFile, rename, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/core/audit.js",
+        "line": 24,
+        "text": "* @param {Pick<typeof import('node:fs/promises'), 'readFile'|'writeFile'|'mkdir'|'appendFile'|'rename'|'stat'|'open'>} [options.fsApi]"
+      },
+      {
+        "file": "lib/core/audit.js",
+        "line": 49,
+        "text": "const content = await fsApi.readFile(filePath, 'utf8')"
+      },
+      {
+        "file": "lib/core/audit.js",
+        "line": 56,
+        "text": "await fsApi.writeFile(temporary, kept.length === 0 ? '' : `${kept.join('\\n')}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/core/audit.js",
+        "line": 72,
+        "text": "await fsApi.mkdir(dirname(filePath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "deepseek-computer-use",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:11.955Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 4,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 107,
+        "text": "try { fs.writeFileSync(entry.cancelFile, error.code, 'utf8'); } catch { /* forced stop below remains available */ }"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 190,
+        "text": "fs.mkdirSync(this.#cancelDirectory, { recursive: true });"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 204,
+        "text": "try { fs.unlinkSync(cancelFile); } catch { /* no marker was needed */ }"
+      },
+      {
+        "file": "lib/build-helper.mjs",
+        "line": 13,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 56,
+        "text": "const child = spawn(this.#exe, this.#args, { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/build-helper.mjs",
+        "line": 11,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/build-native.mjs",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

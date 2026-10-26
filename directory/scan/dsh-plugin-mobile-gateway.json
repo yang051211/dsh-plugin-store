@@ -1,0 +1,110 @@
+{
+  "name": "dsh-plugin-mobile-gateway",
+  "version": "0.11.1",
+  "scannedAt": "2026-10-26T10:04:46.765Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 4,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 207,
+        "text": "const request = http.get({"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 229,
+        "text": "const response = await fetch(path, { credentials: 'same-origin', ...options })"
+      },
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 2,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/dsh-host-adapter.mjs",
+        "line": 227,
+        "text": "const response = await uploadHandler.fetch(new Request(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 27,
+        "text": "const manifest = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 87,
+        "text": "const existing = fs.readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 92,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true, mode: 0o755 })"
+      },
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 94,
+        "text": "fs.writeFileSync(temporary, content, { mode })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup-ip.mjs",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflared-binary.mjs",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/gateway-tools.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/web-restart.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

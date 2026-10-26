@@ -1,0 +1,140 @@
+{
+  "name": "@1agents/session-reader",
+  "version": "0.11.1",
+  "scannedAt": "2026-10-26T10:05:17.522Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/dsh/client.js",
+        "line": 285,
+        "text": "nuationError=void 0,J();try{let E=await fetch(\"/api/session-reader/open-in-dsh\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({"
+      },
+      {
+        "file": "dist/src/serve/http.js",
+        "line": 10,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "dist/src/web/app.js",
+        "line": 279,
+        "text": "nuationError=void 0,J();try{let E=await fetch(\"/api/session-reader/open-in-dsh\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({"
+      },
+      {
+        "file": "dist/src/web/server.js",
+        "line": 8,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/bin/1session.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/bin/1session.js",
+        "line": 180,
+        "text": "...(str(flags['project-map']) ? { projectMap: JSON.parse(readFileSync(canonicalizePath(str(flags['project-map'])), 'utf8')) } : {}),"
+      },
+      {
+        "file": "dist/src/parsers/antigravity.js",
+        "line": 3,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/src/parsers/antigravity.js",
+        "line": 37,
+        "text": ".readFile(file, 'utf8')"
+      },
+      {
+        "file": "dist/src/parsers/antigravity.js",
+        "line": 208,
+        "text": ".readFile(`${file}.metadata.json`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/dsh/plugin.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'webServer', 'sessionController', 'workspaceRegistry'];"
+      },
+      {
+        "file": "dist/src/dsh/plugin.js",
+        "line": 8,
+        "text": "// 1. Register tools if ctx.tools is present"
+      },
+      {
+        "file": "dist/src/dsh/plugin.js",
+        "line": 9,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "dist/src/dsh/plugin.js",
+        "line": 11,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "dist/src/dsh/plugin.js",
+        "line": 66,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/project-identity.js",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/web/server.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/web/server.js",
+        "line": 40,
+        "text": "spawn(cmd, args, { stdio: 'ignore', detached: true }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "dist/src/dsh/client.js",
+    "dist/src/web/app.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 53,
+      "text": "npm install -g @1agents/session-reader  # 作为 1session 命令"
+    },
+    {
+      "file": "README.md",
+      "line": 81,
+      "text": "默认建**符号链接**而不是拷贝：下次 `npm i -g @1agents/session-reader@latest` 升级后，"
+    },
+    {
+      "file": "README.md",
+      "line": 98,
+      "text": "npm i -g @1agents/session-reader"
+    }
+  ],
+  "skippedEntries": []
+}

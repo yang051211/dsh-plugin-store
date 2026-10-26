@@ -1,0 +1,87 @@
+{
+  "name": "dsh-patch-edit-plus",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:04:42.540Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply/engine.js",
+        "line": 36,
+        "text": "const before = await readFile(ctx, exec, entry.target);"
+      },
+      {
+        "file": "lib/apply/engine.js",
+        "line": 41,
+        "text": "const before = await readFile(ctx, exec, entry.target);"
+      },
+      {
+        "file": "lib/apply/engine.js",
+        "line": 56,
+        "text": "await writeFile(ctx, exec, change.entry.target, change.after ?? '', sandboxPolicy);"
+      },
+      {
+        "file": "lib/apply/engine.js",
+        "line": 60,
+        "text": "await writeFile(ctx, exec, change.entry.target, change.after, sandboxPolicy);"
+      },
+      {
+        "file": "lib/fsops.js",
+        "line": 31,
+        "text": "export async function writeFile(ctx, exec, target, content, sandboxPolicy) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "* - `tools` — `registerApplyPatchTool` probes and registers (`ctx.tools`)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = ['tools', 'fs'];"
+      },
+      {
+        "file": "lib/register.js",
+        "line": 4,
+        "text": "* Layer 1: probe `ctx.tools.get(name)` before building the definition."
+      },
+      {
+        "file": "lib/register.js",
+        "line": 20,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/register.js",
+        "line": 49,
+        "text": "return tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,79 @@
+{
+  "name": "dsh-workbuddy2api-panel",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:05:14.668Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 378,
+        "text": "response = await fetch(apiPath(path), { ...init, signal: timeoutSignal() })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 246,
+        "text": "const response = await fetch(`${base}${pathname}`, { headers, signal: controller.signal })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1123,
+        "text": "* `fetch(..., {mode:'no-cors', headers:{'content-type':'text/plain'}})` 属于"
+      },
+      {
+        "file": "scripts/mock-panel.mjs",
+        "line": 22,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "const text = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

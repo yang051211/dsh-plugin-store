@@ -1,0 +1,138 @@
+{
+  "name": "dsh-browser-cdp",
+  "version": "1.7.2",
+  "scannedAt": "2026-10-26T10:04:37.323Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 3,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 6622,
+        "text": "const response = await fetch(`http://127.0.0.1:${state.port}/json/version`, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 6639,
+        "text": "const response = await fetch(`http://127.0.0.1:${active.port}/json/list`, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "bin/cdp-render-worker.mjs",
+        "line": 124,
+        "text": "const ws = new WebSocket(wsUrl)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 667,
+        "text": "return fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 4,
+        "text": "import { constants, mkdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 8,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 6609,
+        "text": "return JSON.parse(await import(\"node:fs/promises\").then((fs) => fs.readFile(BROWSER_STATE_FILE, \"utf8\")));"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 6785,
+        "text": "rmSync(CAST_STATE_FILE, { force: true });"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 7068,
+        "text": "mkdirSync(STATE_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8028,
+        "text": "tHasCtx=${scopeProbe.agentHasCtx} agent.ctx.tools=${scopeProbe.agentCtxTools} agent.ctx.tools.restrict=${scopeProbe.agentCtxRestrict}` + (scopeProbe.error !== \""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8227,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8271,
+        "text": "const restrictFn = ctx.tools.restrict;"
+      },
+      {
+        "file": "runtime/ego-browser/dist/out/index.js",
+        "line": 6468,
+        "text": "www.google.com/search?q=test'); console.log(ctx.tools); const results = await site.runTool('google', 'search_and_extract', { query: 'openai', maxResults: 5 })\","
+      },
+      {
+        "file": "runtime/ego-browser/dist/out/index.js",
+        "line": 6493,
+        "text": "const ctx = await site.learnContext('https://x.com/home'); console.log(ctx.tools); const post = await site.runBrowserTool('x-com', 'post_from_active_element')\","
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 7,
+        "text": "import { execFile, execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/cdp-cast-worker.mjs",
+        "line": 4911,
+        "text": "const child = this.spawn(path, argv, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 511,
+        "text": "srcHandle = deps.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1181,
+        "text": "const handle = subprocess.spawn(spec);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "runtime/ego-browser/dist/out/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

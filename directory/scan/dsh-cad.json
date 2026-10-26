@@ -1,0 +1,130 @@
+{
+  "name": "dsh-cad",
+  "version": "0.16.1",
+  "scannedAt": "2026-10-26T10:04:59.876Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cad_connector/onshape-executor.js",
+        "line": 84,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4113,
+        "text": ".max(h.x,h.y,h.z,1e-6),S()}},q=!1,$=B=>{fetch(`/dsh-cad/demo-scene?part=${B}`).then(G=>G.ok?G.json():Promise.reject(new Error(`HTTP ${G.status}`))).then(G=>{P||"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "// The demo route backs the CAD editor's startup fetch (before any tool"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 9,
+        "text": "import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 10,
+        "text": "import { readdirSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 320,
+        "text": "await writeFile(path.join(dir, 'bridge.py'), BRIDGE);"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 321,
+        "text": "await writeFile(path.join(dir, 'ops.json'), JSON.stringify(program));"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 332,
+        "text": "const parsed = JSON.parse(await readFile(resultPath, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "ctx.tools.register(cadView),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 90,
+        "text": "ctx.tools.register(cadInfo),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "...modelTools.map((tool) => ctx.tools.register(tool)),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "ctx.tools.register(cadFreeCad),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 8,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 322,
+        "text": "const child = spawn(executable, [path.join(dir, 'bridge.py')], {"
+      },
+      {
+        "file": "lib/cad_connector/freecad-executor.js",
+        "line": 348,
+        "text": "execFile(executable, [script], { timeout: timeoutMs, windowsHide: true, maxBuffer: 64 * 1024 * 1024 }, (error, out) => {"
+      },
+      {
+        "file": "lib/cad_connector/fusion360-executor.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cad_connector/fusion360-executor.js",
+        "line": 86,
+        "text": "? spawn(app, ['--hidden'], { detached: true, stdio: 'ignore', windowsHide: false })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

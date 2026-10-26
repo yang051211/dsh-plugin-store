@@ -1,0 +1,82 @@
+{
+  "name": "dsh-showcase",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:14.198Z",
+  "icon": "dsh-showcase.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/layout-summary.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, readdir, realpath, rename, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "plugin/layout-summary.js",
+        "line": 165,
+        "text": "await unlink(filePath);"
+      },
+      {
+        "file": "plugin/layout-summary.js",
+        "line": 195,
+        "text": "await mkdir(dirname(artifact.path), { recursive: true });"
+      },
+      {
+        "file": "plugin/layout-summary.js",
+        "line": 197,
+        "text": "if (typeof artifact.content === \"string\") await writeFile(temporaryPath, artifact.content, \"utf8\");"
+      },
+      {
+        "file": "plugin/layout-summary.js",
+        "line": 198,
+        "text": "else await writeFile(temporaryPath, artifact.content);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.js",
+        "line": 7,
+        "text": "export const inject = [\"tools\", \"settings\"];"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 84,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "plugin/assets/fish-companions.js",
+    "plugin/assets/whale-girl-chibi-b64.js",
+    "plugin/poster-html.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 107,
+      "text": " 包说明**：插件入口可以使用 `dsh plugin --profile web add dsh-showcase` 安装。不要使用 `npm install --global dsh-showcase`：npm 包提供的是 DSH 插件运行时，不是全局 CLI。采集 CLI 仍按上面的 GitHub 源码目录运行。"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,125 @@
+{
+  "name": "dsh-paoding",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:05:08.692Z",
+  "icon": "dsh-paoding.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugins/paoding-config-ui/lib/client.js",
+        "line": 840,
+        "text": "return fetch(\"/api/paoding/\" + path, opts).then(function (r) {"
+      },
+      {
+        "file": "tools/lib/host.mjs",
+        "line": 259,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-paoding.mjs",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/dsh-paoding.mjs",
+        "line": 46,
+        "text": "const { version } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "plugins/paoding-config-ui/api-core.mjs",
+        "line": 11,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "plugins/paoding-config-ui/api-core.mjs",
+        "line": 12,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "plugins/paoding-config-ui/api-core.mjs",
+        "line": 245,
+        "text": "content = await readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugins/paoding-config-ui/runtime-inventory.mjs",
+        "line": 16,
+        "text": "*   - dsh-tools：名为 'tools' 的 cordis Service（ctx.tools /"
+      },
+      {
+        "file": "plugins/paoding-config-ui/runtime-inventory.mjs",
+        "line": 18,
+        "text": "*     MCP 工具由 dsh-mcp-client 以 `mcp__<server>__<tool>` 公开名注册，"
+      },
+      {
+        "file": "presets/orchestrator/delegation-labels.mjs",
+        "line": 33,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "presets/orchestrator/restrict.mjs",
+        "line": 34,
+        "text": "* (`ctx.tools.get('skill', agent)`), not on the model-facing list above, so a"
+      },
+      {
+        "file": "presets/orchestrator/restrict.mjs",
+        "line": 47,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-paoding.mjs",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dsh-paoding.mjs",
+        "line": 87,
+        "text": "const child = spawn(process.platform === 'win32' ? 'dsh.cmd' : 'dsh',"
+      },
+      {
+        "file": "tools/lib/host.mjs",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "tools/lib/host.mjs",
+        "line": 140,
+        "text": "const child = spawn(mcp.command, Array.isArray(mcp.args) ? mcp.args : [], {"
+      },
+      {
+        "file": "tools/lib/preset-system.mjs",
+        "line": 30,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

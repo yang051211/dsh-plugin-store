@@ -1,0 +1,119 @@
+{
+  "name": "dsh-calendar",
+  "version": "0.12.0",
+  "scannedAt": "2026-10-26T10:04:57.531Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 632,
+        "text": "const res = await fetch(ROUTE, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1932,
+        "text": "            const res = await fetch(IMPORT_ROUTE, { method: \"POST\", credentials: \"same-origin\", headers: { \"Content-Type\": \"application/json\", \"X-DSH-Calendar-I"
+      },
+      {
+        "file": "lib/import-web.js",
+        "line": 126,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/import-web.js",
+        "line": 178,
+        "text": ") => host.connection?.fetch?.register({ path: CALENDAR_IMPORT_ROUTE, methods: ['POST'], requestBody: 'buffered', fetch: (request) => backend.fetch(request) }));"
+      },
+      {
+        "file": "lib/proxy-fetch.js",
+        "line": 4,
+        "text": "import { ProxyAgent, fetch as undiciFetch } from 'undici';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-settings.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host-settings.js",
+        "line": 103,
+        "text": "document = parse(readFileSync(resolve(dshHome(home), file), 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 9,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 22,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 34,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "/** cordis 服务注入：apply 里要用 ctx.tools，必须显式声明注入，否则宿主会抛 cannot get property without inject。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools', 'settings'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/parameters.js",
+        "line": 4,
+        "text": "* 这是社区插件必须遵守的坑：ctx.tools.register 的 parameters 字段必须是"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 3,
+        "text": "* 直接调用 ctx.tools.register 注册【编译好的 JSON Schema】参数与 canonical 输出。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/google-oauth.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

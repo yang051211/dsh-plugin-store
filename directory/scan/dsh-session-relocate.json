@@ -1,0 +1,108 @@
+{
+  "name": "dsh-session-relocate",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:05:10.168Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 378,
+        "text": "return fetch(bridgePrefix() + path, options).then(function (response) {"
+      },
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 55,
+        "text": "const ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 104,
+        "text": "const list = await (await fetch('http://127.0.0.1:' + DEBUG_PORT + '/json/list')).json();"
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 42,
+        "text": "const ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 74,
+        "text": "const response = await fetch(BASE + '/?token=' + TOKEN, { redirect: 'follow' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 21,
+        "text": "import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 48,
+        "text": "const match = readFileSync(log, 'utf8').match(/token=([A-Za-z0-9._~-]+)/);"
+      },
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 281,
+        "text": "try { rmSync(profileDir, { recursive: true, force: true }); } catch { /* 同上 */ }"
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 15,
+        "text": "import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 104,
+        "text": "? JSON.parse(readFileSync(planFile, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/drag-live-check.mjs",
+        "line": 94,
+        "text": "chrome = spawn(chromePath, ["
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/drag-verify.mjs",
+        "line": 115,
+        "text": "chrome = spawn(chromePath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,123 @@
+{
+  "name": "gongwen-skill",
+  "version": "2.15.0",
+  "scannedAt": "2026-10-26T10:05:18.706Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 25,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, copyFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 122,
+        "text": "const raw = readFileSync(CONFIG_FILE, \"utf-8\");"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 133,
+        "text": "return JSON.parse(readFileSync(DEFAULTS_FILE, \"utf-8\"));"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 141,
+        "text": "mkdirSync(APP_DATA_DIR, { recursive: true });"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 142,
+        "text": "writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2), \"utf-8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 9,
+        "text": "//   * inject: ['tools'] — 官方 ctx.tools.register(defineTool(...)) 注册模型工具，"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 21,
+        "text": "//   - Registering Tools：defineTool + ctx.tools.register"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 439,
+        "text": "// 注册官方模型工具（defineTool + ctx.tools.register，schema 自动流入系统提示词）"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 441,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 493,
+        "text": "export const inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 24,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 329,
+        "text": "const child = spawn(\"python\", cliArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 81,
+      "text": "pip install -r requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 83,
+      "text": "# pip install gongwen-skill"
+    },
+    {
+      "file": "README.md",
+      "line": 126,
+      "text": "pip install -r requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 200,
+      "text": "- **pip install 用户**：字体不打包到 PyPI（体积过大），`font install` 会自动从 [GitHub 仓库](https://github.com/linhut/document-ai-assistant/tree/master/TTF) 下载到 `~/.gongwen-skill/fo"
+    },
+    {
+      "file": "README.md",
+      "line": 364,
+      "text": "e`——以 **PyPI（pip 包发布源）为权威判定渠道**并发查询比对本地（pip install -U 即从 PyPI 拉取）；PyPI 不可达时回退 GitHub tag（备用渠道）。全部渠道不可达时明确告知\"版本自检跳过\"。GitHub 为海外渠道（国内常超时）采用短超时快速降级；GitHub 不可达时自动提"
+    }
+  ],
+  "skippedEntries": []
+}

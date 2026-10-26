@@ -1,0 +1,98 @@
+{
+  "name": "dsh-find-ideas",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:05:06.104Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/github.js",
+        "line": 224,
+        "text": "res = await fetch(url, { headers, signal: signalFor() });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, readdir, rename, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 236,
+        "text": "await unlink(full);"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 251,
+        "text": "await unlink(join(dir, entry.name));"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 341,
+        "text": "const parsed = JSON.parse(await readFile(cachePathFor(key), 'utf8'));"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 378,
+        "text": "await mkdir(cacheDir(), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 735,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1154,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1447,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1843,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

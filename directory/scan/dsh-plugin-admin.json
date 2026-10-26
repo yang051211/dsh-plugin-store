@@ -1,0 +1,143 @@
+{
+  "name": "dsh-plugin-admin",
+  "version": "1.27.23",
+  "scannedAt": "2026-10-26T10:05:06.439Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit-log.js",
+        "line": 51,
+        "text": "* pasted into a free-text field (`command: 'curl -H \"Authorization: Bearer"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 69,
+        "text": "// Header-form free text (`curl -H \"x-api-key: …\"`, `api-key=…` in a hook"
+      },
+      {
+        "file": "lib/mcp-probe.js",
+        "line": 997,
+        "text": "response = await fetch(cfg.url, { ...init, signal: controller.signal })"
+      },
+      {
+        "file": "lib/mcp-probe.js",
+        "line": 1146,
+        "text": "const ping = await fetch(cfg.url, {"
+      },
+      {
+        "file": "lib/mcp-probe.js",
+        "line": 1258,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit-log.js",
+        "line": 25,
+        "text": "import { appendFileSync, chmodSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 369,
+        "text": "var lines = readFileSync(file, 'utf8').split('\\n')"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 388,
+        "text": "mkdirSync(dirname(file), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 425,
+        "text": "writeFileSync(temp, kept.map(function (item) { return JSON.stringify(redactTrailEntry(item, now())) }).join('\\n') + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 428,
+        "text": "appendFileSync(file, JSON.stringify(entry) + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "export const inject = ['typert', 'sessionPersistence', 'tools', 'subagents', 'commands', 'shell']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 858,
+        "text": "// Row-level CRUD over the profile's dsh-mcp-client entries, real handshake"
+      },
+      {
+        "file": "lib/mcp-admin.js",
+        "line": 6,
+        "text": "* `@deepseek-ai/dsh-mcp-client` entries (both row shapes), real handshake"
+      },
+      {
+        "file": "lib/mcp-admin.js",
+        "line": 27,
+        "text": "const MCP_NAME_ROW = /^\\s*name:\\s*(?:'@deepseek-ai\\/dsh-mcp-client'|\"@deepseek-ai\\/dsh-mcp-client\"|@deepseek-ai\\/dsh-mcp-client)\\s*$/"
+      },
+      {
+        "file": "lib/mcp-admin.js",
+        "line": 194,
+        "text": "out.push(\"  name: '@deepseek-ai/dsh-mcp-client'\")"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fs-admin.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/fs-admin.js",
+        "line": 46,
+        "text": "const child = spawn('powershell.exe', ["
+      },
+      {
+        "file": "lib/fs-admin.js",
+        "line": 103,
+        "text": "? spawn('explorer.exe', args, { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/fs-admin.js",
+        "line": 105,
+        "text": "? spawn('open', args, { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/fs-admin.js",
+        "line": 106,
+        "text": ": spawn('xdg-open', args, { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessionPersistence",
+    "shell",
+    "subagents",
+    "tools",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

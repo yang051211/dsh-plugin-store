@@ -1,0 +1,139 @@
+{
+  "name": "dsh-mini-remote",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:05:08.033Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 452,
+        "text": "return fetch(REMOTE_WINDOW_PATH, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 719,
+        "text": "fetch(PAIRING_PATH)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 753,
+        "text": "fetch(AGENT_LIST_PATH)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 774,
+        "text": "fetch(B_AGENT_STATUS_PATH)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 832,
+        "text": "return fetch(DEVICES_PATH)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-client.js",
+        "line": 19,
+        "text": "import { cpSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 101,
+        "text": "function readFile(roots, requested, offset, limit) {"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 108,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 129,
+        "text": "writeFileSync(file, text, 'utf8')"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 204,
+        "text": "try { text = readFileSync(full, 'utf8') } catch { return }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-tools.js",
+        "line": 25,
+        "text": "if (!ctx || !ctx.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 61,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 82,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 113,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 217,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-client.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 292,
+        "text": "const child = spawn(cmd, { shell: true, cwd: dir, windowsHide: true, env: process.env })"
+      },
+      {
+        "file": "lib/agent-client.js",
+        "line": 324,
+        "text": "const child = spawn(shell, [], { cwd: dir, windowsHide: true, env: process.env, stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 65,
+        "text": "child = spawn(command, ['--version'], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

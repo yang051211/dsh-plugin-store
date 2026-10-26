@@ -1,0 +1,97 @@
+{
+  "name": "dsh-knowledge-base-local",
+  "version": "1.2.5",
+  "scannedAt": "2026-10-26T10:05:18.710Z",
+  "icon": "dsh-knowledge-base-local.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 663,
+        "text": "const response = await fetch(`/kb-api${path}`, {"
+      },
+      {
+        "file": "lib/src/embedding.js",
+        "line": 130,
+        "text": "const response = await fetch(url, { ...init, signal: signalWithTimeout(signal, timeoutMs) })"
+      },
+      {
+        "file": "lib/src/mcp_http.js",
+        "line": 26,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/src/store.js",
+        "line": 1408,
+        "text": "const result = await web.fetch({ url }, input.signal)"
+      },
+      {
+        "file": "lib/src/store.js",
+        "line": 1418,
+        "text": "const response = await fetch(url, { signal: input.signal, headers: { 'user-agent': 'dsh-knowledge-base/1.0' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "await mkdir(target, { recursive: true })"
+      },
+      {
+        "file": "lib/kb.mjs",
+        "line": 14,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/kb.mjs",
+        "line": 193,
+        "text": "if (!text && flags.file) text = await readFile(String(flags.file), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 308,
+        "text": "ctx.effect(() => ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,100 @@
+{
+  "name": "dsh-mizar",
+  "version": "0.8.13",
+  "scannedAt": "2026-10-26T10:05:09.879Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1822,
+        "text": "const response = await fetch(\"/api/mizar.status\", { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1914,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/push/transport.js",
+        "line": 59,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/relay/client.js",
+        "line": 294,
+        "text": "new WebSocket(url, {"
+      },
+      {
+        "file": "lib/relay/client.js",
+        "line": 545,
+        "text": "const response = await fetch(`${this.#localOrigin}${String(frame.path)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth/store.js",
+        "line": 19,
+        "text": "import { mkdir, open, readFile, rename, unlink, appendFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/auth/store.js",
+        "line": 218,
+        "text": "return await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/auth/store.js",
+        "line": 243,
+        "text": "await handle.writeFile(contents, 'utf8');"
+      },
+      {
+        "file": "lib/auth/store.js",
+        "line": 253,
+        "text": "await unlink(temp).catch(() => { });"
+      },
+      {
+        "file": "lib/auth/store.js",
+        "line": 291,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge/private-directory.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge/private-directory.js",
+        "line": 76,
+        "text": "const child = spawn(executable, ['-NoLogo', '-NoProfile', '-NonInteractive', '-EncodedCommand', Buffer.from(WINDOWS_ACL, 'utf16le').toString('base64')], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "sessions",
+    "typert",
+    "typertGateway"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,127 @@
+{
+  "name": "dsh-git-push",
+  "version": "2.10.1",
+  "scannedAt": "2026-10-26T10:05:06.520Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/start.sh",
+        "line": 242,
+        "text": "if curl -sf -m 3 \"http://127.0.0.1:$port/preview-ping\" > /dev/null 2>&1; then"
+      },
+      {
+        "file": "assets/start.sh",
+        "line": 338,
+        "text": "curlout=\"$(curl -sS -m 5 -o /tmp/${PROJECT_NAME}-status.body -w '%{http_code} %{time_total}' \"http://127.0.0.1:$port/preview-ping\" 2>/dev/null || echo \"000 0\")\""
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2037,
+        "text": "bytes = fetch(input).then((response) => response.arrayBuffer().then((buffer) => {"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2141,
+        "text": "var xhr = new XMLHttpRequest();"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2154,
+        "text": "var xhr = new XMLHttpRequest();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2034,
+        "text": "const fs2 = await import(\"fs/promises\");"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2035,
+        "text": "bytes = fs2.readFile(input);"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2101,
+        "text": "var fs = require(\"fs\");"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2108,
+        "text": "var ret = fs.readFileSync(filename);"
+      },
+      {
+        "file": "assets/tree-sitter/tree-sitter.js",
+        "line": 2113,
+        "text": "var ret = fs.readFileSync(filename, binary2 ? void 0 : \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin/index.js",
+        "line": 10,
+        "text": "*       tools.register(defineTool({ name, description, parameters, output, execute }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app/tool-call.js",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/audit-rules/audit-rules-dsh.yml",
+        "line": 57,
+        "text": "description: \"浏览器 client 半部无 Node 运行时；require('fs'/'path'/'os'/'child_process'/'net'/'http'(无 window)) 必然运行失败\""
+      },
+      {
+        "file": "lib/audit/collector.js",
+        "line": 11,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/audit/collector.js",
+        "line": 83,
+        "text": "const r = spawnSync('git', [...GIT_QUOTEPATH_ARGS, '-C', dir, 'rev-parse', '--is-inside-work-tree'], {"
+      },
+      {
+        "file": "lib/audit/collector.js",
+        "line": 174,
+        "text": "const probe = spawnSync('git', [...GIT_QUOTEPATH_ARGS, '-C', root, 'rev-parse', '--is-inside-work-tree'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "assets/tree-sitter/tree-sitter-javascript.wasm",
+    "assets/tree-sitter/tree-sitter-python.wasm",
+    "assets/tree-sitter/tree-sitter-typescript.wasm",
+    "assets/tree-sitter/tree-sitter.wasm"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plugin-marketplace",
+  "version": "0.5.6",
+  "scannedAt": "2026-10-26T10:04:42.487Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 178,
+        "text": "var res = await fetch(BASE + \"?\" + params.toString(), { headers: { Accept: \"application/vnd.github+json\" } });"
+      },
+      {
+        "file": "client.js",
+        "line": 197,
+        "text": "var res = await fetch(url, { headers: { Accept: \"application/vnd.github+json\" } });"
+      },
+      {
+        "file": "client.js",
+        "line": 213,
+        "text": "var promise = fetch(\"https://registry.npmjs.org/\" + encodeURIComponent(pkg) + \"/latest\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "management.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "management.js",
+        "line": 21,
+        "text": "const manifest = JSON.parse(readFileSync(join(profile.dir, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "management.js",
+        "line": 28,
+        "text": "try { installed = JSON.parse(readFileSync(join(profile.dir, \"node_modules\", name, \"package.json\"), \"utf8\")); }"
+      },
+      {
+        "file": "management.js",
+        "line": 38,
+        "text": "const doc = parseDocument(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "management.js",
+        "line": 65,
+        "text": "if (write) writeFileSync(path, result, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "runtime.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "runtime.js",
+        "line": 77,
+        "text": "const child = spawn(executable, args, { env: options.env, windowsHide: true, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-ppt",
+  "version": "0.17.0",
+  "scannedAt": "2026-10-26T10:04:39.350Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 331,
+        "text": "const response = await fetch(new URL(ROUTE, document.baseURI), { method: 'POST', credentials: 'same-origin', signal,"
+      },
+      {
+        "file": "lib/workbench.js",
+        "line": 369,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/workbench.js",
+        "line": 412,
+        "text": "host.connection?.fetch?.register({ path: PPT_WORKBENCH_ROUTE, methods: ['POST'], requestBody: 'buffered', fetch: (request) => workbench.fetch(request) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/coaching.js",
+        "line": 3,
+        "text": "import { closeSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/coaching.js",
+        "line": 43,
+        "text": "const run = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/coaching.js",
+        "line": 53,
+        "text": "mkdirSync(this.directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/coaching.js",
+        "line": 67,
+        "text": "unlinkSync(path);"
+      },
+      {
+        "file": "lib/coaching.js",
+        "line": 77,
+        "text": "writeFileSync(tmp, serialized, { flag: 'wx', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "/** cordis 服务注入：apply 里要使用 ctx.tools 与 ctx.skills。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "disposers.push(ctx.tools.register({ ...definition, async execute(args, exec) {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

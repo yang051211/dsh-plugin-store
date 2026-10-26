@@ -1,0 +1,87 @@
+{
+  "name": "dsh-image2-tool",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:05:13.079Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 197,
+        "text": "response = await fetch(imageEndpoint(settings.baseUrl, true), {"
+      },
+      {
+        "file": "index.js",
+        "line": 215,
+        "text": "response = await fetch(imageEndpoint(settings.baseUrl, false), {"
+      },
+      {
+        "file": "index.js",
+        "line": 246,
+        "text": "const download = await fetch(item.url, { signal: requestSignal() })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { mkdir, open, readFile, realpath, stat, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 56,
+        "text": "await mkdir(output, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "await file.writeFile(bytes)"
+      },
+      {
+        "file": "index.js",
+        "line": 94,
+        "text": "await unlink(candidate).catch(() => {})"
+      },
+      {
+        "file": "index.js",
+        "line": 126,
+        "text": "const bytes = await readFile(resolved)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 137,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

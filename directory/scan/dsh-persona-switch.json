@@ -1,0 +1,96 @@
+{
+  "name": "dsh-persona-switch",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:05:06.258Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/capture-prompt.mjs",
+        "line": 23,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "appendFileSync(LOG_FILE, `${new Date().toISOString()} ${msg}\\n`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "const { meta, text } = parsePersona(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "mkdirSync(PERSONA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "const parsed = JSON.parse(readFileSync(STATE_FILE, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 295,
+        "text": "inner.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/enable-2fa-and-publish.mjs",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/enable-2fa-and-publish.mjs",
+        "line": 71,
+        "text": "const p = spawn('npm', argv, {"
+      },
+      {
+        "file": "scripts/enable-2fa-and-publish.mjs",
+        "line": 83,
+        "text": "const child = spawn('npm', ['profile', 'enable-2fa', 'auth-and-writes'], {"
+      },
+      {
+        "file": "test/capture-prompt.mjs",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "test/capture-prompt.mjs",
+        "line": 104,
+        "text": "const child = spawn(`dsh headless ${JSON.stringify(task)}`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,138 @@
+{
+  "name": "dsh-m",
+  "version": "0.10.19",
+  "scannedAt": "2026-10-26T10:04:39.788Z",
+  "icon": "dsh-m.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3408,
+        "text": "const res = await fetch(API, {"
+      },
+      {
+        "file": "lib/core/httpx.js",
+        "line": 7,
+        "text": "import { Agent, EnvHttpProxyAgent, fetch as undiciFetch } from 'undici';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 20,
+        "text": "import { realpathSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/atomic-write.js",
+        "line": 17,
+        "text": "import { lstat, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/atomic-write.js",
+        "line": 58,
+        "text": "await mkdir(dirname(filename), {"
+      },
+      {
+        "file": "lib/core/atomic-write.js",
+        "line": 64,
+        "text": "await writeFile(temp, content, { mode: options?.mode, flag: 'wx' });"
+      },
+      {
+        "file": "lib/core/atomic-write.js",
+        "line": 68,
+        "text": "await rm(temp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 14,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 69,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 163,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 206,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 251,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/dsh-cli.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/dsh-cli.js",
+        "line": 420,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/core/dsh-version.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/dsh-version.js",
+        "line": 66,
+        "text": "child = spawn('dsh', ['--version'], { stdio: ['ignore', 'pipe', 'ignore'], shell: process.platform === 'win32' });"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 8,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 20,
+      "text": "the [compatibility table](#compatibility--faq). `npm install -g dsh-m` installs **only the standalone `dshm` CLI**, not the marketplace plugin in a DSH profile."
+    },
+    {
+      "file": "README.md",
+      "line": 20,
+      "text": "面的 Web 宿主也可执行 `dsh plugin --profile web add dsh-m`。Node.js 需 ≥ 22；支持的 DSH 代际见[兼容表](#兼容与常见问题)。`npm install -g dsh-m` **仅安装独立 `dshm` CLI**，不会把市场插件注册到 DSH profile。"
+    }
+  ],
+  "skippedEntries": []
+}

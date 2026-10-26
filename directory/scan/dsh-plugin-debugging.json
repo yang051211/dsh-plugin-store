@@ -1,0 +1,133 @@
+{
+  "name": "dsh-plugin-debugging",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:04:50.921Z",
+  "icon": "dsh-plugin-debugging.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lib/http.js",
+        "line": 26,
+        "text": "const response = await fetch(url, { signal: init.signal, redirect: init.redirect });"
+      },
+      {
+        "file": "lib/lib/http.js",
+        "line": 57,
+        "text": "const response = await deps.fetch(url, {"
+      },
+      {
+        "file": "lib/tools/dsh_list_instances.js",
+        "line": 98,
+        "text": "const response = await fetch(url, { signal: init.signal, redirect: init.redirect });"
+      },
+      {
+        "file": "lib/tools/dsh_list_instances.js",
+        "line": 328,
+        "text": "const response = await deps.fetch(url, { signal: controller.signal, redirect: 'manual' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/launcher.js",
+        "line": 15,
+        "text": "import { appendFileSync, existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "assets/launcher.js",
+        "line": 35,
+        "text": "appendFileSync(logPath, `${new Date().toISOString()}  ${message}\\r\\n`, 'utf8')"
+      },
+      {
+        "file": "assets/launcher.js",
+        "line": 127,
+        "text": "const text = readFileSync(path, 'utf8').trim()"
+      },
+      {
+        "file": "assets/launcher.js",
+        "line": 179,
+        "text": "const job = parseJobFile(readFileSync(jobPath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "* `ctx.get('fs')` 在 apply 期同样是 `undefined`（`task-31` 实测，+1s 才有），而"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/skills/register.js",
+        "line": 10,
+        "text": "* - 本文件**不许** import 工具半边，也不许碰 `ctx.tools`。"
+      },
+      {
+        "file": "lib/tools/index.js",
+        "line": 6,
+        "text": "* - 只碰 `ctx.tools`（`ctx.skills` 归技能半边）；不 import `src/skills/**`；"
+      },
+      {
+        "file": "lib/tools/index.js",
+        "line": 7,
+        "text": "* - **容忍缺失**：`ctx.tools` 不在时直接返回，不抛（宿主缺服务时插件不该炸）；"
+      },
+      {
+        "file": "lib/tools/index.js",
+        "line": 47,
+        "text": "* @param ctx 宿主上下文；`ctx.tools` 是唯一允许触碰的服务。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/launcher.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/lib/carrier.js",
+        "line": 16,
+        "text": " Node 模式起的子进程，入口是 `…app.asar/dsh/node_modules/@deepseek-ai/dsh-desktop-host/lib/index.js` | `apps/desktop/src/host-process.ts` 的 `spawn(…, {cwd: projectDir})` |"
+      },
+      {
+        "file": "lib/lib/dump.js",
+        "line": 32,
+        "text": "const result = await deps.spawn({"
+      },
+      {
+        "file": "lib/lib/exec.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/lib/exec.js",
+        "line": 27,
+        "text": "const child = spawn(options.command, [...options.args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

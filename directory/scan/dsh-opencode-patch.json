@@ -1,0 +1,70 @@
+{
+  "name": "dsh-opencode-patch",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-26T10:05:05.231Z",
+  "icon": "dsh-opencode-patch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 8640,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 4,
+        "text": "import { appendFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 7,
+        "text": "import { existsSync, readFileSync, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 636,
+        "text": "await appendFile(file, `${JSON.stringify(entry)}\\n`, \"utf-8\");"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 6728,
+        "text": "const filesystem = optionalService(ctx, \"fs\");"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 6861,
+        "text": "const manifest = readFileSync(path.join(root, \"package.json\"), \"utf-8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: vp run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-xiaomi-tts",
+  "version": "4.2.2",
+  "scannedAt": "2026-10-26T10:04:57.881Z",
+  "icon": "dsh-xiaomi-tts.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 10986,
+        "text": "request: fetch(`${hostRoute(TTS_API_KEY_STATUS_ROUTE)}?provider=${provider}`, { headers: { accept: \"application/json\" } }).then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 12299,
+        "text": "const response = await fetch(hostRoute(TTS_STREAM_ROUTE), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 12591,
+        "text": "this.socket = new WebSocket(hostWebSocketUrl(TTS_DUPLEX_ROUTE));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 13555,
+        "text": "const response = await fetch(hostRoute(TTS_ROUTE), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 13944,
+        "text": "const response = await fetch(hostRoute(TTS_ROUTE), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 955,
+        "text": "return [`${TTS_VOICE_DESIGN_ASSET_ROUTE}/${preset.id}.webp`, readFileSync(new URL(`../assets/voice-presets/${preset.id}.webp`, import.meta.url))];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 958,
+        "text": "return [`${TTS_VOICE_ASSET_ROUTE}/${preset.id}.webp`, readFileSync(new URL(`../assets/voice-avatars/${preset.id}.webp`, import.meta.url))];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 961,
+        "text": "return [`${TTS_TOGGLE_AUDIO_ASSET_ROUTE}/${file}`, readFileSync(new URL(`../assets/audio/${file}`, import.meta.url))];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 963,
+        "text": "const mimoLogoAsset = readFileSync(new URL(\"../assets/mimo.svg\", import.meta.url));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/scripts/prepare-package.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/scripts/prepare-package.mjs",
+        "line": 11,
+        "text": "const result = spawnSync(command, ['run', 'build'], { stdio: 'inherit', shell: process.platform === 'win32' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

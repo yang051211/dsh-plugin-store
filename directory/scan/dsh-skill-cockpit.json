@@ -1,0 +1,113 @@
+{
+  "name": "dsh-skill-cockpit",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:04:50.146Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1122,
+        "text": "const res = await fetch(path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-presets.js",
+        "line": 19,
+        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, renameSync, rmdirSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/agent-presets.js",
+        "line": 31,
+        "text": "text = readFileSync(filePath, 'utf8')"
+      },
+      {
+        "file": "lib/agent-presets.js",
+        "line": 59,
+        "text": "const head = readFileSync(file, 'utf8').slice(0, 8192)"
+      },
+      {
+        "file": "lib/agent-presets.js",
+        "line": 151,
+        "text": "if (!existsSync(skillsDir)) mkdirSync(skillsDir, { recursive: true })"
+      },
+      {
+        "file": "lib/agent-presets.js",
+        "line": 187,
+        "text": "mkdirSync(pool, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 327,
+        "text": "const dispose = ctx.tools.register(skillTool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 466,
+        "text": "const dispose = ctx.tools.register(autoloadTool);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 554,
+        "text": "// ctx.tools.register() 是裸注册：parameters 必须是**编译后的 JSON Schema**"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vault.js",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/vault.js",
+        "line": 200,
+        "text": "const result = spawnSync('git', ['clone', '--depth', '1', '--quiet', url, tmp], {"
+      },
+      {
+        "file": "scripts/release-check.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/run-all.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/run-all.mjs",
+        "line": 39,
+        "text": "const result = spawnSync(process.execPath, [script, reportDir], { stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

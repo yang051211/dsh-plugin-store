@@ -1,0 +1,126 @@
+{
+  "name": "dsh-context-toolkit",
+  "version": "0.3.12",
+  "scannedAt": "2026-10-26T10:04:39.741Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 20,
+        "text": "etchAndIndexHint\":\"抓整页网页又不让它淹没对话时用；curl/wget 会被门禁拦掉。\",\"tools.purge\":\"ctk_purge（删除已索引内容，不可恢复）\",\"tools.purgeHint\":\"清理知识库用；会永久删除，调用必须带 confirm:true。\",\"tools.stats\""
+      },
+      {
+        "file": "client.js",
+        "line": 21,
+        "text": "page would flood the conversation; curl/wget are gated.\",\"tools.purge\":\"ctk_purge (delete indexed content — permanent)\",\"tools.purgeHint\":\"Clears the knowledge "
+      },
+      {
+        "file": "client.js",
+        "line": 104,
+        "text": ".then(() => fetch(STATUS_PATH, { headers: { accept: \"application/json\" } }))"
+      },
+      {
+        "file": "client.js",
+        "line": 205,
+        "text": ".then(() => fetch(STATUS_PATH, { headers: { accept: \"application/json\" } }))"
+      },
+      {
+        "file": "client.js",
+        "line": 221,
+        "text": "const response = await fetch(EXPORT_CA_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { existsSync, statSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "const parsed = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 462,
+        "text": "if (st.isFile()) parts.push(readFileSync(path, 'utf8').slice(0, SCRIPT_READ_MAX))"
+      },
+      {
+        "file": "index.js",
+        "line": 1073,
+        "text": "const pem = readFileSync(wanted, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 33,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 725,
+        "text": "if (config.denyCurlWget !== false && ctx.tools && typeof ctx.tools.guard === 'function') {"
+      },
+      {
+        "file": "index.js",
+        "line": 726,
+        "text": "ctx.tools.guard((exec) => { const a = (exec && exec.arguments) || {}; return floodReason(exec && exec.name, a, shellTextOf(a, exec)) })"
+      },
+      {
+        "file": "index.js",
+        "line": 808,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 865,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 97,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "dsh-expert-orchestrator",
+  "version": "2.11.2",
+  "scannedAt": "2026-10-26T10:05:19.364Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 386,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS), redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cwd-lock.js",
+        "line": 27,
+        "text": "import { mkdirSync, openSync, readFileSync, closeSync, writeFileSync, unlinkSync, existsSync, fstatSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cwd-lock.js",
+        "line": 51,
+        "text": "const raw = readFileSync(p, 'utf-8')"
+      },
+      {
+        "file": "lib/cwd-lock.js",
+        "line": 72,
+        "text": "writeFileSync(fd, JSON.stringify(holder), 'utf-8')"
+      },
+      {
+        "file": "lib/cwd-lock.js",
+        "line": 87,
+        "text": "if (left <= 0) unlinkSync(p)"
+      },
+      {
+        "file": "lib/cwd-lock.js",
+        "line": 106,
+        "text": "mkdirSync(join(key, LOCK_DIRNAME), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2070,
+        "text": "inject: ['tools', 'subagents', 'systemPrompt'],"
+      },
+      {
+        "file": "lib/summon-preset-restrict.js",
+        "line": 7,
+        "text": "// ctx.tools.restrict(config)，把 summon 期计算好的全局工具收窄（deny 名单，"
+      },
+      {
+        "file": "lib/summon-preset-restrict.js",
+        "line": 26,
+        "text": "const inject = ['tools']"
+      },
+      {
+        "file": "lib/summon-preset-restrict.js",
+        "line": 37,
+        "text": "ctx.tools.restrict({"
+      },
+      {
+        "file": "lib/summon-preset.js",
+        "line": 29,
+        "text": "//    ctx.tools.restrict 交付——全局层名字对绑定会话是 inherited，restriction"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 429,
+        "text": "const res = spawnSync('tar', ['-xzf', tmp, '-C', destDir], { encoding: 'utf-8' })"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 591,
+        "text": "execFile('python3', [TASKBOARD_PY, ...args], { cwd, encoding: 'utf-8', timeout: timeoutMs, env }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 633,
+        "text": "execFile('python3', [BUS_PY, ...args], { cwd, encoding: 'utf-8', timeout: timeoutMs }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

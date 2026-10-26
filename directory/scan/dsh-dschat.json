@@ -1,0 +1,76 @@
+{
+  "name": "dsh-dschat",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:11.661Z",
+  "icon": "dsh-dschat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "void fetch('/api/dschat/log', { method: 'POST', body, keepalive: true }).catch(() => {})"
+      },
+      {
+        "file": "client.js",
+        "line": 99,
+        "text": "const response = await fetch('/api/dschat/session', { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 108,
+        "text": "const response = await fetch('/api/dschat/session', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "const raw = await readFile(SESSION_FILE, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 117,
+        "text": "await mkdir(LOG_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 118,
+        "text": "await writeFile(SESSION_FILE, JSON.stringify(storage), { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "index.js",
+        "line": 128,
+        "text": "await mkdir(LOG_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

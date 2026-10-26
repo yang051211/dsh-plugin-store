@@ -1,0 +1,99 @@
+{
+  "name": "dsh-video-understand",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:05:11.084Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/env.mjs",
+        "line": 116,
+        "text": "macOS: brew install python@3.12 · Ubuntu: sudo apt install python3 python3-venv · Windows: python.org），或安装 uv: curl -LsSf https://astral.sh/uv/install.sh | sh',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/doctor.mjs",
+        "line": 13,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/doctor.mjs",
+        "line": 144,
+        "text": "const text = readFileSync(cred, 'utf8')"
+      },
+      {
+        "file": "dsh/env.mjs",
+        "line": 12,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 231,
+        "text": "ctx.tools.register(tool(config.toolName || 'video_understand'))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/doctor.mjs",
+        "line": 12,
+        "text": "import { spawnSync, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/doctor.mjs",
+        "line": 28,
+        "text": "const r = spawnSync(IS_WIN ? 'where' : 'which', [cmd], { encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/doctor.mjs",
+        "line": 33,
+        "text": "const r = spawnSync(cmd, args, { encoding: 'utf8', timeout: 30_000 })"
+      },
+      {
+        "file": "dsh/env.mjs",
+        "line": 11,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/env.mjs",
+        "line": 30,
+        "text": "const r = spawnSync(IS_WIN ? 'where' : 'which', [cmd], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 28,
+      "text": "stall ffmpeg` / Ubuntu `sudo apt install ffmpeg`）和一个 LLM API key（见下表）。语义层依赖（torch/CLIP/YOLO，约 2GB）为可选，仅建完整语义层时再装：`pip install -r engine/requirements-layer.txt`。"
+    }
+  ],
+  "skippedEntries": []
+}

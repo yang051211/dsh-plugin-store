@@ -1,0 +1,72 @@
+{
+  "name": "dsh-token-optimizer",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:05:18.202Z",
+  "icon": "dsh-token-optimizer.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive.js",
+        "line": 2,
+        "text": "import { link, mkdir, open, readFile, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 50,
+        "text": "await handle.writeFile(content, 'utf8');"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 62,
+        "text": "const existing = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 68,
+        "text": "await unlink(temporary).catch(() => undefined);"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 73,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools', 'sessionProjections'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 231,
+        "text": "ctx.tools.register(buildRetrieveTool(archive));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

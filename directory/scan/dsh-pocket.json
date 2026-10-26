@@ -1,0 +1,121 @@
+{
+  "name": "dsh-pocket",
+  "version": "2.12.0",
+  "scannedAt": "2026-10-26T10:04:38.164Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 2267,
+        "text": "const meta = await (await fetch(\"https://registry.npmjs.org/dsh-pocket/latest\", { cache: \"no-store\" })).json();"
+      },
+      {
+        "file": "client/index.jsx",
+        "line": 119,
+        "text": "const meta = await (await fetch('https://registry.npmjs.org/dsh-pocket/latest', { cache: 'no-store' })).json();"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 14,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 15,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 146,
+        "text": "try { head = await fetch(url, { method: 'HEAD', signal }); } catch { head = null; }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-pocket.mjs",
+        "line": 13,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 45,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 46,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      },
+      {
+        "file": "client/client.js",
+        "line": 584,
+        "text": "const res = await readFile(filePath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "const child = spawn('dsh', ['plugin', '--profile', profile, 'update', 'dsh-pocket', '--latest', '-w'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 238,
+        "text": "// Windows 上裸 spawn('dsh') 解析到无扩展名 POSIX shim → ENOENT；"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 44,
+        "text": "const spawn = \"const { spawn } = require('node:child_process')\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 180,
+      "text": "- Any platform: `npm i -g cloudflared`"
+    },
+    {
+      "file": "README.md",
+      "line": 187,
+      "text": "- 任何平台：`npm i -g cloudflared`"
+    }
+  ],
+  "skippedEntries": []
+}

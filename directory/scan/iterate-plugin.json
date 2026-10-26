@@ -1,0 +1,124 @@
+{
+  "name": "iterate-plugin",
+  "version": "3.10.0",
+  "scannedAt": "2026-10-26T10:05:02.398Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/atomic-fs.js",
+        "line": 23,
+        "text": "import { closeSync, fchmodSync, fsyncSync, lstatSync, openSync, realpathSync, renameSync, rmSync, statSync, writeSync, } from 'node:fs';"
+      },
+      {
+        "file": "dist/atomic-fs.js",
+        "line": 24,
+        "text": "import { lstat, open, realpath, rename, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/atomic-fs.js",
+        "line": 28,
+        "text": "rmSync(tmp, { force: true });"
+      },
+      {
+        "file": "dist/atomic-fs.js",
+        "line": 37,
+        "text": "await rm(tmp, { force: true });"
+      },
+      {
+        "file": "dist/atomic-fs.js",
+        "line": 197,
+        "text": "await fh.writeFile(data, 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/tools/checkpoint.js",
+        "line": 209,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/checkpoint.js",
+        "line": 373,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/config.js",
+        "line": 14,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tools/context.js",
+        "line": 202,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/git-scope.js",
+        "line": 23,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/git-scope.js",
+        "line": 170,
+        "text": "* Uses execFile (no shell), so a model-controlled branch name can never be"
+      },
+      {
+        "file": "dist/git-scope.js",
+        "line": 181,
+        "text": "execFile('git', args, {"
+      },
+      {
+        "file": "dist/tools/validate.js",
+        "line": 1,
+        "text": "import { exec } from 'node:child_process';"
+      },
+      {
+        "file": "src/git-scope.ts",
+        "line": 24,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 42,
+      "text": "npm install -g iterate-harness"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 41,
+      "text": "npm install -g iterate-harness"
+    }
+  ],
+  "skippedEntries": []
+}

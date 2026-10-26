@@ -1,0 +1,142 @@
+{
+  "name": "dsh-plugin-install",
+  "version": "0.4.12",
+  "scannedAt": "2026-10-26T10:04:48.461Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 70,
+        "text": "const response = await fetch(`/dsh-plugin-install/updates${force ? \"?force=1\" : \"\"}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "const response = await fetch(\"/dsh-plugin-install/update\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 108,
+        "text": "const response = await fetch(\"/dsh-plugin-install/uninstall\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 133,
+        "text": "const readBoot = () => fetch(\"/dsh-plugin-install/status\").then((response) => response.json()).then((status) => status.boot).catch(() => void 0);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "const response = await fetch(\"/dsh-plugin-install/restart\", { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7412,
+        "text": "import { readFileSync as readFileSync6, existsSync as existsSync7 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7416,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7592,
+        "text": "import { existsSync as existsSync2, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7623,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7638,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/mounts.test.ts",
+        "line": 154,
+        "text": "'[ { id: mcp-demo, name: \"@deepseek-ai/dsh-mcp-client\", config: { serverName: demo, command: cmd, args: [ /c, npx ] } } ]\\n',"
+      },
+      {
+        "file": "src/mounts.test.ts",
+        "line": 159,
+        "text": "{ id: 'mcp-demo', name: '@deepseek-ai/dsh-mcp-client', config: { serverName: 'demo', command: 'cmd', args: ['/c', 'npx'] } },"
+      },
+      {
+        "file": "src/mounts.test.ts",
+        "line": 164,
+        "text": "{ id: 'mcp-demo', name: '@deepseek-ai/dsh-mcp-client', config: { serverName: 'demo', command: 'cmd', args: ['/c', 'npx'] } },"
+      },
+      {
+        "file": "src/mounts.test.ts",
+        "line": 175,
+        "text": "'[ { id: mcp-demo, name: \"@deepseek-ai/dsh-mcp-client\", config: { serverName: demo } } ]',"
+      },
+      {
+        "file": "src/mounts.test.ts",
+        "line": 187,
+        "text": "{ id: 'mcp-demo', name: '@deepseek-ai/dsh-mcp-client', config: { serverName: 'demo' } },"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7417,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7491,
+        "text": "spawn(\"taskkill\", [\"/pid\", String(child.pid), \"/t\", \"/f\"], { stdio: \"ignore\", windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7534,
+        "text": "const child = spawn(file, [...args, \"plugin\", \"--profile\", profile, ...pluginArgs], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8621,
+        "text": "import { spawn as spawn2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8640,
+        "text": "const { spawn } = require('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build-node.mjs && node scripts/build-client.mjs && node scripts/verify-bundle.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

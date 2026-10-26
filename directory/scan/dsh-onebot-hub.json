@@ -1,0 +1,113 @@
+{
+  "name": "dsh-onebot-hub",
+  "version": "0.11.1",
+  "scannedAt": "2026-10-26T10:05:05.563Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-probe.js",
+        "line": 62,
+        "text": "'        fetch(\"/onebot-hub/client-report\" + location.search, {',"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 58,
+        "text": "fetch('/onebot-hub/client-report' + location.search, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 537,
+        "text": "const res = await fetch(HUB_PERSONA_PATH + location.search, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 551,
+        "text": "const res = await fetch(HUB_PERSONA_PATH + location.search, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 573,
+        "text": "const res = await fetch(HUB_MODEL_LIST_PATH + location.search, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hub.js",
+        "line": 804,
+        "text": "const { readFile } = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 805,
+        "text": "return await readFile(ref.blob);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2615,
+        "text": "const bytes = await fs.promises.readFile(file);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2903,
+        "text": "const fs = await import('node:fs');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2174,
+        "text": "agentCtx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2375,
+        "text": "rec.dispose = rec.ctx.tools.restrict({ deny: list });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2797,
+        "text": "return toolCtx.tools.register(def);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2807,
+        "text": "registerCtx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

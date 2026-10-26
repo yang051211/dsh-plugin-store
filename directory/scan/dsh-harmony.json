@@ -1,0 +1,132 @@
+{
+  "name": "dsh-harmony",
+  "version": "0.8.18",
+  "scannedAt": "2026-10-26T10:05:13.639Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "browser-dist/bootstrap-client.js",
+        "line": 47,
+        "text": "fetch('/dsh-harmony-bootstrap/restart', { cache: 'no-store' })"
+      },
+      {
+        "file": "browser-dist/bootstrap-client.js",
+        "line": 58,
+        "text": "const response = await fetch('/dsh-harmony-bootstrap/restart', { method: 'POST' });"
+      },
+      {
+        "file": "browser-dist/bootstrap-client.js",
+        "line": 65,
+        "text": "const nextResponse = await fetch('/dsh-harmony-bootstrap/restart', { cache: 'no-store' });"
+      },
+      {
+        "file": "browser-dist/client.js",
+        "line": 787,
+        "text": "const response = await fetch('/dsh-harmony/profile', { cache: 'no-store' });"
+      },
+      {
+        "file": "browser-dist/client.js",
+        "line": 944,
+        "text": "fetch('/dsh-harmony/runtime', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bin.js",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/builtins/client-load-plan.patch.cjs",
+        "line": 28,
+        "text": "packageName: JSON.parse(readFileSync(harmonyPath, \"utf8\")).name"
+      },
+      {
+        "file": "lib/builtins/dsh-compat.cjs",
+        "line": 9,
+        "text": "const node_fs_1 = require(\"node:fs\");"
+      },
+      {
+        "file": "lib/control.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, readdirSync, renameSync, rmdirSync, unlinkSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/control.js",
+        "line": 11,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installer.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 24,
+        "text": "const child = spawn(command, args, { stdio: inherit ? 'inherit' : ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 72,
+        "text": "const helper = spawn(process.execPath, ["
+      },
+      {
+        "file": "scripts/benchmark-dsh-load.mjs",
+        "line": 1,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/benchmark-dsh-load.mjs",
+        "line": 36,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node -e \"if (process.env.npm_config_global === 'true') import('./scripts/postinstall.cjs')\""
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 88,
+      "text": "npm install -g dsh-harmony"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 92,
+      "text": "npm install -g dsh-harmony"
+    }
+  ],
+  "skippedEntries": []
+}

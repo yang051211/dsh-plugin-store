@@ -1,0 +1,110 @@
+{
+  "name": "dsh-voice-mode",
+  "version": "0.7.31",
+  "scannedAt": "2026-10-26T10:04:53.060Z",
+  "icon": "dsh-voice-mode.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 602,
+        "text": "let res = await fetch(asrUrl(false, from, epoch), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 613,
+        "text": "const r2 = await fetch(asrUrl(false, from, epoch), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 637,
+        "text": "res = await fetch(asrUrl(false, 0, epoch), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 705,
+        "text": "const res = await fetch(asrUrl(false, detectSent, epoch) + \"&vadOnly=1\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 746,
+        "text": "await fetch(`${asrUrl(false)}&reset=1`, { method: \"POST\", signal: AbortSignal.timeout(5e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "import { createWriteStream } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "import { mkdir, readdir, readFile, rename, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "const { createReadStream } = await import(\"node:fs\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1806,
+        "text": "import { fork } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1809,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1812,
+        "text": "const r = spawnSync("
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 25,
+        "text": "const r = spawnSync(cmd[0], cmd.slice(1), { cwd: root, encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

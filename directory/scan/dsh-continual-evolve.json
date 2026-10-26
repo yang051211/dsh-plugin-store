@@ -1,0 +1,82 @@
+{
+  "name": "dsh-continual-evolve",
+  "version": "0.19.3",
+  "scannedAt": "2026-10-26T10:04:42.653Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/data/database.js",
+        "line": 6,
+        "text": "import { mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/data/database.js",
+        "line": 22,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/pages/memory-card/workspace-hint.js",
+        "line": 14,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/services/build-identity.js",
+        "line": 17,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/services/build-identity.js",
+        "line": 46,
+        "text": "return hashOf(readFileSync(file));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/surfaces/evolve-tools.js",
+        "line": 8,
+        "text": "* Definitions are hand-built to the shape `ctx.tools.register` consumes"
+      },
+      {
+        "file": "lib/surfaces/evolve-tools.js",
+        "line": 149,
+        "text": "    disposers.push(tools.register(textTool(\"evolve_write\", \"写入一条管理对象（kind=memory 持久记忆 / kind=skill 可复用技能）。用户明确要求记住、忘掉、沉淀技能时使用；记忆按当前工作区分区存储，技能只在本项目创建（move-to-glo"
+      },
+      {
+        "file": "lib/surfaces/evolve-tools.js",
+        "line": 169,
+        "text": "    disposers.push(tools.register(textTool(\"evolve_read\", \"读取一条管理对象：按 id 取完整正文，或按关键词检索（kind=memory 看本工作区与全局分区，同名时本工作区遮蔽全局；kind=skill 看本项目与全局，同名时项目遮蔽全局）。\", EVOLV"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

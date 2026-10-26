@@ -1,0 +1,137 @@
+{
+  "name": "dsh-packycode-api",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-26T10:04:43.591Z",
+  "icon": "dsh-packycode-api.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "return globalThis.fetch(input, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3279,
+        "text": "*   `cli.fetch(input, init, meta)` sends it."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3369,
+        "text": "return finishClaudeStream(await createClaudeReplayFetch((target, request) => cli.fetch(target, request, meta), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5885,
+        "text": "* @returns `{ fetch(input, init, meta), toolCall(key, id), interrupt(key), close(), stats() }`."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9611,
+        "text": "if (agent === void 0) return cliTransport.fetch(input, init, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { constants, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { lstat, mkdir, open, readFile, readdir, realpath, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 391,
+        "text": "const parsed = JSON.parse(await readFile(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 782,
+        "text": "function resolveSpawnCommand(binary, { platform = process.platform, exists = existsSync, readFile = (file) => readFileSync(file, \"utf8\") } = {}) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 791,
+        "text": "relative = [...readFile(binary).matchAll(SHIM_TARGET)].map((match) => match[1]).find((target) => !/^node\\.exe$/iu.test(target));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4669,
+        "text": "known.dispose ??= agent.ctx.tools.register(mirrorTool(known.key, known.executed));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4678,
+        "text": "dispose: agent.ctx.tools.register(mirrorTool(key, executed))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9817,
+        "text": "(typeof imageCtx.effect === \"function\" ? imageCtx : ctx).effect(() => images.mount(() => imageCtx.tools.register(createPackyCodeImageTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 505,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 93,
+      "text": " PackyCode → Claude Code CLI** (or run `npm install -g @anthropic-ai/claude-code --allow-scripts=@anthropic-ai/claude-code`), and click **Update Claude Code CLI"
+    },
+    {
+      "file": "README.en.md",
+      "line": 145,
+      "text": "de update`; an npm global install runs `npm install -g @anthropic-ai/claude-code@latest --allow-scripts=@anthropic-ai/claude-code`, because npm 12 skips install"
+    },
+    {
+      "file": "README.en.md",
+      "line": 305,
+      "text": "laude Code CLI** click Install, or run `npm install -g @anthropic-ai/claude-code --allow-scripts=@anthropic-ai/claude-code` and click Check again; set `claudeCl"
+    },
+    {
+      "file": "README.md",
+      "line": 93,
+      "text": "PackyCode → Claude Code CLI** 一键安装（或自行 `npm install -g @anthropic-ai/claude-code --allow-scripts=@anthropic-ai/claude-code`），版本过低或有新版本时在同一处点「更新 Claude Code CLI」"
+    },
+    {
+      "file": "README.md",
+      "line": 145,
+      "text": "aude`）装的执行 `claude update`；npm 全局安装的执行 `npm install -g @anthropic-ai/claude-code@latest --allow-scripts=@anthropic-ai/claude-code`，因为 npm 12 默认不运行安装脚本，而 `claude"
+    }
+  ],
+  "skippedEntries": []
+}

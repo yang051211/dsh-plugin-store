@@ -1,0 +1,102 @@
+{
+  "name": "dsh-novel-forge",
+  "version": "1.0.6",
+  "scannedAt": "2026-10-26T10:04:53.380Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 136,
+        "text": "response = await fetch(`${API_BASE}${finalPath}`, {"
+      },
+      {
+        "file": "lib/server-api.js",
+        "line": 3,
+        "text": "// 浏览器通过 fetch() 调用这些端点，实现抽屉 UI 的写操作（写章/润色/世界书 CRUD）。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index-store.js",
+        "line": 11,
+        "text": "import { mkdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index-store.js",
+        "line": 54,
+        "text": "mkdirSync(dirname(abs), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'fs', 'systemPrompt', 'subagents', 'agents', 'sessions'];"
+      },
+      {
+        "file": "lib/mcp-standalone.js",
+        "line": 12,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/mcp-standalone.js",
+        "line": 13,
+        "text": "import fsp from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'fs', 'systemPrompt', 'subagents', 'agents', 'sessions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 184,
+        "text": "ctx.tools.register(defineProjectTool(ctx, config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "ctx.tools.register(defineOutlineTool(ctx, config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "ctx.tools.register(defineCharacterTool(ctx, config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "ctx.tools.register(defineWorldbookTool(ctx, config));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "sessions",
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

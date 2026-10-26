@@ -1,0 +1,127 @@
+{
+  "name": "deepseek-harness-intelligent-ui",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:05:15.840Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 6,
+        "text": "wNetwork).description(\"Allow widgets to fetch()/WebSocket to the CDN allowlist (CSP connect-src). Off: no network calls.\"),maxWidgetHeight:$.natural().min(200)."
+      },
+      {
+        "file": "examples/component-extension/serve.mjs",
+        "line": 3,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "src/config.js",
+        "line": 35,
+        "text": ".description('Allow widgets to fetch()/WebSocket to the CDN allowlist (CSP connect-src). Off: no network calls.'),"
+      },
+      {
+        "file": "src/tools/compose.js",
+        "line": 47,
+        "text": "y from ${cdn}.${policy.allowNetwork ? ' fetch() to those origins is allowed.' : ' Network requests are blocked.'} Use Bridge.sendPrompt only in response to an e"
+      },
+      {
+        "file": "src/tools/widget.js",
+        "line": 41,
+        "text": "External resources only from: ${cdn}.${policy.allowNetwork ? ' fetch() to those origins is allowed.' : ' Network requests (fetch/XHR/WebSocket) are blocked.'}`,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 11,
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 18,
+        "text": "const pkg = JSON.parse(readFileSync(fileURLToPath(new URL('../package.json', import.meta.url)), 'utf8'))"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 98,
+        "text": "const manifest = JSON.parse(readFileSync(path.join(dir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "client/client.js",
+        "line": 286,
+        "text": "m(e){return\"-\"+e.toLowerCase()}function rm(e){return e.charAt(1).toUpperCase()}var su=Uo([Ho,iu,qo,Vo,Wo],\"html\"),ni=Uo([Ho,ou,qo,Vo,Wo],\"svg\");function lu(e){r"
+      },
+      {
+        "file": "examples/component-extension/serve.mjs",
+        "line": 4,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.js",
+        "line": 19,
+        "text": "export const inject = ['tools', 'commands'];"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 31,
+        "text": "ctx.tools.register(createRenderTool(config));"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 32,
+        "text": "ctx.tools.register(createPatchTool(config));"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 34,
+        "text": "if (config.enableWidget) ctx.tools.register(createWidgetTool(config));"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 36,
+        "text": "if (composeEnabled(config)) ctx.tools.register(createComposeTool(config));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 111,
+        "text": "const r = spawnSync(win ? shellLine(cmd, args) : cmd, win ? [] : args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "client/client.js",
+    "renderer/renderer.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,135 @@
+{
+  "name": "dsh-bossintroduce",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:04:56.517Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 105,
+        "text": "const resp = await fetch(url, { signal: AbortSignal.timeout(3000) });"
+      },
+      {
+        "file": "scripts/flow.mjs",
+        "line": 225,
+        "text": "res = await fetch(`${ENDPOINT}/json/list`);"
+      },
+      {
+        "file": "scripts/flow.mjs",
+        "line": 254,
+        "text": "ws = new WebSocket(page.webSocketDebuggerUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 23,
+        "text": "import { existsSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 402,
+        "text": "mkdirSync(c.profile, { recursive: true });"
+      },
+      {
+        "file": "scripts/flow.mjs",
+        "line": 59,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/flow.mjs",
+        "line": 147,
+        "text": "const g = JSON.parse(readFileSync(GRAPH_PATH, 'utf8'));"
+      },
+      {
+        "file": "scripts/init.mjs",
+        "line": 21,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 338,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 347,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 366,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 438,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 22,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 72,
+        "text": "const r = spawnSync(cmd, [...args, '--version'], { encoding: 'utf8', timeout: 8000, shell: false });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 131,
+        "text": "const r = spawnSync('which', [c], { encoding: 'utf8' });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 158,
+        "text": "child = spawn(cmd, args, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 404,
+        "text": "const child = spawn(browser, browserArgs(c.port, c.profile, url), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,117 @@
+{
+  "name": "dsh-composer-plus",
+  "version": "1.12.0",
+  "scannedAt": "2026-10-26T10:05:07.735Z",
+  "icon": "dsh-composer-plus.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 283,
+        "text": "function createRollback(call = (init, query = '') => fetch(`${ROLLBACK_ROUTE}${query}`, init)) {"
+      },
+      {
+        "file": "client.js",
+        "line": 451,
+        "text": "ction createDeleteChat(post = (body) => fetch(DELETE_CHAT_ROUTE, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }"
+      },
+      {
+        "file": "client.js",
+        "line": 542,
+        "text": "function createExportChat(get = (sessionId) => fetch(`${EXPORT_ROUTE}?${new URLSearchParams({ sessionId })}`)) {"
+      },
+      {
+        "file": "client.js",
+        "line": 825,
+        "text": "const response = await fetch(`${route}?catalog=1`);"
+      },
+      {
+        "file": "client.js",
+        "line": 837,
+        "text": "const response = await fetch(route, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ model }) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 14,
+        "text": "urn JSON.parse(process.getBuiltinModule('node:fs').readFileSync(dshHomePath('storages', 'dsh-composer-plus', 'content-search.json'), 'utf8'))?.on === false ? 'n"
+      },
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { constants, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { lstat, mkdir, mkdtemp, open, readdir, readFile, realpath, rename, rm, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 52,
+        "text": "const PACKAGE = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 177,
+        "text": "const data = JSON.parse(await readFile(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": "    const probe = subprocess.spawn({ argv: ['/usr/bin/xcode-select', '-p'], cwd: homedir(), stdio: { stdin: 'ignore', stdout: { maxBytes: 4096 }, stderr: { maxB"
+      },
+      {
+        "file": "index.js",
+        "line": 82,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 1004,
+        "text": "      const handle = subprocess.spawn({ argv: ['/usr/bin/trash', ...existing], cwd: dirname(existing[0]), stdio: { stdin: 'ignore', stdout: { maxBytes: 4096 }, "
+      },
+      {
+        "file": "tether/gateway/server.mjs",
+        "line": 8,
+        "text": "import { execFile, execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "tether/gateway/server.mjs",
+        "line": 94,
+        "text": "execFile(bins[i], ['status', '--json'], { timeout: 3000, maxBuffer: 8 << 20, env: { ...process.env, TAILSCALE_BE_CLI: '1' } }, (err, out) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionController",
+    "sessionQuery",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

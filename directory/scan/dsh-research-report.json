@@ -1,0 +1,106 @@
+{
+  "name": "dsh-research-report",
+  "version": "0.3.30",
+  "scannedAt": "2026-10-26T10:04:45.327Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 444,
+        "text": "result = await deps.web.fetch({ url }, linked);"
+      },
+      {
+        "file": "lib/types/gather.js",
+        "line": 59,
+        "text": "result = await deps.web.fetch({ url }, linked);"
+      },
+      {
+        "file": "src/gather.ts",
+        "line": 96,
+        "text": "result = await deps.web.fetch({ url }, linked)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 3,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 64,
+        "text": "content = await readFile(path.join(ledgerRoot, \"objects\", record.sha256), \"utf8\");"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 80,
+        "text": "const manifestText = await readFile(path.join(args.reportDir, \"manifest.json\"), \"utf8\");"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 86,
+        "text": "readFile: (file) => readFile(file, \"utf8\"),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2221,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2239,
+        "text": "ctx.effect(() => ctx.tools.register(makeEvidenceAddTool(service)), \"research-report: evidence_add tool\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2240,
+        "text": "ctx.effect(() => ctx.tools.register(makeResearchReportTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2244,
+        "text": "ctx.effect(() => ctx.tools.register(makeLedgerQueryTool(service)), \"research-report: ledger_query tool\");"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

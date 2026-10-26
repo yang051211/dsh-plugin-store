@@ -1,0 +1,78 @@
+{
+  "name": "dsh-550c-boot",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:04:41.363Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4123,
+        "text": "fetch(UPDATE_ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4139,
+        "text": "fetch(APPLY_ROUTE, { method: 'POST', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "const response = await fetch(`${base}/${PACKAGE_NAME}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "return JSON.parse(readFileSync(url, 'utf8')).version ?? null"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 427,
+        "text": "const body = readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 286,
+        "text": "const child = spawn(command.file, command.args, { cwd: process.env.DSH_PROFILE_DIR ?? undefined, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "preview/assets/ueg-land.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

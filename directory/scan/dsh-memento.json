@@ -1,0 +1,99 @@
+{
+  "name": "dsh-memento",
+  "version": "0.5.28",
+  "scannedAt": "2026-10-26T10:04:51.625Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 166,
+        "text": "const response = await fetch('/api/memento/entries?limit=1')"
+      },
+      {
+        "file": "client/client.js",
+        "line": 507,
+        "text": "const response = await fetch('/api/memento/entries?limit=200')"
+      },
+      {
+        "file": "client/client.js",
+        "line": 517,
+        "text": "void fetch('/api/memento/audit?limit=20')"
+      },
+      {
+        "file": "client/client.js",
+        "line": 521,
+        "text": "void fetch('/api/memento/proposals')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/mcp-server.mjs",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/mcp-server.mjs",
+        "line": 13,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 17,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 1684,
+        "text": "payload = JSON.parse(readFileSync(arg, 'utf8'))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 1818,
+        "text": "const rawText = readFileSync(arg, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 130,
+        "text": "export const inject = ['tools', 'systemPrompt', 'approval']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 1160,
+        "text": "ctx.tools.register(/** @type {import('@deepseek-ai/dsh-tools').ToolDefinition} */ (makeMemoryTool(service, resolved.language)))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 1214,
+        "text": "ctx.tools.register(/** @type {import('@deepseek-ai/dsh-tools').ToolDefinition} */ (makeMemoryRecallTool(service, ctx, live)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

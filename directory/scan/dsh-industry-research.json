@@ -1,0 +1,111 @@
+{
+  "name": "dsh-industry-research",
+  "version": "0.3.23",
+  "scannedAt": "2026-10-26T10:04:53.501Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2029,
+        "text": "const outcome = await web.fetch({ url: candidate.url }, requestSignal(exec.signal, config.fetchTimeoutMs));"
+      },
+      {
+        "file": "lib/types/tools/track.js",
+        "line": 155,
+        "text": "const outcome = await web.fetch({ url: candidate.url }, requestSignal(exec.signal, config.fetchTimeoutMs));"
+      },
+      {
+        "file": "src/tools/track.ts",
+        "line": 191,
+        "text": "const outcome = await web.fetch({ url: candidate.url }, requestSignal(exec.signal, config.fetchTimeoutMs))"
+      },
+      {
+        "file": "src/web.ts",
+        "line": 39,
+        "text": "fetch(request: { url: string }, signal?: AbortSignal): Promise<WebFetchOutcome>"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdir, readFile, readdir, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 856,
+        "text": "text = await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 874,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 875,
+        "text": "await writeFile(path, `${JSON.stringify(registry, null, 2)}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3771,
+        "text": "const inject = [\"skills\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3826,
+        "text": "ctx.tools.register(buildIndustryMapTool(ctx, resolved));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3827,
+        "text": "ctx.tools.register(buildIndustryTrackTool(ctx, resolved));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3828,
+        "text": "ctx.tools.register(buildCompanyScanTool(ctx, resolved));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3829,
+        "text": "ctx.tools.register(buildIndustryReportTool(ctx, resolved));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

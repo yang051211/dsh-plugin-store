@@ -1,0 +1,133 @@
+{
+  "name": "dsh-moli",
+  "version": "1.1.19",
+  "scannedAt": "2026-10-26T10:04:46.515Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install.js",
+        "line": 7,
+        "text": "* `Invoke-WebRequest`, `Invoke-WebRequest` with an explicit proxy, `curl.exe`"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 32,
+        "text": "* reads them), Windows gets a DefaultWebProxy prelude (Invoke-WebRequest reads"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 53,
+        "text": "shell: 'curl --proto \\'=https\\' --tlsv1.2 -fsSL https://github.com/lexmount/moli/releases/latest/download/moli-installer.sh | sh',"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 76,
+        "text": "* - Windows — `Invoke-WebRequest` (used inside moli-installer.ps1) does NOT"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 130,
+        "text": "* PowerShell 5.1's `Invoke-WebRequest` has no `-NoProxy`, and the system proxy"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install.js",
+        "line": 39,
+        "text": "import { closeSync, existsSync, mkdtempSync, openSync, readFileSync, readdirSync, rmSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 229,
+        "text": "return createHash('sha256').update(readFileSync(path)).digest('hex');"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 316,
+        "text": "const stdout = existsSync(outPath) ? readFileSync(outPath) : Buffer.alloc(0);"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 317,
+        "text": "const stderrText = existsSync(errPath) ? readFileSync(errPath, 'utf8') : '';"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 318,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 72,
+        "text": "* `ctx.tools.register` instead of going through `defineTool`."
+      },
+      {
+        "file": "index.js",
+        "line": 351,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 385,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install.js",
+        "line": 37,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 274,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true, timeout: 10000 });"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 336,
+        "text": "child = spawn(options.command, options.args, {"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 417,
+        "text": "const result = spawnSync(options.command, options.args, {"
+      },
+      {
+        "file": "lib/moli.js",
+        "line": 6,
+        "text": "* inherited named pipes, so `spawnSync(..., { stdio: 'pipe' })` yields status"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

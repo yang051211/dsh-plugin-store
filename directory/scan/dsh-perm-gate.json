@@ -1,0 +1,121 @@
+{
+  "name": "dsh-perm-gate",
+  "version": "5.3.3",
+  "scannedAt": "2026-10-26T10:04:38.055Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ask-context.js",
+        "line": 49,
+        "text": "rocess|Invoke-Expression|Invoke-Command|Invoke-WebRequest|Invoke-RestMethod|iwr|irm|curl|wget|scp|rsync|nc|ncat|ssh|rm|mv|cp|dd|tee|sed|awk|npm|pnpm|yarn|pip|pi"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 125,
+        "text": "* @param nowFetch - injectable fetch (defaults to global fetch) for tests."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1871,
+        "text": "\t\t\t\t\tfetch(\"/api/dsh-perm-gate/learning\", { headers: { \"cache-control\": \"no-cache\" } }).then((r) => r.ok ? r.json() : Promise.reject(/* @__PURE__ */ new Error(`"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1892,
+        "text": "fetch(\"/api/dsh-perm-gate/learning\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2352,
+        "text": "fetch(\"/api/dsh-perm-gate/dry-run\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/allowlist.js",
+        "line": 17,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 131,
+        "text": "writeFileSync(rulesFile, stringify(doc), 'utf8');"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 185,
+        "text": "writeFileSync(rulesFile, stringify(doc), 'utf8');"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 194,
+        "text": "return readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "lib/appcontainer/compile.js",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['tools', 'webServer', 'llm', 'agentDefaultModel'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/appcontainer/compile.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/appcontainer/compile.js",
+        "line": 41,
+        "text": "execFile(exe, args, { cwd, windowsHide: true, timeout: 120_000 }, (error, _stdout, stderr) => {"
+      },
+      {
+        "file": "lib/appcontainer/exempt.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/appcontainer/exempt.js",
+        "line": 20,
+        "text": "execFile(exe, args, { windowsHide: true, timeout: timeoutMs }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/appcontainer/exempt.js",
+        "line": 62,
+        "text": "        execFile('powershell.exe', ['-NoProfile', '-Command', `Start-Process -Verb RunAs -Wait -WindowStyle Hidden '${command}'`], { windowsHide: true, timeout:"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

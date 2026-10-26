@@ -1,0 +1,98 @@
+{
+  "name": "dsh-claude-move",
+  "version": "0.4.18",
+  "scannedAt": "2026-10-26T10:05:19.488Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 266,
+        "text": "const res = await fetch(url, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 20,
+        "text": "import { existsSync, readdirSync, statSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 21,
+        "text": "import { readFile, mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 555,
+        "text": "raw = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "index.mjs",
+        "line": 902,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "index.mjs",
+        "line": 933,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 68,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 3395,
+        "text": "// Service Provider — 挂载即注册：扫描/导入/导出工具经 ctx.tools.register 注册，"
+      },
+      {
+        "file": "index.mjs",
+        "line": 3399,
+        "text": "ctx.tools.register(makeScanTool(ctx, config, state))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 3400,
+        "text": "ctx.tools.register(makeImportTool(ctx, config))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 3401,
+        "text": "if (config.enableExport !== false) ctx.tools.register(makeExportTool(ctx, config))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discovery.mjs",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

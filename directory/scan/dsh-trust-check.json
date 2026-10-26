@@ -1,0 +1,86 @@
+{
+  "name": "dsh-trust-check",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:04:39.361Z",
+  "icon": "dsh-trust-check.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2528,
+        "text": "const res = await fetch(\"/dsh-trust-check/ack\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2556,
+        "text": "const res = await fetch(`/dsh-trust-check/ack?name=${encodeURIComponent(report.name)}`, { method: \"DELETE\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2569,
+        "text": "const res = await fetch(\"/dsh-trust-check/explain\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2944,
+        "text": "const response = await fetch(\"/dsh-trust-check/audit\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1463,
+        "text": "* Decide whether any `fetch(` call on one source line is network egress."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/trust-check.mjs",
+        "line": 12,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync, lstatSync, readFileSync, readdirSync, realpathSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "parsed = JSON.parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "writeFileSync(temp, `${JSON.stringify(store, null, 2)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3527,
+        "text": "content = readFileSync(abs, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

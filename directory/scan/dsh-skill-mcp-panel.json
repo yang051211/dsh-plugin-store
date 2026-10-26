@@ -1,0 +1,130 @@
+{
+  "name": "dsh-skill-mcp-panel",
+  "version": "2.3.5",
+  "scannedAt": "2026-10-26T10:04:49.329Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 25,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/version.js",
+        "line": 38,
+        "text": "const response = await fetch(RELEASES_LATEST_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-mcp.js",
+        "line": 11,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/cli-mcp.js",
+        "line": 410,
+        "text": "const data = JSON.parse(await readFile(resolve(path), \"utf8\"));"
+      },
+      {
+        "file": "lib/cli-skill.js",
+        "line": 26,
+        "text": "import { copyFile, mkdir, readdir, readFile, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/cli-skill.js",
+        "line": 84,
+        "text": "return Buffer.from((await readFile(fullPath, \"utf8\")).replace(/^\\uFEFF/, \"\").replace(/\\r\\n/g, \"\\n\").replace(/\\r/g, \"\\n\"), \"utf8\");"
+      },
+      {
+        "file": "lib/cli-skill.js",
+        "line": 127,
+        "text": "const data = await readFile(source);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-mcp.js",
+        "line": 319,
+        "text": "const row = { id: rowIdForServerName(input.serverName), name: \"@deepseek-ai/dsh-mcp-client\", config: toOfficialConfig(input) };"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3187,
+        "text": "docLead: \"DSH 的 MCP 能力来自官方插件 @deepseek-ai/dsh-mcp-client：它读的不是单独的 MCP 配置文件，而是所在 profile 的 cordis.patch.yml 里的一条 loader entry ——\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3194,
+        "text": "panel-mcp-github\\n  name: '@deepseek-ai/dsh-mcp-client'\\n  config:\\n    serverName: github\\n    transport: stdio\\n    command: npx\\n    args: ['-y', '@modelcont"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3314,
+        "text": "rt comes from the official @deepseek-ai/dsh-mcp-client plugin: it reads no separate MCP config file, only a loader entry inside the profile's cordis.patch.yml —"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3321,
+        "text": "panel-mcp-github\\n  name: '@deepseek-ai/dsh-mcp-client'\\n  config:\\n    serverName: github\\n    transport: stdio\\n    command: npx\\n    args: ['-y', '@modelcont"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-mcp.js",
+        "line": 14,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli-mcp.js",
+        "line": 289,
+        "text": "const child = spawn(opener[0], opener[1], { detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/cli-skill.js",
+        "line": 31,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli-skill.js",
+        "line": 304,
+        "text": "const child = spawn(\"dsh\", [\"plugin\", \"--profile\", profile, \"add\", spec], {"
+      },
+      {
+        "file": "lib/global-shim.js",
+        "line": 13,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "loader",
+    "sessions",
+    "skills",
+    "tools",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

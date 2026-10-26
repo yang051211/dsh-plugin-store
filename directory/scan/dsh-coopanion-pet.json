@@ -1,0 +1,106 @@
+{
+  "name": "dsh-coopanion-pet",
+  "version": "1.9.1",
+  "scannedAt": "2026-10-26T10:04:53.437Z",
+  "icon": "dsh-coopanion-pet.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/settings.js",
+        "line": 115,
+        "text": "const res = await fetch('/api/dsh-coopanion-pet/report');"
+      },
+      {
+        "file": "assets/settings.js",
+        "line": 135,
+        "text": "await fetch('/api/dsh-coopanion-pet/desktop-start', { method: 'POST' });"
+      },
+      {
+        "file": "assets/settings.js",
+        "line": 138,
+        "text": "await fetch('/api/dsh-coopanion-pet/report', {"
+      },
+      {
+        "file": "assets/settings.js",
+        "line": 233,
+        "text": "const res = await fetch('/dsh-coopanion-pet/packs');"
+      },
+      {
+        "file": "assets/settings.js",
+        "line": 261,
+        "text": "const res = await fetch('/api/dsh-coopanion-pet/import', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/main.cjs",
+        "line": 28,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "desktop/main.cjs",
+        "line": 63,
+        "text": "try { fs.appendFileSync(STATUS_FILE, new Date().toISOString() + ' ' + line + '\\n'); } catch (error) { /* 写不了就算了 */ }"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { createReadStream, existsSync, statSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 500,
+        "text": "try { mkdirSync(PACK_DIR, { recursive: true }); } catch (error) { /* 建不出来后面会报 */ }"
+      },
+      {
+        "file": "lib/desktop-bridge.js",
+        "line": 27,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1262,
+        "text": "const off = tools.register(def);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop-bridge.js",
+        "line": 29,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/desktop-bridge.js",
+        "line": 191,
+        "text": "child = spawn(electronPath, args, {"
+      },
+      {
+        "file": "lib/desktop-bridge.js",
+        "line": 236,
+        "text": "spawn('taskkill', ['/PID', String(pid), '/T', '/F'], { stdio: 'ignore', detached: true }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

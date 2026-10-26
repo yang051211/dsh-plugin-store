@@ -1,0 +1,115 @@
+{
+  "name": "dsh-plugin-wallpaper-engine",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:04:35.713Z",
+  "icon": "dsh-plugin-wallpaper-engine.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 10283,
+        "text": "// user edited settings during the fetch (their write wins)."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 19722,
+        "text": "//   curl -s 127.0.0.1:<port>/wallpaper-engine/diag-log"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 22144,
+        "text": "* 裸 `fetch(` 会散落在设置、库存、上传、抓帧、诊断等各业务家族里，同一个后端契约"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 22149,
+        "text": "* 不变量（由 test/verify-api-client.mjs 断言）：**业务代码零裸 `fetch(`** ——"
+      },
+      {
+        "file": "lib/media-origin.js",
+        "line": 13,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache-dir.js",
+        "line": 19,
+        "text": "import { readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cache-dir.js",
+        "line": 43,
+        "text": "/** @type {import('node:fs').Dirent[]} */"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9667,
+        "text": "\t\t\t\t *    node -e \"const s=require('fs').readFileSync(process.argv[1],'utf8');for(const m of s.matchAll(/--dsw-font-([a-z0-9-]+?):([^;{}\\\\\"]+)/g))if(!/-font-|-l"
+      },
+      {
+        "file": "lib/diag-trace.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, mkdirSync, renameSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/diag-trace.js",
+        "line": 39,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media/transcode.js",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/media/transcode.js",
+        "line": 435,
+        "text": "proc = spawn(a.file || ff, a.args || args,"
+      },
+      {
+        "file": "lib/steam-discovery.js",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/steam-discovery.js",
+        "line": 57,
+        "text": "// async execFile (5s timeout): execFileSync would block the event loop."
+      },
+      {
+        "file": "lib/steam-discovery.js",
+        "line": 58,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 9,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "wallpaperEngineHost",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

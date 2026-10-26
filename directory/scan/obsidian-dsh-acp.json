@@ -1,0 +1,121 @@
+{
+  "name": "obsidian-dsh-acp",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-26T10:05:16.404Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 307,
+        "text": "const resp = await fetch(\"/api-session/\" + path, {"
+      },
+      {
+        "file": "lib/proxy-mode.mjs",
+        "line": 82,
+        "text": "const res = await fetch(`${baseUrl}/acp/proxy/probe`, {"
+      },
+      {
+        "file": "lib/proxy-mode.mjs",
+        "line": 188,
+        "text": "const r = await fetch(`${baseUrl}/acp/proxy/session/prompt`, {"
+      },
+      {
+        "file": "lib/proxy-mode.mjs",
+        "line": 318,
+        "text": "await fetch(`${baseUrl}/acp/proxy/permission-response`, {"
+      },
+      {
+        "file": "lib/selfcheck/audit.mjs",
+        "line": 283,
+        "text": "const r = await runCapture(\"node\", [\"-e\", `fetch(${JSON.stringify(url)}).then(r=>process.exit(0)).catch(e=>process.exit(1))`], { timeoutMs: 5000 });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "archive-store.mjs",
+        "line": 17,
+        "text": "import { mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync, appendFileSync, renameSync, statSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "archive-store.mjs",
+        "line": 94,
+        "text": "cache = JSON.parse(readFileSync(storeFile(), \"utf8\"));"
+      },
+      {
+        "file": "archive-store.mjs",
+        "line": 113,
+        "text": "const disk = JSON.parse(readFileSync(storeFile(), \"utf8\"));"
+      },
+      {
+        "file": "archive-store.mjs",
+        "line": 141,
+        "text": "mkdirSync(storeRoot(), { recursive: true });"
+      },
+      {
+        "file": "archive-store.mjs",
+        "line": 148,
+        "text": "writeFileSync(tmp, JSON.stringify(idx, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/long-runtime.mjs",
+        "line": 618,
+        "text": "*   2. Fallback: ctx.tools.wireSchemas(undefined) → { schemas }"
+      },
+      {
+        "file": "lib/version-detect.mjs",
+        "line": 243,
+        "text": "[\"ctx.tools.wireSchemas\", () => typeof ctx.tools?.wireSchemas === \"function\"],"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "doctor.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "doctor.mjs",
+        "line": 78,
+        "text": "* @returns {{ cmd: string, prefixArgs: string[] }} spawn(cmd, [...prefixArgs, ...args])"
+      },
+      {
+        "file": "doctor.mjs",
+        "line": 127,
+        "text": "const r = spawnSync(spec.cmd, [...spec.prefixArgs, \"--version\"], { encoding: \"utf8\", timeout: 8000 });"
+      },
+      {
+        "file": "doctor.mjs",
+        "line": 230,
+        "text": "const hasDsh = (() => { try { const r = spawnSync(\"dsh\", [\"--version\"], { timeout: 5000 }); return r.status === 0; } catch { return false; } })();"
+      },
+      {
+        "file": "dsh-acp.mjs",
+        "line": 24,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

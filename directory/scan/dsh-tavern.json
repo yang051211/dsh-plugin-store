@@ -1,0 +1,122 @@
+{
+  "name": "dsh-tavern",
+  "version": "2.7.20",
+  "scannedAt": "2026-10-26T10:04:43.523Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 1228,
+        "text": "          fetch('/api/tavern/state', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ activePresetIdx: state.activePres"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 1359,
+        "text": "fetch('/api/tavern/worldbook', {"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 1470,
+        "text": "fetch('/api/tavern/worldbook', {"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 1491,
+        "text": "return fetch('/api/tavern/preset/import-st', {"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 1718,
+        "text": "var r = await fetch('/api/tavern/current-session');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 5492,
+        "text": "function readFile(f) {"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 5503,
+        "text": "readFile(f);"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 5509,
+        "text": "if (files && files.length > 0) readFile(files[0]);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "const raw = fs.readFileSync(PRESETS_META, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 3849,
+        "text": "? '　|　工具注册：✅ 有 ctx.tools 且能 register()（探针只读，不再真注册）'"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 3850,
+        "text": ": '　|　工具注册：⚠️ 有 ctx.tools 但没有 register()：' + esc(p.registerError || p.note || '未知'))"
+      },
+      {
+        "file": "lib/client.manager.bundle.js",
+        "line": 3851,
+        "text": ": '　|　工具注册：❌ 宿主未暴露 ctx.tools（只能靠 /名称 手打或文件读取）';"
+      },
+      {
+        "file": "lib/server/routes.js",
+        "line": 427,
+        "text": "//   唯一未知是：酒馆的 fiber 能不能拿到 `ctx.tools`（`dsh-tools` 是否在 profile 层也挂载）。"
+      },
+      {
+        "file": "lib/server/routes.js",
+        "line": 464,
+        "text": "//     1) 这个探测早就把答案拿到了 —— ctx.tools 在不在、有没有 register()，看上面两个"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server/routes.js",
+        "line": 1262,
+        "text": "const { exec } = await import('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.manager.bundle.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

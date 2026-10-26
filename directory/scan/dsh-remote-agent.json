@@ -1,0 +1,162 @@
+{
+  "name": "dsh-remote-agent",
+  "version": "0.9.12",
+  "scannedAt": "2026-10-26T10:04:41.932Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 195,
+        "text": "return fetch(API + p, { cache: 'no-store' }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 214,
+        "text": "return fetch(fullPath, { cache: 'no-store' }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 223,
+        "text": "return fetch(API + p, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 719,
+        "text": "fetch(SETUP_APPLY_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1392,
+        "text": "fetch(API + '/diag', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-remote-setup.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-remote-setup.js",
+        "line": 107,
+        "text": "fs.writeFileSync(path.resolve(outFile), yaml + '\\n', 'utf8')"
+      },
+      {
+        "file": "bin/dsh-remote-setup.js",
+        "line": 177,
+        "text": "const raw = fs.readFileSync(cfgPath, 'utf8')"
+      },
+      {
+        "file": "bin/dsh-remote-setup.js",
+        "line": 386,
+        "text": "try { fs.mkdirSync(m, { recursive: true }); hint(`  已自动创建缺失目录 ${m}`) } catch { return `无法创建目录 ${m}` }"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 19,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 65,
+        "text": "# `['webServer']`，hub 分支一访问 `ctx.tools` 就抛**"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 85,
+        "text": "inject: ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/hub/index.js",
+        "line": 804,
+        "text": "// ⚠ 这里**必须容错**：`ctx.tools` 是 loader 行 inject 声明的服务，若某个"
+      },
+      {
+        "file": "lib/hub/index.js",
+        "line": 818,
+        "text": "toolsSvc = ctx.tools"
+      },
+      {
+        "file": "lib/hub/tools.js",
+        "line": 382,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/external-tools.js",
+        "line": 44,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/external-tools.js",
+        "line": 131,
+        "text": "const r = spawnSync(tool.probe.cmd, tool.probe.args, {"
+      },
+      {
+        "file": "lib/identity.js",
+        "line": 39,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/identity.js",
+        "line": 181,
+        "text": "spawnSync("
+      },
+      {
+        "file": "lib/node/exec.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 86,
+      "text": "node bin/dsh-remote-setup.js"
+    },
+    {
+      "file": "README.en.md",
+      "line": 116,
+      "text": "node bin/dsh-remote-setup.js --doctor your-config.yml"
+    },
+    {
+      "file": "README.en.md",
+      "line": 233,
+      "text": "npm install -g dsh-remote-agent"
+    },
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "node bin/dsh-remote-setup.js"
+    },
+    {
+      "file": "README.md",
+      "line": 102,
+      "text": "node bin/dsh-remote-setup.js --doctor 你的配置.yml"
+    }
+  ],
+  "skippedEntries": []
+}

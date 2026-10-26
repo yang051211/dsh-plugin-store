@@ -1,0 +1,106 @@
+{
+  "name": "dsh-permission-rules",
+  "version": "0.7.20",
+  "scannedAt": "2026-10-26T10:04:48.180Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { createServer, request } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { request as request$1 } from \"node:https\";"
+      },
+      {
+        "file": "rules/builtin-high-risk.yaml",
+        "line": 127,
+        "text": "reason: \"Piping a remote fetch (curl/wget) directly into a shell executes remote code and is blocked\""
+      },
+      {
+        "file": "src/proxy.ts",
+        "line": 18,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "src/proxy.ts",
+        "line": 19,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3143,
+        "text": "procVersionText = readFileSync(\"/proc/version\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3324,
+        "text": "const text = readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3966,
+        "text": "text: readFileSync(path, \"utf8\")"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4017,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4850,
+        "text": "const inject = [\"commands\", \"tools\"];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 23,
+        "text": "export const inject = ['commands', 'tools']"
+      },
+      {
+        "file": "src/runtime.ts",
+        "line": 51,
+        "text": "export const inject = ['commands', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

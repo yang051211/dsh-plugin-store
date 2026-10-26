@@ -1,0 +1,112 @@
+{
+  "name": "dsh-plugin-ops-bundle",
+  "version": "0.20.5",
+  "scannedAt": "2026-10-26T10:05:03.065Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 226,
+        "text": "const res = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1135,
+        "text": "const res = await fetch(`${API2}${path}`, init);"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 485,
+        "text": "await fetch(`${base}/-/ping`, { signal: AbortSignal.timeout(5000), headers: { accept: 'application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sandbox.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 262,
+        "text": "const text = readFileSync(newest.file, 'utf8');"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 423,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 434,
+        "text": "writeFileSync(join(dir, 'latest.json'), body, 'utf8');"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 435,
+        "text": "writeFileSync(join(dir, `${new Date().toISOString().replace(/[:.]/g, '-')}.json`), body, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 363,
+        "text": "].map((tool) => tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sandbox.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 40,
+        "text": "spawn('taskkill', ['/pid', String(pid), '/T', '/F'], { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 124,
+        "text": "return spawn(driver.execPath, [driver.entry, ...args], { env, cwd, stdio, detached });"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 127,
+        "text": "return spawn(driver.name, args, { env, cwd, stdio, detached });"
+      },
+      {
+        "file": "lib/sandbox.js",
+        "line": 130,
+        "text": "return spawn('cmd.exe', ['/d', '/s', '/c', `\"${inner}\"`], { env, cwd, stdio, windowsVerbatimArguments: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 8,
+      "text": "> The same engine is available as a terminal CLI — `npm i -g dsh-plugin-ops` gives you"
+    }
+  ],
+  "skippedEntries": []
+}

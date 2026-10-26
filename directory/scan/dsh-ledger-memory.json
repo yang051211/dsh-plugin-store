@@ -1,0 +1,101 @@
+{
+  "name": "dsh-ledger-memory",
+  "version": "1.6.1",
+  "scannedAt": "2026-10-26T10:04:48.363Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 285,
+        "text": "const res = await fetch(url, opts);"
+      },
+      {
+        "file": "lib/part5.js",
+        "line": 305,
+        "text": "\"With mode:'events', the exact seqs to fetch (take them from a mode:'index' result). \" +"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/base.js",
+        "line": 23,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/base.js",
+        "line": 172,
+        "text": "*    `fs.writeFileSync(abs, next)`**。注入\"先写 8 字节再抛异常\" ⇒ **旧内容已丢，文件只剩"
+      },
+      {
+        "file": "lib/base.js",
+        "line": 223,
+        "text": "buf = fs.readFileSync(fromAbs);"
+      },
+      {
+        "file": "lib/base.js",
+        "line": 229,
+        "text": "fs.writeFileSync(toAbs, buf);"
+      },
+      {
+        "file": "lib/base.js",
+        "line": 236,
+        "text": "back = fs.readFileSync(toAbs);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/defs.js",
+        "line": 11,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "const d = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/part3.js",
+        "line": 3399,
+        "text": "*   ③ 官方 `dsh-tool-ask-user` 本身就是这么做的（`inject = [\"tools\",\"userQuestions\"]`），"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/part2.js",
+        "line": 3,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/part2.js",
+        "line": 4399,
+        "text": "const r = spawnSync(\"git\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

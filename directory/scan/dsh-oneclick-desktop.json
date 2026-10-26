@@ -1,0 +1,85 @@
+{
+  "name": "dsh-oneclick-desktop",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:05:03.213Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 127,
+        "text": "fetch(STATE_URL, { credentials: \"same-origin\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 177,
+        "text": "fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "fs.appendFileSync(LOG_PATH, `[${new Date().toISOString()}] ${message}\\n`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "return String(fs.readFileSync(STATE_PATH, 'utf8')).trim() === 'open'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "// On Windows, spawn({ detached: true }) made PowerShell exit without ever"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 157,
+        "text": "// running the script. spawn() still returned a pid, so the route reported"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "const child = spawn(ps, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "const child = spawn(ps, args, { stdio: ['ignore', out, out], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,123 @@
+{
+  "name": "dsh-plugin-weixin",
+  "version": "0.9.3",
+  "scannedAt": "2026-10-26T10:04:49.892Z",
+  "icon": "dsh-plugin-weixin.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/asr-remote.js",
+        "line": 11,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "src/asr-remote.js",
+        "line": 12,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "src/asr-remote.js",
+        "line": 121,
+        "text": "const connect = http.request({"
+      },
+      {
+        "file": "src/client.js",
+        "line": 1279,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${PKG}/latest`);"
+      },
+      {
+        "file": "src/transport/ilink.js",
+        "line": 424,
+        "text": "// The vendor's own timeout only covers the fetch() call — it is cleared"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install.mjs",
+        "line": 44,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 81,
+        "text": "fs.mkdirSync(to, { recursive: true })"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 95,
+        "text": "fs.rmSync(targetDir, { recursive: true, force: true })"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 98,
+        "text": "const pkg = JSON.parse(fs.readFileSync(profilePkgPath, 'utf8'))"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 102,
+        "text": "fs.writeFileSync(profilePkgPath, `${JSON.stringify(pkg, null, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/release.mjs",
+        "line": 39,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/release.mjs",
+        "line": 99,
+        "text": "const result = spawnSync(command, args, { cwd: ROOT, stdio: 'inherit', ...options })"
+      },
+      {
+        "file": "bin/release.mjs",
+        "line": 107,
+        "text": "const result = spawnSync(command, args, { cwd: ROOT, encoding: 'utf8', ...options })"
+      },
+      {
+        "file": "bin/release.mjs",
+        "line": 421,
+        "text": "const result = spawnSync(python, [bridge], {"
+      },
+      {
+        "file": "bin/release.mjs",
+        "line": 533,
+        "text": "const result = spawnSync('npm', ['publish'], { cwd: ROOT, stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 474,
+      "text": "pip install mlx-whisper        # Apple Silicon，走 GPU"
+    },
+    {
+      "file": "README.md",
+      "line": 475,
+      "text": "pip install faster-whisper     # 其它平台，走 CPU"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,127 @@
+{
+  "name": "dsh-vault",
+  "version": "1.10.75",
+  "scannedAt": "2026-10-26T10:05:13.981Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/breach.js",
+        "line": 44,
+        "text": "const res = await fetch(`${HIBP_RANGE_URL}${prefix}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 6970,
+        "text": "sessionExportJar: \"Copy jar (curl -b)\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7503,
+        "text": "sessionExportJar: \"复制 cookie jar(curl -b)\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3829,
+        "text": "limit: { type: 'integer', description: 'Max entries to fetch (default 10, 1–200).' },"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3998,
+        "text": "+ 'compatible with curl -b / wget), raw JSON (format \"json\", the Playwright addCookies shape), '"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chrome.js",
+        "line": 26,
+        "text": "import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/chrome.js",
+        "line": 86,
+        "text": "const raw = readFileSync(localStatePath, 'utf8');"
+      },
+      {
+        "file": "lib/chrome.js",
+        "line": 231,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 19,
+        "text": "import { chmod, mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 20,
+        "text": "import { existsSync, openSync, realpathSync, writeSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "toolDisposers.push(ctx.tools.register(def));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5003,
+        "text": "static inject = ['tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chrome.js",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/keychain.js",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 429,
+      "text": "npm i -g dsh-vault && dsh-vault list                 # globally"
+    }
+  ],
+  "skippedEntries": []
+}

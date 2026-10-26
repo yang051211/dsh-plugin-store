@@ -1,0 +1,109 @@
+{
+  "name": "dsh-vaultwarden",
+  "version": "0.10.4",
+  "scannedAt": "2026-10-26T10:05:07.211Z",
+  "icon": "dsh-vaultwarden.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/notifications.js",
+        "line": 145,
+        "text": "const response = await this.fetch(`${this.server}/notifications/hub/negotiate`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic-file.js",
+        "line": 33,
+        "text": "import { chmodSync, closeSync, fchmodSync, fsyncSync, mkdirSync, openSync, renameSync, rmSync, writeSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 42,
+        "text": "* `mkdirSync(..., { recursive, mode })` is not enough on its own: the mode is"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 57,
+        "text": "mkdirSync(directory, { recursive: true, mode: dirMode })"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 99,
+        "text": "rmSync(temporary, { force: true })"
+      },
+      {
+        "file": "lib/cache-store.js",
+        "line": 46,
+        "text": "import { existsSync, readFileSync, rmSync, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 527,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 555,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 620,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 663,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/zstd-log.js",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/zstd-log.js",
+        "line": 128,
+        "text": "const proc = spawnSync('zstd', ['-d', '-c'], { input: frame, maxBuffer: 1 << 30 })"
+      },
+      {
+        "file": "lib/zstd-log.js",
+        "line": 154,
+        "text": "const proc = spawnSync('zstd', ['-q', '-c'], { input, maxBuffer: 1 << 30 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

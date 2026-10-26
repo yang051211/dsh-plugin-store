@@ -1,0 +1,76 @@
+{
+  "name": "dsh-persona-dafeiyu",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:04:55.376Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 494,
+        "text": "return fetch(`${STATUS_PATH}${query}`, { headers: { accept: \"application/json\" } }).then((response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 506,
+        "text": "return fetch(MUTATE_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 520,
+        "text": "return fetch(`${PERSONA_PATH}?id=${encodeURIComponent(id)}`, { headers: { accept: \"application/json\" } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 499,
+        "text": "return normalizeStore(JSON.parse(fs.readFileSync(personaStorePath(), 'utf8')))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 510,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify(store, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 519,
+        "text": "const text = fs.readFileSync(target, 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

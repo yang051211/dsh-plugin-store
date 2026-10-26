@@ -1,0 +1,115 @@
+{
+  "name": "dsh-ppt-studio",
+  "version": "1.2.6",
+  "scannedAt": "2026-10-26T10:05:04.603Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-desktop.mjs",
+        "line": 230,
+        "text": "}=await import('node:fs');const r=await fetch(${JSON.stringify(theSpec)});if(!r.ok)throw new Error(String(r.status));writeFileSync(${JSON.stringify(local)},Buff"
+      },
+      {
+        "file": "scripts/probe-asset-freshness.mjs",
+        "line": 33,
+        "text": "const res = await fetch(url, { redirect: 'follow', headers: { 'cache-control': 'no-cache' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/autodeclare.js",
+        "line": 6,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/autodeclare.js",
+        "line": 21,
+        "text": "const text = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/autodeclare.js",
+        "line": 36,
+        "text": "await writeFile(file, String(doc))"
+      },
+      {
+        "file": "lib/capabilities.js",
+        "line": 21,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/crosscheck.js",
+        "line": 20,
+        "text": "import { existsSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "export const inject = ['tools', 'commands', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 375,
+        "text": "return ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 205,
+        "text": "const reg = (tool) => ctx.effect(() => ctx.tools.register(defineTool(tool)), `ppt-studio: ${tool.name}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capabilities.js",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/capabilities.js",
+        "line": 141,
+        "text": "const r = spawnSync(cmd, ['-c', 'print(1)'], { encoding: 'utf8', timeout: 15000 })"
+      },
+      {
+        "file": "lib/measurement.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/measurement.js",
+        "line": 140,
+        "text": "const child = spawn(browser, ['--headless=new', '--disable-gpu', '--no-first-run', '--hide-scrollbars',"
+      },
+      {
+        "file": "lib/msrender.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

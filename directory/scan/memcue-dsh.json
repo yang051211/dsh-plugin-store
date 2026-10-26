@@ -1,0 +1,111 @@
+{
+  "name": "memcue-dsh",
+  "version": "0.17.0",
+  "scannedAt": "2026-10-26T10:05:18.928Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/install.mjs",
+        "line": 61,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 23,
+        "text": "import { mkdir, readFile, readdir, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 409,
+        "text": "const parsed = JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 427,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 429,
+        "text": "await writeFile(tmp, JSON.stringify(state), { mode: 0o600 })"
+      },
+      {
+        "file": "src/install.mjs",
+        "line": 10,
+        "text": "import { access, constants, chmod, mkdir, mkdtemp, readFile, rename, rm, rmdir, stat, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 34,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 767,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 849,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 878,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 902,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 205,
+        "text": "child = spawn(settings.binary, args, { env: { ...childEnv(settings), ...options.env } })"
+      },
+      {
+        "file": "src/install.mjs",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/install.mjs",
+        "line": 68,
+        "text": "const child = spawn('tar', ['-xzf', archive, '-C', dir, 'memcue'], { stdio: ['ignore', 'ignore', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,67 @@
+{
+  "name": "dsh-bash-guard",
+  "version": "0.2.1-rc.4",
+  "scannedAt": "2026-10-26T10:04:54.588Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jev.js",
+        "line": 2,
+        "text": "import { ProxyAgent } from 'undici';"
+      },
+      {
+        "file": "lib/jev.js",
+        "line": 186,
+        "text": "const response = await fetch(settings.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 188,
+        "text": "appendFileSync(file, `${JSON.stringify({ time: new Date().toISOString(), ...entry })}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "permissionPresets",
+    "sandboxPolicy",
+    "sessions",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

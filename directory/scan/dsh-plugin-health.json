@@ -1,0 +1,129 @@
+{
+  "name": "dsh-plugin-health",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:04:58.507Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/ui/client.js",
+        "line": 153,
+        "text": "const response = await fetch(STATUS_PATH, {"
+      },
+      {
+        "file": "src/ui/client.js",
+        "line": 191,
+        "text": "const response = await fetch(REPAIR_PATH, {"
+      },
+      {
+        "file": "src/ui/client.js",
+        "line": 535,
+        "text": "fetch(STATUS_PATH, { headers: { accept: 'application/json' }, credentials: 'same-origin' })"
+      },
+      {
+        "file": "src/util/http.js",
+        "line": 30,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 5,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 16,
+        "text": "const VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 80,
+        "text": "return readFileSync(filename, 'utf8').split(/\\r?\\n/u).map((line) => line.trim()).filter((line) => line !== '' && !line.startsWith('#'))"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 183,
+        "text": "const exemptions = exemptionsPath === undefined ? {} : JSON.parse(readFileSync(exemptionsPath, 'utf8'))"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 186,
+        "text": "mkdirSync(out, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.js",
+        "line": 19,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 88,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/runtime/smoke.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/runtime/smoke.js",
+        "line": 14,
+        "text": "const child = spawn(process.execPath, args, {"
+      },
+      {
+        "file": "src/runtime/smoke.js",
+        "line": 36,
+        "text": "const killer = spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 15,
+      "text": "(300 plugins, rebuilt nightly) · **npm:** `npm install -g dsh-plugin-health` ·"
+    },
+    {
+      "file": "README.md",
+      "line": 137,
+      "text": "npm install -g dsh-plugin-health"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 14,
+      "text": "（300 个插件，每晚自动重建） · **npm：** `npm install -g dsh-plugin-health` ·"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 123,
+      "text": "npm install -g dsh-plugin-health"
+    }
+  ],
+  "skippedEntries": []
+}

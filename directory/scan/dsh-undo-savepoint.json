@@ -1,0 +1,142 @@
+{
+  "name": "dsh-undo-savepoint",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:04:54.437Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 295,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "tools/undo-server-smoke.mjs",
+        "line": 88,
+        "text": "const r = await fetch(new URL('api/undo/status', url), { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "tools/undo-server-smoke.mjs",
+        "line": 104,
+        "text": "const listR = await fetch(new URL('api/undo/list', A.url), { signal: AbortSignal.timeout(2000) });"
+      },
+      {
+        "file": "tools/undo-server.mjs",
+        "line": 16,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "tools/undo-server.mjs",
+        "line": 120,
+        "text": "const r = await fetch(new URL('api/undo/locale', base), { signal: AbortSignal.timeout(1500) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/base.mjs",
+        "line": 12,
+        "text": "import { promises as fs, existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/base.mjs",
+        "line": 97,
+        "text": "const j = JSON.parse(readFileSync(SPEC_PATH, 'utf8').replace(/^\\uFEFF/, ''));"
+      },
+      {
+        "file": "lib/base.mjs",
+        "line": 175,
+        "text": "try { return await fs.readFile(join(blobDir(cfg), hash)); } catch { return null; }"
+      },
+      {
+        "file": "lib/base.mjs",
+        "line": 181,
+        "text": "await fs.mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/base.mjs",
+        "line": 183,
+        "text": "await fs.writeFile(tmp, buf);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 161,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "tools/smoke-test.mjs",
+        "line": 2427,
+        "text": "\\n    name: dsh-undo-savepoint\\n  - id: dsh-mcp-client\\n    name: dsh-mcp-client\\n    config:\\n      headers:\\n        Authorization: Bearer sk-w46-keep\\n', 'ut"
+      },
+      {
+        "file": "tools/smoke-test.mjs",
+        "line": 2437,
+        "text": "await writeFile(p2, '- insert:\\n  - id: dsh-mcp-client\\n    name: dsh-mcp-client\\n    config:\\n      note: \"dsh-undo-savepoint is installed\"\\n      headers:\\n  "
+      },
+      {
+        "file": "tools/smoke-test.mjs",
+        "line": 2445,
+        "text": "n    config:\\n      retries: 3\\n  - id: dsh-mcp-client\\n    name: dsh-mcp-client\\n    config:\\n      headers:\\n        Authorization: Bearer sk-w46-keep\\n', 'ut"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 24,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 308,
+        "text": "execFile(windows ? (process.env.ComSpec ?? 'cmd.exe') : 'pnpm', windows ? ['/d', '/s', '/c', 'pnpm', ...args] : args, {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 1245,
+        "text": "execFile(cmd, args, { timeout: PICK_TIMEOUT, windowsHide: true, encoding: 'utf8' }, (_err, stdout) => {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 1271,
+        "text": "execFile('powershell', ['-NoProfile', '-Command', script], {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 1298,
+        "text": "execFile('powershell', ['-NoProfile', '-Command', script], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,121 @@
+{
+  "name": "dsh-skill-mcp-manager",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:05:08.356Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 16,
+        "text": "const res = await fetch(path, { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 23,
+        "text": "const res = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdir, readFile, writeFile, rename, readdir, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "const pkg = JSON.parse(readFileSync(new URL(\"../package.json\", import.meta.url), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "const text = await readFile(join(dataDir, \"registry.json\"), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "await mkdir(dataDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.example.yml",
+        "line": 14,
+        "text": "importNativeMcp: true  # import native dsh-mcp-client rows into the capability library (default on-demand) and take them over"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "const inject = [\"tools\", \"skills\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "const HANDOVER_MARKER = \"# ── Handed back to native dsh-mcp-client (was managed by dsh-skill-mcp-manager) ──\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "// @deepseek-ai/dsh-mcp-client insert rows. A native section that does not"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 206,
+        "text": "if (entry !== null && typeof entry === \"object\" && entry.name === \"@deepseek-ai/dsh-mcp-client\") {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/stdio-transport.js",
+        "line": 115,
+        "text": "this._process = spawn(this._serverParams.command, this._serverParams.args ?? [], {"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 118,
+        "text": "const child = spawn(command, args, { detached: true, stdio: \"ignore\", windowsHide: true });"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 139,
+        "text": "child = spawn(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-Command\", script], {"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 166,
+        "text": "child = spawn(\"gio\", [\"trash\", absPath], { stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

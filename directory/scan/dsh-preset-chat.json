@@ -1,0 +1,78 @@
+{
+  "name": "dsh-preset-chat",
+  "version": "0.12.14",
+  "scannedAt": "2026-10-26T10:04:39.771Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 689,
+        "text": "const png = fetch(selected.src).then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 718,
+        "text": "const response = await fetch(selected.src),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1037,
+        "text": "const response = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 3,
+        "text": "import { open } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 7,
+        "text": "export const inject = ['tools', 'attachments', 'sessionQuery', 'systemPrompt']"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 72,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/chat-policy.js",
+        "line": 170,
+        "text": "if (next) dispose = inner.tools.register(attachmentOnlyImagegen(next))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "approval",
+    "permissionPresets",
+    "sandboxPolicy",
+    "sessionProjections",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

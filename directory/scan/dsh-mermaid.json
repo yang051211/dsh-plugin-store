@@ -1,0 +1,104 @@
+{
+  "name": "dsh-mermaid",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:04:55.549Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 3,
+        "text": "ndGroup(),e.gullet.beginGroup();var r=e.fetch().text;if(r===\"&\"||r===\"\\\\\\\\\")e.consume();else if(r===\"\\\\end\"){t[t.length-1].length===0&&t.pop();break}else throw "
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 254,
+        "text": "funcName:r}=e;t.consumeSpaces();var n=t.fetch();if(M7[n.text])return(r===\"\\\\global\"||r===\"\\\\\\\\globallong\")&&(n.text=M7[n.text]),qr(t.parseFunction(),\"internal\")"
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 258,
+        "text": "}expect(t,r){if(r===void 0&&(r=!0),this.fetch().text!==t)throw new Lt(\"Expected '\"+t+\"', got '\"+this.fetch().text+\"'\",this.fetch());r&&this.consume()}consume(){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mermaid.mjs",
+        "line": 4,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "const body = await readFile(runtimeFile);"
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 1356,
+        "text": "ne){let r=await this.fileSystemProvider.readFile(e);return this.createAsync(e,r,t)}fromTextDocument(e,t,r){return t=t??Ko.parse(e.uri),Xn.CancellationToken.is(r"
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 1361,
+        "text": "w Error(\"No file system is available.\")}readFile(){throw new Error(\"No file system is available.\")}readFileSync(){throw new Error(\"No file system is available.\""
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mermaid.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dsh-mermaid.mjs",
+        "line": 51,
+        "text": "const result = spawnSync(executable, args, {"
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 562,
+        "text": "field]=e.value,h&&r.push(l))}var f=this.spawn(r);f.updateStyle(),f.emit(e.event),s&&f.emit(s)}return this}}function p1(e){Sf[e.field]=function(){var t=this[0];i"
+      },
+      {
+        "file": "lib/mermaid-runtime.js",
+        "line": 565,
+        "text": "qs++,n.updateItem(s);else{var o={eles:e.spawn().merge(e),level:t,reqs:1,key:a};n.push(o),i[a]=o}};da.dequeue=function(e){for(var t=this,r=t.getElementQueue(),n="
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/mermaid-runtime.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

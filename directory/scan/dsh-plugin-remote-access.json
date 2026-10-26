@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-remote-access",
+  "version": "1.5.0",
+  "scannedAt": "2026-10-26T10:04:48.680Z",
+  "icon": "dsh-plugin-remote-access.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 254,
+        "text": "const res = await window.fetch(CONFIG_ENDPOINT, { cache: 'no-store', headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "client.js",
+        "line": 271,
+        "text": "const res = await window.fetch(CONFIG_ENDPOINT, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1462,
+        "text": "const request = window.fetch(PRESENCE_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1691,
+        "text": "const res = await window.fetch('/__remote_access__/notify?wait=0', { cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 1761,
+        "text": "const res = await window.fetch(`/__remote_access__/cache${reset ? '?reset=1' : ''}`, { cache: 'no-store' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 205,
+        "text": "const saved = fs.readFileSync(file, 'utf8').trim();"
+      },
+      {
+        "file": "index.js",
+        "line": 210,
+        "text": "fs.writeFileSync(file, `${created}\\n`, { mode: 0o600 });"
+      },
+      {
+        "file": "index.js",
+        "line": 1957,
+        "text": "text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 1986,
+        "text": "fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,140 @@
+{
+  "name": "dsh-builtin-browser",
+  "version": "0.4.15",
+  "scannedAt": "2026-10-26T10:04:37.646Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 128,
+        "text": "const response = await fetch(ROUTE, patch === undefined"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 958,
+        "text": "const r = await fetch(${JSON.stringify(url)}, { credentials: 'include' })"
+      },
+      {
+        "file": "lib/browser-electron/system-browser.js",
+        "line": 371,
+        "text": "const socket = new WebSocket(url);"
+      },
+      {
+        "file": "lib/browser-electron/system-browser.js",
+        "line": 697,
+        "text": "const version = await (await fetch(`http://127.0.0.1:${port}/json/version`, {"
+      },
+      {
+        "file": "lib/browser-electron/system-browser.js",
+        "line": 978,
+        "text": "const version = await (await fetch(`http://127.0.0.1:${port}/json/version`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop-bridge/install.mjs",
+        "line": 64,
+        "text": "import { copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "desktop-bridge/install.mjs",
+        "line": 172,
+        "text": "const { watch } = await import(\"node:fs\");"
+      },
+      {
+        "file": "desktop-bridge/install.mjs",
+        "line": 220,
+        "text": "mkdirSync(target, { recursive: true })"
+      },
+      {
+        "file": "desktop-bridge/install.mjs",
+        "line": 224,
+        "text": "mkdirSync(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "desktop-bridge/install.mjs",
+        "line": 233,
+        "text": "writeFileSync(target, buffer)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools', 'browser', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 261,
+        "text": "/** Register all browser tools with `ctx.tools`. */"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 312,
+        "text": "ctx.tools.register(definition);"
+      },
+      {
+        "file": "scripts/verify-host-compat.mjs",
+        "line": 98,
+        "text": "// taken from the real ones: `ctx.tools.register(definition)`, `ctx.systemPrompt.section(spec)`."
+      },
+      {
+        "file": "src/tool-browser/index.ts",
+        "line": 52,
+        "text": "export const inject = ['tools', 'browser', 'systemPrompt']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 1152,
+        "text": "// written to stdin at spawn (moments after process start, long before"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 29,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 436,
+        "text": "this.child = spawn(electron, [hostMainPath, '--rpc-port', String(port)], {"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 457,
+        "text": "// A failed spawn (bad/corrupt binary) emits 'error' — without a listener"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 1063,
+        "text": "// dispose() can race this spawn (it may run while start() is suspended"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "browser",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

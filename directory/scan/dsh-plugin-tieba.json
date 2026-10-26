@@ -1,0 +1,128 @@
+{
+  "name": "dsh-plugin-tieba",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:04:52.814Z",
+  "icon": "dsh-plugin-tieba.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "const r = await fetch(API.config, { credentials: 'include' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "const r = await fetch(API.status, { credentials: 'include' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 104,
+        "text": "const r = await fetch(API.poll, { credentials: 'include' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 142,
+        "text": "const r = await fetch(API.config, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 158,
+        "text": "const r = await fetch(API.start, { method: 'POST', credentials: 'include' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.mjs",
+        "line": 18,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.mjs",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.mjs",
+        "line": 36,
+        "text": "const raw = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));"
+      },
+      {
+        "file": "lib/config-store.mjs",
+        "line": 50,
+        "text": "fs.mkdirSync(path.dirname(CONFIG_PATH), { recursive: true });"
+      },
+      {
+        "file": "lib/config-store.mjs",
+        "line": 51,
+        "text": "fs.writeFileSync(CONFIG_PATH, JSON.stringify(next, null, 2), { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 191,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 208,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 63,
+        "text": "const { spawnSync } = await import('node:child_process');"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 64,
+        "text": "const r = spawnSync(process.execPath, [path.join(HERE, 'login.mjs'), '--site', 'tieba'], { stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

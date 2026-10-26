@@ -1,0 +1,76 @@
+{
+  "name": "dsh-muv-table",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-26T10:04:43.851Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 926,
+        "text": "const r = await fetch(url)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 974,
+        "text": "const r = await fetch('/api/muv-table/parse-card',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(json)})"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 996,
+        "text": "          const r = await fetch('/api/muv-table/generate',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({originalData:state.ini"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 981,
+        "text": "const handleDrop = (e) => { e.preventDefault(); const f=e.dataTransfer.files[0]; if(f) readFile(f) }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1105,
+        "text": "jsx.jsx('input', { ref:fileRef, type:'file', accept:'.json', style:{display:'none'}, onChange:e=>{const f=e.target.files[0];if(f)readFile(f)} })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "try { PANEL_HTML = fs.readFileSync(path.join(__dirname, 'panel.html'), 'utf8') } catch (_) {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "const raw = fs.readFileSync(filePath)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

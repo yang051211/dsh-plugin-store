@@ -1,0 +1,101 @@
+{
+  "name": "dsh-mcp-registry",
+  "version": "0.3.9",
+  "scannedAt": "2026-10-26T10:04:41.174Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 374,
+        "text": "res = await fetch(base ? new URL(\"mcp-registry/api/\" + method, base) : API + \"/\" + method, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 377,
+        "text": "res = await fetch(API, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 641,
+        "text": "this.fetchImpl = opts.fetchImpl ?? ((input, init) => fetch(input, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import fs, { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 298,
+        "text": "const raw = this.io.readFile(this.filePath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 480,
+        "text": "this.io.writeFile(tmp, payload);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 487,
+        "text": "const readBack = this.io.readFile(this.filePath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 502,
+        "text": "const current = this.io.readFile(this.filePath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1270,
+        "text": "* @param visible - the agent's current visible schemas (from ctx.tools.schemas)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2111,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2148,
+        "text": "visible = ctx.tools.schemas?.(ctxLike.agent) ?? [];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 798,
+        "text": "/** Build the final spawn(command, args) pair for the current platform. */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

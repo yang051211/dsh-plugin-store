@@ -1,0 +1,138 @@
+{
+  "name": "dsh-taskboard",
+  "version": "0.9.6",
+  "scannedAt": "2026-10-26T10:04:52.396Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1,
+        "text": "){let t=AbortSignal.timeout(g);return h(fetch(e,{signal:t}),e,t)}async function v(e,t){let n=AbortSignal.timeout(g);return h(fetch(e,{method:`POST`,headers:{\"co"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7,
+        "text": "ed (too long)`,\"diff.failed\":`Failed to fetch (see the error bar at the top of the board; the object may be gone with a removed worktree)`,\"checklist.title\":`Ac"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1309,
+        "text": "?e:r}async function Le(e,t){let n=await fetch(`/dsh-taskboard/external${e}`,t===void 0?{signal:AbortSignal.timeout(15e3)}:{method:`POST`,headers:{\"Content-Type\""
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1318,
+        "text": ")=>{let e=!0;return Promise.all([Le(``),fetch(`/dsh-taskboard/workspaces`).then(e=>e.json())]).then(([t,r])=>{if(!e)return;n(t),ne(r.value??[]);let a=t.config;a"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 90,
+        "text": "return unwrap<T>(fetch(path, { signal }), path, signal)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/assets.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/assets.js",
+        "line": 63,
+        "text": "await mkdir(this.root, { recursive: true });"
+      },
+      {
+        "file": "lib/host/assets.js",
+        "line": 83,
+        "text": "await writeFile(join(this.root, name), bytes, { flag: \"wx\" });"
+      },
+      {
+        "file": "lib/host/assets.js",
+        "line": 102,
+        "text": "bytes: await readFile(join(this.root, name)),"
+      },
+      {
+        "file": "lib/host/assets.js",
+        "line": 127,
+        "text": "await rm(path, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 301,
+        "text": "return ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "src/host/tools.ts",
+        "line": 445,
+        "text": "return ctx.tools.register(tool as { name: string })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 17,
+        "text": "// (ctx.tools / ctx.systemPrompt / ctx.agents) and vanish at compile time —"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 53,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/git.js",
+        "line": 108,
+        "text": "/** Real exec layer over child_process.execFile (windowsHide, timeout, maxBuffer). */"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 111,
+        "text": "const { execFile } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 112,
+        "text": "execFile(\"git\", args, {"
+      },
+      {
+        "file": "src/host/git.ts",
+        "line": 230,
+        "text": "/** Real exec layer over child_process.execFile (windowsHide, timeout, maxBuffer). */"
+      },
+      {
+        "file": "src/host/git.ts",
+        "line": 233,
+        "text": "const { execFile } = await import('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

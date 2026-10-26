@@ -1,0 +1,118 @@
+{
+  "name": "dsh-llm-xai-oauth",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:05:04.724Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.js",
+        "line": 60,
+        "text": "import { fetch as undiciFetch } from 'undici';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { fetch as undiciFetch } from 'undici';"
+      },
+      {
+        "file": "lib/oauth.js",
+        "line": 17,
+        "text": "import { ProxyAgent, fetch as undiciFetch } from 'undici';"
+      },
+      {
+        "file": "lib/onboarding.js",
+        "line": 18,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/onboarding.js",
+        "line": 210,
+        "text": "fetch(base+'/api/state',{cache:'no-store'}).then(function(r){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 172,
+        "text": "const { mkdir, writeFile } = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 181,
+        "text": "await mkdir(unitDir, { recursive: true, mode: 0o755 });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 197,
+        "text": "await writeFile(unitPath, unit, { mode: 0o644 });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 221,
+        "text": "const { unlink } = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 225,
+        "text": "await unlink(unitPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 23,
+        "text": "const child = spawn(cmd, args, { stdio: 'ignore', detached: true });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 173,
+        "text": "const { spawnSync } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 198,
+        "text": "const reload = spawnSync('systemctl', ['--user', 'daemon-reload'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 206,
+        "text": "const enable = spawnSync('systemctl', ['--user', 'enable', '--now', 'dsh-llm-xai-oauth.service'], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

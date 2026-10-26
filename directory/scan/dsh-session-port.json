@@ -1,0 +1,84 @@
+{
+  "name": "dsh-session-port",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:05:18.825Z",
+  "icon": "dsh-session-port.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 391,
+        "text": "const response = await fetch(hostUrl(`/export?sessionId=${encodeURIComponent(String(sessionId ?? ''))}`), {"
+      },
+      {
+        "file": "client.js",
+        "line": 790,
+        "text": "const response = await fetch(hostUrl(`/import?${params.toString()}`), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 17,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 31,
+        "text": "if (typeof hostPath === 'string' && hostPath !== '') return new Uint8Array(await readFile(hostPath));"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 45,
+        "text": "if (typeof hostPath === 'string' && hostPath !== '') return new Uint8Array(await readFile(hostPath));"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 22,
+        "text": "import { readFile, stat, mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 610,
+        "text": "const buffer = await readFile(resolved);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'sessionQuery', 'sessionPersistence'];"
+      },
+      {
+        "file": "index.js",
+        "line": 268,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "sessionQuery",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "dsh-muv-engine",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-26T10:04:42.844Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "diag.mjs",
+        "line": 355,
+        "text": "const r = await fetch(url, { signal: AbortSignal.timeout(30000), ...(init || {}) })"
+      },
+      {
+        "file": "diag.mjs",
+        "line": 382,
+        "text": "const r = await fetch(url, { signal: AbortSignal.timeout(20000) })"
+      },
+      {
+        "file": "diag.mjs",
+        "line": 387,
+        "text": "`try { $r = Invoke-WebRequest -Uri '${url.replace(/'/g, \"''\")}' -UseBasicParsing -TimeoutSec 20 -Method Head; ` +"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 574,
+        "text": "const r = await fetch('/api/tavern/current-session?sessionId=' + encodeURIComponent(sid))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 691,
+        "text": "const r = await fetch('/api/muv-table/tavern-card' + qs)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "diag.mjs",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "diag.mjs",
+        "line": 130,
+        "text": "try { return JSON.parse(fs.readFileSync(f, 'utf8')) } catch { return null }"
+      },
+      {
+        "file": "diag.mjs",
+        "line": 486,
+        "text": "const msgText = MSG || (MSG_FILE && fs.existsSync(MSG_FILE) ? fs.readFileSync(MSG_FILE, 'utf8') : '')"
+      },
+      {
+        "file": "lib/card-scripts.js",
+        "line": 36,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/card-scripts.js",
+        "line": 145,
+        "text": "const json = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "diag.mjs",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

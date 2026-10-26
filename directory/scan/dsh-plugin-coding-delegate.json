@@ -1,0 +1,112 @@
+{
+  "name": "dsh-plugin-coding-delegate",
+  "version": "0.5.12",
+  "scannedAt": "2026-10-26T10:05:11.650Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/delegation.js",
+        "line": 559,
+        "text": "const response = await fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/context.js",
+        "line": 38,
+        "text": "const fs = __importStar(require(\"fs\"));"
+      },
+      {
+        "file": "dist/context.js",
+        "line": 93,
+        "text": "raw = fs.readFileSync(resolvedPath, 'utf8');"
+      },
+      {
+        "file": "dist/contracts.js",
+        "line": 51,
+        "text": "const fs = __importStar(require(\"fs\"));"
+      },
+      {
+        "file": "dist/contracts.js",
+        "line": 62,
+        "text": "return crypto.createHash('sha256').update(fs.readFileSync(filePath)).digest('hex');"
+      },
+      {
+        "file": "dist/contracts.js",
+        "line": 275,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 145,
+        "text": "exports.inject = ['tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 689,
+        "text": "console.log('[LOCAL_ROUTER_DEBUG] ctx.tools available:', Boolean(ctx.tools));"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 695,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 846,
+        "text": "ctx.tools.register(dshToolDef);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 850,
+        "text": "ctx.tools.register('delegate_worker', dshToolDef, dshToolDef.execute);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/delegation.js",
+        "line": 52,
+        "text": "const child_process = __importStar(require(\"child_process\"));"
+      },
+      {
+        "file": "dist/verification.js",
+        "line": 46,
+        "text": "const child_process = __importStar(require(\"child_process\"));"
+      },
+      {
+        "file": "dist/verification.js",
+        "line": 459,
+        "text": "result = child_process.spawnSync(binary, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 160,
+      "text": "`npm install -g dsh-plugin-coding-delegate` is **not** an install for DSH: it places files on the"
+    }
+  ],
+  "skippedEntries": []
+}

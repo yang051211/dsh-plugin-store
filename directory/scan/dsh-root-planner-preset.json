@@ -1,0 +1,107 @@
+{
+  "name": "dsh-root-planner-preset",
+  "version": "1.6.1",
+  "scannedAt": "2026-10-26T10:04:38.704Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build-patch.mjs",
+        "line": 10,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "build-patch.mjs",
+        "line": 19,
+        "text": "const text = readFileSync(join(here, 'persona.txt'), 'utf8').replace(/\\r\\n/g, '\\n').trimEnd();"
+      },
+      {
+        "file": "build-patch.mjs",
+        "line": 437,
+        "text": "writeFileSync(join(here, 'cordis.patch.yml'), rendered, 'utf8');"
+      },
+      {
+        "file": "guard.js",
+        "line": 31,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "guard.js",
+        "line": 174,
+        "text": "appendFileSync("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "child-tools.mjs",
+        "line": 85,
+        "text": "//     (`entry.ctx.tools.register(definition)`), then walks the agents again to"
+      },
+      {
+        "file": "guard.js",
+        "line": 150,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "guard.js",
+        "line": 189,
+        "text": "// The service is read with `ctx.get` rather than `ctx.tools` on purpose: a missing"
+      },
+      {
+        "file": "guard.js",
+        "line": 193,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "release.mjs",
+        "line": 32,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "release.mjs",
+        "line": 67,
+        "text": "const result = spawnSync(command, args, { cwd: here, env, encoding: 'utf8', shell, ...rest });"
+      },
+      {
+        "file": "release.mjs",
+        "line": 169,
+        "text": "const publishRun = spawnSync(PUBLISHER, ['publish', '--registry', OFFICIAL_REGISTRY, '--access', 'public'], {"
+      },
+      {
+        "file": "release.mjs",
+        "line": 203,
+        "text": "spawnSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '-m', '20', '-x', PROXY, url], {"
+      },
+      {
+        "file": "release.mjs",
+        "line": 244,
+        "text": "spawnSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '-m', '20', '-x', PROXY, `${mirror}${manifest.name}/${version}`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

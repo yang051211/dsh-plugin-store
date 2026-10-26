@@ -1,0 +1,93 @@
+{
+  "name": "dsh-blender",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:05:03.263Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 3,
+        "text": "import { mkdir, mkdtemp, readFile, readdir, realpath, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 79,
+        "text": "const raw = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 197,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 208,
+        "text": "await mkdir(path, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "index.js",
+        "line": 1205,
+        "text": "for (const tool of createTools(config)) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 424,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true, env })"
+      },
+      {
+        "file": "scripts/setup-analysis.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/setup-analysis.js",
+        "line": 18,
+        "text": "const child = spawn(command, args, { cwd: root, stdio: 'inherit', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

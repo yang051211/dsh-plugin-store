@@ -1,0 +1,102 @@
+{
+  "name": "dsh-engramory-recall",
+  "version": "0.21.0",
+  "scannedAt": "2026-10-26T10:04:41.528Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 288,
+        "text": "fetch(STATE_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 756,
+        "text": "fetch(ARCHIVE_URL, {"
+      },
+      {
+        "file": "providers/openai-embeddings.mjs",
+        "line": 174,
+        "text": "response = await fetch(endpoint(cfg.baseUrl), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "archive.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "archive.js",
+        "line": 219,
+        "text": "text = readFileSync(join(storePath, file), 'utf8');"
+      },
+      {
+        "file": "archive.js",
+        "line": 269,
+        "text": "for (const line of readFileSync(hp, 'utf8').match(/^## .*/gm) ?? []) {"
+      },
+      {
+        "file": "archive.js",
+        "line": 366,
+        "text": "writeFileSync(tmp, content, 'utf8');"
+      },
+      {
+        "file": "archive.js",
+        "line": 381,
+        "text": "const mainText = readFileSync(mainPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 41,
+        "text": "/** 注册按需检索工具，所以需要宿主 tools 服务（不用 ctx.tools 之外的任何服务）。 */"
+      },
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 571,
+        "text": "// 直接按 ctx.tools.register() 的契约给定义：parameters 是 JSON Schema，"
+      },
+      {
+        "file": "index.js",
+        "line": 573,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 693,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

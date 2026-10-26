@@ -1,0 +1,130 @@
+{
+  "name": "deepseek-harness-zh_pro",
+  "version": "0.11.0",
+  "scannedAt": "2026-10-26T10:04:55.238Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 23,
+        "text": "return fetch(`http://127.0.0.1:${port}/`, { signal: controller.signal })"
+      },
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 50,
+        "text": "return fetch(`http://127.0.0.1:${port}/`, { signal: controller.signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 251,
+        "text": "fetchOrderBackendLocal: 'Local fetch (official http)',"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 487,
+        "text": "fetch(SEARCH_CREDENTIAL_ENDPOINT, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 505,
+        "text": "fetch(SEARCH_CREDENTIAL_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 3,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/main.mjs",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/main.mjs",
+        "line": 109,
+        "text": "manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));"
+      },
+      {
+        "file": "bin/cli/managedrow.mjs",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/managedrow.mjs",
+        "line": 10,
+        "text": "unlinkSync(temporary);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session-search-toggle.js",
+        "line": 11,
+        "text": "//     ctx.tools.get('web_search', scope) === undefined ? '' : '<指引>' })"
+      },
+      {
+        "file": "src/lib/session-search-toggle.ts",
+        "line": 11,
+        "text": "//     ctx.tools.get('web_search', scope) === undefined ? '' : '<指引>' })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 39,
+        "text": "? spawnSync(process.execPath, [cli.file, ...args], { stdio: 'inherit' })"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 121,
+        "text": "return spawnSync(file, args, options);"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 129,
+        "text": "return spawnSync(resolved, args, nativeOptions);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky && npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "dsh-memory-core",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:05:02.525Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 17,
+        "text": "const jget = async (p) => (await fetch(API + p, { credentials: \"same-origin\" })).json();"
+      },
+      {
+        "file": "client.js",
+        "line": 19,
+        "text": "(await fetch(API + p, {"
+      },
+      {
+        "file": "client.js",
+        "line": 471,
+        "text": "fetch(\"/api/memory-shield/health\", { credentials: \"same-origin\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "try { return existsSync(lastCwdFile) ? readFileSync(lastCwdFile, \"utf8\").trim() : \"\"; } catch { return \"\"; }"
+      },
+      {
+        "file": "index.js",
+        "line": 119,
+        "text": "mkdirSync(dirname(lastCwdFile), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 120,
+        "text": "writeFileSync(lastCwdFile, value + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "index.js",
+        "line": 136,
+        "text": "if (!existsSync(memoryDir)) mkdirSync(memoryDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "const inject = [\"systemPrompt\", \"tools\", \"webServer\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 432,
+        "text": "if (primary) ctx.effect(() => ctx.tools.register(memoryTool), `${name}: memory tool`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 701,
+        "text": "const child = spawn(opener[0], opener[1], { detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 28,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 324,
+        "text": "const result = spawnSync('git', ['branch', '--show-current'], {"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 339,
+        "text": "const result = spawnSync('git', ['branch', '--format=%(refname:short)'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

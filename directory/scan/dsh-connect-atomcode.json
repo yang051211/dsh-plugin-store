@@ -1,0 +1,126 @@
+{
+  "name": "dsh-connect-atomcode",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-26T10:04:56.688Z",
+  "icon": "dsh-connect-atomcode.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2351,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 2435,
+        "text": "const response = await fetch(STATS_PATH, {"
+      },
+      {
+        "file": "lib/codingplan.js",
+        "line": 91,
+        "text": "* @param fetchedAt - epoch ms of the fetch (the client counts down from it)."
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 197,
+        "text": "res = await fetch(`${baseUrl(port)}/health`, {"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 250,
+        "text": "const res = await fetch(`${baseUrl(port)}/models`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/daemon.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 96,
+        "text": "const text = readFileSync(join(home, \".atomcode\", `daemon-${port}.json`), \"utf8\");"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 164,
+        "text": "const parsed = JSON.parse(readFileSync(join(home, \".atomcode\", `daemon-${port}.json`), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const PLUGIN = { version: JSON.parse(readFileSync(join(packageDir, \"..\", \"package.json\"), \"utf8\")).version };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 11,
+        "text": "* fabricate one, and `ctx.tools.execute()` runs a tool without leaving any"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "const inject = [\"tools\", \"webServer\"];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 273,
+        "text": "return tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/daemon.js",
+        "line": 859,
+        "text": "* macOS-only, and it exists because of one asymmetry: `spawn()` looks the bare"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 925,
+        "text": "* ASYNCHRONOUSLY on the child's `error` event, NOT as a throw from `spawn()`."
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 956,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 966,
+        "text": "* OS code when it could not be started. Resolving inline after `spawn()`"
+      },
+      {
+        "file": "lib/daemon.js",
+        "line": 986,
+        "text": "const child = spawn(target, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

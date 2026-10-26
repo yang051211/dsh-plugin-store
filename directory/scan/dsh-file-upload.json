@@ -1,0 +1,107 @@
+{
+  "name": "dsh-file-upload",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:05:04.753Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const xhr = new XMLHttpRequest();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 418,
+        "text": "void fetch(\"/api/upload\", {"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 29,
+        "text": "const res = await fetch('http://localhost:11434/v1/models', { signal: controller.signal });"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 104,
+        "text": "const res = await fetch(target.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/upload.js",
+        "line": 13,
+        "text": "import { mkdir, readdir, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/upload.js",
+        "line": 116,
+        "text": "await mkdir(storage.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/upload.js",
+        "line": 121,
+        "text": "await writeFile(dest, data, { flag: 'wx' });"
+      },
+      {
+        "file": "lib/upload.js",
+        "line": 135,
+        "text": "await rm(dest, { force: true });"
+      },
+      {
+        "file": "lib/upload.js",
+        "line": 255,
+        "text": "await rm(meta.path, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer', 'sessions', 'credentials'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 238,
+        "text": "ctx.tools.register(defineReadDocumentTool(ctx, toolConfig, cache));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/convert.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

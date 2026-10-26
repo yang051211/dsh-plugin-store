@@ -1,0 +1,132 @@
+{
+  "name": "dsh-paper-studio",
+  "version": "3.50.1",
+  "scannedAt": "2026-10-26T10:04:52.577Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/studio.cjs",
+        "line": 5378,
+        "text": "fetch(url, { method: 'POST', headers: { 'content-type': 'application/json', authorization: 'Bearer ' + o.key }, body, signal: ctrl.signal })"
+      },
+      {
+        "file": "bin/studio.cjs",
+        "line": 6811,
+        "text": "const r = await fetch(url, { signal: (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) ? AbortSignal.timeout(30000) : undefined });"
+      },
+      {
+        "file": "panel/lib/client.js",
+        "line": 81,
+        "text": "return fetch(API + path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: body })"
+      },
+      {
+        "file": "panel/lib/client.js",
+        "line": 87,
+        "text": "return fetch(API + '/list', { method: 'GET' })"
+      },
+      {
+        "file": "panel/lib/index.js",
+        "line": 132,
+        "text": "const res = await fetch(base + chatPath, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/absence.cjs",
+        "line": 29,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "bin/absence.cjs",
+        "line": 135,
+        "text": "const text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "bin/absence.cjs",
+        "line": 179,
+        "text": "const mk = (name, body) => { const p = path.join(tmp, name); fs.writeFileSync(p, body, 'utf8'); return p; };"
+      },
+      {
+        "file": "bin/abstract-strength.cjs",
+        "line": 32,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "bin/abstract-strength.cjs",
+        "line": 138,
+        "text": "const text = fs.readFileSync(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/bin/mcp-server.mjs",
+        "line": 5,
+        "text": "* 为什么要有它：DSH 插件那层（`cordis.patch.yml` + `ctx.tools.register`）**只有 DSH 认**。"
+      },
+      {
+        "file": "plugin/dist/plugin.js",
+        "line": 20,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugin/dist/plugin.js",
+        "line": 317,
+        "text": "const register = (spec) => { try { ctx.tools.register(spec) } catch { /* 保持插件可加载：注册失败不留半态 */ } }"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/audit.cjs",
+        "line": 21,
+        "text": "const { execFileSync, spawnSync } = require('child_process');"
+      },
+      {
+        "file": "bin/audit.cjs",
+        "line": 41,
+        "text": "const r = spawnSync(process.execPath, [file].concat(args || ['--selftest']), { encoding: 'utf8', timeout: 120000 });"
+      },
+      {
+        "file": "bin/bakeoff.cjs",
+        "line": 87,
+        "text": "const { spawnSync } = require('child_process');"
+      },
+      {
+        "file": "bin/bakeoff.cjs",
+        "line": 88,
+        "text": "const r = spawnSync(process.execPath, [path.join(ROOT, 'bin', 'studio.cjs'), 'stylecheck', '--draft', file], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });"
+      },
+      {
+        "file": "bin/bakeoff.cjs",
+        "line": 92,
+        "text": "  const r2 = spawnSync(process.execPath, [path.join(ROOT, 'bin', 'studio.cjs'), 'revise', 'aitone', '--file', file], { encoding: 'utf8', maxBuffer: 64 * 1024 * "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 7,
+      "text": "- **整包**：`npm i -g dsh-paper-studio`（或把本仓库作为 bundle 装进 profile）⇒ `paper-studio` 命令、`paper-studio-mcp` 服务端、以及全部判据资产一次到位。"
+    }
+  ],
+  "skippedEntries": []
+}

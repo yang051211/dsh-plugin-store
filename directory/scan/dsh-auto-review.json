@@ -1,0 +1,107 @@
+{
+  "name": "dsh-auto-review",
+  "version": "0.14.0",
+  "scannedAt": "2026-10-26T10:04:44.002Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6535,
+        "text": "response = await fetch(phocinae.endpoint, {"
+      },
+      {
+        "file": "lib/types/phocinae.js",
+        "line": 340,
+        "text": "response = await fetch(phocinae.endpoint, {"
+      },
+      {
+        "file": "src/phocinae.ts",
+        "line": 415,
+        "text": "response = await fetch(phocinae.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-auto-review-mcp.mjs",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-auto-review-mcp.mjs",
+        "line": 15,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/eval-cli.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/eval-cli.js",
+        "line": 4,
+        "text": "import { existsSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/eval-cli.js",
+        "line": 281,
+        "text": "const PACKAGE_VERSION = JSON.parse(readFileSync(packageJsonUrl(), \"utf8\")).version;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/index.js",
+        "line": 25,
+        "text": "export const inject = ['approval', 'subagents', 'commands', 'tools'];"
+      },
+      {
+        "file": "lib/types/runtime.js",
+        "line": 21,
+        "text": "export const inject = ['approval', 'subagents', 'commands', 'tools'];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 29,
+        "text": "export const inject = ['approval', 'subagents', 'commands', 'tools']"
+      },
+      {
+        "file": "src/runtime.ts",
+        "line": 65,
+        "text": "export const inject = ['approval', 'subagents', 'commands', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 212,
+      "text": "Start the service once: `pip install phocinae-server` (or run the checkout), download the weights from the model card, then `PHOC_MODEL_DIR=<weights-dir> python"
+    }
+  ],
+  "skippedEntries": []
+}

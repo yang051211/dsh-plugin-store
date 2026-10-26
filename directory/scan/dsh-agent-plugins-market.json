@@ -1,0 +1,149 @@
+{
+  "name": "dsh-agent-plugins-market",
+  "version": "0.13.0",
+  "scannedAt": "2026-10-26T10:04:59.398Z",
+  "icon": "dsh-agent-plugins-market.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1363,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 42345,
+        "text": "const response = await fetch(EXTENSION_ROUTES.window + \"?sessionId=\" + encodeURIComponent(sessionId), {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 42354,
+        "text": "const response = await fetch(EXTENSION_ROUTES[action], {"
+      },
+      {
+        "file": "lib/packages/market-bundle/src/platform/feedback-tool.js",
+        "line": 112,
+        "text": "const response = await fetch(`https://api.github.com/repos/${FEEDBACK_REPO_OWNER}/${FEEDBACK_REPO_NAME}/issues`, {"
+      },
+      {
+        "file": "lib/packages/market-catalog/src/scanning/archive.js",
+        "line": 43,
+        "text": "const response = await fetch(trimmed, { signal: AbortSignal.timeout(timeoutMs), redirect: 'follow' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/packages/market-bundle/src/application/details.js",
+        "line": 2,
+        "text": "import { readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/packages/market-bundle/src/application/details.js",
+        "line": 82,
+        "text": "return await readFile(skill.file, 'utf8');"
+      },
+      {
+        "file": "lib/packages/market-bundle/src/application/details.js",
+        "line": 122,
+        "text": "const text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/packages/market-bundle/src/application/details.js",
+        "line": 163,
+        "text": "text = await readFile(`${root}/${relative}`, 'utf8');"
+      },
+      {
+        "file": "lib/packages/market-bundle/src/application/instructions.js",
+        "line": 21,
+        "text": "import { lstat, readFile, stat, unlink } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 2211,
+        "text": "mcpCardDesc: \"内置桥接，支持 OAuth 授权与 SSE；关闭后改用宿主 dsh-mcp-client。\","
+      },
+      {
+        "file": "client/client.js",
+        "line": 2228,
+        "text": "mcpBackendHostMissing: \"宿主 dsh-mcp-client 在当前环境不可用，无法切换到兼容模式。\","
+      },
+      {
+        "file": "client/client.js",
+        "line": 2336,
+        "text": "failureGuideBackendMissing: \"宿主兼容模式需要的 dsh-mcp-client 没有安装：把 MCP 后端切回内置客户端。\","
+      },
+      {
+        "file": "client/client.js",
+        "line": 2727,
+        "text": "mcpCardDesc: \"Built-in bridge with OAuth and SSE; off falls back to the host dsh-mcp-client.\","
+      },
+      {
+        "file": "client/client.js",
+        "line": 2744,
+        "text": "mcpBackendHostMissing: \"The host dsh-mcp-client is not available here; compat mode cannot be enabled.\","
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/packages/market-bundle/src/platform/feedback-tool.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/packages/market-catalog/src/scanning/archive.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/packages/market-catalog/src/scanning/git.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/packages/market-mcp/src/runtime/mcp/bridge/oauth.js",
+        "line": 100,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/packages/market-mcp/src/runtime/mcp/bridge/oauth.js",
+        "line": 101,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 19,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 47,
+      "text": "<b>LSP servers</b><br />Language server configuration and runtime status."
+    },
+    {
+      "file": "README.md",
+      "line": 69,
+      "text": "to the subagent catalog, MCP tools as `mcp__*`, hooks to lifecycle events, and language servers to the `lsp` tool. Installing the plugin is the whole LSP setup."
+    }
+  ],
+  "skippedEntries": []
+}

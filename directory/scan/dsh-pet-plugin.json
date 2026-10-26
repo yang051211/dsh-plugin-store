@@ -1,0 +1,120 @@
+{
+  "name": "dsh-pet-plugin",
+  "version": "1.20.1",
+  "scannedAt": "2026-10-26T10:04:42.247Z",
+  "icon": "dsh-pet-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1608,
+        "text": "fetch(base + '/dsh-pet/tts/status')"
+      },
+      {
+        "file": "client.js",
+        "line": 1640,
+        "text": "const res = await fetch(base + '/dsh-pet/tts', {"
+      },
+      {
+        "file": "client.js",
+        "line": 1825,
+        "text": "fetch(warmBase + '/dsh-pet/tts/warm', {"
+      },
+      {
+        "file": "client.js",
+        "line": 2185,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "client.js",
+        "line": 4263,
+        "text": "const res = await fetch(url, { credentials: 'include', signal: ctrl ? ctrl.signal : undefined })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 12,
+        "text": "import { readFileSync, readdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "build.mjs",
+        "line": 35,
+        "text": "const json = JSON.parse(readFileSync('locale/' + f, 'utf8'))"
+      },
+      {
+        "file": "build.mjs",
+        "line": 57,
+        "text": "let code = readFileSync('src/' + p, 'utf8')"
+      },
+      {
+        "file": "build.mjs",
+        "line": 67,
+        "text": "writeFileSync('client.js', out)"
+      },
+      {
+        "file": "build.mjs",
+        "line": 74,
+        "text": "const lines = readFileSync('src/' + p, 'utf8').split('\\n').length"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 130,
+        "text": "child = spawn(py, ['-c', code], {"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 259,
+        "text": "const child = spawn(py, [TTS_WORKER], { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true, env })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 79,
+      "text": "pip install edge-tts                     # any python the host can find"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-bigfish",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:04:56.375Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2,
+        "text": "=null}async request(e=\"\",s){let i=await fetch(vi+(s?\"-upload\":\"\")+e,{method:s||e.startsWith(\"?op=\")?\"POST\":\"GET\",...s?{body:s.slice()}:{},cache:\"no-store\"});if("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install-skill.mjs",
+        "line": 1,
+        "text": "import { cp, lstat, mkdir, mkdtemp, readFile, readdir, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/install-skill.mjs",
+        "line": 20,
+        "text": "else if (entry.isFile()) entries.push([path, createHash('sha256').update(await readFile(join(root,path))).digest('hex')]);"
+      },
+      {
+        "file": "bin/install-skill.mjs",
+        "line": 30,
+        "text": "await mkdir(root, { recursive: true });"
+      },
+      {
+        "file": "bin/install-skill.mjs",
+        "line": 50,
+        "text": "if (temporary) await rm(temporary, {recursive:true,force:true});"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir as mkdir2, readFile, writeFile, rename, unlink } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2,
+        "text": "rn o}})();var sc={};$i(sc,{apply:()=>ec,inject:()=>Si});module.exports=Ji(sc);function Ze(t){return typeof t==\"string\"&&/^[a-zA-Z0-9_./-]+$/.test(t)&&!t.startsW"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

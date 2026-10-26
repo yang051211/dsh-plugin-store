@@ -1,0 +1,116 @@
+{
+  "name": "dsh-composer-ux",
+  "version": "0.25.0",
+  "scannedAt": "2026-10-26T10:04:48.070Z",
+  "icon": "dsh-composer-ux.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1602,
+        "text": "const response = await fetch(QUICK_PROMPTS_API_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2045,
+        "text": "response = await fetch(OPTIMIZER_API_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4042,
+        "text": "void fetch(DOCTOR_API_PATH, { headers: { accept: \"application/json\" } }).then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4170,
+        "text": "const response = await fetch(AUTOSTART_API_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4441,
+        "text": "void fetch(SYNC_API_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 18,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 26,
+        "text": "const own = JSON.parse(readFileSync(join(SELF, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 63,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, 'utf8'))"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 69,
+        "text": "try { installed = JSON.parse(readFileSync(versionFile, 'utf8')).version ?? '' } catch { installed = '' }"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 161,
+        "text": "return JSON.parse(readFileSync(join(profileDir, 'node_modules', ...name.split('/'), 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 24,
+        "text": "#   ③ 的源码里写着 `const inject = [\"terminals\", \"tools\", \"systemPrompt\"]`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 109,
+        "text": "const result = spawnSync(command, argv, {"
+      },
+      {
+        "file": "bin/dsh-composer-ux.mjs",
+        "line": 195,
+        "text": "const out = spawnSync(command, argv, {"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 38,
+        "text": "#   会话归属由 API 自己保证（`spawn(owner, …)` 按 owner 隔离、工具里 `requireAgent(exec.agent)`），"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 868,
+        "text": "import { execFileSync, spawn as spawn2 } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

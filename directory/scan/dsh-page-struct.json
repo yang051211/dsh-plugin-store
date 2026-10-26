@@ -1,0 +1,113 @@
+{
+  "name": "dsh-page-struct",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:05:05.409Z",
+  "icon": "dsh-page-struct.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 80,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, {"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 22,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/json/version`)"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 118,
+        "text": "const ws = new WebSocket(webSocketDebuggerUrl)"
+      },
+      {
+        "file": "vendor/page-struct/index.mjs",
+        "line": 63,
+        "text": "const res = await fetch(`http://${host}:${port || 9222}/json/version`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "const port = String(readFileSync(portFile, 'utf8')).split(/\\r?\\n/)[0].trim()"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 8,
+        "text": "import { mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 103,
+        "text": "rmSync(profileDir, { recursive: true, force: true })"
+      },
+      {
+        "file": "vendor/page-struct/index.mjs",
+        "line": 7,
+        "text": "import { readFileSync, existsSync, writeFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 165,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 222,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 7,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 63,
+        "text": "const child = spawn(exe, args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "vendor/page-struct/core/cdp.mjs",
+        "line": 86,
+        "text": "spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

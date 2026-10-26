@@ -1,0 +1,146 @@
+{
+  "name": "dsh-openwrite",
+  "version": "0.2.25",
+  "scannedAt": "2026-10-26T10:04:49.064Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packages/openwrite-bridge/lib/client.js",
+        "line": 194,
+        "text": "const response = await fetch(target, { ...init, headers, signal: AbortSignal.any(signals) });"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/domain.js",
+        "line": 471,
+        "text": "const upstream = await fetch(new URL(`/api${sub}`, connection?.baseUrl ?? this.baseUrl), {"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/managed-runtime.js",
+        "line": 243,
+        "text": "const response = await fetch(connection.baseUrl + '/api/health', {"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/managed-runtime.js",
+        "line": 446,
+        "text": "const response = await fetch(url, { signal: AbortSignal.any([signal, controller.signal]) });"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/managed-runtime.js",
+        "line": 661,
+        "text": "const health = await fetch(connection.baseUrl + '/api/health', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/research/autosave-race-repro.mjs",
+        "line": 21,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "docs/research/autosave-race-repro.mjs",
+        "line": 27,
+        "text": "const source = await readFile(sourceFile, 'utf8')"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/client.js",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/client.js",
+        "line": 4,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/client.js",
+        "line": 212,
+        "text": "await mkdir(root, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dog-tools.mjs",
+        "line": 2,
+        "text": "export const inject = ['tools', 'openwriteDog']"
+      },
+      {
+        "file": "dog-tools.mjs",
+        "line": 4,
+        "text": "for (const tool of ctx.openwriteDog.tools) ctx.effect(() => ctx.tools.register(tool))"
+      },
+      {
+        "file": "dog-tools.mjs",
+        "line": 5,
+        "text": "ctx.effect(() => ctx.tools.guard(execution => {"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/preset-tools.js",
+        "line": 7,
+        "text": "export const inject = ['novelDomain', 'tools'];"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/preset-tools.js",
+        "line": 12,
+        "text": "ctx.effect(() => ctx.tools.presentAs(config.presentation), 'openwrite: tool presentation');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packages/openwrite-bridge/lib/managed-runtime.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "packages/openwrite-bridge/lib/managed-runtime.js",
+        "line": 131,
+        "text": "const killer = spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true });"
+      },
+      {
+        "file": "scripts/maintenance.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/maintenance.mjs",
+        "line": 46,
+        "text": "const result = spawnSync(command, argv, {"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "packages/studio-panel/lib/client.js",
+    "packages/studio-panel/vendor/vditor/dist/index.min.js",
+    "packages/studio-panel/vendor/vditor/dist/js/lute/lute.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

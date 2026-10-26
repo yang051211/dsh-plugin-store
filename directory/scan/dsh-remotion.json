@@ -1,0 +1,124 @@
+{
+  "name": "dsh-remotion",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:04:47.659Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 237,
+        "text": "            const response = await fetch(new URL(route, document.baseURI), { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 351,
+        "text": "                 const response = await fetch(new URL(route + '/upload', document.baseURI), { method: 'POST', credentials: 'same-origin', headers: { 'content-ty"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 229,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 307,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 452,
+        "text": "host.connection?.fetch?.register({ path: workbench.route, methods: ['GET', 'POST'], requestBody: 'buffered', fetch: (request) => workbench.fetch(request) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media-store.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile, rename, readdir, stat, lstat, unlink, realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/media-store.js",
+        "line": 18,
+        "text": "async init() { await mkdir(join(this.root, 'projects'), { recursive: true, mode: 0o700 }); }"
+      },
+      {
+        "file": "lib/media-store.js",
+        "line": 37,
+        "text": "const p = JSON.parse(await readFile(file, 'utf8'));"
+      },
+      {
+        "file": "lib/media-store.js",
+        "line": 76,
+        "text": "await mkdir(folder, { recursive: true });"
+      },
+      {
+        "file": "lib/media-store.js",
+        "line": 94,
+        "text": "await writeFile(temp, JSON.stringify(p, null, 2), { flag: 'wx', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['skills', 'tools'];"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 457,
+        "text": "const dispose = ctx.tools?.register({"
+      },
+      {
+        "file": "lib/skill-bundle.js",
+        "line": 189,
+        "text": "if (typeof ctx.tools?.register === 'function') {"
+      },
+      {
+        "file": "lib/skill-bundle.js",
+        "line": 191,
+        "text": "const remove = ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media-workbench.js",
+        "line": 2,
+        "text": "import { spawn, execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 97,
+        "text": "execFile(join(process.env.SystemRoot || 'C:/Windows', 'System32/taskkill.exe'), ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true }, () => { });"
+      },
+      {
+        "file": "lib/media-workbench.js",
+        "line": 113,
+        "text": "            const child = spawn(file, args, { cwd, env: { ...childEnv(this.store.root), ...environment }, windowsHide: true, shell: false, detached: process.pla"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

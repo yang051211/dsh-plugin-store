@@ -1,0 +1,98 @@
+{
+  "name": "dsh-codex-official-adapter",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:10.622Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7,
+        "text": "    const response=await fetch('/api/dsh-chatgpt-plan/'+action,{method:body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',...(body===undef"
+      },
+      {
+        "file": "src/auth/index.mjs",
+        "line": 2,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "src/desktop-fetch.mjs",
+        "line": 2,
+        "text": "import {EnvHttpProxyAgent,fetch} from 'undici';"
+      },
+      {
+        "file": "src/desktop-fetch.mjs",
+        "line": 25,
+        "text": "async fetch(url,init={}){"
+      },
+      {
+        "file": "src/desktop-network.mjs",
+        "line": 39,
+        "text": "async fetch(url,init){checkOpen();return transport.fetch(url,init);},"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 2,
+        "text": "import {mkdir, readFile, writeFile, rename, rm, lstat} from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 51,
+        "text": "verifyDigest(await readFile(file),expected);"
+      },
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 54,
+        "text": "await mkdir(options.cacheDir,{recursive:true,mode:0o700});"
+      },
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 59,
+        "text": "verifyDigest(await readFile(file),expected);"
+      },
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 74,
+        "text": "await writeFile(temporary,bytes,{mode:0o600,flag:'wx'});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 3,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "scripts/install-release.mjs",
+        "line": 85,
+        "text": "const child=spawn(command,argv,{stdio:'inherit',shell:false});"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

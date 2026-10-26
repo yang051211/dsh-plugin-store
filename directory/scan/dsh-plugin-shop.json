@@ -1,0 +1,102 @@
+{
+  "name": "dsh-plugin-shop",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:05:07.983Z",
+  "icon": "dsh-plugin-shop.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7965,
+        "text": "up = (await fetch(globalThis.location.href, { cache: \"no-store\" })).ok;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "* fetch (§9.2). The guard is the resolved origin, not the raw string: WHATWG"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5113,
+        "text": "this.fetchTarball = options.fetchTarball ?? ((url) => fetch(url));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "c, closeSync, existsSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync, writeFileSync, writeSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "return JSON.parse(readFileSync(fileURLToPath(new URL(\"../package.json\", import.meta.url)), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 741,
+        "text": "read: (path) => readFileSync(path, \"utf8\"),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 743,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 744,
+        "text": "writeFileSync(path, data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1360,
+        "text": "* On POSIX this is `spawn('dsh', …)` and there is nothing to decide. On"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1366,
+        "text": "* the resolved `.cmd` shim throws EINVAL *synchronously* out of `spawn()`."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1844,
+        "text": "spawnSync(\"taskkill\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1891,
+        "text": "* needed. On POSIX `spawn('dsh')` works and the lookup is skipped entirely,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

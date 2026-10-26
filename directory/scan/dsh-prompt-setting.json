@@ -1,0 +1,100 @@
+{
+  "name": "dsh-prompt-setting",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:04:46.283Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 3924,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "src/05-helpers-b.js",
+        "line": 467,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/build.js",
+        "line": 29,
+        "text": "*   `readFileSync(path, 'utf8')` + `charCodeAt` reproduces it exactly."
+      },
+      {
+        "file": "core/compat.js",
+        "line": 46,
+        "text": "import { readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "core/compat.js",
+        "line": 400,
+        "text": "const readFile = options.readFile ?? ((path) => readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "core/compat.js",
+        "line": 418,
+        "text": "const parsed = JSON.parse(readFile(manifest));"
+      },
+      {
+        "file": "core/store.js",
+        "line": 26,
+        "text": "import { appendFileSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/real-layers-check.mjs",
+        "line": 41,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 26,
+        "text": "*   3. **零依赖、零 shell**：`spawnSync(process.execPath, [...])`，不经过 shell。`test/`"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 62,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 178,
+        "text": "const result = spawn(process.execPath, step.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

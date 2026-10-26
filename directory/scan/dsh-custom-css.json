@@ -1,0 +1,110 @@
+{
+  "name": "dsh-custom-css",
+  "version": "0.12.0",
+  "scannedAt": "2026-10-26T10:05:01.244Z",
+  "icon": "dsh-custom-css.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2240,
+        "text": "const response = await fetch(API + path, { credentials: 'same-origin', ...init });"
+      },
+      {
+        "file": "tests/update-compat.mjs",
+        "line": 71,
+        "text": "const response = await fetch(`https://api.github.com/repos/${repo}/${endpoint}`, {"
+      },
+      {
+        "file": "tests/update-compat.mjs",
+        "line": 94,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${DSH.replace('/', '%2F')}`, {"
+      },
+      {
+        "file": "tests/visual-probe.mjs",
+        "line": 138,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`);"
+      },
+      {
+        "file": "tests/visual-probe.mjs",
+        "line": 276,
+        "text": "const socket = new WebSocket(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { promises as fs, watch } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "const newest = await fs.readFile(path.join(dir, entries[0].stamp + '.css'), 'utf8').catch(() => undefined);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 161,
+        "text": "await fs.mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 167,
+        "text": "await fs.writeFile(path.join(dir, stamp + '.css'), css, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "await fs.rm(path.join(dir, entry.stamp + '.css'), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 646,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "tests/audit-docs.mjs",
+        "line": 16,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/compat-matrix.mjs",
+        "line": 20,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tests/update-compat.mjs",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

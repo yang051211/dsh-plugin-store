@@ -1,0 +1,74 @@
+{
+  "name": "dsh-workspace-api-key",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-26T10:04:58.685Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 133,
+        "text": "res = await window.fetch(`${API_BASE}${path}`, init)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 738,
+        "text": "res = await fetch(`${root}/messages`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 463,
+        "text": "return normalizeState(JSON.parse(readFileSync(path, 'utf8')))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 473,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 474,
+        "text": "writeFileSync(path, JSON.stringify(state, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-plugin-phone-access",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:05:16.727Z",
+  "icon": "dsh-plugin-phone-access.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 283,
+        "text": "const response = await fetch('/phone-access/info', {"
+      },
+      {
+        "file": "client.js",
+        "line": 297,
+        "text": "const response = await fetch('/phone-access/rotate', { method: 'POST', credentials: 'same-origin' })"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "index.js",
+        "line": 312,
+        "text": "const response = await fetch('/pair', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 539,
+        "text": ".then(() => mkdir(dirname(statusPath), { recursive: true }))"
+      },
+      {
+        "file": "index.js",
+        "line": 540,
+        "text": ".then(() => writeFile(statusPath, body, { encoding: 'utf8', mode: 0o600 }))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

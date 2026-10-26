@@ -1,0 +1,87 @@
+{
+  "name": "dsh-expert-hub",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:05:01.797Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1222,
+        "text": "return fetch(path, init).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/author.js",
+        "line": 17,
+        "text": "import { cp, mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/author.js",
+        "line": 156,
+        "text": "await writeFile(temp, data, { mode: 0o600, ...options })"
+      },
+      {
+        "file": "src/author.js",
+        "line": 161,
+        "text": "await rm(temp, { force: true }).catch(() => {})"
+      },
+      {
+        "file": "src/author.js",
+        "line": 178,
+        "text": "await mkdir(dir)"
+      },
+      {
+        "file": "src/author.js",
+        "line": 200,
+        "text": "await rm(join(dir, entry.name), { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools.js",
+        "line": 882,
+        "text": "* @param {object} ctx - the context where `ctx.tools` is available"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 887,
+        "text": "if (ctx === null || typeof ctx !== 'object' || ctx.tools === undefined || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 891,
+        "text": "ctx.tools.register(expertImportToolDefinition(options)),"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 892,
+        "text": "ctx.tools.register(expertManageToolDefinition(options)),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

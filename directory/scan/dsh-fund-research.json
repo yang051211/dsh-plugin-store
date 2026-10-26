@@ -1,0 +1,90 @@
+{
+  "name": "dsh-fund-research",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:05:04.163Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { appendFile, mkdir, readFile, readdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1517,
+        "text": "const text = await readFile(path.join(fundDir, entry, \"snapshot.json\"), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1996,
+        "text": "await mkdir(versionDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1999,
+        "text": "await writeFile(target, json, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3741,
+        "text": "const inject = [\"tools\", \"storageDomain\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3780,
+        "text": "ctx.effect(() => ctx.tools.register(buildSnapshotTool(deps)), \"dsh-fund-research: fund_snapshot tool\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3781,
+        "text": "ctx.effect(() => ctx.tools.register(buildResearchTool(deps)), \"dsh-fund-research: fund_research tool\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3785,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'storageDomain'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

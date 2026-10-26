@@ -1,0 +1,99 @@
+{
+  "name": "dsh-cite",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:04:59.624Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/citation-workbench.js",
+        "line": 28,
+        "text": "const response = await fetch(url, { ...init, redirect: 'error' });"
+      },
+      {
+        "file": "lib/citation-workbench.js",
+        "line": 240,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 202,
+        "text": "            const r = await fetch(new URL(route, document.baseURI), { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "r({ path: workbench.route, methods: ['GET', 'POST'], requestBody: 'buffered', fetch: (request) => workbench.fetch(request) }); if (typeof remove === 'function')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/citation-store.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile, rename, lstat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/citation-store.js",
+        "line": 14,
+        "text": "async init() { await mkdir(this.root, { recursive: true, mode: 0o700 }); if ((await lstat(this.root)).isSymbolicLink())"
+      },
+      {
+        "file": "lib/citation-store.js",
+        "line": 23,
+        "text": "text = await readFile(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/citation-store.js",
+        "line": 78,
+        "text": "await writeFile(temp, bytes, { flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/citation-store.js",
+        "line": 84,
+        "text": "await unlink(temp).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "/** cordis 服务注入：apply 里要用 ctx.tools。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

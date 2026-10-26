@@ -1,0 +1,155 @@
+{
+  "name": "dsh-plugin-mesh",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:04:50.453Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 193,
+        "text": "const r = await fetch(API + path, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1839,
+        "text": "const r = await fetch(`${API}/state`, {"
+      },
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 19,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 21,
+        "text": "import { request as httpRequest } from \"node:http\";"
+      },
+      {
+        "file": "lib/_selftest-newsession.mjs",
+        "line": 52,
+        "text": "const res = await fetch(`${DEV}/mesh/api/send`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 20,
+        "text": "import { mkdtempSync, readFileSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 40,
+        "text": "return String(JSON.parse(readFileSync(p, \"utf8\")).tsnetAuthKey ?? \"\").trim();"
+      },
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 221,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/_selftest-capabilities.mjs",
+        "line": 11,
+        "text": "import { mkdirSync, mkdtempSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/_selftest-capabilities.mjs",
+        "line": 448,
+        "text": "mkdirSync(join(tmp, \"Microsoft\", \"WindowsApps\"), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "export const inject = [\"tools\", \"webServer\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2087,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2123,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2145,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2261,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/_rehearsal-peer.mjs",
+        "line": 137,
+        "text": "const child = spawn(binaryPath(), [\"-hostname\", nodeName, \"-dir\", dir, \"-token\", token, ...(EPHEMERAL ? [\"-ephemeral\"] : [])], {"
+      },
+      {
+        "file": "lib/_selftest-tsnet-tailnet.mjs",
+        "line": 25,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/_selftest-tsnet-tailnet.mjs",
+        "line": 103,
+        "text": "const child = spawn(binaryPath(), [\"-hostname\", name, \"-dir\", dir, \"-token\", token, \"-ephemeral\"], {"
+      },
+      {
+        "file": "lib/_selftest-tsnet-tailnet.mjs",
+        "line": 408,
+        "text": "const { execSync } = await import(\"node:child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 884,
+      "text": "./dev-setup.sh meshtest /tmp/mesh-dsh"
+    },
+    {
+      "file": "README.md",
+      "line": 892,
+      "text": "`dev-setup.sh` 支持的环境变量：`MACHINE` `PORT` `MULTICAST` `SCAN_ON_START`"
+    },
+    {
+      "file": "README.md",
+      "line": 948,
+      "text": "├── dev-setup.sh           # 隔离测试环境搭建"
+    }
+  ],
+  "skippedEntries": []
+}

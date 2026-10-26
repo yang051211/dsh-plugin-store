@@ -1,0 +1,101 @@
+{
+  "name": "dsh-todo-reminder",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:05:02.331Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 11,
+        "text": "const response = await fetch(path, body === void 0 ? {} : {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1116,
+        "text": "const response = await fetch(SOUND_URL, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/routes.js",
+        "line": 7,
+        "text": "import { existsSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 9,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 158,
+        "text": "return readFile(file).then((body) => {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 192,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 6,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['webServer', 'timer', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "const disposers = makeTodoTools(service).map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 63,
+        "text": "/** 构建全部工具（注册时逐个 ctx.tools.register）。 */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/routes.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 194,
+        "text": "spawn(opener, [dir], { detached: true, stdio: 'ignore' }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

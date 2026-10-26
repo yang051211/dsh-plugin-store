@@ -1,0 +1,129 @@
+{
+  "name": "dsh-extension-manager",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:05:16.826Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2862,
+        "text": "response = await fetch(`${API_PREFIX}${path}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11210,
+        "text": "var undiciDebugLog = util.debuglog(\"undici\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30245,
+        "text": "var defaultUserAgent = typeof __UNDICI_IS_NODE__ !== \"undefined\" || typeof esbuildDetection !== \"undefined\" ? \"node\" : \"undici\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38105,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39693,
+        "text": "response = await fetch(url, { method: \"GET\", headers, signal, redirect: \"follow\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23251,
+        "text": "var { writeFile: writeFile4, readFile: readFile6, mkdir: mkdir4 } = __require(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35633,
+        "text": "import { appendFile, mkdir, rename, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35634,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35676,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35678,
+        "text": "await appendFile(this.file, line, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35754,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35811,
+        "text": "execFile(executable, args, { timeout: 8e3, windowsHide: true, maxBuffer: 1 << 20, shell }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36999,
+        "text": "import { execFile as execFile2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38043,
+        "text": "import { execFile as execFile3 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40032,
+        "text": "import { execFile as execFile4 } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 119,
+      "text": "node scripts/test-env/setup.mjs [root]"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 441,
+      "text": "node scripts/test-env/setup.mjs                    # 创建 _test/env1/{dsh-home,agents-home,workspace} 夹具"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 447,
+      "text": "断后重启恢复），以及夹具准备脚本。默认夹具根目录为 `../_test/env1`，可用 `node scripts/test-env/setup.mjs <root>` 指定其他目录；`out/` 下记录 `server.log`、`server.pid`、`url.json`（带鉴权 token 的本机 URL）。"
+    }
+  ],
+  "skippedEntries": []
+}

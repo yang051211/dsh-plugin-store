@@ -1,0 +1,88 @@
+{
+  "name": "dsh-ears-prosody",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:04:44.876Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "const res = await fetch(source, { signal: controller.signal })"
+      },
+      {
+        "file": "lib/model.js",
+        "line": 68,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "lib/recorder-client.js",
+        "line": 363,
+        "text": "const res = await fetch('/dsh-ears/wav', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 149,
+        "text": "const buf = readFileSync(abs)"
+      },
+      {
+        "file": "lib/recorder-host.js",
+        "line": 23,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/recorder-host.js",
+        "line": 24,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/recorder-host.js",
+        "line": 298,
+        "text": "buf = await readFile(join(dir, `${FILE_PREFIX}-${at}.wav`))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 335,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

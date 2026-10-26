@@ -1,0 +1,110 @@
+{
+  "name": "dsh-computer-use",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:07.856Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vision.js",
+        "line": 202,
+        "text": "res = await fetch(VISION_BASE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cua.js",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 18,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 46,
+        "text": "const v = readFileSync(f, 'utf8').trim()"
+      },
+      {
+        "file": "verify-runtime.mjs",
+        "line": 11,
+        "text": "import { mkdtempSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 41,
+        "text": "export const inject = ['tools', 'approval']"
+      },
+      {
+        "file": "index.js",
+        "line": 155,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 208,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 227,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 235,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cua.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cua.js",
+        "line": 85,
+        "text": "const child = spawn(CUA_BIN, ['call', tool, JSON.stringify(args)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 161,
+      "text": "npm install -g dsh-computer-use"
+    },
+    {
+      "file": "README.md",
+      "line": 457,
+      "text": "npm install -g dsh-computer-use"
+    }
+  ],
+  "skippedEntries": []
+}

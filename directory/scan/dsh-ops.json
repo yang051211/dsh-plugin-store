@@ -1,0 +1,122 @@
+{
+  "name": "dsh-ops",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:04:35.644Z",
+  "icon": "dsh-ops.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli/panel.js",
+        "line": 25,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 15,
+        "text": "const {exports}=patchMsys(fs.readFileSync(source))"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 27,
+        "text": "fs.writeFileSync(path.join(scratch,name+'.def'),proxyDefinition(names,dll))"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 30,
+        "text": "const file=path.join(scratch,'build.cmd');fs.writeFileSync(file,commands.join('\\r\\n')+'\\r\\n')"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 33,
+        "text": "fs.mkdirSync(destination,{recursive:true})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discovery/index.js",
+        "line": 81,
+        "text": "entry.disposers.push(await registerNativeProvider(entry.ctx, [registration], tool => entry.ctx.tools.register(tool), { inheritable: false, priority: 10 }));"
+      },
+      {
+        "file": "lib/discovery/index.js",
+        "line": 145,
+        "text": "entry.disposers.push(entry.ctx.tools.restrict({ deny }));"
+      },
+      {
+        "file": "lib/discovery/index.js",
+        "line": 173,
+        "text": "entry.fiber = agent.ctx.plugin({ inject: ['tools'], apply(scoped) { entry.ctx = scoped; } });"
+      },
+      {
+        "file": "lib/file/runtime.js",
+        "line": 38,
+        "text": "this.unregisterProvider = await registerNativeProvider(this.ctx, definitions, tool => this.ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "const names = (ctx.tools.schemas(agent) ?? []).map(tool => tool.name).filter(name => denied.has(name));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 20,
+        "text": "nst discovered=fs.existsSync(vswhere) ? spawnSync(vswhere,['-latest','-products','*','-requires','Microsoft.VisualStudio.Component.VC.Tools.x86.x64','-property'"
+      },
+      {
+        "file": "bin/build-bash-ipc.mjs",
+        "line": 31,
+        "text": "const build=spawnSync('cmd.exe',['/d','/c',file],{stdio:'inherit',windowsHide:true})"
+      },
+      {
+        "file": "bin/check-release.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/check-release.mjs",
+        "line": 41,
+        "text": "const check = spawnSync(process.execPath, [path.join(root, 'bin/native-runtime.mjs'), 'check', '--root', root], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "runtime/darwin-arm64/dsh-ops-worker",
+    "runtime/linux-x64/dsh-ops-worker",
+    "runtime/win32-x64/bash-ipc/opsipc.dll",
+    "runtime/win32-x64/bash-ipc/opsnt.dll",
+    "runtime/win32-x64/dsh-ops-worker.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

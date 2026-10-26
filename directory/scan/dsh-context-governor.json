@@ -1,0 +1,91 @@
+{
+  "name": "dsh-context-governor",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:05:11.137Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 436,
+        "text": "return fetch(endpoint('status', sessionId, refresh ? { refresh: '1' } : null), { headers: headers() })"
+      },
+      {
+        "file": "client.js",
+        "line": 442,
+        "text": "return fetch(endpoint('handoff', sessionId, { lang: lang }), { headers: headers() })"
+      },
+      {
+        "file": "index.js",
+        "line": 528,
+        "text": "fetch(url, { signal: controller ? controller.signal : undefined })"
+      },
+      {
+        "file": "index.js",
+        "line": 786,
+        "text": "const response = await fetch('https://api.deepseek.com/user/balance', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 503,
+        "text": "mkdirSync(holidayDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 504,
+        "text": "writeFileSync(join(holidayDir, 'holidays-' + year + '.json'), JSON.stringify({ year: year, dates: dates, fetchedAt: new Date().toISOString() }))"
+      },
+      {
+        "file": "index.js",
+        "line": 510,
+        "text": "const parsed = JSON.parse(readFileSync(join(holidayDir, 'holidays-' + year + '.json'), 'utf8'))"
+      },
+      {
+        "file": "test/smoke.mjs",
+        "line": 12,
+        "text": "import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "sessionQuery",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "superpowers-dsh",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:04:51.541Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/sync-from-upstream.mjs",
+        "line": 23,
+        "text": "*   curl -L https://codeload.github.com/obra/superpowers/tar.gz/refs/tags/v7.0.0 \\"
+      },
+      {
+        "file": "skills/brainstorming/scripts/helper.js",
+        "line": 80,
+        "text": "ws = new WebSocket(websocketUrl());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 2,
+        "text": "const http = require('http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { readdir, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "text = await readFile(skillFile, 'utf8')"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 28,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 29,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 50,
+        "text": "const manifest = JSON.parse(await readFile(manifestPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      },
+      {
+        "file": "skills/writing-skills/render-graphs.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

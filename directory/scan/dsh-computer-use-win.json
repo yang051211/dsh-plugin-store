@@ -1,0 +1,108 @@
+{
+  "name": "dsh-computer-use-win",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:04:41.056Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/browser.mjs",
+        "line": 683,
+        "text": "const response = await fetch(new URL('/json/version', url), { signal: AbortSignal.timeout(3000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/browser.mjs",
+        "line": 7,
+        "text": "import { mkdirSync, mkdtempSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 42,
+        "text": "try { writeFileSync(lock, String(process.pid), { flag: 'wx' }); break; }"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 46,
+        "text": "const owner = Number(readFileSync(lock, 'utf8'));"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 47,
+        "text": "if (owner > 0 && !processAlive(owner)) { rmSync(lock, { force: true }); continue; }"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 53,
+        "text": "try { return await action(); } finally { rmSync(lock, { force: true }); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# @deepseek-ai/dsh-mcp-client bridge. After DSH starts, the model sees tools"
+      },
+      {
+        "file": "mcp/dsh-plugin.mjs",
+        "line": 12,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "mcp/dsh-plugin.mjs",
+        "line": 85,
+        "text": "const bridge = await import('@deepseek-ai/dsh-mcp-client');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/browser.mjs",
+        "line": 5,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 111,
+        "text": "st output = await new Promise(resolve => execFile('reg.exe', ['query', 'HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\Shell\\\\Associations\\\\UrlAssociations\\\\https', '/s'],"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 782,
+        "text": "const child = this.agentChild = spawn(executable.path, ['--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run',"
+      },
+      {
+        "file": "mcp/browser.mjs",
+        "line": 815,
+        "text": "      const watcher = spawn(process.execPath, [fileURLToPath(import.meta.url), '--watch-profile', profile, url, String(browser.pid)], { env: { ...process.env, E"
+      },
+      {
+        "file": "mcp/server.mjs",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

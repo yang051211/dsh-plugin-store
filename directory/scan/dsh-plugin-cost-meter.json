@@ -1,0 +1,59 @@
+{
+  "name": "dsh-plugin-cost-meter",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:05:11.269Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 343,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "return JSON.parse(readFileSync(url, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 341,
+        "text": "if (url.startsWith(\"file://\")) return JSON.parse(readFileSync(fileURLToPath(url), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 342,
+        "text": "if (!/^[a-z][a-z0-9+.-]*:\\/\\//i.test(url)) return JSON.parse(readFileSync(url, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,157 @@
+{
+  "name": "dsh-reference-anything",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:05:18.430Z",
+  "icon": "dsh-reference-anything.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chat-import-compatibility.js",
+        "line": 47,
+        "text": "    const response = await fetch('https://registry.npmjs.org/dsh-chat-import/latest', { signal: AbortSignal.any([AbortSignal.timeout(15_000), ...signal ? [signa"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 18410,
+        "text": "return fetch();"
+      },
+      {
+        "file": "lib/sources/cloud-drive/providers/openlist.js",
+        "line": 5,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/sources/cloud-drive/providers/openlist.js",
+        "line": 6,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "lib/update.js",
+        "line": 123,
+        "text": "const response = await fetch(NPM_LATEST_URL.replace(/latest$/, tag), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chat-import-compatibility.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/chat-import-compatibility.js",
+        "line": 21,
+        "text": "return JSON.parse(await readFile(new URL('package.json', base), 'utf8').catch(error => {"
+      },
+      {
+        "file": "lib/conversation-availability.js",
+        "line": 1,
+        "text": "import { stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/download-directory.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/download-directory.js",
+        "line": 2,
+        "text": "import { access, lstat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/local-reference-tools.js",
+        "line": 54,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/local-reference-tools.js",
+        "line": 64,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/local-reference-tools.js",
+        "line": 106,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/local-reference-tools.js",
+        "line": 120,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'references'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/conversation-availability.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/conversation-availability.js",
+        "line": 41,
+        "text": "            this.worker = spawn(process.execPath, ['--max-old-space-size=256', fileURLToPath(new URL('../vendor/chat-import-reader/availability-worker.mjs', imp"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 283,
+        "text": "? spawn('explorer.exe', [path], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 285,
+        "text": "? spawn('open', [path], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "openListManager",
+    "referenceChatHistory",
+    "references",
+    "storageDomain",
+    "tools",
+    "typert"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 200,
+      "text": "npm install --global \"@jackwener/opencli@2.0.0\""
+    }
+  ],
+  "skippedEntries": []
+}

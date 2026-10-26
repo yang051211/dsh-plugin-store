@@ -1,0 +1,92 @@
+{
+  "name": "dsh-in-hand",
+  "version": "1.7.8",
+  "scannedAt": "2026-10-26T10:05:10.984Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 97,
+        "text": "fetch('/taskwatch/data', { cache: 'no-cache' }).then(function (r) {"
+      },
+      {
+        "file": "lib/sw.js",
+        "line": 91,
+        "text": "e.respondWith(fetch(e.request).catch(() => new Response(JSON.stringify({"
+      },
+      {
+        "file": "lib/sw.js",
+        "line": 100,
+        "text": "e.respondWith(fetch(e.request).catch(() => new Response(JSON.stringify({"
+      },
+      {
+        "file": "lib/sw.js",
+        "line": 132,
+        "text": "fetch(e.request)"
+      },
+      {
+        "file": "lib/sw.js",
+        "line": 146,
+        "text": "e.respondWith(caches.match(e.request).then((hit) => hit || fetch(e.request)))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/files.js",
+        "line": 21,
+        "text": "import { closeSync, openSync, readSync, realpathSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "return readFileSync(join(HERE, 'sw.js'), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "return readFileSync(join(HERE, 'page.html'), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 744,
+        "text": "body = readFileSync(hit.abs)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ticket.js",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "dsh-web3",
+  "version": "0.10.1",
+  "scannedAt": "2026-10-26T10:04:54.976Z",
+  "icon": "dsh-web3.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 152,
+        "text": "const dispose = http.get(route.path, route.handler);"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 6,
+        "text": "* services — raw `http.get()` routes that plugins register on their own are"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/passphrase.js",
+        "line": 21,
+        "text": "import { readFile, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/passphrase.js",
+        "line": 30,
+        "text": "const value = (await readFile(path, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/passphrase.js",
+        "line": 33,
+        "text": "await rm(path, { force: true });"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 17,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 335,
+        "text": "await writeFile(secretFile, query.secret, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "// Register model tools on the DSH ToolRuntime (`ctx.tools`), which feeds the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "logger.info(`registered ${tools.length} wallet model tools on ctx.tools`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "logger.warn('neither ctx.tools nor model.tools available; skipping tool registration');"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* declaration (JSON-Schema + render) matching the DSH `ctx.tools` registry"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 24,
+        "text": "* same projection `defineTool()` performs. `ctx.tools.register()` stores the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/keychain.js",
+        "line": 15,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/keychain.js",
+        "line": 25,
+        "text": "execFile(bin, args, { encoding: 'utf8', timeout: 15_000 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/keychain.js",
+        "line": 33,
+        "text": "const child = spawn(bin, args, { stdio: ['pipe', 'ignore', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

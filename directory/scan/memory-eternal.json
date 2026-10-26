@@ -1,0 +1,143 @@
+{
+  "name": "memory-eternal",
+  "version": "0.18.0",
+  "scannedAt": "2026-10-26T10:04:40.086Z",
+  "icon": "memory-eternal.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-tui-plugin/demo.mjs",
+        "line": 624,
+        "text": "const res = await fetch(API + path, { ...options, signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "dsh-tui-plugin/scene.js",
+        "line": 16,
+        "text": "const res = await fetch(API + path, { ...options, signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 233,
+        "text": "const r = await fetch(base + route, { ...init, signal: ctl.signal })"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 413,
+        "text": "const resp = await fetch('https://registry.npmjs.org/memory-eternal', { signal: ctl.signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 16,
+        "text": "i\";async function na(t){try{let a=await fetch(`${G}/open-external?url=${encodeURIComponent(t)}`,{method:\"POST\"}),i=await a.json().catch(()=>null);if(a.ok&&i&&i."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-memory.mjs",
+        "line": 369,
+        "text": "const fsPromises = await import('node:fs/promises')"
+      },
+      {
+        "file": "hooks/capture.mjs",
+        "line": 16,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "hooks/capture.mjs",
+        "line": 41,
+        "text": "try { text = await fs.readFile(transcriptPath, 'utf8') } catch { return '' }"
+      },
+      {
+        "file": "hooks/claude-session.js",
+        "line": 11,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "hooks/claude-session.js",
+        "line": 30,
+        "text": "try { lines = (await fs.readFile(transcriptPath, 'utf8')).split('\\n').filter(Boolean) } catch { return }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/mcp-memory/memory-eternal.cordis.yml",
+        "line": 4,
+        "text": "# `@deepseek-ai/dsh-mcp-client` 使用记忆库（与 Claude Code / Codex / Cursor 走同一条协议路径）。"
+      },
+      {
+        "file": "examples/mcp-memory/memory-eternal.cordis.yml",
+        "line": 26,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 1023,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-memory.mjs",
+        "line": 118,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "bin/dsh-memory.mjs",
+        "line": 121,
+        "text": "const child = spawn(process.execPath, [demo, ...argv.slice(1)], { stdio: 'inherit', windowsHide: false })"
+      },
+      {
+        "file": "bin/dsh-memory.mjs",
+        "line": 136,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "bin/dsh-memory.mjs",
+        "line": 139,
+        "text": "const child = spawn(cmd, args, { detached: true, stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "dsh-tui-plugin/main.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "web/app.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "systemPrompt"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 37,
+      "text": "npm i -g memory-eternal"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 37,
+      "text": "npm i -g memory-eternal"
+    }
+  ],
+  "skippedEntries": []
+}

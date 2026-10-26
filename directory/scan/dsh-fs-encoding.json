@@ -1,0 +1,116 @@
+{
+  "name": "dsh-fs-encoding",
+  "version": "1.5.2",
+  "scannedAt": "2026-10-26T10:05:05.868Z",
+  "icon": "dsh-fs-encoding.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/byte-writer.js",
+        "line": 17,
+        "text": "import { mkdir, open, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/byte-writer.js",
+        "line": 51,
+        "text": "await rm(tempPath, { force: true });"
+      },
+      {
+        "file": "lib/byte-writer.js",
+        "line": 120,
+        "text": "await writeFile(path, bytes);"
+      },
+      {
+        "file": "lib/byte-writer.js",
+        "line": 124,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/byte-writer.js",
+        "line": 132,
+        "text": "await handle.writeFile(Buffer.from(bytes));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "* Deliberately NOT probed up front with `ctx.tools.get(name)`: without a scope"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"fs\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "* scope-blind read (`ctx.tools.get(name)`) answers for the GLOBAL layer, which"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 218,
+        "text": "disposers.push(agent.ctx.tools.register(readTool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "disposers.push(agent.ctx.tools.register(writeTool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool-grep.js",
+        "line": 118,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 242,
+      "text": "配置（`$DSH_HOME/plugins/dsh-fs-encoding/config.yaml`）在更新后都会保留。"
+    },
+    {
+      "file": "README.md",
+      "line": 270,
+      "text": "- **配置目录**：`$DSH_HOME/plugins/dsh-fs-encoding/`——`$DSH_HOME` 默认是 `~/.dsh`（Windows 下 `C:\\Users\\<用户名>\\.dsh`），插件的 `config.yaml` 保存在这里。卸载不会自动删除，如需彻底清理请手动删除整个目录。"
+    },
+    {
+      "file": "README.md",
+      "line": 282,
+      "text": "$DSH_HOME/plugins/dsh-fs-encoding/config.yaml"
+    }
+  ],
+  "skippedEntries": []
+}

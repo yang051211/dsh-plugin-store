@@ -1,0 +1,116 @@
+{
+  "name": "dsh-auto-memory",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:04:46.851Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2141,
+        "text": "const response = await fetch(`${BASE}/groups.list${query}`, { headers: { \"cache-control\": \"no-store\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2151,
+        "text": "const response = await fetch(`${BASE}/memory.read?${params}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2155,
+        "text": "write: (payload) => fetch(`${BASE}/memory.write`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2160,
+        "text": "del: (payload) => fetch(`${BASE}/memory.delete`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2166,
+        "text": "const response = await fetch(`${BASE}/import.claude.scan`, { headers: { \"cache-control\": \"no-store\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { lstatSync, promises, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { open } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "const pidRaw = await promises.readFile(lockPath, \"utf8\").catch(() => null);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "await promises.rm(lockPath, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 539,
+        "text": "const raw = await promises.readFile(file, \"utf8\").catch(() => null);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 829,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 936,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1032,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1116,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1172,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

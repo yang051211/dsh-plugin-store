@@ -1,0 +1,112 @@
+{
+  "name": "dsh-plugin",
+  "version": "2.2.2",
+  "scannedAt": "2026-10-26T10:04:36.674Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1329,
+        "text": "const res = await fetch(\"/dsh-plugin-hub/installed\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1347,
+        "text": "const res = await fetch(\"/dsh-plugin-hub/npm-release-age\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1363,
+        "text": "return (await fetch(\"/dsh-plugin-hub/open-path\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1376,
+        "text": "return (await fetch(\"/dsh-plugin-hub/open-log\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1391,
+        "text": "const res = await fetch(\"/dsh-plugin-hub/choose-log-dir\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http/catalog.js",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/http/catalog.js",
+        "line": 38,
+        "text": "const entry = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/http/catalog.js",
+        "line": 52,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/http/catalog.js",
+        "line": 53,
+        "text": "writeFileSync(file, JSON.stringify({ at: Date.now(), body }));"
+      },
+      {
+        "file": "lib/http/catalog.js",
+        "line": 65,
+        "text": "const manifest = JSON.parse(readFileSync(join(profileDirectory(profile), 'package.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http/diagnostics.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/http/diagnostics.js",
+        "line": 27,
+        "text": "const r = spawnSync('npm', ['config', 'get', 'registry'], {"
+      },
+      {
+        "file": "lib/http/logs.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/http/logs.js",
+        "line": 92,
+        "text": "const child = spawn(bin, args, { stdio: 'ignore', detached: true });"
+      },
+      {
+        "file": "lib/http/logs.js",
+        "line": 136,
+        "text": "const child = spawn(bin, args);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

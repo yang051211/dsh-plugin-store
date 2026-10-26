@@ -1,0 +1,109 @@
+{
+  "name": "dsh-think-translate",
+  "version": "1.2.14",
+  "scannedAt": "2026-10-26T10:04:47.679Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 976,
+        "text": "return fetch(url, o).then("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2026,
+        "text": "fetch(\"/_xlate/config\").then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2042,
+        "text": "fetch(\"/_xlate/models\").then(function (r) { return r.json(); })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2073,
+        "text": "return fetch(\"/_xlate/translate\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" },"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2090,
+        "text": "return fetch(\"/_xlate/local/prepare\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" },"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discovery.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 108,
+        "text": "on scanDshProviders({ candidates = [], profileContext, modulePath = '', runtimeRows = [], exists = existsSync, readText = p => readFileSync(p, 'utf8') } = {}) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { readFile, writeFile, mkdir, copyFile, access, unlink, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "await mkdir(appState, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 188,
+        "text": "await writeFile(join(appState, 'upgraded'), '', 'utf8') // Official installer convention: launch the app hidden."
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "const child = subprocessRef.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "const child = subprocessRef.spawn({ argv: [executable, ...filtered], cwd: await workdir(), graceMs: 2000,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "const child = subprocessRef.spawn({ argv: [file, '/VERYSILENT', '/NORESTART', '/SUPPRESSMSGBOXES'],"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "const child = sub.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

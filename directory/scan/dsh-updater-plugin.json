@@ -1,0 +1,113 @@
+{
+  "name": "dsh-updater-plugin",
+  "version": "1.0.4",
+  "scannedAt": "2026-10-26T10:04:57.302Z",
+  "icon": "dsh-updater-plugin.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 157,
+        "text": "const response = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {"
+      },
+      {
+        "file": "index.js",
+        "line": 430,
+        "text": "const response = await fetch(target.browser_download_url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 230,
+        "text": "const response = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 64,
+        "text": "return String(JSON.parse(readFileSync(PACKAGE_JSON, 'utf8')).version ?? '')"
+      },
+      {
+        "file": "index.js",
+        "line": 426,
+        "text": "await mkdir(downloadDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 437,
+        "text": "await writeFile(destination, buffer)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 707,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 141,
+        "text": "? spawn('pythonw', [target], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 142,
+        "text": ": spawn(target, [], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 260,
+        "text": "child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 338,
+        "text": "const child = spawn(exe, ['-X', 'utf8', CORE_SCRIPT, '--json', ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

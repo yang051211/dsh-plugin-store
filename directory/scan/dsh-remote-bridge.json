@@ -1,0 +1,105 @@
+{
+  "name": "dsh-remote-bridge",
+  "version": "2.7.0",
+  "scannedAt": "2026-10-26T10:04:54.219Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 44,
+        "text": "const response = await this.fetch(`/roots/${encodeURIComponent(rootId)}/content?path=${encodeURIComponent(relativePath)}`);"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 267,
+        "text": "const response = await this.fetch(path, init);"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 276,
+        "text": "const response = await fetch(`${this.manageBase}${path}`, {"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 284,
+        "text": "fetch(path, init = {}) {"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 289,
+        "text": "return fetch(`${this.apiBase}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { chmod, copyFile, lstat, mkdir, open, readFile, readdir, readlink, realpath, rename, rm, stat, symlink, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { createReadStream, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1009,
+        "text": "await mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1072,
+        "text": "await writeFile(tmp, res.body);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1097,
+        "text": "await mkdir(dataDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 921,
+        "text": "* 2. **绝对路径** —— `execFile('dpkg-deb', ...)` 的错误形如"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1104,
+        "text": "execFile(\"dpkg-deb\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1223,
+        "text": "const child = spawn(exe, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

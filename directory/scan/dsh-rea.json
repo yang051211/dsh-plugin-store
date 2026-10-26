@@ -1,0 +1,96 @@
+{
+  "name": "dsh-rea",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:05:12.118Z",
+  "icon": "dsh-rea.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/status.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/status.js",
+        "line": 70,
+        "text": "const text = readFileSync(join(dir, 'Ghidra', 'application.properties'), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# (@deepseek-ai/dsh-mcp-client) for the upstream `rea --mcp` stdio server, so"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "* Mounts the official MCP client (`@deepseek-ai/dsh-mcp-client`) for the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "const mcp = await import('@deepseek-ai/dsh-mcp-client');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/status.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/status.js",
+        "line": 30,
+        "text": "execFile(command, args, { timeout: timeoutMs, windowsHide: true, shell: process.platform === 'win32' }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 20,
+      "text": "# (`npm i -g rea-agents@latest`). The command form is chosen per OS"
+    },
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "- The REA CLI installed globally, **version 6.3.0 or newer**: `npm i -g rea-agents@latest`."
+    },
+    {
+      "file": "README.md",
+      "line": 135,
+      "text": "- **Upstream REA**: `npm i -g rea-agents@latest`, then restart the harness so the MCP child respawns on the"
+    },
+    {
+      "file": "README.md",
+      "line": 150,
+      "text": "npm i -g rea-agents@latest"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 64,
+      "text": "- 全局安装 REA CLI，**需要 6.3.0 或更高版本**：`npm i -g rea-agents@latest`。"
+    }
+  ],
+  "skippedEntries": []
+}

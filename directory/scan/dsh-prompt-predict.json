@@ -1,0 +1,69 @@
+{
+  "name": "dsh-prompt-predict",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:04:52.030Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 480,
+        "text": "return fetch(\"./dsh-prompt-predict/\" + path, Object.assign({}, opts, { signal: controller.signal }))"
+      },
+      {
+        "file": "client/client.js",
+        "line": 507,
+        "text": "return fetch(\"./dsh-prompt-predict/\" + path, opts).then(function (r) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.mjs",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config.mjs",
+        "line": 13,
+        "text": "const raw = JSON.parse(readFileSync(configFilePath(), 'utf8'));"
+      },
+      {
+        "file": "lib/config.mjs",
+        "line": 21,
+        "text": "mkdirSync(dirname(configFilePath()), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/config.mjs",
+        "line": 22,
+        "text": "writeFileSync(configFilePath(), JSON.stringify(next, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/config.mjs",
+        "line": 27,
+        "text": "try { rmSync(configFilePath()); } catch { /* 不存在 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

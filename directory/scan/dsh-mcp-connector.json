@@ -1,0 +1,141 @@
+{
+  "name": "dsh-mcp-connector",
+  "version": "0.2.82",
+  "scannedAt": "2026-10-26T10:04:37.912Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.sh",
+        "line": 5,
+        "text": "#   远端：  bash <(curl -fsSL https://raw.githubusercontent.com/duhu2000/dsh-mcp-connector/main/install.sh)"
+      },
+      {
+        "file": "lib/callback-server.js",
+        "line": 6,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 6,
+        "text": "import { EnvHttpProxyAgent } from 'undici';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 185,
+        "text": "const response = await fetch(catalogUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 476,
+        "text": "const response = await window.fetch(\"/mcp-connector/api\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 36,
+        "text": "const raw = readFileSync(new URL('../catalog/catalog.json', import.meta.url), 'utf8');"
+      },
+      {
+        "file": "lib/cli-providers.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli-providers.js",
+        "line": 316,
+        "text": "const pkg = JSON.parse(readFileSync(path.join(root, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/grant-journal.js",
+        "line": 12,
+        "text": "import { chmod, mkdir, open, readFile, readdir, rename, rm, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection-scopes.js",
+        "line": 276,
+        "text": "const disposeGuard = typeof ctx.tools?.guard === 'function'"
+      },
+      {
+        "file": "lib/connection-scopes.js",
+        "line": 277,
+        "text": "? ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/connection-scopes.js",
+        "line": 286,
+        "text": "return readHostToolNames(ctx.tools)"
+      },
+      {
+        "file": "lib/connection-scopes.js",
+        "line": 308,
+        "text": "const dispose = agent.ctx.tools.restrict({ deny: denied });"
+      },
+      {
+        "file": "lib/connection-scopes.js",
+        "line": 373,
+        "text": "visibilityRestriction: agentsMounted && typeof ctx.tools?.restrict === 'function' && supportsHostToolNames(ctx.tools),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-providers.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli-providers.js",
+        "line": 338,
+        "text": "const child = spawn(executable, args, {"
+      },
+      {
+        "file": "lib/stdio-startup-guard.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/stdio-startup-guard.js",
+        "line": 39,
+        "text": "killer = spawn('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "storageDomain",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

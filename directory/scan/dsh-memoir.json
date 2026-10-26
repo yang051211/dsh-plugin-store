@@ -1,0 +1,85 @@
+{
+  "name": "dsh-memoir",
+  "version": "0.9.3",
+  "scannedAt": "2026-10-26T10:05:17.991Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 70,
+        "text": "* @param fetchImpl - injectable fetch (defaults to globalThis.fetch)."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "this.fetchImpl = fetchImpl ?? ((...args) => globalThis.fetch(...args));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/settings.js",
+        "line": 11,
+        "text": "import { existsSync, readFileSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 160,
+        "text": "unlinkSync(this.path);"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 175,
+        "text": "const parsed = JSON.parse(readFileSync(this.path, 'utf8'));"
+      },
+      {
+        "file": "lib/snapshot-store.js",
+        "line": 3,
+        "text": "import { closeSync, fstatSync, lstatSync, mkdirSync, openSync, readSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/snapshot-store.js",
+        "line": 125,
+        "text": "mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer', 'sessionProjections'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 237,
+        "text": "disposers = tools.map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

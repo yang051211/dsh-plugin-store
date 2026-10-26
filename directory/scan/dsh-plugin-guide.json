@@ -1,0 +1,144 @@
+{
+  "name": "dsh-plugin-guide",
+  "version": "0.3.39",
+  "scannedAt": "2026-10-26T10:04:44.104Z",
+  "icon": "dsh-plugin-guide.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "references/official-docs/docs/dependency-catalog.json",
+        "line": 7168,
+        "text": "\"name\": \"undici\","
+      },
+      {
+        "file": "scripts/archive-discussions.ps1",
+        "line": 11,
+        "text": "#   传输用 Invoke-WebRequest(而非 curl.exe 数组参数): PS 5.1 下 curl 数组参数"
+      },
+      {
+        "file": "scripts/archive-discussions.ps1",
+        "line": 31,
+        "text": "$resp = Invoke-WebRequest -Uri $url -Headers $headers -TimeoutSec 60 -UseBasicParsing"
+      },
+      {
+        "file": "scripts/download-community-repos.ps1",
+        "line": 184,
+        "text": "$hdr2 = & $curl -sI --connect-timeout 10 --max-time 30 \"https://codeload.github.com/$r/tar.gz/HEAD\" 2>&1 | Out-String"
+      },
+      {
+        "file": "scripts/download-community-repos.ps1",
+        "line": 194,
+        "text": "$hdr = & $curl -sI --connect-timeout 10 --max-time 40 \"https://codeload.github.com/$r/tar.gz/$cand\" 2>&1 | Out-String"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 110,
+        "text": "rmSync(dir, {"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 121,
+        "text": "return readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 138,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 139,
+        "text": "writeFileSync(path, content, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "data/seams/index.json",
+        "line": 36,
+        "text": "\"removed\": [\"mode: both\", \"DSH_TOOLS_MODE=both\", \"ctx.tools.presentAs('both')\"],"
+      },
+      {
+        "file": "references/official-docs/docs/dependency-catalog.json",
+        "line": 1876,
+        "text": "\"name\": \"@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "references/official-docs/docs/dependency-catalog.json",
+        "line": 1880,
+        "text": "\"location\": \"node_modules/@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "templates/js/index.js",
+        "line": 5,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "templates/js/index.js",
+        "line": 19,
+        "text": "// Every registration is an effect: `ctx.tools.register` returns the disposer that"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 1571,
+        "text": "if (process.platform === \"win32\") return spawn(winCommandLine(command, args), {"
+      },
+      {
+        "file": "dist/dsh-plugin-dev.js",
+        "line": 1583,
+        "text": "return spawn(command, args, {"
+      },
+      {
+        "file": "scripts/check-docs-drift-detail.mjs",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify-artifacts.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

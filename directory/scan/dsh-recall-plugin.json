@@ -1,0 +1,49 @@
+{
+  "name": "dsh-recall-plugin",
+  "version": "2.5.0",
+  "scannedAt": "2026-10-26T10:04:46.970Z",
+  "icon": "dsh-recall-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1040,
+        "text": "return fetch(recallApiUrl(name), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 3,
+        "text": "import { spawn as childSpawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 73,
+        "text": "const child = spawn(directPwshPath(process.env), [\"-NoProfile\", \"-NonInteractive\", \"-Command\", req.command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

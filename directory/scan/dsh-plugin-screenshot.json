@@ -1,0 +1,99 @@
+{
+  "name": "dsh-plugin-screenshot",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:05:16.090Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 148,
+        "text": "const res = await fetch(PREFIX + path, Object.assign("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "mkdirSync(WORK_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 223,
+        "text": "mkdirSync(WORK_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 257,
+        "text": "const bytes = readFileSync(file)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 264,
+        "text": "try { rmSync(file, { force: true }) } catch { /* best effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 504,
+        "text": "// `tools` is a declared static dependency, so ctx.tools is available for the whole"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 509,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 590,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

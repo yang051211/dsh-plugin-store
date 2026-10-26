@@ -1,0 +1,105 @@
+{
+  "name": "dsh-maoying",
+  "version": "0.1.29",
+  "scannedAt": "2026-10-26T10:05:06.770Z",
+  "icon": "dsh-maoying.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 214,
+        "text": "var p = fetch(API_BASE + path, opts).then(function (r) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/maoying.mjs",
+        "line": 20,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/maoying.mjs",
+        "line": 84,
+        "text": "mkdirSync(destDir, { recursive: true })"
+      },
+      {
+        "file": "bin/maoying.mjs",
+        "line": 173,
+        "text": "writeFileSync(indexPath, text, 'utf8')"
+      },
+      {
+        "file": "bin/maoying.mjs",
+        "line": 342,
+        "text": "mkdirSync(outDir, { recursive: true })"
+      },
+      {
+        "file": "bin/maoying.mjs",
+        "line": 343,
+        "text": "writeFileSync(target.path, content)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/maoying/delegation-labels.mjs",
+        "line": 27,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "presets/maoying/restrict.mjs",
+        "line": 36,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/self-update.mjs",
+        "line": 86,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 45,
+      "text": "npm install -g dsh-maoying       # or install a global maoying command"
+    },
+    {
+      "file": "README.en.md",
+      "line": 142,
+      "text": "om any cwd. Install one of three ways: `npm install -g dsh-maoying`, on-demand `npx maoying <command>`, or `npm link` on a dev machine (repo checkout, edits tak"
+    },
+    {
+      "file": "README.md",
+      "line": 45,
+      "text": "npm install -g dsh-maoying       # 或装成全局 maoying 命令"
+    },
+    {
+      "file": "README.md",
+      "line": 148,
+      "text": "de:fs/path/url/crypto），任意 cwd 可用。装法三选一：`npm install -g dsh-maoying`、随用随取的 `npx maoying <命令>`、或开发机的 `npm link`（仓库检出即改即生效）。三样都没有时 `node <插件目录>/bin/maoying.mjs` 等价"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,91 @@
+{
+  "name": "bookmark-research",
+  "version": "0.5.0-beta.20",
+  "scannedAt": "2026-10-26T10:05:11.477Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hosts/dsh/plugin.js",
+        "line": 2,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "hosts/dsh/plugin.js",
+        "line": 3,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "hosts/dsh/plugin.js",
+        "line": 94,
+        "text": "const content = (await readFile(skillUrl, \"utf8\")).replace(/^---\\r?\\n[\\s\\S]*?\\r?\\n---\\r?\\n/, \"\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bundle.patch.yml",
+        "line": 9,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bookmark-research.js",
+        "line": 4,
+        "text": "const { spawnSync, spawn } = require(\"child_process\");"
+      },
+      {
+        "file": "bin/bookmark-research.js",
+        "line": 15,
+        "text": "spawnSync(command, [...args, \"-c\", check], { stdio: \"ignore\", windowsHide: true }).status === 0);"
+      },
+      {
+        "file": "bin/bookmark-research.js",
+        "line": 34,
+        "text": "const child = spawn(command, [...prefix, launcher, ...args], { stdio: \"inherit\", windowsHide: true });"
+      },
+      {
+        "file": "hosts/dsh/plugin.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "hosts/dsh/plugin.js",
+        "line": 56,
+        "text": "const probe = spawnSync(command, [...args, \"-c\", PYTHON_PROBE], { stdio: \"ignore\", windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 31,
+      "text": " the Chinese wizard. For a permanent command, run `npm install -g bookmark-research`; the GitHub convenience script uses the same npm release (macOS/Linux/WSL):"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 31,
+      "text": "默认直接安装最新版本。加 `--lang zh` 可让向导显示中文。想一直能用 `bookmark-research` 命令，运行 `npm install -g bookmark-research`；GitHub 便捷脚本使用同一 npm 发布版（macOS/Linux/WSL）："
+    }
+  ],
+  "skippedEntries": []
+}

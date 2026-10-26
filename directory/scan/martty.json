@@ -1,0 +1,137 @@
+{
+  "name": "martty",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:05:05.465Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/martty.js",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/acp-host.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/acp-host.js",
+        "line": 9,
+        "text": "const OWN_VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/acp-host.js",
+        "line": 215,
+        "text": "return { file, manifest: JSON.parse(readFileSync(file, 'utf8')) }"
+      },
+      {
+        "file": "lib/agent.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/creator-overlay.js",
+        "line": 11,
+        "text": "export const inject = ['skills', 'systemPrompt', 'loader', 'tools']"
+      },
+      {
+        "file": "lib/creator-overlay.js",
+        "line": 80,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/creator-overlay.js",
+        "line": 152,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/creator-overlay.js",
+        "line": 167,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/creator-overlay.js",
+        "line": 190,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/martty.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/martty.js",
+        "line": 137,
+        "text": "// A failed spawn (ENOENT, EACCES) sets status/signal to null; without"
+      },
+      {
+        "file": "bin/martty.js",
+        "line": 148,
+        "text": "exitFromSpawn(spawnSync(binaryPath, argv, { stdio: 'inherit' }))"
+      },
+      {
+        "file": "bin/martty.js",
+        "line": 155,
+        "text": "exitFromSpawn(spawnSync(process.execPath, [demoSkinPath, ...args], {"
+      },
+      {
+        "file": "lib/acp-client.js",
+        "line": 27,
+        "text": ": Record<string, string>, child: import('node:child_process').ChildProcess, stdin: import('node:stream').Writable, stdout: import('node:stream').Readable, kind:"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "acpServer",
+    "appExit",
+    "cmdlineArgs",
+    "loader",
+    "permissionPresets",
+    "skills",
+    "systemPrompt",
+    "tools",
+    "tuiClientPlugins",
+    "userQuestions"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 26,
+      "text": "npm install --global martty"
+    },
+    {
+      "file": "README.md",
+      "line": 89,
+      "text": "npm install --global martty"
+    },
+    {
+      "file": "README.md",
+      "line": 126,
+      "text": "npm, which blocked `npm install --global martty` outright. If your fingers"
+    }
+  ],
+  "skippedEntries": []
+}

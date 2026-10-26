@@ -1,0 +1,90 @@
+{
+  "name": "dsh-session-guard",
+  "version": "4.2.3",
+  "scannedAt": "2026-10-26T10:04:39.833Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 86,
+        "text": "const body = await (await fetch(\"/session-guard/status\")).json().catch(() => null);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 187,
+        "text": "const body = await (await fetch(`/session-guard/state?session=${encodeURIComponent(sessionId)}`)).json().catch(() => null);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 222,
+        "text": "if ((await (await fetch(\"/session-guard/rpc\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 771,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "src/client/pause-button.tsx",
+        "line": 47,
+        "text": "const res = await fetch(`/session-guard/state?session=${encodeURIComponent(sessionId)}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/holiday-store.js",
+        "line": 17,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/holiday-store.js",
+        "line": 89,
+        "text": "cached = JSON.parse(readFileSync(f, 'utf8'))"
+      },
+      {
+        "file": "src/holiday-store.js",
+        "line": 132,
+        "text": "mkdirSync(dirname(holidayFilePath(year, root)), { recursive: true })"
+      },
+      {
+        "file": "src/holiday-store.js",
+        "line": 134,
+        "text": "writeFileSync(tmp, JSON.stringify({"
+      },
+      {
+        "file": "src/pause-store.js",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "goals",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

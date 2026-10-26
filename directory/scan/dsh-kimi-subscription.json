@@ -1,0 +1,80 @@
+{
+  "name": "dsh-kimi-subscription",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:04:54.291Z",
+  "icon": "dsh-kimi-subscription.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 225,
+        "text": "return globalThis.fetch(input, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 832,
+        "text": "function createKimiOAuth({ fetchImpl = (...args) => globalThis.fetch(...args), oauthHost = KIMI_OAUTH_HOST, now = Date.now, pause = sleep } = {}) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { readFile, readdir, realpath, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1419,
+        "text": "const parsed = JSON.parse(await readFile(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1805,
+        "text": "return await fs.readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1814,
+        "text": "await fs.writeFile(temporary, content);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1554,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

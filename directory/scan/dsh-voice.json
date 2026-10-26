@@ -1,0 +1,92 @@
+{
+  "name": "dsh-voice",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-26T10:05:17.692Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/edge-tts.js",
+        "line": 27,
+        "text": "return new WebSocket(url, { headers: options.headers });"
+      },
+      {
+        "file": "lib/edge-tts.js",
+        "line": 32,
+        "text": "return (url, options) => new WebSocket(url, { headers: options.headers, agent });"
+      },
+      {
+        "file": "lib/proxy-fetch.js",
+        "line": 4,
+        "text": "import { FormData as UndiciFormData, ProxyAgent, fetch as undiciFetch } from 'undici';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/paths.js",
+        "line": 6,
+        "text": "import { lstatSync, mkdirSync, openSync, closeSync, realpathSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 124,
+        "text": "mkdirSync(target, { recursive: true });"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 139,
+        "text": "mkdirSync(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 144,
+        "text": "writeFileSync(fd, data);"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 151,
+        "text": "writeFileSync(target, data, mode === undefined ? undefined : { mode });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "/** cordis 服务注入：apply 里要用 ctx.tools，必须显式声明。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

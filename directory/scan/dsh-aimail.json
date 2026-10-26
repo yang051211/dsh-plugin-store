@@ -1,0 +1,69 @@
+{
+  "name": "dsh-aimail",
+  "version": "0.1.59",
+  "scannedAt": "2026-10-26T10:05:03.843Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/inbound.js",
+        "line": 25,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/inbound.js",
+        "line": 21,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "dist/inbound.js",
+        "line": 260,
+        "text": "fs.mkdirSync(skillDst, { recursive: true });"
+      },
+      {
+        "file": "dist/inbound.js",
+        "line": 270,
+        "text": "if (fs.existsSync(to) && fs.readFileSync(from).equals(fs.readFileSync(to)))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/tools.js",
+        "line": 4,
+        "text": "export const inject = ['tools', 'mail'];"
+      },
+      {
+        "file": "dist/tools.js",
+        "line": 68,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "mail",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

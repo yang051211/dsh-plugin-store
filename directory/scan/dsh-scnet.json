@@ -1,0 +1,103 @@
+{
+  "name": "dsh-scnet",
+  "version": "0.6.15",
+  "scannedAt": "2026-10-26T10:05:02.828Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "connector/callback.mjs",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "skills/scnet-hpc/scripts/probe-cluster.sh",
+        "line": 76,
+        "text": "code=$(r \"timeout 15 curl -sI https://$h -o /dev/null -w '%{http_code}'\")"
+      },
+      {
+        "file": "skills/scnet-hpc/scripts/refresh-cluster.sh",
+        "line": 131,
+        "text": "code=$(r \"timeout 15 curl -sI https://$h -o /dev/null -w '%{http_code}'\")"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 2,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 100,
+        "text": "return fs.readFile(join(CLUSTERS_DIR, `${id}.conf`), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 8,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 330,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.mjs",
+        "line": 355,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.mjs",
+        "line": 370,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.mjs",
+        "line": 388,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 22,
+        "text": "execFile("
+      },
+      {
+        "file": "index.mjs",
+        "line": 46,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

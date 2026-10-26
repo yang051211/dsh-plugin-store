@@ -1,0 +1,77 @@
+{
+  "name": "dsh-mcp-manager-plus",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:05:19.148Z",
+  "icon": "dsh-mcp-manager-plus.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 431,
+        "text": "return fetch(API_PREFIX + '/' + route + query, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { accessSync, constants, existsSync, mkdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 623,
+        "text": "mkdirSync(dirname(patchPath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 625,
+        "text": "writeFileSync(temp, text);"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 31,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 520,
+        "text": "return readFileSync(patchPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/patch.js",
+        "line": 11,
+        "text": "*           name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 34,
+        "text": "export const MCP_CLIENT_PACKAGE = '@deepseek-ai/dsh-mcp-client';"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

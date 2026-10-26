@@ -1,0 +1,86 @@
+{
+  "name": "dsh-skill-hub",
+  "version": "0.3.26",
+  "scannedAt": "2026-10-26T10:04:47.109Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "return await fetch(typeof input === \"string\" ? resolveApiUrl(input) : input, {"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 126,
+        "text": "return await fetch(typeof input === 'string' ? resolveApiUrl(input) : input, { ...init, signal: controller.signal })"
+      },
+      {
+        "file": "src/routes.test.ts",
+        "line": 4,
+        "text": "import type { IncomingMessage } from 'node:http'"
+      },
+      {
+        "file": "src/routes/deps.ts",
+        "line": 6,
+        "text": "import type { ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "src/routes/helpers.ts",
+        "line": 9,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, mkdtemp, readFile, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 710,
+        "text": "const raw = await readFile(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1198,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1199,
+        "text": "await writeFile(tmp, JSON.stringify(payload, null, 2) + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1501,
+        "text": "text = await readFile(yamlPath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

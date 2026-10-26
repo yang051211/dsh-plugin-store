@@ -1,0 +1,138 @@
+{
+  "name": "dsh-motor-ai-l0",
+  "version": "0.6.8",
+  "scannedAt": "2026-10-26T10:04:54.988Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/experience-upload.mjs",
+        "line": 347,
+        "text": "const res = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/issue-resolved.mjs",
+        "line": 86,
+        "text": "const res = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/quota.mjs",
+        "line": 7,
+        "text": "*   旧实现 `checkFreeQuota` 里是 `await fetch(...)` + 4s AbortController 超时。"
+      },
+      {
+        "file": "lib/quota.mjs",
+        "line": 253,
+        "text": "const res = await fetch(`${base}/api/dsh/free-call`, {"
+      },
+      {
+        "file": "lib/telemetry.mjs",
+        "line": 256,
+        "text": "const res = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 31,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 45,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))"
+      },
+      {
+        "file": "lib/experience-upload.mjs",
+        "line": 51,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/experience-upload.mjs",
+        "line": 68,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/experience-upload.mjs",
+        "line": 253,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 72,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "tools/l0/design-validate.mjs",
+        "line": 393,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "tools/l0/issue-resolved-tool.mjs",
+        "line": 108,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "tools/l0/l0-estimate.mjs",
+        "line": 816,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "tools/l0/param-matrix.mjs",
+        "line": 851,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/cmp.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/cmp.mjs",
+        "line": 129,
+        "text": "// Windows 下 spawnSync('npm') 无 shell 不解析 .cmd（ENOENT），故用当前 node"
+      },
+      {
+        "file": "scripts/publish.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 28,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 21,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

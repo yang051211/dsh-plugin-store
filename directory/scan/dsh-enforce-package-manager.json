@@ -1,0 +1,60 @@
+{
+  "name": "dsh-enforce-package-manager",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:05:17.380Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/detect.js",
+        "line": 9,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/detect.js",
+        "line": 21,
+        "text": "return readFileSync(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 5,
+      "text": "'t know about. On the Python side it's `pip install requests` in a uv project. The package lands in the venv, never reaches `pyproject.toml`, and vanishes on th"
+    },
+    {
+      "file": "README.md",
+      "line": 66,
+      "text": "st`, `npx vitest` and global installs (`npm i -g ...`) pass, because they don't touch the project's lockfile. On the Python side, `pip install --user ...` and u"
+    }
+  ],
+  "skippedEntries": []
+}

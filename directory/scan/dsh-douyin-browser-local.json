@@ -1,0 +1,136 @@
+{
+  "name": "dsh-douyin-browser-local",
+  "version": "1.4.5",
+  "scannedAt": "2026-10-26T10:05:05.091Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "chat-browser.mjs",
+        "line": 5,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "core.mjs",
+        "line": 108,
+        "text": "const response = await fetch(`http://127.0.0.1:${PORT}/json/version`, { signal: AbortSignal.timeout(1200) });"
+      },
+      {
+        "file": "media/index.mjs",
+        "line": 9,
+        "text": "import { request as httpsRequest, Agent as HttpsAgent } from 'node:https';"
+      },
+      {
+        "file": "media/index.mjs",
+        "line": 10,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "media/index.mjs",
+        "line": 273,
+        "text": "tchLocal=async(...request)=>{const response=await this.fetch(...request);if(response.ok){try{rawOutput=await response.clone().json();}catch{}}return response;};"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "api-agent.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "api-agent.mjs",
+        "line": 30,
+        "text": "const parsed = parseEnv(fs.readFileSync(envFile, 'utf8'));"
+      },
+      {
+        "file": "autonomous-comments.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "autonomous-comments.mjs",
+        "line": 14,
+        "text": "t = fs.lstatSync(file); if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 4_194_304) throw Error(); return JSON.parse(fs.readFileSync(file, 'utf8')); }"
+      },
+      {
+        "file": "autonomous-comments.mjs",
+        "line": 19,
+        "text": "nSync(temporary, 'wx', 0o600); try { fs.writeFileSync(descriptor, JSON.stringify(value, null, 2) + '\\n'); fs.fsyncSync(descriptor); } finally { fs.closeSync(des"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-plugin.mjs",
+        "line": 19,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dsh-plugin.mjs",
+        "line": 249,
+        "text": "for (const tool of definitions) disposers.push(ctx.tools.register(tool));"
+      },
+      {
+        "file": "media/vendor/minimax/lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "media/vendor/minimax/lib/index.js",
+        "line": 1055,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "media/vendor/minimax/lib/index.js",
+        "line": 1179,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core.mjs",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "core.mjs",
+        "line": 134,
+        "text": "const child = spawn(resolveNodeExecutable(), [path.join(ROOT, 'browser-host.mjs'), PROFILE, CONTROL, String(PORT)], {"
+      },
+      {
+        "file": "diagnostics.mjs",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "media/index.mjs",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "media/index.mjs",
+        "line": 115,
+        "text": "const child = spawn(executable, args, { windowsHide: true, shell: false, env: childEnvironment, stdio: ['pipe','pipe','pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

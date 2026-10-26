@@ -1,0 +1,88 @@
+{
+  "name": "dsh-wecom-bot",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:04:59.922Z",
+  "icon": "dsh-wecom-bot.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 64,
+        "text": "const response = await fetch(`${STATE_URL}${refresh ? \"?refresh=1\" : \"\"}`, {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 77,
+        "text": "response = await fetch(STORE_URL, {"
+      },
+      {
+        "file": "dist/host/interaction-transport.js",
+        "line": 40,
+        "text": "const response = await handler.fetch(new Request('http://dsh.internal/api/$events/result', {"
+      },
+      {
+        "file": "dist/host/routes.js",
+        "line": 24,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "dist/host/routes.js",
+        "line": 86,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/journal.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir, readdir, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/host/journal.js",
+        "line": 124,
+        "text": "await unlink(join(options.directory, name)).catch(report);"
+      },
+      {
+        "file": "dist/host/journal.js",
+        "line": 158,
+        "text": "await mkdir(options.directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "dist/host/journal.js",
+        "line": 162,
+        "text": "await appendFile(fileFor(at), `${line}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "dist/host/store.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "sessionController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

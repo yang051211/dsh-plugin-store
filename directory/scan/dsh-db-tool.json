@@ -1,0 +1,128 @@
+{
+  "name": "dsh-db-tool",
+  "version": "1.8.5",
+  "scannedAt": "2026-10-26T10:05:05.289Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 485,
+        "text": "const response = await fetch(API + \"/\" + path, init);"
+      },
+      {
+        "file": "dist/http/index.js",
+        "line": 18,
+        "text": "import * as http from 'node:http';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 7,
+        "text": "*    相对路径 fetch('/dsh-db-tool/api/...') 即可达；0.2.0-rc.1 起插件前缀路由"
+      },
+      {
+        "file": "vendor/mongodb-driver.cjs",
+        "line": 2520,
+        "text": "var http = require(\"http\");"
+      },
+      {
+        "file": "vendor/mongodb-driver.cjs",
+        "line": 3187,
+        "text": "const request = http.get(url, options, (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/store/audit.js",
+        "line": 6,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "dist/store/audit.js",
+        "line": 16,
+        "text": "fs.appendFileSync(this.file, JSON.stringify(full) + '\\n', 'utf8');"
+      },
+      {
+        "file": "dist/store/audit.js",
+        "line": 26,
+        "text": "const lines = fs.readFileSync(this.file, 'utf8').split('\\n');"
+      },
+      {
+        "file": "dist/store/index.js",
+        "line": 12,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "dist/store/index.js",
+        "line": 37,
+        "text": "fs.mkdirSync(this.dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 27,
+        "text": "export const inject = ['webServer', 'sessions', 'tools', 'connection'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 128,
+        "text": "ctx.tools?.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/script/runner.js",
+        "line": 11,
+        "text": "import { fork } from 'node:child_process';"
+      },
+      {
+        "file": "dist/store/transfer-history.js",
+        "line": 10,
+        "text": "import * as childProcess from 'node:child_process';"
+      },
+      {
+        "file": "scripts/hotfix-core.mjs",
+        "line": 19,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "vendor/mongodb-driver.cjs",
+        "line": 18175,
+        "text": "async spawn() {"
+      },
+      {
+        "file": "vendor/mongodb-driver.cjs",
+        "line": 18177,
+        "text": "const { spawn } = require(\"child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "vendor/mongodb-driver.cjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

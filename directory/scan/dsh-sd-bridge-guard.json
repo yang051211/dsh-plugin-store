@@ -1,0 +1,123 @@
+{
+  "name": "dsh-sd-bridge-guard",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:04:52.875Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install-sd.ps1",
+        "line": 189,
+        "text": "        $rel = Invoke-RestMethod -Uri 'https://api.github.com/repos/git-for-windows/git/releases/latest' -Headers @{ Accept = 'application/vnd.github+json' } -T"
+      },
+      {
+        "file": "install-sd.ps1",
+        "line": 203,
+        "text": "Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $zip -UseBasicParsing -TimeoutSec 600"
+      },
+      {
+        "file": "install-sd.ps1",
+        "line": 260,
+        "text": "Invoke-WebRequest -Uri $url -OutFile $installer -UseBasicParsing -TimeoutSec 600"
+      },
+      {
+        "file": "install-sd.ps1",
+        "line": 437,
+        "text": "Invoke-WebRequest -Uri $effUrl -OutFile $OutFile -UseBasicParsing -TimeoutSec 1800"
+      },
+      {
+        "file": "install-sd.ps1",
+        "line": 487,
+        "text": "Invoke-WebRequest -Uri $effUrl -OutFile $OutFile -UseBasicParsing -TimeoutSec 1800"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "sd-bridge.js",
+        "line": 52,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 233,
+        "text": "raw = fs.readFileSync(file)"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 266,
+        "text": "fs.writeFileSync(file, `${JSON.stringify(parsed, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 279,
+        "text": "const text = fs.readFileSync(STATE_FILE, 'utf8').replace(/^\\uFEFF/, '')"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 654,
+        "text": "fs.writeFileSync(file, body, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "sd-bridge.js",
+        "line": 61,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 3861,
+        "text": "disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "sd-bridge.js",
+        "line": 57,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 606,
+        "text": "const res = spawnSync('nvidia-smi', ['--query-gpu=name,compute_cap', '--format=csv,noheader'], {"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 776,
+        "text": "const r = spawnSync('nvidia-smi', ['--query-gpu=memory.free', '--format=csv,noheader,nounits'], {"
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 939,
+        "text": "const r = spawnSync("
+      },
+      {
+        "file": "sd-bridge.js",
+        "line": 975,
+        "text": "const child = spawn(python, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

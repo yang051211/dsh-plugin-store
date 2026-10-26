@@ -1,0 +1,117 @@
+{
+  "name": "deep-read-summarize",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:04:48.265Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "parsers/video.js",
+        "line": 72,
+        "text": "        \"  0) 短链用 curl -L 取得完整最终 URL，保留 query。输入明确带 p 时保留该分P选择；否则读取重定向最终 URL 的 p；都没有才默认 p=1。不能只提取 BV 号而丢掉 p。p 必须为正整数，非法则 saved=false，禁止偷偷改读第1P。\" + (requestedPag"
+      },
+      {
+        "file": "scripts/transcribe.js",
+        "line": 40,
+        "text": "const UV_INSTALL_SH = 'curl -LsSf https://astral.sh/uv/install.sh | sh';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "const { readFileSync } = require('node:fs');"
+      },
+      {
+        "file": "index.js",
+        "line": 55,
+        "text": "const body = readFileSync(path.join(skillDir, 'SKILL.md'), 'utf8');"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 15,
+        "text": "const fs = require(\"fs\");"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 55,
+        "text": "const lines = fs.readFileSync(cacheFile, \"utf8\").split(\"\\n\");"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 91,
+        "text": "if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 166,
+        "text": "const releaseTool = tools.register(readingTool(engine, normalizeOptions(config), registry));"
+      },
+      {
+        "file": "index.js",
+        "line": 200,
+        "text": "const unregisterTool = canRunDirectly ? tools.register(readingTool(engine, normalizeOptions(config), registry)) : undefined;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/lint.js",
+        "line": 9,
+        "text": "const { execSync } = require('node:child_process');"
+      },
+      {
+        "file": "scripts/lint.js",
+        "line": 67,
+        "text": "try { execSync('node --check \"' + f + '\"', { stdio: 'ignore' }); }"
+      },
+      {
+        "file": "scripts/transcribe.js",
+        "line": 19,
+        "text": "const { spawnSync } = require('node:child_process');"
+      },
+      {
+        "file": "scripts/transcribe.js",
+        "line": 332,
+        "text": "const r = spawnSync(cmd, cmdArgs, { stdio: 'inherit', env: env, shell: false });"
+      },
+      {
+        "file": "scripts/transcribe.js",
+        "line": 450,
+        "text": "const result = spawnSync(py, [pyScript], { stdio: 'inherit', env: childEnv, shell: false });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 112,
+      "text": "- **YouTube subtitles** → `yt-dlp`: macOS `brew install yt-dlp`, Windows `winget install yt-dlp.yt-dlp`, any platform `pip install -U yt-dlp`"
+    },
+    {
+      "file": "README.md",
+      "line": 111,
+      "text": "- **YouTube 字幕** → `yt-dlp`：macOS `brew install yt-dlp`、Windows `winget install yt-dlp.yt-dlp`、任意平台 `pip install -U yt-dlp`"
+    }
+  ],
+  "skippedEntries": []
+}

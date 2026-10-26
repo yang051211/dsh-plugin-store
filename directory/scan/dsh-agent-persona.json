@@ -1,0 +1,90 @@
+{
+  "name": "dsh-agent-persona",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:05:11.902Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "import { chmodSync, closeSync, copyFileSync, fsyncSync, mkdirSync, openSync, readFileSync, renameSync, statSync, writeSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "parsed = JSON.parse(readFileSync(storePath, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 283,
+        "text": "'writefile', 'writefilesync', 'appendfile', 'appendfilesync', 'open(', 'fopen(', 'creat(', 'unlink(', 'unlinksync(',"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "export const inject = ['systemPrompt', 'connection', 'webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1901,
+        "text": "ctx.effect(() => ctx.tools.guard((execution) => (currentStore().prefs.guard === false"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 84,
+        "text": "export const inject = ['systemPrompt', 'connection', 'webServer', 'tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 1864,
+        "text": "ctx.effect(() => ctx.tools.guard((execution) => (currentStore().prefs.guard === false"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
