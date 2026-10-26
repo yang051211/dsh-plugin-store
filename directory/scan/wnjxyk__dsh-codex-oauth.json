@@ -1,0 +1,100 @@
+{
+  "name": "@wnjxyk/dsh-codex-oauth",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:15:02.296Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 16,
+        "text": "const response = await fetch(CONTROL + path, { ...options, headers: { \"Content-Type\": \"application/json\", ...(options.headers || {}) } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 519,
+        "text": "const usercode = await fetch(this.spec.deviceCodeUrl, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 537,
+        "text": "const poll = await fetch(this.spec.deviceTokenUrl, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 659,
+        "text": "const response = await fetch(this.spec.usageUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { readFile, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "return parseCredential(await readFile(filename, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "const document = JSON.parse(await readFile(filename, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 600,
+        "text": "await unlink(this.spec.filename);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image-tool.js",
+        "line": 11,
+        "text": "export const inject = [\"tools\", \"attachments\", \"openaiCodexAuth\"];"
+      },
+      {
+        "file": "lib/image-tool.js",
+        "line": 177,
+        "text": "disposeTool = ctx.tools.register(imageToolDefinition(ctx));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "llm",
+    "openaiCodexAuth",
+    "settings",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "@yezack/dsh-temp-workspace",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:15:15.798Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 205,
+        "text": "const res = await fetch('/temp-workspace/api/create', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 490,
+        "text": "const res = await fetch('/temp-workspace/api/list', { method: 'GET' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 923,
+        "text": "const res = await fetch('/temp-workspace/api/pending', { method: 'GET' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1012,
+        "text": "void fetch('/temp-workspace/api/restart', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1022,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { mkdir, readFile, writeFile, rename, rm, cp, stat, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "await rm(projectDir, { recursive: true, force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "await rm(projectDir, { recursive: true, force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 191,
+        "text": "const raw = await readFile(statePath(), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1112,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1143,
+        "text": "'    child = spawn(file, args, { cwd, detached, stdio: [\"ignore\", out, err], env: process.env, shell: viaShell })',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1192,
+        "text": "const helper = spawn(nodeExecutable(), ['-e', restartHelperSource(spawned, launch, { out: logOut, err: logErr }, port)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

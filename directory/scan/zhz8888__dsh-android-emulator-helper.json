@@ -1,0 +1,118 @@
+{
+  "name": "@zhz8888/dsh-android-emulator-helper",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:15:28.199Z",
+  "icon": "zhz8888__dsh-android-emulator-helper.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1439,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 270,
+        "text": "const raw = readFileSync(path.join(SKILL_DIR, 'SKILL.md'), 'utf8')"
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 2,
+        "text": "import { open, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 400,
+        "text": "const text = await readFile(file, 'utf8').catch(() => '')"
+      },
+      {
+        "file": "lib/providers/build.js",
+        "line": 1,
+        "text": "import { access, mkdir, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "*   - 23 model-facing `android_*` tools on `ctx.tools`;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "* `ctx.tools` is typed by `@deepseek-ai/dsh-tools`, which augments Cordis'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 149,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "// `ctx.tools.register` already returns a disposer bound to this fiber, so the"
+      },
+      {
+        "file": "lib/tools/index.js",
+        "line": 139,
+        "text": "disposers.push(ctx.tools.register(defineTool(definition)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/avd.js",
+        "line": 1,
+        "text": "import { spawn as spawnChild } from 'node:child_process'"
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 157,
+        "text": "/** @type {import('node:child_process').ChildProcess} */"
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 200,
+        "text": "* @param {import('node:child_process').ChildProcess} child - the process to stop."
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 318,
+        "text": "* @param {{child: import('node:child_process').ChildProcess, logFile: string, logPath: string}} watch - the spawned process and its log."
+      },
+      {
+        "file": "lib/providers/avd.js",
+        "line": 384,
+        "text": "* @param {import('node:child_process').ChildProcess} child - the exited process."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

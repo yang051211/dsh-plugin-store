@@ -1,0 +1,123 @@
+{
+  "name": "@ttmouse/dsh-taskboard",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:14:44.747Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 356,
+        "text": "void fetch("
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 18,
+        "text": "import { request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 169,
+        "text": "const listRes = await fetch(`${baseUrl}/api/projects`)"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 179,
+        "text": "const res = await fetch(`${baseUrl}/api/projects`, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 187,
+        "text": "const res = await fetch(`${baseUrl}/api/projects/${encodeURIComponent(ws.id)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/check-gate.mjs",
+        "line": 17,
+        "text": "import { access } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/claim-executor.mjs",
+        "line": 13,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/claim-executor.mjs",
+        "line": 55,
+        "text": "await mkdir(runsDir, { recursive: true })"
+      },
+      {
+        "file": "lib/claim-executor.mjs",
+        "line": 56,
+        "text": "await writeFile(path.join(runsDir, `${record.runId}.json`), JSON.stringify(record, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/claim-routines.mjs",
+        "line": 15,
+        "text": "import { mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/check-gate.mjs",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/check-gate.mjs",
+        "line": 44,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/check-gate.mjs",
+        "line": 94,
+        "text": "const child = spawn(command.trim(), {"
+      },
+      {
+        "file": "vendor/server/ai-chat-catalog.mjs",
+        "line": 1,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/server/ai-chat-catalog.mjs",
+        "line": 120,
+        "text": "const child = spawn(codexExecutable, [\"app-server\", \"--stdio\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "vendor/web/assets/GanttView-DM74F8Kv.js",
+    "vendor/web/assets/index-BVQzXw2y.js",
+    "vendor/web/assets/WorkflowBoard-D6PQistK.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "llm",
+    "sessionPersistence",
+    "sessions",
+    "systemPrompt",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

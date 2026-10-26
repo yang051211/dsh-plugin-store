@@ -1,0 +1,80 @@
+{
+  "name": "@y2zyyr/dsh-restart-control",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:15:12.765Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 95,
+        "text": "const res = await fetch(STATUS_URL, { method: \"GET\", signal, cache: \"no-store\" });"
+      },
+      {
+        "file": "client.js",
+        "line": 216,
+        "text": "fetch(RESTART_URL, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: \"{}\", cache: \"no-store\" }).then(async (res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 95,
+        "text": "const res = await fetch(STATUS_URL, { method: \"GET\", signal, cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 216,
+        "text": "fetch(RESTART_URL, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: \"{}\", cache: \"no-store\" }).then(async (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "const fsModule = proc?.getBuiltinModule?.(\"node:fs\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "mkdir(\"/tmp/dsh-restart-control-test\", { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "var child = require('node:child_process').spawn(execPath, args, { cwd: cwd, detached: true, stdio: 'inherit', env: process.env });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "const cp = proc.getBuiltinModule?.(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const child = cp.spawn(proc.execPath, [\"-e\", RELAUNCHER_SOURCE], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

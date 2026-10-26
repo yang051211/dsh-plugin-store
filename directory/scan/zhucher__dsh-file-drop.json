@@ -1,0 +1,87 @@
+{
+  "name": "@zhucher/dsh-file-drop",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:15:27.874Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 212,
+        "text": "const response = await fetch(UPLOAD_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 434,
+        "text": "const response = await fetch(CONTEXT_ROUTE, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 2,
+        "text": "import { appendFile, copyFile, readFile, readdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 82,
+        "text": "const parsed = JSON.parse(await readFile(manifest, 'utf8'))"
+      },
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 104,
+        "text": "output.push(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 183,
+        "text": "await appendFile(patchPath, disablePatch(decision.losers, conflict), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { mkdtemp, mkdir, readdir, rm, stat, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 3,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 47,
+        "text": "const result = spawnSync('dsh', ['--profile', profile, '--dump-config'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/resolve-conflicts.js",
+        "line": 128,
+        "text": "const child = spawn('dsh', ['--profile', profile, '--no-open', '--port', '0'], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

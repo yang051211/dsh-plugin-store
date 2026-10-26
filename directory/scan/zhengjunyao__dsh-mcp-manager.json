@@ -1,0 +1,96 @@
+{
+  "name": "@zhengjunyao/dsh-mcp-manager",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:15:25.690Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdir, open, readFile, rename, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 774,
+        "text": "const raw = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 815,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 820,
+        "text": "await handle.writeFile(serializeState(state), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 430,
+        "text": "children: [\"找不到 harness 内置的 MCP 桥（@deepseek-ai/dsh-mcp-client）：\", state.bridgeError]"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "* already ships a tested bridge, `@deepseek-ai/dsh-mcp-client`, which owns the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "const BRIDGE_PACKAGE = \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 342,
+        "text": "* The bridge is a core plugin (`@deepseek-ai/dsh-mcp-client`); this is the only"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "*   `ctx.tools` is the registry this plugin reads (never writes)."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,162 @@
+{
+  "name": "@twinsearth/w2m-dsh-plugin",
+  "version": "1.8.2",
+  "scannedAt": "2026-10-26T10:14:46.132Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "deploy/docker/docker-compose.yml",
+        "line": 168,
+        "text": "test: [\"CMD\", \"node\", \"-e\", \"fetch('http://127.0.0.1:8787/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\"]"
+      },
+      {
+        "file": "deploy/mac/mac-self-update.mjs",
+        "line": 125,
+        "text": "const res = await fetch(new URL('/healthz', url).toString(), { signal: AbortSignal.timeout(10_000) });"
+      },
+      {
+        "file": "deploy/networking/acceptance.mjs",
+        "line": 121,
+        "text": "const res = await fetch(`${rabbit}${path}`, {"
+      },
+      {
+        "file": "deploy/networking/acceptance.mjs",
+        "line": 235,
+        "text": "const created = await fetch(`${rabbit}/v1/task`, { method: 'POST', headers, body: JSON.stringify(body) });"
+      },
+      {
+        "file": "deploy/networking/wireguard/server-setup.sh",
+        "line": 57,
+        "text": "endpoint=\"${ENDPOINT:-$(curl -fsS -m 8 https://api.ipify.org)}\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/w2m-bootstrap-sign.mjs",
+        "line": 14,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/w2m-bootstrap-sign.mjs",
+        "line": 32,
+        "text": "try { document = JSON.parse(relaysArg.trim().startsWith('{') || relaysArg.trim().startsWith('[') ? relaysArg : readFileSync(relaysArg, 'utf8')); }"
+      },
+      {
+        "file": "bin/w2m-bootstrap-sign.mjs",
+        "line": 42,
+        "text": "const key = createPrivateKey(readFileSync(operatorKeyPath));"
+      },
+      {
+        "file": "bin/w2m-bootstrap-sign.mjs",
+        "line": 46,
+        "text": "if (outPath) { writeFileSync(outPath, text, 'utf8'); process.stdout.write('w2m-bootstrap-sign: wrote ' + outPath + ' (fleet ' + fleetId.slice(0, 16) + '…, expir"
+      },
+      {
+        "file": "bin/w2m-bootstrap.mjs",
+        "line": 39,
+        "text": "import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/acceptance/1.7.5-beta.1/GPW-FOLDER-GATE.json",
+        "line": 16,
+        "text": "\"deny_mechanism\": \"ctx.tools.guard returns a reason (order-independent); pre-execute also denies\","
+      },
+      {
+        "file": "docs/acceptance/1.7.7/GPW-INJECT.json",
+        "line": 16,
+        "text": "\"cause\": \"ctx.tools.guard was read while inject named only permissionPresets\","
+      },
+      {
+        "file": "docs/acceptance/1.7.7/GPW-INJECT.json",
+        "line": 17,
+        "text": "\"fix\": \"inject = ['permissionPresets', 'tools']; guard read is defensive for hosts without the guard extension\","
+      },
+      {
+        "file": "docs/acceptance/1.7.8/GPW-AGENT-SCOPE.json",
+        "line": 16,
+        "text": "\"cause\": \"ctx.tools.guard was called at activation on the root context; the tools service is composed per agent and has no layer table there\","
+      },
+      {
+        "file": "docs/acceptance/1.7.8/GPW-AGENT-SCOPE.json",
+        "line": 17,
+        "text": "\"fix\": \"agent/created -> agent.ctx.tools.guard per agent, disposers released through ctx.effect; inject = [permissionPresets]\","
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/w2m-hidden-task.mjs",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/w2m-secondary-link.mjs",
+        "line": 41,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "deploy/mac/mac-self-update.mjs",
+        "line": 34,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "deploy/windows/verify-supervisor.mjs",
+        "line": 31,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "deploy/windows/verify-supervisor.mjs",
+        "line": 103,
+        "text": "const out = spawnSync('ps', ['-eo', 'pid=,args='], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 47,
+      "text": "npm install -g @twinsearth/w2m-dsh-plugin"
+    },
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "npm install -g ./twinsearth-w2m-dsh-plugin-1.1.19.tgz"
+    },
+    {
+      "file": "README.md",
+      "line": 95,
+      "text": "npm install -g ./twinsearth-w2m-dsh-plugin-<version>.tgz"
+    },
+    {
+      "file": "README.md",
+      "line": 102,
+      "text": "- **Going back**: `npm install -g @twinsearth/w2m-dsh-plugin@latest` returns you to the stable channel."
+    },
+    {
+      "file": "README.md",
+      "line": 293,
+      "text": "npm install -g @twinsearth/w2m-dsh-plugin"
+    }
+  ],
+  "skippedEntries": []
+}

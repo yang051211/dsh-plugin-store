@@ -1,0 +1,75 @@
+{
+  "name": "@yangzhe1991/dsh-code-review",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:15:13.927Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1466,
+        "text": "const res = await fetch(AI_REVIEW_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1605,
+        "text": "const res = await fetch(`/dsh-code-review/diff?path=${encodeURIComponent(path)}`, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, readdir, readFile, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "const text = await readFile(absPath, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "if (st.mtimeMs < cutoff) await unlink(join(dir, name));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "await mkdir(dir, { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "await writeFile(path, text, { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

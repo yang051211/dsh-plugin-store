@@ -1,0 +1,79 @@
+{
+  "name": "@zyfgood/dsh-feishu-bot",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:15:32.713Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/persistence.js",
+        "line": 11,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 33,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 56,
+        "text": "mkdirSync(join(this.path, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 58,
+        "text": "writeFileSync(tmp, JSON.stringify(Object.fromEntries(this.data), null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 94,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/inbound.js",
+        "line": 794,
+        "text": "tools.register(defineFeishuAskTool(shared.questions, chatIdFor));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 4,
+        "text": "* 依赖 `ctx.tools`；未加载该服务时跳过注册并告警。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 12,
+        "text": "ctx.logger.warn('feishu: 当前环境未加载 ctx.tools，跳过 feishu_* 工具注册');"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 16,
+        "text": "ctx.effect(() => tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

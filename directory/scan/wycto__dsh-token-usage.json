@@ -1,0 +1,85 @@
+{
+  "name": "@wycto/dsh-token-usage",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:15:04.701Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/dist/index.js",
+        "line": 34,
+        "text": "return fetch(\"/tokuse/\" + method, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 27,
+        "text": "return fetch('/tokuse/' + method, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 324,
+        "text": "//   client: fetch('/tokuse/<method>', { method:'POST', body: JSON.stringify(args) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 15,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 39,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 68,
+        "text": "const inner = readFileSync(tmpFile, \"utf8\");"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 69,
+        "text": "writeFileSync(outFile, banner + inner + \"\\n\" + footer, \"utf8\");"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 70,
+        "text": "rmSync(tmpFile, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 14,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 30,
+        "text": "execSync(`npx --yes esbuild ${args.map((a) => JSON.stringify(a)).join(\" \")}`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

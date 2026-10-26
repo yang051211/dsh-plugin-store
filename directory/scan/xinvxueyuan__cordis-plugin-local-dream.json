@@ -1,0 +1,124 @@
+{
+  "name": "@xinvxueyuan/cordis-plugin-local-dream",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:15:09.564Z",
+  "icon": "xinvxueyuan__cordis-plugin-local-dream.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.js",
+        "line": 41,
+        "text": "return await fetch(url, init);"
+      },
+      {
+        "file": "src/http.ts",
+        "line": 59,
+        "text": "return await fetch(url, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 2,
+        "text": "import { chmodSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 300,
+        "text": "await deps.mkdir(path.dirname(target));"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 301,
+        "text": "await deps.writeFile(target, png);"
+      },
+      {
+        "file": "lib/generate.js",
+        "line": 324,
+        "text": "await writeFile(file, data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "ctx.tools.register(defineApiTool(config, manager));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "ctx.tools.register(defineDeviceTool(config, manager));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "ctx.tools.register(defineGenerateTool(config, manager));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 9,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 368,
+        "text": "const child = spawn(bin, args, {"
+      },
+      {
+        "file": "src/adb.ts",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/adb.ts",
+        "line": 469,
+        "text": "const child = spawn(bin, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/platform-tools/darwin/adb",
+    "vendor/platform-tools/linux-x64/adb",
+    "vendor/platform-tools/win32-x64/adb.exe",
+    "vendor/platform-tools/win32-x64/AdbWinApi.dll",
+    "vendor/platform-tools/win32-x64/AdbWinUsbApi.dll"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

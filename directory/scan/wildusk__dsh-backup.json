@@ -1,0 +1,72 @@
+{
+  "name": "@wildusk/dsh-backup",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:14:59.708Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/backup-core.ts",
+        "line": 13,
+        "text": "import { existsSync } from 'fs'"
+      },
+      {
+        "file": "src/backup-core.ts",
+        "line": 14,
+        "text": "import { mkdir, readdir, rm, stat } from 'fs/promises'"
+      },
+      {
+        "file": "src/backup-core.ts",
+        "line": 106,
+        "text": "await mkdir(paths.backupDir, { recursive: true })"
+      },
+      {
+        "file": "src/backup-core.ts",
+        "line": 135,
+        "text": "await rm(paths.dshHome, { recursive: true, force: true })"
+      },
+      {
+        "file": "src/backup-core.ts",
+        "line": 137,
+        "text": "await mkdir(paths.dshHome, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/backup-core.ts",
+        "line": 12,
+        "text": "import { spawn } from 'child_process'"
+      },
+      {
+        "file": "src/backup-core.ts",
+        "line": 148,
+        "text": "const child = spawn('tar', [...args], { stdio: ['ignore', 'ignore', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

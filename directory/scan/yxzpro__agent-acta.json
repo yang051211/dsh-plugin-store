@@ -1,0 +1,140 @@
+{
+  "name": "@yxzpro/agent-acta",
+  "version": "2.15.3",
+  "scannedAt": "2026-10-26T10:15:22.155Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 47,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 466,
+        "text": "const req = http.get({ host: '127.0.0.1', port: PORT, path: '/api/version', timeout: ms }, r => {"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 694,
+        "text": "const req = http.request({ host: '127.0.0.1', port: PORT, path: '/api/shutdown', method: 'POST', timeout: 2500 }, r => {"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 706,
+        "text": "const req = http.get({ host: '127.0.0.1', port: PORT, path: '/api/ping', timeout: 1500 }, r => {"
+      },
+      {
+        "file": "core/service.mjs",
+        "line": 26,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 45,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 194,
+        "text": "fs.mkdirSync(DATA_DIR, { recursive: true });"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 250,
+        "text": "fs.mkdirSync(DATA_DIR, { recursive: true });"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 304,
+        "text": "const raw = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 313,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 52,
+        "text": "import { spawn, execSync, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 453,
+        "text": "spawn('cmd.exe', ['/c', 'start', '\"\"', url], { detached: true, stdio: 'ignore', windowsHide: true }).unref();"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 455,
+        "text": "spawn(process.platform === 'darwin' ? 'open' : 'xdg-open', [url], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 505,
+        "text": "spawn(process.execPath, [fileURLToPath(import.meta.url)], { detached: true, stdio: 'ignore', windowsHide: true }).unref();"
+      },
+      {
+        "file": "agent-acta-server.mjs",
+        "line": 554,
+        "text": "const r = spawnSync('npm', ['install', '--prefix', CLIENT_RUNTIME, 'electron@44', '--no-audit', '--no-fund'],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/element-plus-icons.js",
+    "vendor/element-plus.full.min.js",
+    "vendor/vue.global.prod.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 20,
+      "text": "npm i -g @yxzpro/agent-acta        # installs the `agentacta` and `agentacta-mcp` commands"
+    },
+    {
+      "file": "README.en.md",
+      "line": 29,
+      "text": "npm i -g agent-acta-<version>.tgz   # installs the `agentacta` command"
+    },
+    {
+      "file": "README.en.md",
+      "line": 37,
+      "text": "npm i -g <this directory>                              # symlink install; edits take effect immediately"
+    },
+    {
+      "file": "README.md",
+      "line": 22,
+      "text": "npm i -g @yxzpro/agent-acta        # 装完多出命令 agentacta 与 agentacta-mcp"
+    },
+    {
+      "file": "README.md",
+      "line": 31,
+      "text": "npm i -g agent-acta-<版本>.tgz   # 装完多出命令 agentacta"
+    }
+  ],
+  "skippedEntries": []
+}

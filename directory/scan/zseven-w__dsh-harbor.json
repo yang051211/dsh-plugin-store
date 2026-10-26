@@ -1,0 +1,118 @@
+{
+  "name": "@zseven-w/dsh-harbor",
+  "version": "0.1.0-rc.4",
+  "scannedAt": "2026-10-26T10:15:30.353Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1023,
+        "text": "const get = (0, react.useCallback)(async (path) => readJson(await fetch(withLang(path), { cache: \"no-store\" }), path), [readJson, withLang]);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1024,
+        "text": "const post = (0, react.useCallback)(async (path, body) => readJson(await fetch(withLang(path), {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 609,
+        "text": "const get = useCallback(async (path: string) => readJson(await fetch(withLang(path), { cache: 'no-store' }), path), [readJson, withLang]);"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 610,
+        "text": "const post = useCallback(async (path: string, body: any) => readJson(await fetch(withLang(path), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/hub/freshness.mjs",
+        "line": 13,
+        "text": "import { constants as FS } from 'node:fs';"
+      },
+      {
+        "file": "src/hub/freshness.mjs",
+        "line": 14,
+        "text": "import { lstat, open, opendir } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/preflight/checks.mjs",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/preflight/host.mjs",
+        "line": 6,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/preflight/host.mjs",
+        "line": 106,
+        "text": "rmSync(prefix, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/hub/preflight-job.mjs",
+        "line": 7,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      },
+      {
+        "file": "src/preflight/checks.mjs",
+        "line": 11,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      },
+      {
+        "file": "src/preflight/host-diff.mjs",
+        "line": 8,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      },
+      {
+        "file": "src/preflight/host.mjs",
+        "line": 9,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      },
+      {
+        "file": "src/preflight/pack.mjs",
+        "line": 10,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 133,
+      "text": "led into `<state dir>/hosts/<version>` with `npm install -g --prefix`. A completed install is reused; the global npm prefix and your profiles are never written."
+    },
+    {
+      "file": "README.zh.md",
+      "line": 133,
+      "text": "1. 解析目标（dist-tag 需要一次 registry 请求），用 `npm install -g --prefix` 把 `@deepseek-ai/dsh@<version>` 装进 `<状态目录>/hosts/<version>`。装完的树会复用；全局 npm 前缀和你的 profile 永远不会被写。"
+    }
+  ],
+  "skippedEntries": []
+}

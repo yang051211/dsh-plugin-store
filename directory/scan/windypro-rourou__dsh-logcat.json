@@ -1,0 +1,125 @@
+{
+  "name": "@windypro-rourou/dsh-logcat",
+  "version": "0.8.4",
+  "scannedAt": "2026-10-26T10:15:00.025Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 575,
+        "text": "socket = new WebSocket(scheme + \"://\" + window.location.host + API_BASE + \"/stream\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 609,
+        "text": "// Initial status fetch (panel may open long after the plugin loaded)."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 611,
+        "text": "fetch(API_BASE + \"/status\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 652,
+        "text": "fetch(API_BASE + \"/stats?serial=\" + encodeURIComponent(target))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 773,
+        "text": "fetch(API_BASE + \"/package\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { createWriteStream, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "const OWN_MANIFEST = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 174,
+        "text": "const { mkdir, rm, writeFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "await mkdir(dest, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3836,
+        "text": "].map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "        execFile('powershell', ['-NoProfile', '-Command', `Expand-Archive -Force -LiteralPath '${zipPath}' -DestinationPath '${dest}'`], { timeout: 180000, wind"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 205,
+        "text": "execFile('unzip', ['-o', zipPath, '-d', dest], { timeout: 180000 }, (error) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "execFile(adb, args, { timeout: timeoutMs, windowsHide: true }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "execFile(adb, args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 8 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

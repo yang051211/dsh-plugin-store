@@ -1,0 +1,123 @@
+{
+  "name": "dsh-qq-onebot",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:15:35.856Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 42,
+        "text": "const r = await fetch(base + '/status', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 63,
+        "text": "const jget = async (p) => asJson(await fetch((await resolveBase()) + p, { credentials: 'same-origin' }))"
+      },
+      {
+        "file": "client.js",
+        "line": 64,
+        "text": "const jpost = async (p, body) => asJson(await fetch((await resolveBase()) + p, {"
+      },
+      {
+        "file": "src/inbound.js",
+        "line": 316,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(20000) })"
+      },
+      {
+        "file": "src/onebot/client.js",
+        "line": 59,
+        "text": "ws = new WebSocket(this.url, { headers, handshakeTimeout: 10_000 })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/chatlog.js",
+        "line": 1,
+        "text": "import { mkdir, appendFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/chatlog.js",
+        "line": 53,
+        "text": "await mkdir(join(dir, CHATLOG_DIR), { recursive: true })"
+      },
+      {
+        "file": "src/chatlog.js",
+        "line": 54,
+        "text": "await appendFile(file, line, 'utf8')"
+      },
+      {
+        "file": "src/context-guard.js",
+        "line": 14,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/context-guard.js",
+        "line": 115,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools.js",
+        "line": 88,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 135,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 179,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 222,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 261,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/inbound.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/inbound.js",
+        "line": 36,
+        "text": "child = spawn(py, model ? [script, wavPath, model] : [script, wavPath], { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,71 @@
+{
+  "name": "@young1lin/dsh-glm-quota",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:15:20.313Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 514,
+        "text": "const response = await fetch(force ? ENDPOINT + '?refresh=1' : ENDPOINT, { cache: 'no-store' })"
+      },
+      {
+        "file": "host.js",
+        "line": 259,
+        "text": "const response = await fetch(config.baseURL + '/api/monitor/usage/quota/limit', {"
+      },
+      {
+        "file": "host.js",
+        "line": 360,
+        "text": "// schedules a fetch (throttled to once per interval inside fetchUpstream),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 38,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "host.js",
+        "line": 176,
+        "text": "const raw = JSON.parse(await readFile(stateFile, 'utf8'))"
+      },
+      {
+        "file": "host.js",
+        "line": 206,
+        "text": "await mkdir(dirname(stateFile), { recursive: true })"
+      },
+      {
+        "file": "host.js",
+        "line": 208,
+        "text": "await writeFile(tmp, JSON.stringify({ ...state, lastAttemptAt }), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

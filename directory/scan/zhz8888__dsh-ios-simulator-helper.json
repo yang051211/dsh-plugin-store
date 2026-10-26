@@ -1,0 +1,113 @@
+{
+  "name": "@zhz8888/dsh-ios-simulator-helper",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:15:28.364Z",
+  "icon": "zhz8888__dsh-ios-simulator-helper.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1123,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "const raw = readFileSync(path.join(SKILL_DIR, 'SKILL.md'), 'utf8')"
+      },
+      {
+        "file": "lib/providers/build.js",
+        "line": 1,
+        "text": "import { mkdir, readdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/providers/build.js",
+        "line": 104,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/providers/build.js",
+        "line": 404,
+        "text": "await writeFile(file, capLog(text), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "*   - 21 model-facing `ios_*` tools on `ctx.tools`;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "// `ctx.tools.register` already returns a disposer bound to this fiber, so the"
+      },
+      {
+        "file": "lib/tools/index.js",
+        "line": 195,
+        "text": "disposers.push(ctx.tools.register(defineTool(definition)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/util/run.js",
+        "line": 1,
+        "text": "import { spawn as spawnChild } from 'node:child_process'"
+      },
+      {
+        "file": "lib/util/run.js",
+        "line": 89,
+        "text": "const child = spawn(actual, opts.cwd, env, opts.input !== undefined)"
+      },
+      {
+        "file": "lib/util/run.js",
+        "line": 217,
+        "text": "* @returns {import('node:child_process').ChildProcess | Error} the child, or the spawn error."
+      },
+      {
+        "file": "lib/util/run.js",
+        "line": 219,
+        "text": "function spawn(cmd, cwd, env, pipeStdin) {"
+      },
+      {
+        "file": "lib/util/run.js",
+        "line": 249,
+        "text": "* @param {import('node:child_process').ChildProcess} child - the child to signal."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "@xixizi-kiara/dsh-godot-docs-rag",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:15:10.072Z",
+  "icon": "xixizi-kiara__dsh-godot-docs-rag.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 2,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/usage-log.js",
+        "line": 3,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/usage-log.js",
+        "line": 129,
+        "text": "await fs.mkdir(path.dirname(this.cfg.logPath), { recursive: true });"
+      },
+      {
+        "file": "lib/usage-log.js",
+        "line": 137,
+        "text": "await fs.appendFile(this.cfg.logPath, line, 'utf8');"
+      },
+      {
+        "file": "lib/usage-log.js",
+        "line": 163,
+        "text": "await fs.unlink(path.join(dir, rotated[index])).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "ctx.effect(() => ctx.tools.register(makeTool(def, context)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

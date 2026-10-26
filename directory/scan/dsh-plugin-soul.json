@@ -1,0 +1,94 @@
+{
+  "name": "dsh-plugin-soul",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:15:36.285Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 216,
+        "text": "const res = await fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 83,
+        "text": "const patchText = fs.readFileSync(PATCH, 'utf8')"
+      },
+      {
+        "file": "install.mjs",
+        "line": 101,
+        "text": "if (!fs.existsSync(MODULES)) fs.mkdirSync(MODULES, { recursive: true })"
+      },
+      {
+        "file": "install.mjs",
+        "line": 104,
+        "text": "if (!hasRow) fs.appendFileSync(PATCH, BLOCK, 'utf8')"
+      },
+      {
+        "file": "lib/dream.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 309,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/soul-store.js",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/upgrade.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

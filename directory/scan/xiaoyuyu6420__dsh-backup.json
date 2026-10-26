@@ -1,0 +1,123 @@
+{
+  "name": "@xiaoyuyu6420/dsh-backup",
+  "version": "0.13.4",
+  "scannedAt": "2026-10-26T10:15:08.955Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": ")};(0,N.useEffect)(()=>{let p=!1;return fetch(\"/dsh-backup/settings\",{cache:\"no-store\"}).then(j=>j.json()).then(j=>{p||!j||j.error||Xn(j)}).catch(()=>{}),()=>{p"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 813,
+        "text": "const res = await fetch(`https://registry.npmjs.org/${encodeURIComponent(SELF_META.name)}`, {"
+      },
+      {
+        "file": "rescue/rescue.mjs",
+        "line": 30,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "rescue/rescue.mjs",
+        "line": 643,
+        "text": "  const res = await fetch('/api/' + op, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Dsh-Rescue': '1' }, body: JSON.stringify(body || {})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "import { createReadStream, readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "import { mkdir, open, copyFile, chmod, readdir, readFile, rename, rm, stat as fsStat, unlink, writeFile, link } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 251,
+        "text": "const v = JSON.parse(readFileSync(c, 'utf8')).version;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "const v = JSON.parse(readFileSync(createRequire(import.meta.url).resolve('@deepseek-ai/dsh/package.json'), 'utf8')).version;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 274,
+        "text": "const v = JSON.parse(readFileSync(p, 'utf8')).version;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 59,
+        "text": "export const inject = ['subprocess', 'commands', 'timer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3294,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 647,
+        "text": "const proc = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 698,
+        "text": "const proc = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "rescue/rescue.mjs",
+        "line": 26,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "rescue/rescue.mjs",
+        "line": 83,
+        "text": "const r = spawnSync(argv[0], argv.slice(1), { cwd, encoding: 'buffer', maxBuffer: 256 * 1024 * 1024 });"
+      },
+      {
+        "file": "rescue/rescue.mjs",
+        "line": 683,
+        "text": "spawn(cmd, args, { detached: true, stdio: 'ignore' }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "subprocess",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

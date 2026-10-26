@@ -1,0 +1,138 @@
+{
+  "name": "@zseven-w/dsh-ios",
+  "version": "0.1.0-rc.10",
+  "scannedAt": "2026-10-26T10:15:30.601Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1063,
+        "text": "const ws = new WebSocket(url);"
+      },
+      {
+        "file": "lib/client/protocol.js",
+        "line": 636,
+        "text": "const ws = new WebSocket(url);"
+      },
+      {
+        "file": "lib/sim-gesture.js",
+        "line": 239,
+        "text": "const socket = new WebSocket(url, { perMessageDeflate: false });"
+      },
+      {
+        "file": "lib/sim-host.js",
+        "line": 27,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/stream-routes.js",
+        "line": 102,
+        "text": "import { get as httpGet } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app-list.js",
+        "line": 35,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/app-list.js",
+        "line": 296,
+        "text": "bytes = await readFile(prefsPath);"
+      },
+      {
+        "file": "lib/app-list.js",
+        "line": 317,
+        "text": "return readStrings(await readFile(path));"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 12,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 13,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.iosSimDevices), 'dsh-ios:ios_sim_devices'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.iosSimBoot), 'dsh-ios:ios_sim_boot'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 102,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.iosSimShutdown), 'dsh-ios:ios_sim_shutdown'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.iosSimScreenshot), 'dsh-ios:ios_sim_screenshot'));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/build-run.js",
+        "line": 11,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 99,
+        "text": "execFile('xcodebuild', ['-list', '-json'], {"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 160,
+        "text": "const child = spawn('xcodebuild', args, {"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 232,
+        "text": "execFile('/usr/libexec/PlistBuddy', ['-c', 'Print :CFBundleIdentifier', infoPlist], {"
+      },
+      {
+        "file": "lib/device-actions.js",
+        "line": 32,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

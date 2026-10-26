@@ -1,0 +1,79 @@
+{
+  "name": "@univerxyz/dsh-dsov-plugin",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:14:47.511Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 286,
+        "text": "const res = await fetch('/dsov/overview', {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 278,
+        "text": "const res = await fetch('/dsov/overview', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "const raw = JSON.parse(readFileSync(STORE_PATH, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "mkdirSync(STORE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 147,
+        "text": "writeFileSync(STORE_PATH, JSON.stringify({ version: 1, savedAt: Date.now(), sessions }))"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-profile.mjs",
+        "line": 27,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tokenMeter",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

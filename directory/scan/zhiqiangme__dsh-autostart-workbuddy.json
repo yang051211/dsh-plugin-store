@@ -1,0 +1,105 @@
+{
+  "name": "@zhiqiangme/dsh-autostart-workbuddy",
+  "version": "26.10.25",
+  "scannedAt": "2026-10-26T10:15:27.246Z",
+  "icon": "zhiqiangme__dsh-autostart-workbuddy.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 332,
+        "text": "const response = await fetch(`http://${host}:${port}/healthz`, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 487,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 696,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/hub-router.js",
+        "line": 91,
+        "text": "const upstream = await fetch(`${providerBaseURL(models.baseURL)}chat/completions`, {"
+      },
+      {
+        "file": "lib/hub.js",
+        "line": 173,
+        "text": "const response = await fetch(`http://${host}:${port}/health`, { signal: AbortSignal.timeout(timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auto-update.js",
+        "line": 23,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 54,
+        "text": "const parsed = JSON.parse(readFileSync(join(paths.cache, AUTO_UPDATE_FILE), 'utf8'));"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 69,
+        "text": "mkdirSync(paths.cache, { recursive: true });"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 71,
+        "text": "writeFileSync(`${file}.tmp`, `${JSON.stringify(state, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 82,
+        "text": "rmSync(staged.path, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/services.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 203,
+        "text": "const spawnFailure = this.#spawn();"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 239,
+        "text": "#spawn() {"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 278,
+        "text": "child = spawn(spec.exe, spec.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

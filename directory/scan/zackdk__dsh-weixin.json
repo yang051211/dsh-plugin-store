@@ -1,0 +1,96 @@
+{
+  "name": "@zackdk/dsh-weixin",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:15:22.570Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/channels/shared/harness-client.mjs",
+        "line": 753,
+        "text": "createWebSocket = (url) => new WebSocket(url),"
+      },
+      {
+        "file": "src/channels/shared/harness-client.mjs",
+        "line": 839,
+        "text": "const response = await this.#fetch(new URL(`/api/${method}`, this.#baseUrl), {"
+      },
+      {
+        "file": "src/channels/shared/harness-client.mjs",
+        "line": 1122,
+        "text": "const response = await this.#fetch(new URL('/api/respond', this.#baseUrl), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin-src/client/build.mjs",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "plugin-src/client/build.mjs",
+        "line": 36,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "plugin-src/client/build.mjs",
+        "line": 37,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      },
+      {
+        "file": "plugin-src/host/channels/weixin/production.mjs",
+        "line": 1,
+        "text": "import { unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "plugin-src/host/channels/weixin/production.mjs",
+        "line": 130,
+        "text": "await unlink(statePath(botId));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/channels/shared/semantic/artifact.mjs",
+        "line": 650,
+        "text": "ctx.tools.register(tool.definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/channels/shared/harness-client.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/channels/shared/harness-client.mjs",
+        "line": 899,
+        "text": "this.#managedProcess = spawn(this.#dshBin, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "typertGateway",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,98 @@
+{
+  "name": "@yfwu2020/dsh-reply-visual",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:15:16.157Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 498,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 517,
+        "text": "return fetch(API + path, { headers: { accept: 'application/json' } }).then(function (res) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 928,
+        "text": "return fetch(API + '/generate', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "if (/\\bfetch\\s*\\(|XMLHttpRequest/.test(text))"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 498,
+        "text": "return fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { mkdir, readFile, readdir, rename, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 578,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 580,
+        "text": "await writeFile(tmp, JSON.stringify(value), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 585,
+        "text": "return JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 700,
+        "text": "await unlink(path).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-display-patch.mjs",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/gen-readme-shots.mjs",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

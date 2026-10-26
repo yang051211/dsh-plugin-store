@@ -1,0 +1,112 @@
+{
+  "name": "@zseven-w/dsh-computer",
+  "version": "0.1.0-rc.3",
+  "scannedAt": "2026-10-26T10:15:30.402Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capture-native.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/capture-native.js",
+        "line": 3,
+        "text": "import { chmod, lstat, mkdtemp, open, realpath, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/capture-native.js",
+        "line": 206,
+        "text": "const png = await handle.readFile();"
+      },
+      {
+        "file": "lib/capture-native.js",
+        "line": 241,
+        "text": "await rm(root, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/native-helper.js",
+        "line": 2,
+        "text": "import { access, chmod, copyFile, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, stat, } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "ctx.effect(() => ctx.tools.register(tools.computerApps), 'dsh-computer:computer_apps'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "ctx.effect(() => ctx.tools.register(tools.computerLaunch), 'dsh-computer:computer_launch'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "ctx.effect(() => ctx.tools.register(tools.computerObserve), 'dsh-computer:computer_observe'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "ctx.effect(() => ctx.tools.register(tools.computerVisualObserve), 'dsh-computer:computer_visual_observe'),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/native-helper.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/native-helper.js",
+        "line": 52,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "scripts/install-local-helper.mjs",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install-local-helper.mjs",
+        "line": 57,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "scripts/release/release-utils.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

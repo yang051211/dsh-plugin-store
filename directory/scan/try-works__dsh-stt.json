@@ -1,0 +1,87 @@
+{
+  "name": "@try-works/dsh-stt",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:14:43.802Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 70,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 2,
+        "text": "import { createWriteStream } from 'node:fs'"
+      },
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 3,
+        "text": "import { mkdir, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 62,
+        "text": "await mkdir(dirname(destination), { recursive: true })"
+      },
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 79,
+        "text": "await rm(destination, { force: true })"
+      },
+      {
+        "file": "src/provider-kit/http.js",
+        "line": 100,
+        "text": "await rm(destination, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/provider-kit/oneshot.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/provider-kit/oneshot.js",
+        "line": 27,
+        "text": "const child = spawn(file, args, { cwd, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "src/provider-kit/worker.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/provider-kit/worker.js",
+        "line": 31,
+        "text": "const child = spawn(process.execPath, [this.entry], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "speechToText"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

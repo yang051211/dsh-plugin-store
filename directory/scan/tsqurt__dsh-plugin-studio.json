@@ -1,0 +1,121 @@
+{
+  "name": "@tsqurt/dsh-plugin-studio",
+  "version": "0.1.3-alpha",
+  "scannedAt": "2026-10-26T10:14:44.179Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 25,
+        "text": "return fetch(\"/studio-rpc\", {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 1863,
+        "text": "llCheck: false, placeholder: 'const r = await fetch(...);\\nreturn await r.json();', onChange: function (e) { __patchToolForm({ codeBody: e.target.value }) } }),"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 1686,
+        "text": "// Create the destination dirs BEFORE curl writes the tarball: curl -o"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 3149,
+        "text": "var res = await web.fetch({ url: url }, exec && exec.signal);"
+      },
+      {
+        "file": "src/build.js",
+        "line": 107,
+        "text": "return fetch(\"/studio-rpc\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/bootstrap-host.js",
+        "line": 9,
+        "text": "var fs = ctx.get('fs');"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 195,
+        "text": "    { category: 'fs', label: '读取文本 readText', url: __DSH_SVC, desc: '读一个文本文件', code: 'const fs = ctx.get(\\'fs\\');\\nif (!fs) return undefined;\\nconst target = aw"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 196,
+        "text": "    { category: 'fs', label: '原子写 writeText', url: __DSH_SVC, desc: '原子创建/覆盖文件', code: 'const target = await fs.resolve(\\'out.json\\');\\nawait fs.writeText(targe"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 197,
+        "text": "    { category: 'fs', label: '版本守卫写入', url: __DSH_SVC, desc: '观察-读取-版本守卫写入，避免覆盖他人修改', code: 'await fs.writeText(target, content, { replaceIfVersion: observedVer"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 198,
+        "text": "    { category: 'fs', label: '列出目录 listDir', url: __DSH_SVC, desc: '列出目录子项（名称/类型/目标/大小）', code: 'const entries = await fs.listDir(target);\\nconsole.log(entries."
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host.js",
+        "line": 183,
+        "text": "ols) return undefined;\\nconst dispose = tools.register({\\n  name: \\'my_tool\\',\\n  output: { schema: { /* output 声明 */ }, render: (r) => ({ content: String(r) })"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 3056,
+        "text": "//  - tools:  ctx.tools.register({ name, description, parameters, output:{schema,render}, execute })"
+      },
+      {
+        "file": "dist/host.js",
+        "line": 3057,
+        "text": "//            registrations are code+registration, no file; list via ctx.tools.schemas()."
+      },
+      {
+        "file": "dist/host.js",
+        "line": 3198,
+        "text": "// Loader context: ctx.tools.register is the real tools registry and accepts"
+      },
+      {
+        "file": "src/host/00-shared.js",
+        "line": 177,
+        "text": "ols) return undefined;\\nconst dispose = tools.register({\\n  name: \\'my_tool\\',\\n  output: { schema: { /* output 声明 */ }, render: (r) => ({ content: String(r) })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host.js",
+        "line": 206,
+        "text": "ent) return undefined;\\nconst spawned = await terminals.spawn(agent, { backend: \\'bash\\', name: \\'build\\' });\\n// spawned: { id, status, motd }；agent 来自事件参数' },"
+      },
+      {
+        "file": "src/host/00-shared.js",
+        "line": 200,
+        "text": "ent) return undefined;\\nconst spawned = await terminals.spawn(agent, { backend: \\'bash\\', name: \\'build\\' });\\n// spawned: { id, status, motd }；agent 来自事件参数' },"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

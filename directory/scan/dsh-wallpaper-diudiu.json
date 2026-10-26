@@ -1,0 +1,94 @@
+{
+  "name": "dsh-wallpaper-diudiu",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:15:36.594Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 288,
+        "text": "var probe = new XMLHttpRequest();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 8,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 34,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\").replace(/^\\uFEFF/, \"\"));"
+      },
+      {
+        "file": "lib/frame.js",
+        "line": 11,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 133,
+        "text": "readFile = (p) => readFileSync(p, \"utf8\"),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/frame.js",
+        "line": 9,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/frame.js",
+        "line": 48,
+        "text": "const r = spawnSync(pythonCmd, [FRAME_SCRIPT, videoPath, out], {"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 21,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 83,
+        "text": "const r = spawnSync(\"reg\", [\"query\", key, \"/v\", valueName], {"
+      },
+      {
+        "file": "lib/scene.js",
+        "line": 13,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "scripts/repkg/RePKG.exe"
+  ],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

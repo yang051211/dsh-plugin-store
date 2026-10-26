@@ -1,0 +1,112 @@
+{
+  "name": "dsh-proteus-bridge",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:15:35.842Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guards.js",
+        "line": 9,
+        "text": "import { closeSync, openSync, readSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/guards.js",
+        "line": 10,
+        "text": "import { readFile, rename, stat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/guards.js",
+        "line": 14,
+        "text": "const [st, data] = await Promise.all([stat(filePath), readFile(filePath)]);"
+      },
+      {
+        "file": "lib/guards.js",
+        "line": 90,
+        "text": "await unlink(backup).catch(() => { });"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 11,
+        "text": "import { stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "*  - 导出 { name, inject, apply }；inject=['tools'] 让 Cordis 等待工具注册表就绪；"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "*  - ctx.tools.register(defineTool(...)) 返回精确 disposer，重复名注册失败；"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools/layout.js",
+        "line": 6,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/schematic.js",
+        "line": 5,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/com/broker.js",
+        "line": 29,
+        "text": "const { execFile } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/com/linebroker.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/com/linebroker.js",
+        "line": 93,
+        "text": "const proc = spawn(this.command, this.args, { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 10,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 181,
+        "text": "const child = spawn(exePath, [args.projectPath], { detached: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

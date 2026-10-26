@@ -1,0 +1,97 @@
+{
+  "name": "dsh-computer-use-macos",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:15:34.300Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/audit.js",
+        "line": 9,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 19,
+        "text": "export function createAudit({ enabled = true, file, now = () => new Date().toISOString(), appendFile = (f, d) => fs.appendFileSync(f, d) } = {}) {"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 32,
+        "text": "appendFile(file, line)"
+      },
+      {
+        "file": "src/budget.js",
+        "line": 63,
+        "text": "try { unlinkSync(`${dir}/${f}`); removed.push(f) } catch { /* 清理失败不阻塞 */ }"
+      },
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 98,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 152,
+        "text": "const register = (def) => ctx.tools.register(defineTool(def))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 24,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 118,
+        "text": "execFile(cmd, args, { timeout: 10_000, maxBuffer: 32 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "src/indicator.js",
+        "line": 11,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/indicator.js",
+        "line": 24,
+        "text": "* @param {(cmd: string, args: string[], opts: object) => import('node:child_process').ChildProcess} [args.spawnDetached]"
+      },
+      {
+        "file": "src/indicator.js",
+        "line": 33,
+        "text": "/** @type {import('node:child_process').ChildProcess | null} */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

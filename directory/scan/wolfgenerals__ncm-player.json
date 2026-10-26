@@ -1,0 +1,94 @@
+{
+  "name": "@wolfgenerals/ncm-player",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:15:02.524Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/src.js",
+        "line": 2,
+        "text": "// 通过 slots 注册到 shell.overlay；与 host 用 fetch('/ncm/api') JSON API 通信。"
+      },
+      {
+        "file": "client/src.js",
+        "line": 121,
+        "text": "const res = await fetch('/ncm/api', {"
+      },
+      {
+        "file": "index.mjs",
+        "line": 45,
+        "text": "const res = await fetch(url, { method: method, headers: headers, body: body, redirect: 'follow', signal: AbortSignal.timeout(20000) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 6,
+        "text": "// 通过 slots 注册到 shell.overlay；与 host 用 fetch('/ncm/api') JSON API 通信。"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 125,
+        "text": "const res = await fetch('/ncm/api', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 7,
+        "text": "export const inject = ['webServer', 'subprocess', 'fs']"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 8,
+        "text": "const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 9,
+        "text": "const src = readFileSync(join(root, 'client', 'src.js'), 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 21,
+        "text": "mkdirSync(join(root, 'lib'), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 138,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

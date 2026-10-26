@@ -1,0 +1,94 @@
+{
+  "name": "@wweir/dsh-advisor",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:15:03.940Z",
+  "icon": "wweir__dsh-advisor.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 561,
+        "text": "fetch(ENDPOINT+\"?sessionId=\"+encodeURIComponent(sessionId),{headers:{accept:\"application/json\"}})"
+      },
+      {
+        "file": "client/index.js",
+        "line": 731,
+        "text": "fetch(CATALOG_ENDPOINT,{headers:{accept:\"application/json\"}})"
+      },
+      {
+        "file": "client/index.js",
+        "line": 848,
+        "text": "fetch(\"/api/advisor/config\",{method:\"POST\",headers:{\"content-type\":\"application/json\",accept:\"application/json\"},body:JSON.stringify(patch)})"
+      },
+      {
+        "file": "client/index.js",
+        "line": 962,
+        "text": "fetch(RESUME_ENDPOINT+\"?sessionId=\"+encodeURIComponent(sessionId),{method:\"POST\",headers:{accept:\"application/json\"}})"
+      },
+      {
+        "file": "lib/host/catalog.js",
+        "line": 43,
+        "text": "async fetch() {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/config-store.js",
+        "line": 12,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/config-store.js",
+        "line": 13,
+        "text": "import { mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/config-store.js",
+        "line": 37,
+        "text": "raw = readFileSync(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/host/config-store.js",
+        "line": 78,
+        "text": "await mkdir(this.directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/host/review.js",
+        "line": 9,
+        "text": "import { realpath } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/review.js",
+        "line": 335,
+        "text": "childCtx.tools.register(createAdviseTool((args) => {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,101 @@
+{
+  "name": "@veewo/dsh-claw-kit",
+  "version": "0.2.61-rc.0",
+  "scannedAt": "2026-10-26T10:14:48.929Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claw-session.js",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/command-route.js",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/command-route.js",
+        "line": 53,
+        "text": "if (JSON.parse(fs.readFileSync(repoManifest, \"utf8\")).name === \"claw-kit\""
+      },
+      {
+        "file": "lib/command-route.js",
+        "line": 54,
+        "text": "&& JSON.parse(fs.readFileSync(cliManifest, \"utf8\")).name === \"@veewo/claw\")"
+      },
+      {
+        "file": "lib/delegation-receipts.js",
+        "line": 1,
+        "text": "import fs from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "export const inject = [\"subprocess\", \"tools\", \"systemPrompt\", \"skills\", \"goals\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 820,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claw-session.js",
+        "line": 148,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "lib/command-route.js",
+        "line": 63,
+        "text": "const handle = subprocess.spawn({ argv: [process.execPath, entry, \"internal-command\"], cwd: workdir,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 268,
+        "text": "const handle = sp.spawn({"
+      },
+      {
+        "file": "skills/knowledge-capture/scripts/run-knowledge-capture.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "skills/knowledge-capture/scripts/run-knowledge-capture.mjs",
+        "line": 34,
+        "text": "const result = spawnSync(process.platform === \"win32\" ? \"where.exe\" : \"which\", [name], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "goals",
+    "skills",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "@zach-tao/dsh-specify-subagent-suite",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:15:22.722Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 842,
+        "text": "const response = await fetch(\"/subagent-controller/rpc\", {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 140,
+        "text": "// so a late-landing roster fetch (or a connection reset that re-fetches)"
+      },
+      {
+        "file": "src/client/subctl-panel.js",
+        "line": 103,
+        "text": "const response = await fetch('/subagent-controller/rpc', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/subctl.js",
+        "line": 50,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/subctl.js",
+        "line": 51,
+        "text": "import { writeFile, rename, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/subctl.js",
+        "line": 69,
+        "text": "const raw = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/host/subctl.js",
+        "line": 109,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/host/subctl.js",
+        "line": 110,
+        "text": "await writeFile(tmp, JSON.stringify(payload, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/subpro.js",
+        "line": 5,
+        "text": "//   harness.registerTool(ctx, t) -> ctx.tools.register(t)"
+      },
+      {
+        "file": "lib/host/subpro.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'systemPrompt', 'agentPresets']"
+      },
+      {
+        "file": "lib/host/subpro.js",
+        "line": 92,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/subpro.js",
+        "line": 155,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host/subpro.js",
+        "line": 180,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "llm",
+    "sessionQuery",
+    "subagents",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

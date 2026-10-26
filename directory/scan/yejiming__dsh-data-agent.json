@@ -1,0 +1,118 @@
+{
+  "name": "@yejiming/dsh-data-agent",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:15:15.110Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1484,
+        "text": "const response = await fetch(url, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3459,
+        "text": "return parseJsonResponse(await fetch(\"/plugins/data-agent/connect\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3584,
+        "text": "\t\t\t\tfetch(`/plugins/data-agent/status?sessionId=${encodeURIComponent(sessionId)}`, { signal: controller.signal }).then((response) => parseJsonResponse(response)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3645,
+        "text": "const result = await parseJsonResponse(await fetch(`/plugins/data-agent/schemas?sessionId=${encodeURIComponent(sessionId)}`));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3707,
+        "text": "await parseJsonResponse(await fetch(\"/plugins/data-agent/disconnect\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connections-eb9xwiLF.js",
+        "line": 1,
+        "text": "import { readdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { access, cp, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 518,
+        "text": "await mkdir(targetDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 544,
+        "text": "if (isLegacyManagedPreset(await readFile(composition, \"utf8\"))) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 545,
+        "text": "const replacement = await readFile(join(sourceDir, \"agent.cordis.yml\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 1372,
+        "text": "const inheritedToolNames = ctx.tools.schemas().map((schema) => schema.name).filter((toolName) => !DATA_AGENT_OWN_TOOL_NAMES.has(toolName));"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 1373,
+        "text": "ctx.tools.restrict({ deny: inheritedToolNames });"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 1400,
+        "text": "const tools = ctx.tools.schemas(invocation.agent).map((schema) => schema.name).sort();"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 843,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 959,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connections-eb9xwiLF.js",
+        "line": 1746,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

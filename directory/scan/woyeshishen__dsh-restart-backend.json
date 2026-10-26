@@ -1,0 +1,88 @@
+{
+  "name": "@woyeshishen/dsh-restart-backend",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:15:02.712Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check.mjs",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 5,
+        "text": "const patch = readFileSync(new URL('../cordis.patch.yml', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "scripts/install.ps1",
+        "line": 126,
+        "text": "const fs = require(\"fs\");"
+      },
+      {
+        "file": "scripts/install.ps1",
+        "line": 130,
+        "text": "let t = fs.readFileSync(p, \"utf8\");"
+      },
+      {
+        "file": "scripts/install.ps1",
+        "line": 140,
+        "text": "if (t !== before) fs.writeFileSync(p, t);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "const { spawn } = require('node:child_process');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "const child = spawn(process.execPath, binArgv, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const watchdog = spawn(process.execPath, ['-e', RESTART_WATCHDOG, String(port), binArgv], {"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "appExit",
+    "connection",
+    "webStartup"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

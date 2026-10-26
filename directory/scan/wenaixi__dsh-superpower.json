@@ -1,0 +1,72 @@
+{
+  "name": "@wenaixi/dsh-superpower",
+  "version": "8.0.0",
+  "scannedAt": "2026-10-26T10:14:57.797Z",
+  "icon": "wenaixi__dsh-superpower.png",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog.js",
+        "line": 11,
+        "text": "import { mkdtemp, mkdir, readdir, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 312,
+        "text": "await mkdir(join(base, 'alpha'));"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 313,
+        "text": "await mkdir(join(base, 'bravo'));"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 314,
+        "text": "await Promise.all([writeFile(join(base, 'alpha', 'SKILL.md'), md), writeFile(join(base, 'bravo', 'SKILL.md'), md)]);"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 320,
+        "text": "await rm(base, { recursive: true, force: true }).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/writing-skills/render-graphs.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

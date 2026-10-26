@@ -1,0 +1,151 @@
+{
+  "name": "@yangdcm/dsh-expert-team",
+  "version": "1.5.3",
+  "scannedAt": "2026-10-26T10:15:13.401Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 572,
+        "text": "return fetch('/plugins/dsh-expert-team/settings').then(function (r) {"
+      },
+      {
+        "file": "client.js",
+        "line": 599,
+        "text": "fetch('/plugins/dsh-expert-team/settings', {"
+      },
+      {
+        "file": "client.js",
+        "line": 2162,
+        "text": "fetch('/plugins/dsh-expert-team/settings', {"
+      },
+      {
+        "file": "client.js",
+        "line": 2178,
+        "text": "fetch('/plugins/dsh-expert-team/memory-backend', {"
+      },
+      {
+        "file": "client.js",
+        "line": 2290,
+        "text": "fetch('/plugins/dsh-expert-team/subagent-order')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifact-writer.js",
+        "line": 26,
+        "text": "import { readFile as nodeReadFile, writeFile as nodeWriteFile, stat as nodeStat, unlink as nodeUnlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/artifact-writer.js",
+        "line": 71,
+        "text": "kind: 'node:fs',"
+      },
+      {
+        "file": "lib/artifact-writer.js",
+        "line": 303,
+        "text": "const useLock = fsPort && fsPort.kind === 'node:fs';"
+      },
+      {
+        "file": "lib/artifact-writer.js",
+        "line": 324,
+        "text": "// 于是模板拷贝（`readFile(url)` 不带编码返回 Buffer）会被 `{...buffer}` 展开成"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, readdir, rm, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 1229,
+        "text": "* `@deepseek-ai/dsh-mcp-client` 装没装 —— **只认 loader 条目名**（与上面两条探测同一套事实来源）。"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 6905,
+        "text": "agent.ctx.tools.restrict({ deny: plan.deny });"
+      },
+      {
+        "file": "lib/lead-toolface.js",
+        "line": 14,
+        "text": "// 给 **lead 自己的 agent scope** 施加 `agent.ctx.tools.restrict({deny})` 即可。安全性依据："
+      },
+      {
+        "file": "lib/memory-backend.js",
+        "line": 17,
+        "text": "*     `- insert:` 包裹的 `mcp-midas`（包 `@deepseek-ai/dsh-mcp-client`），并对\"到底就绪没有\""
+      },
+      {
+        "file": "lib/memory-backend.js",
+        "line": 98,
+        "text": "export const MIDAS_MCP_CLIENT_PACKAGE = '@deepseek-ai/dsh-mcp-client';"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 16,
+        "text": "import { execFile as execFileCb } from 'node:child_process';"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 5809,
+        "text": "const { stdout } = await execFile('git', ['-C', workspace, 'status', '--porcelain'], { timeout: 4000, maxBuffer: 512 * 1024 });"
+      },
+      {
+        "file": "lib/memory-backend.js",
+        "line": 56,
+        "text": "import { execFile as execFileCb, spawn as spawnCb } from 'node:child_process';"
+      },
+      {
+        "file": "lib/memory-backend.js",
+        "line": 413,
+        "text": "const { stdout } = await execFile('npm', ['prefix', '-g'], { timeout: 5000, encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/memory-backend.js",
+        "line": 1115,
+        "text": "child = spawn('node', [bin], { cwd: installDir ? String(installDir) : undefined, env: childEnv, stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 297,
+      "text": "npm i -g midas-memory-mcp"
+    },
+    {
+      "file": "README.md",
+      "line": 260,
+      "text": "npm i -g midas-memory-mcp"
+    }
+  ],
+  "skippedEntries": []
+}

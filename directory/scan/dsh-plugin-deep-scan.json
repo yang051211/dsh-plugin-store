@@ -1,0 +1,96 @@
+{
+  "name": "dsh-plugin-deep-scan",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:35.422Z",
+  "icon": "dsh-plugin-deep-scan.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/deep-scan/sources.js",
+        "line": 12,
+        "text": "const response = await fetch(url, requestInit);"
+      },
+      {
+        "file": "src/deep-scan/sources.ts",
+        "line": 31,
+        "text": "const response = await fetch(url, requestInit);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/report.js",
+        "line": 5,
+        "text": "import { mkdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/report.js",
+        "line": 14,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/report.js",
+        "line": 16,
+        "text": "writeFileSync(tmp, body, 'utf8');"
+      },
+      {
+        "file": "src/report.ts",
+        "line": 5,
+        "text": "import { mkdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/report.ts",
+        "line": 16,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin.js",
+        "line": 8,
+        "text": "export const inject = ['commands', 'tools'];"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 64,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 18,
+        "text": "export const inject = ['commands', 'tools'];"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 88,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

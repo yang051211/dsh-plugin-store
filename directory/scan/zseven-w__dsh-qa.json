@@ -1,0 +1,119 @@
+{
+  "name": "@zseven-w/dsh-qa",
+  "version": "0.1.0-rc.2",
+  "scannedAt": "2026-10-26T10:15:30.994Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/acceptance/host-direct.mjs",
+        "line": 7,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "scripts/serve-example-fixture.mjs",
+        "line": 15,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "text = await readFile(source, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1347,
+        "text": "import { writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1505,
+        "text": "writeFileSync(artifactPath, png);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1568,
+        "text": "import { writeFileSync as writeFileSync2 } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12601,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12608,
+        "text": "disposers.push(ctx.effect(() => ctx.tools.register(definition), `dsh-qa:${definition.name}`));"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 33,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 46,
+        "text": "disposers.push(ctx.effect(() => ctx.tools.register(definition), `dsh-qa:${definition.name}`))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/acceptance/host-direct.mjs",
+        "line": 5,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/acceptance/host-direct.mjs",
+        "line": 44,
+        "text": "const which = spawnSync('which', ['dsh'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/acceptance/host-direct.mjs",
+        "line": 76,
+        "text": "const result = spawnSync('dsh', args, { cwd: dir, env, encoding: 'utf8', timeout: 600_000, maxBuffer: 32 * 1024 * 1024 })"
+      },
+      {
+        "file": "scripts/acceptance/host-direct.mjs",
+        "line": 201,
+        "text": "const child = spawn(process.execPath, args, { cwd: dir, env, detached: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "scripts/acceptance/plain-install.mjs",
+        "line": 19,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/index.js",
+    "lib/server.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

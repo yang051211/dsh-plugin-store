@@ -1,0 +1,123 @@
+{
+  "name": "dsh-openai-provider",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:15:35.080Z",
+  "icon": "dsh-openai-provider.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1515,
+        "text": "return fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 191,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 268,
+        "text": "response = await fetch(parsed, { method: 'GET', headers, redirect: 'manual', signal: timeout.signal });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 1515,
+        "text": "return fetch(ROUTE, {"
+      },
+      {
+        "file": "src/http.ts",
+        "line": 248,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api/media.js",
+        "line": 9,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/api/media.js",
+        "line": 28,
+        "text": "fs.writeFileSync(finalPath, buffer, { mode: 0o644 });"
+      },
+      {
+        "file": "lib/api/media.js",
+        "line": 72,
+        "text": "fs.rmSync(temp, { force: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 79,
+        "text": "const raw = fs.readFileSync(file, 'utf8').replace(/^\\uFEFF/, '');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* `inject = ['tools']` guarantees `ctx.reflect.get('tools')` can obtain the tool"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "* host packages do not exist. `tools.register()` accepts a plain object, so"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 5,
+        "text": "* `inject = ['tools']` guarantees `ctx.reflect.get('tools')` can obtain the tool"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 8,
+        "text": "* host packages do not exist. `tools.register()` accepts a plain object, so"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 21,
+        "text": "const result = spawnSync(process.execPath, [path.join(dir, file)], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

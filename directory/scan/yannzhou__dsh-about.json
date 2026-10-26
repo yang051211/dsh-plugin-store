@@ -1,0 +1,118 @@
+{
+  "name": "@yannzhou/dsh-about",
+  "version": "1.8.1",
+  "scannedAt": "2026-10-26T10:15:14.303Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "const r = await fetch(ENDPOINT + \"/describe\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 642,
+        "text": "fetch(ENDPOINT + \"/describe\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 658,
+        "text": "fetch(ENDPOINT + \"/source\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 678,
+        "text": "fetch(ENDPOINT + \"/auth\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 757,
+        "text": "fetch(ENDPOINT + \"/source\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 30,
+        "text": "import { appendFileSync, mkdirSync, openSync, writeFileSync, rmSync, readFileSync, closeSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 63,
+        "text": "try { mkdirSync(path.dirname(LOG), { recursive: true }); } catch { /* 忽略 */ }"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 64,
+        "text": "try { mkdirSync(homeDir, { recursive: true }); } catch { /* 忽略 */ }"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 73,
+        "text": "try { appendFileSync(LOG, `${ts()} [${kind}] ${msg}\\n`); } catch { /* 写不进就静默 */ }"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 112,
+        "text": "const stat = readFileSync(`/proc/${pidNum}/stat`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 29,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 78,
+        "text": "if (isWin) return spawnSync(\"where\", [cmd], { stdio: \"ignore\", shell: true, windowsHide: true }).status === 0;"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 81,
+        "text": "return spawnSync(\"sh\", [\"-c\", `command -v ${cmd} >/dev/null 2>&1`]).status === 0;"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 124,
+        "text": "const r = spawnSync(\"ps\", [\"-o\", \"lstart=\", \"-p\", String(pidNum)], { stdio: [\"ignore\", \"pipe\", \"ignore\"], windowsHide: true });"
+      },
+      {
+        "file": "bin/dsh-watchdog.mjs",
+        "line": 157,
+        "text": "const r = spawnSync(\"systemctl\", [\"--user\", \"is-active\", unit || UNIT], { stdio: [\"ignore\", \"pipe\", \"ignore\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 42,
+      "text": "> npm install -g --allow-scripts=fs-ext,koffi,node-pty,protobufjs,@google/genai,@deepseek-ai/dsh-subprocess-local @deepseek-ai/dsh@latest"
+    }
+  ],
+  "skippedEntries": []
+}

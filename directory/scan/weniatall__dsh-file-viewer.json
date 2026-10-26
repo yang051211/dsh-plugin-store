@@ -1,0 +1,92 @@
+{
+  "name": "@weniatall/dsh-file-viewer",
+  "version": "0.3.28",
+  "scannedAt": "2026-10-26T10:14:57.917Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1609,
+        "text": "fetch(`/api/changes.summary?${new URLSearchParams({ sessionId: sid, seq: String(seq) })}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1635,
+        "text": "fetch(`/api/changes.summary?${new URLSearchParams({ sessionId: sid, seq: String(seq) })}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3337,
+        "text": "const head = await currentWin.fetch(downloadUrl, { method: \"HEAD\", credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3358,
+        "text": "const resp = await currentWin.fetch(downloadUrl, { method: \"GET\", credentials: \"same-origin\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import fsPromises from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 152,
+        "text": "export const inject = ['fs', 'connection', 'settings', 'workspaceRegistry', 'sessions', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "const text = fs.readFileSync(target, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 237,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "fs",
+    "sessions",
+    "settings",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

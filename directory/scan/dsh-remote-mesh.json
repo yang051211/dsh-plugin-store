@@ -1,0 +1,113 @@
+{
+  "name": "dsh-remote-mesh",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:15:36.172Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/mesh-relay.mjs",
+        "line": 33,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 327,
+        "text": "const response = await fetch(`${CHANNEL}/${endpoint}`, {"
+      },
+      {
+        "file": "lib/core/ws.js",
+        "line": 15,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/core/ws.js",
+        "line": 16,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "test/deploy-relay.test.mjs",
+        "line": 23,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "writeFileSync(temporary, `${JSON.stringify(config, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 250,
+        "text": "appendFileSync(logFile, `${line}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/deploy-relay.test.mjs",
+        "line": 21,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/deploy-relay.test.mjs",
+        "line": 127,
+        "text": "const result = spawnSync(process.execPath, [DEPLOY, ...argv], { encoding: 'utf8' })"
+      },
+      {
+        "file": "test/deploy-relay.test.mjs",
+        "line": 142,
+        "text": "const child = spawn(process.execPath, [DEPLOY, ...argv], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "test/relay-tls.test.mjs",
+        "line": 33,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/relay-tls.test.mjs",
+        "line": 114,
+        "text": "const probe = spawnSync(candidate, ['version'], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

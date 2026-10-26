@@ -1,0 +1,107 @@
+{
+  "name": "@yfwu2020/dsh-full-view",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:15:15.943Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1245,
+        "text": "void fetch(\"/dsh-full-view/api/config\", { signal: lifetime.signal }).then((response) => {"
+      },
+      {
+        "file": "scripts/preview.mjs",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "scripts/smoke-plugin-layers.mjs",
+        "line": 5,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 751,
+        "text": "void fetch('/dsh-full-view/api/config', { signal: lifetime.signal })"
+      },
+      {
+        "file": "tests/host.test.mjs",
+        "line": 3,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile, readFile, copyFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 5,
+        "text": "await mkdir(new URL('lib/', root), { recursive: true })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 9,
+        "text": "const { name } = JSON.parse(await readFile(new URL('package.json', root), 'utf8'))"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 10,
+        "text": "await writeFile(new URL('lib/client.js', root), `window.__ModuleLoader__.load({id:${JSON.stringify(name)},factory:(require)=>{const module={exports:{}};const ex"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/smoke-plugin-layers.mjs",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "tests/install.test.mjs",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tests/release.test.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/release.test.mjs",
+        "line": 16,
+        "text": "return spawnSync(process.execPath, [script, ...(tag ? [tag] : [])], { cwd, encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

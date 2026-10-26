@@ -1,0 +1,111 @@
+{
+  "name": "@try-works/dsh-paper-design",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:14:43.724Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth.ts",
+        "line": 26,
+        "text": "import { createServer, type Server, type IncomingMessage, type ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 134,
+        "text": "res = await fetch(url, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 539,
+        "text": "const res = await fetch(endpoint, {"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 578,
+        "text": "const res = await fetch(endpoint, {"
+      },
+      {
+        "file": "src/mcp-client.ts",
+        "line": 146,
+        "text": "await fetch(this.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth.ts",
+        "line": 27,
+        "text": "import { mkdir, readFile, writeFile, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 260,
+        "text": "const text = await readFile(this.path, 'utf8')"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 271,
+        "text": "await mkdir(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 274,
+        "text": "await writeFile(this.path, JSON.stringify(state, null, 2) + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 282,
+        "text": "await rm(this.path, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# (http://127.0.0.1:29979/mcp), registers paper_* tools on ctx.tools, injects"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 52,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 341,
+        "text": "state.toolDisposers.push(ctx.tools.register(createToolDefinition(state, info, withAttachments)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth.ts",
+        "line": 241,
+        "text": "import('node:child_process').then(({ spawn }) => {"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 242,
+        "text": "spawn(command[0], command[1], { detached: true, stdio: 'ignore' }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

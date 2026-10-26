@@ -1,0 +1,143 @@
+{
+  "name": "@zhengjunyao/dsh-updater",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:15:26.478Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 36,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 902,
+        "text": "fetch('/status', { cache:'no-store' }).then(function(r){ return r.json() }).then(render)"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 906,
+        "text": "$('retry').onclick = function(){ fetch('/retry', { method:'POST' }).then(function(){ lastLog=''; opened=false; poll() }) }"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 909,
+        "text": "fetch('/rollback', { method:'POST' }).then(function(){ lastLog=''; opened=false; poll() })"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 911,
+        "text": "$('recheck').onclick = function(){ fetch('/recheck', { method:'POST' }).then(poll) }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 35,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 69,
+        "text": "spec = JSON.parse(readFileSync(specPath, 'utf8'))"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 205,
+        "text": "appendFileSync(LOG_FILE, text + '\\n')"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 284,
+        "text": "writeFileSync(tmp, JSON.stringify(snapshot(), null, 2))"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 360,
+        "text": "writeFileSync(FAILURE_REPORT, buildFailureReport(), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3578,
+        "text": "const disposers = buildTools({ endpoint }).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 31,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 534,
+        "text": "spawnSync('ln', ['-sf', '../lib/node_modules/@deepseek-ai/dsh/lib/bin.js', link])"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 590,
+        "text": "child = spawn(UPDATE.npmPath || 'npm', cliArgs, {"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 728,
+        "text": "child = spawn(file, argv, { cwd, env, detached: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "helper/update-helper.mjs",
+        "line": 1053,
+        "text": "const child = spawn(command[0], command.slice(1), { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 79,
+      "text": "4. `npm install -g --prefix <running prefix> --registry <registry> --no-audit --no-fund"
+    },
+    {
+      "file": "README.md",
+      "line": 307,
+      "text": "├─ npm install -g --prefix <prefix> --registry <registry> --no-audit --no-fund @deepseek-ai/dsh@<version>"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 63,
+      "text": "4. `npm install -g --prefix <当前安装前缀> --registry <registry> --no-audit --no-fund @deepseek-ai/dsh@<版本>`"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 269,
+      "text": "├─ npm install -g --prefix <前缀> --registry <registry> --no-audit --no-fund @deepseek-ai/dsh@<版本>"
+    }
+  ],
+  "skippedEntries": []
+}

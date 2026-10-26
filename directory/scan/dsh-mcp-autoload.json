@@ -1,0 +1,82 @@
+{
+  "name": "dsh-mcp-autoload",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:15:34.652Z",
+  "icon": "dsh-mcp-autoload.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 295,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "manifest.js",
+        "line": 2,
+        "text": "import { chmod, copyFile, open, readdir, readFile, realpath, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "manifest.js",
+        "line": 26,
+        "text": "const original = await readFile(target, 'utf8')"
+      },
+      {
+        "file": "manifest.js",
+        "line": 55,
+        "text": "const backup = await readFile(backupPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import * as McpClient from '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "static inject = ['agents', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 197,
+        "text": "const schemas = ctx.tools?.schemas(agent) ?? []"
+      },
+      {
+        "file": "index.js",
+        "line": 213,
+        "text": "const schemas = ctx.tools?.schemas(agent) ?? []"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

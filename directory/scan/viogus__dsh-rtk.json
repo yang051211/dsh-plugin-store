@@ -1,0 +1,84 @@
+{
+  "name": "@viogus/dsh-rtk",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:14:49.685Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 32,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 120,
+        "text": "return readFileSync(file, 'utf8').includes(MARK_BEGIN)"
+      },
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 163,
+        "text": "let source = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 181,
+        "text": "mkdirSync(RTK_STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 184,
+        "text": "writeFileSync(file, source.replace(ANCHOR, block))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rtk.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/rtk.js",
+        "line": 96,
+        "text": "return spawnSync(executable, [\"--version\"], {"
+      },
+      {
+        "file": "lib/rtk.js",
+        "line": 136,
+        "text": "const result = spawnSync(bin, [\"rewrite\", command], {"
+      },
+      {
+        "file": "scripts/allow-rtk-state-in-sandbox.mjs",
+        "line": 31,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/resolve-rtk.mjs",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

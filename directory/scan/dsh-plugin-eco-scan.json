@@ -1,0 +1,96 @@
+{
+  "name": "dsh-plugin-eco-scan",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:35.541Z",
+  "icon": "dsh-plugin-eco-scan.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/eco/sources.js",
+        "line": 14,
+        "text": "const response = await fetch(url, requestInit);"
+      },
+      {
+        "file": "src/eco/sources.ts",
+        "line": 18,
+        "text": "const response = await fetch(url, requestInit);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/eco/snapshot.js",
+        "line": 1,
+        "text": "import { mkdirSync, appendFileSync, readFileSync, existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/eco/snapshot.js",
+        "line": 22,
+        "text": "mkdirSync(this.dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/eco/snapshot.js",
+        "line": 23,
+        "text": "appendFileSync(this.fileFor(date), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/eco/snapshot.js",
+        "line": 32,
+        "text": "for (const line of readFileSync(join(this.dataDir, name), 'utf8').split(/\\r?\\n/)) {"
+      },
+      {
+        "file": "src/eco/snapshot.ts",
+        "line": 1,
+        "text": "import { mkdirSync, appendFileSync, readFileSync, existsSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin.js",
+        "line": 9,
+        "text": "export const inject = ['commands', 'tools'];"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 103,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 19,
+        "text": "export const inject = ['commands', 'tools'];"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 129,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

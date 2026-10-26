@@ -1,0 +1,90 @@
+{
+  "name": "@zhujunpeng12/dsh-memory-system",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:28.108Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { writeFileSync, rmSync, mkdtempSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 95,
+        "text": "writeFileSync(file, content, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 96,
+        "text": "return { file, dispose: () => { try { rmSync(dir, { recursive: true, force: true }) } catch { /* best effort */ } } }"
+      },
+      {
+        "file": "plugins/evidence-ledger/index.js",
+        "line": 12,
+        "text": "import { readFileSync, writeFileSync, renameSync, existsSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "plugins/evidence-ledger/index.js",
+        "line": 26,
+        "text": "const raw = readFileSync(join(HERE, 'toolmap.json'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 143,
+        "text": "const register = (definition) => disposers.push(agent.ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "const child = spawn(PYTHON, [join(GUARD, script), ...args], {"
+      },
+      {
+        "file": "plugins/evidence-ledger/index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "plugins/evidence-ledger/index.js",
+        "line": 203,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

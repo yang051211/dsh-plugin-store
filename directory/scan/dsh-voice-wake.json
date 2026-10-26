@@ -1,0 +1,72 @@
+{
+  "name": "dsh-voice-wake",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:15:36.458Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 216,
+        "text": "await fetch(`${PREFIX}/log`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 250,
+        "text": "return await fetch(`${PREFIX}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 490,
+        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 509,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 511,
+        "text": "writeFileSync(tmp, `${JSON.stringify(config, undefined, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { appendFileSync, mkdirSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

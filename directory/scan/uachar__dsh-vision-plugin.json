@@ -1,0 +1,101 @@
+{
+  "name": "@uachar/dsh-vision-plugin",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:14:47.177Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 361,
+        "text": "y{const r=JSON.parse(s);const res=await fetch(r.url,{method:'POST',headers:{Authorization:'Bearer '+r.key,'Content-Type':'application/json'},body:JSON.stringify"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 259,
+        "text": "y{const r=JSON.parse(s);const res=await fetch(r.url,{method:'POST',headers:{Authorization:'Bearer '+r.key,'Content-Type':'application/json'},body:JSON.stringify"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "return existsSync(source) && readFileSync(source, \"utf8\").includes(MARKER);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 251,
+        "text": "writeFileSync(this.configPath, JSON.stringify({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 257,
+        "text": "const raw = JSON.parse(readFileSync(this.configPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 271,
+        "text": "writeFileSync(this.configPath, JSON.stringify({"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "const child = spawn(process.execPath, [script], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 357,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 260,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/types/patch.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node -e \"console.log('[vision-prepare] RAN')\" && node scripts/apply-dsh-patch.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

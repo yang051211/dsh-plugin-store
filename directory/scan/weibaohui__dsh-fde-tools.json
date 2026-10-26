@@ -1,0 +1,110 @@
+{
+  "name": "@weibaohui/dsh-fde-tools",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-26T10:14:56.352Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/bundle.js",
+        "line": 100,
+        "text": "const d = await fetch(`${API}/status`).then(readJson).catch(() => null)"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 106,
+        "text": "const d = await fetch(`${API}/check-updates`).then(readJson).catch(() => null)"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 124,
+        "text": "const r = await fetch(`${API}/${path}`, {"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 146,
+        "text": "fetch(`${API}/status`).then((r) => r.json()).then((next) => {"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 159,
+        "text": "const res = await fetch(`${API}/restart`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 16,
+        "text": "const pkg = JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 17,
+        "text": "const source = readFileSync(sourcePath, 'utf8')"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 42,
+        "text": "writeFileSync(bundlePath, banner + indent(source) + footer, 'utf8')"
+      },
+      {
+        "file": "src/installer.js",
+        "line": 17,
+        "text": "const { existsSync, readdirSync, readFileSync, writeFileSync, realpathSync } = require('node:fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/installer.js",
+        "line": 20,
+        "text": "const { execFile } = require('node:child_process')"
+      },
+      {
+        "file": "src/installer.js",
+        "line": 298,
+        "text": "execFile(file, args, { cwd: cwd, timeout: timeout, maxBuffer: 16 * 1024 * 1024, shell: false }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/restart.js",
+        "line": 19,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "src/restart.js",
+        "line": 174,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "src/restart.js",
+        "line": 210,
+        "text": "'    child = spawn(file, args, { cwd, detached, stdio: [\"ignore\", out, err], env: process.env, shell: viaShell })',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

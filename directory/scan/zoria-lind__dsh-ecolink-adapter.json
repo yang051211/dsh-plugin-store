@@ -1,0 +1,90 @@
+{
+  "name": "@zoria-lind/dsh-ecolink-adapter",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:15:29.665Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapter/src/modules/memoryWrite.js",
+        "line": 46,
+        "text": "const fetchImpl = typeof deps.fetchImpl === 'function' ? deps.fetchImpl : ((...a) => fetch(...a))"
+      },
+      {
+        "file": "adapter/src/modules/serviceGuard.js",
+        "line": 48,
+        "text": "const fetchImpl = typeof deps.fetchImpl === 'function' ? deps.fetchImpl : ((...a) => fetch(...a))"
+      },
+      {
+        "file": "service/compress.mjs",
+        "line": 55,
+        "text": "const resp = await fetch(`${baseUrl.replace(/\\/$/, '')}/chat/completions`, {"
+      },
+      {
+        "file": "service/server.mjs",
+        "line": 9,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapter/src/modules/memoryDiff.js",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "adapter/src/modules/memoryDiff.js",
+        "line": 26,
+        "text": "const readFile = typeof deps.readFile === 'function' ? deps.readFile : ((p) => readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "adapter/src/modules/memoryDiff.js",
+        "line": 93,
+        "text": "const pool = JSON.parse(readFile(expandHome(config.poolPath)))"
+      },
+      {
+        "file": "adapter/src/modules/memoryInject.js",
+        "line": 16,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "adapter/src/modules/memoryInject.js",
+        "line": 63,
+        "text": "const data = JSON.parse(readFileSync(poolPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapter/src/modules/serviceGuard.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "adapter/src/modules/serviceGuard.js",
+        "line": 49,
+        "text": "const spawnImpl = typeof deps.spawnImpl === 'function' ? deps.spawnImpl : ((...a) => spawn(...a))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

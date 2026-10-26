@@ -1,0 +1,113 @@
+{
+  "name": "@wszhoho/dsh-file-attachment",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:15:03.244Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 203,
+        "text": "const r = await fetch('/dsh-file-attachment/config')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 286,
+        "text": "response = await fetch('/dsh-file-attachment/save' + q, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 315,
+        "text": "const response = await fetch('/dsh-file-attachment/precheck', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1260,
+        "text": "const r = await fetch('/dsh-file-attachment/config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1324,
+        "text": "// \tfetch('/dsh-file-attachment/version').then(r => r.json()).then(d => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { link, mkdir, open, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "const text = await readFile(CONFIG_PATH, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "await writeFile(CONFIG_PATH, JSON.stringify(next, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "const text = await readFile(idxPath, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 268,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 615,
+        "text": "* 手段：agent.ctx.tools.restrict({ deny: [...] })——scoped-only，只影响该 agent 的工具装配，"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 671,
+        "text": "const tools = (agent.ctx && typeof agent.ctx === 'object') ? agent.ctx.tools : undefined"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 712,
+        "text": "const tools = (ctx !== undefined && ctx !== null && typeof ctx.tools === 'object' && ctx.tools !== null)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 713,
+        "text": "? ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

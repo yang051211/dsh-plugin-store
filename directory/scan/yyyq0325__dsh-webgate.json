@@ -1,0 +1,109 @@
+{
+  "name": "@yyyq0325/dsh-webgate",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:15:22.186Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dynamic/webgate.host.js",
+        "line": 609,
+        "text": "return fetch('/auth/api/' + path, {"
+      },
+      {
+        "file": "dynamic/webgate.host.js",
+        "line": 1066,
+        "text": "fetch('/auth/api/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: tok }) })"
+      },
+      {
+        "file": "scripts/browsersim.test.mjs",
+        "line": 199,
+        "text": "const listResp = await env.window.fetch(new URL('/api/workspace.list', 'http://127.0.0.1:3080'), { method: 'POST', body: '{}' })"
+      },
+      {
+        "file": "scripts/browsersim.test.mjs",
+        "line": 206,
+        "text": "const listResp2 = await env.window.fetch('/api/workspace.list', { method: 'POST', body: '{}' })"
+      },
+      {
+        "file": "scripts/browsersim.test.mjs",
+        "line": 210,
+        "text": "const slResp = await env.window.fetch('/api/session.list', { method: 'POST', body: '{}' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/browsersim.test.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-dynamic.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-dynamic.mjs",
+        "line": 15,
+        "text": "const src = fs.readFileSync(srcPath, 'utf8')"
+      },
+      {
+        "file": "scripts/build-dynamic.mjs",
+        "line": 36,
+        "text": "fs.mkdirSync(path.dirname(outPath), { recursive: true })"
+      },
+      {
+        "file": "scripts/build-dynamic.mjs",
+        "line": 37,
+        "text": "fs.writeFileSync(outPath, out, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dynamic/webgate.host.js",
+        "line": 38,
+        "text": "inject: ['timer', 'webServer', 'credentials', 'commands', 'tools'],"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 330,
+        "text": "await runSuite('src', { inject: ['timer', 'webServer', 'credentials', 'commands', 'tools'], apply })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 29,
+        "text": "export const inject = ['timer', 'webServer', 'credentials', 'commands', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dynamic/webgate.host.js",
+    "src/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "credentials",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

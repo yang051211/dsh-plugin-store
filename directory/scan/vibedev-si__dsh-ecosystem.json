@@ -1,0 +1,83 @@
+{
+  "name": "@vibedev-si/dsh-ecosystem",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:48.975Z",
+  "icon": "vibedev-si__dsh-ecosystem.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2447,
+        "text": "const r = await fetch('/vdc/config', { cache: 'no-store', signal })"
+      },
+      {
+        "file": "client.js",
+        "line": 2567,
+        "text": "await fetch('/vdc/selfcheck', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(report), signal })"
+      },
+      {
+        "file": "client.js",
+        "line": 2712,
+        "text": "return fetch(\"/vdc/latest\", { cache: \"no-store\", signal: ctl ? ctl.signal : lifetime.signal })"
+      },
+      {
+        "file": "client.js",
+        "line": 2730,
+        "text": "return fetch('/vdc/updates', { cache: 'no-store', signal: ctl.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { access, mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "const BUNDLED_CATALOG = JSON.parse(readFileSync(new URL('./catalog/catalog.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 159,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 160,
+        "text": "await writeFile(join(dir, 'selfcheck.json'), JSON.stringify({ at: new Date().toISOString(), ...body }, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

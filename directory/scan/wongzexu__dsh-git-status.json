@@ -1,0 +1,84 @@
+{
+  "name": "@wongzexu/dsh-git-status",
+  "version": "2.0.0",
+  "scannedAt": "2026-10-26T10:15:02.672Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1797,
+        "text": "const r = await fetch(url)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2303,
+        "text": "        const r = await fetch(`${BASE}/git/log?n=500&scope=${gitScopeValue}&follow=${logPrefs.onlyFirstParent === true ? 1 : 0}&reflogs=${logPrefs.includeReflog"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2394,
+        "text": "const r = await fetch(`${BASE}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3280,
+        "text": "const r = await fetch(`${BASE}/git/config?${sessionQuery().replace(/^&/, '')}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 18,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 19,
+        "text": "import { readFile, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1288,
+        "text": "try { await rm(resolve(root, p), { force: true }) } catch { /* 路径已不存在 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 129,
+        "text": "const child = spawn('git', ['-C', root, '--no-pager', '-c', 'color.ui=false', ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,107 @@
+{
+  "name": "@zaimokuza/dsh-plugin-hub",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:15:22.843Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 39,
+        "text": "ctx.effect(() => ctx.connection.fetch.register({ path: `/api/${identity.service}/${path}`, methods: ['POST'], requestBody: 'buffered', async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/dsh.js",
+        "line": 1,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "src/dsh.js",
+        "line": 21,
+        "text": "if (JSON.parse(readFileSync(file, 'utf8')).name === '@deepseek-ai/dsh') { cli = candidate; entryManifest = file; }"
+      },
+      {
+        "file": "src/dsh.js",
+        "line": 24,
+        "text": "const manifest = JSON.parse(readFileSync(entryManifest, 'utf8'));"
+      },
+      {
+        "file": "src/dsh.js",
+        "line": 34,
+        "text": "try { manifest = JSON.parse(readFileSync(join(environment.profileDir, 'package.json'), 'utf8')); }"
+      },
+      {
+        "file": "src/dsh.js",
+        "line": 38,
+        "text": "try { result[name] = JSON.parse(readFileSync(join(environment.profileDir, 'node_modules', name, 'package.json'), 'utf8')).version; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/mcp-config.js",
+        "line": 36,
+        "text": "} else if (value.name === '@deepseek-ai/dsh-mcp-client' && object(value.config)) {"
+      },
+      {
+        "file": "src/mcp-native.js",
+        "line": 3,
+        "text": "export const MCP_MODULE = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "src/profile-files.js",
+        "line": 27,
+        "text": "if (isMap(item) && item.get('id') === entry.options.id && item.get('name') === '@deepseek-ai/dsh-mcp-client') matches.push({ node, index });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/experiments.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/experiments.js",
+        "line": 31,
+        "text": "          const child = spawn(process.execPath, [this.environment.cli, 'plugin', '--profile', this.environment.profile, 'add', `${name}@${this.environment.host."
+      },
+      {
+        "file": "src/resources.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/resources.js",
+        "line": 292,
+        "text": "se((resolve, reject) => { const child = spawn(command, args, { shell: false, stdio: 'ignore' }); child.once('error', reject); child.once('exit', code => code =="
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "connection",
+    "loader",
+    "skills",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

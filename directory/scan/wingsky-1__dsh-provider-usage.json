@@ -1,0 +1,71 @@
+{
+  "name": "@wingsky-1/dsh-provider-usage",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:15:00.473Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "if (init?.signal !== void 0) return fetch(url, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 111,
+        "text": "return fetch(url, { ...init, signal: AbortSignal.timeout(timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1811,
+        "text": "import { readFile, mkdir, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1859,
+        "text": "const text = await readFile(uiConfigFile(root), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1866,
+        "text": "await mkdir(root, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1875,
+        "text": "await writeFile(temporary, data, { encoding: \"utf8\", mode: 384 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1878,
+        "text": "await rm(temporary, { force: true }).catch(() => void 0);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

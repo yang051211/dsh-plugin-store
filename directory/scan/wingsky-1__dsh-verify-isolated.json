@@ -1,0 +1,105 @@
+{
+  "name": "@wingsky-1/dsh-verify-isolated",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:15:00.540Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 40,
+        "text": "import { get } from \"node:http\";"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 152,
+        "text": "const ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 969,
+        "text": "const ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/verify-isolated.mjs",
+        "line": 758,
+        "text": "const r = await fetch(`http://127.0.0.1:${port}/`, { signal: AbortSignal.timeout(1500) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 36,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 355,
+        "text": "return JSON.parse(readFileSync(statePath, \"utf8\"));"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 424,
+        "text": "writeFileSync(statePath, JSON.stringify(state, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 473,
+        "text": "rmSync(st.userDataDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 477,
+        "text": "unlinkSync(statePath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 26,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/browser-driver.mjs",
+        "line": 391,
+        "text": "child = spawn(bin, args, { stdio: [\"ignore\", \"ignore\", \"pipe\"] });"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/verify-isolated.mjs",
+        "line": 135,
+        "text": "import { spawn, spawnSync, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/verify-isolated.mjs",
+        "line": 510,
+        "text": "return isWinScript(abs) ? spawn(abs, args, { ...opts, shell: true }) : spawn(abs, args, opts);"
+      },
+      {
+        "file": "skills/dsh-verify-isolated/scripts/verify-isolated.mjs",
+        "line": 517,
+        "text": "return spawnSync(dshAbs, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

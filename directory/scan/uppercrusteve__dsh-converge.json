@@ -1,0 +1,74 @@
+{
+  "name": "@uppercrusteve/dsh-converge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:47.871Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/converge.js",
+        "line": 25,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/converge.js",
+        "line": 780,
+        "text": "try { fs.mkdirSync(path.dirname(file), { recursive: true }) } catch { /* 目录已存在 */ }"
+      },
+      {
+        "file": "src/converge.js",
+        "line": 785,
+        "text": "fs.appendFileSync(file, JSON.stringify(rec) + '\\n')"
+      },
+      {
+        "file": "src/converge.js",
+        "line": 786,
+        "text": "    } catch (e) { try { fs.appendFileSync(file, JSON.stringify({ t: new Date().toISOString(), ev: 'log-error', pid, message: String(e && e.message || e) }) + '\\"
+      },
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/converge.js",
+        "line": 32,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/converge.js",
+        "line": 881,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/converge.js",
+        "line": 1496,
+        "text": "services: { tools: typeof ctx.tools, systemPrompt: typeof ctx.systemPrompt, agents: typeof safeGet(ctx, 'agents'), sessions: typeof safeGet(ctx, 'sessions') },"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

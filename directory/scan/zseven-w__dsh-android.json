@@ -1,0 +1,138 @@
+{
+  "name": "@zseven-w/dsh-android",
+  "version": "0.1.0-rc.12",
+  "scannedAt": "2026-10-26T10:15:29.966Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/_smoke-harness.mjs",
+        "line": 10,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "scripts/dev-routes-static-smoke.mjs",
+        "line": 24,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "scripts/dev-routes-static-smoke.mjs",
+        "line": 171,
+        "text": "const req = http.request({ host: '127.0.0.1', port, path, method, headers }, res => {"
+      },
+      {
+        "file": "scripts/dev-routes-static-smoke.mjs",
+        "line": 860,
+        "text": "const req = http.request({ host: '127.0.0.1', port, path: fresh.json?.streamUrl, method: 'GET' }, res => {"
+      },
+      {
+        "file": "src/frame-source.ts",
+        "line": 26,
+        "text": "import type { ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 20,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 24,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 259,
+        "text": "const parsed = JSON.parse(readFileSync(metadata, 'utf8'));"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 283,
+        "text": "const text = readFileSync(script, 'utf8');"
+      },
+      {
+        "file": "lib/build-run.js",
+        "line": 297,
+        "text": "const text = readFileSync(manifest, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.androidDevices), 'dsh-android:android_devices'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.androidBoot), 'dsh-android:android_boot'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.androidShutdown), 'dsh-android:android_shutdown'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tools.androidScreenshot), 'dsh-android:android_screenshot'));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 19,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 170,
+        "text": "execFile(command, [...args], {"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 221,
+        "text": "execFile(adb, ['-s', serial, 'exec-out', ...command], {"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 249,
+        "text": "return spawn(adb, ['-s', serial, 'exec-out', ...command], { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 399,
+        "text": "const child = spawn(emulator.command, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plugin-cost-ledger",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:35.426Z",
+  "icon": "dsh-plugin-cost-ledger.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ledger/store.js",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, appendFileSync, existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ledger/store.js",
+        "line": 24,
+        "text": "mkdirSync(this.dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/ledger/store.js",
+        "line": 25,
+        "text": "appendFileSync(this.fileFor(entry.at), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/ledger/store.js",
+        "line": 38,
+        "text": "const result = parseJsonl(readFileSync(join(this.dataDir, name), 'utf8'));"
+      },
+      {
+        "file": "lib/ledger/store.js",
+        "line": 50,
+        "text": "return parseJsonl(readFileSync(file, 'utf8')).records;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin.js",
+        "line": 25,
+        "text": "export const inject = ['commands', 'llm', 'sessions', 'tools'];"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 131,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 38,
+        "text": "export const inject = ['commands', 'llm', 'sessions', 'tools'];"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 152,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

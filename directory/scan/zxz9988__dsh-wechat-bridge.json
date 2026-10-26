@@ -1,0 +1,132 @@
+{
+  "name": "@zxz9988/dsh-wechat-bridge",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:15:32.186Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "res = await fetch(cdnUrl, {"
+      },
+      {
+        "file": "mcp/fetch-server/server.mjs",
+        "line": 114,
+        "text": "res = await fetch(parsed.href, {"
+      },
+      {
+        "file": "test/integration.mjs",
+        "line": 507,
+        "text": "out += s.feed('curl -s --max-time 20 \"https://wttr.in/Shanghai\"')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync, statSync, readdirSync, renameSync, copyFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 75,
+        "text": "const parsed = JSON.parse(readFileSync(join(stateDir, OVERRIDE_FILENAME), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "const parsed = JSON.parse(readFileSync(join(stateDir, CHAT_INDEX_FILENAME), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "if (!existsSync(stateDir)) mkdirSync(stateDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "writeFileSync(join(stateDir, CHAT_INDEX_FILENAME), JSON.stringify(index, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['agents', 'sessions', 'timer', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 354,
+        "text": "this.toolDisposers = []    // 本插件注册的 ctx.tools 工具的注销函数"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 420,
+        "text": "try { return ctx.tools.register(def) } catch (error) {"
+      },
+      {
+        "file": "mcp/fetch-server/server.mjs",
+        "line": 2,
+        "text": "// Spawned by @deepseek-ai/dsh-mcp-client over stdio."
+      },
+      {
+        "file": "test/integration.mjs",
+        "line": 455,
+        "text": "const fiber = ctx.plugin({ inject: ['timer', 'agents', 'sessions', 'tools'], apply: (c) => apply(c, testConfig) })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "spawn('cmd', ['/c', 'start', '', file], { detached: true, stdio: 'ignore', windowsHide: true }).unref()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "spawn('xdg-open', [file], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "scripts/ensure-host-junction.mjs",
+        "line": 6,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/ensure-host-junction.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

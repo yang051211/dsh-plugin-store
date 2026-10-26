@@ -1,0 +1,110 @@
+{
+  "name": "@wizzy-1547/dsh-updater",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:15:01.154Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 96,
+        "text": "fetch(`${API}/status`).then((r) => r.json().catch(() => null)).then((j) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 114,
+        "text": "fetch(`${API}/status`).then((r) => r.json().catch(() => null)).then((j) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 128,
+        "text": "if (hostDownStreak >= 2) fetch(`${PROGRESS_API}/progress`).then((r) => r.json().catch(() => null)).then((j) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 141,
+        "text": "fetch(`${PROGRESS_API}/progress`).then((r) => r.json().catch(() => null)).then((j) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "fetch(`${API}/check`, { method: \"POST\" }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const raw = JSON.parse(readFileSync(pkg, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "const p = JSON.parse(readFileSync(pf, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 209,
+        "text": "const pid = Number.parseInt(readFileSync(readyFile, 'utf8').trim(), 10);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 217,
+        "text": "rmSync(join(stateDir, 'progress.json'), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 211,
+        "text": "spawn('taskkill.exe', ['/pid', String(pid), '/f', '/t'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 415,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 474,
+        "text": "const c = spawn(cmd, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true, ...opts })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 510,
+        "text": "const p = spawnSync('cmd.exe', ['/c', 'npm', 'view', '@deepseek-ai/dsh', 'version', '--json'], { stdio: 'pipe', windowsHide: true, timeout: 30000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

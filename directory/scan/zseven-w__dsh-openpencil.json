@@ -1,0 +1,146 @@
+{
+  "name": "@zseven-w/dsh-openpencil",
+  "version": "0.1.0-rc.13",
+  "scannedAt": "2026-10-26T10:15:31.775Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/assets/openpencil-design/icon-catalog.json",
+        "line": 1,
+        "text": "zations\",\"awssecretsmanager\",\"awwwards\",\"axios\",\"axisbank\",\"azureartifacts\",\"azuredataexplorer\",\"azuredevops\",\"azurefunctions\",\"azurepipelines\",\"b4x\",\"babel\",\"b"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 938,
+        "text": "const saveResponse = await responseJson(await fetch(launch.saveUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3891,
+        "text": "const [sdk, response] = await Promise.all([loadOpenPencilSdk(viewerGrant.sdkUrl), fetch(documentGrant.url, {"
+      },
+      {
+        "file": "lib/editor-host.js",
+        "line": 292,
+        "text": "fetch(`${baseUrl}/`, { signal: requestSignal }),"
+      },
+      {
+        "file": "lib/editor-host.js",
+        "line": 293,
+        "text": "fetch(`${baseUrl}/pkg/op_host_web.js`, { signal: requestSignal }),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/design-draft-controller.js",
+        "line": 3,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/design-draft-controller.js",
+        "line": 272,
+        "text": "await writeFile(sourcePath, EMPTY_DOCUMENT_JSON, { flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/design-draft-controller.js",
+        "line": 315,
+        "text": "await rm(tempRoot, { recursive: true, force: true }).catch(() => { });"
+      },
+      {
+        "file": "lib/design-draft-controller.js",
+        "line": 529,
+        "text": "await writeFile(session.daemon.sourcePath, document.documentJson, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/design-draft-controller.js",
+        "line": 850,
+        "text": "await rm(session.tempRoot, { recursive: true, force: true }).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['tools', 'sessions', 'fs', 'sandboxPolicy'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(createDesignRenderTool(controller, viewerAssets, editorHost)), `dsh-openpencil: ${OPENPENCIL_RENDER_TOOL_"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(createDesignSelectionTool(editorHost)), `dsh-openpencil: ${OPENPENCIL_SELECTION_TOOL_NAME} tool`));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(createDesignNewTool(editorHost, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(createDesignCreateTool(editorHost)), `dsh-openpencil: ${OPENPENCIL_CREATE_TOOL_NAME} tool`));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/editor-host.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/editor-host.js",
+        "line": 870,
+        "text": "const child = spawn(runtime.binary, launch.args, { stdio: ['pipe', 'pipe', 'pipe'], env: launch.env });"
+      },
+      {
+        "file": "lib/managed-editor-daemon.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/managed-editor-daemon.js",
+        "line": 293,
+        "text": "const child = spawn(runtime.binary, launch.args, { stdio: ['pipe', 'pipe', 'pipe'], env: launch.env });"
+      },
+      {
+        "file": "lib/renderer.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/viewer-assets/sdk.js"
+  ],
+  "binaryFiles": [
+    "lib/viewer-assets/canvaskit/canvaskit.wasm",
+    "lib/viewer-assets/op_web_sdk_bg.wasm"
+  ],
+  "requiredServices": [
+    "fs",
+    "sandboxPolicy",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

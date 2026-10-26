@@ -1,0 +1,105 @@
+{
+  "name": "@weibaohui/dsh-sync",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-26T10:14:56.366Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/bundle.js",
+        "line": 444,
+        "text": "const r = await fetch(url)"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 513,
+        "text": "const r = await fetch(endpoint, {"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 614,
+        "text": "const r = await fetch(API + '/remote/pull', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paths, apply: false }) })"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 626,
+        "text": "const r = await fetch(API + '/remote/pull', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paths, apply: true }) })"
+      },
+      {
+        "file": "client/bundle.js",
+        "line": 641,
+        "text": "const r = await fetch(API + '/remote/align', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ paths }) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/backup.js",
+        "line": 15,
+        "text": "const fsP = require('node:fs/promises')"
+      },
+      {
+        "file": "src/backup.js",
+        "line": 40,
+        "text": "const stream = require('node:fs').createReadStream(abs)"
+      },
+      {
+        "file": "src/backup.js",
+        "line": 77,
+        "text": "await fsP.mkdir(destDir, { recursive: true })"
+      },
+      {
+        "file": "src/backup.js",
+        "line": 96,
+        "text": "await fsP.mkdir(join(destDir, '..'), { recursive: true })"
+      },
+      {
+        "file": "src/backup.js",
+        "line": 100,
+        "text": "await fsP.rm(destDir, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 37,
+        "text": "const { execFile } = require('node:child_process')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 395,
+        "text": "execFile(binary, args, opts, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 409,
+        "text": "execFile(binary, ['show', rev], { cwd, maxBuffer: 64 * 1024 * 1024, encoding: 'buffer' }, (error, stdout) => {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1065,
+        "text": "execFile(binary, ['diff', '--no-index', '--name-status', '--no-renames', '-z', a, b], { cwd, maxBuffer: 16 * 1024 * 1024 }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,84 @@
+{
+  "name": "@zerorigin-studio/dsh-desktop-shell",
+  "version": "0.6.3",
+  "scannedAt": "2026-10-26T10:15:23.974Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "const res = await fetch(`http://127.0.0.1:${p}/`, { signal: AbortSignal.timeout(1500) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "if (fs.existsSync(f)) return fs.readFileSync(f, 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "return JSON.parse(fs.readFileSync(p, 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "fs.unlinkSync(t)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "const child = spawn(client, [], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 290,
+        "text": "spawn('reg.exe', cmd, { stdio: 'ignore', windowsHide: true }).on('error', () => {})"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/dsh-desktop-shell.exe"
+  ],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

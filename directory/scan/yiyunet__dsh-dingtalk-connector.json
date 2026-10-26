@@ -1,0 +1,150 @@
+{
+  "name": "@yiyunet/dsh-dingtalk-connector",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:15:18.817Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rpc.mjs",
+        "line": 206,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "plugin-src/host/rpc.mjs",
+        "line": 204,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accounts.mjs",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/client.mjs",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/export.mjs",
+        "line": 13,
+        "text": "import { mkdir, open, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/export.mjs",
+        "line": 150,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/export.mjs",
+        "line": 151,
+        "text": "await writeFile(target, content, 'utf8')      // 直接覆盖同名文件（维护者约定的默认行为）"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 32,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 193,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 253,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 282,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 310,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-dingtalk-connector.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-dingtalk-connector.mjs",
+        "line": 22,
+        "text": "const child = spawn(command, args, { stdio: 'inherit', shell: process.platform === 'win32', ...options })"
+      },
+      {
+        "file": "bin/dsh-dingtalk-connector.mjs",
+        "line": 35,
+        "text": "child = spawn(command, args, { shell: process.platform === 'win32', windowsHide: true })"
+      },
+      {
+        "file": "lib/accounts.mjs",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/accounts.mjs",
+        "line": 120,
+        "text": "const child = spawn(launch.file, launch.argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/postinstall.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 117,
+      "text": "npm i -g dingtalk-workspace-cli"
+    },
+    {
+      "file": "README.en.md",
+      "line": 436,
+      "text": "npm i -g dingtalk-workspace-cli@latest"
+    },
+    {
+      "file": "README.md",
+      "line": 119,
+      "text": "npm i -g dingtalk-workspace-cli"
+    },
+    {
+      "file": "README.md",
+      "line": 536,
+      "text": "npm i -g dingtalk-workspace-cli@latest"
+    }
+  ],
+  "skippedEntries": []
+}

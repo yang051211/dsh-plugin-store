@@ -1,0 +1,87 @@
+{
+  "name": "@yumeayai/dsh-swiss-target",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:21.453Z",
+  "icon": "yumeayai__dsh-swiss-target.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-plugin.mjs",
+        "line": 83,
+        "text": "const response = await fetch(`http://${authority}/api/${method}`, {"
+      },
+      {
+        "file": "scripts/verify-plugin.mjs",
+        "line": 121,
+        "text": "const index = await fetch(`http://${authority}/`, { headers: { cookie } }).then(response => response.text())"
+      },
+      {
+        "file": "scripts/verify-plugin.mjs",
+        "line": 127,
+        "text": "const served = await fetch(`http://${authority}/${found[0].url}`, { headers: { cookie } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 393,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 394,
+        "text": "await writeFile(path, toCsv(rows), 'utf8')"
+      },
+      {
+        "file": "scripts/verify-plugin.mjs",
+        "line": 31,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/verify-plugin.mjs",
+        "line": 58,
+        "text": "text = await readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 225,
+        "text": "ctx.tools.register(SWISS_TARGET_TOOL)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

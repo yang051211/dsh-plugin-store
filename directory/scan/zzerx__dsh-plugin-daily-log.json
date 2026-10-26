@@ -1,0 +1,82 @@
+{
+  "name": "@zzerx/dsh-plugin-daily-log",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-26T10:15:33.275Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, open, readFile, readdir, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4247,
+        "text": "const registryKeys = await readFile(r.claudeJson, \"utf8\").then((text) => claudeProjectsFromStateJson(text), () => null);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4251,
+        "text": "const hist = await readFile(r.claudeHistory, \"utf8\").then((text) => claudeProjectsFromHistory(text), () => null);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4258,
+        "text": "const indexed = await readFile(r.codexGlobalState, \"utf8\").then((text) => codexProjectsFromGlobalState(text), () => null);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4555,
+        "text": "await mkdir(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6603,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6620,
+        "text": "ctx.tools.register(createDailyLogDispatcher(gate));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6793,
+        "text": "disposers.push(scope.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

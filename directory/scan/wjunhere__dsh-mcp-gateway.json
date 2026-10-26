@@ -1,0 +1,76 @@
+{
+  "name": "@wjunhere/dsh-mcp-gateway",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:15:01.542Z",
+  "icon": "wjunhere__dsh-mcp-gateway.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 2,
+        "text": "import { readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 55,
+        "text": "text = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 75,
+        "text": "writeFileSync(temporary, `${JSON.stringify(cache, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 80,
+        "text": "unlinkSync(temporary)"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 2,
+        "text": "# One row replaces every `@deepseek-ai/dsh-mcp-client` row: those rows must be"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 713,
+        "text": "disposeTool = ctx.tools.register({ ...definition, description: buildDescription(servers) })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

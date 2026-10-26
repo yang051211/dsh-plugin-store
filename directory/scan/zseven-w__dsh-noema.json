@@ -1,0 +1,133 @@
+{
+  "name": "@zseven-w/dsh-noema",
+  "version": "0.1.0-rc.6",
+  "scannedAt": "2026-10-26T10:15:32.576Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 415,
+        "text": "const response = await fetch(NOEMA_STATUS_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1019,
+        "text": "const response = await fetch(NOEMA_STATUS_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1045,
+        "text": "const response = await fetch(NOEMA_STATUS_ROUTE, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1057,
+        "text": "const payload = await (await fetch(NOEMA_STATUS_ROUTE, {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 452,
+        "text": "const response = await fetch(NOEMA_STATUS_ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bundled-binary.js",
+        "line": 6,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/import-service.js",
+        "line": 9,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/import-service.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/import-service.js",
+        "line": 84,
+        "text": "const value = JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "lib/import-service.js",
+        "line": 100,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "disposers.push(ctx.effect(() => hostCtx.tools.register(tool), 'dsh-noema: ' + tool.name + ' tool'));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 47,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 95,
+        "text": "() => hostCtx.tools.register(tool),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 80,
+        "text": "await this.spawn();"
+      },
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 146,
+        "text": "async spawn() {"
+      },
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 147,
+        "text": "const child = spawn(this.options.command, this.options.args ?? [], {"
+      },
+      {
+        "file": "scripts/pack-package.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

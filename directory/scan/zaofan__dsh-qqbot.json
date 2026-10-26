@@ -1,0 +1,138 @@
+{
+  "name": "@zaofan/dsh-qqbot",
+  "version": "1.10.46",
+  "scannedAt": "2026-10-26T10:15:23.143Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/qqbot-settings.js",
+        "line": 601,
+        "text": "fetch(READ + (_acctNs ? '?ns=' + encodeURIComponent(_acctNs) : '')).then(function (r) { return r.json() }).then(function (d) {"
+      },
+      {
+        "file": "client/qqbot-settings.js",
+        "line": 620,
+        "text": "fetch(UPDATE, {"
+      },
+      {
+        "file": "client/qqbot-settings.js",
+        "line": 754,
+        "text": "        fetch('/api/qqbot-settings/group/members_local' + nsq + (nsq ? '&' : '?') + 'gid=' + encodeURIComponent(gid)).then(function (r) { return r.json() }).the"
+      },
+      {
+        "file": "client/qqbot-settings.js",
+        "line": 760,
+        "text": "fetch('/api/qqbot-settings/group/accounts' + nsq).then(function (r) { return r.json() }).then(function (d) {"
+      },
+      {
+        "file": "client/qqbot-settings.js",
+        "line": 771,
+        "text": "          fetch('/api/qqbot-settings/group/join_requests' + nsq + (nsq ? '&' : '?') + 'gid=' + encodeURIComponent(gid)).then(function (r) { return r.json() }).t"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/api/group-admin.js",
+        "line": 15,
+        "text": "import { appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/api/group-admin.js",
+        "line": 144,
+        "text": "appendFileSync(DIAG, `${new Date().toISOString()} ${line}\\n`);"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 13,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 92,
+        "text": "appendFileSync(DIAG_FILE, `${new Date().toISOString()} ${line}\\n`);"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 222,
+        "text": "const reg = JSON.parse(readFileSync(groupRegistryPath(root), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/channel-tools.js",
+        "line": 110,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 539,
+        "text": "const toolsAny = ctx.tools;"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 2934,
+        "text": "ctx.tools.register(t.tool);"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 2994,
+        "text": "//  根因: 上一版只\"新增\"，没有回收入口。而 `ctx.tools.register()` 其实**返回 disposer**"
+      },
+      {
+        "file": "dist/channel-tools.js",
+        "line": 3179,
+        "text": "const dispose = ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/commands/exit.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/commands/exit.js",
+        "line": 27,
+        "text": "\"const { spawn } = require('child_process');\","
+      },
+      {
+        "file": "dist/commands/exit.js",
+        "line": 36,
+        "text": "'      const c = spawn(exe, args, { detached: true, stdio: \\'ignore\\', cwd });',"
+      },
+      {
+        "file": "dist/commands/exit.js",
+        "line": 46,
+        "text": "const child = spawn(exe, [tmpFile], { detached: true, stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "dist/features/qun-login.js",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [
+    "client/qqbot-settings.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

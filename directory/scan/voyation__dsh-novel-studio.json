@@ -1,0 +1,85 @@
+{
+  "name": "@voyation/dsh-novel-studio",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:50.801Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "var response = await fetch(API_PATH + '?sessionId=' + encodeURIComponent(sessionId), options)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 283,
+        "text": "fetch(API_PATH + '?sessionId=' + encodeURIComponent(sessionId), { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 239,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 247,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 249,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools', 'webServer', 'agents']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 357,
+        "text": "ctx.tools.register(defineNovelTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 395,
+        "text": "ctx.tools.register(defineNovelTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

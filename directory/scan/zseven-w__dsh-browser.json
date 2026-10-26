@@ -1,0 +1,102 @@
+{
+  "name": "@zseven-w/dsh-browser",
+  "version": "0.1.0-rc.1",
+  "scannedAt": "2026-10-26T10:15:30.466Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-discovery.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/browser-discovery.js",
+        "line": 2,
+        "text": "import { access, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 3,
+        "text": "import { access, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 257,
+        "text": "await mkdir(this.#rootDir, { recursive: true });"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 412,
+        "text": "await rm(userDataDir, { recursive: true, force: true }).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "const disposers = tools.map((definition) => ctx.effect(() => ctx.tools.register(definition), `dsh-browser:${definition.name}`));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 14,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 52,
+        "text": "() => ctx.tools.register(definition),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 83,
+        "text": "execFile(file, args, options, (error, stdout) => {"
+      },
+      {
+        "file": "src/manager.ts",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/manager.ts",
+        "line": 242,
+        "text": "execFile(file, args, options, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

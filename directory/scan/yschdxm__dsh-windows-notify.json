@@ -1,0 +1,75 @@
+{
+  "name": "@yschdxm/dsh-windows-notify",
+  "version": "2.0.2",
+  "scannedAt": "2026-10-26T10:15:20.859Z",
+  "icon": "yschdxm__dsh-windows-notify.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 28,
+        "text": "const response = await fetch(`${ROUTE}/pending`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 41,
+        "text": "fetch(`${ROUTE}/ack?session=${encodeURIComponent(sessionId)}`, {"
+      },
+      {
+        "file": "launcher.ps1",
+        "line": 22,
+        "text": "$response = Invoke-WebRequest -Uri $target -UseBasicParsing -TimeoutSec 3"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { appendFileSync, existsSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "mkdirSync(LOG_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 54,
+        "text": "appendFileSync(join(LOG_DIR, 'notify.log'), `${JSON.stringify({ time: Date.now(), ...entry })}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 186,
+        "text": "const child = spawn(POWERSHELL, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

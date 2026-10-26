@@ -1,0 +1,102 @@
+{
+  "name": "@xianminglf/plugin-manager",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:15:07.200Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 456,
+        "text": "const response = await globalThis.fetch(`/api/${method}`, {"
+      },
+      {
+        "file": "lib/types/client/rpc.js",
+        "line": 15,
+        "text": "const response = await globalThis.fetch(`/api/${method}`, {"
+      },
+      {
+        "file": "src/client/rpc.ts",
+        "line": 23,
+        "text": "const response = await globalThis.fetch(`/api/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "fix-self-delete.mjs",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "fix-self-delete.mjs",
+        "line": 57,
+        "text": "const raw = readFileSync(manifestPath, 'utf8')"
+      },
+      {
+        "file": "fix-self-delete.mjs",
+        "line": 64,
+        "text": "writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\\n')"
+      },
+      {
+        "file": "fix-self-delete.mjs",
+        "line": 87,
+        "text": "const parsed = yaml.load(readFileSync(userPatchPath, 'utf8'))"
+      },
+      {
+        "file": "fix-self-delete.mjs",
+        "line": 104,
+        "text": "if (next !== readFileSync(userPatchPath, 'utf8')) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 227,
+        "text": "const result = spawnSync('pnpm', ['remove', name], {"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 42,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 227,
+        "text": "const result = spawnSync('pnpm', ['remove', name], {"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

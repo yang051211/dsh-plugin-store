@@ -1,0 +1,86 @@
+{
+  "name": "@useorgx/deepseek-harness-plugin",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:48.208Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/peer/ReceiptOutbox.mjs",
+        "line": 145,
+        "text": "const response = await this.fetch(url, {"
+      },
+      {
+        "file": "lib/peer/vendor/OrgXGatewayPeerClient.mjs",
+        "line": 319,
+        "text": "const factory = this.config.webSocketFactory ?? ((socketUrl, socketProtocols) => new WebSocket(socketUrl, socketProtocols));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/peer/DeepSeekHarnessDriver.mjs",
+        "line": 10,
+        "text": "import { realpath, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/peer/peer.mjs",
+        "line": 9,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/peer/peer.mjs",
+        "line": 291,
+        "text": "return JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "lib/peer/ReceiptOutboxStorage.mjs",
+        "line": 11,
+        "text": "} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/peer/ReceiptOutboxStorage.mjs",
+        "line": 39,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/peer/DeepSeekHarnessDriver.mjs",
+        "line": 9,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/peer/DeepSeekHarnessDriver.mjs",
+        "line": 209,
+        "text": "child = this.spawn(this.bin, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

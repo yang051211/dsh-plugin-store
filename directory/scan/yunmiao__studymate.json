@@ -1,0 +1,149 @@
+{
+  "name": "@yunmiao/studymate",
+  "version": "2.0.3",
+  "scannedAt": "2026-10-26T10:15:21.567Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2176,
+        "text": "fetch(LIBRARY_ENDPOINT, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2402,
+        "text": "const response = await fetch(REFERENCE_ENDPOINT + '?subject=' + encodeURIComponent(subject.slug) + '&path=' + encodeURIComponent(entry.path));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2445,
+        "text": "const response = await fetch(REFERENCE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4029,
+        "text": "const response = await fetch(QA_SESSION_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4304,
+        "text": "fetch(LAB_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/antigravity-interaction.mjs",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/antigravity-interaction.mjs",
+        "line": 12,
+        "text": "let node = JSON.parse(fs.readFileSync(path.join(ROOT, 'schemas', schemaName), 'utf8'));"
+      },
+      {
+        "file": "bin/antigravity-plugin.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/antigravity-plugin.mjs",
+        "line": 20,
+        "text": "fs.mkdirSync(to, { recursive: true });"
+      },
+      {
+        "file": "bin/antigravity-plugin.mjs",
+        "line": 26,
+        "text": "fs.mkdirSync(path.dirname(to), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-plugin.ts",
+        "line": 21,
+        "text": "//   · 路由与工具都不写成顶层 `inject: ['connection'|'tools']`。那样在没装那个服务的组合"
+      },
+      {
+        "file": "lib/tools/define.ts",
+        "line": 47,
+        "text": "/** 交给 `ctx.tools.register` 的定义。字段与宿主 `ToolDefinition` 的**用到的部分**对齐。 */"
+      },
+      {
+        "file": "lib/tools/define.ts",
+        "line": 195,
+        "text": "* 插件卸载 / 组合撤回时要跟着拆掉。`ctx.tools.register` 自己返回 disposer，接住它更显式。"
+      },
+      {
+        "file": "lib/tools/define.ts",
+        "line": 205,
+        "text": "const register = ctx.tools?.register;"
+      },
+      {
+        "file": "lib/tools/define.ts",
+        "line": 207,
+        "text": "throw new Error('当前宿主没有 ctx.tools：StudyMate 的原生工具注册不了（需要 0.1.7-alpha.1+）');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/studymate.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/studymate.mjs",
+        "line": 51,
+        "text": "return spawnSync(command, args, { encoding: 'utf8', timeout: 15000, windowsHide: true, ...extra });"
+      },
+      {
+        "file": "lib/export/react.ts",
+        "line": 24,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/export/react.ts",
+        "line": 102,
+        "text": "const probe = spawnSync('npm', ['root', '-g'], { encoding: 'utf8', windowsHide: true, env, timeout: 15_000 });"
+      },
+      {
+        "file": "lib/lab/runner.ts",
+        "line": 6,
+        "text": "1. **不开 shell**：`spawn(argv[0], argv.slice(1), { shell: false })`。命令的文法在"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/katex/katex.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 143,
+      "text": "hon. Only one thing needs extra Node setup: exporting static pages requires a copy of React (`npm i -g react react-dom`, or point `STUDYMATE_REACT_DIR` at one)."
+    },
+    {
+      "file": "README.md",
+      "line": 158,
+      "text": "eScript 插件（[ADR-0002](docs/adr/0002-引擎改用TypeScript.md)），安装器也不再探测 Python。只有一件事另外要 Node：导出静态页面时要一份 React（`npm i -g react react-dom`，或用 `STUDYMATE_REACT_DIR` 指过去）。"
+    }
+  ],
+  "skippedEntries": []
+}

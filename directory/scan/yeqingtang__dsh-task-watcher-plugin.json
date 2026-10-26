@@ -1,0 +1,85 @@
+{
+  "name": "@yeqingtang/dsh-task-watcher-plugin",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-26T10:15:15.698Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/DshTaskWatcher.ps1",
+        "line": 263,
+        "text": "# ── HTTP（显式 UTF-8，规避 PS5.1 Invoke-WebRequest 中文乱码）──────────────────"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 63,
+        "text": "const r = await fetch('/api/dsh-task-watcher/' + action, { method: 'POST', signal: ctrl.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { copyFile, mkdir, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const text = await readFile(join(dir, \"DshTaskWatcher.ps1\"), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "await readFile(STOP_FLAG(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "const { writeFile } = await import(\"node:fs/promises\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 142,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 151,
+        "text": "const child = spawn(ps, [\"-NoProfile\", \"-ExecutionPolicy\", \"RemoteSigned\", \"-File\", join(dir, \"DshTaskWatcher.ps1\"), \"-NoWelcome\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

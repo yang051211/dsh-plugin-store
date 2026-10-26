@@ -1,0 +1,95 @@
+{
+  "name": "@xwtxxxx/probe-kit",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:15:11.417Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 57,
+        "text": "*      require 解构形态（const { request } = require('node:http')）不在本单点名范围，未加（见 T32 报告·建议）。"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 102,
+        "text": "// 裸 request( 用 (?<!\\.) 负向断言 ⇒ https.request(/http.request( 仍由各自原模式独占命中（pats 不重复计）。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 45,
+        "text": "*   ② D2 补 5 个 Node API 词形：execFile(/execSync(/spawnSync(（子进程）、rmSync(（写盘）、裸 request(（出网，"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 62,
+        "text": "*      `fs.readFileSync('.env')`／`require('./a.env')` 照报。"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 79,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 115,
+        "text": "//   `fs.readFileSync('.env')`／`require('./a.env')` 的引号路径才是真信号 ⇒ 判原始行、照报。"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 340,
+        "text": "try { buf = readFileSync(p); } catch { skipped++; continue; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 45,
+        "text": "*   ② D2 补 5 个 Node API 词形：execFile(/execSync(/spawnSync(（子进程）、rmSync(（写盘）、裸 request(（出网，"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 47,
+        "text": "*      import 'child_process' 字面量的既有命中「掩盖」——测漏报时夹具不得出现 child_process 字样。"
+      },
+      {
+        "file": "bin/audit-kit.mjs",
+        "line": 476,
+        "text": "'  新增词形：子进程 +execFile(／execSync(／spawnSync(；写盘 +rmSync(；出网 +裸 request(（X.request( 形态仍只由 http(s).request 管）。',"
+      },
+      {
+        "file": "bin/probe-runner.mjs",
+        "line": 17,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/probe-runner.mjs",
+        "line": 309,
+        "text": "const r = spawnSync(process.execPath, tokens.slice(1), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

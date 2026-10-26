@@ -1,0 +1,79 @@
+{
+  "name": "@yfzhou/dsh-llm-codex-subscription",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:15:17.701Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "fetch: (url, init) => getTransport().then((transport) => transport.fetch(url, init)),"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 92,
+        "text": "const response = await transport.fetch(url, { method: 'GET', headers, signal });"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 4,
+        "text": "* Background: Node's native fetch (undici) does not read system proxy settings"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 71,
+        "text": "return fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 20,
+        "text": "import { readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 57,
+        "text": "raw = await readFile(authFile, 'utf8');"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 173,
+        "text": "await writeFile(tmp, `${JSON.stringify(next, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 7,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 42,
+        "text": "raw = await readFile(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

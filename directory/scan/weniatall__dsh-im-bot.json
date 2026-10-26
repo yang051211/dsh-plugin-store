@@ -1,0 +1,72 @@
+{
+  "name": "@weniatall/dsh-im-bot",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:14:58.112Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "await mkdir(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "await writeFile(tmp, `${JSON.stringify(value, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 117,
+        "text": "await rm(filePath, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "await rm(tmp, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1772,
+        "text": "* 直接写 `ctx.tools`：Cordis 的 Context 代理在**读取未注入的服务时会抛"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1805,
+        "text": "* `output` 是**强制**声明：宿主 `tools.register()` 会校验"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

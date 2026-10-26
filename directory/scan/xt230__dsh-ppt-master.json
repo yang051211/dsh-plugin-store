@@ -1,0 +1,105 @@
+{
+  "name": "@xt230/dsh-ppt-master",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:15:12.338Z",
+  "icon": "xt230__dsh-ppt-master.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 156,
+        "text": "return fetch(ENV_ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "parsed = parseSkillFile(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "skillVersion = parseSkillFile(readFileSync(skillPath, 'utf8')).version ?? null"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 376,
+        "text": "const parsed = parseSkillFile(readFileSync(locator, 'utf8'))"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 9,
+        "text": "import { statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "lib/preset.js",
+        "line": 13,
+        "text": "export const inject = ['skills', 'tools', 'pptMaster']"
+      },
+      {
+        "file": "lib/preset.js",
+        "line": 29,
+        "text": "ctx.effect(() => ctx.tools.register(runtime.tool), 'ppt-master: preset environment tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/python.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 78,
+        "text": "child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 21,
+      "text": "pip install -r ppt-master/requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 173,
+      "text": "pip install -r ppt-master/requirements.txt"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "@zhangfengshun/dsh-remote-ssh",
+  "version": "2.4.40",
+  "scannedAt": "2026-10-26T10:15:25.239Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 342,
+        "text": "var r = await fetch(\"/remote-ssh/api/\" + method, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 344,
+        "text": "headers: { \"content-type\": \"application/json\", \"x-requested-with\": \"XMLHttpRequest\" },"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 822,
+        "text": "return fetch(\"/sidebar/api/fs.tree\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2915,
+        "text": "return String(req.headers[\"x-requested-with\"] || \"\").trim() === \"XMLHttpRequest\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { mkdir, rm, writeFile, readFile, opendir, stat, open, rename, readdir, lstat, cp } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, readFileSync, writeFileSync, readdirSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 259,
+        "text": "const read = typeof readFileFn === \"function\" ? readFileFn : async (p) => String(await readFile(p, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "try { writeFileSync(join(homeDir, \"dsh-remote-ssh-settings-shape.json\"), JSON.stringify(shape, null, 2), \"utf8\"); } catch (e) {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 486,
+        "text": "text = await readFile(filePath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "const inject = [\"webServer\", \"subprocess\", \"tools\", \"workspaceRegistry\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4874,
+        "text": "const register = (tool) => ctx.tools.register(defineTool(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 786,
+        "text": "function spawn() {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 595,
+        "text": "const h = this.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 910,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2154,
+        "text": "return subprocess.spawn({ argv: argv, cwd: cwd || process.cwd(), stdio: stdio, graceMs: 60000, env: env });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

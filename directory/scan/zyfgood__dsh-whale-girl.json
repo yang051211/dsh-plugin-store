@@ -1,0 +1,79 @@
+{
+  "name": "@zyfgood/dsh-whale-girl",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:15:33.040Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 581,
+        "text": "const res = await fetch(routeUrl(\"whale-girl/act\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 602,
+        "text": "const res = await fetch(routeUrl(\"whale-girl/state\"), { credentials: \"same-origin\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { mkdir, readFile, writeFile, rename } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "const raw = await readFile(statePath(), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "await writeFile(tmp, JSON.stringify(this.persisted, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['webServer', 'connection', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 448,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,110 @@
+{
+  "name": "@zhiqiangme/dsh-opencode2api",
+  "version": "26.10.20",
+  "scannedAt": "2026-10-26T10:15:27.195Z",
+  "icon": "zhiqiangme__dsh-opencode2api.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 188,
+        "text": "const response = await fetch(`http://${host}:${port}/healthz`, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 443,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 601,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 288,
+        "text": "response = await fetch(url, { headers, signal: composed });"
+      },
+      {
+        "file": "lib/release.js",
+        "line": 41,
+        "text": "response = await fetch(url, { headers: requestHeaders(env), signal: requestSignal(signal, timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auto-update.js",
+        "line": 27,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 57,
+        "text": "const parsed = JSON.parse(readFileSync(join(paths.cache, AUTO_UPDATE_FILE), 'utf8'));"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 72,
+        "text": "mkdirSync(paths.cache, { recursive: true });"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 74,
+        "text": "writeFileSync(`${file}.tmp`, `${JSON.stringify(state, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/auto-update.js",
+        "line": 85,
+        "text": "rmSync(staged.path, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/services.js",
+        "line": 6,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 179,
+        "text": "const spawnFailure = this.#spawn();"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 204,
+        "text": "#spawn() {"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 243,
+        "text": "child = spawn(spec.exe, spec.args, {"
+      },
+      {
+        "file": "lib/services.js",
+        "line": 414,
+        "text": "const result = spawnSync('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore', timeout: 5000 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

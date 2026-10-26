@@ -1,0 +1,122 @@
+{
+  "name": "@zhengjunyao/dsh-restart",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:15:26.268Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 29,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 594,
+        "text": "fetch('/status', { cache:'no-store' }).then(function(r){ return r.json() }).then(render)"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 598,
+        "text": "$('retry').onclick = function(){ fetch('/retry', { method:'POST' }).then(function(){ lastLog=''; opened=false; poll() }) }"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 599,
+        "text": "$('recheck').onclick = function(){ fetch('/recheck', { method:'POST' }).then(poll) }"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 601,
+        "text": "fetch('/report').then(function(r){ return r.text() }).then(function(t){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 28,
+        "text": "import { appendFileSync, closeSync, openSync, readFileSync, readSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 61,
+        "text": "spec = JSON.parse(readFileSync(specPath, 'utf8'))"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 182,
+        "text": "appendFileSync(LOG_FILE, text + '\\n')"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 257,
+        "text": "writeFileSync(tmp, JSON.stringify(snapshot(), null, 2))"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 314,
+        "text": "writeFileSync(FAILURE_REPORT, buildFailureReport(), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1831,
+        "text": "const disposers = buildTools({ endpoint }).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 439,
+        "text": "child = spawn(file, argv, { cwd, env, detached: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "helper/restart-helper.mjs",
+        "line": 744,
+        "text": "const child = spawn(command[0], command.slice(1), { stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 660,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,73 @@
+{
+  "name": "@zzxxxxxx/dsh-balance",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:15:33.707Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 728,
+        "text": "const fetchImpl = options.fetchImpl ?? ((input, init) => fetch(input, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/history.js",
+        "line": 20,
+        "text": "import { mkdir, open, readFile, rename, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 140,
+        "text": "const raw = await readFile(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 281,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 285,
+        "text": "await handle.writeFile(body, 'utf8');"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 294,
+        "text": "await rm(temp, { force: true }).catch((cleanupError) => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

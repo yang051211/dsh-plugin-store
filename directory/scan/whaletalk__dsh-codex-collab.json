@@ -1,0 +1,142 @@
+{
+  "name": "@whaletalk/dsh-codex-collab",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:14:59.917Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/review.mjs",
+        "line": 13,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/review.mjs",
+        "line": 61,
+        "text": "const req = http.request({"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 14,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 129,
+        "text": "const req = http.request({"
+      },
+      {
+        "file": "harness/codex-associations.mjs",
+        "line": 274,
+        "text": "fetch({ originThreadId, taskId }) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/review.mjs",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/review.mjs",
+        "line": 97,
+        "text": "try { return fs.readFileSync(file, 'utf8') } catch (e) {"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 277,
+        "text": "for (const line of fs.readFileSync(file, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 300,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 21,
+        "text": "#    可以把活交回 Codex。两端都是现成的（DSH 自带 @deepseek-ai/dsh-mcp-client，"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 38,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "harness/dsh-bridge.mjs",
+        "line": 73,
+        "text": "export const inject = ['webServer', 'agents', 'subagents', 'tools']"
+      },
+      {
+        "file": "harness/dsh-bridge.mjs",
+        "line": 3464,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "harness/dsh-bridge.mjs",
+        "line": 3575,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/review.mjs",
+        "line": 14,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "codex-plugin/plugins/dsh/skills/dsh-collab/scripts/task.mjs",
+        "line": 16,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "mcp/codex-desktop-probe.mjs",
+        "line": 20,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "subagents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 118,
+      "text": "npm install -g @whaletalk/dsh-codex-collab"
+    },
+    {
+      "file": "README.md",
+      "line": 143,
+      "text": "npm install -g @whaletalk/dsh-codex-collab@X.Y.Z"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,115 @@
+{
+  "name": "@yolk_vat-y/dsh-project-memory",
+  "version": "0.6.5",
+  "scannedAt": "2026-10-26T10:15:19.654Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 4,
+        "text": "import { readdirSync, readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 42,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 44,
+        "text": "writeFileSync(p, synthFile(i))"
+      },
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 77,
+        "text": "const entries = scanSymbols(p, readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 94,
+        "text": "writeFileSync(p, synthFile(round % files.length) + `\\n// touch ${round}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 21,
+        "text": "export const inject = ['llm', 'tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 212,
+        "text": "ctx.tools.register(listTasksTool(config))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 213,
+        "text": "ctx.tools.register(selectTaskTool(config, { llm: ctx.llm, ctx }))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 214,
+        "text": "ctx.tools.register(archiveTaskTool(config, { llm: ctx.llm, ctx }))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 215,
+        "text": "ctx.tools.register(showTaskPanelTool(config))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 107,
+        "text": "const { spawnSync } = await import('node:child_process')"
+      },
+      {
+        "file": "scripts/bench-store.mjs",
+        "line": 109,
+        "text": "const cold = spawnSync(process.execPath, [selfPath, '--cold', root], { encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/bench-synthetic.mjs",
+        "line": 16,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/bench.mjs",
+        "line": 20,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/file-peak.mjs",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

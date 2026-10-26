@@ -1,0 +1,110 @@
+{
+  "name": "@wenbin_wb/dsh-bridge",
+  "version": "2.17.5",
+  "scannedAt": "2026-10-26T10:14:57.964Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 2571,
+        "text": "const res = await fetch(url, { method: \"POST\" });"
+      },
+      {
+        "file": "client/unlock-manager.js",
+        "line": 68,
+        "text": "const res = await fetch(url, { method: 'POST' });"
+      },
+      {
+        "file": "lib/auth/login-template.js",
+        "line": 481,
+        "text": "const resp = await fetch('/__dsh_bridge__/login', {"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 8,
+        "text": "import { get as httpsGet } from 'node:https';"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 9,
+        "text": "import { get as httpGet } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 12,
+        "text": "const loaderId = JSON.parse(readFileSync(resolve(packageRoot, 'package.json'), 'utf8')).name;"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 41,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 42,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 1,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 13,
+        "text": "// 参数化执行外部命令，替代原先的 execSync(`\"${path}\" --version`) 字符串拼接"
+      },
+      {
+        "file": "lib/cloudflared-manager.mjs",
+        "line": 454,
+        "text": "spawn('taskkill', ['/pid', String(p.pid), '/f', '/t'], { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/cloudflared-process-scan.js",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

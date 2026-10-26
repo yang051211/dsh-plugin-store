@@ -1,0 +1,138 @@
+{
+  "name": "@ukewea/dsh-taskboard",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:14:47.309Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7,
+        "text": "onst a=1e4;async function o(e){return i(fetch(e,{signal:AbortSignal.timeout(a)}))}async function s(e,t){return i(await fetch(e,{method:`POST`,headers:{\"content-"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 48,
+        "text": "return unwrap<T>(fetch(path, { signal: AbortSignal.timeout(TIMEOUT_MS) }))"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 52,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "src/client/i18n/en.ts",
+        "line": 126,
+        "text": "'diff.failed': 'Failed to fetch (see the error bar at the top of the board; the object may be gone with a removed worktree)',"
+      },
+      {
+        "file": "src/host/routes.ts",
+        "line": 12,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/isolation.js",
+        "line": 39,
+        "text": "const { stat } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/host/repos.js",
+        "line": 26,
+        "text": "const { readdir } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/host/repos.js",
+        "line": 34,
+        "text": "const { stat } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/host/routes.js",
+        "line": 8,
+        "text": "import { readdir, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/routes.js",
+        "line": 185,
+        "text": "const { readFile } = await import(\"node:fs/promises\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 184,
+        "text": "return ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "src/host/tools.ts",
+        "line": 294,
+        "text": "return ctx.tools.register(tool as { name: string })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 17,
+        "text": "// (ctx.tools / ctx.systemPrompt / ctx.agents) and vanish at compile time —"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 44,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/git.js",
+        "line": 108,
+        "text": "/** Real exec layer over child_process.execFile (windowsHide, timeout, maxBuffer). */"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 111,
+        "text": "const { execFile } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 112,
+        "text": "execFile(\"git\", args, {"
+      },
+      {
+        "file": "src/host/git.ts",
+        "line": 230,
+        "text": "/** Real exec layer over child_process.execFile (windowsHide, timeout, maxBuffer). */"
+      },
+      {
+        "file": "src/host/git.ts",
+        "line": 233,
+        "text": "const { execFile } = await import('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

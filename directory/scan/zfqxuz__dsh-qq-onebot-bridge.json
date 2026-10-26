@@ -1,0 +1,136 @@
+{
+  "name": "@zfqxuz/dsh-qq-onebot-bridge",
+  "version": "0.7.2",
+  "scannedAt": "2026-10-26T10:15:24.597Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 86,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 162,
+        "text": "const url = await fetch(`${href}${href.includes('?') ? '&' : '?'}format=json`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 349,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "control/lib/acl-console.mjs",
+        "line": 10,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "control/lib/acl-console.mjs",
+        "line": 287,
+        "text": "fetch('/api/session').then(r=>r.json()).then(d=>{ setup = d.setupRequired === true; if(setup){ t.textContent='首次使用：设置管理员密码'; sub.textContent='没有账号，先创建管理员'; b.te"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 35,
+        "text": "try { state = { ...state, ...JSON.parse(readFileSync(stateFile, 'utf8')) } } catch { /* 首次运行 */ }"
+      },
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 38,
+        "text": "mkdirSync(dirname(stateFile), { recursive: true })"
+      },
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 39,
+        "text": "writeFileSync(stateFile, JSON.stringify(state, null, 2))"
+      },
+      {
+        "file": "control/bin/qq-acl.mjs",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 255,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 301,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 5647,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 5665,
+        "text": "agentCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 5687,
+        "text": "agentCtx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "control/bin/qq-acl-console.mjs",
+        "line": 55,
+        "text": "  try { spawn(opener, process.platform === 'win32' ? ['/c', 'start', '', console_.url] : [console_.url], { detached: true, stdio: 'ignore' }).unref() } catch { "
+      },
+      {
+        "file": "control/lib/acl-console.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "control/lib/acl-console.mjs",
+        "line": 545,
+        "text": "spawn('bash', [script, String(delay)], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "control/lib/dsh-port.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

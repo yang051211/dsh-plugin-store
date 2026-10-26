@@ -1,0 +1,111 @@
+{
+  "name": "@yueliudan/lclone-memory-dsh",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:15:21.287Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 387,
+        "text": "fetch(HEALTH_ENDPOINT, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 553,
+        "text": "const r = await fetch(DECISIONS_ENDPOINT, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 574,
+        "text": "const r = await fetch(REVIEW_ENDPOINT, {"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 48,
+        "text": "import { request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 49,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 52,
+        "text": "import { existsSync, appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 53,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 61,
+        "text": "try { mkdirSync(STATE_DIR, { recursive: true }) } catch {}"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 69,
+        "text": "appendFileSync(LOG_PATH, new Date().toISOString() + ' ' + msg + '\\n')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 316,
+        "text": "readFile(SKILL_FILE, { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 47,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 128,
+        "text": "execFile('git', ['-C', cwd, 'rev-parse', '--show-toplevel'], { timeout: 5000 },"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 183,
+        "text": "execFile('git', ['-C', cwd, 'remote', 'get-url', 'origin'], { timeout: 5000 },"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 186,
+        "text": "execFile('git', ['-C', cwd, 'remote', '-v'], { timeout: 5000 }, (e2, out2) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 17,
+      "text": "宿主机**：克隆本仓库 → `python -m venv .venv` → `pip install -r requirements.txt` → `.env` 配置模型（`OPENAI_API_KEY`/`BRAIN_BASE_URL`/`BRAIN_CHAT_MODEL` 等，或 `python -m lclon"
+    }
+  ],
+  "skippedEntries": []
+}

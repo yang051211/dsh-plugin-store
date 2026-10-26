@@ -1,0 +1,83 @@
+{
+  "name": "@zhtx2026/dsh-pdf",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:15:27.625Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pdf-core.js",
+        "line": 76,
+        "text": "async fetch({ name }) {"
+      },
+      {
+        "file": "lib/pdf-core.js",
+        "line": 83,
+        "text": "async fetch({ filename }) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pdf-core.js",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/pdf-core.js",
+        "line": 78,
+        "text": "return new Uint8Array(await fs.promises.readFile(file));"
+      },
+      {
+        "file": "lib/pdf-core.js",
+        "line": 84,
+        "text": "return new Uint8Array(await fs.promises.readFile(this.baseUrl + filename));"
+      },
+      {
+        "file": "lib/pdf-core.js",
+        "line": 402,
+        "text": "const buf = fs.readFileSync(file);"
+      },
+      {
+        "file": "lib/pdf-core.js",
+        "line": 584,
+        "text": "const buf = fs.readFileSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

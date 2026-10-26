@@ -1,0 +1,74 @@
+{
+  "name": "@uppercrusteve/dsh-tool-health",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:47.950Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 251,
+        "text": "try { fs.appendFileSync(logFile, JSON.stringify({ ts: new Date().toISOString(), plugin: 'dsh-tool-health', ev, ...fields }) + '\\n') } catch { /* 取证日志不影响主流程 */ }"
+      },
+      {
+        "file": "src/index.js",
+        "line": 259,
+        "text": "const raw = fs.readFileSync(historyPath, 'utf8')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 277,
+        "text": "try { fs.unlinkSync(historyPath) } catch { /* noop */ }"
+      },
+      {
+        "file": "src/index.js",
+        "line": 301,
+        "text": "fs.mkdirSync(path.dirname(historyPath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 408,
+        "text": "// ---- 模型工具（注册形态照 converge 实测：ctx.tools.register({name, description, parameters, output, execute})） ----"
+      },
+      {
+        "file": "src/index.js",
+        "line": 411,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,123 @@
+{
+  "name": "@xinvxueyuan/cordis-plugin-github",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:15:09.282Z",
+  "icon": "xinvxueyuan__cordis-plugin-github.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.js",
+        "line": 39,
+        "text": "response = await fetch(url, init);"
+      },
+      {
+        "file": "src/http.ts",
+        "line": 57,
+        "text": "response = await fetch(url, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gh.js",
+        "line": 2,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/gh.js",
+        "line": 42,
+        "text": "await writeFile(bodyFile, JSON.stringify(request.body));"
+      },
+      {
+        "file": "lib/gh.js",
+        "line": 50,
+        "text": "await rm(tmpDir, { recursive: true, force: true }).catch(() => { });"
+      },
+      {
+        "file": "src/gh.ts",
+        "line": 2,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/gh.ts",
+        "line": 61,
+        "text": "await writeFile(bodyFile, JSON.stringify(request.body))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "ctx.tools.register(defineApiTool(config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "ctx.tools.register(defineGraphqlTool(config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "ctx.tools.register(defineCiTool(config, undefined));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "let foregroundOnly = jobsOf(ctx) === undefined ? ctx.tools.register(defineCiTool(config, undefined)) : undefined;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gh.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gh.js",
+        "line": 56,
+        "text": "const child = spawn(bin, args, { windowsHide: true, signal });"
+      },
+      {
+        "file": "src/backend.ts",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/gh.ts",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,108 @@
+{
+  "name": "@waterwx/dsh-novel-forge",
+  "version": "2.5.1",
+  "scannedAt": "2026-10-26T10:14:52.487Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 313,
+        "text": "return readJson(await fetch(withBookId(path), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 332,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 372,
+        "text": "return readJson(await fetch(withBookId(NOVEL_API.status)));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 432,
+        "text": "return readJson(await fetch(withBookId(`${NOVEL_API.chapter}?no=${no}`)));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 484,
+        "text": "await fetch(NOVEL_API.openFolder, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { appendFileSync, copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4894,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4903,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4904,
+        "text": "writeFileSync(join(dir, INDEX_FILE), JSON.stringify({ snapshots }, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4939,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16825,
+        "text": "const child = spawn(\"explorer\", [dir], { shell: false });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16854,
+        "text": "const child = spawn(\"pnpm\", [\"add\", \"@waterwx/dsh-novel-forge@latest\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/patch-schemastery.mjs"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

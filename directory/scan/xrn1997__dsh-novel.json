@@ -1,0 +1,103 @@
+{
+  "name": "@xrn1997/dsh-novel",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:15:10.553Z",
+  "icon": "xrn1997__dsh-novel.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3121,
+        "text": "res = await fetch(PREFIX + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3141,
+        "text": "res = await fetch(PREFIX + pathWithQuery, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3160,
+        "text": "const res = await fetch(PREFIX + pathWithQuery, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3202,
+        "text": "res = await fetch(`${NOVEL_API_PREFIX}/${q}`, { signal: opts.signal });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2930,
+        "text": "const description = fetch(\"summary\", children) || fetch(\"content\", children);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import fs, { promises } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37051,
+        "text": "const { writeFile, readFile, mkdir } = __require(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37318,
+        "text": "const data = await readFile(resolve(path), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37339,
+        "text": "await mkdir(dirname(resolvedPath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37344,
+        "text": "await writeFile(resolvedPath, JSON.stringify(data, null, 2), { flush: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 75291,
+        "text": "const disposers = buildTools(service).map((t) => ctxLike.tools.register(t));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67892,
+        "text": "execFile(\"reg\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 9,
+  "minifiedFiles": [
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

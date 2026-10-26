@@ -1,0 +1,59 @@
+{
+  "name": "dsh-approval-toast",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:15:33.987Z",
+  "icon": "dsh-approval-toast.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "decision.ps1",
+        "line": 43,
+        "text": "Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 10 | Out-Null"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "const child = spawn(file, args, { windowsHide: true, stdio: 'ignore', detached: false })"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "child = spawn(POWERSHELL, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-WindowStyle', 'Hidden', '-File', ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

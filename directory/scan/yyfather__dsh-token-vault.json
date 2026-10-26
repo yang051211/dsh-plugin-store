@@ -1,0 +1,76 @@
+{
+  "name": "@yyfather/dsh-token-vault",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:15:21.976Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 20,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 46,
+        "text": "return fetch(statusUrl())"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "try { rc = fs.readFileSync(rcPath, 'utf8'); } catch { /* absent */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# the plugin that registers the vault_* tools (ctx.tools), the usage-rules"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 272,
+        "text": "const inject = ['tools', 'credentials', 'webServer', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 311,
+        "text": "disposers.push(ctx.tools.register(def));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

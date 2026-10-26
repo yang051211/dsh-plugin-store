@@ -1,0 +1,130 @@
+{
+  "name": "@zseven-w/dsh-crew",
+  "version": "0.1.0-rc.14",
+  "scannedAt": "2026-10-26T10:15:30.279Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1025,
+        "text": "const get = (0, react.useCallback)(async (path) => readJson(await fetch(withLang(path), { cache: \"no-store\" }), path), [readJson, withLang]);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1026,
+        "text": "const post = (0, react.useCallback)(async (path, body) => readJson(await fetch(withLang(path), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1056,
+        "text": "const res = await fetch(withLang(`/proc-alive?pid=${pid}`), { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1089,
+        "text": "const res = await fetch(withLang(\"/proc-kill\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2661,
+        "text": "const r = await (await fetch(`${API}/jobs`, { cache: \"no-store\" })).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.mjs",
+        "line": 13885,
+        "text": "import { readFileSync as readFileSync2, mkdirSync as mkdirSync2, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 13888,
+        "text": "import { writeFileSync, mkdirSync, rmSync, readdirSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 13899,
+        "text": "rmSync(file, { force: true });"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 13916,
+        "text": "mkdirSync(SHARD_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 13917,
+        "text": "writeFileSync(file, JSON.stringify({ updatedAt: (/* @__PURE__ */ new Date()).toISOString(), writer, jobs: jobs2 }, null, 2));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/hub/index.mjs",
+        "line": 69,
+        "text": "export const inject = ['agents', 'sessions', 'agentDefaultModel', 'tools', 'llm', 'attachments'];"
+      },
+      {
+        "file": "src/hub/index.mjs",
+        "line": 356,
+        "text": "disposers.push(ctx.effect(() => ctx.tools.register(tool), `dsh-crew: ${tool.name} tool`));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.mjs",
+        "line": 14525,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 14862,
+        "text": "child = spawn(profile.cli, args, {"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 14978,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 15195,
+        "text": "        spawned = await hub.spawn({ task, tier: t, effort: e, cwd: workDir, source: ORCHESTRATOR, preset: presetForTier(t), ...bindingForTier(t), origin_chain: "
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 15327,
+        "text": "      spawned = await hub.spawn({ task, tier: t, effort: e, cwd: workDir, source: ORCHESTRATOR, preset: presetForTier(t), ...bindingForTier(t), origin_chain: or"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/server.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "attachments",
+    "llm",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
