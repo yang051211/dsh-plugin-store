@@ -1,0 +1,88 @@
+{
+  "name": "dsh-plastic-memory",
+  "version": "0.1.1-beta.5",
+  "scannedAt": "2026-10-26T10:08:01.012Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 1,
+        "text": "import { realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/storage/agents-md.js",
+        "line": 1,
+        "text": "import { readFile, writeFile, mkdir, rename } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/storage/agents-md.js",
+        "line": 37,
+        "text": "existing = await readFile(filePath, 'utf8');"
+      },
+      {
+        "file": "lib/storage/agents-md.js",
+        "line": 57,
+        "text": "await mkdir(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/storage/agents-md.js",
+        "line": 61,
+        "text": "await writeFile(tmp, next, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "export const inject = ['tools', 'systemPrompt', 'storageDomain'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "ctx.tools.register(withRefresh(createSaveTool({ store, registry, resolveContext, snapshots })));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "ctx.tools.register(withRefresh(createSearchTool({ store, registry, resolveContext })));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 245,
+        "text": "ctx.tools.register(withRefresh(createForgetTool({ store, snapshots, decisions, log: ctx.logger })));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 248,
+        "text": "ctx.tools.register(withRefresh(createSnapshotTool({ store, snapshots })));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "storageDomain",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

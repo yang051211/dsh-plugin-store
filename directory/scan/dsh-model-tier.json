@@ -1,0 +1,71 @@
+{
+  "name": "dsh-model-tier",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:14.289Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/model-tier-ui/lib/client.js",
+        "line": 65,
+        "text": "fetch(\"/dsh-model-tier/\" + method, {"
+      },
+      {
+        "file": "client/model-tier-ui/src/index.js",
+        "line": 57,
+        "text": "fetch(\"/dsh-model-tier/\" + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engines/model-tier-ui.mjs",
+        "line": 23,
+        "text": "import { promises as fsp } from \"node:fs\";"
+      },
+      {
+        "file": "engines/model-tier-ui.mjs",
+        "line": 163,
+        "text": "await fsp.mkdir(path.dirname(configFile), { recursive: true });"
+      },
+      {
+        "file": "engines/model-tier-ui.mjs",
+        "line": 164,
+        "text": "await fsp.writeFile(configFile, JSON.stringify(store, null, 2) + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "engines/model-tier-ui.mjs",
+        "line": 274,
+        "text": "await fsp.rm(configFile, { force: true });"
+      },
+      {
+        "file": "engines/model-tier.mjs",
+        "line": 37,
+        "text": "import { statSync, readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

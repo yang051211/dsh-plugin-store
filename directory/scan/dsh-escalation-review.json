@@ -1,0 +1,69 @@
+{
+  "name": "dsh-escalation-review",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:08:28.991Z",
+  "icon": "dsh-escalation-review.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1623,
+        "text": "const response = await window.fetch(`api/escalation-review.live?${query}`, {"
+      },
+      {
+        "file": "lib/live-review.js",
+        "line": 10,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 12,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 222,
+        "text": "merged = { ...merged, ...sanitize(parseConfigText(readFileSync(file, 'utf8'))) }"
+      },
+      {
+        "file": "lib/dsh-packages.js",
+        "line": 20,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/dsh-packages.js",
+        "line": 63,
+        "text": "const pkg = JSON.parse(readFileSync(packageJson, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { appendFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

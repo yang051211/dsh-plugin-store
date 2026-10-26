@@ -1,0 +1,75 @@
+{
+  "name": "dsh-context-rollover",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:07:51.448Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/notes.js",
+        "line": 13,
+        "text": "import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/notes.js",
+        "line": 86,
+        "text": "return readFile(resolveNotePath(this.dir, path), 'utf8');"
+      },
+      {
+        "file": "lib/notes.js",
+        "line": 95,
+        "text": "await mkdir(join(absolute, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/notes.js",
+        "line": 96,
+        "text": "await writeFile(absolute, text, 'utf8');"
+      },
+      {
+        "file": "lib/notes.js",
+        "line": 108,
+        "text": "current = await readFile(absolute, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "static inject = ['llm', 'tokenMeter', 'sessions', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "this.ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "sessions",
+    "systemPrompt",
+    "tokenMeter",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

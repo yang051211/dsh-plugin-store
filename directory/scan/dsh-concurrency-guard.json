@@ -1,0 +1,97 @@
+{
+  "name": "dsh-concurrency-guard",
+  "version": "1.5.6",
+  "scannedAt": "2026-10-26T10:07:53.822Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 605,
+        "text": "const res = await fetch(url, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 672,
+        "text": "const res = await fetch(CONFIG_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 699,
+        "text": "const res = await fetch(HISTORY_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 726,
+        "text": "const res = await fetch(SESSIONS_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "const raw = JSON.parse(readFileSync(state.cfg.stateFile, \"utf8\"));"
+      },
+      {
+        "file": "lib/persist.js",
+        "line": 8,
+        "text": "import { mkdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/persist.js",
+        "line": 22,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/persist.js",
+        "line": 23,
+        "text": "writeFileSync(file, JSON.stringify(snapshot(state, false), null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 253,
+        "text": "tools.register({"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 278,
+        "text": "tools.register({"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 299,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

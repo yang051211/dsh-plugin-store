@@ -1,0 +1,90 @@
+{
+  "name": "dsh-version-badge",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:21.599Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 420,
+        "text": "$r = Invoke-WebRequest -Uri \"http://127.0.0.1:3080\" -UseBasicParsing -TimeoutSec 3"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 600,
+        "text": "fetch('/dsh-version/check-update.json', { headers: { 'Accept': 'application/json' } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 647,
+        "text": "fetch('/dsh-version/deploy-update.json', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "const pkg = JSON.parse(fs.readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "const pkg = JSON.parse(fs.readFileSync(c, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 289,
+        "text": "const text = fs.readFileSync(resultFile, 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 437,
+        "text": "fs.writeFileSync(helper, script, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "execFile(process.execPath, [cli, ...args], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 445,
+        "text": "const child = execFile(ps, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', helper], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

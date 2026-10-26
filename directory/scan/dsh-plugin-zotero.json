@@ -1,0 +1,79 @@
+{
+  "name": "dsh-plugin-zotero",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:08:30.270Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 230,
+        "text": "res = await fetch(buildUrl(action, query));"
+      },
+      {
+        "file": "client/client.js",
+        "line": 550,
+        "text": "const res = await fetch(`${API_BASE}/mcp-tools`);"
+      },
+      {
+        "file": "lib/zotero/client.js",
+        "line": 33,
+        "text": "res = await fetch(url, { signal: AbortSignal.timeout(getSettings().requestTimeoutMs) });"
+      },
+      {
+        "file": "lib/zotero/client.js",
+        "line": 206,
+        "text": "const res = await fetch(zoteroProbeUrl(), { signal: AbortSignal.timeout(getSettings().requestTimeoutMs) });"
+      },
+      {
+        "file": "lib/zotero/client.js",
+        "line": 260,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "# - 因此这里**不再**插入 `@deepseek-ai/dsh-mcp-client`（它不支持按工具开关，"
+      },
+      {
+        "file": "lib/host/mcp-bridge.js",
+        "line": 4,
+        "text": "* dsh 自带的 `@deepseek-ai/dsh-mcp-client` **不支持按工具启用/禁用**，所以本插件"
+      },
+      {
+        "file": "lib/host/mcp-bridge.js",
+        "line": 78,
+        "text": "const toolsService = this.ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "*    `mcp__zotero__*`）。dsh 自带的 `dsh-mcp-client` 不支持按工具开关，故"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

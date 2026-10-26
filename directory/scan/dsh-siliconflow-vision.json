@@ -1,0 +1,84 @@
+{
+  "name": "dsh-siliconflow-vision",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:08:06.850Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 87,
+        "text": "const response = await fetch(API_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 57,
+        "text": "const resp = await fetch(\"/sfv/api/analyze\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "const key = (await readFile(path, 'utf8')).trim()"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "const buf = await readFile(imagePath)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 42,
+        "text": "readFile(files[0]);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "if (files && files.length > 0) readFile(files[0]);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'webServer', 'webRuntime']"
+      },
+      {
+        "file": "index.js",
+        "line": 164,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webRuntime",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

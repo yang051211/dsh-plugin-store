@@ -1,0 +1,69 @@
+{
+  "name": "dsh-hot-installer",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:08:05.168Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 58,
+        "text": "import { readFile, writeFile, appendFile, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 59,
+        "text": "import { existsSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 69,
+        "text": "const OWN_VERSION = await readFile(new URL('./package.json', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "index.mjs",
+        "line": 111,
+        "text": "logFileReady = mkdir(dirname(LOG_FILE), { recursive: true })"
+      },
+      {
+        "file": "index.mjs",
+        "line": 112,
+        "text": ".then(() => appendFile(LOG_FILE, line))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 60,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 751,
+        "text": "const result = spawnSync(pnpm, ['add', `${packageName}@${spec}`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

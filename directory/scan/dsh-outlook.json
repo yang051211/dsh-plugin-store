@@ -1,0 +1,103 @@
+{
+  "name": "dsh-outlook",
+  "version": "2.6.1",
+  "scannedAt": "2026-10-26T10:07:51.931Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 45,
+        "text": "fetch('/olk-notify/api/client-log', {"
+      },
+      {
+        "file": "client.js",
+        "line": 122,
+        "text": "const res = await fetch(STATE_URL, { method: 'GET' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { statSync, appendFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "if (size > WATCH_LOG_MAX) writeFileSync(WATCH_LOG, '')"
+      },
+      {
+        "file": "index.js",
+        "line": 48,
+        "text": "appendFileSync(WATCH_LOG, new Date().toISOString() + ' ' + message + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 267,
+        "text": "* Register the ten Outlook tools on `ctx.tools`."
+      },
+      {
+        "file": "index.js",
+        "line": 315,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 327,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 352,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 82,
+        "text": "const child = spawn('powershell', ["
+      },
+      {
+        "file": "index.js",
+        "line": 214,
+        "text": "child = spawn('powershell', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

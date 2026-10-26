@@ -1,0 +1,75 @@
+{
+  "name": "dsh-windows-mcp-lite",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:08:16.255Z",
+  "icon": "dsh-windows-mcp-lite.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# (`@deepseek-ai/dsh-mcp-client`) and points it at CursorTouch/Windows-MCP over"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 10,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 18,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 40,
+        "text": "const fromPath = spawnSync('uvx', ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 46,
+        "text": "const local = spawnSync(fallback, ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 57,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      },
+      {
+        "file": "tools/prewarm.mjs",
+        "line": 89,
+        "text": "const child = spawn(uvx.cmd, [SPEC, 'serve', '--exclude-tools', EXCLUDED.join(',')], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

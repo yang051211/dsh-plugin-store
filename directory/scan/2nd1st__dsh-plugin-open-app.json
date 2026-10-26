@@ -1,0 +1,93 @@
+{
+  "name": "@2nd1st/dsh-plugin-open-app",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:55.402Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 684,
+        "text": "const made = fetch(`${API}/home`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 793,
+        "text": "preset = (await (await fetch(`${API}/config`)).json())?.preset ?? null"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 822,
+        "text": "const answer = await fetch(`${API}/preset/repair`, { method: 'POST' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 873,
+        "text": "const response = await fetch(`${API}/greeting?app=${encodeURIComponent(app)}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 979,
+        "text": "const payload = await (await fetch(`${API}/bootstrap`)).json()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "import { mkdirSync, writeFileSync, existsSync, readdirSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 489,
+        "text": "* `workspace.create` adopts an EXISTING directory and refuses to mkdir (apiproxy"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 500,
+        "text": "mkdirSync(path, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 504,
+        "text": "if (!existsSync(readme)) writeFileSync(readme, README(app, path), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 565,
+        "text": "mkdirSync(appsRoot, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 50,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

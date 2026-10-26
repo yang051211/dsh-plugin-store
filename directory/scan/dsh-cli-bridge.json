@@ -1,0 +1,109 @@
+{
+  "name": "dsh-cli-bridge",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:08:32.229Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 910,
+        "text": "const request = options.fetch ?? ((input, init) => globalThis.fetch(input, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { mkdir, readFile, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9101,
+        "text": "return await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9116,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9119,
+        "text": "await writeFile(staging, text, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9122,
+        "text": "await rm(staging, { force: true }).catch(() => void 0);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12281,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12317,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13267,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `cli-bridge: ${tool.name}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14123,
+        "text": "const inject = [\"tools\", \"subprocess\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5563,
+        "text": "const handle = port.spawn(spec);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6860,
+        "text": "return await this.spawn(request, slot);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6891,
+        "text": "async spawn(request, slot) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

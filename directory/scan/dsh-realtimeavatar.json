@@ -1,0 +1,88 @@
+{
+  "name": "dsh-realtimeavatar",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:11.212Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 19,
+        "text": "#       docsTimeoutMs: 20000                 # per docs fetch (5 s – 2 min)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 238,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/docs.js",
+        "line": 159,
+        "text": "const response = await fetch(url, { headers, signal, redirect: 'follow' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skills.js",
+        "line": 11,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/skills.js",
+        "line": 47,
+        "text": "text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/tools/docs.js",
+        "line": 8,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/tools/docs.js",
+        "line": 177,
+        "text": "text = await readFile(join(skillsDir, 'realtimeavatar-integrate.md'), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "ctx.tools.register(guarded(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

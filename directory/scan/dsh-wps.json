@@ -1,0 +1,91 @@
+{
+  "name": "dsh-wps",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:28.226Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "const response = await fetch(EXCHANGE_URL, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 299,
+        "text": "const response = await fetch(MCP_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "const raw = await readFile(configPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "await mkdir(path.dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "await writeFile(configPath(), JSON.stringify(next, null, 2), { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "for (const tool of tools) disposers.set(publicToolName(tool.name), ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 810,
+        "text": "const disposers = buildTools(context).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 150,
+        "text": "execSync(`${command} ${args.map((a) => `\"${a}\"`).join(\" \")}`, { stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

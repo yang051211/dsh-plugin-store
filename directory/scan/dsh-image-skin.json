@@ -1,0 +1,100 @@
+{
+  "name": "dsh-image-skin",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:08:00.851Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2710,
+        "text": "const resp = await fetch(`${ROUTE_PREFIX}/gc`, { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2812,
+        "text": "const resp = await fetch(`${ROUTE_PREFIX}/export`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2847,
+        "text": "resp = await fetch(`${ROUTE_PREFIX}/import`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3028,
+        "text": "const res = await fetch(`${ROUTE_PREFIX}/providers`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3050,
+        "text": "const res = await fetch(`${ROUTE_PREFIX}/prompt`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync, unlinkSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 547,
+        "text": "writeFileSync(join(skinDir(), filename), bytes);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 553,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 568,
+        "text": "const bytes = readFileSync(join(skinDir(), filename));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 641,
+        "text": "writeFileSync(target, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 48,
+        "text": "const which = spawnSync(\"where\", [name], { shell: true, encoding: \"utf8\" });"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 68,
+        "text": "const res = spawnSync(cmd, cmdArgs, { stdio: \"inherit\", ...opts });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

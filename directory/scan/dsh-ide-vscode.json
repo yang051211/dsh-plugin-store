@@ -1,0 +1,92 @@
+{
+  "name": "dsh-ide-vscode",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:53.273Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 91,
+        "text": "fetch(`${API}/log`, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 101,
+        "text": "const response = await fetch(url, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 128,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { promises as fs, readFileSync, statSync, openSync, closeSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "const parsed = JSON.parse(readFileSync(candidate, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "const store = JSON.parse(readFileSync(WORKSPACE_STORE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "await fs.appendFile(LOG_FILE, `${new Date().toISOString()} ${line}\\n`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 407,
+        "text": "const stdout = await fs.readFile(outFile, 'utf8').catch(() => '')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 385,
+        "text": "child = spawn('tar', args, { cwd, stdio: ['ignore', outFd, errFd], windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 561,
+        "text": "child = spawn('powershell.exe', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

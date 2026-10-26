@@ -1,0 +1,142 @@
+{
+  "name": "dsh-eda-mcp",
+  "version": "1.1.3",
+  "scannedAt": "2026-10-26T10:07:50.925Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.mjs",
+        "line": 10,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 3043,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(3e4) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 954,
+        "text": "const response = await fetch(\"/api/dsh-eda-mcp/test\", { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 966,
+        "text": "const response = await fetch(\"/api/dsh-eda-mcp/reconnect\", { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1145,
+        "text": "const response = await fetch(\"/api/dsh-eda-mcp/extension/verify\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.mjs",
+        "line": 4,
+        "text": "import { existsSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 5,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 6,
+        "text": "import { mkdir, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 2132,
+        "text": "await writeFile(outPath, Buffer.from(base64, \"base64\"));"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 2145,
+        "text": "bytes = await readFile(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import * as mcpClient from \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 5,
+        "text": "import * as mcpClient from '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 263,
+        "text": "// `@deepseek-ai/dsh-mcp-client` declares `inject: ['tools']` on DSH >= 0.2, so"
+      },
+      {
+        "file": "test/seams.test.ts",
+        "line": 60,
+        "text": "'@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "test/seams.test.ts",
+        "line": 79,
+        "text": "// --- dsh-mcp-client: inject ['tools'], stdio config keys, serverName guard ----"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.mjs",
+        "line": 3,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 2466,
+        "text": "child = spawn(process.env.SystemRoot ? join(process.env.SystemRoot, \"explorer.exe\") : \"explorer.exe\", [scriptPath], {"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 2473,
+        "text": "child = spawn(plan.command, plan.args, { detached: true, stdio: \"ignore\", windowsHide: false });"
+      },
+      {
+        "file": "lib/bridge.mjs",
+        "line": 2477,
+        "text": "child = spawn(plan.command, plan.args, { detached: true, stdio: \"ignore\", windowsHide: false });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 848,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

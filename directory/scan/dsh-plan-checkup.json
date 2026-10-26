@@ -1,0 +1,79 @@
+{
+  "name": "dsh-plan-checkup",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:15.832Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 306,
+        "text": "const response = await fetch(API + \"/result?\" + query);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 351,
+        "text": "return fetch(API + \"/feedback\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/store.js",
+        "line": 13,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 58,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 59,
+        "text": "writeFileSync(join(dir, `${safeName(key)}.json`), JSON.stringify(result))"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 75,
+        "text": "const result = JSON.parse(readFileSync(join(this.dir, 'results', `${safeName(key)}.json`), 'utf8'))"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 87,
+        "text": "mkdirSync(this.dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'webServer', 'connection']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

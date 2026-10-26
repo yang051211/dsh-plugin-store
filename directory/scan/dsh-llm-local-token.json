@@ -1,0 +1,93 @@
+{
+  "name": "dsh-llm-local-token",
+  "version": "1.7.0",
+  "scannedAt": "2026-10-26T10:08:24.698Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-keychain.js",
+        "line": 69,
+        "text": "const response = await fetch(TOKEN_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 225,
+        "text": "fetch(ROUTE.replace(/usage$/, \"history/\") + encodeURIComponent(entry.provider), { signal: controller.signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 463,
+        "text": "const response = await fetch(ROUTE, { headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/glm.js",
+        "line": 101,
+        "text": "const response = await fetch(`${baseDomain}${QUOTA_PATH}`, {"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 43,
+        "text": "const response = await fetch(CODEX_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-keychain.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/claude-keychain.js",
+        "line": 91,
+        "text": "const raw = await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/glm.js",
+        "line": 14,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/glm.js",
+        "line": 50,
+        "text": "return readFile(path, \"utf8\").then(JSON.parse);"
+      },
+      {
+        "file": "lib/glm.js",
+        "line": 71,
+        "text": "const store = await readFile(config.dshCredentialsPath ?? join(homedir(), \".dsh\", \".credentials.yaml\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-keychain.js",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

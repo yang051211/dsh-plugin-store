@@ -1,0 +1,80 @@
+{
+  "name": "dsh-qqmail-dock",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:32.566Z",
+  "icon": "dsh-qqmail-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "return fetch(ROUTE_STATE)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "return fetch(ROUTE_STATE, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "for await (const message of client.fetch(`${from}:*`, { uid: true, envelope: true, flags: true })) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "const parsed = JSON.parse(readFileSync(SECRET_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 21,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 42,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 280,
+        "text": "toolScoped.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

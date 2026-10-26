@@ -1,0 +1,85 @@
+{
+  "name": "dsh-menu",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:08:19.256Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 268,
+        "text": "const response = await fetch(route.slice(1), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 296,
+        "text": "async mkdir(sessionId, path, name) {"
+      },
+      {
+        "file": "client.js",
+        "line": 477,
+        "text": "actions.mkdir(state.sessionId, state.folderParent, next)"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { createReadStream } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { open, mkdir, readdir, rename, rm, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "export const inject = [\"connection\", \"sessions\", \"fs\", \"sandboxPolicy\"];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 505,
+        "text": "? spawn(`${launcher.shell} \"${path}\"`, { detached: true, stdio: \"ignore\", shell: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 506,
+        "text": ": spawn(launcher.command, [...launcher.prefix, path], { detached: true, stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "fs",
+    "sandboxPolicy",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

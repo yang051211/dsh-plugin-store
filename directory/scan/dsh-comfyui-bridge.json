@@ -1,0 +1,124 @@
+{
+  "name": "dsh-comfyui-bridge",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:08:12.342Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/downloader.mjs",
+        "line": 114,
+        "text": "const response = await fetch(url, fetchOpts)"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 227,
+        "text": "const res = await fetch(fullUrl, fetchOpts)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capability.mjs",
+        "line": 7,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "lib/downloader.mjs",
+        "line": 11,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "lib/downloader.mjs",
+        "line": 39,
+        "text": "fs.mkdirSync(destDir, { recursive: true })"
+      },
+      {
+        "file": "lib/imageMeta.mjs",
+        "line": 7,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 30,
+        "text": "import * as fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 44,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3273,
+        "text": "ctx.effect(() => ctx.tools.register(statusTool))"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3274,
+        "text": "ctx.effect(() => ctx.tools.register(modelsTool))"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3275,
+        "text": "ctx.effect(() => ctx.tools.register(generateTool))"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3276,
+        "text": "ctx.effect(() => ctx.tools.register(historyTool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 35,
+        "text": "import { execSync, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 352,
+        "text": "execSync('ffmpeg -version', { stdio: 'ignore', timeout: 3000 })"
+      },
+      {
+        "file": "lib/installer.mjs",
+        "line": 12,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/installer.mjs",
+        "line": 132,
+        "text": "const stdout = execSync(cmd, { timeout: 3000, stdio: ['ignore', 'pipe', 'ignore'], encoding: 'utf-8' })"
+      },
+      {
+        "file": "lib/installer.mjs",
+        "line": 379,
+        "text": "execSync(`\"${sevenZipExe}\" x -o\"${targetDrive}\\\\\" -y \"${archivePath}\"`, { timeout: 600000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,83 @@
+{
+  "name": "dsh-check-update",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:06.283Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 5,
+        "text": "// （fetch('/dsh-check/check')，由 host.js 注册）。"
+      },
+      {
+        "file": "client.js",
+        "line": 44,
+        "text": "return fetch('/dsh-check/check', { method: 'POST', cache: 'no-store', signal: AbortSignal.timeout(30000) })"
+      },
+      {
+        "file": "client.js",
+        "line": 50,
+        "text": "return fetch('/dsh-check/update', { method: 'POST', cache: 'no-store', signal: AbortSignal.timeout(600000) })"
+      },
+      {
+        "file": "client.js",
+        "line": 56,
+        "text": "return fetch('/dsh-check/rollback', {"
+      },
+      {
+        "file": "host.js",
+        "line": 56,
+        "text": "const res = await run(`curl -fsSL --max-time 15 https://registry.npmjs.org/${encoded}/latest`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 9,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "host.js",
+        "line": 309,
+        "text": "return JSON.parse(readFileSync(BACKUP_FILE, 'utf8')) || []"
+      },
+      {
+        "file": "host.js",
+        "line": 320,
+        "text": "mkdirSync(BACKUP_DIR, { recursive: true })"
+      },
+      {
+        "file": "host.js",
+        "line": 321,
+        "text": "writeFileSync(BACKUP_FILE, JSON.stringify(trimmed, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

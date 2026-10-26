@@ -1,0 +1,96 @@
+{
+  "name": "dshost-plugin",
+  "version": "0.1.15",
+  "scannedAt": "2026-10-26T10:08:13.821Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 5,
+        "text": "import http from 'http';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 427,
+        "text": "const req = http.request({ host: up.host, port: up.port, path: entry, method: 'GET', timeout: 5000, headers: { host: `${up.host}:${up.port}` } }, (res) => {"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 467,
+        "text": "const req = http.get("
+      },
+      {
+        "file": "lib/core.js",
+        "line": 516,
+        "text": "const ws = new WebSocket(relayUrl);"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 817,
+        "text": "const dshReq = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 7,
+        "text": "import fs from 'fs';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 48,
+        "text": "const s = fs.readFileSync(f, 'utf8').trim();"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 158,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 171,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(legacyRoot, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 180,
+        "text": "return JSON.parse(fs.readFileSync(path.join(rootDir, 'node_modules', name, 'package.json'), 'utf8')).version || '';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 10,
+        "text": "import { execFileSync } from 'child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepack.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

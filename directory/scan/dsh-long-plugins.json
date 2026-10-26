@@ -1,0 +1,139 @@
+{
+  "name": "dsh-long-plugins",
+  "version": "6.3.1",
+  "scannedAt": "2026-10-26T10:08:04.017Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 436,
+        "text": "fetch('/dsh-skill-docs/skill-docs', { headers: { Accept: 'application/json' }, cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 792,
+        "text": "const res = await fetch('/api/dsh-uploads/workspace', { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 850,
+        "text": "const res = await fetch('/api/dsh-uploads/workspace-file?path=' + encodeURIComponent(path), { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 903,
+        "text": "const res = await fetch('/api/dsh-uploads/workspace-file/delete', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 946,
+        "text": "const res = await fetch('/api/dsh-uploads/workspace-file/save', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/vendor/xlsx.full.min.js",
+        "line": 9,
+        "text": "00)*1e3)}function _(e,r){o();return l(f.readFileSync(e),r)}function x(e,r){var t=r&&r.type;if(!t){if(T&&Buffer.isBuffer(e))t=\"buffer\"}switch(t||\"base64\"){case\"f"
+      },
+      {
+        "file": "client/vendor/xlsx.full.min.js",
+        "line": 10,
+        "text": "ndefined\"&&Je.writeFileSync)return t?Je.writeFileSync(e,r,t):Je.writeFileSync(e,r);if(typeof Deno!==\"undefined\"){if(t&&typeof r==\"string\")switch(t){case\"utf8\":r"
+      },
+      {
+        "file": "client/vendor/xlsx.full.min.js",
+        "line": 18,
+        "text": "=Qg(e.c);return kt(\"Cell\",p,f)}function rm(e,r){var t='<Row ss:Index=\"'+(e+1)+'\"';if(r){if(r.hpt&&!r.hpx)r.hpx=Pl(r.hpt);if(r.hpx)t+=' ss:AutoFitHeight=\"0\" ss:H"
+      },
+      {
+        "file": "client/vendor/xlsx.full.min.js",
+        "line": 21,
+        "text": "(!(i instanceof Function))i=t;return Je.writeFile(e,gw(r,n),i)}function Tw(e,r,t,a,n,i,s,f){var o=Ta(t);var l=f.defval,c=f.raw||!Object.prototype.hasOwnProperty"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import * as nodeFs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "export const inject = [\"webServer\", \"credentials\", \"sessions\", \"sessionPersistence\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10044,
+        "text": "// ctx.tools.guard 是工具执行前的同步否决钩子：返回字符串即拒绝，理由会回给模型。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10045,
+        "text": "const toolsFace = (ctx.tools && typeof ctx.tools.guard === \"function\") ? ctx.tools : (typeof ctx.get === \"function\" ? ctx.get(\"tools\") : undefined);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1439,
+        "text": "handle = spawn(probe.sofar, args, officePdfNativeSpawnOptions({ port: this.port, cwd, env: process.env, logFd }));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1460,
+        "text": "execFile(probe.python, [probe.unohot, src, outDir], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6036,
+        "text": "*   ① `spawn(\"powershell\", …, { detached: true })` —— `DETACHED_PROCESS` 下 powershell.exe **根本不执行**"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6052,
+        "text": "\"const { spawn, execFileSync } = require('node:child_process');\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "client/client.js",
+    "client/vendor/chart.umd.min.js",
+    "client/vendor/docx-preview.min.js",
+    "client/vendor/jszip.min.js",
+    "client/vendor/pptxviewjs.min.js",
+    "client/vendor/xlsx.full.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessionPersistence",
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

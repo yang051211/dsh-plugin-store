@@ -1,0 +1,90 @@
+{
+  "name": "dsh-niao-quick-open",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:08:01.105Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 64,
+        "text": "const res = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { existsSync, readFileSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['webServer', 'fs', 'shell', 'subprocess']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "writeFileSync(tmp, JSON.stringify(payload, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 560,
+        "text": "const fs = require('node:fs');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 558,
+        "text": "const { spawn } = require('node:child_process');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 583,
+        "text": "const child = spawn(file, args, { cwd, detached: true, stdio: 'ignore', env: process.env });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 592,
+        "text": "const child = spawn(process.execPath, ['-e', proxy], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

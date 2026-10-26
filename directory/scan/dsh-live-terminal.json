@@ -1,0 +1,105 @@
+{
+  "name": "dsh-live-terminal",
+  "version": "1.2.1",
+  "scannedAt": "2026-10-26T10:07:53.316Z",
+  "icon": "dsh-live-terminal.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 292,
+        "text": "id 0}async function Gi(e,t){let i=await fetch(Hs+e,{credentials:\"same-origin\",...t,signal:t?.signal??AbortSignal.timeout(uu)}),s=await i.text(),r;if(s!==\"\")try{"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 331,
+        "text": "t.name===\"CodeExpectedError\"}};function rm(e,t,i=0,s=e.length){let r=i,n=s;for(;r<n;){let o=Math.floor((r+n)/2);t(e[o])?r=o+1:n=o}return r-1}var nm=class cc{con"
+      },
+      {
+        "file": "lib/host/history.js",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/history.js",
+        "line": 169,
+        "text": "const raw = readFileSync(this.#file, 'utf8')"
+      },
+      {
+        "file": "lib/host/history.js",
+        "line": 199,
+        "text": "mkdirSync(dirname(this.#file), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/host/history.js",
+        "line": 202,
+        "text": "writeFileSync(tmp, JSON.stringify({ version: FORMAT_VERSION, entries: this.#entries }), { encoding: 'utf8', mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 5,
+        "text": "* directly through `ctx.tools.register`, because this plugin is not part of the"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 151,
+        "text": "ctx.effect(() => ctx.tools.register(definition), `dsh-live-terminal: tool ${definition.name}`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "* services (`ctx.get`, `ctx.inject`, `ctx.on`, `ctx.tools.register`,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/registry.js",
+        "line": 569,
+        "text": "return this.#spawn({"
+      },
+      {
+        "file": "lib/host/registry.js",
+        "line": 623,
+        "text": "return this.#spawn({"
+      },
+      {
+        "file": "lib/host/registry.js",
+        "line": 993,
+        "text": "async #spawn(options) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

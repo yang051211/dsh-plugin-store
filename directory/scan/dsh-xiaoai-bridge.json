@@ -1,0 +1,142 @@
+{
+  "name": "dsh-xiaoai-bridge",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:08:20.737Z",
+  "icon": "dsh-xiaoai-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bridge/scripts/start.sh",
+        "line": 30,
+        "text": "echo \"  curl -LsSf https://astral.sh/uv/install.sh | sh\""
+      },
+      {
+        "file": "bridge/scripts/start.sh",
+        "line": 86,
+        "text": "curl -L -o \"$ZIP_FILE\" \"$MODEL_URL\""
+      },
+      {
+        "file": "bridge/scripts/start.sh",
+        "line": 87,
+        "text": "elif command -v wget &> /dev/null; then"
+      },
+      {
+        "file": "bridge/scripts/start.sh",
+        "line": 88,
+        "text": "wget -O \"$ZIP_FILE\" \"$MODEL_URL\""
+      },
+      {
+        "file": "bridge/scripts/start.sh",
+        "line": 90,
+        "text": "echo -e \"${RED}错误: 需要 curl 或 wget 来下载模型文件${NC}\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cleanup.js",
+        "line": 25,
+        "text": "import { lstatSync, readdirSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 90,
+        "text": "rmSync(path, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/cleanup.js",
+        "line": 95,
+        "text": "rmSync(path, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 19,
+        "text": "} from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exposure.js",
+        "line": 181,
+        "text": "disposers.push(tools.register(tool()));"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 212,
+        "text": "disposers.push(tools.register(tool()));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools', 'skills', 'settings', 'credentials', 'agents'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 4,
+        "text": "* Tools are registered as raw JSON-Schema definitions through `ctx.tools.register`"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 109,
+        "text": "* @returns {object} a raw JSON-Schema tool definition for `ctx.tools.register`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/process.js",
+        "line": 15,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 209,
+        "text": "/** @type {import('node:child_process').ChildProcess|null} */"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 872,
+        "text": "proc = spawn(pythonPath, ['main.py'], {"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 1015,
+        "text": "const killer = spawn('taskkill', args, { windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "scripts/check-all.mjs",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "settings",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

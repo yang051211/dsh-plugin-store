@@ -1,0 +1,95 @@
+{
+  "name": "dsh-testhud",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:29.989Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hud.js",
+        "line": 12,
+        "text": "import { chmodSync, copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 44,
+        "text": "const parsed = JSON.parse(readFileSync(PROGRESS_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 52,
+        "text": "mkdirSync(dirname(PROGRESS_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 54,
+        "text": "writeFileSync(tmp, JSON.stringify(value), 'utf8')"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 81,
+        "text": "mkdirSync(dirname(HUD_BIN), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "ctx.effect(() => ctx.tools.register(tool), 'dsh-testhud: test_hud tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hud.js",
+        "line": 11,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 93,
+        "text": "const build = spawnSync('swiftc', ['-O', HUD_SOURCE, '-o', HUD_BIN], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 104,
+        "text": "const out = spawnSync('pgrep', ['-f', `${HUD_BIN} `], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/hud.js",
+        "line": 130,
+        "text": "const child = spawn(bin.path, [PROGRESS_FILE, anchor, String(topInset)], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "hud/testhud.macos-universal"
+  ],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

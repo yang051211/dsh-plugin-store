@@ -1,0 +1,122 @@
+{
+  "name": "dsh-loom",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-26T10:08:17.086Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/llm/official.js",
+        "line": 72,
+        "text": "const res = await fetch(`${baseURL}/chat/completions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 9,
+        "text": "import { writeFileSync, mkdtempSync, readFileSync, existsSync, mkdirSync, rmSync, readdirSync, lstatSync, readlinkSync, symlinkSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 83,
+        "text": "mkdirSync(runtimeRoot, { recursive: true })"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 140,
+        "text": "mkdirSync(skillRoot, { recursive: true })"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 158,
+        "text": "writeFileSync(patch, ["
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 227,
+        "text": "const cliManifest = JSON.parse(readFileSync(cliManifestPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/candidates/profile.js",
+        "line": 114,
+        "text": "const needle = 'ctx.tools[TOOL_RUNTIME_SCHEDULER]';"
+      },
+      {
+        "file": "dist/candidates/profile.js",
+        "line": 119,
+        "text": "writeFileSync(entry, `${source.replaceAll(needle, 'ctx.tools[loomSchedulerKey(ctx.tools)]')}${bridge}`, 'utf8');"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 57,
+        "text": "export const inject = ['tools', 'agents', 'loader', 'credentials', 'agentDefaultModel'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 688,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 712,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 8,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 45,
+        "text": "const located = spawnSync(finder, ['pnpm'], { encoding: 'utf8', windowsHide: true })"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 70,
+        "text": "    const version = spawnSync(python, ['-c', 'import sys; print(f\"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}\")'], { encoding: 'u"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 84,
+        "text": "const venv = spawnSync(python, ['-m', 'venv', runtimeRoot], { stdio: 'inherit' })"
+      },
+      {
+        "file": "bin/dsh-loom.mjs",
+        "line": 94,
+        "text": "    const install = spawnSync(join(runtimeRoot, binDir, pythonName), ['-m', 'pip', 'install', '--disable-pip-version-check', '--constraint', bundledConstraints,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "credentials",
+    "loader",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

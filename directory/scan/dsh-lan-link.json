@@ -1,0 +1,84 @@
+{
+  "name": "dsh-lan-link",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:31.139Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gateway.js",
+        "line": 1,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 279,
+        "text": "const response = await fetch(url, { redirect: \"manual\" });"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 300,
+        "text": "const upstream = http.request({"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 450,
+        "text": "const html = await (await fetch(`http://${upstreamAuthority}/`, {"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 468,
+        "text": "return (await (await fetch(`http://${upstreamAuthority}/${bundleUrl.replaceAll(\"&amp;\", \"&\")}`, { headers: {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 808,
+        "text": "await mkdir(directory, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 812,
+        "text": "await writeFile(fileName, text, { mode: 384 });"
+      },
+      {
+        "file": "scripts/live-smoke.ts",
+        "line": 17,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/live-smoke.ts",
+        "line": 56,
+        "text": "return readFileSync(linkFile, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

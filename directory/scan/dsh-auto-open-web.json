@@ -1,0 +1,112 @@
+{
+  "name": "dsh-auto-open-web",
+  "version": "0.1.31",
+  "scannedAt": "2026-10-26T10:07:51.612Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 560,
+        "text": "fetch('/auto-open-web/pick-browser', { method: 'POST' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 574,
+        "text": "fetch('/auto-open-web/test-browser', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 507,
+        "text": "const response = await fetch(`${webServerOrigin(server)}/favicon.svg`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "import { existsSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 276,
+        "text": "writeFileSync(instanceStateFile(browser), JSON.stringify({ pid, exe, writtenAt: Date.now() }), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 425,
+        "text": "rmSync(join(dshHome(), 'auto-open-web.json'), { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 567,
+        "text": "writeFileSync(out, ico);"
+      },
+      {
+        "file": "lib/win32.js",
+        "line": 23,
+        "text": "import { existsSync, readFileSync, rmSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "child = spawn(exe, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 247,
+        "text": "const child = spawn(exe, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "const child = spawn(exe, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/posix.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "host-publish/DshAppWindow.exe",
+    "host-publish/Microsoft.Web.WebView2.Core.dll",
+    "host-publish/Microsoft.Web.WebView2.WinForms.dll",
+    "host-publish/Microsoft.Web.WebView2.Wpf.dll",
+    "host-publish/runtimes/win-arm64/native/WebView2Loader.dll",
+    "host-publish/runtimes/win-x64/native/WebView2Loader.dll",
+    "host-publish/runtimes/win-x86/native/WebView2Loader.dll",
+    "host-publish/WebView2Loader.dll"
+  ],
+  "requiredServices": [
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

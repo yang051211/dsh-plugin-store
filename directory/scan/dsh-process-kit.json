@@ -1,0 +1,111 @@
+{
+  "name": "dsh-process-kit",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:08:05.636Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-uat-readiness.mjs",
+        "line": 192,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "scripts/check-uat-readiness.mjs",
+        "line": 214,
+        "text": "const res = await fetch(`${core}${loginPath}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { copyFile, cp, mkdir, readdir, readFile, rename, rmdir, rm, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 149,
+        "text": "text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 479,
+        "text": "const text = await readFile(journalPath, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 711,
+        "text": "const text = await readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 735,
+        "text": "meta = JSON.parse(await readFile(metaFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1860,
+        "text": "ctx.effect(() => ctx.tools.register(statusTool()), 'process-kit: process_status');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1861,
+        "text": "ctx.effect(() => ctx.tools.register(summaryTool()), 'process-kit: gate_summary');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1862,
+        "text": "ctx.effect(() => ctx.tools.register(journalTool()), 'process-kit: process_journal');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1863,
+        "text": "ctx.effect(() => ctx.tools.register(initTool()), 'process-kit: process_init');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-artifact-paths.mjs",
+        "line": 40,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/check-rules.mjs",
+        "line": 72,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/sync-prd-version.mjs",
+        "line": 35,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

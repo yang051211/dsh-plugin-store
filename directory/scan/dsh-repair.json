@@ -1,0 +1,74 @@
+{
+  "name": "dsh-repair",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:05.657Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-repair/scripts/bridge-lib.js",
+        "line": 18,
+        "text": "*   - 删除链接的兜底顺序：unlinkSync → rmdirSync → rmSync(force)。"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/bridge-lib.js",
+        "line": 22,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/bridge-lib.js",
+        "line": 45,
+        "text": "try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/bridge-lib.js",
+        "line": 194,
+        "text": "try { txt = fs.readFileSync(f, 'utf8'); } catch { return { exists: false, autoInstallPeers: null, confirmModulesPurge: null, path: f }; }"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/bridge-lib.js",
+        "line": 254,
+        "text": "/** 删除一个链接：unlink → rmdir → rm(force) 三级兜底 */"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-repair/scripts/inspect-session.js",
+        "line": 29,
+        "text": "const { spawnSync } = require('child_process');"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/inspect-session.js",
+        "line": 47,
+        "text": "const probe = spawnSync(process.platform === 'win32' ? 'where' : 'which', ['zstd'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "skills/dsh-repair/scripts/inspect-session.js",
+        "line": 118,
+        "text": "const r = spawnSync(zstd, ['-d', '-c', '-q', target], { stdio: ['ignore', fd, fd] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,138 @@
+{
+  "name": "dsh-plugin-agentflow",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:07:54.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 124,
+        "text": "const res = await fetch('http://127.0.0.1:' + port + '/', {"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 17,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 233,
+        "text": "n e}}async function GA(e,t){let n=await fetch(WA(e),{...t,headers:t?.body==null?t?.headers:{\"Content-Type\":`application/json`,...t?.headers||{}}});if(!n.ok){let"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 339,
+        "text": "=>{let e=()=>{let e=_e.current;if(e)try{fetch(WA(`/api/boards/${encodeURIComponent(e.id)}`),{method:`PUT`,headers:{\"content-type\":`application/json`},body:JSON."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 364,
+        "text": "a.abort(),Math.min(i,GW));try{if((await fetch(`${RW()}/api/plugin-alive`,{method:`GET`,cache:`no-store`,signal:a.signal})).ok)return!0}catch{}finally{window.cle"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 87,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 210,
+        "text": "const index = JSON.parse(await fs.readFile(path.join(dataDir, 'boards.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'systemPrompt', 'llm'];"
+      },
+      {
+        "file": "index.js",
+        "line": 304,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 334,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "runtime/dsh-source.mjs",
+        "line": 5,
+        "text": "//   - MCP ：cordis.patch.yml 里所有 dsh-mcp-client 行"
+      },
+      {
+        "file": "runtime/dsh-source.mjs",
+        "line": 176,
+        "text": "if (!pkg.includes('dsh-mcp-client')) continue;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 164,
+        "text": "const child = spawn(process.execPath, ['server.mjs'], {"
+      },
+      {
+        "file": "runtime/mcp.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "runtime/mcp.mjs",
+        "line": 400,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js",
+    "runtime/web/dist/assets/index-DhM_avMx.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

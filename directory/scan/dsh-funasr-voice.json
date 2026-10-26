@@ -1,0 +1,133 @@
+{
+  "name": "dsh-funasr-voice",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:06.453Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 178,
+        "text": "const res = await fetch(asrUrl(), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 493,
+        "text": "const res = await fetch('/funasr-voice/status', { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 497,
+        "text": "void fetch('/funasr-voice/check', { headers: { accept: 'application/json' } }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 506,
+        "text": "const st2 = await fetch('/funasr-voice/status', { headers: { accept: 'application/json' } }).then((r) => r.json());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 509,
+        "text": "void fetch('/funasr-voice/check', { headers: { accept: 'application/json' } }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "const parsed = JSON.parse(readFileSync(SETTINGS_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "mkdirSync(dirname(SETTINGS_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "writeFileSync(SETTINGS_FILE, JSON.stringify(next, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "? spawnSync('where', ['python'], { encoding: 'utf8', timeout: 3000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": ": spawnSync('which', ['python3'], { encoding: 'utf8', timeout: 3000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 180,
+        "text": "? (spawnSync('where', [cmd], { encoding: 'utf8', timeout: 5000 }).stdout || '').split(/\\r?\\n/).map((s) => s.trim()).filter(Boolean)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "const p = (spawnSync('which', [cmd], { encoding: 'utf8', timeout: 5000 }).stdout || '').trim()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 70,
+      "text": "pip install --upgrade pip"
+    },
+    {
+      "file": "README.en.md",
+      "line": 71,
+      "text": "pip install funasr"
+    },
+    {
+      "file": "README.en.md",
+      "line": 81,
+      "text": "pip install huggingface_hub"
+    },
+    {
+      "file": "README.md",
+      "line": 60,
+      "text": "pip install --upgrade pip"
+    },
+    {
+      "file": "README.md",
+      "line": 61,
+      "text": "pip install funasr"
+    }
+  ],
+  "skippedEntries": []
+}

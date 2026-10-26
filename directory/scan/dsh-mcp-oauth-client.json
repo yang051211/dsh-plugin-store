@@ -1,0 +1,90 @@
+{
+  "name": "dsh-mcp-oauth-client",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:13.358Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "const value = yaml.load(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "writeFileSync(file, `# MCP servers managed by dsh-mcp-oauth-client.\\n${body}`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'connection']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 417,
+        "text": "next.push(ctx.tools.register(definition(client, transport, provider, broker, resourceUrl, serverName, tool, timeoutMs, logger)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 264,
+        "text": "spawn('open', [String(url)], { detached: true, stdio: 'ignore' }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node --check lib/index.js && node --check lib/client.js"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

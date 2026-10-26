@@ -1,0 +1,116 @@
+{
+  "name": "dsh-mineru",
+  "version": "0.1.15",
+  "scannedAt": "2026-10-26T10:08:18.526Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 329,
+        "text": "const res = await fetch(\"/plugin/mineru\" + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 378,
+        "text": "var res = await fetch(\"/plugin/mineru/config\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 689,
+        "text": "var res = await fetch(url, { method: \"POST\", headers: { \"Content-Type\": \"application/octet-stream\" }, body: file });"
+      },
+      {
+        "file": "lib/mineru-client.js",
+        "line": 218,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "lib/mineru-client.js",
+        "line": 276,
+        "text": "const res = await fetch(uploadUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/anchors.js",
+        "line": 36,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/anchors.js",
+        "line": 511,
+        "text": "const raw = await readFile(filePath, 'utf8');"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 8,
+        "text": "import { mkdir, writeFile, stat, readdir, realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 96,
+        "text": "await mkdir(join(this.rootDir, 'artifacts'), { recursive: true });"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 97,
+        "text": "await mkdir(join(this.rootDir, 'tmp'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'skills', 'settings', 'credentials', 'agents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "for (const def of state.agentToolDefs) ctx.tools.register(def);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "ctx.tools.register(buildActivateTool(state));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 93,
+        "text": "agent.ctx.tools.register(def);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 95,
+        "text": "agent.ctx.tools.restrict({ deny: [ACTIVATE_TOOL_NAME] });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "settings",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

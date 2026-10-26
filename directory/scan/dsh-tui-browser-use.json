@@ -1,0 +1,109 @@
+{
+  "name": "dsh-tui-browser-use",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:14.778Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/vision/shared.js",
+        "line": 60,
+        "text": "resp = await fetch(url, signal ? { ...init, signal } : init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/browser.js",
+        "line": 18,
+        "text": "import { mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/types/browser.js",
+        "line": 169,
+        "text": "mkdirSync(this.sessionPaths.userDataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/types/driver/playwright-driver.js",
+        "line": 16,
+        "text": "import { existsSync, readdirSync, statSync, openSync, readSync, closeSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/types/driver/playwright-driver.js",
+        "line": 76,
+        "text": "const parsed = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 14,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/index.js",
+        "line": 5,
+        "text": "* Playwright-driven browser toolset for the agent (`ctx.tools.register`),"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/types/tools.js",
+        "line": 4,
+        "text": "* Builds the 21 `browser_*` tool definitions for the harness `ctx.tools`"
+      },
+      {
+        "file": "lib/types/tools/registry.js",
+        "line": 5,
+        "text": "* `ctx.tools` service. The registry keeps a `Map<name, disposer>` so every tool"
+      },
+      {
+        "file": "lib/types/tools/registry.js",
+        "line": 25,
+        "text": "store.set(d.name, tools.register({ ...d, execute }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/driver/playwright-driver.js",
+        "line": 17,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/postinstall.mjs"
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

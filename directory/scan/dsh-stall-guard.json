@@ -1,0 +1,90 @@
+{
+  "name": "dsh-stall-guard",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:07:52.254Z",
+  "icon": "dsh-stall-guard.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 560,
+        "text": "const response = await fetch(url, init);"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 59,
+        "text": "// `curl --version` or `wget --help` only prints local information and never touches"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 65,
+        "text": "    test: /\\b(?:curl|wget|Invoke-WebRequest|iwr|aria2c|Start-BitsTransfer)\\b[^\\n]*?(?<target>https?:\\/\\/[^\\s'\"|;)]+)|(?:curl|wget|Invoke-WebRequest|iwr|aria2c|S"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 140,
+        "text": "'如果只需要源码不需要提交历史，改用下载 tarball 通常更快：curl -L https://gh-proxy.com/https://codeload.github.com/<owner>/<repo>/tar.gz/refs/heads/main',"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 163,
+        "text": "'大文件优先用可断点续传的方式（curl -C - / wget -c），避免每次都从头下',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 10,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 177,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 189,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 191,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify(value, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 196,
+        "text": "fs.unlinkSync(tmp);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fallback.js",
+        "line": 6,
+        "text": "* cannot. It never re-enters the tool layer (`ctx.tools.execute`), because that would"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

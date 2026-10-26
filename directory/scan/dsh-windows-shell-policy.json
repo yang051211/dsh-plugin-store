@@ -1,0 +1,81 @@
+{
+  "name": "dsh-windows-shell-policy",
+  "version": "0.0.7",
+  "scannedAt": "2026-10-26T10:08:11.734Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 240,
+        "text": "fetch(\"/dsh-shell-policy/api/status\").then((r) => r.json()).then((s) => setStatus(s)).catch(() => setStatus(null));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 259,
+        "text": "if (draft !== null && draft !== current) writes.push(fetch(\"/dsh-shell-policy/api/preferred\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 266,
+        "text": "if (draftBashPath !== null && draftBashPath !== currentBashPath) writes.push(fetch(\"/dsh-shell-policy/api/bashpath\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools', 'subprocess', 'systemPrompt', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 147,
+        "text": "bashDisposer = ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 301,
+        "text": "const handle = ctx.subprocess.spawn(spawnSpec(undefined));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 334,
+        "text": "const handle = ctx.subprocess.spawn(spawnSpec(controller.signal));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

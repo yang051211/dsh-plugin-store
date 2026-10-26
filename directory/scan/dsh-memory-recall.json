@@ -1,0 +1,93 @@
+{
+  "name": "dsh-memory-recall",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:09.053Z",
+  "icon": "dsh-memory-recall.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 410,
+        "text": "const res = await fetch(BASE + \"/recall?callId=\" + encodeURIComponent(callId), { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 518,
+        "text": "const res = await fetch(BASE + path, { headers: { accept: \"application/json\", \"content-type\": \"application/json\" }, ...init });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1313,
+        "text": "const res = await fetch(BASE + \"/chats?session=\" + encodeURIComponent(sessionId || \"\"), { signal, headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/dsh-tools.js",
+        "line": 15,
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "src/dsh-tools.js",
+        "line": 23,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "src/store.js",
+        "line": 17,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/store.js",
+        "line": 18,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/store.js",
+        "line": 93,
+        "text": "const saved = JSON.parse(readFileSync(this.settingsPath(), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 36,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 85,
+        "text": "if (ctx.tools?.register) {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 103,
+        "text": "const dispose = ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

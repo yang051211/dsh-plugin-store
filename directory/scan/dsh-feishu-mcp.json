@@ -1,0 +1,90 @@
+{
+  "name": "dsh-feishu-mcp",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:08:16.587Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1055,
+        "text": "const response = await fetch(this.tokenUrl(cfg), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "const raw = await readFile(configPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "await mkdir(path.dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "await writeFile(configPath(), JSON.stringify(next, null, 2), { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 206,
+        "text": "* `ctx.tools` under deterministic server-qualified public names"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 207,
+        "text": "* (`mcp__feishu__<rawName>`, same contract as @deepseek-ai/dsh-mcp-client)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 407,
+        "text": "for (const definition of definitions) next.set(definition.name, ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1540,
+        "text": "const disposers = buildTools(context).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

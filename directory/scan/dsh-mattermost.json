@@ -1,0 +1,71 @@
+{
+  "name": "dsh-mattermost",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:14.223Z",
+  "icon": "dsh-mattermost.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 774,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/mattermost.js",
+        "line": 55,
+        "text": "const response = await this.fetch(`${this.apiBase}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { appendFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 148,
+        "text": "if (typeof file === 'string' && file.trim() !== '') appendFile(file.trim(), `${line}\\n`).catch(() => {})"
+      },
+      {
+        "file": "index.js",
+        "line": 608,
+        "text": "const document = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 624,
+        "text": "try { document = JSON.parse(await readFile(file, 'utf8')) } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

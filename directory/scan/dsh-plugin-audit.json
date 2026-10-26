@@ -1,0 +1,116 @@
+{
+  "name": "dsh-plugin-audit",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:08:21.547Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "\"axios\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "\"undici\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 848,
+        "text": "* keeps `curl -o out.json` / `scp data.log …` style commands from producing"
+      },
+      {
+        "file": "src/scanner/detect.ts",
+        "line": 22,
+        "text": "'axios', 'got', 'undici', 'node-fetch', 'ws', 'socket.io', 'socket.io-client',"
+      },
+      {
+        "file": "src/sentinel/rules.ts",
+        "line": 36,
+        "text": "* keeps `curl -o out.json` / `scp data.log …` style commands from producing"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { promises } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "\"fs\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "\"node:fs\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "\"fs/promises\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "\"node:fs/promises\""
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1070,
+        "text": "const unregisterTool = tools.register(createPluginAuditTool());"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1088,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 10,
+        "text": "export const inject: string[] = ['tools']"
+      },
+      {
+        "file": "src/runtime.ts",
+        "line": 151,
+        "text": "const unregisterTool = tools.register(createPluginAuditTool())"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "childProcess: /* @__PURE__ */ new Set([\"child_process\", \"node:child_process\"]),"
+      },
+      {
+        "file": "src/scanner/detect.ts",
+        "line": 17,
+        "text": "childProcess: new Set(['child_process', 'node:child_process']),"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

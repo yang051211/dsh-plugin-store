@@ -1,0 +1,115 @@
+{
+  "name": "dsh-settings-params",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:18.872Z",
+  "icon": "dsh-settings-params.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 537,
+        "text": "return fetch(ROUTE_BASE + path, init).then("
+      },
+      {
+        "file": "client/client.js",
+        "line": 937,
+        "text": "fetch(HEALTH_URL, { cache: \"no-store\" }).then("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 593,
+        "text": "mkdirSync(dirname(filePath), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 600,
+        "text": "writeFileSync(tmp, text, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 615,
+        "text": "const legacy = parseLegacyEnv(readFileSync(LEGACY_FILE, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 682,
+        "text": "const text = readFileSync(source, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 174,
+        "text": "export const inject = ['webServer', 'loader', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1670,
+        "text": "ctx.effect(() => ctx.tools.register(envParamListTool), 'dsh-settings-params: env_param_list tool');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1671,
+        "text": "ctx.effect(() => ctx.tools.register(envParamGetTool), 'dsh-settings-params: env_param_get tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1254,
+        "text": "const HOST_RESTART_SCRIPT = String.raw`const C = require('node:child_process')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1264,
+        "text": "const out = C.spawnSync('netstat', ['-ano', '-p', 'tcp'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1276,
+        "text": "const out = C.spawnSync('lsof', ['-ti', 'tcp:' + port, '-sTCP:LISTEN'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1282,
+        "text": "if (win) C.spawnSync('taskkill', ['/pid', pid, '/t', '/f'])"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

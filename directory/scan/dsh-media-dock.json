@@ -1,0 +1,96 @@
+{
+  "name": "dsh-media-dock",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:50.216Z",
+  "icon": "dsh-media-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "return fetch(ROUTE_STATE)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 105,
+        "text": "return fetch(ROUTE_STATE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 30,
+        "text": "# 而在 macOS/Linux 上 mkdirSync('E:\\development\\dsh-media') 会建出一个怪目录"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "mkdirSync(outputDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 314,
+        "text": "mkdirSync(join(target, 'Default', 'Network'), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 522,
+        "text": "const bytes = new Uint8Array(readFileSync(wavFiles[index]))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 693,
+        "text": "toolScoped.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "const child = spawn(exe, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 911,
+        "text": "//   ① 按平台选命令：原来无条件 spawn('cmd', ['/c','start',...])，"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 927,
+        "text": "child = spawn(opener, openerArgs, { windowsHide: true, detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

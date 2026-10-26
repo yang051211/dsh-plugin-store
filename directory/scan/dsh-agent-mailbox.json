@@ -1,0 +1,76 @@
+{
+  "name": "dsh-agent-mailbox",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:08:31.926Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/plugin.js",
+        "line": 4,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/plugin.js",
+        "line": 19,
+        "text": "unregister.push(ctx.tools.register({"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 5,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/plugin.ts",
+        "line": 17,
+        "text": "for (const tool of tools) unregister.push(ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/mcp-client.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/mcp-client.js",
+        "line": 30,
+        "text": "            proc = spawn(this.config.executable, [...this.config.executableArgs, 'mailbox-mcp', '--session-file', this.config.sessionFile], { stdio: ['pipe', 'p"
+      },
+      {
+        "file": "src/mcp-client.ts",
+        "line": 1,
+        "text": "import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';"
+      },
+      {
+        "file": "src/mcp-client.ts",
+        "line": 31,
+        "text": "      proc = spawn(this.config.executable, [...this.config.executableArgs, 'mailbox-mcp', '--session-file', this.config.sessionFile], { stdio: ['pipe', 'pipe', "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

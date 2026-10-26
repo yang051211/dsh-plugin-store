@@ -1,0 +1,112 @@
+{
+  "name": "dsh-qboson-ising-solver",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:07.304Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/runtime-manager.js",
+        "line": 202,
+        "text": "response = await fetch(url, { signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ising-doctor.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-ising-doctor.js",
+        "line": 32,
+        "text": "for (const raw of readFileSync(path, 'utf8').split(/\\r?\\n/)) {"
+      },
+      {
+        "file": "bin/dsh-ising-doctor.js",
+        "line": 45,
+        "text": "for (const raw of readFileSync(path, 'utf8').split(/\\r?\\n/)) {"
+      },
+      {
+        "file": "src/runtime-manager.js",
+        "line": 1,
+        "text": "import { constants as fsConstants } from 'node:fs'"
+      },
+      {
+        "file": "src/runtime-manager.js",
+        "line": 2,
+        "text": "import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/execution-tools.js",
+        "line": 11,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/execution-tools.js",
+        "line": 34,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tool.js",
+        "line": 5,
+        "text": "export const inject = ['tools', 'isingSolver']"
+      },
+      {
+        "file": "src/tool.js",
+        "line": 8,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ising-doctor.js",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-ising-doctor.js",
+        "line": 100,
+        "text": "const result = spawnSync(python, args, {"
+      },
+      {
+        "file": "src/runtime-manager.js",
+        "line": 271,
+        "text": "handle = this.ctx.subprocess.spawn({"
+      },
+      {
+        "file": "src/worker-client.js",
+        "line": 106,
+        "text": "const handle = this.ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "isingSolver",
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

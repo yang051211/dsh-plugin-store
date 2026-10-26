@@ -1,0 +1,110 @@
+{
+  "name": "dsh-plugin-ai-gateway",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:24.376Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 89,
+        "text": "let r = await fetch(API_PREFIX + path, opts);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "r = await fetch(\"/agy-gateway/api\" + path, opts);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 330,
+        "text": "const res = await fetch(\"https://cloudcode-pa.googleapis.com/v1internal:loadCodeAssist\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 387,
+        "text": "const res = await fetch(\"https://chatgpt.com/backend-api/wham/usage\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 443,
+        "text": "const res = await fetch(\"https://cloudcode-pa.googleapis.com/v1internal:retrieveUserQuotaSummary\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "c4, mkdirSync as mkdirSync2, readdirSync as readdirSync2, readFileSync as readFileSync4, statSync, unlinkSync, writeFileSync as writeFileSync2 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "return JSON.parse(readFileSync(statePath, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const content = readFileSync(configPath, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "writeFileSync(configPath, next, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const out = execSync('reg query \"HKCU\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Internet Settings\"', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "      const portOut = execSync('powershell -NoProfile -Command \"(Get-NetTCPConnection -LocalPort 7890,7891,7892,10808,10809,2080,1080 -State Listen -ErrorAction"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1516,
+        "text": "child = spawn(cmd, args, { windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

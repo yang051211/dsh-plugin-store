@@ -1,0 +1,128 @@
+{
+  "name": "dsh-plugin-git-commit-push",
+  "version": "1.0.7",
+  "scannedAt": "2026-10-26T10:07:50.412Z",
+  "icon": "dsh-plugin-git-commit-push.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "capture-git-format.mjs",
+        "line": 18,
+        "text": "import { mkdtempSync, mkdirSync, rmSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "capture-git-format.mjs",
+        "line": 45,
+        "text": "mkdirSync(join(cwd, 'src'), { recursive: true })"
+      },
+      {
+        "file": "capture-git-format.mjs",
+        "line": 46,
+        "text": "writeFileSync(join(cwd, 'src', 'keep.js'), 'export const keep = 1\\n')"
+      },
+      {
+        "file": "capture-git-format.mjs",
+        "line": 47,
+        "text": "writeFileSync(join(cwd, 'src', 'old-name.js'), 'export const moved = 1\\n')"
+      },
+      {
+        "file": "capture-git-format.mjs",
+        "line": 48,
+        "text": "writeFileSync(join(cwd, 'src', 'gone.js'), 'export const gone = 1\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 41,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1017,
+        "text": "* the definition would survive `ctx.tools.register` WITHOUT needing a live host."
+      },
+      {
+        "file": "index.js",
+        "line": 1093,
+        "text": "ctx.tools.register(TOOL_DEFINITION)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "capture-git-format.mjs",
+        "line": 17,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 113,
+        "text": "child = spawn('git', argv, {"
+      },
+      {
+        "file": "lib/test-fixture.mjs",
+        "line": 10,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "self-test.mjs",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 56,
+      "text": "powershell -ExecutionPolicy Bypass -File .\\setup.ps1"
+    },
+    {
+      "file": "README.en.md",
+      "line": 57,
+      "text": "powershell -ExecutionPolicy Bypass -File .\\setup.ps1 -Profile web"
+    },
+    {
+      "file": "README.en.md",
+      "line": 58,
+      "text": "powershell -ExecutionPolicy Bypass -File .\\setup.ps1 -Uninstall"
+    },
+    {
+      "file": "README.en.md",
+      "line": 63,
+      "text": "sh setup.sh              # default profile: desktop"
+    },
+    {
+      "file": "README.en.md",
+      "line": 64,
+      "text": "sh setup.sh web          # a specific profile"
+    }
+  ],
+  "skippedEntries": []
+}

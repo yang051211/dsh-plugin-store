@@ -1,0 +1,79 @@
+{
+  "name": "dsh-proxy-switcher",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:07:57.547Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 127,
+        "text": "const response = await fetch(`${BASE}/${action}`, {"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 19,
+        "text": "import { Agent, ProxyAgent } from 'undici'"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 8,
+        "text": "* MCP over HTTP, model discovery — with plain `fetch()`. Node's built-in `fetch`"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 49,
+        "text": "* same-generation calls — `undici.fetch(url, { dispatcher })`, which is exactly"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 126,
+        "text": "return adopt(hostRequire('undici'), `dsh-http-proxy -> ${hostRequire.resolve('undici')}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 21,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, chmodSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 196,
+        "text": "const text = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 212,
+        "text": "if (!existsSync(directory)) mkdirSync(directory, { recursive: true })"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 214,
+        "text": "writeFileSync(temporary, `${JSON.stringify(config, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

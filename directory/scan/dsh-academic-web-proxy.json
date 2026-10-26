@@ -1,0 +1,94 @@
+{
+  "name": "dsh-academic-web-proxy",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:55.520Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 302,
+        "text": "const requestFetch = options.fetch || ((...args) => fetch(...args));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/desktop-bridge.js",
+        "line": 1,
+        "text": "import { open } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/download-monitor.js",
+        "line": 1,
+        "text": "import { watch } from 'node:fs';"
+      },
+      {
+        "file": "src/download-monitor.js",
+        "line": 2,
+        "text": "import { lstat, readdir, realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/file-renamer.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "src/file-renamer.js",
+        "line": 2,
+        "text": "import { lstat, open, realpath, link, unlink } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser-tools.js",
+        "line": 9,
+        "text": "if (typeof ctx.tools?.get !== 'function') return unavailable;"
+      },
+      {
+        "file": "src/browser-tools.js",
+        "line": 11,
+        "text": "const available = OPERATIONS.filter(operation => ctx.tools.get(prefix + operation, agent));"
+      },
+      {
+        "file": "src/browser-tools.js",
+        "line": 12,
+        "text": "stered = available.length || [...scopeChainOf(agent).slice(1), undefined].some(scope => OPERATIONS.some(operation => ctx.tools.get(prefix + operation, scope)));"
+      },
+      {
+        "file": "src/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'systemPrompt', 'profileContext'];"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 17,
+        "text": "const result = await ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "profileContext",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

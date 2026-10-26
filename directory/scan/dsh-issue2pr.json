@@ -1,0 +1,113 @@
+{
+  "name": "dsh-issue2pr",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:05.983Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 910,
+        "text": "return fetch(API + path).then(function (r) { return r.json().catch(function () { return {}; }); });"
+      },
+      {
+        "file": "client.js",
+        "line": 913,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 920,
+        "text": "return fetch(API + path, { method: \"DELETE\" })"
+      },
+      {
+        "file": "client.js",
+        "line": 924,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 3523,
+        "text": "fetch(API + \"/ui-state\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { existsSync, readdirSync, mkdirSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 123,
+        "text": "mkdirSync(repoDir, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 174,
+        "text": "const out = JSON.parse(readFileSync(join(runDir, \"09-failure-analysis.json\"), \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 985,
+        "text": "try { tasks = JSON.parse(readFileSync(join(runDir, \"05-task-graph.json\"), \"utf8\")).nodes.length; } catch { /* 任务图缺失时只报 patch 数 */ }"
+      },
+      {
+        "file": "lib/assistant.js",
+        "line": 4,
+        "text": "import { existsSync, readdirSync, readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 133,
+        "text": "execFile(\"git\", [\"clone\", \"--depth\", \"1\", credential.uri, repoDir], {"
+      },
+      {
+        "file": "index.js",
+        "line": 539,
+        "text": "const runGit = __testHooks?.runGit || ((args, opts, cb) => execFile(\"git\", args, opts, cb));"
+      },
+      {
+        "file": "index.js",
+        "line": 633,
+        "text": "const runGit = __testHooks?.runGit || ((args, opts, cb) => execFile(\"git\", args, opts, cb));"
+      },
+      {
+        "file": "index.js",
+        "line": 635,
+        "text": "|| ((args, opts, cb) => execFile(process.platform === \"win32\" ? \"where\" : \"which\", args, opts, cb));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

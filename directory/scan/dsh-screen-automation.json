@@ -1,0 +1,84 @@
+{
+  "name": "dsh-screen-automation",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:08:31.228Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 928,
+        "text": "const buf = fs.readFileSync(imgPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'llm', 'attachments'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "ctx.tools.register(cliTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "ctx.tools.register(cliTool({ name: `screen_automation_${suffix}`, description, parameters: {}, buildArgs: () => [...args] }));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 191,
+        "text": "ctx.tools.register(cliTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "ctx.tools.register(cliTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": "const child = execFile(bin, ['cli', ...args], { timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

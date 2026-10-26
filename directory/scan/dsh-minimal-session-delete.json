@@ -1,0 +1,68 @@
+{
+  "name": "dsh-minimal-session-delete",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:08:23.259Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 394,
+        "text": "response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/core.js",
+        "line": 79,
+        "text": "fs.rmSync(dir, { recursive: true, force: true })"
+      },
+      {
+        "file": "src/core.js",
+        "line": 411,
+        "text": "note(warnings, `rm(\"${dir}\") failed`, new Error(reason))"
+      },
+      {
+        "file": "src/core.js",
+        "line": 457,
+        "text": "fs.rmSync(full, { recursive: true, force: true })"
+      },
+      {
+        "file": "src/core.js",
+        "line": 536,
+        "text": "fs.rmSync(file, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

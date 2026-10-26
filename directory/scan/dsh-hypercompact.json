@@ -1,0 +1,90 @@
+{
+  "name": "dsh-hypercompact",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:08:04.572Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 22,
+        "text": "import { realpathSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.mjs",
+        "line": 99,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/stats.mjs",
+        "line": 13,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/stats.mjs",
+        "line": 46,
+        "text": "ready ??= mkdir(target, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/stats.mjs",
+        "line": 48,
+        "text": "await appendFile(join(target, fileName(sessionId)), `${JSON.stringify(line)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 198,
+        "text": "toolCtx.effect(() => toolCtx.tools.register(definition), `${name} ${definition.name} tool`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 11,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/create-preset.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/create-preset.mjs",
+        "line": 72,
+        "text": "const result = spawnSync(process.execPath, [entry, ...commandArgs], { stdio: 'inherit', env: process.env });"
+      },
+      {
+        "file": "scripts/find-dsh.mjs",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 8,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

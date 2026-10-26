@@ -1,0 +1,124 @@
+{
+  "name": "dsh-farm",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:19.020Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 51,
+        "text": "const res = await fetch('/farm/services')"
+      },
+      {
+        "file": "client.js",
+        "line": 66,
+        "text": "await fetch(`/farm/services/${svc.id}/${action}`, { method: 'POST' })"
+      },
+      {
+        "file": "client.js",
+        "line": 90,
+        "text": "await asJson(await fetch(`/farm/services/${svc.id}`, { method: 'DELETE' }))"
+      },
+      {
+        "file": "client.js",
+        "line": 108,
+        "text": "const body = await asJson(await fetch('/farm/services/batch-delete', {"
+      },
+      {
+        "file": "client.js",
+        "line": 248,
+        "text": "const res = await fetch(`/farm/services/${lv.id}/logs?tail=2000&search=${encodeURIComponent(q)}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { existsSync, mkdirSync, appendFileSync, readFileSync, writeFileSync, statSync, openSync, readSync, closeSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 107,
+        "text": "mkdirSync(logDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 118,
+        "text": "const saved = JSON.parse(readFileSync(registryPath, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 132,
+        "text": "writeFileSync(registryPath, JSON.stringify([...dynamic.values()], null, 2))"
+      },
+      {
+        "file": "index.js",
+        "line": 154,
+        "text": "try { appendFileSync(logPath(rec.id), `${new Date(entry.at).toISOString()} [${stream}] ${line}\\n`) } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 503,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 521,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 558,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 587,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 184,
+        "text": "child = spawn('/bin/sh', ['-c', rec.command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

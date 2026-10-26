@@ -1,0 +1,75 @@
+{
+  "name": "dsh-transparent",
+  "version": "1.4.6",
+  "scannedAt": "2026-10-26T10:08:29.963Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "const res = await fetch(url, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 11,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "build.mjs",
+        "line": 25,
+        "text": "const lines = readFileSync(srcCss, 'utf8').split(/\\r?\\n/)"
+      },
+      {
+        "file": "build.mjs",
+        "line": 68,
+        "text": "const template = readFileSync(templatePath, 'utf8')"
+      },
+      {
+        "file": "build.mjs",
+        "line": 79,
+        "text": "writeFileSync(outPath, out, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { appendFileSync, existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "child = spawn('powershell.exe', args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

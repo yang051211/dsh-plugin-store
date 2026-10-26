@@ -1,0 +1,120 @@
+{
+  "name": "dsh-gh-pages-artifacts",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:58.350Z",
+  "icon": "dsh-gh-pages-artifacts.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 410,
+        "text": "const response = await fetch(route, {"
+      },
+      {
+        "file": "lib/github.js",
+        "line": 30,
+        "text": "this.fetchImpl = options.fetch ?? ((input, init) => globalThis.fetch(input, init));"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 1096,
+        "text": "const fetchImpl = this.hooks.fetch ?? ((input, init) => globalThis.fetch(input, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/content.js",
+        "line": 14,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 34,
+        "text": "text = await readFile(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 61,
+        "text": "await mkdir(this.dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 72,
+        "text": "await writeFile(temp, text, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/prompt.js",
+        "line": 31,
+        "text": "text: ({ scope }) => ctx.tools.get(PUBLISH_TOOL, scope) === undefined ? '' : text,"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 14,
+        "text": "* @returns tool definitions ready for `ctx.tools.register`."
+      },
+      {
+        "file": "lib/visibility.js",
+        "line": 48,
+        "text": "const dispose = agent.ctx.effect(() => agent.ctx.tools.restrict({ deny }), 'gh-pages-artifacts.restrict');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.mjs",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.build.json --noCheck"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 59,
+      "text": "node bin/setup.mjs setup --author \"Your Name <you@example.com>\""
+    }
+  ],
+  "skippedEntries": []
+}

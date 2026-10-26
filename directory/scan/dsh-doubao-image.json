@@ -1,0 +1,108 @@
+{
+  "name": "dsh-doubao-image",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:28.884Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 648,
+        "text": "fetch(\"/doubao-image/status\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 677,
+        "text": "const resp = await fetch(\"/doubao-image/open\", { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 698,
+        "text": "const resp = await fetch(\"/doubao-image/generate\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 997,
+        "text": "const buf = await readFile(shotPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1031,
+        "text": "await mkdir(absOutputDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1105,
+        "text": "await writeFile(filePath, buffer);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 92,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1300,
+        "text": "toolCtx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1390,
+        "text": "toolCtx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1431,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 843,
+        "text": "const child = execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

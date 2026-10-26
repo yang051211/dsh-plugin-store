@@ -1,0 +1,79 @@
+{
+  "name": "dsh-x-memory",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:19.892Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 142,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "const manifest = JSON.parse(readFileSync(join(profiles, name, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "return JSON.parse(readFileSync(overridesPath(profileDir), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "writeFileSync(temp, JSON.stringify(next, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 257,
+        "text": "const disposers = createTools({ defineTool, storeFor: (exec) => storeForCaller(exec?.agent) }).map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

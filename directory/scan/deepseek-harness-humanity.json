@@ -1,0 +1,85 @@
+{
+  "name": "deepseek-harness-humanity",
+  "version": "0.1.17",
+  "scannedAt": "2026-10-26T10:08:23.569Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evolution/skill-runtime.js",
+        "line": 12,
+        "text": "ctx.inject(['fs'], (sctx) => {"
+      },
+      {
+        "file": "lib/evolution/tools-skill-persist.js",
+        "line": 55,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "lib/migrate.js",
+        "line": 26,
+        "text": "* （只有 DSH 自己的类型面），静态 `import 'node:fs'` 会让 `tsc` 直接报\"找不到模块\"。"
+      },
+      {
+        "file": "lib/migrate.js",
+        "line": 31,
+        "text": "const specifier = 'node:fs';"
+      },
+      {
+        "file": "lib/migrate.js",
+        "line": 61,
+        "text": "parsed = parseYaml(fs.readFileSync(source, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evolution/tools-skill-persist.js",
+        "line": 154,
+        "text": "const dispose = api.tools.register(defineSkillPersistTool(api.defineTool, deps));"
+      },
+      {
+        "file": "lib/memory/tools.js",
+        "line": 14,
+        "text": "const definitions = [defineRememberTool, defineRecallTool].map((define) => api.tools.register(define(api.defineTool, deps)));"
+      },
+      {
+        "file": "lib/persona/tools.js",
+        "line": 22,
+        "text": "...(includeInit ? [tools.register(defineInitTool(defineTool, persona))] : []),"
+      },
+      {
+        "file": "lib/persona/tools.js",
+        "line": 23,
+        "text": "tools.register(defineUpdateTool(defineTool, {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build-host.mjs && node scripts/build-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

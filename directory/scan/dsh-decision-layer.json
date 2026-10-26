@@ -1,0 +1,93 @@
+{
+  "name": "dsh-decision-layer",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-26T10:08:01.416Z",
+  "icon": "dsh-decision-layer.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 360,
+        "text": "const response = await fetch(`${API_BASE}/${path}`, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "service/config-store.mjs",
+        "line": 1,
+        "text": "import { chmod, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "service/config-store.mjs",
+        "line": 19,
+        "text": "const value = JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "service/config-store.mjs",
+        "line": 247,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "service/config-store.mjs",
+        "line": 250,
+        "text": "await writeFile(temporary, `${JSON.stringify(next)}\\n`, { mode: 0o600, flag: 'wx' });"
+      },
+      {
+        "file": "service/config-store.mjs",
+        "line": 254,
+        "text": "await rm(temporary, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "service/dsh.mjs",
+        "line": 17,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "service/dsh.mjs",
+        "line": 90,
+        "text": "const schemas = typeof ctx.tools?.schemas === 'function' ? ctx.tools.schemas(agent) : undefined;"
+      },
+      {
+        "file": "service/dsh.mjs",
+        "line": 130,
+        "text": "if (typeof ctx.tools.guard === 'function') {"
+      },
+      {
+        "file": "service/dsh.mjs",
+        "line": 133,
+        "text": "ctx.tools.guard(exec => loopGuard.check(exec));"
+      },
+      {
+        "file": "service/dsh.mjs",
+        "line": 134,
+        "text": "ctx.tools.guard(exec => gate.guardReason(exec));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

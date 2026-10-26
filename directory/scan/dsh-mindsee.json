@@ -1,0 +1,80 @@
+{
+  "name": "dsh-mindsee",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:08.269Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 42,
+        "text": "const response = await fetch(\"/mindsee/inbox\", {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 841,
+        "text": "const response = await fetch(joinUrl(config.baseUrl, \"/v1/image/describe\"), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 876,
+        "text": "const bytes = await readFile(trimmed, { signal: options.signal });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 977,
+        "text": "bytes: await readFile(path),"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 997,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 999,
+        "text": "await writeFile(dest, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 895,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1124,
+        "text": "const inject = [\"tools\", \"credentials\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

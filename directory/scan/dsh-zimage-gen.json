@@ -1,0 +1,81 @@
+{
+  "name": "dsh-zimage-gen",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:28.681Z",
+  "icon": "dsh-zimage-gen.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credentials.js",
+        "line": 18,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/credentials.js",
+        "line": 106,
+        "text": "text = await readFile(credentialsPath, 'utf8')"
+      },
+      {
+        "file": "lib/quota.js",
+        "line": 21,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/quota.js",
+        "line": 70,
+        "text": "const text = await readFile(filePath, 'utf8')"
+      },
+      {
+        "file": "lib/quota.js",
+        "line": 101,
+        "text": "await mkdir(dirname(filePath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 165,
+        "text": "() => ctx.tools.register(createGenerateTool({ ctx, config, log })),"
+      },
+      {
+        "file": "index.js",
+        "line": 169,
+        "text": "() => ctx.tools.register(createQuotaTool({ ctx, config, log })),"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 4,
+        "text": "* 这里直接构造 `ctx.tools.register()` 需要的定义对象，而不是 import"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

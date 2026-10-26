@@ -1,0 +1,64 @@
+{
+  "name": "dsh-approval-alert",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:08:33.347Z",
+  "icon": "dsh-approval-alert.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/wechat.js",
+        "line": 99,
+        "text": "const response = await fetch(joinUrl(baseUrl, endpoint), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 10,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 21,
+        "text": "return JSON.parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/wechat.js",
+        "line": 18,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/wechat.js",
+        "line": 35,
+        "text": "return JSON.parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "scripts/send-wechat-test.mjs",
+        "line": 12,
+        "text": "import { existsSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

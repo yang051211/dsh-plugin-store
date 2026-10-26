@@ -1,0 +1,81 @@
+{
+  "name": "dsh-plugin-mobile-bridge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:23.368Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "return fetch(ROUTE_PREFIX + path, options).then(function (res) {"
+      },
+      {
+        "file": "lib/host/carriers/listener.js",
+        "line": 19,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 71,
+        "text": "return fetch(ROUTE_PREFIX + path, options).then(function (res) {"
+      },
+      {
+        "file": "src/host/carriers/listener.js",
+        "line": 19,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/store.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 61,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 63,
+        "text": "await writeFile(tmp, content, 'utf8')"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 82,
+        "text": "raw = JSON.parse(await readFile(this.file, 'utf8'))"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

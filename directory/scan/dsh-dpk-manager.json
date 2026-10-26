@@ -1,0 +1,83 @@
+{
+  "name": "dsh-dpk-manager",
+  "version": "2.1.70",
+  "scannedAt": "2026-10-26T10:08:06.430Z",
+  "icon": "dsh-dpk-manager.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.mjs",
+        "line": 16,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/host-service.js",
+        "line": 20,
+        "text": "import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host-service.js",
+        "line": 348,
+        "text": "await writeFile(path, bytes)"
+      },
+      {
+        "file": "src/host-service.js",
+        "line": 376,
+        "text": "const packageJson = JSON.parse(await readFile(join(packageDir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "src/host-service.js",
+        "line": 384,
+        "text": "await rm(incoming, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 112,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host-service.js",
+        "line": 21,
+        "text": "import { spawn as spawnChild } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 114,
+      "text": "npm install -g dsh-dpk-manager"
+    }
+  ],
+  "skippedEntries": []
+}

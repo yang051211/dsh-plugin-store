@@ -1,0 +1,71 @@
+{
+  "name": "dsh-lock",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:08:04.748Z",
+  "icon": "dsh-lock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 434,
+        "text": "var res = await fetch(API + path, Object.assign({ credentials: 'same-origin' }, options || {}));"
+      },
+      {
+        "file": "client/client.js",
+        "line": 451,
+        "text": "var res = await fetch(API + '/status', { credentials: 'same-origin' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 117,
+        "text": "mkdirSync(LOCK_DIR, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "writeFileSync(file, JSON.stringify(data, null, 2) + '\\n', { mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "mkdirSync(LOCK_DIR, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 151,
+        "text": "writeFileSync(to, readFileSync(from), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

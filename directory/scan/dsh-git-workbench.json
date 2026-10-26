@@ -1,0 +1,100 @@
+{
+  "name": "dsh-git-workbench",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:07:52.662Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 259,
+        "text": "fetch('/dsh-git-workbench/config', { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 284,
+        "text": "fetch('/dsh-git-workbench/config', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 376,
+        "text": "return fetch(url, options).then((res) => res.text().then((text) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 12,
+        "text": "import { existsSync, readdirSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "const stored = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 115,
+        "text": "writeFileSync(configFilePath(), JSON.stringify(next, null, 2) + '\\n', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = ['commands', 'tools', 'agents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 612,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 28,
+        "text": "const child = execFile('git', args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

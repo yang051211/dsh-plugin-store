@@ -1,0 +1,90 @@
+{
+  "name": "dsh-time-reminder",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:53.584Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 216,
+        "text": "fetch(API + '/state?sessionId=' + encodeURIComponent(sessionId))"
+      },
+      {
+        "file": "client/index.js",
+        "line": 238,
+        "text": "fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "debugWrite = debugWrite.then(()=>mkdir(dirname(debugPath), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "})).then(()=>appendFile(debugPath, line, 'utf8')).catch(()=>undefined);"
+      },
+      {
+        "file": "lib/pending.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/pending.js",
+        "line": 66,
+        "text": "return decodeTable(await readFile(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 881,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 951,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1091,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionProjections",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

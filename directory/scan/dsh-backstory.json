@@ -1,0 +1,92 @@
+{
+  "name": "dsh-backstory",
+  "version": "0.8.2",
+  "scannedAt": "2026-10-26T10:08:11.746Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/ledger.js",
+        "line": 9,
+        "text": "import { appendFile, mkdir, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/ledger.js",
+        "line": 93,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "dist/ledger.js",
+        "line": 94,
+        "text": "await appendFile(path, `${JSON.stringify(rec)}\\n`, 'utf8');"
+      },
+      {
+        "file": "dist/ledger.js",
+        "line": 99,
+        "text": "return parseLedger(await readFile(join(root, LEDGER_REL), 'utf8'));"
+      },
+      {
+        "file": "dist/mcp.js",
+        "line": 11,
+        "text": "import { realpathSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.ts",
+        "line": 18,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 149,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "src/index.ts",
+        "line": 351,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/git.js",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/git.ts",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/hook.ts",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

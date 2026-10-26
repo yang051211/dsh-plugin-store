@@ -1,0 +1,74 @@
+{
+  "name": "dsh-prompt-adapt",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:08:17.428Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.ps1",
+        "line": 182,
+        "text": "Invoke-WebRequest -Uri $proxied -OutFile $Destination -TimeoutSec 300 -UseBasicParsing"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1178,
+        "text": "const response = await fetch(url, options);"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 75,
+        "text": "*    Node 的 `fetch()`（undici）**每个**请求都带 `sec-fetch-mode: cors`，却既不带"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.ps1",
+        "line": 240,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "install.ps1",
+        "line": 242,
+        "text": "const manifest = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "install.ps1",
+        "line": 250,
+        "text": "fs.writeFileSync(file, `${JSON.stringify(manifest, undefined, 2)}\\n`)"
+      },
+      {
+        "file": "lib/sessions.js",
+        "line": 86,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/sessions.js",
+        "line": 280,
+        "text": "text = fs.readFileSync(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

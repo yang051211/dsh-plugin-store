@@ -1,0 +1,59 @@
+{
+  "name": "dsh-kubectl-guard",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:04.615Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/resolver.js",
+        "line": 6,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "src/resolver.js",
+        "line": 42,
+        "text": "const text = readFileSync(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 31,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "src/resolver.js",
+        "line": 3,
+        "text": "// Synchronous by necessity: ctx.tools.guard() is a synchronous seam, so the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

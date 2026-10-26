@@ -1,0 +1,87 @@
+{
+  "name": "dsh-ink-whale",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:31.089Z",
+  "icon": "dsh-ink-whale.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools/cdp.mjs",
+        "line": 21,
+        "text": "const r = await fetch('http://127.0.0.1:' + PORT + '/json/list', { signal: AbortSignal.timeout(1500) })"
+      },
+      {
+        "file": "src/tools/cdp.mjs",
+        "line": 34,
+        "text": "this.ws = new WebSocket(this.url)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 30,
+        "text": "const read = (rel) => fs.readFileSync(file(rel), 'utf8');"
+      },
+      {
+        "file": "src/build-plugin.mjs",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/build-plugin.mjs",
+        "line": 13,
+        "text": "const fonts = JSON.parse(fs.readFileSync(path.join(dataDir, 'strokefonts.json'), 'utf8'));"
+      },
+      {
+        "file": "src/build-plugin.mjs",
+        "line": 14,
+        "text": "const assets = JSON.parse(fs.readFileSync(path.join(dataDir, 'assets.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify.mjs",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/tools/cdp.mjs",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/tools/cdp.mjs",
+        "line": 16,
+        "text": "const proc = spawn(EDGE, args, { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

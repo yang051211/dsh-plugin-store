@@ -1,0 +1,100 @@
+{
+  "name": "dsh-sync-webdav",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:08:25.168Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 235,
+        "text": "res = await fetch(BASE + path, {"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "index.js",
+        "line": 48,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "index.js",
+        "line": 1893,
+        "text": "*  不会自动跟随（curl -L / git / pnpm 都会，所以安装照常，只有 API 层会静默失败）。"
+      },
+      {
+        "file": "tools-selftest.mjs",
+        "line": 8,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 44,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 518,
+        "text": "const buf = redactBackupBytes(rel, readFileSync(join(root, rel)))"
+      },
+      {
+        "file": "index.js",
+        "line": 526,
+        "text": "try { buf = readFileSync(abs) } catch (e) { continue }"
+      },
+      {
+        "file": "index.js",
+        "line": 534,
+        "text": "try { buf = readFileSync(abs) } catch (e) { continue }"
+      },
+      {
+        "file": "index.js",
+        "line": 616,
+        "text": "mkdirSync(dirname(abs), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 3099,
+        "text": "child = spawn(opt.cmd, opt.args, {"
+      },
+      {
+        "file": "tools-selftest.mjs",
+        "line": 520,
+        "text": "check('源码中不得出现同步 spawnSync(', !/spawnSync\\s*\\(/.test(src))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-claude-memory",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:51.800Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/paths.js",
+        "line": 15,
+        "text": "import { existsSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "src/paths.js",
+        "line": 16,
+        "text": "import { readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "src/store.js",
+        "line": 11,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "src/store.js",
+        "line": 42,
+        "text": "return { text: readFileSync(real, 'utf8'), mtimeMs: stat.mtimeMs, size: stat.size }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 5,
+        "text": "# `inject: ['systemPrompt', 'tools']`, so no `inject` key is set here (setting"
+      },
+      {
+        "file": "src/index.js",
+        "line": 47,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 262,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

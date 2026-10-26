@@ -1,0 +1,126 @@
+{
+  "name": "dsh-alpha",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:09.675Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 7,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 8,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "src/lib/gateway-hub.js",
+        "line": 15,
+        "text": "const http = require(\"node:http\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 13,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(packageRoot, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 48,
+        "text": "try { text = fs.readFileSync(file, \"utf8\"); } catch { return; }"
+      },
+      {
+        "file": "scripts/alpha-worker-doctor.mjs",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "scripts/install-alpha-profile.mjs",
+        "line": 5,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/introspect-tools.mjs",
+        "line": 19,
+        "text": "export const inject = [\"agents\", \"agentPresets\", \"agentDefaultModel\", \"tools\", \"subagents\", \"alphaCatalog\", \"appExit\"];"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 9,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"alphaCatalog\", \"alphaEngine\", \"alphaApprovals\", \"alphaWorkspaces\"];"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 140,
+        "text": "ctx.tools.register(defineAlphaTool({"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 154,
+        "text": "ctx.tools.register(defineAlphaTool({"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 173,
+        "text": "ctx.tools.register(defineAlphaTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 9,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 69,
+        "text": "const result = spawnSync(\"/usr/bin/open\", [webUrl], { stdio: \"inherit\" });"
+      },
+      {
+        "file": "scripts/alpha-cli.mjs",
+        "line": 83,
+        "text": "const child = spawn(\"dsh\", [\"--profile\", \"alpha\", task], { stdio: \"inherit\", env: process.env });"
+      },
+      {
+        "file": "src/adapters/vendor/runtimes/claude-code-headless-runtime.js",
+        "line": 1,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      },
+      {
+        "file": "src/adapters/vendor/runtimes/codex-app-server-client.js",
+        "line": 1,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

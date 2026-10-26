@@ -1,0 +1,110 @@
+{
+  "name": "dsh-dragview",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:15.108Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 171,
+        "text": "const response = await fetch(RESOLVE_ROUTE, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 227,
+        "text": "const response = await fetch(OPEN_ROUTE, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 319,
+        "text": "        const response = await fetch(`${TEXT_PREVIEW_ROUTE}?id=${encodeURIComponent(item.id)}&sessionId=${encodeURIComponent(item.sessionId)}`, { signal: contro"
+      },
+      {
+        "file": "src/client.js",
+        "line": 342,
+        "text": "const probe = await fetch(src, { method: \"HEAD\", signal: controller.signal });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 801,
+        "text": "fetch(\"/file-drop/settings\").then((response) => response.json()).then((result) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 2,
+        "text": "import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 84,
+        "text": "const body = readFileSync(clientBundle, 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 96,
+        "text": "writeFileSync(resolve(project, 'src/client.js'), output, 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 98,
+        "text": "rmSync(temp, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/test-package-smoke.mjs",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-package-smoke.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-package-smoke.mjs",
+        "line": 18,
+        "text": "const result = spawnSync(process.execPath, [npmExecPath, ...args], {"
+      },
+      {
+        "file": "src/file-access.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "src/file-access.js",
+        "line": 353,
+        "text": "const child = spawn(spec.command, [...spec.args], spec.options);"
+      },
+      {
+        "file": "src/file-access.ts",
+        "line": 3,
+        "text": "import { spawn, type SpawnOptions } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

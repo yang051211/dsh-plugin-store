@@ -1,0 +1,71 @@
+{
+  "name": "dsh-agent-outputs-reader",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:12.188Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 24,
+        "text": "const getJSON = (url) => fetch(url, { cache: 'no-store' }).then((res) => res.json())"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 226,
+        "text": "fetch(API + '/beacon?msg=' + encodeURIComponent(String(msg).slice(0, 400)), { keepalive: true }).catch(() => {})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "appendFileSync(beaconFile, new Date().toISOString() + ' ' + clean + '\\n')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 383,
+        "text": "const buf = readFileSync(loc.abs)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 414,
+        "text": "const content = readFileSync(loc.abs, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "const body = readFileSync(loc.abs)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "dsh-deep-research",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:25.185Z",
+  "icon": "dsh-deep-research.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 390,
+        "text": "response = await fetch(`${API}${path}`, { ...init, headers, signal: controller.signal });"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 4,
+        "text": "* 客户端半用**文档相对路径** `fetch('api/dsh-deep-research/...')` 调这里"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 271,
+        "text": "service.fetch({ url }, callSignal),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 20,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 142,
+        "text": "text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 151,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 162,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify(state, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 171,
+        "text": "fs.rmSync(tmp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "const disposers = definitions.map((definition) => toolCtx.tools.register(definition));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 8,
+        "text": "* 由 `ctx.tools.register()` 直接接收；失败一律返回 `{ok:false,code,message}` 信封。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 319,
+        "text": "* @returns {Array<object>} 可直接交给 `ctx.tools.register()` 的定义"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

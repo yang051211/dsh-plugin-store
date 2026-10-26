@@ -1,0 +1,131 @@
+{
+  "name": "dsh-omc-tui",
+  "version": "0.2.17",
+  "scannedAt": "2026-10-26T10:08:22.805Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser-lease.js",
+        "line": 107,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: AbortSignal.timeout(500) })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 4551,
+        "text": "const res = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser-lease.js",
+        "line": 2,
+        "text": "import { access, mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 78,
+        "text": "marker = JSON.parse(await readFile(managedBrowserMarkerPath(dataDir), 'utf8'))"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 95,
+        "text": "await mkdir(dataDir, { recursive: true })"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 96,
+        "text": "await writeFile(managedBrowserMarkerPath(dataDir), JSON.stringify({ pid, port }), 'utf8')"
+      },
+      {
+        "file": "src/core/danger-guard.js",
+        "line": 11,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 88,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "src/core/danger-guard.js",
+        "line": 1342,
+        "text": "* Prefers the synchronous monotonic `ctx.tools.guard()`; falls back to a"
+      },
+      {
+        "file": "src/core/danger-guard.js",
+        "line": 1370,
+        "text": "if (typeof ctx.tools?.guard === 'function') {"
+      },
+      {
+        "file": "src/core/danger-guard.js",
+        "line": 1372,
+        "text": "return ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 58,
+        "text": "export const inject = ['agentDefaultModel', 'agentPresets', 'agents', 'permissionPresets', 'commands', 'sessionQuery', 'settings', 'systemPrompt', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 100,
+        "text": "const { spawn } = require('node:child_process');"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 103,
+        "text": "            const child = spawn(npx, ['-y', 'chrome-devtools-mcp@1.7.0', '--browser-url=http://127.0.0.1:9222', '--no-performance-crux', '--no-usage-statistics'"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 1,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 89,
+        "text": "const result = spawnSync('ps', ['-p', String(marker.pid), '-o', 'command='], { encoding: 'utf8' })"
+      },
+      {
+        "file": "src/browser-lease.js",
+        "line": 101,
+        "text": "const activation = spawn('osascript', ['-e', 'tell application id \"com.google.Chrome\" to activate'], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "commands",
+    "permissionPresets",
+    "sessionQuery",
+    "settings",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

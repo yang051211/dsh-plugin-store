@@ -1,0 +1,98 @@
+{
+  "name": "dsh-file-extras",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:00.835Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 904,
+        "text": "const response = await fetch(url, { method: 'POST', body: file, credentials: 'same-origin' })"
+      },
+      {
+        "file": "scripts/dom-probe.mjs",
+        "line": 1173,
+        "text": "const socket = new WebSocket(webSocketDebuggerUrl)"
+      },
+      {
+        "file": "scripts/dom-probe.mjs",
+        "line": 1220,
+        "text": "const list = await fetch(`http://127.0.0.1:${PORT}/json/list`).then((response) => response.json())"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "import { createReadStream, createWriteStream } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 48,
+        "text": "import { lstat, readdir, realpath, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 670,
+        "text": "await rm(entry, { recursive: true, force: false })"
+      },
+      {
+        "file": "index.js",
+        "line": 786,
+        "text": "await rm(temporary, { force: true }).catch(() => undefined)"
+      },
+      {
+        "file": "lib/commands-md.js",
+        "line": 17,
+        "text": "import { readdirSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/trash.js",
+        "line": 33,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/trash.js",
+        "line": 173,
+        "text": "child = spawn(windowsPowerShellPath(), ["
+      },
+      {
+        "file": "scripts/dom-probe.mjs",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/dom-probe.mjs",
+        "line": 1208,
+        "text": "const child = spawn(browser, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

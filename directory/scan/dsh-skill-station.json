@@ -1,0 +1,64 @@
+{
+  "name": "dsh-skill-station",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:57.636Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 40,
+        "text": "const resp = await fetch(`/skill-station/api${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 6,
+        "text": "import { readFile, readdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 170,
+        "text": "const text = await readFile(skill.path, 'utf8');"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 171,
+        "text": "await writeFile(skill.path, setFlag(text, flag.key, flag.value), 'utf8');"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 175,
+        "text": "const text = await readFile(skillFile, 'utf8');"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 176,
+        "text": "await writeFile(skillFile, setFlag(text, flag.key, flag.value), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

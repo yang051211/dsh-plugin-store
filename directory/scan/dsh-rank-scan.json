@@ -1,0 +1,104 @@
+{
+  "name": "dsh-rank-scan",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:26.500Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 24,
+        "text": "const jget = (p) => fetch(API + p, { headers: { Accept: 'application/json' } }).then(readResponse)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 30,
+        "text": "fetch(API + '/overview', { headers: { Accept: 'application/json' }, signal: controller.signal }).then(readResponse),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 39,
+        "text": "const jpost = (p, body) => fetch(API + p, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3403,
+        "text": "const r = await fetch('http://' + host + market.endpoints.updates + '?name=' + encodeURIComponent(own.name), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3420,
+        "text": "const r = await fetch('http://' + host + market.endpoints.updateOperation + '?operationId=' + encodeURIComponent(opId), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "writeFileSync(tmp, JSON.stringify(value, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 846,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4157,
+        "text": "const child = spawn(cmd, [dir], { detached: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,88 @@
+{
+  "name": "dsh-global-task-list",
+  "version": "0.2.12",
+  "scannedAt": "2026-10-26T10:08:28.422Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1072,
+        "text": "const res = await fetch(\"/task-ui/tasks\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1079,
+        "text": "const res = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "const version = JSON.parse(readFileSync(fileURLToPath(new URL(\"../package.json\", import.meta.url)), \"utf8\")).version;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 270,
+        "text": "const body = readFileSync(src, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 274,
+        "text": "writeFileSync(dest, stamped);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 701,
+        "text": "if (ctx.tools.get(\"task_add\", assembly.scope) === void 0) return \"\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 718,
+        "text": "acquireTolerantly(ctx, `the ${definition.name} tool`, () => ctx.tools.register(delivered));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build:host && npm run build:client"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

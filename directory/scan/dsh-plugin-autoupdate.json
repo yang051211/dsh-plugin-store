@@ -1,0 +1,108 @@
+{
+  "name": "dsh-plugin-autoupdate",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:07:55.842Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 336,
+        "text": "const response = await fetch(ROUTE + path, init);"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 69,
+        "text": "const response = await fetch(ROUTE + path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.js",
+        "line": 10,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 20,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 40,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 117,
+        "text": "try { rmSync(path.join(profileDir, name), { recursive: true, force: true }) } catch {}"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 13,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/outdated.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/outdated.js",
+        "line": 43,
+        "text": "? spawn(buildWindowsCommand(cli, args), { cwd, shell: true, windowsHide: true })"
+      },
+      {
+        "file": "lib/outdated.js",
+        "line": 44,
+        "text": ": spawn(cli, args, { cwd, windowsHide: true })"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 67,
+        "text": "\"import { spawn } from 'node:child_process'\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

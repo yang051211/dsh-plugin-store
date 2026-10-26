@@ -1,0 +1,88 @@
+{
+  "name": "dsh-code-rag-index-panel",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-26T10:08:18.446Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "return await fetch(url, Object.assign({}, opts, ctrl ? { signal: ctrl.signal } : {}))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "const res = await fetch(url, { ...opts, signal: ctrl.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "if (existsSync(PRESET_FILE)) text = readFileSync(PRESET_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 249,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "writeFileSync(tmp, JSON.stringify(merged, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 272,
+        "text": "execFile(process.execPath, args, { cwd: repoDir, timeout: 60000, maxBuffer: 64 * 1024, windowsHide: true }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.zh.md",
+      "line": 28,
+      "text": "**推荐**：在 code-rag 仓库根目录运行 `npm run setup`（scripts/setup.mjs）——"
+    }
+  ],
+  "skippedEntries": []
+}

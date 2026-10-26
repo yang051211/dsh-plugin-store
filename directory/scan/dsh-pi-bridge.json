@@ -1,0 +1,123 @@
+{
+  "name": "dsh-pi-bridge",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:24.175Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/resolve.js",
+        "line": 209,
+        "text": "const res = await fetch(url)"
+      },
+      {
+        "file": "src/resolve.js",
+        "line": 215,
+        "text": "const res = await fetch(url)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "extensions/index.js",
+        "line": 25,
+        "text": "const { readFile } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "extensions/index.js",
+        "line": 26,
+        "text": "return JSON.parse(await readFile(REGISTRY, \"utf8\"));"
+      },
+      {
+        "file": "extensions/index.js",
+        "line": 33,
+        "text": "const { mkdir, writeFile } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "extensions/index.js",
+        "line": 34,
+        "text": "await mkdir(CACHE_ROOT, { recursive: true });"
+      },
+      {
+        "file": "extensions/index.js",
+        "line": 35,
+        "text": "await writeFile(REGISTRY, JSON.stringify(state, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 143,
+        "text": "ctx.tools.register(tool({"
+      },
+      {
+        "file": "index.js",
+        "line": 155,
+        "text": "ctx.tools.register(tool({"
+      },
+      {
+        "file": "index.js",
+        "line": 163,
+        "text": "ctx.tools.register(tool({"
+      },
+      {
+        "file": "index.js",
+        "line": 178,
+        "text": "ctx.tools.register(tool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-all.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from \"node:child_process\""
+      },
+      {
+        "file": "scripts/run-all.mjs",
+        "line": 31,
+        "text": "const r = spawnSync(process.execPath, args.map(a => path.join(ROOT, a)), { stdio: [\"ignore\", \"inherit\", \"inherit\"], cwd: ROOT })"
+      },
+      {
+        "file": "src/load.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/load.js",
+        "line": 207,
+        "text": "const child = spawn(isWin ? 'npm' : 'npm', args, { cwd: mirror, stdio: 'ignore', shell: isWin })"
+      },
+      {
+        "file": "src/resolve.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

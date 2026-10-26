@@ -1,0 +1,134 @@
+{
+  "name": "dsh-plugin-oss-backup",
+  "version": "0.24.0",
+  "scannedAt": "2026-10-26T10:08:06.004Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 251,
+        "text": "const response = await fetch(STATE_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 269,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 617,
+        "text": "const response = await fetch(STATE_PATH, {"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 652,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credential-store.js",
+        "line": 21,
+        "text": "import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 77,
+        "text": "await rm(file, { force: true });"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 85,
+        "text": "raw = await readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 114,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 115,
+        "text": "await writeFile(file, JSON.stringify({ v: 1, kind: 'dpapi', data: cipher }), {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/context.ts",
+        "line": 51,
+        "text": "/** 工具注册表——`inject = ['tools']` 保证其存在。 */"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 79,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 304,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credential-store.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 32,
+        "text": "const child = execFile(command, [...args], { windowsHide: true, maxBuffer: 4 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/env-source.js",
+        "line": 23,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/env-source.js",
+        "line": 28,
+        "text": "const child = execFile(command, [...args], { windowsHide: true, maxBuffer: 4 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "src/credential-store.ts",
+        "line": 21,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

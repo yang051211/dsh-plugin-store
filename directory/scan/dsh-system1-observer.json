@@ -1,0 +1,96 @@
+{
+  "name": "dsh-system1-observer",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:08:16.194Z",
+  "icon": "dsh-system1-observer.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/ask.mjs",
+        "line": 139,
+        "text": "const response = await fetch(url)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/battery-tool.js",
+        "line": 27,
+        "text": "import { existsSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "core/battery-tool.js",
+        "line": 249,
+        "text": "writeFileSync(batteryPath, JSON.stringify({"
+      },
+      {
+        "file": "core/battery.js",
+        "line": 28,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "core/battery.js",
+        "line": 125,
+        "text": "text = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "core/citations.js",
+        "line": 13,
+        "text": "import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/seams.js",
+        "line": 48,
+        "text": "* `ctx.tools.guard` is NOT among the nine and cannot be: it is synchronous, so it can never await an HTTP request,"
+      },
+      {
+        "file": "core/tool.js",
+        "line": 41,
+        "text": "* @returns a plain `ToolDefinition`, ready for `ctx.tools.register`"
+      },
+      {
+        "file": "dsh/host-events.js",
+        "line": 18,
+        "text": "* `ctx.tools.guard` is deliberately absent and cannot be added: it is synchronous, so it can never await an HTTP"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 613,
+        "text": "const register = (definition) => tools.register(asToolDefinition(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/session-index.mjs",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/session-index.mjs",
+        "line": 15,
+        "text": "const result = spawnSync(process.execPath, [cli, ...process.argv.slice(2)], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,94 @@
+{
+  "name": "toolfolk-for-dsh",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:11.500Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 42,
+        "text": "l}),a=this.mimeType,l=this.responseType;fetch(o).then(c=>{if(c.status===200||c.status===0){if(c.status===0&&console.warn(\"THREE.FileLoader: HTTP Status 0 receiv"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.mjs",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, renameSync, mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 117,
+        "text": "return JSON.parse(readFileSync(new URL('./shared/tool-package-map.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 235,
+        "text": "if (readFileSync(path, 'utf8') === text) return"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 239,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 241,
+        "text": "writeFileSync(temp, text, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.mjs",
+        "line": 50,
+        "text": "// tools：监听 tools/* 扩展点 + ctx.tools.schemas() 取工具名册。"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 51,
+        "text": "// 不声明 inject 就访问 ctx.tools 会得到 `cannot get property \"tools\" without inject`（已实测）。"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 52,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 322,
+        "text": "const schemas = typeof ctx.tools.schemas === 'function' ? ctx.tools.schemas() : []"
+      },
+      {
+        "file": "src/shared/studio-bridge-core.mjs",
+        "line": 55,
+        "text": "* 官方 `ctx.tools.schemas()` 返回 `{ name, description, parameters }`，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

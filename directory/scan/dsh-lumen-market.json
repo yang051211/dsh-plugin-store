@@ -1,0 +1,66 @@
+{
+  "name": "dsh-lumen-market",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:08:21.587Z",
+  "icon": "dsh-lumen-market.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 38,
+        "text": "          const response=await window.fetch(API+path,{method:body?'POST':'GET',headers:{'x-dsh-lumen-market':'1','content-type':'application/json'},body:body?JS"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/profile.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/profile.js",
+        "line": 6,
+        "text": "function read(path){try{return JSON.parse(readFileSync(path,'utf8'))}catch{return null}}"
+      },
+      {
+        "file": "lib/host/snapshots.js",
+        "line": 1,
+        "text": "import {mkdirSync,readFileSync,writeFileSync,renameSync,statSync} from 'node:fs'"
+      },
+      {
+        "file": "lib/host/snapshots.js",
+        "line": 16,
+        "text": "const data=JSON.parse(readFileSync(path,'utf8'))"
+      },
+      {
+        "file": "lib/host/snapshots.js",
+        "line": 41,
+        "text": "mkdirSync(folder,{recursive:true})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

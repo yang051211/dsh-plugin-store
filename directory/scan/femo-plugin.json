@@ -1,0 +1,150 @@
+{
+  "name": "femo-plugin",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:08:08.700Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "femo2host/host/actor-core.mjs",
+        "line": 25,
+        "text": "const resp = await fetch(`${hubBaseUrl(femoRoot)}${path}`, { signal: ctl.signal });"
+      },
+      {
+        "file": "femo2host/host/actor-core.mjs",
+        "line": 37,
+        "text": "const resp = await fetch(`${hubBaseUrl(femoRoot)}${path}`, {"
+      },
+      {
+        "file": "femo2host/host/cast-core.mjs",
+        "line": 29,
+        "text": "const resp = await fetch(`${hubBaseUrl(femoRoot)}${path}`, { signal: ctl.signal });"
+      },
+      {
+        "file": "femo2host/host/cast-core.mjs",
+        "line": 41,
+        "text": "const resp = await fetch(`${hubBaseUrl(femoRoot)}${path}`, {"
+      },
+      {
+        "file": "femo2host/host/daemon-client.mjs",
+        "line": 43,
+        "text": "import { request as httpRequest } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "femo2host/femoGenConnector/femogen-canvas-state.mjs",
+        "line": 32,
+        "text": "const { readFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "femo2host/femoGenConnector/femogen-canvas-state.mjs",
+        "line": 34,
+        "text": "const raw = await readFile(slotPath(femoRoot), 'utf8')"
+      },
+      {
+        "file": "femo2host/femoGenConnector/femogen-canvas-state.mjs",
+        "line": 49,
+        "text": "const { mkdir, rename, writeFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "femo2host/femoGenConnector/femogen-canvas-state.mjs",
+        "line": 51,
+        "text": "await mkdir(dataRootOf(femoRoot), { recursive: true })"
+      },
+      {
+        "file": "femo2host/femoGenConnector/femogen-canvas-state.mjs",
+        "line": 54,
+        "text": "await writeFile(tmp, JSON.stringify({ version: 1, path: normalized }, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hostAdapter/dshAdapter/host/index.ts",
+        "line": 111,
+        "text": "export const inject = ['agents', 'sessions', 'agentDefaultModel', 'tools', 'webServer']"
+      },
+      {
+        "file": "hostAdapter/dshAdapter/host/tools.ts",
+        "line": 147,
+        "text": "const dispose = tools.register({"
+      },
+      {
+        "file": "hostAdapter/dshAdapter/lib/main.js",
+        "line": 9636,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "hostAdapter/dshAdapter/lib/main.js",
+        "line": 9643,
+        "text": "const dispose = tools.register({"
+      },
+      {
+        "file": "hostAdapter/dshAdapter/lib/main.js",
+        "line": 10146,
+        "text": "var inject = [\"agents\", \"sessions\", \"agentDefaultModel\", \"tools\", \"webServer\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "femo2host/femoGenConnector/file-dialogs.mjs",
+        "line": 32,
+        "text": "* exit -1 = spawn('powershell.exe') ENOENT——mac 没有 powershell，Windows 路不通）："
+      },
+      {
+        "file": "femo2host/femoGenConnector/file-dialogs.mjs",
+        "line": 60,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "femo2host/femoGenConnector/file-dialogs.mjs",
+        "line": 78,
+        "text": "const child = spawn('/usr/bin/osascript', ['-'], { env, detached: true, windowsHide: true, stdio: ['pipe', 'ignore', 'pipe'] })"
+      },
+      {
+        "file": "femo2host/femoGenConnector/file-dialogs.mjs",
+        "line": 184,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "femo2host/femoGenConnector/file-dialogs.mjs",
+        "line": 223,
+        "text": "const child = spawn('powershell.exe', ['-NoProfile', '-STA', '-ExecutionPolicy', 'Bypass', '-Command', ps], { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "femoGen/src/themes.js",
+    "hostAdapter/dshAdapter/lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 163,
+      "text": "rofile 的 `node_modules`（或 junction 过去），`pip install requests`，在 `cordis.patch.yml` 注册 `femo-plugin`，重启 dsh web 即可。注意：插件根目录应注册在 `hostAdapter/dshAdapter` 文件夹下，它会自"
+    },
+    {
+      "file": "README.md",
+      "line": 568,
+      "text": "der into the profile's `node_modules`, `pip install requests`, register `femo-plugin` in `cordis.patch.yml`, restart dsh web. Note: the plugin root to register "
+    }
+  ],
+  "skippedEntries": []
+}

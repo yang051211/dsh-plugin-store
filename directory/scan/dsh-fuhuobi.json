@@ -1,0 +1,121 @@
+{
+  "name": "dsh-fuhuobi",
+  "version": "0.3.13",
+  "scannedAt": "2026-10-26T10:07:53.298Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "const r = await fetch(base, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 90,
+        "text": "const r = await fetch(base + (q.toString() ? '?' + q.toString() : ''))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 152,
+        "text": "const r = await fetch('/fuhuobi/api/icon', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 169,
+        "text": "const r = await fetch('/fuhuobi/api/icon', { method: 'DELETE' }).then((x) => x.json()).catch(() => null)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 419,
+        "text": "try { fetch('/fuhuobi/api/booted', { method: 'POST' }).catch(() => {}) } catch { /* best effort */ }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/boot-guard.sh",
+        "line": 86,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "scripts/boot-guard.sh",
+        "line": 88,
+        "text": "try { m = JSON.parse(fs.readFileSync(process.env.DSH_LAUNCH_JSON, 'utf8')); }"
+      },
+      {
+        "file": "scripts/smoke-test.js",
+        "line": 3,
+        "text": "import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/smoke-test.js",
+        "line": 31,
+        "text": "mkdirSync(web, { recursive: true })"
+      },
+      {
+        "file": "scripts/smoke-test.js",
+        "line": 33,
+        "text": "writeFileSync(join(web, 'package.json'), originalPkg)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 422,
+        "text": "tctx.effect(() => tctx.tools.register(tool), 'fuhuobi: tool ' + tool.name)"
+      },
+      {
+        "file": "src/layout.js",
+        "line": 59,
+        "text": "* dsh-mcp-client instances, so it must be snapshotted/restored too or a bad"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/boot-guard.sh",
+        "line": 99,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "scripts/boot-guard.sh",
+        "line": 102,
+        "text": "const child = cp.spawn(file, args, { cwd: cwd, detached: true, stdio: ['ignore', so, se] });"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 9,
+        "text": "import { spawnSync, execSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 290,
+        "text": "? spawnSync('cmd.exe', ['/d', '/s', '/c', 'pnpm --version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 291,
+        "text": ": spawnSync('pnpm', ['--version'], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

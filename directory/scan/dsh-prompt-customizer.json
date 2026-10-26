@@ -1,0 +1,126 @@
+{
+  "name": "dsh-prompt-customizer",
+  "version": "0.9.2",
+  "scannedAt": "2026-10-26T10:08:22.624Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 3331,
+        "text": "fetch(CONFIG_URL + `?t=${Date.now()}`).then((r) => r.json()).then((body) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 3343,
+        "text": "const grab = (phase2) => fetch(PREVIEW_URL + params(phase2)).then((r) => r.json()).then((body) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 3350,
+        "text": "return Promise.all([...VIEW_KEYS.map(grab), fetch(INVENTORY_URL + qs).then((r) => r.json()).then((body) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 3380,
+        "text": "fetch(PREVIEW_URL + scopeQs, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 3401,
+        "text": "    fetch(AGENT_PRESETS_URL + `?t=${Date.now()}`).then((r) => r.json()).then((body) => setAgentPresets(Array.isArray(body?.presets) ? body.presets : [])).catch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 24,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "build.mjs",
+        "line": 159,
+        "text": "// js-yaml is inlined (see above) and is CJS: it calls bare `require('fs')`."
+      },
+      {
+        "file": "build.mjs",
+        "line": 187,
+        "text": "const source = readFileSync(outfile, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7363,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7462,
+        "text": "raw = await readFile(join(root, dir, SKILL_FILE), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9978,
+        "text": "schemas = ctx.tools.schemas(scope) ?? [];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10067,
+        "text": "schemas = ctx.tools.schemas(scope) ?? [];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10089,
+        "text": "schemas = ctx.tools.schemas(scope) ?? [];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13575,
+        "text": "var MCP_CLIENT_NAME = \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13929,
+        "text": "var MCP_CLIENT_MODULE = \"@deepseek-ai/dsh-mcp-client\";"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-rc2-runtime.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-rc2-runtime.mjs",
+        "line": 29,
+        "text": "const dump = spawnSync(process.execPath, [bin, 'headless', '--dump-default-config'], { env, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/test-rc2-runtime.mjs",
+        "line": 36,
+        "text": "const run = spawnSync(process.execPath, [bin, 'headless', '--patch', overlay], { env, encoding: 'utf8', timeout: 45000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

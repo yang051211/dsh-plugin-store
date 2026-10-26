@@ -1,0 +1,80 @@
+{
+  "name": "dsh-plugin-repopanel",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:08.290Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 335,
+        "text": "const res = await fetch(path, options)"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 326,
+        "text": "const res = await fetch(path, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/auth.js",
+        "line": 17,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/auth.js",
+        "line": 115,
+        "text": "raw = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/host/auth.js",
+        "line": 157,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/host/auth.js",
+        "line": 164,
+        "text": "await writeFile(tmp, content, { encoding: 'utf8', mode: SECRET_MODE })"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 19,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/remote.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/remote.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

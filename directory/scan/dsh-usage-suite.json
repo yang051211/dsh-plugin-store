@@ -1,0 +1,71 @@
+{
+  "name": "dsh-usage-suite",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:08:05.628Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 169,
+        "text": "const response = await fetch(url, { headers: { Accept: 'application/json' }, cache: 'no-store' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 258,
+        "text": "const response = await fetch(holidayUrl(settings.holidaysApi, year), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "return parseHolidayCache(fs.readFileSync(holidaysCacheFile, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "fs.mkdirSync(path.dirname(holidaysCacheFile), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "fs.writeFileSync(temporary, JSON.stringify(cache, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/log-scan.js",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

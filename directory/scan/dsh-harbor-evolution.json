@@ -1,0 +1,129 @@
+{
+  "name": "dsh-harbor-evolution",
+  "version": "0.10.4",
+  "scannedAt": "2026-10-26T10:08:25.562Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2815,
+        "text": "response = await fetch(url, options);"
+      },
+      {
+        "file": "lib/model-runtime.js",
+        "line": 3,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "skills/evolve-agent-with-harbor/evals/evals.json",
+        "line": 30,
+        "text": "   \"prompt\": \"评测集在 ./evals，生成器调用这个 curl：curl -X POST http://127.0.0.1:9000/run -H 'Authorization: Bearer secret' -d '{\\\"input\\\":\\\"hi\\\"}'。评测器在 ./judge.py，优化交给 co"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "const packageJson = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/action-drafts.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "lib/action-drafts.js",
+        "line": 3,
+        "text": "import { lstat, mkdir, open, readdir, readFile, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/action-drafts.js",
+        "line": 34,
+        "text": "if (create) await mkdir(current, { mode: 0o700 }).catch(e => { if (e.code !== 'EEXIST') throw e })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'skills', 'llm', 'agentDefaultModel', 'sessions']"
+      },
+      {
+        "file": "index.js",
+        "line": 171,
+        "text": "ctx.tools.register(mutatingJsonTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 181,
+        "text": "ctx.tools.register(jsonTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 187,
+        "text": "ctx.tools.register(mutatingJsonTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 210,
+        "text": "ctx.tools.register(jsonTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bounded-process.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/bounded-process.js",
+        "line": 76,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 31,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "sessions",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

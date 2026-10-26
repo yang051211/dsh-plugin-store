@@ -1,0 +1,92 @@
+{
+  "name": "dsh-pet-statuslight",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:08:22.915Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 41,
+        "text": "const response = await fetch('/statuslight/api/state?since=0', { cache: 'no-store' })"
+      },
+      {
+        "file": "client/desktop.js",
+        "line": 71,
+        "text": "return fetch('/statuslight/api/' + path).then((r) => r.json()).catch(() => null)"
+      },
+      {
+        "file": "client/desktop.js",
+        "line": 297,
+        "text": "if (typeof fetch === 'function') fetch('/statuslight/api/view?' + q).catch(() => {})"
+      },
+      {
+        "file": "client/web.js",
+        "line": 67,
+        "text": "return fetch('/statuslight/api/' + path).then((r) => r.json()).catch(() => null)"
+      },
+      {
+        "file": "client/web.js",
+        "line": 243,
+        "text": "if (typeof fetch === 'function') fetch('/statuslight/api/view?' + q).catch(() => {})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { promises as nfs } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "const b = await nfs.readFile(p)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "async readText(p) { return nfs.readFile(p, 'utf8') },"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "async writeText(p, text) { return nfs.writeFile(p, text, 'utf8') }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 318,
+        "text": "try { await nfs.mkdir(dir, { recursive: true }) } catch (e) {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 722,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

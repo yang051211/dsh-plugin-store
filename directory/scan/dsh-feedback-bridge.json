@@ -1,0 +1,97 @@
+{
+  "name": "dsh-feedback-bridge",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:08:13.045Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1833,
+        "text": "fetch(statusUrl()).then((response) => response.ok ? response.json() : Promise.reject(new Error(\"status \" + response.status))).then((data) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2396,
+        "text": "fetch(statusUrl()).then((response) => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response.status}`))).then((data) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 532,
+        "text": "fetchImpl: (url, init) => fetch(url, init),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 873,
+        "text": "const fetchImpl = (url, init) => fetch(url, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 890,
+        "text": "fetchImpl: (url, init) => fetch(url, init),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/draft-store.js",
+        "line": 4,
+        "text": "import { chmod, mkdir, open, readFile, rename, stat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/draft-store.js",
+        "line": 295,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/draft-store.js",
+        "line": 303,
+        "text": "await fd.writeFile(serialized, 'utf8');"
+      },
+      {
+        "file": "lib/draft-store.js",
+        "line": 315,
+        "text": "await unlink(tmp).catch(() => { });"
+      },
+      {
+        "file": "lib/draft-store.js",
+        "line": 344,
+        "text": "content = await readFile(filePath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gh-cli.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gh-cli.js",
+        "line": 98,
+        "text": "export function createGhRun(spawnFn = (command, args, options) => spawn(command, args, options), timeoutMs = DEFAULT_GH_TIMEOUT_MS) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

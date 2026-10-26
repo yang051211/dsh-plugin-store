@@ -1,0 +1,116 @@
+{
+  "name": "dsh-audiobook",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:08:24.265Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-audiobook.js",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 74,
+        "text": "const res = await fetch(origin + asset.path, { redirect: 'follow' })"
+      },
+      {
+        "file": "lib/custom.js",
+        "line": 92,
+        "text": "    const res = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(10000), headers: { accept: 'application/atom+xml, application/xml;q=0.9, */*;"
+      },
+      {
+        "file": "lib/custom.js",
+        "line": 115,
+        "text": "const res = await fetch(u, { redirect: 'follow', signal: AbortSignal.timeout(300000) })"
+      },
+      {
+        "file": "lib/edge.js",
+        "line": 79,
+        "text": "const res = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(180000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/asr-worker.js",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/asr-worker.js",
+        "line": 80,
+        "text": "emit({ id: req.id, text: transcribe(readWav(readFileSync(req.file))) })"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 10,
+        "text": "import { createReadStream, createWriteStream, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 11,
+        "text": "import { mkdir, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 68,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/tools.js",
+        "line": 303,
+        "text": "return defs.map(def => (deps.effect ? deps.effect(() => tools.register(def)) : tools.register(def)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/asr.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/asr.js",
+        "line": 130,
+        "text": "const c = spawn(process.execPath, [WORKER, JSON.stringify({ models, threads })], {"
+      },
+      {
+        "file": "lib/edge.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/edge.js",
+        "line": 57,
+        "text": "execFile(cmd, args, { timeout, maxBuffer: 8 << 20, env: env ? { ...process.env, ...env } : undefined }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

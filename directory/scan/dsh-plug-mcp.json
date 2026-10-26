@@ -1,0 +1,103 @@
+{
+  "name": "dsh-plug-mcp",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:20.484Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "return fetch(url, { headers: { accept: \"application/json\" } }).then((res) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 201,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 80,
+        "text": "const parsed = JSON.parse(readFileSync(settingsPath(), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 101,
+        "text": "await writeFile(settingsPath(), JSON.stringify(data, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 313,
+        "text": "text = readFileSync(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 696,
+        "text": "\" 追加一行 @deepseek-ai/dsh-mcp-client。DSH 热重载用户 patch 层，通常无需重启；每条 MCP 命令都是沙箱外的受信代码，只安装你信任的服务。\"),"
+      },
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "*   所有 profile）追加 / 移除 `@deepseek-ai/dsh-mcp-client` 行。DSH 对用户"
+      },
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "const MCP_CLIENT_NAME = '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 123,
+        "text": "curlOk = spawnSync('curl', ['--version'], { timeout: 5000 }).status === 0"
+      },
+      {
+        "file": "index.js",
+        "line": 147,
+        "text": "child = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

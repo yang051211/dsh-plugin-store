@@ -1,0 +1,110 @@
+{
+  "name": "harmonyos-dev-mcp-for-dsh",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:14.941Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/prepare.cjs",
+        "line": 10,
+        "text": "const { existsSync } = require('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 6,
+        "text": "# server and dynamically mounts the official @deepseek-ai/dsh-mcp-client"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "//    ctx.tools as `mcp__harmonyos__<tool>` using an embedded, dependency-free"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "//   node builtins and the host services `ctx.tools` / `ctx.systemPrompt`."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 430,
+        "text": "* format, numeric bounds, defaults...) that ctx.tools.register rejects, so we"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/prepare.cjs",
+        "line": 9,
+        "text": "const { spawnSync } = require('node:child_process')"
+      },
+      {
+        "file": "bin/prepare.cjs",
+        "line": 16,
+        "text": "const probe = spawnSync(process.platform === 'win32' ? 'where' : 'which', [cmd], {"
+      },
+      {
+        "file": "bin/prepare.cjs",
+        "line": 29,
+        "text": "const result = spawnSync('uv', ['sync', '--frozen'], {"
+      },
+      {
+        "file": "bin/prepare.cjs",
+        "line": 41,
+        "text": "spawnSync('uv', ['sync'], { cwd: PACKAGE_DIR, stdio: 'inherit', windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node bin/prepare.cjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 104,
+      "text": "4. 系统 `python`（需已 `pip install harmonyos-dev-mcp`）"
+    }
+  ],
+  "skippedEntries": []
+}

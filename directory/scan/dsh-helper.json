@@ -1,0 +1,121 @@
+{
+  "name": "dsh-helper",
+  "version": "0.16.8",
+  "scannedAt": "2026-10-26T10:08:13.954Z",
+  "icon": "dsh-helper.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23493,
+        "text": "const response = await fetch(CONFIG_PATH, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 23498,
+        "text": "const response = await fetch(CONFIG_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 23718,
+        "text": "    fetch(RESTART_STATUS_PATH, { headers: { accept: \"application/json\" } }).then((r) => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))).then((v"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 23736,
+        "text": "const response = await fetch(RESTART_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 23823,
+        "text": "    fetch(CONFIG_PATH, { headers: { accept: \"application/json\" } }).then((response) => response.ok ? response.json() : Promise.reject(new Error(`HTTP ${response"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { mkdir, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "rmSync(from, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "const items = JSON.parse(readFileSync(file, 'utf8'))?.items;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1282,
+        "text": "const dispose = toolCtx.tools.register(definition);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1755,
+        "text": "// tools / systemPrompt 必须通过注入拿到：在 cordis 里直接读 ctx.tools 会得到"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1763,
+        "text": "imCtx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/restart.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/host/restart.js",
+        "line": 204,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "src/host/restart.js",
+        "line": 247,
+        "text": "'    child = spawn(file, args, { cwd, detached, stdio: [\"ignore\", out, err], env: process.env, shell: viaShell, windowsHide: true })',"
+      },
+      {
+        "file": "src/host/restart.js",
+        "line": 298,
+        "text": "const helper = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

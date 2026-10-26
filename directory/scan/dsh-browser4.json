@@ -1,0 +1,127 @@
+{
+  "name": "dsh-browser4",
+  "version": "0.0.1",
+  "scannedAt": "2026-10-26T10:07:53.840Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 77,
+        "text": "run('sh', ['-c', `curl -fsSL ${BOOTSTRAP_SCRIPT_BASE}sh | bash`])"
+      },
+      {
+        "file": "skills/scent-miner/scripts/webminer.ps1",
+        "line": 355,
+        "text": "$release = Invoke-RestMethod -Uri $GITHUB_API_LATEST -ErrorAction Stop"
+      },
+      {
+        "file": "skills/scent-miner/scripts/webminer.ps1",
+        "line": 395,
+        "text": "$meta = Invoke-RestMethod -Uri $OSS_LATEST_JSON -ErrorAction Stop"
+      },
+      {
+        "file": "skills/scent-miner/scripts/webminer.ps1",
+        "line": 486,
+        "text": "Invoke-WebRequest -Uri $url -OutFile $tempJar -UseBasicParsing"
+      },
+      {
+        "file": "skills/scent-miner/scripts/webminer.ps1",
+        "line": 523,
+        "text": "$remoteHash = (Invoke-RestMethod -Uri $sha256Url -ErrorAction SilentlyContinue).Trim()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 20,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 105,
+        "text": "mkdirSync(target.dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 19,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 50,
+        "text": "? spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', cmdline], { stdio: 'inherit', windowsVerbatimArguments: true, ...options })"
+      },
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 51,
+        "text": ": spawnSync('/bin/sh', ['-c', cmdline], { stdio: 'inherit', ...options })"
+      },
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 63,
+        "text": "? spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', cmdline], { stdio: 'pipe', windowsVerbatimArguments: true })"
+      },
+      {
+        "file": "scripts/install-browser4.mjs",
+        "line": 64,
+        "text": ": spawnSync('/bin/sh', ['-c', cmdline], { stdio: 'pipe' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/install-browser4.mjs"
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/install-browser4.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 107,
+      "text": "rocess](skills/browser4-cli/SKILL.md) (`npm install -g browser4-cli` → `browser4-cli install`, falling back to the platform bootstrap script when npm is unavail"
+    },
+    {
+      "file": "README.md",
+      "line": 161,
+      "text": "npm install -g browser4-cli"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 111,
+      "text": "browser4-cli SKILL 的安装流程](skills/browser4-cli/SKILL.md) 安装 `browser4-cli`（`npm install -g browser4-cli` → `browser4-cli install`；npm 不可用时回退到 SKILL.md 中的平台引导脚本）。"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 165,
+      "text": "npm install -g browser4-cli"
+    }
+  ],
+  "skippedEntries": []
+}

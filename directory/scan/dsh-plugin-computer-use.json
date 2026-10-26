@@ -1,0 +1,83 @@
+{
+  "name": "dsh-plugin-computer-use",
+  "version": "2.5.2",
+  "scannedAt": "2026-10-26T10:08:15.880Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 755,
+        "text": "const fs = await import('node:fs')"
+      },
+      {
+        "file": "index.js",
+        "line": 758,
+        "text": "await fs.promises.mkdir(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 759,
+        "text": "await fs.promises.writeFile(target, png)"
+      },
+      {
+        "file": "scripts/wayland.mjs",
+        "line": 2,
+        "text": "import { readFile, mkdir, copyFile, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/wayland.mjs",
+        "line": 25,
+        "text": "const metadata = JSON.parse(await readFile(join(sourceDir, 'metadata.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "export const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "index.js",
+        "line": 1013,
+        "text": "ster = (definition) => ctx.effect(() => ctx.tools.register(defineTool({ ...definition, description: definition.description + platformNote })), 'computer-use: to"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "linux.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "linux.js",
+        "line": 25,
+        "text": "execFile(command, args, { timeout: 4000, maxBuffer: 256 * 1024, windowsHide: true }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

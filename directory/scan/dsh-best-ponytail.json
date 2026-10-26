@@ -1,0 +1,104 @@
+{
+  "name": "dsh-best-ponytail",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:05.222Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "upstream/benchmarks/claude-email.js",
+        "line": 17,
+        "text": "const r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST',"
+      },
+      {
+        "file": "upstream/benchmarks/model-email.js",
+        "line": 17,
+        "text": "const r = await fetch('https://api.openai.com/v1/chat/completions', { method: 'POST',"
+      },
+      {
+        "file": "upstream/benchmarks/robustness-audit.js",
+        "line": 158,
+        "text": "const r = await fetch('https://api.openai.com/v1/chat/completions', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "const text = await readFile(p, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "const text = await readFile(candidate.locator, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "rulesetBody = parseFrontmatter(readFileSync(UPSTREAM_RULESET, 'utf8')).body.trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "upstream/benchmarks/correctness.js",
+        "line": 9,
+        "text": "const { execSync } = require('child_process');"
+      },
+      {
+        "file": "upstream/benchmarks/correctness.js",
+        "line": 43,
+        "text": "execSync(cmd, { timeout: correctnessTimeoutMs(), encoding: 'utf8', stdio: 'pipe', ...opts });"
+      },
+      {
+        "file": "upstream/benchmarks/robustness-audit.js",
+        "line": 6,
+        "text": "const { execSync } = require('child_process');"
+      },
+      {
+        "file": "upstream/benchmarks/robustness-audit.js",
+        "line": 16,
+        "text": "try { execSync(`${cmd} -c \"import sys\"`, { stdio: 'pipe' }); pythonCmd = cmd; return pythonCmd; }"
+      },
+      {
+        "file": "upstream/benchmarks/robustness-audit.js",
+        "line": 150,
+        "text": "try { execSync(`${python()} \"${f}\"`, { timeout: 10000, encoding: 'utf8', stdio: 'pipe' }); return true; }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "skills",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,78 @@
+{
+  "name": "dsh-reverse-image-search",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:54.759Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.js",
+        "line": 29,
+        "text": "const response = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "content: skillBody(readFileSync(new URL('SKILL.md', SKILL_DIR), 'utf8')),"
+      },
+      {
+        "file": "index.js",
+        "line": 57,
+        "text": "const fs = ctx.get ? ctx.get('fs') : ctx.fs"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 10,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 39,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 62,
+        "text": "for (const tool of createImageTools(resolveOutput)) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

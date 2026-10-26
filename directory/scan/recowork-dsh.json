@@ -1,0 +1,111 @@
+{
+  "name": "recowork-dsh",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:59.302Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 79,
+        "text": "fetch('/api/recowork/roots').then((response) => response.json()).then((value) => {"
+      },
+      {
+        "file": "client.js",
+        "line": 112,
+        "text": "const response = await fetch(`/api/recowork/workspaces?${new URLSearchParams({ root: selectedRoot })}`)"
+      },
+      {
+        "file": "client.js",
+        "line": 128,
+        "text": "const response = await fetch(`/api/recowork/import-candidates?${new URLSearchParams({ root: selectedRoot })}`)"
+      },
+      {
+        "file": "client.js",
+        "line": 144,
+        "text": "const response = await fetch(`/api/recowork/status?${new URLSearchParams({ root, destination: selectedDestination })}`)"
+      },
+      {
+        "file": "client.js",
+        "line": 161,
+        "text": "const response = await fetch('/api/recowork/init', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/recowork-service.js",
+        "line": 2,
+        "text": "import { existsSync, lstatSync, readdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/recowork-service.js",
+        "line": 3,
+        "text": "import { realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "src/recowork-service.js",
+        "line": 175,
+        "text": "const content = readFileSync(fullPath, 'utf8')"
+      },
+      {
+        "file": "src/recowork-service.js",
+        "line": 187,
+        "text": "return JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "src/setup.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.js",
+        "line": 4,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer']"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 200,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 210,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 220,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/recowork-service.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

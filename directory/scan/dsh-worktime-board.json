@@ -1,0 +1,80 @@
+{
+  "name": "dsh-worktime-board",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:08:10.178Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 673,
+        "text": "const res = await fetch(`${STATE_URL}?range=${range}${date !== null ? `&date=${date}` : \"\"}`, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFileSync, copyFileSync, mkdirSync, readFileSync, renameSync, writeFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "const raw = readFileSync(coeffFile, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "mkdirSync(dirname(logFile), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "appendFileSync(logFile, `[${new Date().toISOString()}] ${msg}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 165,
+        "text": "const parsed = JSON.parse(readFileSync(dataFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "export const inject = ['webServer', 'tools', 'sessionQuery', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1021,
+        "text": "const disposeTool = ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionQuery",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

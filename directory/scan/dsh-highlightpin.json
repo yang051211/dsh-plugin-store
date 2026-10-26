@@ -1,0 +1,72 @@
+{
+  "name": "dsh-highlightpin",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:49.872Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 155,
+        "text": "const response = await fetch(API + path, body === void 0 ? { headers } : { method: \"POST\", headers, body: JSON.stringify(body) });"
+      },
+      {
+        "file": "src/client/index.jsx",
+        "line": 34,
+        "text": "const response = await fetch(API + path, body === undefined ? { headers } : { method: 'POST', headers, body: JSON.stringify(body) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "eval/deterministic.mjs",
+        "line": 2,
+        "text": "import { writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "eval/deterministic.mjs",
+        "line": 41,
+        "text": "await writeFile(new URL('deterministic-results.json', import.meta.url), JSON.stringify(results, null, 2) + '\\n')"
+      },
+      {
+        "file": "eval/score.mjs",
+        "line": 1,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "eval/score.mjs",
+        "line": 46,
+        "text": "const result = score(JSON.parse(await readFile(process.argv[2], 'utf8')))"
+      },
+      {
+        "file": "eval/score.mjs",
+        "line": 47,
+        "text": "if (process.argv[3]) await writeFile(process.argv[3], JSON.stringify(result, null, 2) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

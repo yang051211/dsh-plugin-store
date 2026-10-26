@@ -1,0 +1,86 @@
+{
+  "name": "dsh-env-profile",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:08:15.238Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/probes.js",
+        "line": 10,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/probes.js",
+        "line": 187,
+        "text": "await fs.writeFile(file, buffer)"
+      },
+      {
+        "file": "lib/probes.js",
+        "line": 193,
+        "text": "await fs.readFile(file)"
+      },
+      {
+        "file": "lib/probes.js",
+        "line": 200,
+        "text": "await fs.rm(file, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "export const inject = ['storageDomain', 'systemPrompt', 'tools', 'sessionProjections', 'llm']"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 13,
+        "text": "const dispose = ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/probes.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/probes.js",
+        "line": 77,
+        "text": "execFile('where.exe', [candidate], { timeout: timeoutMs, windowsHide: true }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/probes.js",
+        "line": 96,
+        "text": "execFile(executable, flags, { timeout: timeoutMs, windowsHide: true }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "sessionProjections",
+    "storageDomain",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,106 @@
+{
+  "name": "dsh-edict",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:08:25.392Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 92,
+        "text": "fetch('/edict/board', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 96,
+        "text": "fetch('/edict/audit?limit=40', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 105,
+        "text": "fetch('/edict/task?id=' + encodeURIComponent(id), { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 179,
+        "text": "fetch('/edict/url', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 571,
+        "text": "fetch('/edict/board',{credentials:'same-origin'}).then(function(r){return r.json()}).then(function(b){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 265,
+        "text": "fs.mkdirSync(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 272,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(value, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 278,
+        "text": "const raw = fs.readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 317,
+        "text": "try { fs.unlinkSync(this.lockFile) } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "*   1. 工具必须声明 output { schema, render }，否则 tools.register() 抛"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 218,
+        "text": "const toolsService = (typeof ctx.get === 'function' ? ctx.get('tools') : undefined) || ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/release.mjs",
+        "line": 30,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 52,
+        "text": "const r = spawnSync(cmd, args, { encoding: 'utf8', ...rest, cwd })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

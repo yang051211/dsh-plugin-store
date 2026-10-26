@@ -1,0 +1,75 @@
+{
+  "name": "dsh-obvious-grid",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:08:09.261Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/notify.js",
+        "line": 88,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import fs from \"node:fs\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 59,
+        "text": "return fs.readFileSync(new URL(\"./page.html\", import.meta.url), \"utf8\")"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 19,
+        "text": "import fs from \"node:fs\""
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 32,
+        "text": "const raw = fs.readFileSync(CONFIG_PATH, \"utf8\").trim()"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 42,
+        "text": "fs.mkdirSync(CONFIG_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/notify.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 113,
+        "text": "child = spawn(alarmCmd, { shell: true, detached: true, stdio: \"ignore\" })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

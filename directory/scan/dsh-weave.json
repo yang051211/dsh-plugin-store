@@ -1,0 +1,93 @@
+{
+  "name": "dsh-weave",
+  "version": "0.1.0-rc.16",
+  "scannedAt": "2026-10-26T10:07:53.506Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 133,
+        "text": "const response = await fetch(\"/api/dsh-weave\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "saved = JSON.parse(await readFile(this.identityPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "await mkdir(dirname(this.identityPath), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "await writeFile(temporary, `${JSON.stringify({ version: 1, secretKey })}\\n`, { encoding: \"utf8\", mode: 0o600 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "saved = JSON.parse(await readFile(this.peersPath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = [\"connection\", \"tools\", \"agents\", \"sessions\", \"sessionTitle\", \"sessionPersistence\", \"workspaceRegistry\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 494,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 501,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessionPersistence",
+    "sessionTitle",
+    "sessions",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

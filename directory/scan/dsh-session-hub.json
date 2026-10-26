@@ -1,0 +1,101 @@
+{
+  "name": "dsh-session-hub",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:24.570Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 74,
+        "text": "return globalThis.fetch(input, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "const socket = new WebSocket(url2.toString());"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2735,
+        "text": "const response = await fetch(`${baseUrl}/hub/events?token=${encodeURIComponent(eventToken)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 554,
+        "text": "import { readFileSync as readFileSync2 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 908,
+        "text": "import { readFile as readFile4, readdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 909,
+        "text": "import { statSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 914,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 940,
+        "text": "const rows = await readFile(file2, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 135,
+      "text": "**彻底移除**：移除条目并重启后，删掉这两个文件即可（都在 `$DSH_HOME/plugins/`）："
+    },
+    {
+      "file": "README.md",
+      "line": 285,
+      "text": "- 读/写 `$DSH_HOME/plugins/dsh-session-hub.json`（`0600`，原子写：tmp + rename）；"
+    },
+    {
+      "file": "README.md",
+      "line": 286,
+      "text": "- 读/写 `$DSH_HOME/plugins/dsh-session-hub-imports.json`（导入会话解析缓存，`0600`）；"
+    },
+    {
+      "file": "README.md",
+      "line": 422,
+      "text": "│  ServerRegistry ──持久化── $DSH_HOME/plugins/dsh-session-hub.json│"
+    }
+  ],
+  "skippedEntries": []
+}

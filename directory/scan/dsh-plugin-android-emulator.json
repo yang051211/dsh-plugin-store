@@ -1,0 +1,105 @@
+{
+  "name": "dsh-plugin-android-emulator",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:32.354Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFile, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 157,
+        "text": "const raw = await readFile(SKILL_FILE, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "mkdirSync(dataDir, { recursive: true });"
+      },
+      {
+        "file": "vendor/zcode-android-emulator/dist/lib/path.js",
+        "line": 1,
+        "text": "import { mkdir } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 265,
+        "text": "const bridge = await import(\"@deepseek-ai/dsh-mcp-client\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 267,
+        "text": "throw new Error(\"android-emulator: @deepseek-ai/dsh-mcp-client did not export apply()\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 288,
+        "text": "() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/zcode-android-emulator/dist/lib/run.js",
+        "line": 1,
+        "text": "import { spawn as spawnChild } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/zcode-android-emulator/dist/lib/run.js",
+        "line": 7,
+        "text": "const child = spawn(actual, opts.cwd, env, opts.input !== undefined);"
+      },
+      {
+        "file": "vendor/zcode-android-emulator/dist/lib/run.js",
+        "line": 55,
+        "text": "function spawn(cmd, cwd, env, pipeStdin) {"
+      },
+      {
+        "file": "vendor/zcode-android-emulator/dist/mcp/server.js",
+        "line": 33700,
+        "text": "import { spawn as spawnChild } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

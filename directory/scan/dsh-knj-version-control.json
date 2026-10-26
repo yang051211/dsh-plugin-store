@@ -1,0 +1,90 @@
+{
+  "name": "dsh-knj-version-control",
+  "version": "2026.9.200",
+  "scannedAt": "2026-10-26T10:08:13.350Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 68,
+        "text": "return fetch(`${PREFIX}${path}`, { headers: { 'content-type': 'application/json' }, ...options }).then(async (response) => {"
+      },
+      {
+        "file": "test/git-failures.test.mjs",
+        "line": 87,
+        "text": "// either no-ops the fetch (exit 0) — then inspect() finds no upstream and"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/client-contract.test.mjs",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "test/client-contract.test.mjs",
+        "line": 6,
+        "text": "const source = readFileSync(new URL('../client/client.js', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "test/client-contract.test.mjs",
+        "line": 11,
+        "text": "assert.match(readFileSync(new URL('../package.json', import.meta.url), 'utf8'), /\"peerDependencies\"/)"
+      },
+      {
+        "file": "test/client-contract.test.mjs",
+        "line": 15,
+        "text": "const source = readFileSync(new URL('../client/client.js', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "test/client-contract.test.mjs",
+        "line": 39,
+        "text": "const source = readFileSync(new URL('../client/client.js', import.meta.url), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git-adapter.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "test/git-adapter.test.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/git-failures.test.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/git-operations.test.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

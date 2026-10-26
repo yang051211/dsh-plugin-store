@@ -1,0 +1,67 @@
+{
+  "name": "dsh-session-radar",
+  "version": "1.5.0",
+  "scannedAt": "2026-10-26T10:07:54.463Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2115,
+        "text": "const response = await fetch(ROUTE + \"/\" + endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 62,
+        "text": "await mkdir(dirname(statePath), { recursive: true });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 64,
+        "text": "await writeFile(temporary, payload, 'utf8');"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 89,
+        "text": "return normalizeLedger(JSON.parse(await readFile(join(dirname(statePath), file), 'utf8')));"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 100,
+        "text": "ledger = normalizeLedger(JSON.parse(await readFile(statePath, 'utf8')));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

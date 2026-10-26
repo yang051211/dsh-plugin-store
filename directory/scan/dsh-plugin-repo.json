@@ -1,0 +1,136 @@
+{
+  "name": "dsh-plugin-repo",
+  "version": "1.9.17",
+  "scannedAt": "2026-10-26T10:08:31.749Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 19,
+        "text": "const res = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 698,
+        "text": "const res = await fetch(path, init)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1399,
+        "text": "const r = await fetch(`${API}/restart`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1503,
+        "text": "const r = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1527,
+        "text": "const r = await fetch(`${API}/profile/batch`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 8,
+        "text": "import { existsSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 36,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 44,
+        "text": "writeFileSync(p, `[${new Date().toISOString()}] ${line}\\n`, { flag: 'a', encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 338,
+        "text": "writeFileSync(scriptPath, ps, 'utf8')"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 354,
+        "text": "writeFileSync(scriptPath, sh, { encoding: 'utf8', mode: 0o755 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 60,
+        "text": "const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 70,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1924,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1932,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1940,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 339,
+        "text": "const child = spawn('cmd.exe', ["
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 356,
+        "text": "const child = spawn(bash, [scriptPath], {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 29,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 665,
+        "text": "return spawnSync(harnessBin.node, [...harnessBin.argsPrefix, 'plugin', '--profile', 'web', ...sub], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,73 @@
+{
+  "name": "uagent-sync-dsh",
+  "version": "2.1.0",
+  "scannedAt": "2026-10-26T10:07:51.304Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 74,
+        "text": "const parsed = parseSkillMd(fs.readFileSync(mdPath, 'utf-8'))"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 9,
+        "text": "import * as fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "const register = (def) => ctx.tools.register(def)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 172,
+        "text": "const child = spawn(process.execPath, [cliPath, command, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

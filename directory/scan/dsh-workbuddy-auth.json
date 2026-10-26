@@ -1,0 +1,112 @@
+{
+  "name": "dsh-workbuddy-auth",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-26T10:08:29.245Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/checkin.mjs",
+        "line": 123,
+        "text": "'X-Requested-With': 'XMLHttpRequest',"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1078,
+        "text": "| new URL(backend).hostname, Origin: backend, Referer: backend + '/', 'X-Product': 'SaaS', 'X-Ide-Name': 'CodeBuddyIDE', 'X-Requested-With': 'XMLHttpRequest' })"
+      },
+      {
+        "file": "lib/user-agent.mjs",
+        "line": 124,
+        "text": "*     （`fetch(url)` 仍以单参调用被包装实现），`init` / `Request` 都是同一个对象引用。"
+      },
+      {
+        "file": "lib/user-agent.mjs",
+        "line": 218,
+        "text": "headers.set('x-requested-with', 'XMLHttpRequest')"
+      },
+      {
+        "file": "lib/web-login.mjs",
+        "line": 406,
+        "text": "[HEADER_REQUESTED_WITH]: 'XMLHttpRequest',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 4,
+        "text": "import { access, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 31,
+        "text": "const PACKAGE_VERSION = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 133,
+        "text": "await writeFile(wrapperPath, `@echo off\\r\\nsetlocal DisableDelayedExpansion\\r\\n${invocation}\\r\\nexit /b %errorlevel%\\r\\n`, 'utf8')"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 165,
+        "text": "await rm(invocation.wrapperDir, { recursive: true, force: true })"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 217,
+        "text": "return fs.readFile(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 112,
+        "text": "const child = spawn(file, args, { ...options, shell: false, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 178,
+        "text": "const { spawn: spawnChild } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/dpapi.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/dpapi.mjs",
+        "line": 35,
+        "text": "const child = spawn('powershell.exe', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

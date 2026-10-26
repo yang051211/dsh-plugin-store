@@ -1,0 +1,77 @@
+{
+  "name": "dsh-user-addons",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-26T10:08:19.734Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 234,
+        "text": "const r = await fetch(path, { headers: { accept: \"application/json\" }, credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 240,
+        "text": "const r = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 251,
+        "text": "const r = await fetch(\"/addons/upload?name=\" + encodeURIComponent(file.name), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import fsp from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "return JSON.parse(readFileSync(path.join(path.dirname(new URL(import.meta.url).pathname), \"..\", \"package.json\"), \"utf8\")).version || \"unknown\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "const raw = await fsp.readFile(filePath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 440,
+        "text": "const raw = await fsp.readFile(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

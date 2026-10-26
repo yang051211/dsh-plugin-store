@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plugin-ima-sync",
+  "version": "0.8.3",
+  "scannedAt": "2026-10-26T10:08:05.482Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 26,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 33,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 265,
+        "text": "const response = await fetch(`${DEFAULT_BASE_URL}/${apiPath}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "return readFileSync(file, \"utf8\").trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "if (existsSync(configFile)) return JSON.parse(readFileSync(configFile, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 316,
+        "text": "noteId = readFileSync(cacheFile, \"utf8\").trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 324,
+        "text": "mkdirSync(cacheDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "execFile(bin, args, { cwd, timeout: timeoutMs, maxBuffer: 16 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

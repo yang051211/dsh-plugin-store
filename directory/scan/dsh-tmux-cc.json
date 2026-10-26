@@ -1,0 +1,68 @@
+{
+  "name": "dsh-tmux-cc",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:07:49.544Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 270,
+        "text": "try { ws = new WebSocket(`${proto}://${location.host}/tmux-cc/ws`) }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1,
+        "text": "import { createReadStream, existsSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/runtime.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/tmux-client.js",
+        "line": 1,
+        "text": "import { spawn, execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/tmux-client.js",
+        "line": 515,
+        "text": "const child = spawn(tmuxBin, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

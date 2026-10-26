@@ -1,0 +1,121 @@
+{
+  "name": "dsh-remote-sessions",
+  "version": "0.8.11",
+  "scannedAt": "2026-10-26T10:08:30.435Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 176,
+        "text": "const res = await fetch(apiPrefix + path, opts);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/remote-web.js",
+        "line": 103,
+        "text": "    const result = await exec(machine, `curl -s -o /dev/null http://127.0.0.1:${port}/ 2>/dev/null && printf ALIVE || printf DEAD`, { signal }).catch(() => ({ c"
+      },
+      {
+        "file": "lib/runtime-adapter.js",
+        "line": 84,
+        "text": "const response = await fetcher.fetch(new Request('http://plugin.internal/api/' + endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 484,
+        "text": "React.createElement('button', { style: dangerS, onClick: () => unlink(workspace) }, t('workspaces.unlink')))),"
+      },
+      {
+        "file": "lib/companion-server.js",
+        "line": 2,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/companion-server.js",
+        "line": 26,
+        "text": "try { await h.writeFile(randomUUID() + '\\n'); await h.sync(); } finally { await h.close(); }"
+      },
+      {
+        "file": "lib/companion-server.js",
+        "line": 31,
+        "text": "const id = (await fs.readFile(file, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/machine-registry.js",
+        "line": 3,
+        "text": "import * as fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "    child = ctx.subprocess.spawn({ argv: [transport.command, ...STRICT_SSH_OPTIONS, ...transport.ssh, remoteCommand], cwd: process.cwd(), stdio: { stdin: input "
+      },
+      {
+        "file": "lib/remote-setup.js",
+        "line": 135,
+        "text": "child = subprocess.spawn({ argv: [transport.command, ...STRICT_SSH_OPTIONS, ...transport.ssh, script], cwd: process.cwd(),"
+      },
+      {
+        "file": "lib/remote-setup.js",
+        "line": 168,
+        "text": "const child = spawn({ argv: ['tar', '-czf', '-', '-C', root, 'lib', 'resident', 'package.json', 'cordis.patch.yml'],"
+      },
+      {
+        "file": "lib/remote-setup.js",
+        "line": 493,
+        "text": "* and `spawn({argv, ...})` are injectable for tests; production callers pass"
+      },
+      {
+        "file": "lib/remote-web.js",
+        "line": 210,
+        "text": "// Local forward: raw child_process spawn (the DSH subprocess service is"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "connection",
+    "fileUploads",
+    "sessionController",
+    "sessionFileReferences",
+    "sessionSkillCatalog",
+    "sessions",
+    "settings",
+    "storage",
+    "storageDomain",
+    "subprocess",
+    "typert",
+    "typertGateway",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

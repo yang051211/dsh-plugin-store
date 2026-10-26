@@ -1,0 +1,87 @@
+{
+  "name": "deepseek-harness-quota-monitor",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-26T10:08:28.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 813,
+        "text": "const res = await fetch('/api/quota-monitor', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1228,
+        "text": "const live = await (await fetch('/api/quota-monitor/settings', { cache: 'no-store' })).json()"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1262,
+        "text": "fetch('/api/quota-monitor/presets', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1397,
+        "text": "const patchRes = await fetch('/api/quota-monitor/profile-provider', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 909,
+        "text": "const res = await fetch(spec.url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "import { appendFileSync, existsSync, readFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 620,
+        "text": "try { mkdirSync(dir, { recursive: true }) } catch { /* best effort */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 628,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 651,
+        "text": "try { appendFileSync(file, `${JSON.stringify(row)}\\n`) } catch { /* best effort */ }"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 26,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

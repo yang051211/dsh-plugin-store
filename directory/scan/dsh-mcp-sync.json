@@ -1,0 +1,92 @@
+{
+  "name": "dsh-mcp-sync",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:08:22.790Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "var res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "var res = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 168,
+        "text": "await fetch(API.registry + \"?name=\" + encodeURIComponent(name), { method: \"DELETE\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/registry.js",
+        "line": 10,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 33,
+        "text": "const content = readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 48,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 49,
+        "text": "writeFileSync(path, JSON.stringify(registry, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/sources.js",
+        "line": 10,
+        "text": "import { readFileSync, existsSync, statSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp-tools.js",
+        "line": 134,
+        "text": "const disposer = ctx.tools.register(def);"
+      },
+      {
+        "file": "lib/mcp-tools.js",
+        "line": 150,
+        "text": "return ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/mcp-tools.js",
+        "line": 199,
+        "text": "return ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

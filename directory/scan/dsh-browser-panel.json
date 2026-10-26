@@ -1,0 +1,123 @@
+{
+  "name": "dsh-browser-panel",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:32.113Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cdp.js",
+        "line": 36,
+        "text": "this.socket = new WebSocket(url)"
+      },
+      {
+        "file": "lib/cdp.js",
+        "line": 171,
+        "text": "const response = await fetch(`http://127.0.0.1:${this.port}/json/list`)"
+      },
+      {
+        "file": "lib/cdp.js",
+        "line": 293,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 254,
+        "text": "const response = await fetch(url, init)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 504,
+        "text": "socket = new WebSocket(`${scheme}//${window.location.host}${STREAM_PATH}?session=${encodeURIComponent(sessionId)}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 22,
+        "text": "import { existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 365,
+        "text": "mkdirSync(profileDir, { recursive: true })"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 496,
+        "text": "rmSync(dir, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 15,
+        "text": "import { writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 208,
+        "text": "await writeFile(file, shot.data)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 184,
+        "text": "logger.info(`apply() entered (inject: tools=${ctx.get('tools') !== undefined})`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "ctx.tools.register(tool),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 258,
+        "text": "// apply` would lose `inject` and every `ctx.tools` access would throw."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 413,
+        "text": "this.chrome = spawn(this.executable, args, { env, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 446,
+        "text": "this.xvfb = spawn(xvfb, [display, '-screen', '0', screen, '-nolisten', 'tcp', '-noreset'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "dsh-browser-firefox",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-26T10:08:24.407Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/server.ts",
+        "line": 23,
+        "text": "import type { IncomingMessage } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "return (await readFile(file, \"utf8\")).trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "await writeFile(temp, `${token}\\n`, { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 809,
+        "text": "* Register the browser tools on `ctx.tools`. Disposers are returned for the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 825,
+        "text": "for (const tool of defineTools(call, options)) disposers.set(tool.name, ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 862,
+        "text": "disposers.set(screenshot.name, ctx.tools.register(screenshot));"
+      },
+      {
+        "file": "lib/invariant.js",
+        "line": 15,
+        "text": "* tools are plain ctx.tools registrations observed by dsh-tools' own"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 53,
+        "text": "export const inject = ['webServer', 'typertGateway', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

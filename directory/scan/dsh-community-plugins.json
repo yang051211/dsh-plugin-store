@@ -1,0 +1,129 @@
+{
+  "name": "dsh-community-plugins",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:08:00.315Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 966,
+        "text": "const res = await fetch(githubUrl(`https://raw.githubusercontent.com/${owner}/${repo}/HEAD/${path === null ? \"\" : path + \"/\"}README.md`));"
+      },
+      {
+        "file": "client/client.js",
+        "line": 37442,
+        "text": "fetch(api(\"/dsh-pluginhub/installed\"), { cache: \"no-store\" }).then((res) => res.json()).then((body) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 37457,
+        "text": "\t\t\t\tfetch(api(\"/dsh-pluginhub/updates\") + (force === true ? \"?force=1\" : \"\"), { cache: \"no-store\" }).then((res) => res.json()).then((body) => setUpdates(body.up"
+      },
+      {
+        "file": "client/client.js",
+        "line": 37463,
+        "text": "fetch(api(\"/dsh-pluginhub/registry\"), {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 37556,
+        "text": "const response = await fetch(key, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/check.js",
+        "line": 28,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/check.js",
+        "line": 59,
+        "text": "return parsePatchText(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/check.js",
+        "line": 92,
+        "text": "const profile = JSON.parse(readFileSync(join(profileDirectory, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/check.js",
+        "line": 178,
+        "text": "const manifest = JSON.parse(readFileSync(join(dshInstallDir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/check.js",
+        "line": 188,
+        "text": "const manifest = JSON.parse(readFileSync(join(base, 'node_modules', name, 'package.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile.js",
+        "line": 670,
+        "text": "// uses. A carrier naming an in-box package (@deepseek-ai/dsh-mcp-client and"
+      },
+      {
+        "file": "src/profile.ts",
+        "line": 708,
+        "text": "// uses. A carrier naming an in-box package (@deepseek-ai/dsh-mcp-client and"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 255,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 258,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 260,
+        "text": "return spawn(COMSPEC, ['/d', '/s', '/c', `\"${cmdCommandLine([file, ...args])}\"`], {"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 343,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

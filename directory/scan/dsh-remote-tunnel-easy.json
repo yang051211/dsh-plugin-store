@@ -1,0 +1,114 @@
+{
+  "name": "dsh-remote-tunnel-easy",
+  "version": "1.4.2",
+  "scannedAt": "2026-10-26T10:08:04.802Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 676,
+        "text": "const upstream = http.request({ host: target.hostname, port: target.port, path: req.url, method: req.method, headers: req.headers, setHost: false }, (up) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 692,
+        "text": "const upstream = http.request({"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 128,
+        "text": "const response = await fetch(`${BRIDGE_PREFIX}/describe`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "const response = await fetch(`${BRIDGE_PREFIX}/mutate`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 146,
+        "text": "const response = await fetch(`${BRIDGE_PREFIX}/status`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared.js",
+        "line": 24,
+        "text": "import { createWriteStream, createReadStream, mkdirSync, existsSync, chmodSync, rmSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 157,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 177,
+        "text": "mkdirSync(extractDir, { recursive: true })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 183,
+        "text": "rmSync(extractDir, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 193,
+        "text": "rmSync(tmpAsset, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 742,
+        "text": "const cp = process.getBuiltinModule('node:child_process')"
+      },
+      {
+        "file": "index.js",
+        "line": 744,
+        "text": "const child = cp.spawn(cloudflaredBin, ["
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 27,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 78,
+        "text": "execFile('cloudflared', ['--version'], { windowsHide: true, timeout: 8000 }, (error) => {"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 112,
+        "text": "execFile('/usr/bin/tar', ['-xzf', tgzPath, '-C', destDir], (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionController",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

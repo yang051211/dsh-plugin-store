@@ -1,0 +1,102 @@
+{
+  "name": "dsh-web-search-zerokey",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:08:23.156Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 73,
+        "text": "* 把宿主的 `ctx.web.fetch()` 适配成本插件需要的「取文本」函数。"
+      },
+      {
+        "file": "index.js",
+        "line": 105,
+        "text": "const result = await web.fetch({ url }, signal)"
+      },
+      {
+        "file": "lib/enrich.js",
+        "line": 14,
+        "text": "*   抓取结果里的任意 URL **必须**走宿主提供的 fetcher（即 ctx.web.fetch()），"
+      },
+      {
+        "file": "lib/enrich.js",
+        "line": 15,
+        "text": "*   不许裸 fetch()。原因：宿主 fetchProvider 已内建完整 SSRF 防护"
+      },
+      {
+        "file": "lib/sources/arxiv.js",
+        "line": 63,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapt.js",
+        "line": 35,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/adapt.js",
+        "line": 215,
+        "text": "const raw = fs.readFileSync(this.statePath, 'utf8')"
+      },
+      {
+        "file": "lib/adapt.js",
+        "line": 237,
+        "text": "fs.mkdirSync(path.dirname(this.statePath), { recursive: true })"
+      },
+      {
+        "file": "lib/adapt.js",
+        "line": 263,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(payload, null, 2))"
+      },
+      {
+        "file": "lib/tls-ca.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/lint.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 20,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 82,
+        "text": "const ps = execSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-dhe-lore",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:08:02.092Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 178,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 42,
+        "text": "* allowed — that is a local tool (`Invoke-WebRequest`), not a browser page."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/node-io.js",
+        "line": 26,
+        "text": "* **Reads go through `node:fs` too — `ctx.get('fs')` is deliberately unused.**"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 40,
+        "text": "import { mkdir, readFile, readdir, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 43,
+        "text": "import { rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 98,
+        "text": "await writeFile(staging, text, { encoding: 'utf8', mode: FILE_MODE, flag: 'wx' });"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 112,
+        "text": "await rm(staging, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "() => tools.register(createMemoryTool({ config, resolver, sessionScope })),"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 279,
+        "text": "* @returns a `defineTool` definition ready for `ctx.tools.register`."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

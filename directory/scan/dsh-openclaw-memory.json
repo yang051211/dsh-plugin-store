@@ -1,0 +1,74 @@
+{
+  "name": "dsh-openclaw-memory",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:07:59.531Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/core/bootstrap.js",
+        "line": 1,
+        "text": "import { promises as fs, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/bootstrap.js",
+        "line": 17,
+        "text": "const source = await fs.readFile(resolveInsideRoot(root, relativePath), 'utf8');"
+      },
+      {
+        "file": "dist/core/bootstrap.js",
+        "line": 46,
+        "text": "const source = readFileSync(absolute, 'utf8');"
+      },
+      {
+        "file": "dist/core/daily.js",
+        "line": 1,
+        "text": "import { promises as fs, readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/daily.js",
+        "line": 78,
+        "text": "const buffer = await fs.readFile(absolute);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/service/index.js",
+        "line": 7,
+        "text": "export const inject = ['systemPrompt', 'tools'];"
+      },
+      {
+        "file": "dist/service/index.js",
+        "line": 213,
+        "text": "disposeTool = ctx.tools.register(toolDefinition());"
+      },
+      {
+        "file": "dist/service/index.js",
+        "line": 226,
+        "text": "        text: ({ scope }) => ctx.tools.get('openclaw_memory_search', scope) === undefined ? '' : 'Use openclaw_memory_search for bounded retrieval from the shar"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

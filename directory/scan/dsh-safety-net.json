@@ -1,0 +1,58 @@
+{
+  "name": "dsh-safety-net",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:08:24.940Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backup.js",
+        "line": 21,
+        "text": "// it would return '.' for such a path and mkdir('.') would no-op — breaking"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 69,
+        "text": "await dir.mkdir(dirname(dest), { recursive: true })"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 70,
+        "text": "await dir.writeFile(dest, text, 'utf8')"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 75,
+        "text": "await dir.writeFile(join(root, id, META_FILE), JSON.stringify({ sources: { [toRel(source)]: source } }), 'utf8')"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 111,
+        "text": "const raw = await dir.readFile(metaPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

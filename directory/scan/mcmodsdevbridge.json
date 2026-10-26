@@ -1,0 +1,113 @@
+{
+  "name": "mcmodsdevbridge",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:08:27.611Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/devrun.ps1",
+        "line": 283,
+        "text": "$resp = Invoke-WebRequest @params"
+      },
+      {
+        "file": "scripts/provision-instance.ps1",
+        "line": 95,
+        "text": "$r = Invoke-WebRequest @a"
+      },
+      {
+        "file": "scripts/provision-instance.ps1",
+        "line": 179,
+        "text": "Invoke-WebRequest @(WebArgs $dl + @{ OutFile = $jar; TimeoutSec = 600 }) | Out-Null"
+      },
+      {
+        "file": "scripts/provision-instance.ps1",
+        "line": 187,
+        "text": "Invoke-WebRequest @(WebArgs $url + @{ OutFile = $jar; TimeoutSec = 900 }) | Out-Null"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 29,
+        "text": "import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 64,
+        "text": "writeFileSync(join(dir, 'applied.json'), JSON.stringify(record, null, 2), 'utf8')"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 75,
+        "text": "const v = readFileSync(p, 'utf8').trim()"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 159,
+        "text": "const lines = readFileSync(f, 'utf8').split(/\\r?\\n/)"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 253,
+        "text": "const sc = JSON.parse(readFileSync(full, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 41,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 176,
+        "text": "toolCtx.tools.register({"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 238,
+        "text": "toolCtx.tools.register({"
+      },
+      {
+        "file": "tools/dsh-plugin/selftest.mjs",
+        "line": 34,
+        "text": "const ctx = { inject: (names, cb) => { if (names.includes('tools')) cb(toolCtx) } }"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "tools/dsh-plugin/mcdev-devrun/dsh.mjs",
+        "line": 116,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

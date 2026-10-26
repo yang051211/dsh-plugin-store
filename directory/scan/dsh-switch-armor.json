@@ -1,0 +1,108 @@
+{
+  "name": "dsh-switch-armor",
+  "version": "0.10.2",
+  "scannedAt": "2026-10-26T10:08:31.421Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 142,
+        "text": "return fetch(url, { headers: httpHeaders(false) }).then("
+      },
+      {
+        "file": "client.js",
+        "line": 154,
+        "text": "return fetch(session ? \"/dsh-switch-armor/session\" : \"/dsh-switch-armor/settings\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 247,
+        "text": "return fetch(session ? \"/dsh-switch-armor/session\" : \"/dsh-switch-armor/settings\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 330,
+        "text": "return fetch(\"/dsh-switch-armor/settings\", { headers: { \"x-dsh-switch-armor\": \"1\" } }).then("
+      },
+      {
+        "file": "client.js",
+        "line": 351,
+        "text": "return fetch(\"/dsh-switch-armor/settings\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "const PROMPT_TEXT = escapePromptVars(readFileSync(PROMPT_URL, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "const PROMPT_GEN4_TEXT = escapePromptVars(readFileSync(PROMPT_GEN4_URL, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "const PROMPT41_TEXT = escapePromptVars(readFileSync(PROMPT41_URL, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 64,
+        "text": "return escapePromptVars(readFileSync(url, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1131,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 1230,
+        "text": "ctx.tools.register(profileTool);"
+      },
+      {
+        "file": "scripts/verify_prompt.mjs",
+        "line": 111,
+        "text": "mustContain(indexSrc, 'export const inject = [\"tools\", \"systemPrompt\"]', \"index.js inject\");"
+      },
+      {
+        "file": "scripts/verify_prompt.mjs",
+        "line": 112,
+        "text": "mustContain(indexSrc, \"ctx.tools.register(profileTool)\", \"工具: profile(元数据)\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

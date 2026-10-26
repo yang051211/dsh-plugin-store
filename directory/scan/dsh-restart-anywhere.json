@@ -1,0 +1,93 @@
+{
+  "name": "dsh-restart-anywhere",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:07:52.839Z",
+  "icon": "dsh-restart-anywhere.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 28,
+        "text": "const info = () => fetch(ROUTE, { cache: \"no-store\" }).then((r) => (r.ok ? r.json() : null), () => null);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const res = await fetch(ROUTE, { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "const readCgroup = () => { try { return readFileSync('/proc/self/cgroup', 'utf8') } catch { return '' } }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 196,
+        "text": "mkdirSync(dirname(WAKE_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "writeFileSync(WAKE_FILE, JSON.stringify({ sessionId: exec.agent.session.id, prompt, at: Date.now() }))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "if (prompt) rmSync(WAKE_FILE, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 212,
+        "text": "if (ctx.agents.roots().includes(agent)) ctx.effect(() => agent.ctx.effect(() => agent.ctx.tools.register(tool)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "child = spawn(process.execPath, args, { stdio: 'inherit', detached: process.platform !== 'win32',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 161,
+        "text": "const failed = await new Promise(resolve => execFile('systemd-run', args, { timeout: 10_000 },"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

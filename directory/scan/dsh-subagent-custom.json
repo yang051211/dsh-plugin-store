@@ -1,0 +1,64 @@
+{
+  "name": "dsh-subagent-custom",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:06.743Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "jev.mjs",
+        "line": 123,
+        "text": "const response = await fetch(buildRequestUrl(config), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/jev-replay.mjs",
+        "line": 14,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/jev-replay.mjs",
+        "line": 28,
+        "text": "const records = (await readFile(logPath, \"utf8\"))"
+      },
+      {
+        "file": "bin/jev-replay.mjs",
+        "line": 32,
+        "text": "const candidateInput = overridesPath === undefined ? {} : JSON.parse(await readFile(overridesPath, \"utf8\"));"
+      },
+      {
+        "file": "index.mjs",
+        "line": 36,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.mjs",
+        "line": 37,
+        "text": "import { appendFile, mkdir } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

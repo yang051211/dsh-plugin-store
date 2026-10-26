@@ -1,0 +1,110 @@
+{
+  "name": "dsh-attention",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:08:11.423Z",
+  "icon": "dsh-attention.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 224,
+        "text": "const response = await fetch(\"/dsh-attention/config\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 257,
+        "text": "fetch(\"/dsh-attention/presence\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 464,
+        "text": "fetch(\"/dsh-attention/focus\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 822,
+        "text": "fetch(\"/dsh-attention/config\", {"
+      },
+      {
+        "file": "scripts/pet-sessions.ps1",
+        "line": 16,
+        "text": "  $result = Invoke-RestMethod -Uri ($uri.AbsoluteUri.TrimEnd('/') + '/dsh-attention/pet-act') -Method Post -ContentType 'application/json; charset=utf-8' -Body "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/inbox.js",
+        "line": 6,
+        "text": "import { mkdirSync, readdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/inbox.js",
+        "line": 27,
+        "text": "writeFileSync(focusStatePath(), `${JSON.stringify(data)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/inbox.js",
+        "line": 35,
+        "text": "mkdirSync(workDir(), { recursive: true })"
+      },
+      {
+        "file": "src/inbox.js",
+        "line": 40,
+        "text": "writeFileSync(pendingPath(token), `${JSON.stringify({ ownerPid: process.pid, ...data })}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/inbox.js",
+        "line": 44,
+        "text": "try { unlinkSync(pendingPath(token)) } catch { /* 已不在 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 631,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "src/index.js",
+        "line": 669,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "src/index.js",
+        "line": 722,
+        "text": "const child = spawn(choiceShellPath, ["
+      },
+      {
+        "file": "src/protocol.js",
+        "line": 8,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "dsh-plugin-taskboard",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:19.376Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 154,
+        "text": "const res = await fetch(path, options)"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 145,
+        "text": "const res = await fetch(path, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/store.js",
+        "line": 9,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 33,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 35,
+        "text": "await writeFile(tmp, content, 'utf8')"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 65,
+        "text": "raw = await readFile(this.file, 'utf8')"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 9,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 196,
+        "text": "const register = (tool) => disposers.push(ctx.tools.register(tool))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/host/tools.js",
+        "line": 196,
+        "text": "const register = (tool) => disposers.push(ctx.tools.register(tool))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

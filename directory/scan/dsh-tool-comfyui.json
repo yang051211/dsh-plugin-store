@@ -1,0 +1,85 @@
+{
+  "name": "dsh-tool-comfyui",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:08:30.507Z",
+  "icon": "dsh-tool-comfyui.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 605,
+        "text": "const response = await fetch(url, { signal: exec.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { mkdir, readdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "out[stem] = JSON.parse(await readFile(join(dir, entry.name), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 594,
+        "text": "await mkdir(outputDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 609,
+        "text": "await writeFile(localPath, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 411,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 487,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 531,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

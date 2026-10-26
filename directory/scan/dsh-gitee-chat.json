@@ -1,0 +1,163 @@
+{
+  "name": "dsh-gitee-chat",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:08:19.188Z",
+  "icon": "dsh-gitee-chat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 60,
+        "text": "res = await fetch(\"/api/gitee-chat/payload\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 82,
+        "text": "const res = await fetch(`/api/gitee-chat/session?sessionId=${encodeURIComponent(sessionId)}`, { signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 89,
+        "text": "const res = await fetch(`/api/gitee-chat/issues?${q.toString()}`, { signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 96,
+        "text": "const res = await fetch(\"/api/gitee-chat/token\", { signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 103,
+        "text": "res = await fetch(\"/api/gitee-chat/token\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1057,
+        "text": "import { readFileSync as readFileSync7 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1063,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1280,
+        "text": "import { chmodSync, copyFileSync, existsSync as existsSync2, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1291,
+        "text": "return JSON.parse(readFileSync(manifestPath(), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1330,
+        "text": "return createHash(\"sha256\").update(readFileSync(path)).digest(\"hex\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent.js",
+        "line": 1314,
+        "text": "var inject = [\"giteeChat\", \"tools\"];"
+      },
+      {
+        "file": "lib/agent.js",
+        "line": 1337,
+        "text": "ctx.effect(() => ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/agent.js",
+        "line": 1341,
+        "text": "return ctx.tools.restrict({ deny: [PUBLIC_GATEWAY_TOOL_NAME] });"
+      },
+      {
+        "file": "lib/agent.js",
+        "line": 1361,
+        "text": "ctx.effect(() => ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4636,
+        "text": "const unregister = child.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1062,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1125,
+        "text": "const child = execFile(process.execPath, argv, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3687,
+        "text": "import { execFile as execFile2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4034,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4134,
+        "text": "spawned = spawn(options.command, [...options.args ?? []], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [
+    "vendor/mcp-gitee-ent/mcp-gitee-ent-linux-amd64",
+    "vendor/mcp-gitee-ent/mcp-gitee-ent-windows-amd64.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 30,
+      "text": "#   2. `node scripts/setup.mjs apply` 会把**完整配置**写进 profile 的"
+    },
+    {
+      "file": "README.md",
+      "line": 79,
+      "text": "node scripts/setup.mjs apply     # 写配置（enterpriseId: 0 = 自动识别企业）"
+    },
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "node scripts/setup.mjs verify    # 自检；新机器上「还没有 token」是预期，不算装失败"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-plugin-judge",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:03.942Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 276,
+        "text": "const res = await fetch(url, { signal: signal || AbortSignal.timeout(20000), redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 152,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "return JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "mkdirSync(join(p, '..'), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "writeFileSync(p, JSON.stringify(store, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 491,
+        "text": "ctx.effect(() => tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

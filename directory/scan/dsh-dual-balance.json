@@ -1,0 +1,80 @@
+{
+  "name": "dsh-dual-balance",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:08:23.697Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 210,
+        "text": "const response = await fetch(variant.path, { headers: { accept: \"application/json\" }, credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 275,
+        "text": "const response = await fetch(APPS_PATH, { headers: { accept: \"application/json\" }, credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 380,
+        "text": "const response = await fetch(UPDATE_CHECK_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 391,
+        "text": "const response = await fetch(UPDATE_APPLY_PATH, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "const response = await fetch(`${NPM_BASE}/${SELF_PACKAGE_NAME}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 142,
+        "text": "const parsed = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

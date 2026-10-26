@@ -1,0 +1,109 @@
+{
+  "name": "dsh-plugin-blender",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:08:14.606Z",
+  "icon": "dsh-plugin-blender.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 88,
+        "text": "fetch(`${API}/${sub}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "const get = (sub) => fetch(`${API}/${sub}`, { cache: 'no-store' }).then((r) => r.json());"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 105,
+        "text": "const parsed = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 139,
+        "text": "fs.mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 140,
+        "text": "fs.writeFileSync(CONFIG_FILE, JSON.stringify({ ...readConfigFile(), ...patch }, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 234,
+        "text": "const text = fs.readFileSync(vdf, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1319,
+        "text": "child.effect(() => child.tools.register(envTool), 'blender.tool.environment')"
+      },
+      {
+        "file": "index.js",
+        "line": 1320,
+        "text": "child.effect(() => child.tools.register(runTool), 'blender.tool.model')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 165,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "index.js",
+        "line": 1175,
+        "text": "spawn(blender.path, [], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "index.js",
+        "line": 1247,
+        "text": "if (isDir(target)) spawn('explorer.exe', [target], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "index.js",
+        "line": 1248,
+        "text": "else spawn('explorer.exe', ['/select,' + target.replace(/\\//g, '\\\\')], { detached: true, stdio: 'ignore' }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

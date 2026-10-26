@@ -1,0 +1,109 @@
+{
+  "name": "dsh-local-models",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:08:24.980Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 195,
+        "text": "return fetch(path).then(function (r) { return parseJson(r); });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 198,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 985,
+        "text": "const res = await fetch(\"http://127.0.0.1:\" + PORT + \"/health\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1890,
+        "text": "const res = await fetch(\"http://127.0.0.1:\" + PORT + \"/models\", { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2593,
+        "text": "const res = await fetch(\"http://127.0.0.1:\" + PORT + \"/models\", { signal: AbortSignal.timeout(1500) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 878,
+        "text": "pciIdsText = readFileSync(p, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 890,
+        "text": "read = (p) => readFileSync(p, \"utf8\").trim(),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1551,
+        "text": "mkdirSync(dataDir(), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1752,
+        "text": "appendFileSync(LOG_PATH, \"\\n=== \" + new Date().toISOString() + \" \" + info.logNote + \" ===\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { spawn, execSync, execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 753,
+        "text": "execFile(file, args, { encoding: \"utf8\", ...opts }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1038,
+        "text": "pids = execSync(\"lsof -ti :\" + PORT, { encoding: \"utf8\" }).trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1754,
+        "text": "const next = spawn(info.bin, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,61 @@
+{
+  "name": "dsh-warden",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:00.570Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 37,
+        "text": "fetch(API + '/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "return fetch(API + '/' + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { appendFileSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "const text = readFileSync(rulesPath, 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "appendFileSync(auditPath, JSON.stringify(entry) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

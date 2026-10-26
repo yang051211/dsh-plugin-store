@@ -1,0 +1,84 @@
+{
+  "name": "dsh-checkpoint-diff",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:07:58.154Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 94,
+        "text": "return await fetch(url, { ...options, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/diff/copy.mjs",
+        "line": 8,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/diff/copy.mjs",
+        "line": 9,
+        "text": "import { createReadStream } from 'node:fs'"
+      },
+      {
+        "file": "lib/diff/copy.mjs",
+        "line": 44,
+        "text": "raw = await fs.readFile(manifestPath, 'utf8')"
+      },
+      {
+        "file": "lib/diff/copy.mjs",
+        "line": 77,
+        "text": "return fs.readFile(abs)"
+      },
+      {
+        "file": "lib/diff/copy.mjs",
+        "line": 127,
+        "text": "export function readFile(snapshotRoot, ref, rel) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/diff/git.mjs",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/diff/git.mjs",
+        "line": 37,
+        "text": "const child = spawn(gitBin, args, {"
+      },
+      {
+        "file": "lib/diff/git.mjs",
+        "line": 153,
+        "text": "const child = spawn(gitBin, ['cat-file', '--batch-check'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessions",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

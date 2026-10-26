@@ -1,0 +1,168 @@
+{
+  "name": "oh-my-dsh",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:08:13.872Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bundles/omd.cordis.yml",
+        "line": 144,
+        "text": "# SSRF-hardened fetch provider; guards shell curl/wget only when the"
+      },
+      {
+        "file": "dist/packages/web-guard/src/index.js",
+        "line": 45,
+        "text": "? 'Prefer the web_fetch tool over shell curl/wget for retrieving web pages.'"
+      },
+      {
+        "file": "dist/packages/web-guard/src/index.js",
+        "line": 46,
+        "text": ": 'Prefer the web_fetch tool over shell curl/wget for retrieving public web pages. ' +"
+      },
+      {
+        "file": "dist/packages/web-guard/src/index.js",
+        "line": 65,
+        "text": "'Approve once, or re-enable web fetch (unset OMD_DISABLE_WEB_FETCH) for guarded retrieval.',"
+      },
+      {
+        "file": "dist/packages/web-guard/src/provider.js",
+        "line": 12,
+        "text": "import { Agent, fetch as undiciFetch } from 'undici';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/distribution-files.js",
+        "line": 2,
+        "text": "import { lstatSync, readdirSync, readFileSync, readlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/distribution-files.js",
+        "line": 10,
+        "text": "const content = readFileSync(filePath)"
+      },
+      {
+        "file": "bin/distribution-identity.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/distribution-identity.js",
+        "line": 69,
+        "text": "const raw = readFileSync(candidateInParent, 'utf8')"
+      },
+      {
+        "file": "bin/distribution-identity.js",
+        "line": 87,
+        "text": "const raw = readFileSync(candidateInRoot, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/packages/capability-discovery/src/index.js",
+        "line": 108,
+        "text": "static inject = ['tools', 'skills', 'commands', 'systemPrompt', 'mcpControl', 'pluginControl'];"
+      },
+      {
+        "file": "dist/packages/capability-discovery/src/index.js",
+        "line": 140,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/packages/capability-discovery/src/index.js",
+        "line": 202,
+        "text": "const tools = this.ctx.tools.schemas(agent).map((schema) => ({"
+      },
+      {
+        "file": "dist/packages/debug/src/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools', 'fs', 'subprocess', 'proposals', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/packages/debug/src/index.js",
+        "line": 212,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/packages/debug/src/index.js",
+        "line": 80,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "dist/packages/debug/src/index.js",
+        "line": 164,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "dist/packages/kernel/src/index.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/packages/kernel/src/index.js",
+        "line": 131,
+        "text": "this.child = spawn(command, args, {"
+      },
+      {
+        "file": "dist/packages/lsp-auto/src/index.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 40,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 70,
+      "text": "npm install --global oh-my-dsh"
+    },
+    {
+      "file": "README.md",
+      "line": 155,
+      "text": "Bundled language servers cover TypeScript/JavaScript, Python, JSON, HTML, CSS/SCSS/Less, and YAML. If installed on your PATH, `rust-analyzer`, `gopls`, `clangd`"
+    },
+    {
+      "file": "README.md",
+      "line": 157,
+      "text": "or` adds previewable symbol rename: the language server returns a multi-file edit, OMD validates every path and file version, shows an exact proposal, applies i"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 70,
+      "text": "npm install --global oh-my-dsh"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 155,
+      "text": "内置 TypeScript/JavaScript、Python、JSON、HTML、CSS/SCSS/Less 和 YAML language server。PATH 中存在时，还会自动接入 `rust-analyzer`、`gopls`、`clangd` 和 `sourcekit-lsp`。"
+    }
+  ],
+  "skippedEntries": []
+}

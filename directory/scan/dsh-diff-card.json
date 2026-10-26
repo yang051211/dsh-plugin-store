@@ -1,0 +1,88 @@
+{
+  "name": "dsh-diff-card",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:08:06.097Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 39,
+        "text": "return await fetch(input, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { access, lstat, open, readFile, readdir, realpath, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const bytes = await readFile(target.filename);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "await unlink(target.filename);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 359,
+        "text": "const probe = spawn(process.platform === \"win32\" ? \"where\" : \"which\", process.platform === \"win32\" ? [name] : [\"-a\", name], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 409,
+        "text": "const probe = spawn(process.platform === \"win32\" ? \"where\" : \"which\", [name], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 420,
+        "text": "const child = spawn(command, [...args], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 433,
+        "text": "const child = spawn(\"explorer /select,\\\"\" + file + \"\\\"\", {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

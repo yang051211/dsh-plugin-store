@@ -1,0 +1,72 @@
+{
+  "name": "dsh-skill-manage",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:07:54.909Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { lstat, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 218,
+        "text": "await readFile(skillMd, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 223,
+        "text": "await readFile(fileMd, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 244,
+        "text": "await mkdir(path.dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 647,
+        "text": "const disposeTool = ctx.tools.register(skillManageTool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

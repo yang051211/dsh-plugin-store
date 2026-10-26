@@ -1,0 +1,62 @@
+{
+  "name": "dsh-memory-triage",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:02.684Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "function readState() { try { return JSON.parse(readFileSync(statePath(), \"utf8\")); } catch { return null; } }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "function writeState(s) { try { writeFileSync(statePath(), JSON.stringify(s), \"utf8\"); } catch { /* non-fatal */ } }"
+      },
+      {
+        "file": "lib/mirror.js",
+        "line": 4,
+        "text": "import { mkdirSync, writeFileSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/mirror.js",
+        "line": 40,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "commands",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

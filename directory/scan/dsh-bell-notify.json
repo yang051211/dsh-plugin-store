@@ -1,0 +1,85 @@
+{
+  "name": "dsh-bell-notify",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:05.904Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const manifest = JSON.parse(readFileSync(packageManifestPath(), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "const value = JSON.parse(readFileSync(join(profileDir, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "return record(record(record(JSON.parse(readFileSync(manifestPath, \"utf8\")))?.dsh)?.bundle)?.patch !== void 0;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "writeFileSync(join(profileDir, \"package.json\"), JSON.stringify(after, void 0, 2) + \"\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 180,
+        "text": "const child = spawn(command, [\"update\", packageName], {"
+      },
+      {
+        "file": "src/profile-installation.ts",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/profile-installation.ts",
+        "line": 156,
+        "text": "const child = spawn(command, ['update', packageName], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

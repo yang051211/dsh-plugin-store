@@ -1,0 +1,103 @@
+{
+  "name": "dsh-plugin-resolver",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:03.939Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "logic/install.js",
+        "line": 340,
+        "text": "const response = await fetch(url, { signal: controller.signal, redirect: 'follow' })"
+      },
+      {
+        "file": "logic/util.js",
+        "line": 64,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "logic/util.js",
+        "line": 87,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/register.js",
+        "line": 13,
+        "text": "import { statSync } from 'node:fs'"
+      },
+      {
+        "file": "logic/install.js",
+        "line": 18,
+        "text": "import { mkdir, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "logic/install.js",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "logic/install.js",
+        "line": 102,
+        "text": "return JSON.parse(await readFile(path.join(packageDir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "logic/install.js",
+        "line": 160,
+        "text": "files.push(`${path.relative(dir, abs).split(path.sep).join('/')}:${sha256(await readFile(abs))}`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/register.js",
+        "line": 54,
+        "text": "* Register the resolver tool set on `ctx.tools`."
+      },
+      {
+        "file": "host/register.js",
+        "line": 64,
+        "text": "const dispose = ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "logic/util.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "logic/util.js",
+        "line": 135,
+        "text": "const child = spawn(file, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

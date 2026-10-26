@@ -1,0 +1,46 @@
+{
+  "name": "dsh-sandbox-noop-escalation",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:20.617Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = [\"tools\", \"sandboxPolicy\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 147,
+        "text": "if (!advertisesEscalation(ctx.tools.get(exec.name, exec.agent))) return next();"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sandboxPolicy",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

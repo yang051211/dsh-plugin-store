@@ -1,0 +1,91 @@
+{
+  "name": "dsh-gitea-search",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:50.891Z",
+  "icon": "dsh-gitea-search.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sync.mjs",
+        "line": 29,
+        "text": "const res = await fetch(apiUrl(config, suffix), { headers, signal: AbortSignal.timeout(30000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/gitea-search.mjs",
+        "line": 184,
+        "text": "(await import('node:fs')).readFileSync(path.join(import.meta.dirname, '..', 'package.json'), 'utf8'),"
+      },
+      {
+        "file": "bin/mcp-server.mjs",
+        "line": 12,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/mcp-server.mjs",
+        "line": 32,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/mirror.mjs",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/mirror.mjs",
+        "line": 158,
+        "text": "return fs.readFileSync(path.join(config.mirrorDir, LAST_SYNC_FILE), 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 22,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/config.mjs",
+        "line": 6,
+        "text": "* `@deepseek-ai/dsh-mcp-client`. That client scrubs the ambient environment, so"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.mjs",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.mjs",
+        "line": 41,
+        "text": "child = spawn(cmd, args, {"
+      },
+      {
+        "file": "lib/git.mjs",
+        "line": 91,
+        "text": "child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

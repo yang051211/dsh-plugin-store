@@ -1,0 +1,76 @@
+{
+  "name": "dsh-compat-market",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:01.395Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 360,
+        "text": "const response = await fetch(apiUrl(path, params), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "fetchImpl: (url, init) => fetch(url, init),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "fetchImpl: (url, init) => fetch(url, init),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/store.js",
+        "line": 24,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 49,
+        "text": "const manifest = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 159,
+        "text": "return JSON.parse(readFileSync(this.file, 'utf8'));"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 171,
+        "text": "mkdirSync(join(this.file, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 174,
+        "text": "writeFileSync(temp, JSON.stringify(value), { encoding: 'utf8', mode: this.mode });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

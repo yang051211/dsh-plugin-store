@@ -1,0 +1,110 @@
+{
+  "name": "dsh-cpamc",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:08:32.732Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/commands/bridge.js",
+        "line": 25,
+        "text": "const r = await fetch(`http://127.0.0.1:${cfg.port}/control/status`, { headers: { Authorization: `Bearer ${cfg.secret}` }, signal: AbortSignal.timeout(5000) });"
+      },
+      {
+        "file": "dist/daemon/client.js",
+        "line": 11,
+        "text": "res = await fetch(`http://127.0.0.1:${cfg.port}/control${path}`, {"
+      },
+      {
+        "file": "dist/daemon/core.js",
+        "line": 281,
+        "text": "res = await fetch(`http://127.0.0.1:${all.config.port}/v1/chat/completions`, {"
+      },
+      {
+        "file": "dist/daemon/public-endpoint.js",
+        "line": 7,
+        "text": "import { request } from 'node:http';"
+      },
+      {
+        "file": "dist/daemon/public-endpoint.js",
+        "line": 8,
+        "text": "import { createServer } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/commands/engine.js",
+        "line": 5,
+        "text": "import { cp, mkdir, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/commands/engine.js",
+        "line": 96,
+        "text": "await rm(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "dist/commands/engine.js",
+        "line": 97,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "dist/commands/engine.js",
+        "line": 122,
+        "text": "await rm(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "dist/commands/migrate.js",
+        "line": 7,
+        "text": "import { copyFile, readdir } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/commands/engine.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/commands/engine.js",
+        "line": 108,
+        "text": "const child = spawn(bin, ['-config', cfg], { cwd: dir, stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "dist/commands/self.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/commands/self.js",
+        "line": 168,
+        "text": "const child = spawn(process.execPath, [join(PKG_ROOT, 'bin', 'dsh-cpamc.js'), ...args, '--lang', req.lang ?? 'zh'], {"
+      },
+      {
+        "file": "dist/daemon/core.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

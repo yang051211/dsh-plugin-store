@@ -1,0 +1,99 @@
+{
+  "name": "dsh-xiaoyuzhou",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:07:51.999Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 63,
+        "text": "const jsonGet = (path) => fetch(path, { headers: { Accept: 'application/json' } }).then(async (r) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 68,
+        "text": "const jsonPost = (path, payload) => fetch(path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 451,
+        "text": "const upstream = await fetch(upstreamUrl, { headers, redirect: 'follow' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 463,
+        "text": "const upstream = await fetch(target, { headers: { 'User-Agent': UA_IOS, Accept: 'image/*' } })"
+      },
+      {
+        "file": "lib/xyzfm.js",
+        "line": 103,
+        "text": "return fetch(url, { ...options, headers, signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "writeFileSync(file, JSON.stringify(value, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 90,
+        "text": "try { writeFileSync(tokenFile(), '', 'utf8') } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 584,
+        "text": "ctx.effect(() => ctx.tools.register(tool), 'xiaoyuzhou: podcast_play tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-weixin",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:00.100Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/ilink.mjs",
+        "line": 60,
+        "text": "const res = await fetch(new URL(endpoint, base).toString(), {"
+      },
+      {
+        "file": "src/ilink.mjs",
+        "line": 86,
+        "text": "const res = await fetch(new URL(endpoint, base).toString(), {"
+      },
+      {
+        "file": "src/panel.mjs",
+        "line": 329,
+        "text": "async function j(url, opts) { const r = await fetch(url, opts); return r.json(); }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/creds.mjs",
+        "line": 6,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/creds.mjs",
+        "line": 26,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "src/creds.mjs",
+        "line": 33,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "src/creds.mjs",
+        "line": 37,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(data, null, 2), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 19,
+        "text": "export const inject = ['webServer', 'agents', 'tools', 'attachments']"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 608,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
