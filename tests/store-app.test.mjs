@@ -57,7 +57,7 @@ test('install buttons wait for the installed list', async () => {
   assert.ok(buttons.length >= 2, 'install buttons are disabled while the installed list loads')
   await act(async () => { gate.resolve(new Map()) })
   await flush()
-  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn-primary') && !n.props.disabled)
+  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && n.children.join('') === zh.install && !n.props.disabled)
   assert.ok(enabled.length >= 2)
 })
 
@@ -67,7 +67,7 @@ test('install buttons recover when the installed list cannot be read', async () 
     root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
   })
   await flush()
-  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn-primary') && !n.props.disabled)
+  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && n.children.join('') === zh.install && !n.props.disabled)
   assert.ok(enabled.length >= 2, 'a failed read must not leave every install button disabled forever')
 })
 
@@ -108,7 +108,7 @@ test('error boundary retry renders the children again', async () => {
   let root
   try {
     await act(async () => { root = TestRenderer.create(createElement(ErrorBoundary, { t, children: createElement(Child) })) })
-    assert.ok(textOf(root).includes('商城出了点问题'))
+    assert.ok(textOf(root).includes('生态家园出了点问题'))
     fail = false
     const retry = root.root.find(n => n.type === 'button' && n.children.includes('重试'))
     await act(async () => { retry.props.onClick() })

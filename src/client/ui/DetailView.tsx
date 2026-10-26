@@ -9,7 +9,7 @@ import { localize } from '../model/localize.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
 import { Markdown } from '../safe/markdown.tsx'
 import { npmFileBase, safeUrl } from '../safe/urls.ts'
-import { formatCount, formatDate, incompatibleReason, InstallButton, PluginCard, PluginIcon, UsageGuide, type Translate } from './common.tsx'
+import { formatCount, formatDate, incompatibleReason, InstallButton, PluginIcon, PluginRows, UsageGuide, type Translate } from './common.tsx'
 
 export type Load<T> = { status: 'loading' } | { status: 'ready'; data: T } | { status: 'error'; error: string }
 
@@ -89,7 +89,7 @@ export function DetailView(props: DetailViewProps): ReactNode {
           </div>
         </div>
         <div className="ps-detail-action">
-          <InstallButton plugin={plugin} installed={installed} dshVersion={catalog.dshVersion} t={t} onClick={onInstallClick} large />
+          <InstallButton plugin={plugin} installed={installed} dshVersion={catalog.dshVersion} t={t} onClick={onInstallClick} large primary />
           <div className="ps-muted">v{plugin.version}</div>
         </div>
       </header>
@@ -214,9 +214,7 @@ export function DetailView(props: DetailViewProps): ReactNode {
       {related.length > 0 && (
         <section className="ps-block">
           <h3>{t('related')}</h3>
-          <div className="ps-row">
-            {related.slice(0, 6).map(p => <PluginCard key={p.name} plugin={p} installed={installed} dshVersion={catalog.dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />)}
-          </div>
+          <PluginRows plugins={related.slice(0, 6)} installed={installed} dshVersion={catalog.dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />
         </section>
       )}
 

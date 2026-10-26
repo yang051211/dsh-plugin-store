@@ -1,8 +1,8 @@
-/** A grid of plugins: one category, one section, everything, or search results. */
+/** A list of plugins: one category, one section, everything, or search results. */
 import type { ReactNode } from 'react'
 import type { StorePlugin } from '../model/catalog.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
-import { PluginCard, type Translate } from './common.tsx'
+import { PluginRows, type Translate } from './common.tsx'
 
 export interface ListViewProps {
   title: string
@@ -24,11 +24,7 @@ export function ListView({ title, plugins, installed, dshVersion = null, lang, t
       {plugins.length === 0
         ? <div className="ps-empty">{t('empty')}</div>
         : (
-            <div className="ps-grid">
-              {plugins.map(plugin => (
-                <PluginCard key={plugin.name} plugin={plugin} installed={installed} dshVersion={dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />
-              ))}
-            </div>
+            <PluginRows plugins={plugins} installed={installed} dshVersion={dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />
           )}
     </div>
   )

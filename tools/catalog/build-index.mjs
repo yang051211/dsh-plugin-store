@@ -92,6 +92,8 @@ export function buildIndex(curation, upstream, scans, now, storeVersion) {
         tagline: localized(plugin.tagline),
         detail: `plugins/${slugOf(plugin.name)}.json`,
         review: { version, date: String(plugin.review.date) },
+        // The reviewer's verdict, so list rows can say what a plugin may do without loading its detail.
+        ...(plugin.review.permissions ? { permissions: { ...plugin.review.permissions } } : {}),
         ...(plugin.usage ? { usage: usageOf(plugin.usage) } : {}),
         stats: { ...facts.stats, fetchedAt: facts.fetchedAt },
         ...(facts.latest && semver.valid(facts.latest) && semver.gt(facts.latest, version) ? { upstreamLatest: facts.latest } : {}),

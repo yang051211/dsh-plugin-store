@@ -188,3 +188,12 @@ test('plugins carry their usage guide, null when the catalog has none', () => {
   assert.deepEqual(catalog.byName.get('alpha').usage, { where: { zh: '右侧' }, try: { zh: '试试' }, setup: { zh: '先装' } })
   assert.equal(catalog.byName.get('beta').usage, null)
 })
+
+test('a plugin carries the reviewed permissions, or null when the index has none', () => {
+  const doc = snapshot()
+  doc.index.plugins[0].store.permissions = { network: true, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }
+  doc.index.plugins[1].store.permissions = 'nope'
+  const catalog = buildCatalog(doc)
+  assert.deepEqual(catalog.byName.get('alpha').permissions, { network: true, fileSystem: false, agentTools: false, childProcess: false, installScripts: false })
+  assert.equal(catalog.byName.get('beta').permissions, null)
+})

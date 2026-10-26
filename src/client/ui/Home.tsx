@@ -1,9 +1,9 @@
-/** The store's front page: search, the featured banner, categories, and theme sections. */
+/** The store's front page: title and search, categories, the weekly pick, and theme sections as plugin rows. */
 import { useState, type ReactNode } from 'react'
 import type { Catalog, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
-import { PluginCard, PluginIcon, type Translate } from './common.tsx'
+import { InstallButton, PluginIcon, PluginMeta, PluginRows, type Translate } from './common.tsx'
 
 export type ListFilter = { kind: 'all' } | { kind: 'category'; id: string } | { kind: 'section'; id: string } | { kind: 'search'; query: string }
 
@@ -38,39 +38,41 @@ export function Home({ catalog, installed, lang, t, onOpenPlugin, onOpenList, on
         <SearchBox t={t} onSearch={onSearch} />
       </div>
 
-      {featured && (
-        <div className="ps-banner" style={{ background: `linear-gradient(135deg, ${featured.gradient[0]}, ${featured.gradient[1]})` }}>
-          <div className="ps-banner-text">
-            <div className="ps-banner-kicker">{t('featured')}</div>
-            <div className="ps-banner-title">{localize(featured.title, lang) || localize(featured.plugin.title, lang)}</div>
-            <div className="ps-banner-subtitle">{localize(featured.subtitle, lang) || localize(featured.plugin.tagline, lang)}</div>
-            <button type="button" className="ps-banner-btn" onClick={() => onOpenPlugin(featured.plugin.name)}>{t('viewDetails')}</button>
-          </div>
-          <PluginIcon plugin={featured.plugin} lang={lang} size={96} />
-        </div>
-      )}
+      <nav className="ps-cats" aria-label={t('browseCategories')}>
+        <button type="button" className="ps-cat" onClick={() => onOpenList({ kind: 'all' })}>{t('allPlugins')} <i>{catalog.plugins.length}</i></button>
+        {catalog.categories.map(category => (
+          <button key={category.id} type="button" className="ps-cat" onClick={() => onOpenList({ kind: 'category', id: category.id })}>
+            {localize(category.title, lang)} <i>{category.plugins.length}</i>
+          </button>
+        ))}
+      </nav>
 
-      <section className="ps-section">
-        <div className="ps-section-head"><h3>{t('browseCategories')}</h3></div>
-        <nav className="ps-chips" aria-label={t('browseCategories')}>
-          <button type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'all' })}>{t('allPlugins')} · {catalog.plugins.length}</button>
-          {catalog.categories.map(category => (
-            <button key={category.id} type="button" className="ps-chip" onClick={() => onOpenList({ kind: 'category', id: category.id })}>
-              {localize(category.title, lang)} · {category.plugins.length}
-            </button>
-          ))}
-        </nav>
-      </section>
+      {featured && (
+        <section className="ps-pick">
+          <div className="ps-pick-label">{t('featured')}</div>
+          <div className="ps-pick-body">
+            <PluginIcon plugin={featured.plugin} lang={lang} size={56} />
+            <div className="ps-pick-text">
+              <div className="ps-row-head"><span className="ps-pick-title">{localize(featured.plugin.title, lang)}</span><span className="ps-row-name">{featured.plugin.name}</span></div>
+              <p className="ps-pick-why">{localize(featured.subtitle, lang) || localize(featured.plugin.tagline, lang)}</p>
+              <PluginMeta plugin={featured.plugin} t={t} />
+              <div className="ps-pick-actions">
+                <InstallButton plugin={featured.plugin} installed={installed} dshVersion={catalog.dshVersion} t={t} onClick={onInstallClick} primary />
+                <button type="button" className="ps-link-btn" onClick={() => onOpenPlugin(featured.plugin.name)}>{t('viewDetails')}</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {catalog.sections.map(section => (
         <section key={section.id} className="ps-section">
           <div className="ps-section-head">
             <h3>{localize(section.title, lang)}</h3>
-            <button type="button" className="ps-link-btn" onClick={() => onOpenList({ kind: 'section', id: section.id })}>{t('seeAll')}</button>
+            {section.id === 'hot' && <span className="ps-section-note">{t('hotNote')}</span>}
+            <button type="button" className="ps-link-btn ps-more" onClick={() => onOpenList({ kind: 'section', id: section.id })}>{t('seeAllCount', { count: String(section.plugins.length) })}</button>
           </div>
-          <div className="ps-row">
-            {section.plugins.slice(0, 6).map(plugin => <PluginCard key={plugin.name} plugin={plugin} {...card} />)}
-          </div>
+          <PluginRows plugins={section.plugins.slice(0, 6)} downloads={section.id === 'hot'} {...card} />
         </section>
       ))}
     </div>

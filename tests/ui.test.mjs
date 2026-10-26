@@ -23,30 +23,74 @@ test('translate interpolates parameters', () => {
   assert.equal(t('reviewed', { date: '2026-10-19' }), '已审核 · 2026-10-19')
 })
 
-test('home shows banner, sections and categories', () => {
-  // The banner rotates weekly, so check whichever entry this week picked.
+test('home shows the intro, the weekly pick, categories and sections', () => {
+  // The pick rotates weekly, so check whichever entry this week chose.
   const catalog = catalogWith()
-  const { title, gradient } = catalog.featured
+  const { plugin, subtitle } = catalog.featured
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  for (const text of ['本周精选', title.zh, '新装必备', '长对话不迷路', '按分类浏览', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
+  for (const text of ['生态家园', '本周推荐', plugin.title.zh, subtitle.zh, '新装必备', '长对话不迷路', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
     assert.ok(out.includes(text), `missing ${text}`)
   }
-  assert.ok(out.includes(`linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`))
+  assert.equal(out.includes('gradient'), false, 'no gradient banner')
+  assert.equal(out.includes('ps-card'), false, 'rows, not cards')
+  assert.equal(out.includes('精选插件商城'), false, 'renamed')
 })
 
-test('categories sit under the banner, above the theme sections', () => {
+test('the weekly pick stays short: one line, its permissions, install and details', () => {
+  const catalog = catalogWith()
+  const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
+  const pick = out.slice(out.indexOf('class="ps-pick"'), out.indexOf('class="ps-section"'))
+  assert.ok(pick.includes(t('reviewedVersion', { version: catalog.featured.plugin.review.version })))
+  assert.ok(pick.includes(zh.viewDetails))
+  assert.ok(pick.includes('ps-btn-primary'), 'the one filled button on the page')
+  for (const extra of [zh.usageWhere, zh.usageTry]) assert.equal(pick.includes(extra), false, `no ${extra} on the home page`)
+})
+
+test('categories sit under the pick, above the theme sections', () => {
   const out = html(createElement(Home, { catalog: catalogWith(), installed: new Map(), lang: 'zh', t, ...handlers }))
-  const chips = out.indexOf('class="ps-chips"')
-  assert.ok(chips > out.indexOf('class="ps-banner"'), 'after the banner')
-  assert.ok(chips < out.indexOf('新装必备'), 'before the theme sections')
-  assert.ok(out.indexOf('按分类浏览') < chips, 'with its heading')
+  const cats = out.indexOf('class="ps-cats"')
+  assert.ok(cats > 0)
+  assert.ok(cats < out.indexOf('class="ps-pick"'), 'categories come first, under the title')
+  assert.ok(cats < out.indexOf('新装必备'), 'before the theme sections')
 })
 
-test('home hides the banner without a featured plugin', () => {
+test('home hides the pick without a featured plugin', () => {
   const catalog = catalogWith(doc => { doc.store.featured = null; delete doc.store.featuredRotation; return doc })
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  assert.equal(out.includes('本周精选'), false)
+  assert.equal(out.includes('本周推荐'), false)
   assert.ok(out.includes('新装必备'))
+})
+
+test('a row lists what the plugin may do, the reviewed version, and an outlined install button', () => {
+  const catalog = catalogWith()
+  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-context')], installed: new Map(), lang: 'zh', t, ...handlers }))
+  const perms = catalog.byName.get('dsh-context').permissions
+  for (const [key, label] of [['network', zh.permNetwork], ['fileSystem', zh.permFileSystem]]) assert.equal(out.includes(label), Boolean(perms[key]), key)
+  assert.ok(out.includes(t('reviewedVersion', { version: catalog.byName.get('dsh-context').review.version })))
+  assert.ok(out.includes('class="ps-row"'))
+  assert.equal(out.includes('ps-btn-primary'), false, 'list buttons are outlined')
+})
+
+test('a plugin that touches nothing says so', () => {
+  const catalog = catalogWith(doc => { doc.plugins.find(p => p.name === 'dsh-chat-toc').store.permissions = { network: false, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }; return doc })
+  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-chat-toc')], installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.ok(out.includes(zh.touchesNothing))
+})
+
+test('weekly downloads show in the hot section only', () => {
+  const catalog = catalogWith()
+  const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
+  const hot = out.slice(out.indexOf('本周热门'), out.indexOf('新装必备'))
+  const rest = out.slice(out.indexOf('新装必备'))
+  assert.ok(hot.includes(zh.weeklyDownloadsShort.split('{')[0]))
+  assert.equal(rest.includes(zh.weeklyDownloadsShort.split('{')[0]), false)
+})
+
+test('a plugin without an icon gets a plain letter tile, not a gradient', () => {
+  const catalog = catalogWith(doc => { delete doc.plugins.find(p => p.name === 'dsh-chat-toc').icon; return doc })
+  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-chat-toc')], installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.ok(out.includes('ps-icon-letter'))
+  assert.equal(out.includes('gradient'), false)
 })
 
 test('list shows an empty state', () => {
@@ -150,7 +194,7 @@ test('error boundary shows retry instead of a blank area', () => {
   const boundary = new ErrorBoundary({ t, children: null })
   boundary.state = ErrorBoundary.getDerivedStateFromError(new Error('boom'))
   const out = html(boundary.render())
-  assert.ok(out.includes('商城出了点问题'))
+  assert.ok(out.includes('生态家园出了点问题'))
   assert.ok(out.includes('boom'))
   assert.ok(out.includes('重试'))
 })

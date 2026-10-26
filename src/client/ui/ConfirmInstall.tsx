@@ -27,7 +27,7 @@ export function ConfirmInstall({ plugin, lang, t, onCancel, onConfirm }: Confirm
         <div className="ps-modal-plugin">
           <PluginIcon plugin={plugin} lang={lang} size={48} />
           <div>
-            <div className="ps-card-title">{localize(plugin.title, lang)}</div>
+            <div className="ps-row-title">{localize(plugin.title, lang)}</div>
             <div className="ps-muted">{plugin.name}</div>
           </div>
         </div>

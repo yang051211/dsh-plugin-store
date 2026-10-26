@@ -1,6 +1,6 @@
 /** Small shared pieces of the store UI: translation, formatting, plugin icons, install buttons and cards. */
 import type { ReactNode } from 'react'
-import type { PluginUsage, StorePlugin } from '../model/catalog.ts'
+import type { Permissions, PluginUsage, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
 
@@ -27,21 +27,36 @@ export function formatCount(value: number | null): string {
   return value >= 10_000 ? `${(value / 1000).toFixed(0)}k` : value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value)
 }
 
-const TILE_COLORS = [['#6366f1', '#8b5cf6'], ['#0ea5e9', '#22d3ee'], ['#f59e0b', '#f97316'], ['#10b981', '#34d399'], ['#ec4899', '#f43f5e'], ['#64748b', '#94a3b8']]
-
-/** The plugin's icon, or a colored tile with its first letter. Icons only ever go through <img>. */
-export function PluginIcon({ plugin, lang, size = 44 }: { plugin: StorePlugin; lang: string; size?: number }): ReactNode {
+/** The plugin's icon, or a plain tile with its first letter in DSH's own neutral colors. Icons only ever go through <img>. */
+export function PluginIcon({ plugin, lang, size = 40 }: { plugin: StorePlugin; lang: string; size?: number }): ReactNode {
   const style = { width: size, height: size, borderRadius: Math.round(size / 4.5) }
   if (plugin.icon) return <img className="ps-icon" src={plugin.icon} alt="" style={style} referrerPolicy="no-referrer" loading="lazy" />
-  let hash = 0
-  for (const ch of plugin.name) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0
-  const [from, to] = TILE_COLORS[hash % TILE_COLORS.length] as [string, string]
   const letter = Array.from(localize(plugin.title, lang) || plugin.name)[0] ?? '?'
   return (
-    <span className="ps-icon ps-icon-tile" style={{ ...style, background: `linear-gradient(135deg, ${from}, ${to})`, fontSize: Math.round(size * 0.42) }} aria-hidden="true">
+    <span className="ps-icon ps-icon-letter" style={{ ...style, fontSize: Math.round(size * 0.44) }} aria-hidden="true">
       {letter}
     </span>
   )
+}
+
+const PERMISSION_LABELS: Array<[keyof Permissions, string]> = [['network', 'permNetwork'], ['fileSystem', 'permFileSystem'], ['childProcess', 'permChildProcess'], ['agentTools', 'permAgentTools']]
+
+/** What the reviewer found the plugin may do, in a few words; nothing at all is worth saying too. */
+export function PermissionLine({ permissions, t }: { permissions: Permissions | null; t: Translate }): ReactNode {
+  if (!permissions) return null
+  const on = PERMISSION_LABELS.filter(([key]) => permissions[key]).map(([, label]) => t(label))
+  return on.length > 0
+    ? <span className="ps-perm-line">{on.join(t('listSeparator'))}</span>
+    : <span className="ps-perm-line ps-perm-none">{t('touchesNothing')}</span>
+}
+
+/** Permissions, the reviewed version and (where it is the point) weekly downloads, on one quiet line. */
+export function PluginMeta({ plugin, t, downloads }: { plugin: StorePlugin; t: Translate; downloads?: boolean }): ReactNode {
+  const parts: ReactNode[] = []
+  if (plugin.permissions) parts.push(<PermissionLine key="perm" permissions={plugin.permissions} t={t} />)
+  parts.push(<span key="rev">{t('reviewedVersion', { version: plugin.review.version })}</span>)
+  if (downloads && plugin.stats.weeklyDownloads !== null) parts.push(<span key="dl">{t('weeklyDownloadsShort', { count: formatCount(plugin.stats.weeklyDownloads) })}</span>)
+  return <div className="ps-meta">{parts.flatMap((part, i) => (i === 0 ? [part] : [<span key={`dot${i}`} className="ps-dot" aria-hidden="true">·</span>, part]))}</div>
 }
 
 export interface InstallButtonProps {
@@ -52,6 +67,8 @@ export interface InstallButtonProps {
   t: Translate
   onClick: (plugin: StorePlugin, state: InstallState) => void
   large?: boolean
+  /** The page's main action (the weekly pick, a detail page): filled. Everywhere else the button is outlined. */
+  primary?: boolean
 }
 
 /** Why a plugin cannot be installed on the running DSH. */
@@ -63,14 +80,15 @@ export function incompatibleReason(plugin: StorePlugin, dshVersion: string | nul
  * Install / Installed / Update available / Incompatible (disabled, reason as a tooltip). While the installed list
  * is unknown the button is disabled, so an installed plugin never briefly offers "Install".
  */
-export function InstallButton({ plugin, installed, dshVersion, t, onClick, large }: InstallButtonProps): ReactNode {
+export function InstallButton({ plugin, installed, dshVersion, t, onClick, large, primary }: InstallButtonProps): ReactNode {
   const state = installed ? installStateOf(plugin, installed) : null
   const label = t(state ?? 'install')
   const hint = state === 'incompatible' ? incompatibleReason(plugin, dshVersion, t) : undefined
+  const look = state === 'installed' ? 'ps-btn-quiet' : primary && state === 'install' ? 'ps-btn-primary' : ''
   return (
     <button
       type="button"
-      className={`ps-btn ${state === 'install' ? 'ps-btn-primary' : ''} ${large ? 'ps-btn-large' : ''}`}
+      className={`ps-btn ${look} ${large ? 'ps-btn-large' : ''}`}
       disabled={state === null || state === 'incompatible'}
       title={hint}
       onClick={event => { event.stopPropagation(); if (state) onClick(plugin, state) }}
@@ -90,24 +108,24 @@ export interface CardProps {
   onInstallClick: (plugin: StorePlugin, state: InstallState) => void
 }
 
-/** A plugin card: icon, name, pitch, version · author · stars, and its install button. */
-export function PluginCard({ plugin, installed, dshVersion, lang, t, onOpenPlugin, onInstallClick }: CardProps): ReactNode {
+/** One plugin in a list: icon, name and package, one line on what it does, what it may do, and its install button. */
+export function PluginRow({ plugin, installed, dshVersion, lang, t, onOpenPlugin, onInstallClick, downloads }: CardProps & { downloads?: boolean }): ReactNode {
   return (
-    <div className="ps-card" role="button" tabIndex={0} onClick={() => onOpenPlugin(plugin.name)} onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onOpenPlugin(plugin.name) } }}>
-      <div className="ps-card-head">
-        <PluginIcon plugin={plugin} lang={lang} />
-        <div className="ps-card-text">
-          <div className="ps-card-title">{localize(plugin.title, lang)}</div>
-          <div className="ps-card-name">{plugin.name}</div>
-        </div>
+    <li className="ps-row" role="button" tabIndex={0} onClick={() => onOpenPlugin(plugin.name)} onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onOpenPlugin(plugin.name) } }}>
+      <PluginIcon plugin={plugin} lang={lang} />
+      <div className="ps-row-main">
+        <div className="ps-row-head"><span className="ps-row-title">{localize(plugin.title, lang)}</span><span className="ps-row-name">{plugin.name}</span></div>
+        <p className="ps-row-pitch">{localize(plugin.tagline, lang)}</p>
+        <PluginMeta plugin={plugin} t={t} downloads={downloads} />
       </div>
-      <div className="ps-card-pitch">{localize(plugin.tagline, lang)}</div>
-      <div className="ps-card-foot">
-        <span className="ps-muted">v{plugin.version}{plugin.author ? ` · ${plugin.author}` : ''}{plugin.stats.stars !== null ? ` · ★ ${formatCount(plugin.stats.stars)}` : ''}</span>
-        <InstallButton plugin={plugin} installed={installed} dshVersion={dshVersion} t={t} onClick={onInstallClick} />
-      </div>
-    </div>
+      <InstallButton plugin={plugin} installed={installed} dshVersion={dshVersion} t={t} onClick={onInstallClick} />
+    </li>
   )
+}
+
+/** A list of plugin rows; two columns where there is room. */
+export function PluginRows({ plugins, downloads, ...card }: Omit<CardProps, 'plugin'> & { plugins: StorePlugin[]; downloads?: boolean }): ReactNode {
+  return <ul className="ps-rows">{plugins.map(plugin => <PluginRow key={plugin.name} plugin={plugin} downloads={downloads} {...card} />)}</ul>
 }
 
 /** Where to find an installed plugin and what to try, with any step it still needs called out. */

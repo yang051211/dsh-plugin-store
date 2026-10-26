@@ -33,6 +33,21 @@ export interface StorePlugin {
   homepage: string | null
   /** After installing: where to find it, what to try, and a step it still needs; null when the catalog has none. */
   usage: PluginUsage | null
+  /** The reviewer's verdict on what the plugin may do; null when the index has none. */
+  permissions: Permissions | null
+}
+
+export const PERMISSION_KEYS = ['network', 'fileSystem', 'childProcess', 'agentTools', 'installScripts'] as const
+export type Permissions = Record<(typeof PERMISSION_KEYS)[number], boolean>
+
+function permissionsOf(raw: any): Permissions | null {
+  if (!raw || typeof raw !== 'object') return null
+  const out = {} as Permissions
+  for (const key of PERMISSION_KEYS) {
+    if (typeof raw[key] !== 'boolean') return null
+    out[key] = raw[key]
+  }
+  return out
 }
 
 export interface PluginUsage { where: LocalizedText; try: LocalizedText; setup?: LocalizedText }
@@ -97,6 +112,7 @@ function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
     repository: entry.repository ?? null,
     homepage: entry.homepage ?? null,
     usage: usageOf(store.usage),
+    permissions: permissionsOf(store.permissions),
   }
 }
 

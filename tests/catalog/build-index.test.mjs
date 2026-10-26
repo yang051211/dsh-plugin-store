@@ -157,3 +157,9 @@ test('output is deterministic', () => {
   assert.equal(JSON.stringify(a.index), JSON.stringify(b.index))
   assert.equal(JSON.stringify([...a.details]), JSON.stringify([...b.details]))
 })
+
+test('the reviewer\'s permission verdict reaches the index, for the list rows', () => {
+  const { index } = buildIndex(curation(), upstream(), scans, NOW)
+  const alpha = index.plugins.find(p => p.name === 'alpha')
+  assert.deepEqual(alpha.store.permissions, curation().plugins.find(p => p.name === 'alpha').review.permissions)
+})
