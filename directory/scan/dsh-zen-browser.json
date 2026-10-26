@@ -1,0 +1,113 @@
+{
+  "name": "dsh-zen-browser",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:10:31.614Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "extension/background.js",
+        "line": 247,
+        "text": "const response = await fetch(`${BASE}${path}?token=${encodeURIComponent(CONFIG.token)}`, {"
+      },
+      {
+        "file": "src/bidi.js",
+        "line": 39,
+        "text": "const ws = new WebSocket(url)"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 1,
+        "text": "import { createServer } from \"node:http\""
+      },
+      {
+        "file": "src/rpc.js",
+        "line": 1,
+        "text": "import { createServer } from \"node:http\""
+      },
+      {
+        "file": "src/rpc.js",
+        "line": 36,
+        "text": "*   curl -s \"http://127.0.0.1:<port>/v1/status?token=<token>\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/extension.js",
+        "line": 1,
+        "text": "import { cp, mkdir, readFile, rm, writeFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "src/extension.js",
+        "line": 26,
+        "text": "const raw = await readFile(statePath(stateDir), \"utf8\")"
+      },
+      {
+        "file": "src/extension.js",
+        "line": 36,
+        "text": "await mkdir(stateDir, { recursive: true })"
+      },
+      {
+        "file": "src/extension.js",
+        "line": 37,
+        "text": "await writeFile(statePath(stateDir), `${JSON.stringify(state, null, 2)}\\n`)"
+      },
+      {
+        "file": "src/extension.js",
+        "line": 43,
+        "text": "await rm(targetDir, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 10,
+        "text": "export const inject = [\"tools\"]"
+      },
+      {
+        "file": "src/index.js",
+        "line": 60,
+        "text": ".map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/zen.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "src/zen.js",
+        "line": 202,
+        "text": "* @returns {Promise<{child: import(\"node:child_process\").ChildProcess, wsUrl: string, pid: number|undefined, output: string}>}"
+      },
+      {
+        "file": "src/zen.js",
+        "line": 221,
+        "text": "const child = spawn(zenPath, args, { stdio: [\"ignore\", \"pipe\", \"pipe\"] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

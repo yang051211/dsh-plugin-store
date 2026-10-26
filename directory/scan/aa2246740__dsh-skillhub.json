@@ -1,0 +1,76 @@
+{
+  "name": "@aa2246740/dsh-skillhub",
+  "version": "1.0.7",
+  "scannedAt": "2026-10-26T10:10:47.084Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "const response = await fetch(`/skillhub/mcp/${path}`, body === void 0 ? { ...signal ? { signal } : {} } : {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "return await readJson(await fetch(`${BASE}/catalog?${query.toString()}`));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 285,
+        "text": "const payload = await readJson(await fetch(`${BASE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-skillhub.js",
+        "line": 5,
+        "text": "import { existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, readlinkSync, realpathSync, renameSync, symlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/dsh-skillhub.js",
+        "line": 28,
+        "text": "mkdirSync(storeDir, { recursive: true });"
+      },
+      {
+        "file": "lib/dsh-skillhub.js",
+        "line": 30,
+        "text": "const previous = existsSync(path) ? JSON.parse(readFileSync(path, \"utf8\")) : 0;"
+      },
+      {
+        "file": "lib/dsh-skillhub.js",
+        "line": 35,
+        "text": "writeFileSync(temp, `${revision}\\n`, { mode: 384 });"
+      },
+      {
+        "file": "lib/dsh-skillhub.js",
+        "line": 137,
+        "text": "raw = JSON.parse(readFileSync(path, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

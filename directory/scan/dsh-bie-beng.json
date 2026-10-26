@@ -1,0 +1,121 @@
+{
+  "name": "dsh-bie-beng",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:39.230Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "const r = await fetch(base, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 89,
+        "text": "const r = await fetch(base + (q.toString() ? '?' + q.toString() : ''))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 292,
+        "text": "try { fetch('/guard/api/booted', { method: 'POST' }).catch(() => {}) } catch { /* best effort */ }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 310,
+        "text": "fetch('/guard/api/render-error', {"
+      },
+      {
+        "file": "scripts/boot-guard.ps1",
+        "line": 68,
+        "text": "$r = Invoke-WebRequest -Uri (\"http://127.0.0.1:$Port/\") -TimeoutSec 3 -UseBasicParsing"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, writeFileSync, readdirSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 121,
+        "text": "writeFileSync(p, body, \"utf8\")"
+      },
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 132,
+        "text": "if (existsSync(p)) { rmSync(p); log(\"已删除按钮: \" + p) }"
+      },
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 150,
+        "text": "mkdirSync(target, { recursive: true })"
+      },
+      {
+        "file": "scripts/smoke-test.js",
+        "line": 3,
+        "text": "import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 172,
+        "text": "tools.register(tool)"
+      },
+      {
+        "file": "src/layout.js",
+        "line": 49,
+        "text": "* dsh-mcp-client instances, so it must be snapshotted/restored too or a bad"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 17,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install-with-desktop-button.mjs",
+        "line": 30,
+        "text": "const r = spawnSync(cmd, args, { encoding: \"utf8\", shell: isWin, timeout: opts.timeout ?? 300000, maxBuffer: 16 * 1024 * 1024 })"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 262,
+        "text": "? spawnSync('cmd.exe', ['/d', '/s', '/c', 'pnpm --version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "src/engine.js",
+        "line": 263,
+        "text": ": spawnSync('pnpm', ['--version'], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

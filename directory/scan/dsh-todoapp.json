@@ -1,0 +1,82 @@
+{
+  "name": "dsh-todoapp",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:40.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 194,
+        "text": "const res = await fetch(\"/dsh-todoapp/attachments\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 247,
+        "text": "const res = await fetch(\"/dsh-todoapp\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, rm, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 485,
+        "text": "bytes = await readFile(disk);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 692,
+        "text": "await rm(join(attachmentsRoot(this.filePath), id), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 717,
+        "text": "await mkdir(dirname(dest), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 739,
+        "text": "await unlink(dest);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1038,
+        "text": "const inject = [\"tools\", \"webServer\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1044,
+        "text": "ctx.effect(() => ctx.tools.register(createTodoListTool(store)), \"todoapp: todo_list\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

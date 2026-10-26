@@ -1,0 +1,106 @@
+{
+  "name": "dsh-host-files",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:38.089Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { mkdir, readdir, readFile, rename, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "const raw = JSON.parse(await readFile(MCP_STATE_FILE, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "await mkdir(dirname(MCP_STATE_FILE), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 237,
+        "text": "await writeFile(MCP_STATE_FILE, JSON.stringify({ version: 1, servers: mcpServers }, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "/** MCP server 运行时管理（~/.dsh/mcp-servers.json，动态挂载 dsh-mcp-client）。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "// ── MCP server 运行时管理（动态挂载/卸载 dsh-mcp-client 实例，即时生效）──"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "const entry = resolveDshModule(\"@deepseek-ai/dsh-mcp-client\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "execFile(\"git\", [\"-C\", root, \"status\", \"--porcelain=v1\", \"--untracked-files=normal\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "execFile(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-Command\", script], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 519,
+        "text": "execFile(\"explorer.exe\", [target], (err) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 550,
+        "text": "\t\t\t\texecFile(DOC_PYTHON, [DOC_CONVERT, target], { maxBuffer: 20 * 1024 * 1024, windowsHide: true, env: { ...process.env, PYTHONIOENCODING: \"utf-8\" } }, (err, st"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 20,
+      "text": "docx 预览依赖：pip install python-docx openpyxl python-pptx（脚本见仓库 tools/）。"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,82 @@
+{
+  "name": "dsh-self-restart",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:10:26.051Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 47,
+        "text": "return fetch('/__dsh-restart/api', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, existsSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "try { buf = readFileSync(logPath) } catch { return undefined }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "try { return JSON.parse(readFileSync(TASKS, 'utf8')) } catch { return [] }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "mkdirSync(DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "writeFileSync(TASKS, JSON.stringify(tasks, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "execFile(schtasksExe(), args, { windowsHide: true }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 410,
+        "text": "execFile('powershell.exe',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

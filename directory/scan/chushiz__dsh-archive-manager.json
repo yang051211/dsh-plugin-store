@@ -1,0 +1,70 @@
+{
+  "name": "@chushiz/dsh-archive-manager",
+  "version": "0.6.3",
+  "scannedAt": "2026-10-26T10:11:26.434Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 140,
+        "text": "return fetch(path, body ? {"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 126,
+        "text": "return fetch(path, body ? { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) } : undefined)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "\"fs\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 463,
+        "text": "const commandLine = \"node -e \\\"require('fs').rmSync(process.argv[1],{recursive:true,force:true})\\\" \" + JSON.stringify(dir);"
+      },
+      {
+        "file": "src/index.js",
+        "line": 21,
+        "text": "export const inject = ['sessionPersistence', 'workspaceRegistry', 'fs', 'shell', 'sessionQuery'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 477,
+        "text": "const script = \"require('fs').rmSync(process.argv[1],{recursive:true,force:true})\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "sessionPersistence",
+    "sessionQuery",
+    "shell",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

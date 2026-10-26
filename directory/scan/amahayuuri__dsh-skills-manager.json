@@ -1,0 +1,92 @@
+{
+  "name": "@amahayuuri/dsh-skills-manager",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:10:55.558Z",
+  "icon": "amahayuuri__dsh-skills-manager.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 550,
+        "text": "return fetch(API + path, init).then(function (res) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2443,
+        "text": "fetch(API + '/export?id=' + encodeURIComponent(skill.id) + '&scope=' + scope, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 2593,
+        "text": "return fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 28,
+        "text": "import { createWriteStream, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 43,
+        "text": "} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 456,
+        "text": "await unlink(path);"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 480,
+        "text": "await rm(path, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 626,
+        "text": "const text = await readFile(join(skillPath, SOURCE_FILE), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 1564,
+        "text": "const child = spawn('git', args, {"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 1784,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

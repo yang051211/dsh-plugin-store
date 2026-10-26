@@ -1,0 +1,87 @@
+{
+  "name": "@aifeed/deepseek-harness",
+  "version": "1.0.0-draft.2",
+  "scannedAt": "2026-10-26T10:10:51.142Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/lib/remote.js",
+        "line": 3,
+        "text": "const https = require('node:https');"
+      },
+      {
+        "file": "engine/lib/remote.js",
+        "line": 117,
+        "text": "const request = https.request("
+      },
+      {
+        "file": "engine/server.js",
+        "line": 5,
+        "text": "const httpLib = require('node:http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/lib/bundle.js",
+        "line": 3,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "engine/lib/bundle.js",
+        "line": 19,
+        "text": "const bytes = fs.readFileSync(path.join(rootDir, relativePath));"
+      },
+      {
+        "file": "engine/lib/bundle.js",
+        "line": 40,
+        "text": "fs.mkdirSync(manifestDir, { recursive: true });"
+      },
+      {
+        "file": "engine/lib/bundle.js",
+        "line": 41,
+        "text": "fs.mkdirSync(path.join(outDir, 'governance'), { recursive: true });"
+      },
+      {
+        "file": "engine/lib/bundle.js",
+        "line": 42,
+        "text": "fs.mkdirSync(path.join(outDir, 'revocation'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "ctx.tools.register(defineTool(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "@aiwayds/dsh-profile-switch",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:10:52.301Z",
+  "icon": "aiwayds__dsh-profile-switch.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agents-dir.js",
+        "line": 15,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/agents-dir.js",
+        "line": 147,
+        "text": "const result = parseAgentMarkdown(readFileSync(path, 'utf8'), path);"
+      },
+      {
+        "file": "lib/model-profiles.js",
+        "line": 36,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/model-profiles.js",
+        "line": 139,
+        "text": "text = readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "lib/model-profiles.js",
+        "line": 166,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 31,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 54,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 76,
+        "text": "const install = spawnSync('npm', ['install', '--no-audit', '--no-fund', '--loglevel=error'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 90,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

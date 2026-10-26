@@ -1,0 +1,110 @@
+{
+  "name": "@aiwayds/dsh-feishu",
+  "version": "0.16.0",
+  "scannedAt": "2026-10-26T10:10:51.762Z",
+  "icon": "aiwayds__dsh-feishu.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/onboard.js",
+        "line": 54,
+        "text": "* Verify one credentials pair against the open platform. Uses raw fetch (not"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/binder.js",
+        "line": 22,
+        "text": "import { stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { closeSync, openSync, readFileSync, unlinkSync, writeSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 79,
+        "text": "const pid = Number.parseInt(readFileSync(path, 'utf8').trim(), 10);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "unlinkSync(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bot.js",
+        "line": 1678,
+        "text": "* Discovery can happen long after spawn (mid-turn attach) or with the"
+      },
+      {
+        "file": "lib/log-repair.js",
+        "line": 17,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/log-repair.js",
+        "line": 67,
+        "text": "proc = spawnSync(process.execPath, args, { timeout: TIMEOUT_MS });"
+      },
+      {
+        "file": "lib/remote-tail.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/remote-tail.js",
+        "line": 33,
+        "text": "execFile('zstd', ['-dc', file], { maxBuffer: 1 << 30 }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "skills"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 209,
+      "text": "npm install -g @aiwayds/dsh-ask-router"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 167,
+      "text": "npm install -g @aiwayds/dsh-ask-router"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,106 @@
+{
+  "name": "@biliye/dsh-voice-call",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:11:13.755Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 33,
+        "text": "const res = await fetch(url, options)"
+      },
+      {
+        "file": "lib/host/speech/bridge.js",
+        "line": 47,
+        "text": "  const TTS_MINIMAX = \"const https=require('https');const body=JSON.stringify({model:cfg.model||'speech-02-hd',text:cfg.text,stream:false,voice_setting:{voice_i"
+      },
+      {
+        "file": "lib/host/speech/bridge.js",
+        "line": 48,
+        "text": "  const TTS_OPENAI = \"const https=require('https');const http=require('http');const body=JSON.stringify({model:cfg.model||'tts-1',input:cfg.text,voice:cfg.voice"
+      },
+      {
+        "file": "lib/host/speech/bridge.js",
+        "line": 54,
+        "text": "  const TTS_MIMO = \"const https=require('https');const http=require('http');const msgs=[];if(cfg.instruction)msgs.push({role:'user',content:String(cfg.instructi"
+      },
+      {
+        "file": "lib/host/speech/bridge.js",
+        "line": 55,
+        "text": "  const ASR_OPENAI = \"const https=require('https');const http=require('http');const boundary='----va'+Date.now();const audio=Buffer.from(cfg.audioBase64||'','ba"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/session.js",
+        "line": 6,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/session.js",
+        "line": 94,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/host/speech/stt-local.js",
+        "line": 80,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/host/speech/stt-local.js",
+        "line": 82,
+        "text": "appendFileSync(file, JSON.stringify(entry) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/host/speech/stt-local.js",
+        "line": 83,
+        "text": "const lines = readFileSync(file, 'utf8').split('\\n').filter(Boolean)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/config.js",
+        "line": 6,
+        "text": "export const inject = ['agents', 'timer', 'subprocess', 'webServer', 'tools', 'workspaceRegistry', 'sessionPersistence', 'sessionTitle', 'sandboxPolicy']"
+      },
+      {
+        "file": "lib/host/expose.js",
+        "line": 49,
+        "text": "const disposeTool = ctx.tools.register(tool)"
+      },
+      {
+        "file": "lib/host/plugin.js",
+        "line": 5,
+        "text": "// ctx.tools.register / ctx.webServer.register 都必须在这里（即 apply 执行期间）发生，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/speech/bridge.js",
+        "line": 20,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

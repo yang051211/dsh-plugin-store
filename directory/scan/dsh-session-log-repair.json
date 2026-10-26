@@ -1,0 +1,98 @@
+{
+  "name": "dsh-session-log-repair",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:30.936Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "var response = await fetch(API_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 306,
+        "text": "writeFileSync(fd, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 567,
+        "text": "mkdirSync(backupDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 724,
+        "text": "const raw = readFileSync(SKILL_FILE, 'utf8')"
+      },
+      {
+        "file": "skill/scripts/repair-all-sessions.mjs",
+        "line": 17,
+        "text": "import { closeSync, openSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 882,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 901,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 945,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skill/scripts/repair-all-sessions.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "skill/scripts/repair-all-sessions.mjs",
+        "line": 124,
+        "text": "const run = spawnSync(process.execPath, childArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

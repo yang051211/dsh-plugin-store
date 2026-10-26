@@ -1,0 +1,134 @@
+{
+  "name": "dsh-lark-agent",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:10:42.552Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/onboarding/host.js",
+        "line": 105,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "dist/onboarding/updates.js",
+        "line": 26,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${name.replace('/', '%2f')}`, { signal, headers: { accept: 'application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/artifact-publisher.js",
+        "line": 2,
+        "text": "import { mkdtemp, readFile, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/artifact-publisher.js",
+        "line": 231,
+        "text": "const image = await readFile(file);"
+      },
+      {
+        "file": "dist/artifact-publisher.js",
+        "line": 242,
+        "text": "await rm(directory, { recursive: true, force: true });"
+      },
+      {
+        "file": "dist/artifacts.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "dist/artifacts.js",
+        "line": 3,
+        "text": "import { chmod, lstat, mkdir, open, rename, unlink } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-runtime.js",
+        "line": 153,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "dist/dsh-runtime.js",
+        "line": 158,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "dist/dsh-runtime.js",
+        "line": 168,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "dist/dsh-runtime.js",
+        "line": 188,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "dist/dsh-runtime.js",
+        "line": 204,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/lark-cli.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/lark-cli.js",
+        "line": 61,
+        "text": "            child = spawn(options.executable ?? 'lark-cli', ['--profile', options.profile, 'event', 'status', '--current', '--json'], { shell: false, windowsHid"
+      },
+      {
+        "file": "dist/lark-cli.js",
+        "line": 138,
+        "text": "return spawn(this.executable, ['--profile', this.profile, ...args], {"
+      },
+      {
+        "file": "dist/lock.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/lock.js",
+        "line": 49,
+        "text": " await new Promise((resolve, reject) => execFile('ps', ['-o', 'lstart=', '-p', String(pid)], { env: { ...process.env, LC_ALL: 'C', TZ: 'UTC' }, timeout: 5000, m"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "dist/client.cjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionPersistence",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 23,
+      "text": "npm install -g @larksuite/cli@1.0.98"
+    }
+  ],
+  "skippedEntries": []
+}

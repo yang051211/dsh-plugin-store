@@ -1,0 +1,76 @@
+{
+  "name": "@crackedopal/dsh-clinepass",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:11:32.627Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/build-info.json",
+        "line": 12,
+        "text": "\"undici\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5166,
+        "text": "import { ProxyAgent, Socks5ProxyAgent } from \"undici\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5186,
+        "text": "return globalThis.fetch(input, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1983,
+        "text": "import { mkdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2197,
+        "text": "await mkdir(directory, { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2199,
+        "text": "await writeFile(file, JSON.stringify(evidence, (_key, value) => typeof value === \"string\" ? this.redact(value) : value, 2) + \"\\n\", { flag: \"wx\", mode: 384 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2611,
+        "text": "const { readFileSync } = __require(\"node:fs\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2612,
+        "text": "const data = readFileSync(\"/proc/self/environ\", \"utf-8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

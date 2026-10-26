@@ -1,0 +1,145 @@
+{
+  "name": "@anionex/dsh-vision-toolkit",
+  "version": "0.1.48",
+  "scannedAt": "2026-10-26T10:10:57.752Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "const response = await fetch(exports.DISPLAY_CONFIG_ROUTE, { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 698,
+        "text": "const response = await fetch(SETTINGS_ROUTE, { credentials: 'same-origin', ...init });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1771,
+        "text": "request = fetch(`${exports.PASTE_POLICY_ROUTE}?${query.toString()}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2030,
+        "text": "const body = await responseJson(await fetch(`${exports.PASTE_IMAGES_ROUTE}?${query.toString()}`, {"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 154,
+        "text": "const response = await fetch(payload.healthUrl, { signal: AbortSignal.timeout(2000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifact-access.js",
+        "line": 8,
+        "text": "import { constants as fsConstants } from 'node:fs';"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 9,
+        "text": "import { chmod, lstat, mkdir, open, readFile, realpath, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 100,
+        "text": "const key = await readFile(path);"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 112,
+        "text": "await mkdir(root, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 123,
+        "text": "await writeFile(path, candidate, { flag: 'wx', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exposure.js",
+        "line": 226,
+        "text": "toolDisposers.push(agent.ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 258,
+        "text": "state.liftRestriction = agent.ctx.tools.restrict({ deny: [VISION_TOOLKIT_ACTIVATE] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'skills', 'subprocess', 'settings', 'agents', 'sessions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "activationTool = ctx.tools.register(exposure.activationTool);"
+      },
+      {
+        "file": "src/exposure.ts",
+        "line": 251,
+        "text": "for (const definition of definitions) toolDisposers.push(agent.ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-update.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 39,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 121,
+        "text": "const child = spawn(payload.pnpmPath, args, {"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 142,
+        "text": "const launch = () => spawn(payload.execPath, payload.args, {"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 401,
+        "text": "helper = spawn(process.execPath, ['-e', PLUGIN_RESTART_HELPER_SOURCE, payload], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "settings",
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

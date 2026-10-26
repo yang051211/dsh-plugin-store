@@ -1,0 +1,81 @@
+{
+  "name": "@baiiii/dsh-wallpaper-local",
+  "version": "1.0.22",
+  "scannedAt": "2026-10-26T10:11:10.704Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 112,
+        "text": "fetch('/dsh-wallpaper/api/config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 156,
+        "text": "const res = await fetch('/dsh-wallpaper/api/list')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { createReadStream, statSync, mkdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "inject: ['fs', 'webServer'],"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const vdf = readFileSync(primary + '\\\\steamapps\\\\libraryfolders.vdf', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "mkdirSync(THUMBS, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 43,
+      "text": "# 需要 Node + sharp(可从 DSH profile 的 node_modules 引用,或 npm i -g sharp)"
+    }
+  ],
+  "skippedEntries": []
+}

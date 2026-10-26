@@ -1,0 +1,134 @@
+{
+  "name": "@cyd-prc/dsh-threat-gate",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:11:35.366Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 349,
+        "text": "const metaResponse = await fetch(`${base}/${version}`);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 355,
+        "text": "const response = await fetch(tarball);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 363,
+        "text": "const packumentResponse = await fetch(base);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 382,
+        "text": "const packument = await fetch(base).then((r) => r.json()).catch(() => null);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 3,
+        "text": "import { mkdtempSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 189,
+        "text": "? readFileSync(chainFile, 'utf8').trim().split('\\n').map((l) => JSON.parse(l).kind)"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 234,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 312,
+        "text": "const entries = readFileSync(chain, 'utf8').trim().split('\\n').map((line) => JSON.parse(line));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 78,
+        "text": "yield ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 92,
+        "text": "yield ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/core.test.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 230,
+        "text": "const result = spawnSync(process.execPath, [tool, path], { encoding: 'utf8' });"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 50,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 139,
+        "text": "const result = spawnSync('git', ['rev-parse', '--short=7', 'HEAD'], { cwd: root, encoding: 'utf8' });"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 408,
+        "text": "const result = spawnSync(command, [...args, 'pack', '--pack-destination', destination], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": [
+    "node_modules/@cyd-prc/dsh-audit-chain/LICENSE (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/lib/chain.js (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/index.js (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/package.json (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/docs/CHAIN-GRADING-CONTRACT.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/README.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/README.zh-CN.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/test/core.test.mjs (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/tools/verify-chain.mjs (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/tools/verify-release.mjs (outside the package)"
+  ]
+}

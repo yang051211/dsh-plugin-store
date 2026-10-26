@@ -1,0 +1,70 @@
+{
+  "name": "dsh-harness-manager",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:34.796Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/panel.js",
+        "line": 64,
+        "text": "fetch(API + '/launch', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 105,
+        "text": "fetch(API + '/status.json', { headers: { Accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "const raw = fs.readFileSync(path.join(MANAGER_HOME, 'install.json'), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "const panelJs = fs.readFileSync(path.join(PACKAGE_ROOT, 'lib', 'panel.js'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const child = spawn(found.exe, [], { detached: true, stdio: 'ignore', windowsHide: false })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

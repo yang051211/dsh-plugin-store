@@ -1,0 +1,119 @@
+{
+  "name": "terminalkeeper",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:10:44.627Z",
+  "icon": "terminalkeeper.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 5056,
+        "text": "const response = await fetch(BASE + path, options)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 10840,
+        "text": "const response = await fetch(BASE + '/settings')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 10917,
+        "text": "const response = await fetch(BASE + '/settings', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 329,
+        "text": "*   1. **跨站请求伪造**：随便哪个你访问的网页都能 `fetch('http://127.0.0.1:3080/plugins/shell/keys')`"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 31,
+        "text": "const VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 66,
+        "text": "return JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 121,
+        "text": "if (before !== after) writeFileSync(join(root, 'package.json'), after + '\\n')"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 161,
+        "text": "writeFileSync(join(root, 'package.json'), JSON.stringify(json, null, 2) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 322,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5787,
+        "text": "ctx.tools.register(guardedTool(spec))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 25,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 77,
+        "text": "const r = spawnSync('sh', ['-c', 'command -v tmux >/dev/null 2>&1 && tmux -V || echo MISSING'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 103,
+        "text": "const probe = spawnSync('npm', ['view', `${PKG}@${semver}`, 'version'], { encoding: 'utf8', timeout: 20000 })"
+      },
+      {
+        "file": "bin/terminalkeeper.mjs",
+        "line": 125,
+        "text": "const r = spawnSync(pm, ['install'], { cwd: root, stdio: 'inherit', shell: false })"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

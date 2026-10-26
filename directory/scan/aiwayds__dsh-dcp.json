@@ -1,0 +1,90 @@
+{
+  "name": "@aiwayds/dsh-dcp",
+  "version": "0.13.1",
+  "scannedAt": "2026-10-26T10:10:51.774Z",
+  "icon": "aiwayds__dsh-dcp.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/setup.js",
+        "line": 12,
+        "text": "import { readdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 63,
+        "text": "const manifest = JSON.parse(readFileSync(`${profilesDir}/${name}/package.json`, 'utf8'))"
+      },
+      {
+        "file": "lib/skill.js",
+        "line": 12,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/skill.js",
+        "line": 69,
+        "text": "content: stripFrontmatter(await readFile(SKILL_BODY_URL, 'utf8')),"
+      },
+      {
+        "file": "scripts/compare.mjs",
+        "line": 24,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/compare.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 31,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 33,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 58,
+        "text": "const dsh = (args, opts = {}) => spawnSync(dshBin, args, { cwd: profile, encoding: 'utf8', env: { ...process.env, DSH_HOME: home }, ...opts })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 60,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "llm",
+    "sessions",
+    "skills",
+    "tokenMeter"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

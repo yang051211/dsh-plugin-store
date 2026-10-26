@@ -1,0 +1,110 @@
+{
+  "name": "dsh-easy-upgrade",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:10:39.357Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 661,
+        "text": "const response = await fetch(`${API_ROOT}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 690,
+        "text": "const response = await fetch(`${API_ROOT}/log`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 715,
+        "text": "const response = await fetch(`${API_ROOT}/release`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 741,
+        "text": "const response = await fetch(url, { credentials: \"omit\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 233,
+        "text": "const response = await fetch(`${GITHUB_API}/repos/${repo.owner}/${repo.repo}/releases?per_page=1`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { closeSync, existsSync, openSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "const raw = await readFile(join(repoDir, \"package.json\"), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 290,
+        "text": "await mkdir(this.stateDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "const parsed = JSON.parse(await readFile(this.statePath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "function spawn(command, args, options) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "function spawnSync(command, args, options) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const child = spawn(\"git\", command, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 429,
+        "text": "spawn(process.execPath, [store.runnerPath, JSON.stringify({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 455,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

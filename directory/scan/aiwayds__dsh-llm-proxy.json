@@ -1,0 +1,118 @@
+{
+  "name": "@aiwayds/dsh-llm-proxy",
+  "version": "0.7.3",
+  "scannedAt": "2026-10-26T10:10:51.960Z",
+  "icon": "aiwayds__dsh-llm-proxy.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "import * as undici from 'undici';"
+      },
+      {
+        "file": "lib/router.js",
+        "line": 9,
+        "text": "import * as undici from 'undici';"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 52,
+        "text": "import * as undici from 'undici'"
+      },
+      {
+        "file": "src/router.ts",
+        "line": 10,
+        "text": "import * as undici from 'undici'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 216,
+        "text": "content: stripFrontmatter(await readFile(SKILL_BODY_URL, 'utf8')),"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 27,
+        "text": "import { existsSync, mkdirSync, readdirSync, realpathSync, rmSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 87,
+        "text": "mkdirSync(scopeDir, { recursive: true })"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 95,
+        "text": "rmSync(target, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 40,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 63,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 107,
+        "text": "const install = spawnSync('npm', ['install', '--no-audit', '--no-fund', '--loglevel=error'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 121,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

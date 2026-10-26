@@ -1,0 +1,90 @@
+{
+  "name": "@czy1326/dsh-restart-button",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:11:35.445Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "const direct = await fetch(DIRECT_URL, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 82,
+        "text": "const fallback = await fetch(HOST_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "writeFileSync(file, `${lines.join(\"\\r\\n\")}\\r\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "writeFileSync(file, `#!/bin/sh\\n${lines.join(\"\\n\")}\\n`, { mode: 0o755 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "writeFileSync(PROBE_FILE, `probe exe=${target.exe} image=${target.image}\\n`);"
+      },
+      {
+        "file": "scripts/patch-asar.cjs",
+        "line": 26,
+        "text": "const fs = require(\"node:fs\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "const child = spawn(script.command, script.args, { detached: true, stdio: \"ignore\", windowsHide: true });"
+      },
+      {
+        "file": "scripts/patch-asar.cjs",
+        "line": 30,
+        "text": "const { execFileSync } = require(\"node:child_process\");"
+      },
+      {
+        "file": "scripts/restore-asar.cjs",
+        "line": 14,
+        "text": "const { execFileSync } = require(\"node:child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

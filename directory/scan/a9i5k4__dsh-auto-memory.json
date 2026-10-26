@@ -1,0 +1,139 @@
+{
+  "name": "@a9i5k4/dsh-auto-memory",
+  "version": "3.3.17",
+  "scannedAt": "2026-10-26T10:10:46.479Z",
+  "icon": "a9i5k4__dsh-auto-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3764,
+        "text": "var res = await fetch(path + query(params), signal ? { signal: signal } : undefined)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3781,
+        "text": "var res = await fetch(path, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload), signal: signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3874,
+        "text": "          var response = await fetch(API.migrateUpload + '?name=' + encodeURIComponent(file.name), { method: 'POST', headers: { 'content-type': 'application/oct"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7079,
+        "text": "fetch(API.shadowRecent).then(function (r) { return r.json() }).then(function (j) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7082,
+        "text": "fetch(API.reviewFeedback).then(function (r) { return r.json() }).then(function (j) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 12668,
+        "text": "Object.keys(FONT_SCALES).map(function (k) { return h('option', { key: k, value: k }, t('fs' + k.charAt(0).toUpperCase() + k.slice(1))) })), t('fFontSizeHint')),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 16003,
+        "text": "Object.keys(FONT_SCALES).map(function (k) { return h('option', { key: k, value: k }, t('fs' + k.charAt(0).toUpperCase() + k.slice(1))) })), t('fFontSizeHint')),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 19132,
+        "text": "Object.keys(FONT_SCALES).map(function (k) { return h('option', { key: k, value: k }, t('fs' + k.charAt(0).toUpperCase() + k.slice(1))) })), t('fFontSizeHint')),"
+      },
+      {
+        "file": "lib/config-io.js",
+        "line": 29,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config-io.js",
+        "line": 30,
+        "text": "import { rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 335,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt', 'subagents', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15683,
+        "text": "//   与路由、工具注册**都在 `ctx.tools.register` 之后**才进 disposer 链 ⇒ 注册抛错时"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21195,
+        "text": "//   这样即使 ctx.tools.register / ctx.webServer.register 抛错，disposeSurfaces 也已经"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21207,
+        "text": "disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { exec as cpExec, spawn as cpSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12642,
+        "text": "// 配置性错误熔断(问题③):UNKNOWN_MODEL 等错误不会自愈,熔断期内直接返回空,不再反复 spawn(卡顿根因)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12649,
+        "text": "// 并发闸门(问题②):同时在飞的子代理 ≥3 时拒绝新 spawn(启动瞬间多路叠加导致卡顿)"
+      },
+      {
+        "file": "lib/python-runtime.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/python-runtime.js",
+        "line": 41,
+        "text": "execFile(String(py), args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 1 << 20 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "subagents",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,115 @@
+{
+  "name": "dsh-jace-remote",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:10:25.136Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "const res = await fetch('/__jace/remote/status', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 7,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 109,
+        "text": "const upstreamReq = http.request("
+      },
+      {
+        "file": "src/upstream.js",
+        "line": 40,
+        "text": "const res = await fetch(url, { redirect: 'manual' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/devices.js",
+        "line": 3,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/devices.js",
+        "line": 27,
+        "text": "const raw = JSON.parse(readFileSync(this.filePath, 'utf8'))"
+      },
+      {
+        "file": "src/devices.js",
+        "line": 35,
+        "text": "mkdirSync(dirname(this.filePath), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/devices.js",
+        "line": 36,
+        "text": "writeFileSync(this.filePath, JSON.stringify({ version: 1, devices: this.devices }, null, 2), { mode: 0o600 })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 9,
+        "text": "import { mkdirSync, writeFileSync, chmodSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "export const inject = ['webServer', 'connection', 'tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 149,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 180,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 220,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 241,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 69,
+      "text": "> **为什么脚本要先把源码拷进 `$DSH_HOME/profiles/<profile>/plugins/`**："
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "@danglong0313/dsh-history-sync",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:11:36.902Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 247,
+        "text": "const response = await fetch(CONFIG_ENDPOINT, { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 258,
+        "text": "const response = await fetch(CONFIG_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/codex.js",
+        "line": 3,
+        "text": "import { access, copyFile, mkdir, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/providers/codex.js",
+        "line": 239,
+        "text": "await mkdir(cacheDirectory, { recursive: true });"
+      },
+      {
+        "file": "lib/providers/codex.js",
+        "line": 252,
+        "text": "await rm(temporary, { force: true });"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 18,
+        "text": "text = await readFile(this.path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/codex.js",
+        "line": 1,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/providers/codex.js",
+        "line": 64,
+        "text": "const child = spawn(command, [...options.args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 16,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessionPersistence",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

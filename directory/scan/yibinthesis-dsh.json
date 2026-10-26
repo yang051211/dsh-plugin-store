@@ -1,0 +1,99 @@
+{
+  "name": "yibinthesis-dsh",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:10:26.756Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 713,
+        "text": "const res = await fetch(`${BRIDGE}${route}${query}`, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 16,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 180,
+        "text": "raw = readFileSync(configPath, 'utf8')"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 251,
+        "text": "raw = readFileSync(configPath, 'utf8')"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 268,
+        "text": "writeFileSync(configPath, JSON.stringify(next, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/env.js",
+        "line": 5,
+        "text": "import { existsSync, realpathSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "*   （实测：声明为 inject 后 `apply` 期 `ctx.tools` 才稳定可用）。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "* 只经 `ctx.tools` 这一个服务接口与宿主交互。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "lib/tool-builder.js",
+        "line": 5,
+        "text": "// 契约本身要求 `ctx.tools.register(defineTool(options))`。但实测发现："
+      },
+      {
+        "file": "lib/tool-builder.js",
+        "line": 187,
+        "text": "* @returns 可交给 `ctx.tools.register()` 的 `ToolDefinition`。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

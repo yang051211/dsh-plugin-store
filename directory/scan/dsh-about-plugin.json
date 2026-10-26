@@ -1,0 +1,90 @@
+{
+  "name": "dsh-about-plugin",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:37.429Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, realpathSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "return JSON.parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 526,
+        "text": "mkdirSync(home, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 527,
+        "text": "appendFileSync(statusFilePath(home), `${JSON.stringify(entry)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 538,
+        "text": "lines = readFileSync(path, \"utf8\").split(\"\\n\").filter((line) => line.trim() !== \"\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "* uses (CVE-2024-27980 hardened `spawn()` refuses `.cmd` without a shell),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 723,
+        "text": "spawn(process.execPath, [supervisorEntry(), planPath], {"
+      },
+      {
+        "file": "lib/supervisor.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/link-dev-deps.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

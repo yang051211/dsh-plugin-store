@@ -1,0 +1,74 @@
+{
+  "name": "@auggieteo/dsh-output-styles",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:11:08.208Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/bundle-dynamic.mjs",
+        "line": 7,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/bundle-dynamic.mjs",
+        "line": 12,
+        "text": "const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/bundle-dynamic.mjs",
+        "line": 18,
+        "text": "const host = await readFile(join(root, 'dynamic/host.js'), 'utf8')"
+      },
+      {
+        "file": "scripts/bundle-dynamic.mjs",
+        "line": 19,
+        "text": "const client = await readFile(join(root, 'dynamic/client.js'), 'utf8')"
+      },
+      {
+        "file": "scripts/bundle-dynamic.mjs",
+        "line": 31,
+        "text": "await writeFile(out, JSON.stringify(bundle, null, 2) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/patch-dsh-settings-nav-icon.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run bundle:dynamic"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "systemPrompt",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

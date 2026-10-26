@@ -1,0 +1,84 @@
+{
+  "name": "dsh-hub-agent",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:10:22.888Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const response = await fetch(REPORT_URL, { cache: 'no-cache' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 211,
+        "text": "fetch(SETTINGS_URL, { cache: 'no-cache' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 228,
+        "text": "fetch(SETTINGS_URL, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "const response = await fetch(`${hubUrl.replace(/\\/$/, '')}/api/telemetry/harness`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "const response = await fetch(`${hubUrl.replace(/\\/$/, '')}/api/fleet/heartbeat`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "try { mkdirSync(dir, { recursive: true }); } catch { return; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "writeFileSync(join(dir, 'history.jsonl'), `${JSON.stringify(report)}\\n`, { flag: 'a' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "if (existsSync(path)) return readFileSync(path, 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

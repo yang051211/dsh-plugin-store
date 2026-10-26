@@ -1,0 +1,97 @@
+{
+  "name": "@contexera/dsh-agent-team",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:11:30.978Z",
+  "icon": "contexera__dsh-agent-team.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packages/agent-team/lib/human-update-check.js",
+        "line": 62,
+        "text": "const fetchImpl = options.fetchImpl ?? ((url, init) => globalThis.fetch(url, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packages/agent-team/lib/attachments.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "packages/agent-team/lib/attachments.js",
+        "line": 89,
+        "text": "const bytes = await readFile(raw);"
+      },
+      {
+        "file": "packages/agent-team/lib/attachments.js",
+        "line": 123,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "packages/agent-team/lib/attachments.js",
+        "line": 124,
+        "text": "await writeFile(join(dir, name), bytes);"
+      },
+      {
+        "file": "packages/agent-team/lib/attachments.js",
+        "line": 126,
+        "text": "await writeFile(join(dir, ATTACHMENT_SIDECAR_NAME), JSON.stringify(meta), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packages/agent-team/lib/index.js",
+        "line": 2231,
+        "text": "const teamMessage = this.ctx.tools.get('team_message', scope);"
+      },
+      {
+        "file": "packages/agent-team/lib/index.js",
+        "line": 2238,
+        "text": "const available = new Set(this.ctx.tools.schemas(scope).map(tool => tool.name));"
+      },
+      {
+        "file": "packages/agent-team/lib/member-runtime.js",
+        "line": 92,
+        "text": "const tools = this.deps.ctx.tools;"
+      },
+      {
+        "file": "packages/tool-agent-team/lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "packages/tool-agent-team/lib/index.js",
+        "line": 766,
+        "text": "ctx.tools.register(teamInbox);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "packages/agent-team/lib/typert.host.js",
+    "packages/agent-team/lib/typert.remote-client.js",
+    "packages/client-agent-team/lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentTeam",
+    "storage"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

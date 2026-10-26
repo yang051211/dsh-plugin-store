@@ -1,0 +1,149 @@
+{
+  "name": "@cyd-prc/dsh-shape-guard",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:11:34.573Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 97,
+        "text": "fetch('/shape/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 349,
+        "text": "const metaResponse = await fetch(`${base}/${version}`);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 355,
+        "text": "const response = await fetch(tarball);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 363,
+        "text": "const packumentResponse = await fetch(base);"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 382,
+        "text": "const packument = await fetch(base).then((r) => r.json()).catch(() => null);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/core.test.mjs",
+        "line": 22,
+        "text": "import { appendFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 222,
+        "text": "const sample = readFileSync(join(import.meta.dirname, 'fixtures', 'external-negative-anchor.txt'), 'utf8');"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 427,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 487,
+        "text": "const lines = readFileSync(path, 'utf8').trim().split('\\n');"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 491,
+        "text": "writeFileSync(path, `${lines.join('\\n')}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 43,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 128,
+        "text": "yield ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 170,
+        "text": "yield ctx.tools.register({"
+      },
+      {
+        "file": "tools/live-check.mjs",
+        "line": 79,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "tools/live-check.mjs",
+        "line": 87,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/core.test.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 905,
+        "text": "const result = spawnSync(process.execPath, [tool, path], { encoding: 'utf8' });"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 50,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 139,
+        "text": "const result = spawnSync('git', ['rev-parse', '--short=7', 'HEAD'], { cwd: root, encoding: 'utf8' });"
+      },
+      {
+        "file": "tools/verify-release.mjs",
+        "line": 408,
+        "text": "const result = spawnSync(command, [...args, 'pack', '--pack-destination', destination], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": [
+    "node_modules/@cyd-prc/dsh-audit-chain/LICENSE (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/lib/chain.js (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/index.js (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/package.json (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/docs/CHAIN-GRADING-CONTRACT.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/README.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/README.zh-CN.md (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/test/core.test.mjs (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/tools/verify-chain.mjs (outside the package)",
+    "node_modules/@cyd-prc/dsh-audit-chain/tools/verify-release.mjs (outside the package)"
+  ]
+}

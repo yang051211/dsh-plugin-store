@@ -1,0 +1,86 @@
+{
+  "name": "dsh-agent-teams-limits",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:31.829Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, symlinkSync, copyFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 58,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 84,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "scripts/patch-agent-teams-limits.mjs",
+        "line": 64,
+        "text": "import { existsSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/patch-agent-teams-limits.mjs",
+        "line": 486,
+        "text": "writeFileSync(probe, text, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 112,
+        "text": "return spawnSync(line, { cwd: options.cwd, stdio: 'inherit', shell: true });"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 183,
+        "text": "const dump = spawnSync(`dsh --profile ${quoteShellArgument(options.profile)} --dump-config`, {"
+      },
+      {
+        "file": "scripts/patch-agent-teams-limits.mjs",
+        "line": 63,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/patch-agent-teams-limits.mjs",
+        "line": 488,
+        "text": "const result = spawnSync(process.execPath, ['--check', probe], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

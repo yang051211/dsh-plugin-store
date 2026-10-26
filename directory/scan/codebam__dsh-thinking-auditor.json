@@ -1,0 +1,58 @@
+{
+  "name": "@codebam/dsh-thinking-auditor",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:29.884Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/file-sink.mjs",
+        "line": 14,
+        "text": "import { appendFile, mkdir, chmod } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/file-sink.mjs",
+        "line": 49,
+        "text": "const ensureDir = mkdir(auditDir, { recursive: true, mode: 0o700 }).then(() => chmod(auditDir, 0o700)).catch((cause) => {"
+      },
+      {
+        "file": "src/file-sink.mjs",
+        "line": 61,
+        "text": "await appendFile(path, `${JSON.stringify(record)}\\n`, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 42,
+        "text": "export const inject = ['llm', 'sessions', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

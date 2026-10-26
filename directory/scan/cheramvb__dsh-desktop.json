@@ -1,0 +1,120 @@
+{
+  "name": "@cheramvb/dsh-desktop",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:11:24.643Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/core.js",
+        "line": 12,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "desktop/core.js",
+        "line": 69,
+        "text": "const req = http.get(url, { timeout: timeoutMs }, (res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "const status = await fetch(API.status).then((r) => r.json());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 134,
+        "text": "const res = await fetch(API.launch, { method: 'POST' }).then((r) => r.json());"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/main.js",
+        "line": 27,
+        "text": "const { writeFileSync, readFileSync, existsSync, mkdirSync, appendFileSync } = require('node:fs')"
+      },
+      {
+        "file": "desktop/main.js",
+        "line": 59,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "desktop/main.js",
+        "line": 65,
+        "text": "appendFileSync(join(logDir(), 'desktop.log'), `${new Date().toISOString()} ${line}\\n`)"
+      },
+      {
+        "file": "desktop/main.js",
+        "line": 328,
+        "text": "writeFileSync(opts.screenshot || join(logDir(), 'smoke.png'), image.toPNG())"
+      },
+      {
+        "file": "desktop/main.js",
+        "line": 544,
+        "text": "writeFileSync(shot, image.toPNG())"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "const disposer = ctx.tools.register(desktopLaunchTool(resolve))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/core.js",
+        "line": 11,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "desktop/core.js",
+        "line": 106,
+        "text": "? spawn(process.env.DSH_NODE || 'node', [bin, ...parts], {"
+      },
+      {
+        "file": "desktop/core.js",
+        "line": 112,
+        "text": ": spawn(`dsh ${parts.join(' ')}`, {"
+      },
+      {
+        "file": "desktop/core.js",
+        "line": 158,
+        "text": "const killer = spawn('taskkill', ['/pid', String(pid), '/t', '/f'], {"
+      },
+      {
+        "file": "desktop/core.js",
+        "line": 199,
+        "text": "net = spawn('netstat', ['-ano'], { windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,75 @@
+{
+  "name": "dsh-polaris-memory",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:33.305Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 14,
+        "text": "return fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'commands', 'fs', 'webServer', 'agents', 'approval', 'userQuestions', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync } from 'node:fs'  // 首步真身：context 内同步读盘（DSH fs 服务纯异步，宿主插件可用 node:fs——hooks-codex 先例）"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 22,
+        "text": "return parseDoc(readFileSync(p, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "// `inject = ['tools','webServer']` + ctx.webServer/ctx.tools). ctx.get(...) alone"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'commands', 'fs', 'webServer', 'agents', 'approval', 'userQuestions', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1792,
+        "text": "tools.register(def)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

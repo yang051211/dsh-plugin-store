@@ -1,0 +1,119 @@
+{
+  "name": "@cecwxf/dsh-room",
+  "version": "0.3.23",
+  "scannedAt": "2026-10-26T10:11:18.700Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 71,
+        "text": "    res = await fetch(API + path, { credentials: \"same-origin\", ...init, headers: { ...init && init.body ? { \"content-type\": \"application/json\" } : {}, ...init "
+      },
+      {
+        "file": "dist/client.js",
+        "line": 2805,
+        "text": "    res = await fetch(API + path, { credentials: \"same-origin\", ...init, headers: { ...init && init.body ? { \"content-type\": \"application/json\" } : {}, ...init "
+      },
+      {
+        "file": "dist/index.js",
+        "line": 2169,
+        "text": "import { createServer } from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 191,
+        "text": "import { mkdir as mkdir2, readFile as readFile2, appendFile, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 229,
+        "text": "if (!cur.split(\"\\n\").includes(\".dsh-room/\")) await appendFile(f, `${cur && !cur.endsWith(\"\\n\") ? \"\\n\" : \"\"}.dsh-room/"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 427,
+        "text": "import { lstat, mkdir as mkdir3, readFile as readFile3, readdir, realpath, rm, stat as stat2, writeFile as writeFile2 } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 640,
+        "text": "await rm(file, { recursive: false, force: false });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 782,
+        "text": "import { mkdir as mkdir5, readFile as readFile5, writeFile as writeFile4, appendFile as appendFile2, rename as rename2, rm as rm3 } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 5978,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 5983,
+        "text": "const unregister = bridge.tools().map((t) => ctx.tools.register(t));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 190,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 196,
+        "text": "execFile(\"git\", [...pre, ...args], { cwd, maxBuffer: 16 * 1024 * 1024, env: { ...process.env, GIT_TERMINAL_PROMPT: \"0\" } }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 429,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 438,
+        "text": "const child = spawn(command, args, { cwd, shell: false, signal, env: { ...process.env, PATH: process.env.PATH } });"
+      },
+      {
+        "file": "scripts/ensure-dist.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/ensure-dist.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

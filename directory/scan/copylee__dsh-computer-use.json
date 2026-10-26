@@ -1,0 +1,129 @@
+{
+  "name": "@copylee/dsh-computer-use",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:11:31.481Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 454,
+        "text": "const result = await (await fetch(SKILLS_ROUTE, body ? {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 955,
+        "text": "const response = await fetch(STATUS_ROUTE, { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 964,
+        "text": "const response = await fetch(SCREENSHOTS_ROUTE, { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 976,
+        "text": "const result = await (await fetch(SCREENSHOTS_CLEAN_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1069,
+        "text": "const response = await fetch(PREVIEW_ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { chmod, mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1366,
+        "text": "const code = await readFile(source);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1371,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1395,
+        "text": "await rm(temp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7636,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7670,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9174,
+        "text": "const inject = [\"tools\", \"attachments\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9358,
+        "text": "for (const tool of tools) ctx.effect(() => ctx.tools.register(tool), `computer-use: tool ${tool.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1384,
+        "text": "execFile(join(fw, \"csc.exe\"), args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1514,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

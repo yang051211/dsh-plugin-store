@@ -1,0 +1,86 @@
+{
+  "name": "@aiwayds/dsh-ask-router",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:10:51.651Z",
+  "icon": "aiwayds__dsh-ask-router.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 27,
+        "text": "import { existsSync, mkdirSync, readdirSync, realpathSync, rmSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 85,
+        "text": "mkdirSync(scopeDir, { recursive: true })"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 93,
+        "text": "rmSync(target, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 26,
+        "text": "import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 27,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 25,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 48,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 71,
+        "text": "const install = spawnSync('pnpm', ['install'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 77,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

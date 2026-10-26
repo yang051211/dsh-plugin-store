@@ -1,0 +1,115 @@
+{
+  "name": "echocat-skill-panel",
+  "version": "4.4.2",
+  "scannedAt": "2026-10-26T10:10:29.453Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4714,
+        "text": "publish({ phase: 'error', error: 'this shell exposes no fetch()', data: state.data })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5339,
+        "text": "if (typeof fetch !== 'function') return fail('NETWORK', '\\u5f53\\u524d\\u5916\\u58f3\\u6ca1\\u6709\\u66b4\\u9732 fetch()')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5342,
+        "text": "response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5356,
+        "text": "if (typeof fetch !== 'function') return fail('NETWORK', '\\u5f53\\u524d\\u5916\\u58f3\\u6ca1\\u6709\\u66b4\\u9732 fetch()')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5359,
+        "text": "response = await fetch(path, { headers: { accept: 'application/json' }, cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 87,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 272,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 285,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 286,
+        "text": "writeFileSync(file, `${JSON.stringify(Object.fromEntries(translations), null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 389,
+        "text": "const match = new RegExp(`^${key}:[ \\\\t]*(.+)$`, 'm').exec(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/install.js",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/install.js",
+        "line": 1414,
+        "text": "const child = spawn(gitBinary, ['--version'], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "src/install.js",
+        "line": 1437,
+        "text": "child = spawn(cmd, args, { cwd, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "src/provenance.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "test/install.mjs",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "src/client/logo.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

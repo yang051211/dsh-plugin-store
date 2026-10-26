@@ -1,0 +1,104 @@
+{
+  "name": "@cerbur/clutch-dsh-worktree",
+  "version": "0.1.18",
+  "scannedAt": "2026-10-26T10:11:19.501Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 9549,
+        "text": "constructor(fetcher = (input, init) => fetch(input, init)) {"
+      },
+      {
+        "file": "lib/client/dashboard/open-in-app-controller.js",
+        "line": 12,
+        "text": "constructor(fetcher = (input, init) => fetch(input, init)) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tool-settings.js",
+        "line": 2,
+        "text": "import { mkdir, open, readFile, rename, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host/tool-settings.js",
+        "line": 29,
+        "text": "const text = await readFile(this.filename(scope), 'utf8');"
+      },
+      {
+        "file": "lib/host/tool-settings.js",
+        "line": 51,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/host/tool-settings.js",
+        "line": 56,
+        "text": "await handle.writeFile(JSON.stringify({ version: 1, selection: next }) + '\\n');"
+      },
+      {
+        "file": "lib/host/tool-settings.js",
+        "line": 78,
+        "text": "await unlink(temporary).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provider/git/subprocess.js",
+        "line": 1,
+        "text": "import { execFile as execFileCallback } from 'node:child_process';"
+      },
+      {
+        "file": "lib/provider/git/subprocess.js",
+        "line": 231,
+        "text": "handle = options.subprocess.spawn({"
+      },
+      {
+        "file": "lib/provider/git/subprocess.js",
+        "line": 293,
+        "text": "const result = await execFile(executable, [...executableArgs, ...args], {"
+      },
+      {
+        "file": "lib/provider/sidecar/process-liveness.js",
+        "line": 1,
+        "text": "import { execFile as execFileCallback } from 'node:child_process';"
+      },
+      {
+        "file": "lib/provider/sidecar/process-liveness.js",
+        "line": 19,
+        "text": "const { stdout } = await execFile('tasklist.exe', ['/FI', 'PID eq ' + pid, '/FO', 'CSV', '/NH'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client/dashboard/git/WorktreeGitPanel.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

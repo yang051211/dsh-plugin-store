@@ -1,0 +1,121 @@
+{
+  "name": "@aiwayds/dsh-cron",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:10:51.561Z",
+  "icon": "aiwayds__dsh-cron.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "content: stripFrontmatter(await readFile(SKILL_BODY_URL, 'utf8')),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/legacy-import.js",
+        "line": 26,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['settings', 'agents', 'tools', 'skills'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 63,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 120,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 131,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 145,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 25,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 48,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 80,
+        "text": "const install = spawnSync('npm', ['install', '--no-audit', '--no-fund', '--loglevel=error'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 94,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "settings",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

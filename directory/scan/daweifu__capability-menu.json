@@ -1,0 +1,111 @@
+{
+  "name": "@daweifu/capability-menu",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:11:37.051Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server/self-update.js",
+        "line": 82,
+        "text": "const response = await fetch('https://registry.npmjs.org/@daweifu%2Fcapability-menu/latest', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/locations.js",
+        "line": 17,
+        "text": "import { access, cp, readdir, lstat, mkdir, mkdtemp, readFile, realpath, rename, rm, stat, symlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/locations.js",
+        "line": 240,
+        "text": "await mkdir(skillsDir, { recursive: true });"
+      },
+      {
+        "file": "lib/locations.js",
+        "line": 255,
+        "text": "await mkdir(checkoutRootParent, { recursive: true });"
+      },
+      {
+        "file": "lib/locations.js",
+        "line": 281,
+        "text": "await mkdir(skillsDir, { recursive: true });"
+      },
+      {
+        "file": "lib/locations.js",
+        "line": 311,
+        "text": "await rm(targetStage, { recursive: true, force: true }).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 39,
+        "text": "#   (`ctx.tools.execute`) is untouched, so On-demand capabilities remain executable"
+      },
+      {
+        "file": "lib/invoke.js",
+        "line": 11,
+        "text": "export const inject = ['capability', 'tools', 'skills'];"
+      },
+      {
+        "file": "lib/invoke.js",
+        "line": 23,
+        "text": "*   `ctx.tools.execute` pipeline, preserving `agent`/`signal`/parent lineage."
+      },
+      {
+        "file": "lib/invoke.js",
+        "line": 154,
+        "text": "const definition = ctx.tools.get(capability.name, exec.agent);"
+      },
+      {
+        "file": "lib/invoke.js",
+        "line": 193,
+        "text": "const result = await ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/locations.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/server/self-update.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "capability",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

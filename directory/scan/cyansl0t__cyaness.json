@@ -1,0 +1,105 @@
+{
+  "name": "@cyansl0t/cyaness",
+  "version": "0.9.65",
+  "scannedAt": "2026-10-26T10:11:34.548Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.mjs",
+        "line": 3,
+        "text": "import { readFileSync, lstatSync, realpathSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 26,
+        "text": "const actual = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 42,
+        "text": "const value = JSON.parse(readFileSync(resolve(root, 'binding.json'), 'utf8'));"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 46,
+        "text": "const overlay = JSON.parse(readFileSync(overlayPath, 'utf8'));"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 89,
+        "text": "const llm = JSON.parse(readFileSync(require.resolve('@deepseek-ai/dsh-llm/package.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.mjs",
+        "line": 10,
+        "text": "import * as McpClient from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 16,
+        "text": "export const inject = ['tools', 'subprocess', 'skills', 'systemPrompt', 'subagents'];"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 143,
+        "text": "ctx.tools.guard(exec => {"
+      },
+      {
+        "file": "dsh/index.mjs",
+        "line": 151,
+        "text": "  ctx.tools.register({ name: 'cyaness_preflight', description: 'Refresh host-owned Codebase Memory preflight for this DSH session workspace. Not a graph mutatio"
+      },
+      {
+        "file": "dsh/plugin.mjs",
+        "line": 143,
+        "text": "agent.ctx.tools.presentAs('native');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/hook-process.mjs",
+        "line": 32,
+        "text": "child = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "npm/bin/harness-manager.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "npm/bin/harness-manager.mjs",
+        "line": 151,
+        "text": "const completed = spawnSync(command, arguments_, {"
+      },
+      {
+        "file": "npm/bin/harness-manager.mjs",
+        "line": 253,
+        "text": "const completed = spawn(managedRuntime(home, verifySpawn), invocation.runtimeArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

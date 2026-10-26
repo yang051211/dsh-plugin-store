@@ -1,0 +1,94 @@
+{
+  "name": "dsh-yh-olap",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:10:33.757Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 32,
+        "text": "return fetch('/api/yh-olap/rpc', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 8,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host.js",
+        "line": 35,
+        "text": "const txt = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "src/host.js",
+        "line": 40,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "src/host.js",
+        "line": 41,
+        "text": "await writeFile(path, JSON.stringify(obj, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 5,
+        "text": "//  ③ 模型工具：ctx.tools.register(tool)；文件读写用 node:fs（不再有沙箱 fs 服务）。"
+      },
+      {
+        "file": "src/host.js",
+        "line": 13,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "src/host.js",
+        "line": 719,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/host.js",
+        "line": 53,
+        "text": "const child = spawn('python3', ['-c', code, acc.username, acc.password, acc.otp_key || ''])"
+      },
+      {
+        "file": "src/host.js",
+        "line": 141,
+        "text": "const child = spawn('curl', argv)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

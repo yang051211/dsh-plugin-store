@@ -1,0 +1,134 @@
+{
+  "name": "@baitongserver/dsh-plugin-market",
+  "version": "0.1.18",
+  "scannedAt": "2026-10-26T10:11:10.656Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 290,
+        "text": "const res = await fetch(\"/baitong-market\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2107,
+        "text": "const res = await fetch(\"/baitong-market/probe\", {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 78,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 5,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 72,
+        "text": "const raw = readFileSync(overlayPath(), 'utf8');"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 129,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 130,
+        "text": "writeFileSync(overlayPath(), JSON.stringify(publicConfig(cfg), null, 2));"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 8,
+        "text": "import { appendFileSync, chmodSync, existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 20,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 56,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 92,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 114,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 134,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 1315,
+        "text": "return spawn(file, [...args], { ...spawnOptions, shell: false });"
+      },
+      {
+        "file": "lib/dsh-cli.js",
+        "line": 1318,
+        "text": "return spawn(comspec, ['/d', '/s', '/c', `\"${cmdCommandLine([file, ...args])}\"`], {"
+      },
+      {
+        "file": "lib/local-api.js",
+        "line": 2,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/local-api.js",
+        "line": 25,
+        "text": "const r = spawnSync(cmd, args, { timeout: 500, encoding: 'utf8', shell: process.platform === 'win32' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

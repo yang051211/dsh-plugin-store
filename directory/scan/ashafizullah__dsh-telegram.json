@@ -1,0 +1,82 @@
+{
+  "name": "@ashafizullah/dsh-telegram",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:11:06.716Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/access.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/access.js",
+        "line": 88,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/access.js",
+        "line": 89,
+        "text": "await writeFile(path, `Send this to your bot to take ownership of it:\\n\\n    /claim ${this.options.claimCode}\\n\\n` +"
+      },
+      {
+        "file": "lib/access.js",
+        "line": 101,
+        "text": "await rm(path, { force: true }).catch(() => undefined);"
+      },
+      {
+        "file": "lib/access.js",
+        "line": 107,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media/ocr.js",
+        "line": 21,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/media/ocr.js",
+        "line": 100,
+        "text": "execFile(binary, [...args], { signal, maxBuffer: 8 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/media/screenshot.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/media/screenshot.js",
+        "line": 79,
+        "text": "execFile('/usr/sbin/screencapture', ['-x', '-C', output], { signal }, (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

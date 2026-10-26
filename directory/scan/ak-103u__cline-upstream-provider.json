@@ -1,0 +1,95 @@
+{
+  "name": "@ak-103u/cline-upstream-provider",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:10:53.435Z",
+  "icon": "ak-103u__cline-upstream-provider.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 279,
+        "text": "const task = fetch(ICON_ENDPOINT + encodeURIComponent(key))"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 681,
+        "text": "const response = await fetch(force ? USAGE_ENDPOINT + '?refresh=1' : USAGE_ENDPOINT, {"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 801,
+        "text": "const response = await fetch(url, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 845,
+        "text": "const response = await fetch(CHANNELS_ENDPOINT + (stale ? '?refresh=1' : ''), { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 1120,
+        "text": "const response = await fetch(PIN_ENDPOINT, { headers: { accept: 'application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 27,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 300,
+        "text": "const bytes = await readFile(fileURLToPath(new URL(name + '.' + extension, ICON_DIR)));"
+      },
+      {
+        "file": "pi/cline-usage.ts",
+        "line": 24,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "pi/cline-usage.ts",
+        "line": 210,
+        "text": "const models = JSON.parse(readFileSync(join(getAgentDir(), \"models.json\"), \"utf8\"));"
+      },
+      {
+        "file": "pi/cline-usage.ts",
+        "line": 231,
+        "text": "const raw = JSON.parse(readFileSync(settingsPath(), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "pi/cline-usage.ts",
+        "line": 23,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "pi/cline-usage.ts",
+        "line": 214,
+        "text": "return execSync(raw.slice(1), { encoding: \"utf8\", timeout: 5_000 }).trim() || undefined;"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

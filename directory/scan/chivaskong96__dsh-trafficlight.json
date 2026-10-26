@@ -1,0 +1,113 @@
+{
+  "name": "@chivaskong96/dsh-trafficlight",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:11:25.035Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 69,
+        "text": "const res = await fetch(\"/api/dsh-tl/state\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 86,
+        "text": "const res = await fetch(\"/api/dsh-tl/subscriptions\" + (next ? \"\" : \"?sessionId=\" + encodeURIComponent(sessionId)), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const res = await fetch(\"/api/dsh-tl/opacity\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "await fetch(\"/api/dsh-tl/opacity\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "const res = await fetch(\"/api/dsh-tl/minimal\", { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/overlay-launcher.js",
+        "line": 10,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 102,
+        "text": "const raw = fs.readFileSync(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 129,
+        "text": "fs.mkdirSync(path.dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 131,
+        "text": "fs.writeFileSync(tmp, JSON.stringify({"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/overlay-launcher.js",
+        "line": 9,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/overlay-launcher.js",
+        "line": 27,
+        "text": "execFile('pgrep', ['-x', OVERLAY_NAME], { timeout: 3000 }, (error) => {"
+      },
+      {
+        "file": "lib/host/overlay-launcher.js",
+        "line": 43,
+        "text": "const child = spawn(bin, [], { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "src/host/overlay-launcher.ts",
+        "line": 9,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/overlay-launcher.ts",
+        "line": 31,
+        "text": "execFile('pgrep', ['-x', OVERLAY_NAME], { timeout: 3000 }, (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

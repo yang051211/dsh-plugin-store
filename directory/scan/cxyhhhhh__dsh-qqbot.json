@@ -1,0 +1,82 @@
+{
+  "name": "@cxyhhhhh/dsh-qqbot",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:11:34.070Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/vision-tool.js",
+        "line": 48,
+        "text": "const resp = await fetch(image, { signal, redirect: 'error' });"
+      },
+      {
+        "file": "dist/transport/attachment.js",
+        "line": 108,
+        "text": "const resp = await fetch(url, { signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 7,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 8,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 36,
+        "text": "await rm(filePath, { force: true });"
+      },
+      {
+        "file": "dist/media/send-file-tool.js",
+        "line": 9,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/media/send-file-tool.js",
+        "line": 10,
+        "text": "import { stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/send-file-tool.js",
+        "line": 147,
+        "text": "tools.register(definition);"
+      },
+      {
+        "file": "dist/media/vision-tool.js",
+        "line": 238,
+        "text": "tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

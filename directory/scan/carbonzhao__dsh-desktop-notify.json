@@ -1,0 +1,100 @@
+{
+  "name": "@carbonzhao/dsh-desktop-notify",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:11:20.795Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/open.ps1",
+        "line": 147,
+        "text": "$resp = Invoke-RestMethod -Method POST -Uri ($origin.TrimEnd('/') + '/dsh-desktop-notify/activate') `"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "fetch('/dsh-desktop-notify/status', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 40,
+        "text": "fetch('/dsh-desktop-notify/config', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 58,
+        "text": "fetch('/dsh-desktop-notify/config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "fetch('/dsh-desktop-notify/test', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "const saved = JSON.parse(readFileSync(configFile, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "mkdirSync(dirname(logFile), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "appendFileSync(logFile, '[' + new Date().toISOString() + '] ' + message + '\\n')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 287,
+        "text": "writeFileSync(cardJobFile, JSON.stringify(cardJob), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 259,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionTitle",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

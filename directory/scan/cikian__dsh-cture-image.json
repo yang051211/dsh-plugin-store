@@ -1,0 +1,100 @@
+{
+  "name": "@cikian/dsh-cture-image",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:11:26.649Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const response = await fetch(route, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 488,
+        "text": "const response = await fetch(entry.url, { signal })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 552,
+        "text": "const response = await fetch(joinUrl(baseUrl, endpoint), { method: 'POST', headers, body, signal })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 975,
+        "text": "const response = await fetch(joinUrl(baseUrl, 'models'), { headers: apiKey === undefined ? {} : { authorization: `Bearer ${apiKey}` }, signal: exec.signal })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1113,
+        "text": "const response = await fetch(joinUrl(baseUrl, 'models'), { headers: { authorization: `Bearer ${apiKey}` } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 24,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 410,
+        "text": "const parsed = JSON.parse(readFileSync(CONFIG_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 465,
+        "text": "const fs = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 468,
+        "text": "await fs.writeFile(temporary, `${JSON.stringify(next, null, 2)}\\n`)"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 586,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 209,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1285,
+        "text": "ctx.tools.register(generateTool)"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1286,
+        "text": "ctx.tools.register(configTool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

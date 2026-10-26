@@ -1,0 +1,148 @@
+{
+  "name": "dsh-ris-ide",
+  "version": "1.6.9",
+  "scannedAt": "2026-10-26T10:10:43.124Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 217,
+        "text": "* exhausted that budget: every later fetch (open a file, send a message) sat"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 414,
+        "text": "var response = await fetch(routeUrl('dsh-ris-ide/tail?' + query.toString()).href, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 444,
+        "text": "var response = await fetch(url.href, { headers: { accept: 'application/json' }, signal: signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 541,
+        "text": "var response = await fetch(routeUrl('dsh-ris-ide/stop').href, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8587,
+        "text": "var response = await fetch(url.href, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-codemirror.js",
+        "line": 11871,
+        "text": "while (curDOM != panel.dom) curDOM = rm(curDOM);"
+      },
+      {
+        "file": "lib/client-codemirror.js",
+        "line": 11874,
+        "text": "while (curDOM) curDOM = rm(curDOM);"
+      },
+      {
+        "file": "lib/client-codemirror.js",
+        "line": 11885,
+        "text": "function rm(node) {"
+      },
+      {
+        "file": "lib/debug/engine.js",
+        "line": 14,
+        "text": "import { open, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "import { appendFile, copyFile, cp, mkdir, open, readdir, readFile, rename, rm, stat, truncate, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "export const inject = ['webServer', 'sessions', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5009,
+        "text": "* same core as the panel routes. Registered only when `ctx.tools` exists; the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5185,
+        "text": "if (typeof ctx.tools?.register !== 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5186,
+        "text": "ctx.logger?.warn?.('dsh-ris-ide: ctx.tools is missing; agent tools stay unregistered')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5192,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 585,
+        "text": "const child = spawn('git', args, { cwd, windowsHide: true, stdio: [input === undefined ? 'ignore' : 'pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1646,
+        "text": "child = spawn('powershell.exe', ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1671,
+        "text": "child = spawn('taskkill.exe', ['/PID', String(Number(pid)), '/T', '/F'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3328,
+        "text": "const child = spawn(command, args, { cwd: cwd, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client-codemirror.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 13,
+      "text": "- **按需加载，不常驻重资源**：编辑能力来自独立懒加载的 CodeMirror chunk（约 1.1MB，**第一次打开文件时才拉取**）；不起 language server、不做全库索引、没有后台守护进程、不新开端口，只复用 DSH 已有的 `/dsh-ris-ide/*` 路由和**一条 SSE**。"
+    }
+  ],
+  "skippedEntries": []
+}

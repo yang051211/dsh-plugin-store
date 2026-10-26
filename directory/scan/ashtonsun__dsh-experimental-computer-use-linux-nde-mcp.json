@@ -1,0 +1,105 @@
+{
+  "name": "@ashtonsun/dsh-experimental-computer-use-linux-nde-mcp",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:11:06.780Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-binary.js",
+        "line": 24,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 56,
+        "text": "const req = https.get(url, (res) => {"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 102,
+        "text": "console.warn(`[install-binary] WARN:   curl -L -o ${BIN_PATH} '${baseUrl}'`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 22,
+        "text": "import { chmodSync, existsSync, rmSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 83,
+        "text": "if (existsSync(BIN_PATH)) rmSync(BIN_PATH)"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 119,
+        "text": "await import('node:fs').then((fs) => fs.mkdirSync(BIN_DIR, { recursive: true }))"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 120,
+        "text": "const { writeFileSync } = await import('node:fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import * as McpClient from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "export const inject = ['computerUse', 'tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-binary.js",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install-binary.js",
+        "line": 125,
+        "text": "const r = spawnSync(BIN_PATH, ['--help'], { encoding: 'utf8', timeout: 30_000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node ./scripts/install-binary.js"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "computerUse",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

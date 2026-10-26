@@ -1,0 +1,109 @@
+{
+  "name": "@caizhiyuan/dsh-tool-monitor",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:11:17.185Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 223,
+        "text": "try { socket = new WebSocket(url); }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "? new WebSocket(mon.url, mon.protocols)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 571,
+        "text": ": new WebSocket(mon.url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt', 'fs', 'shell', 'timer', 'connection', 'webServer'];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt', 'fs', 'shell', 'timer', 'connection', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 752,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 919,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 961,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1003,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 531,
+        "text": "? spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', command], options)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 532,
+        "text": ": spawn(command, { ...options, shell: true }));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "fs",
+    "shell",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

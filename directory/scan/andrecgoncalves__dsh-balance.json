@@ -1,0 +1,90 @@
+{
+  "name": "@andrecgoncalves/dsh-balance",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-26T10:10:56.324Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 523,
+        "text": "const data = await (await fetch(`${BALANCE_ENDPOINT}?kind=${kind}`, { headers: { accept: \"application/json\" } })).json();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "const upstream = await fetch(url, {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 697,
+        "text": "const res = await fetch(`${BALANCE_ENDPOINT}?kind=${kind}`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 28,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 225,
+        "text": "const upstream = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-client.mjs",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/verify-client.mjs",
+        "line": 7,
+        "text": "const PACKAGE_ID = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).name"
+      },
+      {
+        "file": "scripts/verify-client.mjs",
+        "line": 19,
+        "text": "const code = readFileSync(new URL('../lib/client.js', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "tsdown.config.ts",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "tsdown.config.ts",
+        "line": 19,
+        "text": "readFileSync(new URL('./package.json', import.meta.url), 'utf8'),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

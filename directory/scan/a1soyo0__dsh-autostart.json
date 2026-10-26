@@ -1,0 +1,97 @@
+{
+  "name": "@a1soyo0/dsh-autostart",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:10:45.091Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 211,
+        "text": "const json = await (await fetch(`${API_BASE}/status`)).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 225,
+        "text": "const res = await fetch(`${API_BASE}/unregister`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 242,
+        "text": "const json = await (await fetch(`${API_BASE}/register`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 303,
+        "text": "const json = await (await fetch(`${API_BASE}/status`)).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 314,
+        "text": "const json = await (await fetch(`${API_BASE}/logs?lines=50`)).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 159,
+        "text": "if (!existsSync(dshHome)) mkdirSync(dshHome, { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 160,
+        "text": "if (!existsSync(logDir)) mkdirSync(logDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 170,
+        "text": "writeFileSync(scriptPath, scriptContent, \"utf-8\");"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 264,
+        "text": "lines: readFileSync(logFile, \"utf-8\").split(/\\r?\\n/).filter((l) => l.trim().length > 0).slice(-lineCount)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 3,
+        "text": "import { execFile, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 290,
+        "text": "execFile(exe, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

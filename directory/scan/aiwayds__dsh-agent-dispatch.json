@@ -1,0 +1,84 @@
+{
+  "name": "@aiwayds/dsh-agent-dispatch",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:10:51.451Z",
+  "icon": "aiwayds__dsh-agent-dispatch.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/log.js",
+        "line": 19,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 33,
+        "text": "await mkdir(logDir, { recursive: true });"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 34,
+        "text": "await appendFile(join(logDir, VERDICT_FILE), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/roster.js",
+        "line": 26,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/roster.js",
+        "line": 27,
+        "text": "import { readdir, readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 30,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 53,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 87,
+        "text": "const install = spawnSync('pnpm', ['install'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 93,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

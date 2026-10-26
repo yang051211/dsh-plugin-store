@@ -1,0 +1,105 @@
+{
+  "name": "@a9i5k4/dsh-mini-window",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:46.775Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-window.js",
+        "line": 53,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1316,
+        "text": "const res = await g.fetch(base + HOST_ROUTE_PREFIX + '/companion', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1620,
+        "text": "const res = await g.fetch(base + HOST_ROUTE_PREFIX + '/' + action, {"
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 6,
+        "text": "*   前端（renderer）点悬浮球 ⇒ `fetch('/dsh-mini-window/open', {method:'POST'})`"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-window.js",
+        "line": 52,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/browser-window.js",
+        "line": 57,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/browser-window.js",
+        "line": 139,
+        "text": "const yml = readFileSync(join(home, '.credentials.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 38,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 497,
+        "text": "const { existsSync, mkdirSync, writeFileSync, readdirSync, rmSync } = await import('node:fs');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-window.js",
+        "line": 51,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser-window.js",
+        "line": 452,
+        "text": "child = spawn(br.exe, args, { detached: true, stdio: 'ignore', windowsHide: false, env });"
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 498,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 514,
+        "text": "*   原代码 `spawn(exe, ['main.js'], {stdio:'ignore'})`："
+      },
+      {
+        "file": "lib/host-routes.js",
+        "line": 600,
+        "text": "const child = spawn(electronExe, ['main.cjs'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,118 @@
+{
+  "name": "@ash-qw/dsh-theme-prts",
+  "version": "2.5.2",
+  "scannedAt": "2026-10-26T10:11:06.448Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1754,
+        "text": "const response = await window.fetch('/prts-theme-api/' + path, { credentials: 'same-origin', signal,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1775,
+        "text": "const response = await window.fetch('/prts-theme-api/backgrounds/image/' + entry.id, { credentials: 'same-origin', signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2355,
+        "text": "const response = await window.fetch(`${api}${path}`, { credentials:'same-origin', signal,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3089,
+        "text": "const response=await window.fetch(API+'/configuration',{credentials:'same-origin',signal:controller?.signal,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3116,
+        "text": "const response=await window.fetch(API+'/edit/'+role,{credentials:'same-origin',signal:controller?.signal})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/server/avatars.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, writeFile, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/server/avatars.js",
+        "line": 10,
+        "text": "await mkdir(directory,{recursive:true,mode:0o700})"
+      },
+      {
+        "file": "src/server/avatars.js",
+        "line": 13,
+        "text": "try{state=JSON.parse(await readFile(path,'utf8'))}catch(error){if(error.code!=='ENOENT')throw error}"
+      },
+      {
+        "file": "src/server/avatars.js",
+        "line": 54,
+        "text": "try{await writeFile(temp,JSON.stringify(updated),{mode:0o600});await rename(temp,path)}"
+      },
+      {
+        "file": "src/server/avatars.js",
+        "line": 55,
+        "text": "finally{await rm(temp,{force:true}).catch(()=>{})}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools', 'attachments', 'connection', 'webServer']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 35,
+        "text": "for(const tool of definitions)toolDisposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 56,
+      "text": "and applied settings are stored under `$DSH_HOME/plugins/dsh-theme-prts/emblems`, shared across workspaces, sessions, and browsers connected to that instance. S"
+    },
+    {
+      "file": "README.en.md",
+      "line": 93,
+      "text": " WebP within 3840×2160, and stored in `$DSH_HOME/plugins/dsh-theme-prts/backgrounds`. Replacements delete obsolete files. Mode and mask settings use native DSH "
+    },
+    {
+      "file": "README.md",
+      "line": 56,
+      "text": "当前 DSH 实例，在独立后台线程处理；原图、参数、草稿和已应用配置保存在 `$DSH_HOME/plugins/dsh-theme-prts/emblems`，不同工作区、会话及连接此实例的浏览器共享徽记设置。已应用图案可以重新打开继续调整，页面会自动同步。不会由主题插件发送给第三方图片服务。支持最大 8 MB、16"
+    },
+    {
+      "file": "README.md",
+      "line": 95,
+      "text": "ebP、AVIF，单张不超过 10 MB、4000 万像素。服务端自动转为 WebP 并限制在 3840×2160 内，保存在 `$DSH_HOME/plugins/dsh-theme-prts/backgrounds`。替换或移除后清理旧图片，不保留历史原图。模式和遮罩通过 DSH 原生配置同步，图片在当前实例共享。"
+    }
+  ],
+  "skippedEntries": []
+}

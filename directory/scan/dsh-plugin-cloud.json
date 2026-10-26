@@ -1,0 +1,75 @@
+{
+  "name": "dsh-plugin-cloud",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:38.177Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/api.js",
+        "line": 17,
+        "text": "const response = await fetch(`${CLOUD_BASE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/patch.js",
+        "line": 15,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/patch.js",
+        "line": 69,
+        "text": "const raw = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "src/patch.js",
+        "line": 79,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "src/patch.js",
+        "line": 80,
+        "text": "writeFileSync(path, YAML.stringify(next))"
+      },
+      {
+        "file": "src/store.js",
+        "line": 6,
+        "text": "import { chmodSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 44,
+        "text": "spawn(cmd, [url], { stdio: 'ignore', detached: true, shell: process.platform === 'win32' }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

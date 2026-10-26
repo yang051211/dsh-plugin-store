@@ -1,0 +1,89 @@
+{
+  "name": "@analy3939/dsh-heartbeat",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:10:56.017Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 199,
+        "text": "void fetch(CLIENT_PING_PATH, { method: 'POST' }).catch(() => undefined);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 233,
+        "text": "const response = await fetch(section_js_1.SESSIONS_PATH, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 491,
+        "text": "const response = await fetch(exports.STATE_PATH, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 626,
+        "text": "await fetch('/api/heartbeat/fire', {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 185,
+        "text": "void fetch(CLIENT_PING_PATH, { method: 'POST' }).catch(() => undefined);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/config-store.js",
+        "line": 21,
+        "text": "import { readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/config-store.js",
+        "line": 34,
+        "text": "return JSON.parse(readFileSync(configFilePath(), 'utf8'));"
+      },
+      {
+        "file": "lib/host/config-store.js",
+        "line": 47,
+        "text": "writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/host/dsh.js",
+        "line": 12,
+        "text": "import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/dsh.js",
+        "line": 180,
+        "text": "mkdirSync(dirname(path), { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "settings",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

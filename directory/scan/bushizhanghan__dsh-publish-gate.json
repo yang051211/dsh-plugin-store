@@ -1,0 +1,93 @@
+{
+  "name": "@bushizhanghan/dsh-publish-gate",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:16.383Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 385,
+        "text": "const res = await fetch(`${registry.replace(/\\/$/, '')}/${name.replace('/', '%2f')}`, { headers: { accept: 'application/vnd.npm.install-v1+json' } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "const res = await fetch(`https://api.github.com/repos/${url}`, { signal: AbortSignal.timeout(cfg.networkTimeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 9,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 15,
+        "text": "return readFileSync(p)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "const { readFileSync } = await import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 145,
+        "text": "text = readFileSync(args.file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 466,
+        "text": "`inject`', 'Without an inject list the service is resolved late and `ctx.tools` may be undefined when apply runs.', 'Add `export const inject = [\\'tools\\']`.'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 290,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { exec } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

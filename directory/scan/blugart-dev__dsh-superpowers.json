@@ -1,0 +1,101 @@
+{
+  "name": "@blugart-dev/dsh-superpowers",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:11:14.816Z",
+  "icon": "blugart-dev__dsh-superpowers.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/helper.js",
+        "line": 80,
+        "text": "ws = new WebSocket(websocketUrl());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 2,
+        "text": "const http = require('http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 3,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 93,
+        "text": "const p = Number(fs.readFileSync(PORT_FILE, 'utf-8').trim());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 138,
+        "text": "const t = fs.readFileSync(TOKEN_FILE, 'utf-8').trim();"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 202,
+        "text": "const frameTemplate = fs.readFileSync(path.join(__dirname, 'frame-template.html'), 'utf-8');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 203,
+        "text": "const helperScript = fs.readFileSync(path.join(__dirname, 'helper.js'), 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/gate/index.js",
+        "line": 198,
+        "text": "ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "src/gate/index.js",
+        "line": 372,
+        "text": "const apply = Object.assign(run, { inject: ['tools'] });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      },
+      {
+        "file": "skills/writing-skills/render-graphs.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

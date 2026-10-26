@@ -1,0 +1,105 @@
+{
+  "name": "@ai4gensteam/dsh-agents-swarm",
+  "version": "0.6.3",
+  "scannedAt": "2026-10-26T10:10:50.628Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 367,
+        "text": "const response = await fetch(`${apiBase()}/thumbnail-for?resourceId=${encodeURIComponent(id)}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1456,
+        "text": "const listed = await fetch(`${apiBase()}/transcript/tracks?videoId=${videoId}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1465,
+        "text": "const captions = await fetch(track.baseUrl, { credentials: \"include\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1469,
+        "text": "const stored = await fetch(`${apiBase()}/transcript/ingest`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1483,
+        "text": "const response = await fetch(`${apiBase()}/transcript`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/document-store.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/document-store.js",
+        "line": 60,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/document-store.js",
+        "line": 73,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/document-store.js",
+        "line": 74,
+        "text": "writeFileSync(join(dir, INDEX_FILE), `${JSON.stringify(records, null, 2)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/document-store.js",
+        "line": 99,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1688,
+        "text": "export const inject = [\"webServer\", \"llm\", \"agentDefaultModel\", \"tools\"];"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 56,
+        "text": "* @returns the tool definitions, ready for `ctx.tools.register`."
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 178,
+        "text": "for (const tool of libraryTools(store)) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

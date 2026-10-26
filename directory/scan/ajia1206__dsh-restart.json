@@ -1,0 +1,116 @@
+{
+  "name": "@ajia1206/dsh-restart",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:10:53.335Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 61,
+        "text": "var response = await fetch(path, init)"
+      },
+      {
+        "file": "lib/proc.js",
+        "line": 370,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(requestTimeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 281,
+        "text": "await writeFile(specPath, JSON.stringify({"
+      },
+      {
+        "file": "index.js",
+        "line": 304,
+        "text": "await rm(specPath, { force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 14,
+        "text": "import { appendFile, mkdir, open, readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 61,
+        "text": "await mkdir(dirname(logPath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 603,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 671,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 705,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proc.js",
+        "line": 10,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 42,
+        "text": "* try/catch around spawn() would miss it and leave the arm half-executed: the"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 59,
+        "text": "child = spawn(execPath, [supervisorPath, specPath], {"
+      },
+      {
+        "file": "lib/supervisor.mjs",
+        "line": 41,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "@daxu8972/dsh-git",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:11:37.425Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 25,
+        "text": "const res = await fetch(API + path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 244,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 521,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 530,
+        "text": "const buf = await fs.promises.readFile(abs);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools', 'webServer', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 20,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 38,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 54,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 69,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 14,
+        "text": "execFile(file, args, opts, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

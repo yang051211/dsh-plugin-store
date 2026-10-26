@@ -1,0 +1,97 @@
+{
+  "name": "dsh-baseline",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:41.520Z",
+  "icon": "dsh-baseline.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 70,
+        "text": "response = await fetch(`${boot.apiBase}${path}`, {"
+      },
+      {
+        "file": "lib/shell.js",
+        "line": 796,
+        "text": "* value, which would turn `curl -X POST <url>` into a bogus host named `POST`."
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 128,
+        "text": "response = await fetch(`${boot.apiBase}${path}`, {"
+      },
+      {
+        "file": "src/server/api.ts",
+        "line": 2,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      },
+      {
+        "file": "src/server/shell.ts",
+        "line": 794,
+        "text": "* value, which would turn `curl -X POST <url>` into a bogus host named `POST`."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 1,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 129,
+        "text": "mkdirSync(dirname(options.dbPath), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 442,
+        "text": "mkdirSync(this.dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 443,
+        "text": "appendFileSync(join(this.dataDir, 'feedback.jsonl'), `${entry}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 1,
+        "text": "import { realpathSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/server/index.ts",
+        "line": 30,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

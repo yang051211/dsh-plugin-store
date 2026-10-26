@@ -1,0 +1,79 @@
+{
+  "name": "dsh-plugin-mcp-ui",
+  "version": "1.0.4",
+  "scannedAt": "2026-10-26T10:10:23.360Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 350,
+        "text": "const manifest = JSON.parse(readFileSync(path.join(dir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 375,
+        "text": "const text = existsSync(patchPath) ? readFileSync(patchPath, 'utf8') : ''"
+      },
+      {
+        "file": "index.js",
+        "line": 383,
+        "text": "const current = existsSync(patchPath) ? readFileSync(patchPath, 'utf8') : ''"
+      },
+      {
+        "file": "index.js",
+        "line": 386,
+        "text": "writeFileSync(tmp, next, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 266,
+        "text": "\"这里的增删改会写入 profile 的 cordis.patch.yml 标记块（块外内容原样保留），由 @deepseek-ai/dsh-mcp-client 逐行挂载。\","
+      },
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "const MCP_ROW_NAME = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 210,
+        "text": "if (/name: '?@deepseek-ai\\/dsh-mcp-client'?/.test(line)) holder.name = MCP_ROW_NAME"
+      },
+      {
+        "file": "index.js",
+        "line": 243,
+        "text": "errors.serverName = 'serverName 只允许字母、数字、下划线、连字符，长度 1-32（与 dsh-mcp-client 约束一致）'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

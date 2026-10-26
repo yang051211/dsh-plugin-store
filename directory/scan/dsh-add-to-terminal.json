@@ -1,0 +1,69 @@
+{
+  "name": "dsh-add-to-terminal",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:10:29.486Z",
+  "icon": "dsh-add-to-terminal.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 118,
+        "text": "void fetch(`${ROUTE}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 229,
+        "text": "const response = await fetch(PING_URL, { cache: 'no-store' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 38,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 455,
+        "text": "fs.mkdirSync(path.dirname(discoveryFile), { recursive: true });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 456,
+        "text": "fs.writeFileSync(discoveryFile, `${JSON.stringify(payload, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 473,
+        "text": "const parsed = JSON.parse(fs.readFileSync(discoveryFile, 'utf8'));"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 499,
+        "text": "fs.rmSync(discoveryFile, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

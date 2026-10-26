@@ -1,0 +1,124 @@
+{
+  "name": "@copylee/dsh-image-gen",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:11:31.937Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1413,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1604,
+        "text": "const response = await fetch(imageUrl(attachment), { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1619,
+        "text": "let blob = await (await fetch(imageUrl(attachment), { credentials: \"same-origin\" })).blob();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7335,
+        "text": "const undici = () => undiciModule ??= require(\"undici\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7399,
+        "text": "if (proxyUrl === void 0) return fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, realpath, rename, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1485,
+        "text": "return this.ctx.get(\"fs\")?.processPathFromHostPath(hostPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6080,
+        "text": "text = await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6094,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6097,
+        "text": "await writeFile(staging, `${JSON.stringify(value, null, 2)}\\n`, mode === void 0 ? \"utf8\" : {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4741,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4775,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9841,
+        "text": "const disposers = toolDefinitions.map((definition) => ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7094,
+        "text": "execFile(file, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7592,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

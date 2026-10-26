@@ -1,0 +1,145 @@
+{
+  "name": "@bhzhangsun/dsh-computer-use",
+  "version": "0.3.8",
+  "scannedAt": "2026-10-26T10:11:13.190Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 91,
+        "text": "driverInstallCommand: z.string().default('curl -fsSL https://raw.githubusercontent.com/trycua/cua/main/install.sh | sh'),"
+      },
+      {
+        "file": "index.js",
+        "line": 196,
+        "text": "|| 'curl -fsSL https://raw.githubusercontent.com/trycua/cua/main/install.sh | sh',"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 94,
+        "text": "|| 'curl -fsSL https://raw.githubusercontent.com/trycua/cua/main/install.sh | sh'"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 110,
+        "text": "const res = await fetch(url)"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 202,
+        "text": "res = await fetch(VISION_BASE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cua.js",
+        "line": 16,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 29,
+        "text": "import { existsSync, mkdirSync, chmodSync, writeFileSync, readdirSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 107,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 120,
+        "text": "writeFileSync(target, buf, { mode: 0o755 })"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 195,
+        "text": "try { unlinkSync(join(dir, name)); removed++ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 68,
+        "text": "export const inject = ['tools', 'approval']"
+      },
+      {
+        "file": "index.js",
+        "line": 333,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 386,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 405,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 413,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cua.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cua.js",
+        "line": 123,
+        "text": "const child = spawn(bin, ['call', tool, JSON.stringify(args)], {"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 127,
+        "text": "const child = spawn(command, [], { shell: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 149,
+        "text": "const child = spawn(bin, args, { stdio: ['ignore', 'pipe', 'pipe'], env: process.env })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 146,
+      "text": "> 等价于 `npm install -g @bhzhangsun/dsh-computer-use` 后再手动 `ln -sfn` + 写 `cordis.patch.yml`，"
+    }
+  ],
+  "skippedEntries": []
+}

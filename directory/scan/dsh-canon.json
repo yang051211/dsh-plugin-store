@@ -1,0 +1,86 @@
+{
+  "name": "dsh-canon",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:39.271Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/lint.js",
+        "line": 3,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core/retrieval.js",
+        "line": 18,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core/schema.js",
+        "line": 12,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core/schema.js",
+        "line": 44,
+        "text": "writeFileSync(join(root, SCHEMA_FILE), DEFAULT_FILE, { flag: \"wx\" });"
+      },
+      {
+        "file": "lib/core/schema.js",
+        "line": 59,
+        "text": "raw = JSON.parse(readFileSync(file, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "ctx.effect(() => ctx.tools.register(definition));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 15,
+        "text": "// what puts `tools` on Context. Dropping this import removes ctx.tools entirely."
+      },
+      {
+        "file": "src/index.ts",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 146,
+        "text": "ctx.effect(() => ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

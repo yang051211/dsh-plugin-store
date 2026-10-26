@@ -1,0 +1,112 @@
+{
+  "name": "@cckyros/goal-acceptance",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:11:18.208Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 10,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "build.mjs",
+        "line": 11,
+        "text": "import { cp, mkdir, readFile, readdir, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "build.mjs",
+        "line": 53,
+        "text": "await mkdir(join(root, \"dist\"), { recursive: true });"
+      },
+      {
+        "file": "build.mjs",
+        "line": 112,
+        "text": "await rm(join(root, \"assets\"), { recursive: true, force: true });"
+      },
+      {
+        "file": "build.mjs",
+        "line": 120,
+        "text": "await mkdir(skillDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 247,
+        "text": "entry: { name: manifest.name, inject: [\"agents\", \"tools\", \"systemPrompt\"] },"
+      },
+      {
+        "file": "dist/dsh-plugin.js",
+        "line": 3309,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "src/plugin/dsh-plugin.ts",
+        "line": 56,
+        "text": "export const inject = ['agents', 'tools', 'systemPrompt'] as const"
+      },
+      {
+        "file": "src/plugin/dsh-plugin.ts",
+        "line": 955,
+        "text": "ctx.tools.register(tool)"
+      },
+      {
+        "file": "tests/dsh-plugin.test.ts",
+        "line": 52,
+        "text": "assert.notEqual(ctx.tools.get('set_acceptance_criteria'), undefined)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 434,
+        "text": "const { spawn: spawn2 } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 2373,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 3193,
+        "text": "stdout = execSync(command, {"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 4530,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 4580,
+        "text": "const child = spawn(cmd, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,82 @@
+{
+  "name": "@casually/dsh-trae-api",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:11:19.429Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 58,
+        "text": "return fetch(\"/plug-trae-api/\" + path, Object.assign({ headers: { accept: \"application/json\" } }, opts))"
+      },
+      {
+        "file": "src/auth.js",
+        "line": 161,
+        "text": "const resp = await fetch(`${refreshHost}/cloudide/api/v3/trae/oauth/ExchangeToken`, {"
+      },
+      {
+        "file": "src/trae-client.js",
+        "line": 212,
+        "text": "const resp = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "const parsed = JSON.parse(readFileSync(join(dshHomeDir(), SETTINGS_FILE), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "writeFileSync(join(dshHomeDir(), SETTINGS_FILE), JSON.stringify(cfg, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "setup.js",
+        "line": 15,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "setup.js",
+        "line": 37,
+        "text": "const content = fs.readFileSync(filePath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 258,
+      "text": "├── setup.js               # 自动解密配置"
+    }
+  ],
+  "skippedEntries": []
+}

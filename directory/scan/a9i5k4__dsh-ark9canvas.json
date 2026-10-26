@@ -1,0 +1,94 @@
+{
+  "name": "@a9i5k4/dsh-ark9canvas",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:10:46.055Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "return fetch(path).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json() })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 39,
+        "text": "return fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, writeFile, readdir, stat, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "const j = JSON.parse(readFileSync(configPath(), 'utf-8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "mkdirSync(path.dirname(configPath()), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "writeFileSync(configPath(), JSON.stringify(cfg, null, 2), 'utf-8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 761,
+        "text": "for (const tool of tools) disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

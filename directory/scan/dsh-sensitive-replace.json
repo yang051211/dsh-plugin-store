@@ -1,0 +1,74 @@
+{
+  "name": "dsh-sensitive-replace",
+  "version": "0.7.2",
+  "scannedAt": "2026-10-26T10:10:43.354Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { statSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "writeFileSync(path, template, { flag: 'wx' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 251,
+        "text": "const text = readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "tests/auto-v041.test.mjs",
+        "line": 6,
+        "text": "import { mkdtempSync, writeFileSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 586,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 694,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

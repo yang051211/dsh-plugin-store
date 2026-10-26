@@ -1,0 +1,97 @@
+{
+  "name": "@accurlex/dsh-legal",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:47.464Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 5,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 35,
+        "text": "try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'skill.json'), 'utf8')); }"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 61,
+        "text": "noLink(entry); fs.mkdirSync(entry,{recursive:true,mode:0o700}); protect(entry,true);"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 69,
+        "text": "try {protect(temp,false);fs.writeFileSync(fd,value);fs.fsyncSync(fd);} finally {fs.closeSync(fd);}"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 71,
+        "text": "} finally { try { fs.unlinkSync(temp); } catch(error) { if(error.code!=='ENOENT') throw error; } }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 292,
+        "text": "if (!ctx?.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 293,
+        "text": "throw new Error('accurLex DSH plugin requires ctx.tools.register.');"
+      },
+      {
+        "file": "src/index.js",
+        "line": 295,
+        "text": "for (const tool of createToolDefinitions(config)) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 9,
+        "text": "const { spawnSync } = require('node:child_process');"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 49,
+        "text": "const identity = spawnSync('whoami.exe', ['/user','/fo','csv','/nh'], {encoding:'utf8',windowsHide:true});"
+      },
+      {
+        "file": "src/onboarding-client.cjs",
+        "line": 55,
+        "text": "    const result = spawnSync('powershell.exe', ['-NoProfile','-NonInteractive','-EncodedCommand',Buffer.from(script,'utf16le').toString('base64')], {encoding:'u"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

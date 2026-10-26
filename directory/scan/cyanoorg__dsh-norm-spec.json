@@ -1,0 +1,89 @@
+{
+  "name": "@cyanoorg/dsh-norm-spec",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:11:34.094Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime-resolver.js",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/runtime-resolver.js",
+        "line": 76,
+        "text": "raw = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/skill-registration.js",
+        "line": 12,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/skill-registration.js",
+        "line": 21,
+        "text": "raw = readFileSync(fileURLToPath(SKILL_FILE), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = [\"tools\", \"skills\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 352,
+        "text": "ctx.tools.register(normValidateTool(resolveToolClient));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 353,
+        "text": "ctx.tools.register(normCollectTool(resolveToolClient));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 354,
+        "text": "ctx.tools.register(normScanTool(resolveToolClient));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-client.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 50,
+        "text": "this.child = spawn(options.command, [...options.args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

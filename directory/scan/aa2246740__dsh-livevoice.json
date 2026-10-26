@@ -1,0 +1,92 @@
+{
+  "name": "@aa2246740/dsh-livevoice",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:10:47.105Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 593,
+        "text": "if (!(await fetch(LIVE_MICROPHONE_SETTINGS_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1202,
+        "text": "return readJson(await fetch(LIVE_STATUS_PATH));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1208,
+        "text": "return await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1232,
+        "text": "await readJson(await fetch(LIVE_STOP_PATH, {"
+      },
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 6,
+        "text": "import { ProxyAgent, fetch } from \"undici\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 3,
+        "text": "import { readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 118,
+        "text": "const raw = JSON.parse(await readFile(join(dshHome, OAUTH_STORE_FILENAME), \"utf8\"));"
+      },
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 127,
+        "text": "const raw = JSON.parse(await readFile(filename, \"utf8\"));"
+      },
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 138,
+        "text": "await writeFile(filename, `${JSON.stringify(raw, null, 2)}\\n`, { mode: 384 });"
+      },
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 175,
+        "text": "const raw = JSON.parse(await readFile(join(homedir(), \".codex\", \"auth.json\"), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-livevoice.js",
+        "line": 11,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

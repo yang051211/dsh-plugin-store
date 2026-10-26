@@ -1,0 +1,71 @@
+{
+  "name": "@anht3889/dsh-web-search-bundle",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:57.105Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "const response = await fetch(`${this.baseUrl}${path}`, {"
+      },
+      {
+        "file": "lib/manager/http.js",
+        "line": 58,
+        "text": "return await fetch(url, { ...init, redirect: 'error' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 6,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 23,
+        "text": "raw = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 56,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 59,
+        "text": "await writeFile(temporaryPath, JSON.stringify(persisted), 'utf8');"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 63,
+        "text": "await rm(temporaryPath, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

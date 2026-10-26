@@ -1,0 +1,111 @@
+{
+  "name": "dsh-live-trace",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:32.412Z",
+  "icon": "dsh-live-trace.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/mock-provider.mjs",
+        "line": 19,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-live-trace.js",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-live-trace.js",
+        "line": 15,
+        "text": "return JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version ?? '0.0.0'"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version ?? '0.0.0'"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 13,
+        "text": "import { mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/demo.mjs",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 73,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "src/cli/working/sound.js",
+        "line": 19,
+        "text": "import { spawn as spawnProcess } from 'node:child_process'"
+      },
+      {
+        "file": "src/cli/working/sound.js",
+        "line": 268,
+        "text": "started = spawn(player.command, player.fileArgs(file, volume), { stdio: ['ignore', 'ignore', 'ignore'] })"
+      },
+      {
+        "file": "src/cli/working/sound.js",
+        "line": 270,
+        "text": "started = spawn(player.command, player.args, { stdio: ['pipe', 'ignore', 'ignore'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 224,
+      "text": "npm install -g dsh-live-trace"
+    },
+    {
+      "file": "README.md",
+      "line": 233,
+      "text": "npm install -g ."
+    },
+    {
+      "file": "README.zh.md",
+      "line": 214,
+      "text": "npm install -g dsh-live-trace"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 222,
+      "text": "npm install -g ."
+    }
+  ],
+  "skippedEntries": []
+}

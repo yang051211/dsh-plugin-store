@@ -1,0 +1,84 @@
+{
+  "name": "@alotop/dsh-notify-hub",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:10:54.990Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/channels/cmcc.js",
+        "line": 23,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/channels/cmcc.js",
+        "line": 221,
+        "text": "buffer = readFileSync(path)"
+      },
+      {
+        "file": "lib/channels/local.js",
+        "line": 14,
+        "text": "import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/channels/local.js",
+        "line": 300,
+        "text": "writeFileSync(scriptPath, `\\uFEFF${command.script}`, 'utf8')"
+      },
+      {
+        "file": "lib/channels/local.js",
+        "line": 307,
+        "text": "rmSync(scriptDir, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/channels/local.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/channels/local.js",
+        "line": 245,
+        "text": "const child = spawn(command.command, [...command.args], {"
+      },
+      {
+        "file": "scripts/check-repo-hygiene.mjs",
+        "line": 28,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 32,
+        "text": "const result = spawnSync(process.execPath, [fileURLToPath(new URL(file, directory))], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

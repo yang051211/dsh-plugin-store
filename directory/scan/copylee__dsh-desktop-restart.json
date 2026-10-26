@@ -1,0 +1,90 @@
+{
+  "name": "@copylee/dsh-desktop-restart",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:31.717Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 176,
+        "text": "const res = await fetch(\"/dsh-market/installed\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 462,
+        "text": "const res = await fetch(ROUTE_STATUS, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 513,
+        "text": "const res = await fetch(force ? `${ROUTE_RESTART}?force=1` : ROUTE_RESTART, { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/helper.cjs",
+        "line": 24,
+        "text": "let node_fs = require(\"node:fs\");"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 452,
+        "text": "handoff = JSON.parse(node_fs.readFileSync(handoffPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 459,
+        "text": "if (logPath !== \"\") node_fs.appendFileSync(logPath, `[${(/* @__PURE__ */ new Date()).toISOString()}] ${line}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "const raw = readFileSync(runFile, \"utf8\").trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/helper.cjs",
+        "line": 23,
+        "text": "let node_child_process = require(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 354,
+        "text": "const child = spawn(topology.exe, [HELPER_PATH, handoffPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

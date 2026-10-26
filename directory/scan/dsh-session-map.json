@@ -1,0 +1,76 @@
+{
+  "name": "dsh-session-map",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:45.499Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 172,
+        "text": "fetch(DIAG.base + '/note', { method: 'POST', body: body, cache: 'no-store',"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 184,
+        "text": "fetch(DIAG.base + '/note-chunk', { method: 'POST', cache: 'no-store',"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 1015,
+        "text": "fetch(DIAG.base + '/cmd?page=' + encodeURIComponent(DIAG.page) + '&identity=' + encodeURIComponent(DIAG.origin) +"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 91,
+        "text": "/* 页面里能不能 require('fs') —— 能的话，网络不通时**走文件**当退路（见 postNote）。"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 96,
+        "text": "try { if (typeof require === 'function') return require('fs'); } catch (e) {}"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 97,
+        "text": "try { if (window.require) return window.require('fs'); } catch (e) {}"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 111,
+        "text": "var all = fsMod.readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 113,
+        "text": "fsMod.writeFileSync(p, '[truncated-by-plugin ' + new Date().toISOString() + ']\\n' + all.slice(cut + 1));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dsh/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

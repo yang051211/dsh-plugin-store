@@ -1,0 +1,143 @@
+{
+  "name": "@aiwayds/dsh-topics-memory",
+  "version": "0.25.1",
+  "scannedAt": "2026-10-26T10:10:56.060Z",
+  "icon": "aiwayds__dsh-topics-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/embedding.js",
+        "line": 79,
+        "text": "res = await fetch(`${host}/api/embed`, {"
+      },
+      {
+        "file": "lib/jev/client.js",
+        "line": 3,
+        "text": "* node:child_process and the global fetch (design 2026-09-25 §3; ADR"
+      },
+      {
+        "file": "lib/jev/client.js",
+        "line": 186,
+        "text": "res = await fetch(backend.endpoint, {"
+      },
+      {
+        "file": "src/embedding.ts",
+        "line": 147,
+        "text": "res = await fetch(`${host}/api/embed`, {"
+      },
+      {
+        "file": "src/jev/client.ts",
+        "line": 3,
+        "text": "* node:child_process and the global fetch (design 2026-09-25 §3; ADR"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/commands.js",
+        "line": 8,
+        "text": "import { writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 472,
+        "text": "await writeFile(file, html, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "content: stripFrontmatter(await readFile(bodyUrl, 'utf8')),"
+      },
+      {
+        "file": "lib/jev/gate.js",
+        "line": 14,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "export const inject = ['systemPrompt', 'tools', 'settings', 'agents', 'llm', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 499,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 501,
+        "text": "tools.register(tool);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 89,
+        "text": "export const inject = ['systemPrompt', 'tools', 'settings', 'agents', 'llm', 'skills']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 638,
+        "text": "for (const tool of buildTopicTools(service)) tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/commands.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 484,
+        "text": "const child = spawn(cmd, args, { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/embedding.js",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 29,
+        "text": "const child = spawn('git', [...extra, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "settings",
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

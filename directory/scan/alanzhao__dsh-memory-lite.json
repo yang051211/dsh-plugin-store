@@ -1,0 +1,95 @@
+{
+  "name": "@alanzhao/dsh-memory-lite",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:10:53.907Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/memory-store.js",
+        "line": 7,
+        "text": "import { readFile as readFileNode, readdir, rename, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/memory-store.js",
+        "line": 313,
+        "text": "async readFile(peer, relPath) {"
+      },
+      {
+        "file": "lib/memory-store.js",
+        "line": 337,
+        "text": "const existing = await this.readFile(peer, relPath);"
+      },
+      {
+        "file": "lib/memory-store.js",
+        "line": 354,
+        "text": "const existing = await this.readFile(peer, relPath);"
+      },
+      {
+        "file": "lib/path.js",
+        "line": 6,
+        "text": "import { realpath, mkdir } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools', 'agents', 'llm', 'timer'];"
+      },
+      {
+        "file": "lib/inject.js",
+        "line": 84,
+        "text": "if (ctx.tools.get(readTool.name, agent) !== readTool)"
+      },
+      {
+        "file": "lib/tools/forget-memory.js",
+        "line": 10,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/read-memory.js",
+        "line": 38,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/tools/remember.js",
+        "line": 12,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

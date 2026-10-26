@@ -1,0 +1,61 @@
+{
+  "name": "dsh-codex-agent",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:24.305Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "try { return JSON.parse(readFileSync(THREADS_PATH, 'utf8')) } catch { return {} }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "try { mkdirSync(path.dirname(THREADS_PATH), { recursive: true }); writeFileSync(THREADS_PATH, JSON.stringify(obj, null, 2)) } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 154,
+        "text": "const handle = this._subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

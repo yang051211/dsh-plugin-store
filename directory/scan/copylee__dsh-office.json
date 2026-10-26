@@ -1,0 +1,129 @@
+{
+  "name": "@copylee/dsh-office",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:11:32.002Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 433,
+        "text": "const response = await fetch(STATUS_ROUTE, { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8495,
+        "text": "const next = parser.fetch().text;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11434,
+        "text": "let nxt = parser.fetch().text;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11438,
+        "text": "nxt = parser.fetch().text;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11444,
+        "text": "nxt = parser.fetch().text;"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { access, copyFile, mkdir, readFile, rename, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "const code = await readFile(source);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "await rm(temp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5024,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5058,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19360,
+        "text": "const inject = [\"tools\", \"attachments\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19447,
+        "text": "for (const tool of tools) ctx.effect(() => ctx.tools.register(tool), `office: tool ${tool.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "execFile(join(fw, \"csc.exe\"), args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 155,
+        "text": "const child = spawn(exe, [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

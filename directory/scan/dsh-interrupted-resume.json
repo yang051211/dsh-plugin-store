@@ -1,0 +1,67 @@
+{
+  "name": "dsh-interrupted-resume",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:10:42.469Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 59,
+        "text": "fetch(API_BASE + '/status', { credentials: 'same-origin', cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "const parsed = JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "writeFileSync(tmp, JSON.stringify(ledger, null, 2) + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

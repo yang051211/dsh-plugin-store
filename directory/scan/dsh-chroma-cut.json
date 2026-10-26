@@ -1,0 +1,80 @@
+{
+  "name": "dsh-chroma-cut",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:40.295Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 95,
+        "text": "? fs.readFileSync(markerPath, \"utf8\").trim()"
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 99,
+        "text": "fs.mkdirSync(path.dirname(runtimeRoot), { recursive: true });"
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 116,
+        "text": "fs.writeFileSync(markerPath, installSource, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 16,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 1,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 60,
+        "text": "const probe = spawnSync("
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 81,
+        "text": "const result = spawnSync(command, args, {"
+      },
+      {
+        "file": "scripts/run_mcp.mjs",
+        "line": 128,
+        "text": "const child = spawn(runtimePython, [\"-m\", \"chroma_cut.mcp_server\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

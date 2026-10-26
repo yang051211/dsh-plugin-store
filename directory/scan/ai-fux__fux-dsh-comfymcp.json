@@ -1,0 +1,128 @@
+{
+  "name": "@ai-fux/fux-dsh-comfymcp",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-26T10:10:50.587Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 151,
+        "text": "fetch(base + '/health', { headers: { 'x-dsh-comfymcp': '1' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 177,
+        "text": "return fetch(base + route.path, init)"
+      },
+      {
+        "file": "lib/control-server.js",
+        "line": 19,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/createpage.js",
+        "line": 153,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 68,
+        "text": "const response = await fetch(url, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 168,
+        "text": "function(){try{var o=JSON.parse(require('fs').readFileSync(require('path').join(process.env.DSH_HOME||require('path').join(process.cwd(),'data','.dsh'),'comfymc"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 10,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 459,
+        "text": "mkdirSync(dataDir, { recursive: true })"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 461,
+        "text": "writeFileSync(join(dataDir, 'runs.json'), `${JSON.stringify(ordered, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 474,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "* 1. 注册 comfymcp_* 工具（defineTool → ctx.tools.register）；"
+      },
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 92,
+        "text": "disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 9,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 205,
+        "text": "const child = this.spawn(process.env['COMFY_MCP_SERVER_NODE'] ?? 'node', [entry], {"
+      },
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mcp-stdio.js",
+        "line": 182,
+        "text": "child = spawn(this.command, this.args, {"
+      },
+      {
+        "file": "vendor/comfy-mcp-server.mjs",
+        "line": 237,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

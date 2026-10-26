@@ -1,0 +1,118 @@
+{
+  "name": "test-skillhub",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:39.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 193,
+        "text": "const body = await fetch(url, fetchOpts(cfg), signal);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 272,
+        "text": "const res = await fetch(\"/skillhub\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 652,
+        "text": "fetch(\"/skillhub?method=config\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 730,
+        "text": "fetch(\"/skillhub?method=config\")"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 23,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 30,
+        "text": "const raw = JSON.parse(readFileSync(overlayPath(), 'utf8'));"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 39,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 40,
+        "text": "writeFileSync(path, `${JSON.stringify(publicConfig(cfg), null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 1,
+        "text": "import { mkdir, mkdtemp, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 9,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 22,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 71,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 93,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 113,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

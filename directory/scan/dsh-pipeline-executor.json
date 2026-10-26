@@ -1,0 +1,78 @@
+{
+  "name": "dsh-pipeline-executor",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:10:40.817Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dispatch.js",
+        "line": 24,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/dispatch.js",
+        "line": 116,
+        "text": "existing = await readFile(ledgerPath, 'utf8');"
+      },
+      {
+        "file": "lib/dispatch.js",
+        "line": 121,
+        "text": "await appendFile(ledgerPath, `${JSON.stringify(entry)}\\n`);"
+      },
+      {
+        "file": "lib/dispatch.js",
+        "line": 139,
+        "text": "return await readFile(abs, 'utf8');"
+      },
+      {
+        "file": "lib/dispatch.js",
+        "line": 454,
+        "text": "await mkdir(artifactsDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'subagents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 178,
+        "text": "const register = (tool) => ctx.tools.register(defineTool({ isConcurrencySafe: () => false, ...tool }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dispatch.js",
+        "line": 23,
+        "text": "import { execFile as nodeExecFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,82 @@
+{
+  "name": "@anht3889/dsh-mcp-management",
+  "version": "0.0.1",
+  "scannedAt": "2026-10-26T10:10:56.598Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 95,
+        "text": "const response = await fetch(`${this.baseUrl}${path}`, {"
+      },
+      {
+        "file": "lib/manager/transport.js",
+        "line": 35,
+        "text": "return fetch(url, { ...init, headers });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 6,
+        "text": "import { rename, rm, writeFile, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 20,
+        "text": "records = JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 49,
+        "text": "await writeFile(temporaryPath, JSON.stringify(records.map(toPersistedRecord)), 'utf8');"
+      },
+      {
+        "file": "lib/manager/catalog.js",
+        "line": 53,
+        "text": "await rm(temporaryPath, { force: true });"
+      },
+      {
+        "file": "lib/manager/runtime.js",
+        "line": 5,
+        "text": "import { mkdir } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/manager/tools.js",
+        "line": 26,
+        "text": "disposers.set(name, ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

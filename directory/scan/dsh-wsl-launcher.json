@@ -1,0 +1,113 @@
+{
+  "name": "dsh-wsl-launcher",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:10:31.622Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 27,
+        "text": "void fetch(presencePath, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 45,
+        "text": "void fetch(statusPath).then(response => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 53,
+        "text": "void fetch(byePath, {"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 720,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/autostop.js",
+        "line": 25,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/autostop.js",
+        "line": 261,
+        "text": "appendFileSync("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 309,
+        "text": "const pidText = readFileSync(join(dir, `web-${resolved.port}.pid`), 'utf8').trim()"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 30,
+        "text": "} from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 154,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.js",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 408,
+        "text": "const result = spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', command], {"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 744,
+        "text": "const child = spawnSync(exe, [url], { stdio: 'ignore', timeout: 20_000 })"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 760,
+        "text": "const child = spawnSync(cmd, ['/c', 'start', '', url], { stdio: 'ignore', timeout: 20_000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

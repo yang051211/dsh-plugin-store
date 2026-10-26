@@ -1,0 +1,99 @@
+{
+  "name": "@dachengge/dsh-cost-manager",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:35.851Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/board.js",
+        "line": 138,
+        "text": "fetch(t.url, { method: 'HEAD', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 93,
+        "text": "fetch(API + (force ? '?force=1' : ''), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/core/balances.mjs",
+        "line": 74,
+        "text": "const r = await fetch(url, { ...init, signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 225,
+        "text": "fetch('/dsh-cost/api/overview' + (force ? '?force=1' : ''), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 248,
+        "text": "fetch('/dsh-cost/api/overview', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/balances.mjs",
+        "line": 30,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core/balances.mjs",
+        "line": 58,
+        "text": "text = fs.readFileSync(credentialsPath(), 'utf8')"
+      },
+      {
+        "file": "lib/core/sessions.mjs",
+        "line": 29,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core/sessions.mjs",
+        "line": 30,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/core/sessions.mjs",
+        "line": 66,
+        "text": "const buf = fs.readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "export const inject = ['tools', 'llm', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 298,
+        "text": "ctx.tools.register(t)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

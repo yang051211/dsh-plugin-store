@@ -1,0 +1,108 @@
+{
+  "name": "ds-deepseek-usage",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:10:29.293Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 14,
+        "text": "return fetch('/api/ds-usage', {"
+      },
+      {
+        "file": "index.js",
+        "line": 45,
+        "text": "const res = await fetch(BASE + path, {"
+      },
+      {
+        "file": "login-cli.mjs",
+        "line": 28,
+        "text": "const res = await fetch(qrUrl() + '&f=xml&' + Date.now(), {"
+      },
+      {
+        "file": "login-cli.mjs",
+        "line": 41,
+        "text": "const res = await fetch(pngUrl, { headers: { 'User-Agent': UA } })"
+      },
+      {
+        "file": "login-cli.mjs",
+        "line": 61,
+        "text": "const res = await fetch(POLL_BASE + '?uuid=' + encodeURIComponent(uuid) + '&_=' + Date.now(), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, unlinkSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "const t = readFileSync(tokenFilePath(), 'utf8').trim()"
+      },
+      {
+        "file": "index.js",
+        "line": 96,
+        "text": "mkdirSync(join(file, '..'), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 97,
+        "text": "writeFileSync(file, JSON.stringify(payload), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 111,
+        "text": "const raw = readFileSync(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 257,
+        "text": "proc = spawn(resolveCliLogin(), ['--json-lines', '--token-file', tokenFilePath()], {"
+      },
+      {
+        "file": "login-cli.mjs",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "login-cli.mjs",
+        "line": 49,
+        "text": "spawn(cmd, [file], { stdio: 'ignore', detached: true }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

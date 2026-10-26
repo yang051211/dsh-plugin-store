@@ -1,0 +1,73 @@
+{
+  "name": "dsh-sidecar-conversation",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:10:28.739Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "const response = await fetch(`${SIDECAR_API_PREFIX}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { chmod, mkdir, open, readFile, rename, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "await mkdir(dirname(filename), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "await handle.writeFile(`${JSON.stringify(snapshot, null, 2)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "await rm(temp, { force: true }).catch(() => void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "const text = await readFile(this.filename, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,83 @@
+{
+  "name": "@d4cluvtrain/dsh-plugin-manager",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:11:36.180Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 3189,
+        "text": "return await fetch(url, { signal: AbortSignal.timeout(8e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 51,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 58,
+        "text": "import { readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 3145,
+        "text": "content = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 3167,
+        "text": "await withRetry(() => writeFile(tmp, body, \"utf8\"));"
+      },
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 3261,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, \"package.json\"), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 52,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/installed-plugins.js",
+        "line": 3290,
+        "text": "const result = spawnSync(\"pnpm\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

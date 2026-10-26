@@ -1,0 +1,106 @@
+{
+  "name": "@aeroscis/dsh-temptask",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:10:49.760Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 8,
+        "text": "* 与宿主通信，通过 fetch(\"/dsh-temptask/api/*\") 与 host half 通信。"
+      },
+      {
+        "file": "client/client.js",
+        "line": 47,
+        "text": "* 与 host 的唯一数据通道是 `fetch(\"/dsh-temptask/api/*\")`，见 src/routes.ts。"
+      },
+      {
+        "file": "client/client.js",
+        "line": 437,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 109,
+        "text": "* 与宿主通信，通过 fetch(\"/dsh-temptask/api/*\") 与 host half 通信。"
+      },
+      {
+        "file": "src/client.tsx",
+        "line": 30,
+        "text": "* 与 host 的唯一数据通道是 `fetch(\"/dsh-temptask/api/*\")`，见 src/routes.ts。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 76,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 78,
+        "text": "await writeFile(tmp, `${JSON.stringify(value, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 84,
+        "text": "const text = await readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 14,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 8,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 32,
+        "text": "const result = spawnSync(process.execPath, [bin, ...args], { cwd: root, stdio: 'inherit' });"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 35,
+        "text": "const wrap = spawnSync(process.execPath, [join(root, 'scripts', 'build-client.mjs')], { cwd: root, stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

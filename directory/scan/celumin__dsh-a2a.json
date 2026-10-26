@@ -1,0 +1,80 @@
+{
+  "name": "@celumin/dsh-a2a",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:11:18.989Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 115,
+        "text": "const response = await window.fetch(url, { ...init, headers })"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 32,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/persistence.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 32,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 55,
+        "text": "mkdirSync(join(this.path, '..'), { recursive: true });"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 57,
+        "text": "writeFileSync(tmp, JSON.stringify(Object.fromEntries(this.data), null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 4,
+        "text": "* 依赖 `ctx.tools`；未加载该服务时跳过注册并警告。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 54,
+        "text": "ctx.logger.warn('a2a: 当前环境未加载 ctx.tools，跳过 a2a_* 工具注册');"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 58,
+        "text": "ctx.effect(() => tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

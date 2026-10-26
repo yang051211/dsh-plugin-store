@@ -1,0 +1,116 @@
+{
+  "name": "dsh-search-contrl",
+  "version": "2.2.18",
+  "scannedAt": "2026-10-26T10:10:43.313Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bing.js",
+        "line": 205,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 132,
+        "text": "const response = await fetch(`${BRIDGE_PREFIX}/${path}`, {"
+      },
+      {
+        "file": "lib/search-tool.js",
+        "line": 648,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "lib/search-tool.js",
+        "line": 655,
+        "text": "'x-requested-with': 'XMLHttpRequest',"
+      },
+      {
+        "file": "lib/tavily.js",
+        "line": 84,
+        "text": "const response = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 21,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 237,
+        "text": "const remove = rm ?? (target => fs.rmSync(target, { recursive: true, force: true }));"
+      },
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 266,
+        "text": "fs.rmSync(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/cookie-jar.js",
+        "line": 16,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/cookie-jar.js",
+        "line": 167,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "() => toolCtx.tools.register(buildSearchTool(() => effectiveConfig(config), settingsApi)),"
+      },
+      {
+        "file": "lib/search-tool.js",
+        "line": 607,
+        "text": "* @returns {Object} tool definition ready for ctx.tools.register"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 152,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 153,
+        "text": "const child = spawn(browser.path, ["
+      },
+      {
+        "file": "lib/cookie-capture.js",
+        "line": 185,
+        "text": "const killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore' });"
+      },
+      {
+        "file": "scripts/archive-pull.mjs",
+        "line": 17,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

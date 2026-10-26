@@ -1,0 +1,147 @@
+{
+  "name": "@alintever/dsh-plugin-autoqueue",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:10:54.449Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ai-tool.js",
+        "line": 71,
+        "text": "const response = await fetch(`${root}${path}`, { ...init, headers, signal: controller.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 246,
+        "text": "var xhr = new XMLHttpRequest();"
+      },
+      {
+        "file": "lib/engine-v2.js",
+        "line": 15,
+        "text": "import { request as httpRequest } from \"node:http\";"
+      },
+      {
+        "file": "lib/engine-v2.js",
+        "line": 17,
+        "text": "import { request as httpsRequest } from \"node:https\";"
+      },
+      {
+        "file": "lib/watchdog.js",
+        "line": 277,
+        "text": "const req = require('node:http').get('http://127.0.0.1:3080/api/queue/watchdog', (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/files.js",
+        "line": 10,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 52,
+        "text": "mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 69,
+        "text": "writeFileSync(fd, Buffer.from(content, \"utf8\"));"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 78,
+        "text": "try { unlinkSync(file); } catch { }"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 90,
+        "text": "try { unlinkSync(tmp); } catch { /* best-effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ai-tool.js",
+        "line": 247,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/ai-tool.js",
+        "line": 411,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/ai-tool.js",
+        "line": 493,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/ai-tool.js",
+        "line": 602,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/ai-tool.js",
+        "line": 681,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/restart.js",
+        "line": 6,
+        "text": "import { spawn, execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 38,
+        "text": "const output = execSync(\"dsh --version\", { encoding: \"utf8\", timeout: 5000, windowsHide: true }).trim();"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 105,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 139,
+        "text": "\"    child = spawn(file, args, { cwd, detached, stdio: ['ignore', out, err], env: process.env, shell: viaShell, windowsHide: true })\","
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 168,
+        "text": "const helper = spawn(nodeExecutable(), [\"-e\", restartHelperSource(spawned, launch, { out: logOut, err: logErr }, port)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "goals",
+    "sessionProjections",
+    "sessions",
+    "systemPrompt",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

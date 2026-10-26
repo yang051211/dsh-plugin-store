@@ -1,0 +1,85 @@
+{
+  "name": "@brokkai/dsh-plugin-bifrost",
+  "version": "0.14.1",
+  "scannedAt": "2026-10-26T10:11:15.312Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 5,
+        "text": "import { constants as fsConstants, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 6,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 219,
+        "text": "parsed = JSON.parse(await fsImpl.readFile(filePath, \"utf8\"));"
+      },
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 690,
+        "text": "await fsImpl.rm(artifactPath, { recursive: location.recursive, force: true });"
+      },
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 741,
+        "text": "await fsImpl.mkdir(extractDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 4,
+        "text": "* Cordis namespace plugin: `apply` loads one `@deepseek-ai/dsh-mcp-client`"
+      },
+      {
+        "file": "src/index.js",
+        "line": 35,
+        "text": "* Build the `@deepseek-ai/dsh-mcp-client` stdio config for one Bifrost server."
+      },
+      {
+        "file": "src/index.js",
+        "line": 63,
+        "text": "const mcpClient = await import(\"@deepseek-ai/dsh-mcp-client\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 3,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/bifrost-launcher.mjs",
+        "line": 1030,
+        "text": "const child = spawn(binaryPath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

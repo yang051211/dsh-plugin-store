@@ -1,0 +1,121 @@
+{
+  "name": "@chenkai114/dsh-daemon",
+  "version": "0.1.27",
+  "scannedAt": "2026-10-26T10:11:24.232Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 742,
+        "text": "'    const res = await fetch(HEALTH_URL, { signal: ctrl.signal });\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 984,
+        "text": "'    const res = await fetch(NPM_REGISTRY + \\'/\\' + PACKAGE_NAME + \\'/latest\\', { signal: ctrl.signal, headers: { accept: \\'application/json\\' } });\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1031,
+        "text": "'    const res = await fetch(ACTIVITY_URL, { signal: ctrl.signal });\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1509,
+        "text": "'    out=$(curl -s -X POST -H \"Content-Type: application/json\" -d \"$body\" \"http://127.0.0.1:${PORT}/dsh-daemon/command\")\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1540,
+        "text": "ON.stringify({cmd:process.argv[1],env});fetch(\\'http://127.0.0.1:%PORT%/dsh-daemon/command\\',{method:\\'POST\\',headers:{\\'content-type\\':\\'application/json\\'},bo"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "async function writeFile(absPath, content) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 453,
+        "text": "const fsMod = typeof require === 'function' ? require('node:fs') : null;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 457,
+        "text": "const pkg = JSON.parse(fsMod.readFileSync(pkgPath, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 545,
+        "text": "'  try { return JSON.parse(FS.readFileSync(DSH_PKG_JSON, \\'utf8\\')).version || null; } catch (e) { return null; }\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 575,
+        "text": "'        if (FS.existsSync(WATCHDOG_LOG + \\'.2\\')) FS.unlinkSync(WATCHDOG_LOG + \\'.2\\');\\n' +"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "registerTool = function (def) { return ctx.tools.register(def); };"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2359,
+        "text": "inject: [\"tools\", \"shell\", \"fs\", \"timer\", \"webServer\", \"agents\", \"jobs\"],"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 812,
+        "text": "        '    const wrapper = CP.spawn(\\'powershell.exe\\', [\\'-NoProfile\\', \\'-NonInteractive\\', \\'-Command\\', ps], { cwd: WEB_CWD, stdio: fd >= 0 ? [\\'ignore\\',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 824,
+        "text": "        '    const child = CP.spawn(process.execPath, args, { cwd: WEB_CWD, detached: true, stdio: fd >= 0 ? [\\'ignore\\', fd, fd] : \\'ignore\\', env: env, window"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 947,
+        "text": "'      const c = CP.spawn(\\'powershell.exe\\', [\\'-NoProfile\\', \\'-NonInteractive\\', \\'-Command\\', cmd], { stdio: \\'ignore\\', windowsHide: true });\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 957,
+        "text": "'    const c = CP.spawn(opener, [url], { detached: true, stdio: \\'ignore\\', windowsHide: true });\\n' +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1015,
+        "text": "'    const child = CP.spawn(bin.cmd, args, { cwd: PROFILE_DIR, stdio: [\\'ignore\\', \\'pipe\\', \\'pipe\\'], shell: bin.shell, env: env, windowsHide: true });\\n' +"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

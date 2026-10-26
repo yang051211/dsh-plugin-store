@@ -1,0 +1,98 @@
+{
+  "name": "@andykwok/dsh-desktop",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:10:57.103Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/fetch-exe.mjs",
+        "line": 63,
+        "text": "const res = await fetch(`https://api.github.com/repos/${REPO}/releases/tags/${tag}`, {"
+      },
+      {
+        "file": "scripts/fetch-exe.mjs",
+        "line": 71,
+        "text": "const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {"
+      },
+      {
+        "file": "scripts/fetch-exe.mjs",
+        "line": 87,
+        "text": "const txt = await (await fetch(shaAsset.browser_download_url)).text();"
+      },
+      {
+        "file": "scripts/fetch-exe.mjs",
+        "line": 124,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 15,
+        "text": "import { copyFile, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 26,
+        "text": "const pkg = JSON.parse(await readFile(join(__dirname, \"..\", \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 47,
+        "text": "mkdirSync(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "scripts/fetch-exe.mjs",
+        "line": 13,
+        "text": "import { createReadStream } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 13,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-desktop.mjs",
+        "line": 66,
+        "text": "const child = spawn(exe, process.argv.slice(2), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "dsh-desktop-win-x64.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 99,
+      "text": "npm i -g @andykwok/dsh-desktop"
+    }
+  ],
+  "skippedEntries": []
+}

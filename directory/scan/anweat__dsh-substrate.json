@@ -1,0 +1,82 @@
+{
+  "name": "@anweat/dsh-substrate",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:10:58.249Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/check.mjs",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/check.mjs",
+        "line": 126,
+        "text": "const result = inspect(rowsOf(readFileSync(file, 'utf8')))"
+      },
+      {
+        "file": "src/patch-rpc.mjs",
+        "line": 19,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/patch-rpc.mjs",
+        "line": 36,
+        "text": "return readFileSync(entry, 'utf8').includes(PATCH_MARKER)"
+      },
+      {
+        "file": "src/patch-target.mjs",
+        "line": 20,
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 24,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 105,
+        "text": "const schemas = typeof ctx.tools?.schemas === 'function' ? ctx.tools.schemas() : []"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/repair.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/repair.mjs",
+        "line": 85,
+        "text": "const child = spawnSync('pnpm', ['install', '--no-frozen-lockfile'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

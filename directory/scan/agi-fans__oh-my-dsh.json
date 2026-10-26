@@ -1,0 +1,121 @@
+{
+  "name": "@agi-fans/oh-my-dsh",
+  "version": "0.21.0",
+  "scannedAt": "2026-10-26T10:10:50.146Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/advisor.js",
+        "line": 9,
+        "text": "import { access, chmod, copyFile, mkdir, mkdtemp, readdir, readFile, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 139,
+        "text": "const content = (await readFile(path, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 303,
+        "text": "await mkdir(home, { mode: 0o700 });"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 411,
+        "text": "await rm(root, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 421,
+        "text": "await rm(root, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/advisor.js",
+        "line": 15,
+        "text": "export const inject = ['loader', 'subagents', 'subprocess', 'sandbox', 'tools'];"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 500,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/doctor.js",
+        "line": 202,
+        "text": "if (root === '@deepseek-ai/dsh-mcp-client')"
+      },
+      {
+        "file": "lib/mcp-config.js",
+        "line": 5,
+        "text": "* `mcpServers` JSON shape into one Harness `dsh-mcp-client` plugin row per"
+      },
+      {
+        "file": "lib/mcp-config.js",
+        "line": 154,
+        "text": "rows.push({ id: safeId(name), name: '@deepseek-ai/dsh-mcp-client', config });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/advisor-launcher.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/advisor-launcher.js",
+        "line": 6,
+        "text": "const child = spawn(program, args, { stdio: 'inherit', shell: false });"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 150,
+        "text": "execFile('git', args, { cwd, timeout: 2_500, maxBuffer: 512_000, signal }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/advisor.js",
+        "line": 323,
+        "text": "spawn(spec) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 140,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 26,
+      "text": "npm install --global @agi-fans/oh-my-dsh"
+    },
+    {
+      "file": "README.md",
+      "line": 68,
+      "text": "- [Language servers](https://omdsh.agi.fans/docs/language-servers/) — configure read-only code intelligence."
+    }
+  ],
+  "skippedEntries": []
+}

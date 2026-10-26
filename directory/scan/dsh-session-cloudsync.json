@@ -1,0 +1,75 @@
+{
+  "name": "dsh-session-cloudsync",
+  "version": "0.0.2",
+  "scannedAt": "2026-10-26T10:10:43.747Z",
+  "icon": "dsh-session-cloudsync.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 276,
+        "text": "return fetch(API + path, init).then(function (response) {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 394,
+        "text": "fetch(API + '/events?until=idle', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/replace-session.mjs",
+        "line": 10,
+        "text": "} from 'node:fs/promises'"
+      },
+      {
+        "file": "assets/replace-session.mjs",
+        "line": 97,
+        "text": "return createHash('sha256').update(await readFile(file)).digest('hex')"
+      },
+      {
+        "file": "assets/replace-session.mjs",
+        "line": 101,
+        "text": "await mkdir(CONFIG.backupRoot, { recursive: true })"
+      },
+      {
+        "file": "assets/replace-session.mjs",
+        "line": 105,
+        "text": "await rm(staging, { recursive: true, force: true })"
+      },
+      {
+        "file": "assets/replace-session.mjs",
+        "line": 106,
+        "text": "await mkdir(dirname(staging), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessionPersistence",
+    "sessionProjections",
+    "sessions",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

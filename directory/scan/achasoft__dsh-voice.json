@@ -1,0 +1,71 @@
+{
+  "name": "@achasoft/dsh-voice",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:10:48.525Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/openai-compatible.js",
+        "line": 113,
+        "text": "response = await fetch(`${this.baseUrl}/audio/transcriptions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/whisper-cpp.js",
+        "line": 4,
+        "text": "import { constants } from \"node:fs\";"
+      },
+      {
+        "file": "lib/whisper-cpp.js",
+        "line": 5,
+        "text": "import { access, mkdtemp, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/whisper-cpp.js",
+        "line": 302,
+        "text": "await rm(dir, {"
+      },
+      {
+        "file": "lib/whisper-cpp.js",
+        "line": 378,
+        "text": "await writeFile(wav, clip.data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/whisper-cpp.js",
+        "line": 380,
+        "text": "const handle = this.ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.build.json && tsdown"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

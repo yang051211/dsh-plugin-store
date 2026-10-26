@@ -1,0 +1,64 @@
+{
+  "name": "dsh-plugin-mcp-manager",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:33.087Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "fetch('/dsh-plugin-mcp-manager/mcp.json').then(function(r){return r.json()}).then(function(d){"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "  function remove(id){ fetch('/dsh-plugin-mcp-manager/mcp.json',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'remove',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "try { return parseEntries(fs.readFileSync(MCP_PATCH, 'utf8')) } catch (e) { return [] }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "fs.mkdirSync(path.dirname(MCP_PATCH), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 59,
+        "text": "fs.writeFileSync(MCP_PATCH, serializeEntries(entries), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

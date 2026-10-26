@@ -1,0 +1,69 @@
+{
+  "name": "@caesarloo/dsh-skill-audit",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:11:16.972Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 33,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 34,
+        "text": "import { stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 148,
+        "text": "const content = readFileSync(skillMd, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 50,
+        "text": "export const inject = ['tools', 'subprocess', 'skills'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 438,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 313,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,66 @@
+{
+  "name": "ds-notify-plugin",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:10:26.783Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { appendFileSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const lines = readFileSync(DEBUG_LOG, 'utf8').split('\\n').filter((entry) => entry.length > 0)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "writeFileSync(DEBUG_LOG, kept.length > 0 ? kept.join('\\n') + '\\n' : '')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "appendFileSync(DEBUG_LOG, line)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "const child = spawn('powershell.exe', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "dsh-specline",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:29.009Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/arming.js",
+        "line": 1,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/build-assets.js",
+        "line": 1,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/build-assets.js",
+        "line": 54,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/build-assets.js",
+        "line": 55,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/build-assets.js",
+        "line": 78,
+        "text": "mkdirSync(dirname(dest), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/diagram-mcp.js",
+        "line": 10,
+        "text": "export const DRAWIO_MCP_PACKAGE = '@deepseek-ai/dsh-mcp-client';"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gate-client.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gate-client.js",
+        "line": 114,
+        "text": "export function runGateInvocation(invocation, extraArgs = [], spawnFn = (command, args, options) => spawnSync(command, [...args], options)) {"
+      },
+      {
+        "file": "lib/project-init.js",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/project-init.js",
+        "line": 27,
+        "text": "export function createDefaultInitRunner(spawnFn = (command, args, options) => spawnSync(command, [...args], options)) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 33,
+      "text": "Gate / init 需要本机上的 Specline CLI（`npm i -g specline` 或运行时 `npx specline`）。插件不把 CLI 打进 DSH 安装物。"
+    }
+  ],
+  "skippedEntries": []
+}

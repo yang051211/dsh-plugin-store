@@ -1,0 +1,80 @@
+{
+  "name": "dsh-plugin-checker",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:10:30.333Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 100,
+        "text": "return fetch(url, { cache: \"no-store\" }).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 107,
+        "text": "return fetch(UPDATE_URL, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "const res = await fetch(`${REGISTRY}/${encodeURIComponent(name)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFile, writeFile, mkdir, readdir, lstat, realpath, cp, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { mkdtemp } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "const raw = await readFile(COMPOSITION_FILE, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "pkg = JSON.parse(await readFile(join(dir, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "await readFile(join(src, \"package.json\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { exec } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

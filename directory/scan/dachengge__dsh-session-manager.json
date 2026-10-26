@@ -1,0 +1,97 @@
+{
+  "name": "@dachengge/dsh-session-manager",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:36.312Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "fetch(API, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 185,
+        "text": "fetch('/dshm/api/search?q=' + encodeURIComponent(needle), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 204,
+        "text": "fetch('/dshm/api/session?id=' + encodeURIComponent(id), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 214,
+        "text": "fetch('/dshm/api/trend?id=' + encodeURIComponent(id), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 227,
+        "text": "fetch('/dshm/api/archive?id=' + encodeURIComponent(id) + '&archived=' + (archived ? 'true' : 'false'), { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/commands.js",
+        "line": 2,
+        "text": "import { mkdirSync, writeFileSync, copyFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core/commands.js",
+        "line": 664,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "lib/core/commands.js",
+        "line": 681,
+        "text": "writeFileSync("
+      },
+      {
+        "file": "lib/core/commands.js",
+        "line": 700,
+        "text": "writeFileSync(file, renderMarkdown(r, t), \"utf8\");"
+      },
+      {
+        "file": "lib/core/commands.js",
+        "line": 712,
+        "text": "mkdirSync(dirname(dest), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/commands.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/core/commands.js",
+        "line": 542,
+        "text": "const child = spawn(cmd, args, { stdio: \"ignore\", detached: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

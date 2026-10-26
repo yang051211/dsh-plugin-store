@@ -1,0 +1,95 @@
+{
+  "name": "dsh-plugin-dosage",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:32.793Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 198,
+        "text": "      return fetch(\"/usage/api\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(payload) }).then(function (r) { return "
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1517,
+        "text": "const response = await fetch(path, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 558,
+        "text": "'const https=require(\"https\");',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 560,
+        "text": "'const req=https.get(\"https://api.deepseek.com/user/balance\",{headers:{Authorization:\"Bearer \"+key}},function(res){',"
+      },
+      {
+        "file": "lib/stats/accounts.js",
+        "line": 18,
+        "text": "import { request as httpRequest } from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import fsNative from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "'fs', 'webServer', 'subprocess', 'credentials', 'sandboxPolicy', 'agents',"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "fsNative.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "fsNative.writeFileSync("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 502,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 700,
+        "text": "          subprocess.spawn({ argv: [exe, target], cwd: await safeCwd(), stdio: { stdin: 'ignore', stdout: { maxBytes: 1024 }, stderr: { maxBytes: 1024 } }, grac"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

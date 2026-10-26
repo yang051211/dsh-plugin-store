@@ -1,0 +1,108 @@
+{
+  "name": "@bihangchi9/lark-agent-bridge",
+  "version": "0.0.3",
+  "scannedAt": "2026-10-26T10:11:13.518Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/allowlist.js",
+        "line": 12,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 54,
+        "text": "const raw = JSON.parse(readFileSync(this.path, 'utf8'));"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 66,
+        "text": "mkdirSync(dirname(this.path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/allowlist.js",
+        "line": 68,
+        "text": "writeFileSync(this.path, `${JSON.stringify(payload, null, 2)}\\n`, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 18,
+        "text": "import { mkdir, lstat, readdir, realpath, rm } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/lark-cli/lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "tools/lark-cli/lib/index.js",
+        "line": 37,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lark.js",
+        "line": 162,
+        "text": "const child = spawn(argv[0], argv.slice(1), {"
+      },
+      {
+        "file": "tools/lark-cli/lib/index.js",
+        "line": 90,
+        "text": "const child = spawn(bin, args, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 77,
+      "text": "bash node_modules/@bihangchi9/lark-agent-bridge/scripts/setup.sh"
+    },
+    {
+      "file": "README.md",
+      "line": 86,
+      "text": "powershell -ExecutionPolicy Bypass -File node_modules\\@bihangchi9\\lark-agent-bridge\\scripts\\setup.ps1"
+    },
+    {
+      "file": "README.md",
+      "line": 106,
+      "text": "DSH_PROFILE=headless DSH_HOME=/path/.dsh bash node_modules/@bihangchi9/lark-agent-bridge/scripts/setup.sh"
+    },
+    {
+      "file": "README.md",
+      "line": 127,
+      "text": "pnpm setup            # macOS / Linux (scripts/setup.sh) — builds, links, registers"
+    },
+    {
+      "file": "README.md",
+      "line": 128,
+      "text": "pnpm setup:win        # Windows (scripts/setup.ps1)"
+    }
+  ],
+  "skippedEntries": []
+}

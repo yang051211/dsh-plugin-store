@@ -1,0 +1,121 @@
+{
+  "name": "dsh-passbook",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:23.224Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 8,
+        "text": "// Host API: same-origin fetch('/passbook/*'); those routes are loopback-only."
+      },
+      {
+        "file": "client.js",
+        "line": 144,
+        "text": "      const res = await fetch('/passbook/' + path, body === undefined ? { cache: 'no-store' } : { method: 'POST', headers: { 'content-type': 'application/json' "
+      },
+      {
+        "file": "lib/gist.js",
+        "line": 17,
+        "text": "const res = await fetch(this.apiBase + path, { method, headers: this.headers(!!body), body: body ? JSON.stringify(body) : undefined })"
+      },
+      {
+        "file": "lib/gist.js",
+        "line": 26,
+        "text": "if (f.truncated) { const r = await fetch(f.raw_url, { headers: { 'user-agent': UA } }); files[name] = await r.text() } else files[name] = f.content ?? ''"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 64,
+        "text": "function gistId() { if (cfg.gistId) return cfg.gistId; const f = join(CFG_DIR, 'gist-id'); return existsSync(f) ? readFileSync(f, 'utf8').trim() : '' }"
+      },
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": "const recipientPaths = existsSync(rf) ? readFileSync(rf, 'utf8').split('\\n').map((l) => l.trim()).filter(Boolean).map(expand) : []"
+      },
+      {
+        "file": "index.js",
+        "line": 211,
+        "text": "if (out?.spillPath) { try { const raw = readFileSync(out.spillPath, 'utf8'); const clean = mask(raw); if (clean !== raw) writeFileSync(out.spillPath, clean) } c"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 6,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, renameSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "export const inject = ['webServer', 'tools', 'shell', 'settings']"
+      },
+      {
+        "file": "index.js",
+        "line": 153,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 166,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 174,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 182,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "const viaGh = await new Promise((res) => execFile('gh', ['auth', 'token'], { encoding: 'utf8', timeout: 5000 }, (e, out) => res(e ? '' : out.trim())))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "shell",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

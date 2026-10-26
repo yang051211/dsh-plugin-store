@@ -1,0 +1,54 @@
+{
+  "name": "@absons/dsh-deepseek-balance",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:10:47.588Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 24,
+        "text": "const res = await fetch(path + q, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "const res = await fetch(`${config.baseUrl.replace(/\\/+$/, '')}/user/balance`, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 34,
+        "text": "\"fetch(u,{headers:{authorization:'Bearer '+process.env.DSK_KEY},signal:AbortSignal.timeout(15000)})\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 41,
+        "text": "const handle = sub.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

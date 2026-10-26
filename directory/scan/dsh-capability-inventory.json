@@ -1,0 +1,102 @@
+{
+  "name": "dsh-capability-inventory",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:33.952Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 347,
+        "text": "const response = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 387,
+        "text": "const response = await fetch(url, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "content = await readFile(join(dir, SKILL_FILE), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 355,
+        "text": "const content = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 380,
+        "text": "writeFileSync(tmp, rewritten, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "* MCP 数据来源全部是官方服务：ctx.tools（工具注册表，MCP 工具以"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['webServer', 'skills', 'tools', 'loader', 'sessions', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "/** MCP 工具名前缀，由 @deepseek-ai/dsh-mcp-client 约定。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const MCP_PLUGIN = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 325,
+        "text": "const servers = buildMcp(ctx.tools.schemas(), configuredServers(ctx.loader))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "loader",
+    "sessions",
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "@codecrab/dsh-monitor",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:11:30.130Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/monitor.js",
+        "line": 260,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/queries.js",
+        "line": 89,
+        "text": "const response = await fetch(GO_QUOTA_URL, {"
+      },
+      {
+        "file": "lib/queries.js",
+        "line": 159,
+        "text": "const response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/queries.js",
+        "line": 214,
+        "text": "const response = await fetch(custom.url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/queries.js",
+        "line": 7,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/queries.js",
+        "line": 29,
+        "text": "const data = JSON.parse(fs.readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 509,
+        "text": "mkdirSync(root, { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 519,
+        "text": "const parsed = JSON.parse(readFileSync(configPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/release.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 69,
+        "text": "const result = spawnSync(cmd, args, {"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 87,
+        "text": "// 非 Windows(含 WSL)保持原调用形状:spawnSync('npm', args) 不加 shell,行为不变。"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

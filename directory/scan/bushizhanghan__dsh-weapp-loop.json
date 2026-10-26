@@ -1,0 +1,104 @@
+{
+  "name": "@bushizhanghan/dsh-weapp-loop",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:11:16.625Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 30,
+        "text": "const response = await fetch(CONFIG_PATH, { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 108,
+        "text": "void fetch('/dsh-weapp-loop/health', { method: 'GET' }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 5,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 47,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 88,
+        "text": "const json = JSON.parse(readFileSync(join(weapp, file), 'utf8'))"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 201,
+        "text": "const text = readFileSync(file, 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 284,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 122,
+        "text": "const child = spawn('cmd.exe', ['/c', cli, ...args], { windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "const out = execSync('tasklist /fo csv /nh', { encoding: 'utf8', timeout: 5000, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

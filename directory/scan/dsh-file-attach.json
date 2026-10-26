@@ -1,0 +1,66 @@
+{
+  "name": "dsh-file-attach",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:36.506Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "response = await fetch(UPLOAD_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "await fs.mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 184,
+        "text": "await fs.writeFile(target, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "const prev = JSON.parse(await fs.readFile(fileMetaPath(id), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "await fs.unlink(filePath(id, prev.name)).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

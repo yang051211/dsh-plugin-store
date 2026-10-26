@@ -1,0 +1,90 @@
+{
+  "name": "dsh-guard-hooks",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:27.799Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/webhook.js",
+        "line": 47,
+        "text": "fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 10,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 24,
+        "text": "fs.mkdirSync(path.dirname(auditConfig.path), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 27,
+        "text": "fs.appendFileSync(auditConfig.path, `${JSON.stringify(clean)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 41,
+        "text": "fs.rmSync(`${auditConfig.path}.1`, { force: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 17,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 24,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 99,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 166,
+        "text": "spawn(\"taskkill\", [\"/pid\", String(child.pid), \"/T\", \"/F\"], { windowsHide: true });"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 50,
+        "text": "const child = spawn(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-EncodedCommand\", encoded], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

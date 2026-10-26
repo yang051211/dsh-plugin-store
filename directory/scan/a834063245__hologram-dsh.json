@@ -1,0 +1,81 @@
+{
+  "name": "@a834063245/hologram-dsh",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:10:45.688Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 17,
+        "text": "import { get as httpsGet } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 1,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 14,
+        "text": "import { createWriteStream, existsSync, mkdirSync, readFileSync, rmSync, statSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 24,
+        "text": "const PKG_VERSION = JSON.parse(readFileSync(join(BUNDLE_ROOT, 'package.json'), 'utf8')).version"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 78,
+        "text": "rmSync(dest, { force: true })"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 83,
+        "text": "mkdirSync(BIN_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 29,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 12,
+        "text": "* cordis.patch.yml. Reusing DSH's own `dsh-mcp-client` for the actual MCP"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.install: node scripts/install.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

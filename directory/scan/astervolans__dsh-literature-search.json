@@ -1,0 +1,88 @@
+{
+  "name": "@astervolans/dsh-literature-search",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:11:07.444Z",
+  "icon": "astervolans__dsh-literature-search.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 72,
+        "text": "var res = await fetch(ROUTE + path, {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 129,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/web.js",
+        "line": 183,
+        "text": "const { mkdir, writeFile } = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/web.js",
+        "line": 188,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/web.js",
+        "line": 199,
+        "text": "await writeFile(file, `${JSON.stringify({ at: new Date().toISOString(), version: payload.version, environment, ...payload }, null, 2)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/pubmed.js",
+        "line": 329,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/pubmed.js",
+        "line": 377,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/pubmed.js",
+        "line": 405,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/scholar.js",
+        "line": 424,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

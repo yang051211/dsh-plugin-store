@@ -1,0 +1,99 @@
+{
+  "name": "@czwjss/feishu-bot-im",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:11:35.213Z",
+  "icon": "czwjss__feishu-bot-im.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/feishu.js",
+        "line": 38,
+        "text": "const token = assertApiSuccess('Feishu authentication', await http.request({"
+      },
+      {
+        "file": "src/feishu.js",
+        "line": 47,
+        "text": "const info = assertApiSuccess('Feishu bot info', await http.request({"
+      },
+      {
+        "file": "src/feishu.js",
+        "line": 233,
+        "text": "const response = await fetch('https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal', {"
+      },
+      {
+        "file": "src/feishu.js",
+        "line": 251,
+        "text": "const response = await fetch(`https://open.feishu.cn/open-apis/application/v7/app_slash_commands${path}`, {"
+      },
+      {
+        "file": "src/rpc.js",
+        "line": 210,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "const manifest = JSON.parse(await readFile(new URL('./package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 16,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 108,
+        "text": "await mkdir(dirname(this.#eventsPath), { recursive: true }).catch(() => undefined);"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 109,
+        "text": "await appendFile(this.#eventsPath, line, { mode: 0o600 }).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 101,
+        "text": "toolCtx.tools.register(createReturnFileTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 104,
+        "text": "toolCtx.tools.register(createDeliverTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "typertGateway"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

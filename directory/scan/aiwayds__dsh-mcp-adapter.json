@@ -1,0 +1,129 @@
+{
+  "name": "@aiwayds/dsh-mcp-adapter",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:10:52.343Z",
+  "icon": "aiwayds__dsh-mcp-adapter.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jev/client.js",
+        "line": 3,
+        "text": "* node:child_process and the global fetch (design 2026-09-25 §3; ADR"
+      },
+      {
+        "file": "lib/jev/client.js",
+        "line": 248,
+        "text": "res = await fetch(backend.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "return normalizeServerGate(JSON.parse(readFileSync(file, 'utf8')));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 292,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "await writeFile(tmp, payload, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# It keeps the official @deepseek-ai/dsh-mcp-client plugin instances as the"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 13,
+        "text": "# registered. List it next to your dsh-mcp-client lines for clarity. Under"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "* The official `@deepseek-ai/dsh-mcp-client` registers every discovered MCP"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "* Tools stay registered in `ctx.tools`, so TUI rendering and"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "export const inject = ['tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jev/client.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 49,
+        "text": "const pack = spawnSync('npm', ['pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 72,
+        "text": "const install = spawnSync('pnpm', ['install'], { cwd: profile, encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

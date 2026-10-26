@@ -1,0 +1,115 @@
+{
+  "name": "@avernet-plugin/deepseek-harness-channel-bcn",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:11:09.222Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/http-client.js",
+        "line": 1,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "dist/http-client.js",
+        "line": 2,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "dist/ws-client.js",
+        "line": 217,
+        "text": "const socket = new WebSocket(this.options.endpoint.webSocketUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/configure.js",
+        "line": 2,
+        "text": "import { chmodSync, closeSync, existsSync, fsyncSync, lstatSync, openSync, readFileSync, realpathSync, renameSync, unlinkSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "dist/configure.js",
+        "line": 91,
+        "text": "unlinkSync(patchPath);"
+      },
+      {
+        "file": "dist/configure.js",
+        "line": 109,
+        "text": "return { existed: true, content: readFileSync(path, 'utf8'), mode: stat.mode & 0o777 };"
+      },
+      {
+        "file": "dist/configure.js",
+        "line": 139,
+        "text": "writeFileSync(descriptor, content, 'utf8');"
+      },
+      {
+        "file": "dist/configure.js",
+        "line": 150,
+        "text": "unlinkSync(temporary);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/bridge.js",
+        "line": 595,
+        "text": "agentCtx.tools.register(createBcsRouteTool(this));"
+      },
+      {
+        "file": "dist/bridge.js",
+        "line": 598,
+        "text": "agentCtx.tools.register(createBcsAssignTaskTool(this));"
+      },
+      {
+        "file": "dist/bridge.js",
+        "line": 599,
+        "text": "agentCtx.tools.register(createBcsTaskCompleteTool(this));"
+      },
+      {
+        "file": "dist/bridge.js",
+        "line": 602,
+        "text": "agentCtx.tools.register(createBcsSendTaskMessageTool(this));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/configure.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/configure.js",
+        "line": 160,
+        "text": "const result = spawnSync(dshBin, ['--profile', profile, '--dump-config'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "credentials",
+    "sessionPersistence",
+    "sessions",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

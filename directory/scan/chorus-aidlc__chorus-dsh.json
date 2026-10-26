@@ -1,0 +1,106 @@
+{
+  "name": "@chorus-aidlc/chorus-dsh",
+  "version": "0.23.0",
+  "scannedAt": "2026-10-26T10:11:25.776Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 206,
+        "text": "return fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 10,
+        "text": "import { readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 27,
+        "text": "return parseEnv(readFileSync(join(home, \".env\"), \"utf8\"));"
+      },
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 37,
+        "text": "JSON.parse(readFileSync(new URL(\"../package.json\", import.meta.url), \"utf8\"))"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 956,
+        "text": "return parseEnv(readFileSync(join(home, \".env\"), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 902,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 1105,
+        "text": "const checkin = ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 9,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 119,
+        "text": "const verRes = spawnSync(verSpawn.command, verSpawn.argv, { encoding: \"utf8\" });"
+      },
+      {
+        "file": "bin/chorus-mcp-call.mjs",
+        "line": 153,
+        "text": "const res = spawnSync(command, argv, { stdio: [\"ignore\", \"inherit\", \"inherit\"] });"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 2,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/chorus-dsh.mjs",
+        "line": 916,
+        "text": "execSync(cmd, opts);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

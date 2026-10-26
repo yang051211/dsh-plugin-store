@@ -1,0 +1,84 @@
+{
+  "name": "dsh-plug-notify",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:10:36.388Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 52,
+        "text": "return fetch(\"/plug-notify/\" + path, Object.assign({ headers: { accept: \"application/json\" } }, opts))"
+      },
+      {
+        "file": "index.js",
+        "line": 268,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 114,
+        "text": "const parsed = JSON.parse(readFileSync(settingsPath(), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 236,
+        "text": "writeFileSync(settingsPath(), JSON.stringify(payload, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'webServer', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 688,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 740,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

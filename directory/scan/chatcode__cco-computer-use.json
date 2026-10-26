@@ -1,0 +1,94 @@
+{
+  "name": "@chatcode/cco-computer-use",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:11:26.354Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/browser/driver.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "dist/browser/driver.js",
+        "line": 162,
+        "text": "const raw = await fs.promises.readFile(filePath, 'utf8');"
+      },
+      {
+        "file": "dist/browser/driver.js",
+        "line": 246,
+        "text": "await fs.promises.mkdir(path.dirname(session.storageStatePath), { recursive: true });"
+      },
+      {
+        "file": "dist/browser/driver.js",
+        "line": 248,
+        "text": "await fs.promises.writeFile(session.storageStatePath, JSON.stringify(state, null, 2), 'utf8');"
+      },
+      {
+        "file": "dist/browser/driver.js",
+        "line": 494,
+        "text": "await fs.promises.mkdir(session.screenshotsDir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/desktop.js",
+        "line": 8,
+        "text": "import { createMcpToolDefinition } from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "dist/desktop.js",
+        "line": 13,
+        "text": "export const inject = ['computerUse', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/desktop.js",
+        "line": 63,
+        "text": "inject: ['tools', 'systemPrompt'],"
+      },
+      {
+        "file": "dist/desktop.js",
+        "line": 117,
+        "text": "inner.tools.register(definition);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'systemPrompt', 'subprocess'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/native/client.js",
+        "line": 174,
+        "text": "const handle = this.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

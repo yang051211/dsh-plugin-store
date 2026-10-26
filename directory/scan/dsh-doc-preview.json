@@ -1,0 +1,73 @@
+{
+  "name": "dsh-doc-preview",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:24.706Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { readdir, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 421,
+        "text": "const raw = await readFile(target);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 18,
+        "text": "# Additionally registers the host tool `doc_preview_links` (via ctx.tools)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = ['webServer', 'tools', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 322,
+        "text": "// through ctx.tools.register, which skips defineTool()'s DSL→subset compile;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 449,
+        "text": "// Guarded on ctx.tools so routes still work in hosts without a tool registry."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 450,
+        "text": "if (ctx.tools) {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

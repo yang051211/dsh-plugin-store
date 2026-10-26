@@ -1,0 +1,125 @@
+{
+  "name": "@clustrai/trading-console",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:11:28.094Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 396,
+        "text": "const res = await fetch(path, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 402,
+        "text": "const res = await fetch(path, { method: \"POST\", headers: { \"content-type\": \"application/json\", \"x-clustr-csrf\": csrfToken }, body: JSON.stringify(body) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4749,
+        "text": "fetch(\"/api/crypto/status\").then((response) => response.ok ? response.json() : null),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4750,
+        "text": "fetch(contextUrl).then((response) => response.ok ? response.json() : null)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4873,
+        "text": "fetch(`/api/crypto/session-modes?ids=${encodeURIComponent(ids.join(\",\"))}`, { headers: { accept: \"application/json\" } }).then(async (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/audit.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 5,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 21,
+        "text": "const parsed = JSON.parse(readFileSync(FILE, 'utf8'))"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 30,
+        "text": "await mkdir(dirname(FILE), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 32,
+        "text": "await writeFile(temporary, snapshot, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 40,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer', 'approval', 'sessionQuery', 'timer']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/clustr-console.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/clustr-console.js",
+        "line": 51,
+        "text": "const result = spawnSync('dsh', args, {"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 59,
+        "text": "this.child = spawn(bin, args, { stdio: ['pipe', 'pipe', 'pipe'], env })"
+      },
+      {
+        "file": "src/bybit-mcp.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "sessionQuery",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

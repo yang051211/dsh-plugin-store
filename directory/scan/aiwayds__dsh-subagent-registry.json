@@ -1,0 +1,135 @@
+{
+  "name": "@aiwayds/dsh-subagent-registry",
+  "version": "0.14.1",
+  "scannedAt": "2026-10-26T10:10:52.988Z",
+  "icon": "aiwayds__dsh-subagent-registry.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/presets-rpc.js",
+        "line": 13,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "src/presets-rpc.ts",
+        "line": 16,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agents-dir.js",
+        "line": 37,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/agents-dir.js",
+        "line": 178,
+        "text": "const result = parseAgentMarkdown(readFileSync(path, 'utf8'), path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "content: stripFrontmatter(await readFile(SKILL_BODY_URL, 'utf8')),"
+      },
+      {
+        "file": "lib/preset-store.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/delegation-guidance.js",
+        "line": 14,
+        "text": "const schemas = assembly.tools.some(tool => tool.name === 'run_code') ? ctx.tools.schemas(context.scope) : assembly.tools;"
+      },
+      {
+        "file": "lib/delegation-guidance.js",
+        "line": 16,
+        "text": "if (!visible.has(dispatch.name) || ctx.tools.get(dispatch.name, context.scope) !== dispatch)"
+      },
+      {
+        "file": "lib/host-compat.js",
+        "line": 28,
+        "text": "child.ctx.tools.restrict(composition.toolFilter);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "export const inject = ['tools', 'subagents', 'agents', 'skills', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "let dispatch = ctx.tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-dsh-closure.mjs",
+        "line": 38,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 30,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 56,
+        "text": "const pack = spawnSync(npm, [...npmArgs, 'pack', '--pack-destination', work], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 78,
+        "text": "const install = spawnSync(npm, [...npmArgs, 'install', '--no-audit', '--no-fund', '--loglevel=error'], { cwd: profile, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/smoke-boot.mjs",
+        "line": 92,
+        "text": "const dump = spawnSync('dsh', ['--profile', 'smoke', '--dump-config'], { cwd: profile, encoding: 'utf8', env: dshEnv })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "skills",
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

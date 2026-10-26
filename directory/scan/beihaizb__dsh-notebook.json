@@ -1,0 +1,101 @@
+{
+  "name": "@beihaizb/dsh-notebook",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:11:12.716Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 319,
+        "text": "return fetch(\"/nb/\" + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from \"node:fs\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { mkdir, writeFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 227,
+        "text": "const data = readFileSync(\"/proc/cpuinfo\", \"utf8\")"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 342,
+        "text": "const doc = JSON.parse(readFileSync(envselStatePath(), \"utf8\"))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 431,
+        "text": "for (const line of readFileSync(envTxt, \"utf8\").split(/\\r?\\n/)) add(line.trim())"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = [\"tools\", \"webServer\"]"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1674,
+        "text": "return ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { execFile } from \"node:child_process\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 545,
+        "text": "const child = spawn(exe, [DRIVER], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/cm-vendor.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

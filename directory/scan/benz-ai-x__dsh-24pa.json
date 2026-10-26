@@ -1,0 +1,131 @@
+{
+  "name": "@benz-ai-x/dsh-24pa",
+  "version": "0.2.1-rc.3.2",
+  "scannedAt": "2026-10-26T10:11:12.844Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 182,
+        "text": "          const response = await fetch('./api/24pa', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ endpoint, payload"
+      },
+      {
+        "file": "lib/calendar-observation.js",
+        "line": 9,
+        "text": "const events = await fetch();"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 101,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/source-calendar-reader.js",
+        "line": 123,
+        "text": "const { data } = await fetch(token);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backup-host.js",
+        "line": 2,
+        "text": "import { mkdir, cp } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/backup-host.js",
+        "line": 63,
+        "text": "await mkdir(join(attachmentHome, 'attachments'), { recursive: true });"
+      },
+      {
+        "file": "lib/backup-ledger.js",
+        "line": 2,
+        "text": "import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/backup-ledger.js",
+        "line": 44,
+        "text": "await rm(clusterRoot, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/backup-ledger.js",
+        "line": 57,
+        "text": "const bytes = await readFile(join(directory, 'pa24.sql'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1042,
+        "text": "           nextStrip(L('首次接入：profile 配置 dsh-mcp-client 条目（serverName qwennote）→ 本人浏览器完成一次授权 → 参数表单的高级工具区放行 mcp__qwennote__*。', 'First-time setup: add the dsh-mc"
+      },
+      {
+        "file": "lib/local-tool-access.js",
+        "line": 48,
+        "text": "xtraLocalTools 未包含 mcp__qwennote__ 条目。', nextSteps: ['在 AGENTS.md 的 extraLocalTools 中加入 \"mcp__qwennote__*\"，并确认 profile 配置了 dsh-mcp-client 条目（见初始化指南「听记接入」）。'] };"
+      },
+      {
+        "file": "lib/local-tool-access.js",
+        "line": 62,
+        "text": "return (ctx.tools.schemas?.() ?? []).map(schema => schema.name);"
+      },
+      {
+        "file": "lib/local-tool-access.js",
+        "line": 73,
+        "text": "* without the profile's dsh-mcp-client row — must be dropped here, visibly"
+      },
+      {
+        "file": "lib/prompts.js",
+        "line": 168,
+        "text": "应 provider 后在 extraLocalTools 中显式列出才对本地会话生效。QwenNote 听记工具（mcp__qwennote__*，需在 profile 配置 dsh-mcp-client 条目并完成本人授权）同样经 extraLocalTools 放行；未挂载的点名项会被自动过滤并在维护健康里提示。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-gateway.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli-gateway.js",
+        "line": 25,
+        "text": "const child = spawn(bin, argv, { cwd, shell: false, detached: grouped, stdio: ['pipe', 'pipe', 'pipe'], env: { ...process.env, ...env } });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/link-peer.mjs"
+      }
+    ]
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "connection",
+    "fs",
+    "sessionController",
+    "sessions",
+    "skills",
+    "subagents",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

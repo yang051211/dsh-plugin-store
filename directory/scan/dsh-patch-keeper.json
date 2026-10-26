@@ -1,0 +1,89 @@
+{
+  "name": "dsh-patch-keeper",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:10:36.330Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 20,
+        "text": "return fetch(API + path, { headers: { \"content-type\": \"application/json\" }, ...init }).then((r) => r.json());"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "function ensureDir(p) { mkdirSync(p, { recursive: true }); return p }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "try { return JSON.parse(readFileSync(p, 'utf8')) } catch { return fallback }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "writeFileSync(tmp, JSON.stringify(obj, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "try { renameSync(tmp, p) } catch { rmSync(p, { force: true }); renameSync(tmp, p) }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'timer', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1254,
+        "text": "ctx.effect(() => ctx.tools.register(buildTool(def)))"
+      },
+      {
+        "file": "lib/main.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'timer', 'webServer']"
+      },
+      {
+        "file": "lib/main.js",
+        "line": 1254,
+        "text": "ctx.effect(() => ctx.tools.register(buildTool(def)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,104 @@
+{
+  "name": "@aiwayds/dsh-vault",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:10:52.881Z",
+  "icon": "aiwayds__dsh-vault.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gh.js",
+        "line": 41,
+        "text": "const response = await fetch(`${API_BASE}${path}`, {"
+      },
+      {
+        "file": "src/gh.ts",
+        "line": 54,
+        "text": "const response = await fetch(`${API_BASE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backupset.js",
+        "line": 15,
+        "text": "import { chmodSync, mkdirSync, readdirSync, readFileSync, rmdirSync, statSync, unlinkSync, writeFileSync, existsSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/backupset.js",
+        "line": 60,
+        "text": "out.push({ path: relPath, mode: st.mode & 0o777, data: readFileSync(abs) });"
+      },
+      {
+        "file": "lib/backupset.js",
+        "line": 73,
+        "text": "files.push({ path: name, mode: st.mode & 0o777, data: readFileSync(abs) });"
+      },
+      {
+        "file": "lib/backupset.js",
+        "line": 103,
+        "text": "files.push({ path: `profiles/${entry}/${name}`, mode: fst.mode & 0o777, data: readFileSync(abs) });"
+      },
+      {
+        "file": "lib/backupset.js",
+        "line": 165,
+        "text": "mkdirSync(dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gh.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/keychain.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restore.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restore.js",
+        "line": 30,
+        "text": "const run = spawnSync('dsh', ['plugin', '--profile', profile, 'install'], {"
+      },
+      {
+        "file": "src/gh.ts",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

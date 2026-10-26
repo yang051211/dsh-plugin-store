@@ -1,0 +1,90 @@
+{
+  "name": "oh-my-dshtoken",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:10:37.328Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "const res = await fetch('/dshtoken/pull?since=' + (force ? -1 : lastSeq));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "await fetch(pathname, { method: 'POST' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 473,
+        "text": "const r = https.get(url, { headers: { 'user-agent': name + '/' + (VERSION || '?') } }, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "if (file.endsWith('.zstd')) text = await decompressZstdFrames(await fsp.readFile(file))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 225,
+        "text": "else text = await fsp.readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "const raw = JSON.parse(await fsp.readFile(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 528,
+        "text": "child = execFile(bin, args, options)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

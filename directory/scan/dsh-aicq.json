@@ -1,0 +1,103 @@
+{
+  "name": "dsh-aicq",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:10:31.837Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chat.js",
+        "line": 1200,
+        "text": "const resp = await fetch(downloadUrl, {"
+      },
+      {
+        "file": "lib/server-client.js",
+        "line": 38,
+        "text": "const resp = await fetch(`${this.apiUrl}${path}`, opts);"
+      },
+      {
+        "file": "lib/server-client.js",
+        "line": 260,
+        "text": "this.ws = new WebSocket(this.wsUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 75,
+        "text": "return JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8')).version || 'unknown'"
+      },
+      {
+        "file": "index.js",
+        "line": 112,
+        "text": "fs.mkdirSync(uploadsDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "fs.mkdirSync(userfilesDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 534,
+        "text": "const buf = fs.readFileSync(args.file_path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "*      `aicq_status`) through `ctx.tools.register(defineTool(...))`."
+      },
+      {
+        "file": "index.js",
+        "line": 45,
+        "text": "export const inject = ['tools', 'agents']"
+      },
+      {
+        "file": "index.js",
+        "line": 436,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 457,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 477,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 9,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
