@@ -1,6 +1,5 @@
 /** Test-only entry: built to lib/test/ui.js, never shipped. */
 export { makeTranslate, InstallButton, PluginCard, PluginGrid, PluginIcon, initialsOf, keywordsOf } from './common.tsx'
-export { ScenesView, SceneView, scenesOf } from './Scenes.tsx'
 export { AboutView } from './About.tsx'
 export { Home } from './Home.tsx'
 export { ListView } from './ListView.tsx'

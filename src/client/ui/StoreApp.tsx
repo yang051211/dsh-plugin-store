@@ -1,23 +1,23 @@
 /**
- * The store, shared by the Plugins-page tab and the full-page panel: loads the catalog and install states, keeps a
- * back stack of views (home → list → detail) with their scroll positions, and routes install clicks. Only the tab
- * can install; it confirms first. The panel hands the install over (see client.ts).
+ * The store, shared by the Plugins-page tab and the full-page panel: loads the directory and install states, keeps a
+ * back stack of views (home → list → detail) with their scroll positions and list settings, and routes install
+ * clicks. Only the tab can install; it confirms first. The panel hands the install over (see client.ts).
  */
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type StorePlugin } from '../model/catalog.ts'
+import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type SortKey, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
-import { UsageGuide, type Translate } from './common.tsx'
+import type { Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
-import { DetailView, type Load, type PluginDetail } from './DetailView.tsx'
+import { DetailView, type Load, type PluginDetail, type Readme } from './DetailView.tsx'
 import { Home, type ListFilter } from './Home.tsx'
-import { ListView } from './ListView.tsx'
+import { ListView, type ListSettings } from './ListView.tsx'
 import { AboutView } from './About.tsx'
-import { SceneView, ScenesView } from './Scenes.tsx'
 
 export interface StoreServices {
   loadCatalog: (refresh?: boolean) => Promise<CatalogSnapshot>
   loadDetail: (name: string) => Promise<PluginDetail>
+  loadReadme: (name: string) => Promise<Readme>
   loadInstalled: () => Promise<Installed>
   subscribeInstalled: (onChange: () => void) => () => void
 }
@@ -37,18 +37,19 @@ export interface StoreAppProps {
   takePending?: () => string | null
 }
 
-export type View = { view: 'home' } | { view: 'list'; filter: ListFilter } | { view: 'detail'; name: string } | { view: 'scenes' } | { view: 'about' }
+export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'about' }
 
 /** The store's own tabs; each opens its page as a new root, so back never walks across tabs. */
-export type NavTab = 'home' | 'all' | 'scenes' | 'about'
+export type NavTab = 'home' | 'all' | 'about'
+const TABS: NavTab[] = ['home', 'all', 'about']
 
 /** Which tab a view belongs to. */
 export function tabOf(view: View): NavTab {
-  if (view.view === 'home') return 'home'
-  if (view.view === 'about') return 'about'
-  if (view.view === 'scenes' || (view.view === 'list' && view.filter.kind === 'section' && view.filter.id !== 'hot')) return 'scenes'
-  return 'all'
+  return view.view === 'home' ? 'home' : view.view === 'about' ? 'about' : 'all'
 }
+
+const listView = (filter: ListFilter, sort: SortKey = 'popular'): View => ({ view: 'list', filter, sort, page: 1, compatibleOnly: false })
+
 export type Stack = Array<{ view: View; scroll: number }>
 
 /** Push `view`, remembering where the current view was scrolled. */
@@ -75,20 +76,36 @@ export function scrollParentOf<T extends Scrollable>(element: T | null, overflow
 
 const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
 
+/** Per-name loads with sequence numbers, so a response that is no longer the latest is dropped. */
+function useLoads<T>(load: (name: string) => Promise<T>) {
+  const [loads, setLoads] = useState<Record<string, Load<T>>>({})
+  const seq = useRef<Record<string, number>>({})
+  const start = useCallback((name: string) => {
+    const id = (seq.current[name] ?? 0) + 1
+    seq.current[name] = id
+    setLoads(prev => ({ ...prev, [name]: { status: 'loading' } }))
+    load(name).then(
+      data => { if (seq.current[name] === id) setLoads(prev => ({ ...prev, [name]: { status: 'ready', data } })) },
+      (error: unknown) => { if (seq.current[name] === id) setLoads(prev => ({ ...prev, [name]: { status: 'error', error: messageOf(error) } })) },
+    )
+  }, [load])
+  return [loads, start] as const
+}
+
 export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
   const [installed, setInstalled] = useState<Installed | null>(null)
   const [installedUnknown, setInstalledUnknown] = useState(false)
-  // The plugin that became installed while the store was open; its guide is shown until dismissed.
+  // The plugin that became installed while the store was open; a notice is shown until dismissed.
   const [justInstalled, setJustInstalled] = useState<string | null>(null)
   const lastInstalled = useRef<Installed | null>(null)
   const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
-  const [details, setDetails] = useState<Record<string, Load<PluginDetail>>>({})
+  const [details, loadDetail] = useLoads(services.loadDetail)
+  const [readmes, loadReadme] = useLoads(services.loadReadme)
   const [confirming, setConfirming] = useState<StorePlugin | null>(null)
   const root = useRef<HTMLDivElement | null>(null)
   const pendingScroll = useRef<number | null>(null)
-  // Each async read carries a sequence number; a response that is no longer the latest is dropped.
-  const seq = useRef({ catalog: 0, installed: 0, detail: {} as Record<string, number> })
+  const seq = useRef({ catalog: 0, installed: 0 })
   const current = stack[stack.length - 1]!.view
 
   /** The element that actually scrolls: the panel root, or the Plugins page container around the tab. */
@@ -138,27 +155,29 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     return () => { live = false; unsubscribe() }
   }, [services])
 
-  const loadDetail = useCallback((name: string) => {
-    const id = (seq.current.detail[name] ?? 0) + 1
-    seq.current.detail[name] = id
-    setDetails(prev => ({ ...prev, [name]: { status: 'loading' } }))
-    services.loadDetail(name).then(
-      data => { if (seq.current.detail[name] === id) setDetails(prev => ({ ...prev, [name]: { status: 'ready', data } })) },
-      (error: unknown) => { if (seq.current.detail[name] === id) setDetails(prev => ({ ...prev, [name]: { status: 'error', error: messageOf(error) } })) },
-    )
-  }, [services])
-
   const go = useCallback((view: View) => {
     const scroll = scroller()?.scrollTop ?? 0
     setStack(prev => navigate(prev, view, scroll))
     pendingScroll.current = 0
-    if (view.view === 'detail' && !details[view.name]) loadDetail(view.name)
-  }, [details, loadDetail, scroller])
+    if (view.view === 'detail') {
+      if (!details[view.name]) loadDetail(view.name)
+      if (!readmes[view.name]) loadReadme(view.name)
+    }
+  }, [details, readmes, loadDetail, loadReadme, scroller])
+
+  /** Change the current list's settings in place; a new page starts at the top. */
+  const updateList = useCallback((patch: Partial<ListSettings>) => {
+    setStack(prev => {
+      const top = prev[prev.length - 1]!
+      if (top.view.view !== 'list') return prev
+      return [...prev.slice(0, -1), { ...top, view: { ...top.view, ...patch } }]
+    })
+    if (patch.page !== undefined) pendingScroll.current = 0
+  }, [])
 
   /** A tab click starts over at that tab's page. */
   const openTab = useCallback((tab: NavTab) => {
-    const view: View = tab === 'all' ? { view: 'list', filter: { kind: 'all' } } : { view: tab }
-    setStack([{ view, scroll: 0 }])
+    setStack([{ view: tab === 'all' ? listView({ kind: 'all' }) : { view: tab }, scroll: 0 }])
     pendingScroll.current = 0
   }, [])
 
@@ -209,10 +228,8 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
 
   const handlers = useMemo(() => ({
     onOpenPlugin: (name: string) => go({ view: 'detail', name }),
-    onOpenList: (filter: ListFilter) => go({ view: 'list', filter }),
-    onSearch: (query: string) => go({ view: 'list', filter: { kind: 'search', query } }),
-    onOpenScenes: () => go({ view: 'scenes' }),
-    onOpenScene: (id: string) => go({ view: 'list', filter: { kind: 'section', id } }),
+    onOpenList: (filter: ListFilter, sort?: SortKey) => go(listView(filter, sort)),
+    onSearch: (query: string) => go(listView({ kind: 'search', query })),
     onInstallClick,
     onBack: back,
   }), [go, onInstallClick, back])
@@ -232,26 +249,14 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     if (current.view === 'detail') {
       const plugin = data.byName.get(current.name)
       body = plugin
-        ? <DetailView key={plugin.name} plugin={plugin} catalog={data} detail={details[plugin.name] ?? { status: 'loading' }} installed={installed} lang={lang} t={t} onRetryDetail={() => loadDetail(plugin.name)} {...handlers} />
-        : <ListView title={t('empty')} plugins={[]} catalog={data} filter={{ kind: 'all' }} installed={installed} lang={lang} t={t} {...handlers} />
-    } else if (current.view === 'list' && current.filter.kind === 'section' && current.filter.id !== 'hot' && data.sections.some(s => s.id === (current.filter as { id: string }).id)) {
-      // A curated scene has its own page; trending (generated, no description) stays a plain list.
-      const scene = data.sections.find(s => s.id === (current.filter as { id: string }).id)!
-      body = <SceneView scene={scene} catalog={data} installed={installed} lang={lang} t={t} {...handlers} />
+        ? <DetailView key={plugin.name} plugin={plugin} catalog={data} detail={details[plugin.name] ?? { status: 'loading' }} readme={readmes[plugin.name] ?? { status: 'loading' }} installed={installed} lang={lang} t={t} onRetryDetail={() => loadDetail(plugin.name)} onRetryReadme={() => loadReadme(plugin.name)} {...handlers} />
+        : <div className="ps-empty">{t('empty')}</div>
     } else if (current.view === 'list') {
-      const filter = current.filter
-      let title = ''
-      let plugins: StorePlugin[] = []
-      if (filter.kind === 'search') { title = t('searchResults', { query: filter.query }); plugins = searchPlugins(data, filter.query) }
-      else if (filter.kind === 'all') { title = t('allPlugins'); plugins = data.plugins }
-      else {
-        const group = (filter.kind === 'category' ? data.categories : data.sections).find(g => g.id === filter.id)
-        title = group ? localize(group.title, lang) : ''
-        plugins = group?.plugins ?? []
-      }
-      body = <ListView title={title} plugins={plugins} catalog={data} filter={filter} installed={installed} lang={lang} t={t} {...handlers} />
-    } else if (current.view === 'scenes') {
-      body = <ScenesView catalog={data} lang={lang} t={t} onOpenScene={handlers.onOpenScene} />
+      const { filter } = current
+      const plugins = filter.kind === 'search' ? searchPlugins(data, filter.query)
+        : filter.kind === 'category' ? data.categories.find(c => c.id === filter.id)?.plugins ?? []
+        : data.plugins
+      body = <ListView plugins={plugins} catalog={data} filter={filter} sort={current.sort} page={current.page} compatibleOnly={current.compatibleOnly} installed={installed} lang={lang} t={t} onChange={updateList} {...handlers} />
     } else if (current.view === 'about') {
       body = <AboutView t={t} />
     } else {
@@ -266,9 +271,9 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     <div className={`ps-root ps-mode-${mode}`} ref={root}>
       <nav className="ps-nav" aria-label={t('tab')}>
         <span className="ps-nav-brand"><i aria-hidden="true" />{t('tab')}</span>
-        {(['home', 'all', 'scenes', 'about'] as NavTab[]).map(tab => (
+        {TABS.map(tab => (
           <button key={tab} type="button" className={tabOf(current) === tab ? 'ps-nav-on' : ''} aria-current={tabOf(current) === tab ? 'page' : undefined} onClick={() => openTab(tab)}>
-            {t({ home: 'navHome', all: 'navAll', scenes: 'navScenes', about: 'navAbout' }[tab])}
+            {t({ home: 'navHome', all: 'navAll', about: 'navAbout' }[tab])}
           </button>
         ))}
       </nav>
@@ -288,7 +293,7 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
         <div className="ps-notice ps-notice-bar ps-installed-notice">
           <div className="ps-installed-notice-body">
             <b>{t('installedNotice', { title: localize(justPlugin.title, lang) || justPlugin.name })}</b>
-            {justPlugin.usage && <UsageGuide usage={justPlugin.usage} lang={lang} t={t} />}
+            <span>{t('installedHint')}</span>
           </div>
           <button type="button" className="ps-link-btn" onClick={() => setJustInstalled(null)}>{t('dismiss')}</button>
         </div>

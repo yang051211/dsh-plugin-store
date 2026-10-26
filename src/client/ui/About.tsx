@@ -1,14 +1,14 @@
-/** About 生态家园: what it is, installing, and what the review looks at, as grouped questions. */
+/** About 生态家园: what it is, which plugins it lists, what automatic detection means, installing and feedback. */
 import type { ReactNode } from 'react'
 import { PageHeader, type Translate } from './common.tsx'
-
-const RECOMMEND_URL = 'https://github.com/yang051211/dsh-plugin-store/issues'
+import { ISSUES_URL } from './Home.tsx'
 
 /** Groups of question keys; each question `q` has its answer under `q` + 'A'. */
 const GROUPS: Array<[string, string[]]> = [
   ['aboutBasics', ['faqWhat', 'faqVsDiscover']],
-  ['aboutInstall', ['faqHowInstall', 'faqWhereIsIt', 'faqWhyOld']],
-  ['aboutReview', ['faqReviewWhat', 'faqNetwork']],
+  ['aboutListing', ['faqWhatListed', 'faqHowOften']],
+  ['aboutDetection', ['faqDetectWhat', 'faqDetectWrong']],
+  ['aboutInstall', ['faqHowInstall', 'faqReport']],
 ]
 
 export function AboutView({ t }: { t: Translate }): ReactNode {
@@ -24,7 +24,7 @@ export function AboutView({ t }: { t: Translate }): ReactNode {
         ))}
         <div className="ps-ask">
           <div><b>{t('askTitle')}</b><span>{t('askBody')}</span></div>
-          <a className="ps-btn" href={RECOMMEND_URL} target="_blank" rel="noopener noreferrer">{t('askButton')}</a>
+          <a className="ps-btn" href={ISSUES_URL} target="_blank" rel="noopener noreferrer">{t('askButton')}</a>
         </div>
       </div>
     </div>

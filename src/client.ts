@@ -17,7 +17,7 @@ import zh from '../locale/zh.json'
 import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
 import { createHandoff, openInstalledFrom, selectTabWhenReady } from './client/handoff.ts'
-import { loadCatalog, loadDetail } from './client/model/api.ts'
+import { loadCatalog, loadDetail, loadReadme } from './client/model/api.ts'
 import { installedFrom, STORE_PACKAGE, type SelfUpdate } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
 import type { StorePlugin } from './client/model/catalog.ts'
@@ -75,6 +75,7 @@ export function apply(ctx: Context): void {
   const services: StoreServices = {
     loadCatalog,
     loadDetail,
+    loadReadme,
     loadInstalled: async () => installedFrom(await ctx.remote.pluginManager.listBundles()),
     subscribeInstalled: (onChange) => {
       // A reconnect may have missed change events, so it also triggers a fresh read (as the official Discover does).

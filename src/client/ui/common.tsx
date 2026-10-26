@@ -1,6 +1,6 @@
 /** Small shared pieces of the store UI: translation, formatting, plugin icons, install buttons and cards. */
 import { useState, type ReactNode } from 'react'
-import type { PluginUsage, StorePlugin } from '../model/catalog.ts'
+import type { StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
 
@@ -58,7 +58,7 @@ export interface InstallButtonProps {
   t: Translate
   onClick: (plugin: StorePlugin, state: InstallState) => void
   large?: boolean
-  /** The page's main action (the weekly pick, a detail page): filled. Everywhere else the button is outlined. */
+  /** The page's main action (a plugin page): filled. Everywhere else the button is outlined. */
   primary?: boolean
 }
 
@@ -105,7 +105,7 @@ export function keywordsOf(plugin: StorePlugin): string[] {
 }
 
 /**
- * One plugin as a card, in the directory layout: icon, name and package; category and reviewed version; the category
+ * One plugin as a card, in the directory layout: icon, name and package; category and latest version; the category
  * and a few keywords; three lines on what it does; stars, weekly downloads, and whether it is installed. The whole
  * card opens the plugin; installing happens on its page.
  */
@@ -118,9 +118,9 @@ export function PluginCard({ plugin, installed, lang, t, onOpenPlugin, categoryT
         <span className="ps-card-id"><b>{localize(plugin.title, lang)}</b><span>{plugin.name}</span></span>
       </span>
       <span className="ps-card-bd">
-        <span className="ps-card-tags"><span>#{plugin.category}</span><span>v{plugin.review.version}</span></span>
+        <span className="ps-card-tags"><span>#{plugin.category}</span><span>v{plugin.version}</span></span>
         <span className="ps-chips"><span className="ps-chip ps-chip-main">{categoryTitle}</span>{keywordsOf(plugin).map(word => <span key={word} className="ps-chip">{word}</span>)}</span>
-        <span className="ps-card-pitch">{localize(plugin.tagline, lang)}</span>
+        <span className="ps-card-pitch">{localize(plugin.description, lang)}</span>
       </span>
       <span className="ps-card-ft">
         <span title={t('stars')}>☆ {formatCount(plugin.stats.stars)}</span>
@@ -162,16 +162,5 @@ export function SearchField({ t, onSearch, initial = '' }: { t: Translate; onSea
       <input value={query} placeholder={t('searchPlaceholder')} aria-label={t('search')} onChange={e => setQuery(e.target.value)} />
       <button type="submit" className="ps-btn ps-btn-primary">{t('searchButton')}</button>
     </form>
-  )
-}
-
-/** Where to find an installed plugin and what to try, with any step it still needs called out. */
-export function UsageGuide({ usage, lang, t }: { usage: PluginUsage; lang: string; t: Translate }): ReactNode {
-  return (
-    <dl className="ps-usage">
-      <dt>{t('usageWhere')}</dt><dd>{localize(usage.where, lang)}</dd>
-      <dt>{t('usageTry')}</dt><dd>{localize(usage.try, lang)}</dd>
-      {usage.setup && <><dt className="ps-usage-setup">⚠ {t('usageSetup')}</dt><dd className="ps-usage-setup">{localize(usage.setup, lang)}</dd></>}
-    </dl>
   )
 }

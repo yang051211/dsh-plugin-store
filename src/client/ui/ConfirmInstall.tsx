@@ -34,7 +34,7 @@ export function ConfirmInstall({ plugin, lang, t, onCancel, onConfirm }: Confirm
         <dl className="ps-facts">
           <dt>{t('confirmVersion')}</dt><dd>v{plugin.version}</dd>
           <dt>{t('confirmSource')}</dt><dd>npm</dd>
-          <dt>{t('review')}</dt><dd>{plugin.review.date ? t('reviewed', { date: plugin.review.date }) : t('reviewedPlain')}</dd>
+          {plugin.author && <><dt>{t('author')}</dt><dd>{plugin.author}</dd></>}
         </dl>
         <p className="ps-trust">{t('confirmTrust')}</p>
         <div className="ps-modal-actions">

@@ -118,19 +118,22 @@ export const STYLE_TEXT = `
 .ps-count-line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .ps-list-title { margin: 0; font-size: 19px; }
 .ps-list-title small { color: ${C.text3}; font-weight: 400; font-size: 13px; margin-left: 8px; }
+.ps-list-tools { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; color: ${C.text2}; }
+.ps-list-tools .ps-muted { font-family: ${C.mono}; font-size: 12px; }
+.ps-check { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.ps-check input { accent-color: ${C.brand}; margin: 0; }
+.ps-sort { display: inline-flex; align-items: center; gap: 6px; }
+.ps-sort select { font: inherit; color: ${C.text}; background: ${C.bg1}; border: 1px solid ${C.borderSoft}; border-radius: ${C.rMd}; padding: 4px 8px; }
+.ps-pager { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 22px; font-size: 13px; color: ${C.text2}; }
+.ps-versions { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ps-versions td { padding: 6px 8px 6px 0; border-top: 1px solid ${C.borderSoft}; }
+.ps-versions td:first-child { font-family: ${C.mono}; }
+.ps-perm-where { font-family: ${C.mono}; font-size: 11.5px; word-break: break-all; }
+.ps-installed-notice-body { display: grid; gap: 2px; }
 .ps-count-line > span { font-family: ${C.mono}; font-size: 12px; color: ${C.text3}; }
 .ps-empty { color: ${C.text3}; padding: 40px 0; text-align: center; }
 
 /* scenes */
-.ps-scene { display: grid; gap: 8px; align-content: start; border: 1px solid ${C.borderSoft}; border-radius: ${C.rLg}; background: ${C.bg1}; padding: 18px; text-align: left; cursor: pointer; }
-.ps-scene:hover { border-color: ${C.border}; }
-.ps-scene-icon { color: ${C.brand}; display: inline-flex; }
-.ps-scene-icon svg { width: 20px; height: 20px; }
-.ps-scene b { font-size: 16px; }
-.ps-scene-note { color: ${C.text2}; font-size: 13.5px; }
-.ps-scene em { font-style: normal; color: ${C.brand}; font-size: 13px; font-weight: 600; }
-.ps-bar-note { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid ${C.borderSoft}; padding-bottom: 14px; margin-bottom: 18px; color: ${C.text2}; }
-.ps-bar-note > span { display: inline-flex; align-items: center; gap: 8px; }
 
 /* detail */
 .ps-hero { border: 1px solid ${C.borderSoft}; border-radius: ${C.rXl}; background: ${C.bg1}; overflow: hidden; margin: 10px 0 26px; }
@@ -153,8 +156,6 @@ export const STYLE_TEXT = `
 .ps-cmd-head { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: ${C.text3}; }
 .ps-cmd-head button { border: 0; background: none; padding: 0; color: ${C.link}; font-size: 12px; cursor: pointer; }
 .ps-cmd code { font-family: ${C.mono}; font-size: 12px; word-break: break-all; }
-.ps-verdict { display: flex; gap: 8px; align-items: center; font-weight: 600; }
-.ps-verdict i { width: 8px; height: 8px; border-radius: 50%; background: ${C.ok}; display: inline-block; }
 .ps-related { display: grid; gap: 10px; }
 .ps-related .ps-grid { grid-template-columns: 1fr; }
 .ps-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
@@ -164,27 +165,15 @@ export const STYLE_TEXT = `
 .ps-reason { color: ${C.warn}; font-size: 13px; margin: 0 0 12px; }
 .ps-block { margin-bottom: 24px; }
 .ps-block h3 { font-size: 16px; margin: 0 0 10px; }
-.ps-features { margin: 0; padding-left: 20px; color: ${C.text2}; display: grid; gap: 4px; }
-.ps-usage { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; }
-.ps-usage dt { color: ${C.text3}; }
-.ps-usage dd { margin: 0; color: ${C.text2}; }
-.ps-usage .ps-usage-setup { color: ${C.warn}; font-weight: 600; }
 .ps-perms { width: 100%; border-collapse: collapse; font-size: 13px; }
 .ps-perms th { text-align: left; color: ${C.text3}; font-weight: 400; font-size: 12px; padding: 0 6px 4px 0; }
 .ps-perms td { padding: 5px 6px 5px 0; border-top: 1px solid ${C.borderSoft}; vertical-align: top; }
 .ps-perm-yes { color: ${C.warn}; font-weight: 600; }
 .ps-perm-no { color: ${C.ok}; }
-.ps-perm-note { color: ${C.text2}; font-size: 12px; margin-top: 2px; }
 .ps-facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; font-size: 13px; }
 .ps-facts dt { color: ${C.text3}; }
 .ps-facts dd { margin: 0; word-break: break-all; }
 .ps-facts a, .ps-md a { color: ${C.link}; }
-.ps-review-notes { color: ${C.text2}; font-size: 13px; margin: 0; white-space: pre-wrap; }
-.ps-shots { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 6px; }
-.ps-shot { margin: 0; flex: none; max-width: 420px; }
-.ps-shot-btn { border: 0; padding: 0; background: none; cursor: zoom-in; display: block; }
-.ps-shot img { display: block; max-height: 240px; max-width: 420px; border-radius: ${C.rMd}; border: 1px solid ${C.borderSoft}; }
-.ps-shot figcaption { color: ${C.text3}; font-size: 12px; margin-top: 4px; }
 .ps-tabs { display: flex; gap: 4px; border-bottom: 1px solid ${C.borderSoft}; margin-bottom: 12px; }
 .ps-tab { border: 0; background: none; color: ${C.text2}; padding: 6px 12px; cursor: pointer; font-size: 13px; border-bottom: 2px solid transparent; }
 .ps-tab-on { color: ${C.text}; border-bottom-color: ${C.brand}; font-weight: 600; }
@@ -214,9 +203,6 @@ export const STYLE_TEXT = `
 .ps-installed-notice { align-items: flex-start; }
 .ps-installed-notice-body { display: grid; gap: 6px; }
 .ps-error { display: flex; align-items: center; gap: 12px; color: ${C.error}; margin: 12px 0; flex-wrap: wrap; }
-.ps-zoom { position: fixed; inset: 0; background: rgba(0,0,0,.72); display: flex; align-items: center; justify-content: center; z-index: 1000; cursor: zoom-out; }
-.ps-zoom img { max-width: 92vw; max-height: 92vh; border-radius: ${C.rMd}; }
-.ps-zoom-close { position: absolute; top: 16px; right: 20px; border: 0; background: rgba(0,0,0,.5); color: #fff; font-size: 24px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
 .ps-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: flex; align-items: center; justify-content: center; z-index: 1000; }
 .ps-modal { background: ${C.bg1}; color: ${C.text}; border-radius: ${C.rXl}; padding: 22px 24px; width: min(440px, 92vw); box-shadow: 0 16px 48px rgba(0,0,0,.25); }
 .ps-modal h3 { margin: 0 0 14px; font-size: 17px; }

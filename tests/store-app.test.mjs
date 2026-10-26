@@ -12,7 +12,7 @@ globalThis.window ??= new EventTarget()
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'))
 const zh = read('locale/zh.json').ui
 const t = makeTranslate(key => zh[key] ?? key)
-const snapshot = () => ({ index: read('market/index.json'), indexUrl: 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json', stale: false, dshVersion: '0.2.1-rc.2', compatibility: {} })
+const snapshot = () => ({ index: read('tests/fixtures/directory/index.json'), indexUrl: 'https://cdn.example/gh/o/r@main/market/index.json', stale: false, dshVersion: '0.2.1-rc.2', compatibility: {} })
 
 function deferred() { let resolve; const promise = new Promise(r => { resolve = r }); return { promise, resolve } }
 const flush = () => act(async () => { await new Promise(r => setTimeout(r, 0)) })
@@ -21,125 +21,116 @@ const textOf = root => JSON.stringify(root.toJSON())
 function services(overrides = {}) {
   return {
     loadCatalog: async () => snapshot(),
-    loadDetail: async name => read(`market/plugins/${name}.json`),
+    loadDetail: async name => read(`tests/fixtures/directory/plugins/${name.replace('@', '').replace('/', '__')}.json`),
+    loadReadme: async name => ({ markdown: `# ${name} readme`, base: 'https://cdn.example/npm/x@1.0.0/' }),
     loadInstalled: async () => new Map(),
     subscribeInstalled: () => () => {},
     ...overrides,
   }
 }
-
-test('a handed-over plugin opens the confirmation only when it is not installed', async () => {
-  let installs = 0
-  const render = async (installed) => {
-    let root
-    await act(async () => {
-      root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => installed }), onInstall: () => { installs++ }, onOpenInstalled: () => {}, takePending: () => 'dsh-chat-toc' }))
-    })
-    await flush()
-    return root
-  }
-  const fresh = await render(new Map())
-  assert.ok(textOf(fresh).includes('继续安装'))
-  const already = await render(new Map([['dsh-chat-toc', { version: '0.5.1' }]]))
-  assert.equal(textOf(already).includes('继续安装'), false)
-  assert.ok(textOf(already).includes('已安装'))
-  assert.equal(installs, 0)
-})
+async function mount(props = {}) {
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services(props.services), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: () => {}, ...props, services: services(props.services) }))
+  })
+  await flush()
+  return root
+}
 
 const cards = root => root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-card')
 const installButtons = root => root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && [zh.install, zh.installed].includes(n.children.join('')))
-async function openFirstCard(root) {
-  await act(async () => { cards(root)[0].props.onClick() })
-  await flush()
-}
+const tab = (root, label) => root.root.find(n => n.type === 'button' && n.parent?.type === 'nav' && n.parent.props.className === 'ps-nav' && n.children.join('') === label)
+const currentTab = root => root.root.find(n => n.type === 'button' && n.props['aria-current'] === 'page').children.join('')
+async function click(node) { await act(async () => { node.props.onClick() }); await flush() }
+
+test('a handed-over plugin opens the confirmation only when it is not installed', async () => {
+  let installs = 0
+  const fresh = await mount({ onInstall: () => { installs++ }, takePending: () => 'dsh-pet' })
+  assert.ok(textOf(fresh).includes('继续安装'))
+  const already = await mount({ services: { loadInstalled: async () => new Map([['dsh-pet', { version: '1.0.0' }]]) }, takePending: () => 'dsh-pet' })
+  assert.equal(textOf(already).includes('继续安装'), false)
+  assert.equal(installs, 0)
+})
 
 test('cards have no install buttons; the plugin page has one, disabled until the installed list arrives', async () => {
   const gate = deferred()
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: () => gate.promise }), onInstall: () => {}, onOpenInstalled: () => {} }))
-  })
-  await flush()
-  assert.ok(cards(root).length >= 4)
-  assert.equal(installButtons(root).length, 0, 'installing happens on the plugin page')
-  await openFirstCard(root)
-  const waiting = installButtons(root)
-  assert.equal(waiting.length, 1)
-  assert.equal(waiting[0].props.disabled, true, 'disabled while the installed list loads')
+  const root = await mount({ services: { loadInstalled: () => gate.promise } })
+  assert.ok(cards(root).length >= 8)
+  assert.equal(installButtons(root).length, 0)
+  await click(cards(root)[0])
+  const [waiting] = installButtons(root)
+  assert.equal(waiting.props.disabled, true)
   await act(async () => { gate.resolve(new Map()) })
   await flush()
   assert.equal(installButtons(root)[0].props.disabled, false)
 })
 
-test('the install button recovers when the installed list cannot be read', async () => {
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
-  })
-  await flush()
-  await openFirstCard(root)
+test('the install button recovers when the installed list cannot be read, and the failure is shown', async () => {
+  const root = await mount({ services: { loadInstalled: async () => { throw new Error('no profile') } } })
+  assert.equal(root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-unknown')).length, 1)
+  await click(cards(root)[0])
   const [button] = installButtons(root)
   assert.equal(button.children.join(''), zh.install)
-  assert.equal(button.props.disabled, false, 'a failed read must not leave the install button disabled forever')
+  assert.equal(button.props.disabled, false)
 })
 
-test('the nav tabs open their pages, and a scene opens its own page under the scenes tab', async () => {
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services(), onInstall: () => {}, onOpenInstalled: () => {} }))
-  })
-  await flush()
-  const tab = label => root.root.find(n => n.type === 'button' && n.parent?.type === 'nav' && n.parent.props.className === 'ps-nav' && n.children.join('') === label)
-  const current = () => root.root.find(n => n.type === 'button' && n.props['aria-current'] === 'page').children.join('')
-  assert.equal(current(), zh.navHome)
+test('the plugin page loads its README through the services', async () => {
+  const asked = []
+  const root = await mount({ services: { loadReadme: async name => { asked.push(name); return { markdown: '# Hi from readme', base: 'https://x/' } } } })
+  await click(cards(root)[0])
+  assert.deepEqual(asked, ['dsh-context'])
+  assert.ok(textOf(root).includes('Hi from readme'))
+})
 
-  await act(async () => { tab(zh.navScenes).props.onClick() })
-  assert.ok(textOf(root).includes(zh.scenesTitle))
-  await act(async () => { root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-scene')[0].props.onClick() })
-  assert.ok(textOf(root).includes('ps-scene-page'))
-  assert.equal(current(), zh.navScenes)
-
-  await act(async () => { tab(zh.navAll).props.onClick() })
+test('the nav has home, all plugins and about, and each tab starts its page over', async () => {
+  const root = await mount()
+  const labels = root.root.find(n => n.type === 'nav' && n.props.className === 'ps-nav').findAllByType('button').map(b => b.children.join(''))
+  assert.deepEqual(labels, [zh.navHome, zh.navAll, zh.navAbout])
+  assert.equal(currentTab(root), zh.navHome)
+  await click(tab(root, zh.navAll))
   assert.ok(textOf(root).includes('ps-side'))
-
-  await act(async () => { tab(zh.navAbout).props.onClick() })
+  await click(tab(root, zh.navAbout))
   assert.ok(textOf(root).includes(zh.faqWhat))
+  assert.equal(currentTab(root), zh.navAbout)
+})
+
+test('"see all" from a home section opens the list with that order', async () => {
+  const root = await mount()
+  const [, updatedMore] = root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-more')
+  await click(updatedMore)
+  const select = root.root.find(n => n.type === 'select')
+  assert.equal(select.props.value, 'updated')
+  assert.equal(currentTab(root), zh.navAll)
+})
+
+test('list sort, page and "compatible only" survive opening a plugin and coming back', async () => {
+  const root = await mount()
+  await click(tab(root, zh.navAll))
+  await act(async () => { root.root.find(n => n.type === 'select').props.onChange({ target: { value: 'new' } }) })
+  await act(async () => { root.root.find(n => n.type === 'input' && n.props.type === 'checkbox').props.onChange({ target: { checked: true } }) })
+  await click(cards(root)[0])
+  await click(root.root.find(n => n.type === 'button' && n.props.className === 'ps-back'))
+  assert.equal(root.root.find(n => n.type === 'select').props.value, 'new')
+  assert.equal(root.root.find(n => n.type === 'input' && n.props.type === 'checkbox').props.checked, true)
 })
 
 test('tabOf files every view under its tab', () => {
   assert.equal(tabOf({ view: 'home' }), 'home')
   assert.equal(tabOf({ view: 'about' }), 'about')
-  assert.equal(tabOf({ view: 'scenes' }), 'scenes')
-  assert.equal(tabOf({ view: 'list', filter: { kind: 'section', id: 'starter' } }), 'scenes')
-  assert.equal(tabOf({ view: 'list', filter: { kind: 'section', id: 'hot' } }), 'all')
   assert.equal(tabOf({ view: 'list', filter: { kind: 'category', id: 'ui' } }), 'all')
   assert.equal(tabOf({ view: 'list', filter: { kind: 'search', query: 'x' } }), 'all')
   assert.equal(tabOf({ view: 'detail', name: 'x' }), 'all')
-})
-
-test('a failed installed-list read is shown, not silently treated as nothing installed', async () => {
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
-  })
-  await flush()
-  const notice = root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-unknown'))
-  assert.equal(notice.length, 1, 'the store must say it could not read which plugins are installed')
 })
 
 test('retry after a failed load shows the new catalog', async () => {
   const first = deferred()
   const second = deferred()
   const queue = [first, second]
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: () => queue.shift().promise }), onInstall: () => {}, onOpenInstalled: () => {} }))
-  })
-  // First load fails → error view with Retry; retry starts the second load.
+  const root = await mount({ services: { loadCatalog: () => queue.shift().promise } })
   await act(async () => { first.resolve(Promise.reject(new Error('first failed'))) })
   await flush()
   const retry = root.root.find(n => n.type === 'button' && n.children.includes('重试'))
-  const newer = snapshot(); for (const plugin of newer.index.plugins) plugin.title.zh = '新目录'
+  const newer = snapshot(); for (const plugin of newer.index.plugins) plugin.title = '新目录'
   await act(async () => { retry.props.onClick() })
   await act(async () => { second.resolve(newer) })
   await flush()
@@ -156,8 +147,7 @@ test('error boundary retry renders the children again', async () => {
     await act(async () => { root = TestRenderer.create(createElement(ErrorBoundary, { t, children: createElement(Child) })) })
     assert.ok(textOf(root).includes('生态家园出了点问题'))
     fail = false
-    const retry = root.root.find(n => n.type === 'button' && n.children.includes('重试'))
-    await act(async () => { retry.props.onClick() })
+    await act(async () => { root.root.find(n => n.type === 'button' && n.children.includes('重试')).props.onClick() })
     assert.ok(textOf(root).includes('recovered'))
   } finally {
     console.error = original
@@ -188,62 +178,38 @@ const selfBar = root => root.root.findAll(n => n.type === 'div' && n.props.class
 
 test('an older installed store shows the update prompt, and its button asks for the new version', async () => {
   const updates = []
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.3' }]]) }), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: u => updates.push(u) }))
-  })
-  await flush()
+  const root = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }]]) }, onSelfUpdate: u => updates.push(u) })
   const [bar] = selfBar(root)
-  assert.ok(bar, 'prompt shown')
-  assert.ok(JSON.stringify(bar.children.map(c => c.props?.children ?? c)).includes('0.1.4'))
+  assert.ok(bar)
   await act(async () => { bar.findByType('button').props.onClick() })
-  assert.deepEqual(updates, [{ current: '0.1.3', latest: '0.1.4', spec: 'github:yang051211/dsh-plugin-store#v0.1.4' }])
-})
-
-test('an up-to-date store shows no update prompt', async () => {
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.4' }]]) }), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: () => {} }))
-  })
-  await flush()
-  assert.equal(selfBar(root).length, 0)
+  assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-plugin-store#v0.2.0' }])
+  const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.2.0' }]]) } })
+  assert.equal(selfBar(upToDate).length, 0)
 })
 
 test('a self-update handed over from the panel goes straight to the installer in the tab', async () => {
   const updates = []
   let installs = 0
-  await act(async () => {
-    TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withStoreVersion('0.1.4'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.3' }]]) }), onInstall: () => { installs++ }, onOpenInstalled: () => {}, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-plugin-store' }))
-  })
-  await flush()
-  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-plugin-store#v0.1.4'])
+  await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }]]) }, onInstall: () => { installs++ }, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-plugin-store' })
+  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-plugin-store#v0.2.0'])
   assert.equal(installs, 0)
 })
 
-const withUsage = async () => {
-  const s = snapshot()
-  for (const p of s.index.plugins) p.store.usage = { where: { zh: `${p.name} 的入口` }, try: { zh: '试一句' } }
-  return s
-}
 const installedNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-notice'))
 
-test('a plugin installed while the store is open gets a how-to-use notice', async () => {
-  let installed = new Map([['dsh-context', { version: '0.73.3' }]])
+test('a plugin installed while the store is open gets a notice pointing to the Plugins page', async () => {
+  let installed = new Map([['dsh-context', { version: '1.0.0' }]])
   let changed
-  let root
-  await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadCatalog: withUsage, loadInstalled: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } }), onInstall: () => {}, onSelfUpdate: () => {}, onOpenInstalled: () => {} }))
-  })
-  await flush()
-  assert.equal(installedNotice(root).length, 0, 'plugins already installed when the store opened get no notice')
-  installed = new Map([...installed, ['dsh-chat-toc', { version: '0.5.1' }]])
+  const root = await mount({ services: { loadInstalled: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } } })
+  assert.equal(installedNotice(root).length, 0, 'plugins installed before the store opened get no notice')
+  installed = new Map([...installed, ['dsh-pet', { version: '1.0.0' }]])
   await act(async () => { changed() })
   await flush()
   const [notice] = installedNotice(root)
-  assert.ok(notice, 'notice shown')
+  assert.ok(notice)
   const textIn = node => node.children.map(c => (typeof c === 'string' ? c : textIn(c))).join('')
   const text = textIn(notice)
-  assert.ok(text.includes('dsh-chat-toc 的入口') && text.includes('试一句'), text)
+  assert.ok(text.includes('Pet') && text.includes(zh.installedHint), text)
   await act(async () => { notice.findByProps({ className: 'ps-link-btn' }).props.onClick() })
-  assert.equal(installedNotice(root).length, 0, 'dismissed')
+  assert.equal(installedNotice(root).length, 0)
 })
