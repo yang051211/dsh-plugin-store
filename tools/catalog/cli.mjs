@@ -227,7 +227,8 @@ async function updates(args) {
       const latestScan = { name: plugin.name, version: latest, scannedAt: new Date().toISOString(), ...scanPackage(after), skippedEntries: [] }
       mkdirSync(SCAN_DIR, { recursive: true })
       writeFileSync(join(SCAN_DIR, `${slug}@${latest}.json`), toJson(latestScan))
-      Object.assign(item, compareScans(reviewedScan, latestScan), { files: compareFiles(before, after), selfUpdate: selfUpdateLines(before, after) })
+      const files = compareFiles(before, after)
+      Object.assign(item, compareScans(reviewedScan, latestScan, files), { files, selfUpdate: selfUpdateLines(before, after) })
     } catch (error) {
       item.error = error.message
     }

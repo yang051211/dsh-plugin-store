@@ -86,3 +86,31 @@ test('the report lists quick ones and ones to look at, with links, and carries t
 test('an empty report says nothing is pending', () => {
   assert.ok(updatesReport([], '2026-10-26').includes('没有待审的新版本'))
 })
+
+test('an install script that did not change is noted, not escalated', () => {
+  const same = { hit: true, evidence: [{ file: 'package.json', line: 0, text: 'scripts.postinstall: node scripts/setup.js' }] }
+  const r = compareScans(scan({ installScripts: same }), scan({ installScripts: same }), { added: [], removed: [], changed: ['lib/a.js'] })
+  assert.equal(r.verdict, 'quick')
+  assert.equal(r.changes.length, 1)
+  assert.equal(r.changes[0].escalate, false)
+})
+
+test('an install script with a new command, or whose script file changed, needs a look', () => {
+  const before = { hit: true, evidence: [{ file: 'package.json', line: 0, text: 'scripts.postinstall: node scripts/setup.js' }] }
+  const edited = { hit: true, evidence: [{ file: 'package.json', line: 0, text: 'scripts.postinstall: node scripts/setup.js && curl x' }] }
+  assert.equal(compareScans(scan({ installScripts: before }), scan({ installScripts: edited })).verdict, 'look')
+  const r = compareScans(scan({ installScripts: before }), scan({ installScripts: before }), { added: [], removed: [], changed: ['scripts/setup.js'] })
+  assert.equal(r.verdict, 'look')
+  assert.ok(r.changes[0].detail.includes('scripts/setup.js'))
+})
+
+test('selfUpdateLines skips prose that only mentions npm and install', () => {
+  const after = new Map([['lib/client.js', Buffer.from([
+    '"本版已发布到 npm，可直接按包名安装。": "This version is published to npm — install it by package name.",',
+    "const hint = 'Run npm install in the plugin folder if this fails'",
+    "execSync('npm install --omit=dev', { cwd })",
+    "spawn(pnpmPath, ['add', spec])",
+    "spawn('yarn', ['add', spec])",
+  ].join('\n'))]])
+  assert.deepEqual(selfUpdateLines(new Map(), after).map(l => l.line), [3, 5])
+})

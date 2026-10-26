@@ -17,17 +17,18 @@ const evidenceKeys = finding => new Set((finding?.evidence ?? []).map(e => `${e.
 const filesOf = finding => new Set((finding?.evidence ?? []).map(e => e.file))
 
 /**
- * What changed between the reviewed version's scan and the new version's scan.
+ * What changed between the reviewed version's scan and the new version's scan. `files` (compareFiles) lets an install
+ * script that kept its command still be flagged when a file it runs changed.
  * @returns `{ verdict: 'quick' | 'look', changes: Array<{ kind, detail, escalate }> }`
  */
-export function compareScans(reviewed, latest) {
+export function compareScans(reviewed, latest, files = null) {
   const changes = []
   const add = (kind, detail, escalate) => changes.push({ kind, detail, escalate })
   for (const kind of KINDS) {
     const before = reviewed?.[kind], after = latest?.[kind]
     if (after?.hit && !before?.hit) { add('new-permission', `新增：${KIND_LABELS[kind]}（${kind}）`, true); continue }
     if (!after?.hit) continue
-    if (kind === 'installScripts') { add('install-scripts', '仍有安装脚本，看一下内容有没有变', true); continue }
+    if (kind === 'installScripts') { installScriptChange(before, after, files, add); continue }
     const oldKeys = evidenceKeys(before)
     const fresh = (after.evidence ?? []).filter(e => !oldKeys.has(`${e.file}\u0000${String(e.text ?? '').trim()}`))
     const newFiles = [...new Set(fresh.map(e => e.file))].filter(file => !filesOf(before).has(file))
@@ -48,6 +49,21 @@ export function compareScans(reviewed, latest) {
   return { verdict: changes.some(c => c.escalate) ? 'look' : 'quick', changes }
 }
 
+/** Paths an install-script command runs, such as `scripts/setup.js` in `scripts.postinstall: node scripts/setup.js`. */
+const scriptPaths = text => (String(text).split(':').slice(1).join(':').match(/[\w.@-]+(?:\/[\w.@-]+)*\.(?:[cm]?js|ts|sh|ps1|cmd|bat|py)\b/g) ?? []).map(path => path.replace(/^\.\//, ''))
+
+/** An install script kept from the reviewed version is only noted, unless its command or a file it runs changed. */
+function installScriptChange(before, after, files, add) {
+  const oldTexts = new Set((before?.evidence ?? []).map(e => String(e.text ?? '').trim()))
+  const edited = (after.evidence ?? []).map(e => String(e.text ?? '').trim()).filter(text => !oldTexts.has(text))
+  if (edited.length > 0) return add('install-scripts', `安装脚本改了：${edited.slice(0, 2).join('；')}`, true)
+  const touched = new Set([...(files?.changed ?? []), ...(files?.added ?? [])])
+  const runs = [...new Set((after.evidence ?? []).flatMap(e => scriptPaths(e.text)))].filter(path => touched.has(path))
+  if (runs.length > 0) return add('install-scripts', `安装脚本调用的文件改了：${runs.join('、')}`, true)
+  // Without the file diff there is no telling whether the scripts it runs changed.
+  add('install-scripts', files ? '安装脚本与已审版本相同' : '仍有安装脚本，看一下内容有没有变', !files)
+}
+
 /** Added, removed and changed paths between two unpacked packages, and how many bytes the changed and added ones hold. */
 export function compareFiles(before, after) {
   const added = [], removed = [], changed = []
@@ -62,7 +78,9 @@ export function compareFiles(before, after) {
 
 const CODE = /\.(?:[cm]?js|ts|sh|ps1|cmd|bat|py)$/i
 /** Installing or updating packages from inside the plugin, or skipping pnpm's release-age guard (the dsh-ssh-ops 0.4 case). */
-const SELF_UPDATE = /\b(?:pnpm|npm|yarn)\b[^\n]{0,40}\b(?:add|install|i|update|up)\b|dsh\s+plugin\s+add|minimumReleaseAge|registry\.npmjs\.org\/[^\s'"]+\/-\//
+// Only command shapes count: a string that starts with the command, or the manager's name as its own string next to an
+// install argument. Prose such as "published to npm — install it by package name" does not.
+const SELF_UPDATE = /["'`](?:pnpm|npm|yarn)(?:\.cmd)?\s+(?:add|install|i|update|up)\b|["'`](?:pnpm|npm|yarn)(?:\.cmd)?["'`][^\n]*["'`](?:add|install|i|update|up)["'`]|["'`]dsh\s+plugin\s+add|minimumReleaseAge|registry\.npmjs\.org\/[^\s'"]+\/-\//
 
 /** Code lines in the new version that look like self-installation and do not appear in the reviewed version. */
 export function selfUpdateLines(before, after) {
