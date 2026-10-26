@@ -1,0 +1,98 @@
+{
+  "name": "dsh-status-bar-plugin",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:05:45.877Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download.js",
+        "line": 4,
+        "text": "import { get as httpGet } from 'node:http';"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 5,
+        "text": "import { get as httpsGet } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download.js",
+        "line": 2,
+        "text": "import { createWriteStream, existsSync, readFileSync, writeFileSync, statSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 20,
+        "text": "const json = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return {}; } };"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 21,
+        "text": "function reset(part) { for (const path of [part, `${part}.json`]) rmSync(path, { force: true }); }"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 33,
+        "text": "const blocks = readFileSync(file, 'utf8').split(/\\r?\\n\\r?\\n/).filter(block => /^HTTP\\//.test(block));"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 62,
+        "text": "rmSync(headersFile, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 77,
+        "text": "try { child = spawn(program, args, { windowsHide: true, stdio: 'ignore' }); }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "const killer = spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "spawned = spawn(target.electron, [target.appDir, `--dsh-link=${link}`, `--launcher-pid=${process.pid}`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

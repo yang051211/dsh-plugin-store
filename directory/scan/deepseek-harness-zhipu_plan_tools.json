@@ -1,0 +1,142 @@
+{
+  "name": "deepseek-harness-zhipu_plan_tools",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:44.517Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 13,
+        "text": "return fetch(`http://127.0.0.1:${port}/`, { signal: controller.signal })"
+      },
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 26,
+        "text": "return await fetch(`http://127.0.0.1:${port}/`, { signal: controller.signal })"
+      },
+      {
+        "file": "lib/deepseek-fallback.js",
+        "line": 63,
+        "text": "response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/http-fallback.js",
+        "line": 226,
+        "text": "const response = await fetch(current, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 932,
+        "text": "const response = await fetch(current, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 3,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/main.mjs",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/main.mjs",
+        "line": 118,
+        "text": "manifest = JSON.parse(readFileSync(manifestFilePath, 'utf8'));"
+      },
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/cli/probes.mjs",
+        "line": 64,
+        "text": "const manifest = JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/constants.js",
+        "line": 39,
+        "text": "/** zread 工具协作超时预算(毫秒),对齐 dsh-mcp-client 默认。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "/** zread 工具协作超时预算(毫秒),对齐 dsh-mcp-client 默认。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 701,
+        "text": "disposers.push(registerWithTakeover(() => tools.register(definition), \"tool:web_search\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1591,
+        "text": "* 工具本身无副作用(isConcurrencySafe),60s 协作超时对齐 dsh-mcp-client。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1772,
+        "text": "].map((definition) => registerWithTakeover(() => tools.register(definition), `tool:${definition.name}`));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli/invocations.mjs",
+        "line": 39,
+        "text": "? spawnSync(process.execPath, [cli.file, ...args], { stdio: 'inherit' })"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 1,
+        "text": "// Windows 命令解析与跨平台 spawn(移植自 dsh-zh spawn.mts,已验证策略)。"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli/spawn.mjs",
+        "line": 125,
+        "text": "return spawnSync(file, args, options);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky && npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

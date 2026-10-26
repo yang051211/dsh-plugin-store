@@ -1,0 +1,96 @@
+{
+  "name": "dsh-plugin-mgr",
+  "version": "0.2.12",
+  "scannedAt": "2026-10-26T10:05:32.761Z",
+  "icon": "dsh-plugin-mgr.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 309,
+        "text": "return (await fetch(path, { cache: \"no-store\" })).json();"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 313,
+        "text": "const resp = await fetch(path, {"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 582,
+        "text": "const resp = await fetch(`${base}/${encodeURIComponent(name)}/latest`, {"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 602,
+        "text": "const resp = await fetch(`${base}/${encodeURIComponent(name)}`, { signal: AbortSignal.timeout(LATEST_FETCH_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 5,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 67,
+        "text": "text = readFileSync(patchPath, \"utf8\");"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 116,
+        "text": "text = readFileSync(patchPath, \"utf8\");"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 118,
+        "text": "writeFileSync(patchPath, block);"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 129,
+        "text": "writeFileSync(patchPath, `${base}${block}`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/http-MkkbSIz0.js",
+        "line": 266,
+        "text": "const child = spawn(file, argv.map(quote), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

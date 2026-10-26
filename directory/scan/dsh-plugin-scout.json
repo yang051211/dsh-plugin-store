@@ -1,0 +1,98 @@
+{
+  "name": "dsh-plugin-scout",
+  "version": "0.1.11",
+  "scannedAt": "2026-10-26T10:05:29.663Z",
+  "icon": "dsh-plugin-scout.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const res = await fetch(`${PREFIX}${path}`, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2044,
+        "text": "      const res = await fetch(\"https://api.github.com/graphql\", { method: \"POST\", redirect: \"error\", signal: AbortSignal.timeout(1e4), headers: { authorization:"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2175,
+        "text": "const res = await fetch(GQL, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2367,
+        "text": "const res = await fetch(`${NPM}/${path}/latest`, { signal, headers: { accept: \"application/json\", \"user-agent\": \"dsh-plugin-scout\" } });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3195,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 2083,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2391,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2593,
+        "text": "const data = JSON.parse(await readFile(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2601,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2603,
+        "text": "await writeFile(tmp, JSON.stringify(index));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 2403,
+        "text": "tools: { label: \"\\u5DE5\\u5177\\u4E0E MCP\", deps: { \"dsh-mcp-client\": 4, \"dsh-skill\": 2 }, words: [\"mcp\", \"skill\", \"skills\", \"stdio\", \"\\u5DE5\\u5177\"] },"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 2798,
+        "text": "      const handle = subprocess.spawn({ argv: [gh, \"auth\", \"token\", \"--hostname\", \"github.com\"], cwd: homedir(), stdio: { stdin: \"ignore\", stdout: \"pipe\", stder"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

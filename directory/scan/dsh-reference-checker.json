@@ -1,0 +1,72 @@
+{
+  "name": "dsh-reference-checker",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:05:47.517Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.mjs",
+        "line": 38,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 39,
+        "text": "import https from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.mjs",
+        "line": 41,
+        "text": "import { readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 363,
+        "text": "const buf = readFileSync(absPath);"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 385,
+        "text": "return decodeTextSmart(readFileSync(absPath));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.mjs",
+        "line": 45,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 152,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

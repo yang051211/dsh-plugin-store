@@ -1,0 +1,126 @@
+{
+  "name": "dsh-office",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:05:31.391Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/js/core.js",
+        "line": 84,
+        "text": "const res = await fetch(API + path, opts);"
+      },
+      {
+        "file": "lib/larkbot.js",
+        "line": 29,
+        "text": "import { request } from \"node:https\";"
+      },
+      {
+        "file": "lib/office.js",
+        "line": 649,
+        "text": "const res = await fetch(url, { signal: ac.signal });"
+      },
+      {
+        "file": "scripts/_verify-gate-acceptance-b.mjs",
+        "line": 55,
+        "text": "const res = await fetch(llm.endpoint, {"
+      },
+      {
+        "file": "scripts/_verify-gate-acceptance.mjs",
+        "line": 61,
+        "text": "const res = await fetch(llm.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/insights.js",
+        "line": 2,
+        "text": "import { readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/insights.js",
+        "line": 3,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/insights.js",
+        "line": 25,
+        "text": "const parsed = JSON.parse(await readFile(join(DATA_DIR, INSIGHTS_STATE_FILE), \"utf8\"));"
+      },
+      {
+        "file": "lib/insights.js",
+        "line": 31,
+        "text": ".then(() => writeFile(join(DATA_DIR, INSIGHTS_STATE_FILE), JSON.stringify(insightsState || {}), \"utf8\"))"
+      },
+      {
+        "file": "lib/insights.js",
+        "line": 39,
+        "text": "const parsed = JSON.parse(await readFile(join(DATA_DIR, INSIGHTS_HISTORY_FILE), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lark.js",
+        "line": 4,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/lark.js",
+        "line": 923,
+        "text": "execFile(file, args, opts, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/lark.js",
+        "line": 936,
+        "text": "child = execFile(\"cmd.exe\", [\"/c\", \"start\", \"\", filePath], { windowsHide: true, detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/lark.js",
+        "line": 938,
+        "text": "child = execFile(process.platform === \"darwin\" ? \"open\" : \"xdg-open\", [filePath], { detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/larkbot.js",
+        "line": 25,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionPersistence",
+    "sessionProjectionCache",
+    "sessionProjections",
+    "sessionQuery",
+    "sessions",
+    "tokenMeter",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 159,
+      "text": "npm install -g @tencent-qqmail/agently-cli"
+    }
+  ],
+  "skippedEntries": []
+}

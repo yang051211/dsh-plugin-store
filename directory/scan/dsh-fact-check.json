@@ -1,0 +1,102 @@
+{
+  "name": "dsh-fact-check",
+  "version": "1.5.0",
+  "scannedAt": "2026-10-26T10:05:35.001Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/doctor.mjs",
+        "line": 207,
+        "text": "const res = await fetch(CHAIN_URL, { signal: AbortSignal.timeout(12000) })"
+      },
+      {
+        "file": "tools/doctor.mjs",
+        "line": 241,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(8000) })"
+      },
+      {
+        "file": "tools/engine-routes.json",
+        "line": 8,
+        "text": "\"fetch_fallbacks\": [\"搜索服务自带的正文抽取（多数搜索 API 都有）\", \"markitdown / trafilatura / readability 等 HTML→Markdown 工具\", \"内置网页抓取能力\", \"curl -sL -A 'Mozilla/5.0'\"]"
+      },
+      {
+        "file": "tools/jev-verdict.mjs",
+        "line": 308,
+        "text": "const res = await fetch(endpoint(), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { watch } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 90,
+        "text": "const { fm } = parseFrontmatter(await readFile(SKILL_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "const { fm, body } = parseFrontmatter(await readFile(SKILL_URL, 'utf8'))"
+      },
+      {
+        "file": "tools/doctor.mjs",
+        "line": 17,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/doctor.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/doctor.mjs",
+        "line": 152,
+        "text": "const r = spawnSync(probe, [cmd], { encoding: 'utf8' })"
+      },
+      {
+        "file": "tools/doctor.mjs",
+        "line": 185,
+        "text": "const r = spawnSync('python3', ['-c', `import ${mod}`], { encoding: 'utf8' })"
+      },
+      {
+        "file": "tools/doctor.mjs",
+        "line": 216,
+        "text": "const cprobe = spawnSync('curl', ['-sL', '-m', '20', '-A', 'Mozilla/5.0', CHAIN_URL], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

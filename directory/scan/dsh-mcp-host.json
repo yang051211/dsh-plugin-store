@@ -1,0 +1,92 @@
+{
+  "name": "dsh-mcp-host",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:05:39.566Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 10,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 160,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 162,
+        "text": "writeFileSync(file, Buffer.from(c.data, 'base64'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 198,
+        "text": "* Spawn the MCP server, list its tools, and register them on ctx.tools."
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 221,
+        "text": "const dispose = ctx.tools.register(def)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/lazy.js",
+        "line": 82,
+        "text": "disposers.push(agent.ctx.tools.register(definition))"
+      },
+      {
+        "file": "lib/lazy.js",
+        "line": 96,
+        "text": "try { state.lift = agent.ctx.tools.restrict({ deny: [bootstrapName] }) } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 49,
+        "text": "spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 61,
+        "text": "const child = spawn(exe, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

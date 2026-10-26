@@ -1,0 +1,74 @@
+{
+  "name": "dsh-subagent-toolkit",
+  "version": "0.0.6",
+  "scannedAt": "2026-10-26T10:05:56.598Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 410,
+        "text": "const r = await fetch(\"/session-manager/api/delete\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 418,
+        "text": "const r = await fetch(\"/subagent-fold/api/delete\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 493,
+        "text": "const r = await fetch(\"/subagent-fold/api/delete\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { rm, readdir, stat, lstat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "try { await rm(dir, { recursive: true, force: true }); lastErr = null; break; }"
+      },
+      {
+        "file": "lib/model-sync.js",
+        "line": 3,
+        "text": "import { appendFileSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/model-sync.js",
+        "line": 13,
+        "text": "try { const st = existsSync(f) ? require(\"node:fs\").statSync(f) : null; if (st && st.size > 1024 * 1024) require(\"node:fs\").writeFileSync(f, \"\"); } catch (e) {}"
+      },
+      {
+        "file": "lib/model-sync.js",
+        "line": 14,
+        "text": "appendFileSync(f, new Date().toISOString() + \" \" + line + String.fromCharCode(10));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

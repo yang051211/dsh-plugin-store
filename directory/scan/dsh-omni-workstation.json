@@ -1,0 +1,142 @@
+{
+  "name": "dsh-omni-workstation",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:54.027Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1062,
+        "text": "return fetch(url, init).then(function (response) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4762,
+        "text": "fetch(\"/omni/update-check\", { headers: { Accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 688,
+        "text": "const upRes = await fetch(upload_host, { method: 'POST', body: form })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1641,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3006,
+        "text": "const res = await fetch(url, { signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6953,
+        "text": "key: \"fs\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, realpathSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "const pkgVersion = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 657,
+        "text": "const { readFileSync } = await import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 671,
+        "text": "const buf = readFileSync(filePath)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "const inject = ['tools', 'webServer', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5454,
+        "text": "toolDisposer = appCtx.tools.register(toolDef)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5482,
+        "text": "mediaDisposer = appCtx.tools.register(buildMediaToolDef(mediaStt))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5499,
+        "text": "imggenDisposer = appCtx.tools.register(buildImggenToolDef(comfyMode))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5518,
+        "text": "disposer = (() => { try { return appCtx.tools.register(buildVideoToolDef(card.config, card.toolName, card.description, card.type)) } catch (e) { console.warn('["
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6337,
+        "text": "execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], { timeout: 15000, windowsHide: true }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/vision-tools.js",
+        "line": 21,
+        "text": "import { execFileSync, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/vision-tools.js",
+        "line": 309,
+        "text": "execFile(bin, ['stdin', 'stdout', '-l', 'chi_sim+eng', '--psm', '6'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "al alternative: put the package under `$DSH_HOME/profiles/web/plugins/dsh-omni-workstation/`, add `\"dsh-omni-workstation\": \"file:./plugins/dsh-omni-workstation\""
+    },
+    {
+      "file": "README.zh.md",
+      "line": 41,
+      "text": "> 手动放置（备选）：把插件包放到 `$DSH_HOME/profiles/web/plugins/dsh-omni-workstation/`，在 profile 的 `package.json` `dependencies` 加 `\"dsh-omni-workstation\": \"file:./plugins/ds"
+    }
+  ],
+  "skippedEntries": []
+}

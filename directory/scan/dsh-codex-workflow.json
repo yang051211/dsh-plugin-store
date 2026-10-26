@@ -1,0 +1,133 @@
+{
+  "name": "dsh-codex-workflow",
+  "version": "1.1.15",
+  "scannedAt": "2026-10-26T10:05:49.597Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/dsh-runtime-smoke.mjs",
+        "line": 55,
+        "text": "const response = await fetch(new URL(`/api/${method}`, base), { method: \"POST\","
+      },
+      {
+        "file": "scripts/dsh-runtime-smoke.mjs",
+        "line": 182,
+        "text": "const response = await fetch(url, { redirect: \"manual\", signal: AbortSignal.timeout(10_000) });"
+      },
+      {
+        "file": "scripts/dsh-runtime-smoke.mjs",
+        "line": 193,
+        "text": "const response = await fetch(base, { headers, redirect: \"manual\", signal: AbortSignal.timeout(10_000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-store.js",
+        "line": 2,
+        "text": "import { mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/bridge-store.js",
+        "line": 58,
+        "text": "await mkdir(this.directory, { recursive: true });"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 3,
+        "text": "import { createReadStream } from \"node:fs\";"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 4,
+        "text": "import { realpath, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { writeFile, mkdir } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = [\"tools\", \"agents\", \"systemPrompt\", \"sessionProjections\", \"subagents\", \"connection\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 106,
+        "text": "const disposers = createWorkflowTools(manager, config).map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "scripts/host-compat-check.mjs",
+        "line": 102,
+        "text": "for (const name of names) assert.ok(ctx.tools.get(name), `${name} missing after activation`);"
+      },
+      {
+        "file": "scripts/host-compat-check.mjs",
+        "line": 108,
+        "text": "for (const name of names) assert.equal(ctx.tools.get(name), undefined, `${name} survived unload`);"
+      },
+      {
+        "file": "scripts/host-recovery-check.mjs",
+        "line": 299,
+        "text": "const registrations = createWorkflowTools(manager, config).map((definition) => ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-callback.js",
+        "line": 126,
+        "text": "const child = spawn(this.options.command, ["
+      },
+      {
+        "file": "lib/desktop-thread-opener.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/desktop-thread-opener.js",
+        "line": 18,
+        "text": "constructor(platform = process.platform, spawnProcess = (command, args, options) => spawn(command, args, options)) {"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 228,
+        "text": "const child = spawn(\"git\", args, { cwd, stdio: [\"ignore\", \"pipe\", \"pipe\"], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessionProjections",
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

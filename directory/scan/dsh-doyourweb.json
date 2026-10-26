@@ -1,0 +1,121 @@
+{
+  "name": "dsh-doyourweb",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:06:03.417Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "extension/background.js",
+        "line": 41,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(1000) });"
+      },
+      {
+        "file": "extension/background.js",
+        "line": 160,
+        "text": "const connection = new WebSocket(`ws://127.0.0.1:${port}/extension`, protocols);"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 8,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 310,
+        "text": "pi(action,data={}){const response=await fetch('/manage/api',{method:'POST',headers:{'Content-Type':'application/json','X-DSH-Key':key},body:JSON.stringify({acti"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2676,
+        "text": "  const response = await fetch(url, { signal: AbortSignal.any([AbortSignal.timeout(15e3), ...signal ? [signal] : []]), headers: { \"User-Agent\": \"dsh-doyourweb\" "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 4,
+        "text": "import { readFile as readFile5 } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 11,
+        "text": "import { readFile, writeFile, mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 369,
+        "text": "await mkdir(this.home, { recursive: true });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 372,
+        "text": "this.settings = JSON.parse(await readFile(settingsPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 376,
+        "text": "await writeFile(settingsPath, JSON.stringify(this.settings), { mode: 384, flag: \"wx\" });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 3544,
+        "text": "var inject = [\"tools\", \"typert\"];"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3734,
+        "text": "ctx.tools.register(tool("
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3740,
+        "text": "ctx.tools.register(tool("
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3746,
+        "text": "ctx.tools.register(tool("
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3752,
+        "text": "ctx.tools.register(tool("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 1930,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2036,
+        "text": "const child = spawn(app.path, [], { detached: true, stdio: \"ignore\", windowsHide: false, shell: false });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

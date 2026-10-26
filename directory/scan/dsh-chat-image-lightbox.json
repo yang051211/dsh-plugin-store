@@ -1,0 +1,126 @@
+{
+  "name": "dsh-chat-image-lightbox",
+  "version": "1.9.3",
+  "scannedAt": "2026-10-26T10:05:32.547Z",
+  "icon": "dsh-chat-image-lightbox.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "// appends them to ~/.dsh/image-gallery-diag.log. That is one fetch() per"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1057,
+        "text": "fetch(GALLERY_REVEAL_URL + \"?abs=\" + encodeURIComponent(abs))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1167,
+        "text": "fetch(originalUrl).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3554,
+        "text": "fetch(\"/api/image-gallery/diag\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import https from \"node:https\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { existsSync, statSync, readdirSync, mkdirSync, writeFileSync, appendFileSync, unlinkSync, openSync, readSync, closeSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "try { appendFileSync(IG_DIAG_PATH, new Date().toISOString() + \"  \" + line + \"\\n\"); } catch (e) {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 444,
+        "text": "try { mkdirSync(dir, { recursive: true }); } catch (e) {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 576,
+        "text": "try { unlinkSync(rows[idx].path); total -= rows[idx].size; removed++; } catch (e) {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1977,
+        "text": "export var inject = [\"webServer\", \"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2010,
+        "text": "if (tool && ctx.tools && typeof ctx.tools.register === \"function\") {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2012,
+        "text": "return ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 415,
+        "text": "cp = spawn(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-EncodedCommand\", b64], { windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 930,
+        "text": "spawn(\"explorer.exe\", [\"/select,\" + filePath], { detached: true, stdio: \"ignore\" }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 932,
+        "text": "spawn(\"open\", [\"-R\", filePath], { detached: true, stdio: \"ignore\" }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 935,
+        "text": "spawn(\"xdg-open\", [dirname(filePath)], { detached: true, stdio: \"ignore\" }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,105 @@
+{
+  "name": "dsh-mcp-bridge",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:06:04.820Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 11,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 106,
+        "text": "out.push(JSON.parse(readFileSync(join(dir, f), 'utf8')));"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 182,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 183,
+        "text": "writeFileSync(file, `# dsh-mcp-bridge: servers installed by \\`dsh-mcp-bridge init\\`\\n${block}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 186,
+        "text": "const current = readFileSync(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# 本层 insert 一组 @deepseek-ai/dsh-mcp-client 条目，把外部 MCP server 的"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# 工具注册进 ctx.tools，模型即可通过 mcp__<serverName>__<toolName> 调用。"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 19,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 30,
+        "text": "#   name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 39,
+        "text": "#   name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 353,
+        "text": "const { spawn } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 367,
+        "text": "const child = spawn(process.execPath, [probe, command, ...(def.args ?? []), '--json'], {"
+      },
+      {
+        "file": "scripts/render-banner.mjs",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/render-shot.mjs",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

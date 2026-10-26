@@ -1,0 +1,121 @@
+{
+  "name": "dsh-media-gen",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:05:27.196Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-video.js",
+        "line": 1002,
+        "text": "fetch(VIDEO_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2177,
+        "text": "fetch(VIDEO_ROUTE, {"
+      },
+      {
+        "file": "lib/image-core.js",
+        "line": 222,
+        "text": "const response = await fetch(url, { redirect: 'follow', signal })"
+      },
+      {
+        "file": "lib/image-core.js",
+        "line": 340,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/image-core.js",
+        "line": 795,
+        "text": "const response = await fetch(target, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-config.js",
+        "line": 8,
+        "text": "import { writeFileSync, mkdirSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cli-config.js",
+        "line": 51,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/cli-config.js",
+        "line": 53,
+        "text": "writeFileSync(staging, JSON.stringify(mirror, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/image-core.js",
+        "line": 20,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/image-core.js",
+        "line": 709,
+        "text": "await mkdir(directory, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image-core.js",
+        "line": 899,
+        "text": "ctx.tools.register(createImageGenerateTool(ctx, () => currentCatalog(), () => currentRuntime()))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'credentials', 'webServer', 'attachments']"
+      },
+      {
+        "file": "lib/video-core.js",
+        "line": 703,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/video-core.js",
+        "line": 801,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "vendor/dsh-image-generation/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/build-client.test.mjs",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

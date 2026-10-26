@@ -1,0 +1,128 @@
+{
+  "name": "dsh-tool-guardian",
+  "version": "0.8.1-beta.1",
+  "scannedAt": "2026-10-26T10:05:38.935Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 67,
+        "text": "const PKG_VERSION = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "index.js",
+        "line": 214,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 215,
+        "text": "appendFileSync(path, JSON.stringify(entry) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "*   - tool registry:  packages/core/tools        -> ctx.tools.register(defineTool({...}))"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 646,
+        "text": "const { dispose, denied } = restrictKnown(agent.ctx.tools, names)"
+      },
+      {
+        "file": "index.js",
+        "line": 689,
+        "text": "disposers.set(definition.name, ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 411,
+        "text": "const child = spawn(options.python, [BRIDGE_SCRIPT], {"
+      },
+      {
+        "file": "setup.mjs",
+        "line": 19,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "setup.mjs",
+        "line": 36,
+        "text": "const defaultRun = (command, args, options = {}) => spawnSync(command, args, { windowsHide: true, encoding: 'utf8', ...options })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "Prefer it installed? `pip install tool-guardian`, then drop the `uvx` prefixes (`tool-guardian-setup add ...`,"
+    },
+    {
+      "file": "README.md",
+      "line": 144,
+      "text": "`pip install tool-guardian`, then one entry in your client. Every example below starts the same command, `tool-guardian`,"
+    },
+    {
+      "file": "README.md",
+      "line": 159,
+      "text": "`opencode`, `@cline/core`, `continue-cli-client`). Re-run it: `pip install -e .` then `python tests/clients/run_clients.py`."
+    },
+    {
+      "file": "README.md",
+      "line": 323,
+      "text": "pip install tool-guardian"
+    },
+    {
+      "file": "README.md",
+      "line": 328,
+      "text": "> PyPI and npm now ship the same code: `pip install tool-guardian` (0.3.0+) for the MCP server, `dsh-tool-guardian` on npm for DSH."
+    }
+  ],
+  "skippedEntries": []
+}

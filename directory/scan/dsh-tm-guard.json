@@ -1,0 +1,144 @@
+{
+  "name": "dsh-tm-guard",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:05:47.155Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/classifier.js",
+        "line": 345,
+        "text": "// curl -o/--output SEPARATE values (`-o /tmp/x`): the download lands on a"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 346,
+        "text": "// local path, so it must be extracted or legitimate `curl -o /tmp/x`"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 932,
+        "text": "// net/tls/dns/worker_threads) are deliberately NOT here — require('http')"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 1000,
+        "text": "// Y3: root-name closure (const g=globalThis; const h=g; h.fetch(URL)) —"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 1140,
+        "text": "// K2: root-variable member calls (const g=globalThis; g.fetch(URL)) —"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 24,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 176,
+        "text": "mkdirSync(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 187,
+        "text": "if (!existsSync(this.dir)) mkdirSync(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 221,
+        "text": "appendFileSync(this.logPath, line, 'utf8')"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 298,
+        "text": "content = readFileSync(this.logPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "*   - ctx.tools.register : tm_snapshot / tm_rollback / tm_audit / tm_status"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 337,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1293,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1331,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1353,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/classifier.js",
+        "line": 537,
+        "text": "* `node --input-type=module -e \"import('child_process')…\"` took `-e` as the"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 684,
+        "text": "// node spawn/execFile with separate args array: spawn('rm',['-rf','/tmp/x'])"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 716,
+        "text": "// node: child_process.execSync('cmd') / exec('cmd') string forms"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 877,
+        "text": "// (import('child_process').then(m=>m.execSync(...))); read-only imports"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 935,
+        "text": "// import('http')/import('child_process') trip the dynamic-import net."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

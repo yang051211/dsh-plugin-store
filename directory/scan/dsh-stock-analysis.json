@@ -1,0 +1,123 @@
+{
+  "name": "dsh-stock-analysis",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:05:30.701Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/ci-resolve-llm-host.mjs",
+        "line": 18,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(10_000) });"
+      },
+      {
+        "file": "scripts/ci-resolve-llm-host.mjs",
+        "line": 26,
+        "text": "await fetch(`https://${host}/`, { signal: AbortSignal.timeout(10_000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { mkdtemp, writeFile, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 11,
+        "text": "await writeFile(path, JSON.stringify(input), { encoding: \"utf8\", mode: 384 });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 18,
+        "text": "await rm(directory, { recursive: true, force: true });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 84,
+        "text": "import { existsSync, readdirSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 206,
+        "text": "const raw = readFileSync(skillFile, \"utf-8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 104,
+        "text": "(typeof ctx.on !== \"function\" || typeof ctx.tools.get !== \"function\" || typeof ctx.tools.presentAs !== \"function\" || names.size === 0 || ctx.tools.get(SEARCH)) "
+      },
+      {
+        "file": "dist/index.js",
+        "line": 106,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 122,
+        "text": "idates = state.catalog.filter((tool) => ctx.tools.get(tool.name, exec.agent)).map((tool) => ({ tool, text: `${tool.name} ${tool.description}`.toLowerCase() }));"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 220,
+        "text": "var inject = [\"tools\", \"skills\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 225,
+        "text": "const previousTools = new Set(ctx.tools.schemas?.().map((tool) => tool.name));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 85,
+        "text": "import * as cp from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/ci-resolve-llm-host.mjs",
+        "line": 3,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/setup-python.mjs",
+        "line": 2,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/setup-python.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 48,
+      "text": "如果 venv 最终没建起来，plugin 会回退到系统 `python3`（Windows 为 `python`），此时请自行 `pip install -r tools/requirements.txt`。"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "dsh-research",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:06:00.423Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "const res = await fetch(route, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "const res = await fetch(RESTART_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 109,
+        "text": "return (await fetch(`${CATALOG_ROUTE}?lang=${encodeURIComponent(lang)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 120,
+        "text": "const res = await fetch(`${CATALOG_ROUTE}?lang=${encodeURIComponent(lang)}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 334,
+        "text": "const res = await fetch(url, { signal: controller.signal, headers: { accept: 'application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 268,
+        "text": "const manifest = JSON.parse(readFileSync(join(home, 'profiles', profile, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 288,
+        "text": "const manifest = JSON.parse(readFileSync(join(home, 'profiles', profile, 'node_modules', name, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 23,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 303,
+        "text": "\"const fs = require('node:fs')\","
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 77,
+        "text": "return spawn(file, [...args], options);"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 80,
+        "text": "return spawn(comspec, ['/d', '/s', '/c', `\"${line}\"`], { ...options, shell: false, windowsVerbatimArguments: true });"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 302,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "lib/install.js",
+        "line": 312,
+        "text": "'    const child = spawn(file, args, { cwd, detached: true, stdio: [\"ignore\", out, out], env: process.env, shell: viaShell })',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

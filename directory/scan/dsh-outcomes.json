@@ -1,0 +1,150 @@
+{
+  "name": "dsh-outcomes",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:26.879Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 89,
+        "text": "return fetch(PREFIX + path, { headers: { accept: 'application/json' } }).then(function (res) {"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 76,
+        "text": "return fetch(PREFIX + path, opts).then(function (res) {"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 151,
+        "text": "const res = await fetch(`${base}/__dsh-outcomes/api/status`, { signal: AbortSignal.timeout(3000) })"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 159,
+        "text": "const status = await (await fetch(`${base}/__dsh-outcomes/api/status`)).json()"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 168,
+        "text": "const page = await fetch(`${base}/__dsh-outcomes/`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { createReadStream, existsSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 12,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 44,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 33,
+        "text": "import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 51,
+        "text": "const buf = readFileSync(file)          // 读**字节**：解析与哈希用同一份内容，避免两次读之间被改"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 11,
+        "text": "*   2. apply 时 **`tools` 服务同样没就绪** —— 所以这半必须自己 `inject: ['tools']`，不能碰运气。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 20,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 32,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 34,
+        "text": "const registerTool = (definition) => ctx.effect(() => tools.register(definition), `dsh-outcomes: tool ${definition.name}`)"
+      },
+      {
+        "file": "tools/guard-check.mjs",
+        "line": 61,
+        "text": "mutate: (text) => text.replace(\"export const inject = ['tools']\", \"export const inject = ['webServer']\"),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 88,
+        "text": "? spawnSync([quote(command), ...extra.map(quote)].join(' '), { env, encoding: 'utf8', shell: true, stdio: ['ignore', 'pipe', 'pipe'], timeout: 600000 })"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 89,
+        "text": ": spawnSync(command, extra, { env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 600000 })"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 95,
+        "text": "? spawn([quote(command), ...extra.map(quote)].join(' '), { env, detached: false, stdio: ['ignore', 'pipe', 'pipe'], shell: true })"
+      },
+      {
+        "file": "tools/acceptance.mjs",
+        "line": 96,
+        "text": ": spawn(command, extra, { env, detached: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 57,
+      "text": "npm i -g dsh-outcomes        # or: npx dsh-outcomes …"
+    },
+    {
+      "file": "README.md",
+      "line": 72,
+      "text": "npm i -g dsh-outcomes        # 或 npx dsh-outcomes …"
+    }
+  ],
+  "skippedEntries": []
+}

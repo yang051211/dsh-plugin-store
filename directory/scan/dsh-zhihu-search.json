@@ -1,0 +1,82 @@
+{
+  "name": "dsh-zhihu-search",
+  "version": "2.2.1",
+  "scannedAt": "2026-10-26T10:05:33.474Z",
+  "icon": "dsh-zhihu-search.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools/search-shared.js",
+        "line": 137,
+        "text": "const data = await fetch(signal);"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 465,
+        "text": "const response = await this.#fetch(`${this.#baseUrl}${path}`, {"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 582,
+        "text": "response = await this.#fetch(`${this.#baseUrl}${ENDPOINT_CHAT_COMPLETIONS}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "* `ctx.get` 拿不到该服务，而同一上下文里 `ctx.tools`（走 inject + 属性访问）一直正常 ——"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "* 用 `ctx.get` 而不是 `ctx.tools`：后者要求 agent scope 自己声明过 `tools` 依赖"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 363,
+        "text": "disposers.push(ctx.tools.register(createZhihuSearchTool(deps)));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 365,
+        "text": "disposers.push(ctx.tools.register(createZhihuGlobalSearchTool(deps)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,87 @@
+{
+  "name": "dsh-plugin-deepsearch",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:03.899Z",
+  "icon": "dsh-plugin-deepsearch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 422,
+        "text": "const response = await fetch(`${prefix}${path}`, { cache: \"no-store\", ...init });"
+      },
+      {
+        "file": "index.js",
+        "line": 705,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 76,
+        "text": "const parsed = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 456,
+        "text": "return readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 475,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 484,
+        "text": "writeFileSync(file, JSON.stringify(value, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 46,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1637,
+        "text": "if (ctx === null || ctx === undefined || ctx.tools === undefined || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "index.js",
+        "line": 1640,
+        "text": "const disposeTool = ctx.tools.register(deepsearchTool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

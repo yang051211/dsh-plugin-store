@@ -1,0 +1,138 @@
+{
+  "name": "dsh-remote-explorer",
+  "version": "0.8.7",
+  "scannedAt": "2026-10-26T10:05:37.186Z",
+  "icon": "dsh-remote-explorer.jpg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 326,
+        "text": "const response = await fetch(`${BASE}${path}`, init);"
+      },
+      {
+        "file": "lib/handoff-client.js",
+        "line": 149,
+        "text": "const response = await fetch(`${HANDOFF_ROUTE_PREFIX}/meta`);"
+      },
+      {
+        "file": "lib/handoff-client.js",
+        "line": 178,
+        "text": "const response = await fetch(`${HANDOFF_ROUTE_PREFIX}/state?id=${encodeURIComponent(meta.sessionId)}`);"
+      },
+      {
+        "file": "lib/handoff-client.js",
+        "line": 210,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "lib/handoff-host.js",
+        "line": 58,
+        "text": "const upstream = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/handoff-host.js",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/handoff-host.js",
+        "line": 83,
+        "text": "const port = Number.parseInt(readFileSync(`${dir}/reverse-port`, \"utf8\").trim(), 10);"
+      },
+      {
+        "file": "lib/handoff-host.js",
+        "line": 84,
+        "text": "const token = readFileSync(`${dir}/proxy-token`, \"utf8\").trim();"
+      },
+      {
+        "file": "lib/handoff-host.js",
+        "line": 93,
+        "text": "const host = readFileSync(`${dir}/reverse-host`, \"utf8\").trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4818,
+        "text": "F || (F = __require(\"fs\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35549,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35600,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35650,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35695,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35748,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7798,
+        "text": "var { execFile: execFile4, spawn } = __require(\"child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7975,
+        "text": "const proc = this.proc = spawn(EXEPATH, [data.length]);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29276,
+        "text": "import { execFile as execFile2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29279,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29315,
+        "text": "execFile(WSL_EXE_PATH, [...args], { encoding: \"buffer\", timeout: WSL_EXE_TIMEOUT_MS }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,121 @@
+{
+  "name": "dsh-origin-plugin",
+  "version": "2.7.3",
+  "scannedAt": "2026-10-26T10:05:44.722Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-origin-mcp.mjs",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "readFileSync(new URL('./package.json', import.meta.url), 'utf8'),"
+      },
+      {
+        "file": "smoke/four_ways_client.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "smoke/four_ways_client.mjs",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# 通过 DSH 官方 @deepseek-ai/dsh-mcp-client 把本仓库的 Python MCP server"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 62,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 81,
+        "text": "# @deepseek-ai/dsh-mcp-client, so liveIncludes('dsh-origin-plugin')=false"
+      },
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "// @deepseek-ai/dsh-mcp-client, stdio)."
+      },
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "loader: 'mcp-origin (@deepseek-ai/dsh-mcp-client, stdio)',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-origin-mcp.mjs",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-origin-mcp.mjs",
+        "line": 25,
+        "text": "const r = spawnSync(cmd, ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/dsh-origin-mcp.mjs",
+        "line": 43,
+        "text": "const probe = spawnSync(py, ['-c', 'import mcp, originpro, win32com, numpy, openpyxl'],"
+      },
+      {
+        "file": "bin/dsh-origin-mcp.mjs",
+        "line": 53,
+        "text": "const child = spawnSync(py, [entry, ...process.argv.slice(2)],"
+      },
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 37,
+      "text": "#       \"%USERPROFILE%\\dsh_origin_plugin\\.venv\\Scripts\\python.exe\" -m pip install -r requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 113,
+      "text": ".venv\\Scripts\\python.exe -m pip install -r requirements.txt"
+    }
+  ],
+  "skippedEntries": []
+}

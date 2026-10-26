@@ -1,0 +1,64 @@
+{
+  "name": "dsh-notification",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:32.688Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 81,
+        "text": "fetch(config.webhookUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "* spawn() failures (missing binary, EACCES, …) are delivered ASYNCHRONOUSLY"
+      },
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "* the synchronous spawn() call cannot catch them. Without an `'error'`"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "spawn('osascript', ['-e', `display notification \"${esc(body)}\" with title \"${esc(title)}\"`],"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "spawn('notify-send', [title, body], { stdio: 'ignore', detached: true }).on('error', () => {}).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

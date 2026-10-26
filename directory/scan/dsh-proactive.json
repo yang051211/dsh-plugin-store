@@ -1,0 +1,96 @@
+{
+  "name": "dsh-proactive",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:05:34.843Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "const response = await fetch(STATE_URL + sessionQuery(sessionId), { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "const response = await fetch(ACTION_URL + sessionQuery(sessionId), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 126,
+        "text": "const response = await fetch(SESSION_LIST_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 10,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 11,
+        "text": "import { writeFile, rename, mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 50,
+        "text": "const raw = readFileSync(dataDir + \"/config.json\", \"utf8\");"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 71,
+        "text": "await mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 74,
+        "text": "await writeFile(tmp, JSON.stringify(merged, null, 2) + \"\\n\", \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = [\"agents\", \"tools\", \"sessionPersistence\", \"workspaceRegistry\"];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 559,
+        "text": "const disposers = definitions.map((definition) => agentCtx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionPersistence",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

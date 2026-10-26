@@ -1,0 +1,128 @@
+{
+  "name": "dsh-engram",
+  "version": "0.7.4",
+  "scannedAt": "2026-10-26T10:05:48.783Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "return readJson(await fetch(`${API_PREFIX}/overview`));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 71,
+        "text": "await fetch(`${API_PREFIX}/memories${query({ workspace: opts.workspace, q: opts.q, kind: opts.kind, status: opts.status, limit: opts.limit })}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 75,
+        "text": "return readJson(await fetch(`${API_PREFIX}/tasks${query({ workspace, includeStable: includeStable ? \"1\" : void 0 })}`));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 79,
+        "text": "return readJson(await fetch(`${API_PREFIX}/toolstats?days=${days}`));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 83,
+        "text": "await fetch(`${API_PREFIX}/tasks`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/anchor.js",
+        "line": 23,
+        "text": "import { readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/anchor.js",
+        "line": 30,
+        "text": "return createHash(\"sha256\").update(readFileSync(file)).digest(\"hex\").slice(0, 32);"
+      },
+      {
+        "file": "lib/boundary-prune.js",
+        "line": 39,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 27,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 124,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1105,
+        "text": "ctx.tools.register(resultRecallTool(l2Dir, pageChars));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 136,
+        "text": "const registerTool = (tool) => ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/dsh-engram.mjs",
+        "line": 21,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/prepublish-check.mjs",
+        "line": 17,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/setup-links.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/setup-links.mjs",
+        "line": 169,
+        "text": "const r = spawnSync(npm, [\"install\", \"--no-audit\", \"--no-fund\"], {"
+      },
+      {
+        "file": "scripts/setup-links.mjs",
+        "line": 236,
+        "text": "const check = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

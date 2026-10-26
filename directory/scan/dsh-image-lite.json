@@ -1,0 +1,77 @@
+{
+  "name": "dsh-image-lite",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:05:36.827Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 235,
+        "text": "const response = await fetch(url, { redirect: 'follow', signal })"
+      },
+      {
+        "file": "index.js",
+        "line": 265,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 457,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 469,
+        "text": "await writeFile(absolute, image.data)"
+      },
+      {
+        "file": "index.js",
+        "line": 796,
+        "text": "const data = await readFile(abs, signal !== undefined ? { signal } : {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 55,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 837,
+        "text": "ctx.tools.register(createLiteTool(ctx, readActive, readAspect, readOutputDir))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-serverchan-watchdog",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:05:48.845Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1083,
+        "text": "const response = await fetch(path, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1109,
+        "text": "const response = await fetch(\"/serverchan-watchdog/config\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1133,
+        "text": "const response = await fetch(\"/serverchan-watchdog/ignore\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1162,
+        "text": "const response = await fetch(\"/serverchan-watchdog/test\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { ProxyAgent, fetch } from \"undici\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { chmodSync, mkdirSync, readFileSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 431,
+        "text": "const existing = readFileSync(path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 440,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 443,
+        "text": "writeFileSync(path, key, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 449,
+        "text": "const created = readFileSync(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 411,
+        "text": "spawnSync(\"icacls\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

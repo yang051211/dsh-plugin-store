@@ -1,0 +1,139 @@
+{
+  "name": "whale_craft",
+  "version": "0.2.0-beta.3",
+  "scannedAt": "2026-10-26T10:05:40.712Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 487,
+        "text": "res = await fetch(path, init)"
+      },
+      {
+        "file": "client.js",
+        "line": 525,
+        "text": "fetch('/api/mc/status?sessionId=' + encodeURIComponent(sessionId), {"
+      },
+      {
+        "file": "client.js",
+        "line": 566,
+        "text": "fetch('/api/mc/stop', {"
+      },
+      {
+        "file": "client.js",
+        "line": 628,
+        "text": "* 🔴 2026-09-16 事故（别再犯）：第一版改成 `fetch('/api/mc/mode')` 问服务端。"
+      },
+      {
+        "file": "client.js",
+        "line": 646,
+        "text": "fetch('/api/mc/presets', { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync, copyFileSync, unlinkSync, statSync, renameSync, realpathSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 64,
+        "text": "try { return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version ?? 'unknown' } catch { return 'unknown' }"
+      },
+      {
+        "file": "index.js",
+        "line": 410,
+        "text": "try { parsed = JSON.parse(readFileSync(from, 'utf8')) } catch { parsed = null }"
+      },
+      {
+        "file": "index.js",
+        "line": 414,
+        "text": "mkdirSync(stateDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 416,
+        "text": "if (readFileSync(to, 'utf8') === readFileSync(from, 'utf8')) unlinkSync(from)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "*     ctx.tools（所有会话可见），不再依赖 @deepseek-ai/dsh-mcp-client。"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1885,
+        "text": "ctx.tools.register(asTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 1895,
+        "text": "ctx.tools.register(asTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 1923,
+        "text": "ctx.tools.register(asTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "selfcheck.mjs",
+        "line": 4575,
+        "text": "const { execFileSync } = await import('node:child_process')"
+      },
+      {
+        "file": "tools/check-core.mjs",
+        "line": 12,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/check-standalone-import.mjs",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/dev.mjs",
+        "line": 33,
+        "text": "import { spawn, spawnSync, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/dev.mjs",
+        "line": 181,
+        "text": "const { cmd, args: argv } = runtime.spawn(args)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

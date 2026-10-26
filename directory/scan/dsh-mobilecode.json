@@ -1,0 +1,136 @@
+{
+  "name": "dsh-mobilecode",
+  "version": "0.13.3",
+  "scannedAt": "2026-10-26T10:06:06.264Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 600,
+        "text": "const response = await fetch(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 605,
+        "text": "const response = await fetch(location.origin + API_BASE + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 614,
+        "text": "const response = await fetch(location.origin + API_BASE + path);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 621,
+        "text": "const response = await fetch(location.origin + API_BASE + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1315,
+        "text": "// origin/path than the API, and <img> src ignores fetch()'s base."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/device-build.js",
+        "line": 16,
+        "text": "import { existsSync, readdirSync, readFileSync, writeFileSync } from \"node:fs\""
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 235,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"))"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 259,
+        "text": "return readFileSync(file, \"utf8\")"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 377,
+        "text": "writeFileSync(file, JSON.stringify(parsed, null, indent) + \"\\n\")"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 1258,
+        "text": "const includes = [...readFileSync(file, \"utf8\").matchAll(/include\\s*\\(?\\s*[\"']:?([A-Za-z0-9_\\-.]+)[\"']/g)].map("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4316,
+        "text": "].map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/device-build.js",
+        "line": 15,
+        "text": "import { spawn, spawnSync } from \"node:child_process\""
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 54,
+        "text": "if (process.platform !== \"win32\") return spawn(command, args, options)"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 61,
+        "text": "return spawn(\"cmd.exe\", [\"/d\", \"/s\", \"/c\", `\"${line}\"`], {"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 67,
+        "text": "return spawn(resolved, args, winOptions)"
+      },
+      {
+        "file": "lib/device-build.js",
+        "line": 141,
+        "text": "const result = spawnSync(\"pgrep\", [\"-P\", String(pid)], { encoding: \"utf8\" })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 478,
+      "text": "- `lib/setup.js` — settings store (~/.dsh/mobilecode/settings.json), the plugin"
+    },
+    {
+      "file": "README.md",
+      "line": 537,
+      "text": "& $env:USERPROFILE\\.dsh\\mobilecode\\ocr-venv\\Scripts\\python.exe -m pip install setuptools wheel \"numpy<2\" \"paddleocr==3.7.0\" \"paddlepaddle==3.3.1\""
+    }
+  ],
+  "skippedEntries": []
+}

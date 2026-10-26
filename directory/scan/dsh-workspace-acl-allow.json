@@ -1,0 +1,68 @@
+{
+  "name": "dsh-workspace-acl-allow",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:05:36.647Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 101,
+        "text": "const response = await fetch(path, Object.assign({ cache: \"no-store\", credentials: \"same-origin\" }, init || {}));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, realpathSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 272,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 287,
+        "text": "mkdirSync(stateDir(), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 291,
+        "text": "writeFileSync(temp, JSON.stringify(payload, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "webStartup"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

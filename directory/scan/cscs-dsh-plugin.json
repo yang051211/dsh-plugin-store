@@ -1,0 +1,111 @@
+{
+  "name": "cscs-dsh-plugin",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:06:01.584Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 18,
+        "text": "const s = JSON.parse(readFileSync(STATE_FILE, \"utf8\"));"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 25,
+        "text": "mkdirSync(STATE_DIR, { recursive: true });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 26,
+        "text": "writeFileSync(STATE_FILE, JSON.stringify({ bookPath: abs }, null, 2), \"utf8\");"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\""
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 29,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 147,
+        "text": "ctx.tools.register(nscaOcrPage);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 148,
+        "text": "ctx.tools.register(nscaUseBook);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 69,
+        "text": "export const inject = [\"tools\"]"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 203,
+        "text": "ctx.tools.register(nscaOcrPage)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 42,
+        "text": "const proc = spawn(python, [\"-X\", \"utf8\", ...args]);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "src/index.ts",
+        "line": 96,
+        "text": "const proc = spawn(python, [\"-X\", \"utf8\", ...args])"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 35,
+      "text": "- **Python 3** 与 OCR 依赖：`pip install -r skill/scripts/requirements.txt`"
+    }
+  ],
+  "skippedEntries": []
+}

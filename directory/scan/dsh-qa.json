@@ -1,0 +1,130 @@
+{
+  "name": "dsh-qa",
+  "version": "0.7.3",
+  "scannedAt": "2026-10-26T10:05:56.615Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 147,
+        "text": "const upstream = http.request({ host: '127.0.0.1', port: state.port, path: targetPath + url.search, method: req.method, headers }, (uRes) => {"
+      },
+      {
+        "file": "public/app.js",
+        "line": 108,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "public/app.js",
+        "line": 209,
+        "text": "return await openFollowSnapshot(new WebSocket(socketUrl), { streamId, sessionId, maxMessages });"
+      },
+      {
+        "file": "server/app-info.js",
+        "line": 105,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-unit-tests.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "server/app-info.js",
+        "line": 1,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "server/app-info.js",
+        "line": 119,
+        "text": "const changelog = await fs.readFile(CHANGELOG_PATH, 'utf8');"
+      },
+      {
+        "file": "server/app-info.js",
+        "line": 150,
+        "text": "const packageJson = JSON.parse(await fs.readFile(PACKAGE_PATH, 'utf8'));"
+      },
+      {
+        "file": "server/config.js",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 9,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 59,
+        "text": "ctx.tools.register(createToolDefinition(definition, {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-unit-tests.js",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/run-unit-tests.js",
+        "line": 13,
+        "text": "const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], { stdio: 'inherit' });"
+      },
+      {
+        "file": "server/app-info.js",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "server/index.js",
+        "line": 60,
+        "text": "try { import('node:child_process').then(({ execFile }) => execFile('open', [`http://127.0.0.1:${port}`])); } catch { /* ignore */ }"
+      },
+      {
+        "file": "server/quality/source.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 149,
+      "text": "npm install -g dsh-qa"
+    }
+  ],
+  "skippedEntries": []
+}

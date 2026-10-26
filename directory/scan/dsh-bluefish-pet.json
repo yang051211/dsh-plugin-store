@@ -1,0 +1,75 @@
+{
+  "name": "dsh-bluefish-pet",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:05:43.700Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "const response = await fetch(url, { cache: 'no-store', ...(options ?? {}) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "const response = await fetch(`${CONTROL_BASE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "appendFileSync(LOG_FILE, `${new Date().toISOString()} ${message}\\n`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "const parsed = JSON.parse(await readFile(STATE_FILE, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 233,
+        "text": "const child = spawn(app, [], { detached: true, stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

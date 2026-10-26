@@ -1,0 +1,101 @@
+{
+  "name": "ast-mcp-server",
+  "version": "0.14.0",
+  "scannedAt": "2026-10-26T10:06:05.673Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 35,
+        "text": "JSON.parse(process.getBuiltinModule('node:fs').readFileSync("
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 64,
+        "text": "const bytes = source === \"-\" ? await readStdinBounded() : await readFile(source);"
+      },
+      {
+        "file": "dist/compiler-worker-entry.js",
+        "line": 1,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# `@deepseek-ai/dsh-mcp-client` bridge. Harness does not resolve MCP binaries"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 20,
+        "text": "name: \"@deepseek-ai/dsh-mcp-client\""
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/services/agent-setup.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/services/agent-setup.js",
+        "line": 149,
+        "text": "const child = spawn(executable, args, {"
+      },
+      {
+        "file": "dist/services/authenticated-publication.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/services/authenticated-publication.js",
+        "line": 55,
+        "text": "const child = spawn(executable, args, {"
+      },
+      {
+        "file": "dist/services/compiler-worker-host.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 134,
+      "text": "npm install --global ast-mcp-server --ignore-scripts"
+    }
+  ],
+  "skippedEntries": []
+}

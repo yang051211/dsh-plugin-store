@@ -1,0 +1,134 @@
+{
+  "name": "dsh-jev-guard",
+  "version": "0.5.7",
+  "scannedAt": "2026-10-26T10:05:39.782Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gate.js",
+        "line": 512,
+        "text": "const res = await fetch(cfg.endpoint, {"
+      },
+      {
+        "file": "lib/rules.js",
+        "line": 147,
+        "text": ", where: 'command', re: /(curl|wget|iwr|Invoke-WebRequest|Invoke-RestMethod)[^\\n]*\\|\\s*(bash|sh|zsh|iex|Invoke-Expression)/i, why: { 'zh-CN': '把远端脚本直接喂给 shell 执"
+      },
+      {
+        "file": "tools/probe-prompt-lang.mjs",
+        "line": 107,
+        "text": "const res = await fetch(DEFAULTS.endpoint, {"
+      },
+      {
+        "file": "tools/probe-scripts.mjs",
+        "line": 89,
+        "text": "const res = await fetch(ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 18,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 66,
+        "text": "return JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf8'))"
+      },
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 131,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "bin/guard.mjs",
+        "line": 24,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/guard.mjs",
+        "line": 102,
+        "text": "file = JSON.parse(await readFile(join(ROOT, 'config.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/index.js",
+        "line": 76,
+        "text": "export const inject = ['tools', 'credentials']"
+      },
+      {
+        "file": "tools/smoke-dsh-pipeline.mjs",
+        "line": 6,
+        "text": "* ToolRuntime,然后走 `ctx.tools.execute()` 的完整五阶段管线"
+      },
+      {
+        "file": "tools/smoke-dsh-pipeline.mjs",
+        "line": 75,
+        "text": "ctx.tools.register(defineContentToolFixture({"
+      },
+      {
+        "file": "tools/smoke-dsh-pipeline.mjs",
+        "line": 82,
+        "text": "await ctx.plugin({ name: mod.name, inject: ['tools'], apply: mod.apply }, config)"
+      },
+      {
+        "file": "tools/smoke-dsh-pipeline.mjs",
+        "line": 93,
+        "text": "const result = await ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/check-doc-pairs.mjs",
+        "line": 30,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/selftest-entry.mjs",
+        "line": 27,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/selftest-entry.mjs",
+        "line": 64,
+        "text": "spawnSync(process.execPath, [script, ...args], { input, encoding: 'utf8', env: { ...env, ...extraEnv } })"
+      },
+      {
+        "file": "tools/selftest-entry.mjs",
+        "line": 112,
+        "text": "const typed = spawnSync(process.execPath, [wrapper], { input: `${KEY}\\n`, encoding: 'utf8', env })"
+      },
+      {
+        "file": "tools/selftest-entry.mjs",
+        "line": 146,
+        "text": "const asImport = spawnSync(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

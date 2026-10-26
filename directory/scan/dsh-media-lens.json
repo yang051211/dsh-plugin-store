@@ -1,0 +1,91 @@
+{
+  "name": "dsh-media-lens",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:05:51.257Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 259,
+        "text": "fetch(\"/api/dsh-media-lens/models\", { headers: { accept: \"application/json\" } }).then((r) => r.ok ? r.json() : null).then((j) => {"
+      },
+      {
+        "file": "lib/providers/openai-vl.js",
+        "line": 115,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/inject.js",
+        "line": 26,
+        "text": "import { mkdtemp, writeFile, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/inject.js",
+        "line": 257,
+        "text": "await writeFile(tempPath, Buffer.from(stored.data));"
+      },
+      {
+        "file": "lib/inject.js",
+        "line": 266,
+        "text": "await rm(tempDir, { recursive: true, force: true }).catch(() => { });"
+      },
+      {
+        "file": "lib/providers/asr-shell.js",
+        "line": 7,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/providers/asr-shell.js",
+        "line": 186,
+        "text": "return readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 145,
+        "text": "tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/asr-shell.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/providers/asr-shell.js",
+        "line": 132,
+        "text": "const child = spawn(file, args, { shell: false, windowsHide: true });"
+      },
+      {
+        "file": "lib/providers/ffmpeg.js",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

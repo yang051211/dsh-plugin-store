@@ -1,0 +1,101 @@
+{
+  "name": "dsh-skills-nexus",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:05:50.729Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "function createApi(fetchImpl = (input, init) => fetch(input, init)) {"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 597,
+        "text": "* command: a bare-name fetch (`git fetch origin <ref>`) writes FETCH_HEAD and"
+      },
+      {
+        "file": "lib/http/routes.js",
+        "line": 428,
+        "text": "* whole-file upload needs no parser at all: `fetch(body: file)` sends the bytes"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adopt.js",
+        "line": 1,
+        "text": "import { lstat, mkdir, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/adopt.js",
+        "line": 97,
+        "text": "await mkdir(REPOS_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/adopt.js",
+        "line": 190,
+        "text": "await rm(backup, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/adopt.js",
+        "line": 220,
+        "text": "await rm(stage, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/adopt.js",
+        "line": 339,
+        "text": "await rm(dest, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/import.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 63,
+      "text": "npm install -g --allow-git=all github:xiaxi626/dsh-skills-nexus"
+    },
+    {
+      "file": "README.md",
+      "line": 70,
+      "text": "npm install -g github:xiaxi626/dsh-skills-nexus"
+    },
+    {
+      "file": "README.md",
+      "line": 111,
+      "text": "npm install -g dsh-skills-nexus"
+    }
+  ],
+  "skippedEntries": []
+}

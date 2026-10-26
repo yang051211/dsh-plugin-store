@@ -1,0 +1,112 @@
+{
+  "name": "dsh-skin-studio",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:06:07.620Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 7565,
+        "text": "fetch(\"/dsh-desktop-skin-studio/status\", {"
+      },
+      {
+        "file": "scripts/inspect-plugins-route.mjs",
+        "line": 68,
+        "text": "const response = await fetch(`${base}/`, { headers: { origin: 'dsh-app://app' } })"
+      },
+      {
+        "file": "scripts/inspect-plugins-route.mjs",
+        "line": 92,
+        "text": "const response = await fetch(new URL(path, base), { headers: { origin: 'dsh-app://app' } })"
+      },
+      {
+        "file": "scripts/verify-against-host.mjs",
+        "line": 201,
+        "text": "const response = await fetch(url, { headers: { origin: 'dsh-app://app' } })"
+      },
+      {
+        "file": "scripts/verify-against-host.mjs",
+        "line": 252,
+        "text": "const indexResponse = await fetch(`${base}/`, { headers: { origin: 'dsh-app://app' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 36,
+        "text": "const source = readFileSync(HOST_ENTRY, 'utf8')"
+      },
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 38,
+        "text": "writeFileSync(variant, source.replace(/\"19387\"/, 'String(process.env.DSKIN_HOST_PORT ?? \"19387\")'))"
+      },
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 131,
+        "text": "writeFileSync(logPath, consoleOut)"
+      },
+      {
+        "file": "scripts/check-against-dsh.mjs",
+        "line": 31,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 43,
+        "text": "const host = spawn("
+      },
+      {
+        "file": "scripts/browser-check.mjs",
+        "line": 87,
+        "text": "const browser = spawn("
+      },
+      {
+        "file": "scripts/check-against-dsh.mjs",
+        "line": 35,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/inspect-plugins-route.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

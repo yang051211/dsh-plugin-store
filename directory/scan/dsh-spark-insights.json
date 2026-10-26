@@ -1,0 +1,84 @@
+{
+  "name": "dsh-spark-insights",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:05:43.891Z",
+  "icon": "dsh-spark-insights.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mappings-source.js",
+        "line": 450,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'fs', 'workingDirectory'];"
+      },
+      {
+        "file": "lib/mappings-source.js",
+        "line": 34,
+        "text": "import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/mappings-source.js",
+        "line": 381,
+        "text": "const text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/mappings-source.js",
+        "line": 390,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/mappings-source.js",
+        "line": 397,
+        "text": "await writeFile(tempPath, text, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'fs', 'workingDirectory'];"
+      },
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "ctx.effect(() => ctx.tools.register(analyzeTool(ctx)));"
+      },
+      {
+        "file": "index.js",
+        "line": 40,
+        "text": "ctx.effect(() => ctx.tools.register(queryTool(ctx)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

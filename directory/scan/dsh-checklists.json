@@ -1,0 +1,112 @@
+{
+  "name": "dsh-checklists",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:05:26.729Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 153,
+        "text": "fetch(url, { cache: 'no-store' }).catch(() => {})"
+      },
+      {
+        "file": "client/index.js",
+        "line": 173,
+        "text": "const response = await fetch(`${STATE_ROUTE}?session=${encodeURIComponent(sessionId)}`, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 214,
+        "text": "const response = await fetch(ITEM_ROUTE, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 716,
+        "text": "fetch(`/dsh-checklist/workspace?session=${encodeURIComponent(sessionId)}`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/index.js",
+        "line": 734,
+        "text": "fetch(`/dsh-checklist/state?session=${encodeURIComponent(targetSessionId)}`, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, readdir, rename, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 96,
+        "text": "const raw = await readFile(this.templatesFile(), 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 112,
+        "text": "await mkdir(this.root, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 115,
+        "text": "await writeFile(tmp, `${JSON.stringify(templates, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 138,
+        "text": "await unlink(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 64,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 145,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 243,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 270,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

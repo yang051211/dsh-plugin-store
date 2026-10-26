@@ -1,0 +1,98 @@
+{
+  "name": "dsh-whale-galgame",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:05:55.365Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 374,
+        "text": "const res = await fetch(\"/whale-galgame-api\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3275,
+        "text": "const res = await fetch(cfg.dashscopeBaseUrl.replace(/\\/$/, \"\") + \"/api/v1/services/aigc/multimodal-generation/generation\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3301,
+        "text": "const img = await fetch(imageRef);"
+      },
+      {
+        "file": "src/client/index.ts",
+        "line": 340,
+        "text": "const res = await fetch('/whale-galgame-api', {"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 3405,
+        "text": "const res = await fetch(cfg.dashscopeBaseUrl.replace(/\\/$/, '') + '/api/v1/services/aigc/multimodal-generation/generation', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/tsdown.client.ts",
+        "line": 14,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "build/tsdown.client.ts",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "build/tsdown.client.ts",
+        "line": 280,
+        "text": "const source = await readFile(fileId)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { link, mkdir, open, readFile, rename, rm, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 633,
+        "text": "return String(await io.readFile(target, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/release-audit.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/embed-art.mjs && tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

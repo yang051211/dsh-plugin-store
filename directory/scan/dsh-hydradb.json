@@ -1,0 +1,75 @@
+{
+  "name": "dsh-hydradb",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:55.108Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/vendor/hydradb-sdk.mjs",
+        "line": 15918,
+        "text": "async fetch(input, init, requestOptions) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/lib/config.mjs",
+        "line": 1,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/lib/config.mjs",
+        "line": 185,
+        "text": "const raw = await fs.readFile(filePath, \"utf8\");"
+      },
+      {
+        "file": "scripts/lib/state.mjs",
+        "line": 1,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/lib/state.mjs",
+        "line": 107,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "scripts/lib/state.mjs",
+        "line": 115,
+        "text": "const raw = await fs.readFile(statePath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\""
+      },
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "const res = spawnSync(\"bash\", [RUNNER, subcommand], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

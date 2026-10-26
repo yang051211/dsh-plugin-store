@@ -1,0 +1,80 @@
+{
+  "name": "dsh-badge-notify",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:05:57.988Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "const r = await fetch('/api/dsh-badge-notify/' + action, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { appendFileSync, existsSync, mkdirSync, renameSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { copyFile, mkdir, readFile, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "if (statSync(file).size > LOG_MAX_BYTES) rmSync(file, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "appendFileSync(file, `${new Date().toISOString()} [${process.pid}] ${message}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 568,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 574,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

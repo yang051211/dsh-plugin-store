@@ -1,0 +1,97 @@
+{
+  "name": "dsh-550c-skin",
+  "version": "0.1.0-beta.3",
+  "scannedAt": "2026-10-26T10:05:52.785Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1896,
+        "text": "void fetch(STATE_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1902,
+        "text": "/* no fetch (ancient host) — localStorage remains the only record */"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1920,
+        "text": "request = fetch(STATE_ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2786,
+        "text": "fetch(UPDATE_ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2802,
+        "text": "fetch(APPLY_ROUTE, { method: 'POST', headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "// STRIP A BYTE-ORDER MARK FIRST. `readFileSync(path,'utf8')` keeps a leading"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "const text = readFileSync(stateFilePath(), 'utf8').replace(/^\\uFEFF/, '')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 148,
+        "text": "mkdirSync(parent, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "writeFileSync(temporary, content, { encoding: 'utf8', flag: 'wx' })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 408,
+        "text": "const child = spawn(command.file, command.args, { cwd: process.env.DSH_PROFILE_DIR ?? undefined, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

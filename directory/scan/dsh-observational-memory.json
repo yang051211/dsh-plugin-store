@@ -1,0 +1,111 @@
+{
+  "name": "dsh-observational-memory",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:05:59.760Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1130,
+        "text": "async fetch(endpoint, request, guard) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1150,
+        "text": "this.attempt(this.fetch(\"observationalMemory/status\", { sessionId: this.sessionId }, isTextResult)),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1151,
+        "text": "this.attempt(this.fetch(\"observationalMemory/view\", { sessionId: this.sessionId, mode }, isTextResult)),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1152,
+        "text": "this.attempt(this.fetch(\"observationalMemory/logs\", { sessionId: this.sessionId }, isLogsResult))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1179,
+        "text": "const run = await this.attempt(this.fetch(\"observationalMemory/run\", { sessionId: this.sessionId }, isRunResult));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "import { appendFile as appendFile2, mkdir as mkdir2 } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "import { appendFile, mkdir, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "await mkdir(this.rootDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 250,
+        "text": "text = await readFile(this.path(sessionId), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 308,
+        "text": "await appendFile(this.path(sessionId), line, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2622,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2660,
+        "text": "var inject = [\"llm\", \"tools\", \"sessions\", \"agents\"];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 34,
+        "text": "export const inject = ['llm', 'tools', 'sessions', 'agents']"
+      },
+      {
+        "file": "src/tools/recall.ts",
+        "line": 52,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

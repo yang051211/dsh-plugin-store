@@ -1,0 +1,93 @@
+{
+  "name": "dsh-markji-bridge",
+  "version": "2.4.0",
+  "scannedAt": "2026-10-26T10:05:32.322Z",
+  "icon": "dsh-markji-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 186,
+        "text": "typeof fetchImpl === \"function\" ? fetchImpl : (url, init) => globalThis.fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { copyFileSync, existsSync, mkdirSync, renameSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 102,
+        "text": "mkdirSync(targetDir, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 119,
+        "text": "unlinkSync(temp);"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 5,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 448,
+        "text": "bytes = await readFile(input.path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 217,
+        "text": "if (ctx.tools === null || ctx.tools === undefined || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 283,
+        "text": "return ctx.tools.register({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 308,
+        "text": "* @param ctx - plugin context exposing ctx.tools.register."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 317,
+        "text": "ctx.tools === null ||"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "tools\\"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

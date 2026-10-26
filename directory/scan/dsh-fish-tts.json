@@ -1,0 +1,101 @@
+{
+  "name": "dsh-fish-tts",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:35.204Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 198,
+        "text": "const response = await fetch(\"/fish-tts/synthesize\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 250,
+        "text": "const response = await fetch(\"/fish-tts/status\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 266,
+        "text": "const response = await fetch(\"/fish-tts/config\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 303,
+        "text": "const response = await fetch(\"/fish-tts/config\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 344,
+        "text": "const response = await fetch(\"/fish-tts/models\", { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 331,
+        "text": "if (now - statSync(file).mtimeMs > ttlMs) rmSync(file, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 469,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 470,
+        "text": "writeFileSync(audioPath, audio);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 491,
+        "text": "rmSync(audioPath, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1115,
+        "text": "const dispose = tools.register(createSpeakTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 678,
+        "text": "spawnSync(\"icacls\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

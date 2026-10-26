@@ -1,0 +1,55 @@
+{
+  "name": "dsh-prompt-drift",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:05:55.028Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 5,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 8,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 9,
+        "text": "await writeFile(path, JSON.stringify(snapshot, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 13,
+        "text": "return JSON.parse(await readFile(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

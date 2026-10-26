@@ -1,0 +1,89 @@
+{
+  "name": "dsh-select-translate",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:05:53.503Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "companion/main.mjs",
+        "line": 22,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "companion/main.mjs",
+        "line": 530,
+        "text": "void fetch(ORIGIN + '/dsh-select-translate/api/settings', {"
+      },
+      {
+        "file": "index.js",
+        "line": 274,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/settings`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "companion/main.mjs",
+        "line": 23,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "companion/main.mjs",
+        "line": 1159,
+        "text": "mkdirSync(dirname(runtimeFile), { recursive: true })"
+      },
+      {
+        "file": "companion/main.mjs",
+        "line": 1160,
+        "text": "writeFileSync(runtimeFile, JSON.stringify({ pid: process.pid, port, hostToken: HOST_TOKEN, origin: ORIGIN, startedAt: Date.now() }, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "companion/win32.mjs",
+        "line": 18,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "settings.mjs",
+        "line": 13,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 156,
+        "text": "const killer = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 173,
+        "text": "spawned = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

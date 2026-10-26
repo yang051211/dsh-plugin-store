@@ -1,0 +1,79 @@
+{
+  "name": "dsh-deepcanary",
+  "version": "0.1.6-rc.4",
+  "scannedAt": "2026-10-26T10:05:43.880Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "return fetch(path, { cache: \"no-store\", ...init });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/windows.js",
+        "line": 1,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/dogfood.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/dogfood.js",
+        "line": 309,
+        "text": "const raw = JSON.parse(await readFile(this.file, 'utf8'));"
+      },
+      {
+        "file": "lib/dogfood.js",
+        "line": 408,
+        "text": "await mkdir(this.directory, { recursive: true });"
+      },
+      {
+        "file": "lib/dogfood.js",
+        "line": 410,
+        "text": "await writeFile(temporary, `${JSON.stringify(this.bundleValue, null, 2)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'sessions', 'profileContext'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 33,
+        "text": "const tools = ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "profileContext",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "dsh-cert-mcp",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:05:39.076Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/server.js",
+        "line": 50,
+        "text": "const res = await fetch(REGISTRY_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/server.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/server.js",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/server.js",
+        "line": 8,
+        "text": "const PACKAGE = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "src/server.js",
+        "line": 42,
+        "text": "registry = JSON.parse(await readFile(dataUrl, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.js",
+        "line": 19,
+        "text": "// dependency: declared here, read through `ctx.tools`. Cordis parks the plugin"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 22,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 51,
+        "text": "ctx.effect(() => ctx.tools.register(/** @type {ToolDefinition} */ ({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

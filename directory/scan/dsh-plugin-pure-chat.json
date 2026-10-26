@@ -1,0 +1,82 @@
+{
+  "name": "dsh-plugin-pure-chat",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:06:02.803Z",
+  "icon": "dsh-plugin-pure-chat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 418,
+        "text": "const response = await fetch(path, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "const parsed = JSON.parse(readFileSync(STORE_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "await mkdir(STORE_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 56,
+        "text": "await writeFile(temporary, payload, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 255,
+        "text": "if (agent.ctx.tools.get(toolName)) deny.push(toolName)"
+      },
+      {
+        "file": "index.js",
+        "line": 261,
+        "text": "disposers.push(agent.ctx.tools.restrict({ deny }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "sessionController",
+    "systemPrompt",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

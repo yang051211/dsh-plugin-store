@@ -1,0 +1,100 @@
+{
+  "name": "dsh-prompt-easymanager",
+  "version": "0.3.9",
+  "scannedAt": "2026-10-26T10:05:28.668Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.editor.js",
+        "line": 95,
+        "text": "//       凡是 `fetch(ROUTE_XXX` 用到的，顶部必须有对应的 `var ROUTE_XXX =`。"
+      },
+      {
+        "file": "client.editor.js",
+        "line": 250,
+        "text": "fetch(ROUTE_EDIT, { method: \"GET\" })"
+      },
+      {
+        "file": "client.editor.js",
+        "line": 295,
+        "text": "return fetch(ROUTE_GLOBAL, {"
+      },
+      {
+        "file": "client.editor.js",
+        "line": 328,
+        "text": "return fetch(url, { method: \"GET\" })"
+      },
+      {
+        "file": "client.editor.js",
+        "line": 362,
+        "text": "return fetch(url, { method: \"GET\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 130,
+        "text": "if (existsSync(p)) return JSON.parse(readFileSync(p, \"utf8\")).version ?? null;"
+      },
+      {
+        "file": "index.js",
+        "line": 248,
+        "text": "const parsed = JSON.parse(readFileSync(stateFilePath(), \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 471,
+        "text": "mkdirSync(dirname(STATE_FILE), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 507,
+        "text": "writeFileSync(stateWritePath(), JSON.stringify(merged, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 578,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"connection\", \"agents\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 844,
+        "text": "ctx.tools.register(promptTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

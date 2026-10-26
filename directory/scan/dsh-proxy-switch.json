@@ -1,0 +1,88 @@
+{
+  "name": "dsh-proxy-switch",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:46.260Z",
+  "icon": "dsh-proxy-switch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "router.mjs",
+        "line": 21,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "router.mjs",
+        "line": 119,
+        "text": "? http.request({"
+      },
+      {
+        "file": "router.mjs",
+        "line": 126,
+        "text": ": http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 41,
+        "text": "fs.appendFileSync(options.logFile, `${new Date().toISOString()} [plugin:${process.pid}] ${line}\\n`);"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "fs.writeFileSync(options.parentFile, String(process.pid), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "fs.mkdirSync(options.modeFile.replace(/[\\\\/][^\\\\/]+$/, ''), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 61,
+        "text": "if (!fs.existsSync(options.modeFile)) fs.writeFileSync(options.modeFile, 'auto\\n', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 106,
+        "text": "child = spawn(process.execPath, [ROUTER_SCRIPT], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

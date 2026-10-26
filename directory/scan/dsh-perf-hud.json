@@ -1,0 +1,95 @@
+{
+  "name": "dsh-perf-hud",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:05:54.960Z",
+  "icon": "dsh-perf-hud.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.model.js",
+        "line": 143,
+        "text": "* ⚠️ 读 body 也包在 deadline 里 —— 只把 `fetch()` resolve 当完成会让慢 body 永远 pending。"
+      },
+      {
+        "file": "client.model.js",
+        "line": 160,
+        "text": "const response = await fetch(url, { ...options, signal: controller.signal });"
+      },
+      {
+        "file": "tools/cdp.mjs",
+        "line": 56,
+        "text": "const list = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();"
+      },
+      {
+        "file": "tools/cdp.mjs",
+        "line": 62,
+        "text": "const ws = new WebSocket(target.webSocketDebuggerUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version ?? null;"
+      },
+      {
+        "file": "tools/cdp.mjs",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "tools/cdp.mjs",
+        "line": 25,
+        "text": "const text = readFileSync(LOG, 'utf8');"
+      },
+      {
+        "file": "tools/check-counts.mjs",
+        "line": 23,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/cdp.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "tools/cdp.mjs",
+        "line": 44,
+        "text": "const chrome = spawn(CHROME, ["
+      },
+      {
+        "file": "tools/check-counts.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

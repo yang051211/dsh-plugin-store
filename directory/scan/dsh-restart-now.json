@@ -1,0 +1,110 @@
+{
+  "name": "dsh-restart-now",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:06:03.185Z",
+  "icon": "dsh-restart-now.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 580,
+        "text": "fetch(STATUS, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 701,
+        "text": "return fetch(CONFIG, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 763,
+        "text": "fetch(ACTION + (query || ''), { method: 'POST', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 833,
+        "text": "fetch(ACTION + '?cancel=1', { method: 'POST', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1080,
+        "text": "fetch(CONFIG, { credentials: 'same-origin' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 58,
+        "text": "try { raw = JSON.parse(readFileSync(file, 'utf8')); } catch { return false; }"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 66,
+        "text": "try { return clampConfig(JSON.parse(readFileSync(file, 'utf8'))); } catch { return {}; }"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 71,
+        "text": "writeFileSync(file, JSON.stringify(clamped, null, 2) + '\\n');"
+      },
+      {
+        "file": "lib/helper-src.js",
+        "line": 15,
+        "text": "import { readdirSync, unlinkSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/helper-src.js",
+        "line": 8,
+        "text": "//         超时再定点补杀宿主；拉起改用 detached spawn(应用自身 exe) 当 node，助手派发不再需要 WMI。"
+      },
+      {
+        "file": "lib/helper-src.js",
+        "line": 217,
+        "text": "const { spawn, execFileSync } = require('node:child_process');"
+      },
+      {
+        "file": "lib/helper-src.js",
+        "line": 280,
+        "text": "const child = spawn(shell, args, { detached: true, stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/helper-src.js",
+        "line": 400,
+        "text": "child = spawn(EXE, args, { detached: true, stdio: 'ignore', cwd: path.dirname(EXE), env });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

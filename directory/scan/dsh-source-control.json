@@ -1,0 +1,115 @@
+{
+  "name": "dsh-source-control",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:05:34.822Z",
+  "icon": "dsh-source-control.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 68,
+        "text": "const response = await fetch(API_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 599,
+        "text": "const res = await fetch(AI_MODELS_PATH, { method: \"GET\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 616,
+        "text": "const res = await fetch(AI_COMMIT_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 708,
+        "text": "const response = await fetch(EVENTS_PATH, {"
+      },
+      {
+        "file": "lib/src/source-control/git-actions.js",
+        "line": 235,
+        "text": "export function fetch(repo, remote, prune, pruneTags) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/source-control/commit-diff.js",
+        "line": 9,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/src/source-control/commit-diff.js",
+        "line": 108,
+        "text": "const content = await fs.readFile(abs, 'utf8');"
+      },
+      {
+        "file": "lib/src/source-control/git-actions.js",
+        "line": 7,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/src/source-control/git-actions.js",
+        "line": 715,
+        "text": "const text = await fs.readFile(absolute, 'utf8');"
+      },
+      {
+        "file": "lib/src/source-control/git-query.js",
+        "line": 7,
+        "text": "import { stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/source-control/child-process.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/src/source-control/child-process.js",
+        "line": 16,
+        "text": "const child = spawn(command, [...args], { cwd, windowsHide: true, env });"
+      },
+      {
+        "file": "lib/src/source-control/working-tree.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/src/source-control/working-tree.js",
+        "line": 96,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], { windowsHide: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build && node scripts/install-hooks.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

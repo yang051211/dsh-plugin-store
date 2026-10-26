@@ -1,0 +1,135 @@
+{
+  "name": "dsh-pve-vm",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:05:31.091Z",
+  "icon": "dsh-pve-vm.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 651,
+        "text": "const response = await fetch(`${VIEW_BASE}/state`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 698,
+        "text": "const response = await fetch(`${VIEW_BASE}/frame?vmid=${vmid}&scale=${scaleEff}&cursor=1`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 739,
+        "text": "const response = await fetch(`${VIEW_BASE}/release`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 902,
+        "text": "const response = await fetch(`${VIEW_BASE}/state`, { headers: { accept: 'application/json' }, cache: 'no-store' });"
+      },
+      {
+        "file": "tools/view-test.mjs",
+        "line": 15,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/check-client.mjs",
+        "line": 13,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "tools/check-client.mjs",
+        "line": 41,
+        "text": "const source = fs.readFileSync(new URL('../client.js', import.meta.url), 'utf8');"
+      },
+      {
+        "file": "tools/check-plugin.mjs",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "tools/check-plugin.mjs",
+        "line": 272,
+        "text": "parsed = JSON.parse(fs.readFileSync(new URL(name, localeDir), 'utf8'));"
+      },
+      {
+        "file": "tools/check-plugin.mjs",
+        "line": 304,
+        "text": "const manifest = JSON.parse(fs.readFileSync(manifestUrl, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "export const inject = ['tools', 'attachments', 'subprocess'];"
+      },
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "for (const tool of [...consoleTools(deps), ...guestTools(deps)]) ctx.tools.register(tool);"
+      },
+      {
+        "file": "tools/console.js",
+        "line": 349,
+        "text": "* @returns {object[]} definitions for `ctx.tools.register`."
+      },
+      {
+        "file": "tools/guest.js",
+        "line": 90,
+        "text": "* @returns {object[]} definitions for `ctx.tools.register`."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "spawn: (spec) => ctx.subprocess.spawn(spec),"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 192,
+        "text": "return this.deps.spawn({"
+      },
+      {
+        "file": "tools/clipboard-read-test.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "tools/clipboard-read-test.mjs",
+        "line": 46,
+        "text": "const child = spawn(spec.argv[0], spec.argv.slice(1), {"
+      },
+      {
+        "file": "tools/clipboard-read-test.mjs",
+        "line": 96,
+        "text": "const child = spawn(argv[0], argv.slice(1), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

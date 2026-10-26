@@ -1,0 +1,83 @@
+{
+  "name": "dsh-enhancement-suite",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:06:04.817Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 179,
+        "text": "const res = await fetch(`https://registry.npmjs.org/${encodeURIComponent(pkg)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 25,
+        "text": "import { existsSync, readFileSync, readdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 32,
+        "text": "const MANIFEST = JSON.parse(readFileSync(join(ROOT, \"plugins.json\"), \"utf8\"));"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 33,
+        "text": "const PKG = JSON.parse(readFileSync(join(ROOT, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 60,
+        "text": "return JSON.parse(readFileSync(join(profileDir(profile), \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 68,
+        "text": "return JSON.parse(readFileSync(join(profileDir(profile), \"node_modules\", pkg, \"package.json\"), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 29,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 118,
+        "text": "child = spawn([bin, ...args].map(quoteArg).join(\" \"), { ...opts, shell: true });"
+      },
+      {
+        "file": "bin/dsh-enhance.mjs",
+        "line": 120,
+        "text": "child = spawn(bin, args, opts);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "profileContext",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

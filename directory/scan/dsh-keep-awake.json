@@ -1,0 +1,64 @@
+{
+  "name": "dsh-keep-awake",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:42.728Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 184,
+        "text": "return fetch(STATE_ROUTE, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 211,
+        "text": "fetch(CONFIG_ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 464,
+        "text": "proc = spawn(argv[0], argv.slice(1), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

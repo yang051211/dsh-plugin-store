@@ -1,0 +1,80 @@
+{
+  "name": "dsh-speak",
+  "version": "1.8.2",
+  "scannedAt": "2026-10-26T10:06:04.735Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 198,
+        "text": "const response = await fetch(CONTROL_PATH, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 211,
+        "text": "socket = new WebSocket(`${scheme}//${location.host}${SOCKET_PATH}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 44,
+        "text": "const fs = require('fs')"
+      },
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 50,
+        "text": "try { fs.appendFileSync(LOG, `[${new Date().toISOString()}] ${args.join(' ')}\\n`) } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 369,
+        "text": "function removeTemp(tmp) { try { fs.unlinkSync(tmp) } catch (e) { /* already removed */ } }"
+      },
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 376,
+        "text": "try { fs.writeFileSync(tmp, item.text, 'utf8') } catch (e) { log('write temp failed:', e.message); return false }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 42,
+        "text": "const { spawn } = require('child_process')"
+      },
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 385,
+        "text": "child = spawn('/bin/bash', [cfg.engine].concat(args), { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "adapters/dsh/speech-hook.js",
+        "line": 389,
+        "text": "        child = spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', cfg.engine, '-File', tmp, '-Volume', String(cfg.volume), '-Rate', "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

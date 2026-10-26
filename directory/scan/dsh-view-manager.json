@@ -1,0 +1,72 @@
+{
+  "name": "dsh-view-manager",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:05:54.292Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "return window.fetch(path, options).then(function (res) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "const res = await fetch(NPM_LATEST_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "version = JSON.parse(readFileSync(pkgPath, 'utf8')).version || null"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "const child = spawn('dsh', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

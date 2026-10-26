@@ -1,0 +1,107 @@
+{
+  "name": "dsh-context-guardian",
+  "version": "0.2.0-beta.1",
+  "scannedAt": "2026-10-26T10:05:46.070Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cg_recall.js",
+        "line": 410,
+        "text": "s.includes('* fetch({\"file\":\"config/app_settings.json\"})') && renderMessage(null) === '' && renderMessage(undefined) === ''"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cg_handoff.js",
+        "line": 9,
+        "text": "import { mkdirSync, writeFileSync, renameSync, mkdtempSync, rmSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "cg_handoff.js",
+        "line": 141,
+        "text": "mkdirSync(base, { recursive: true });"
+      },
+      {
+        "file": "cg_handoff.js",
+        "line": 152,
+        "text": "writeFileSync(tmp, content, 'utf8');"
+      },
+      {
+        "file": "cg_handoff.js",
+        "line": 222,
+        "text": "rmSync(tmpDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "cg_memory.js",
+        "line": 6,
+        "text": "import { mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.js",
+        "line": 1355,
+        "text": "for (const tool of options.tools) inner.tools.register(definitions[tool])"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 138,
+        "text": "const child = spawn(this.options.python, [BRIDGE_SCRIPT], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 70,
+      "text": "pip install context-guardian && context-guardian   # proxy on :8786 in front of Ollama on :11434; set OPENAI_BASE_URL=http://localhost:8786/v1"
+    },
+    {
+      "file": "README.md",
+      "line": 81,
+      "text": "pip install context-guardian"
+    },
+    {
+      "file": "README.md",
+      "line": 437,
+      "text": "context-guardian-configure   # after pip install context-guardian"
+    },
+    {
+      "file": "README.md",
+      "line": 514,
+      "text": "pip install -r requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 527,
+      "text": "context-guardian-doctor                      # after `pip install context-guardian` (0.7.0+)"
+    }
+  ],
+  "skippedEntries": []
+}

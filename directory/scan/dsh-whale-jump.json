@@ -1,0 +1,85 @@
+{
+  "name": "dsh-whale-jump",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:06:07.334Z",
+  "icon": "dsh-whale-jump.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1375,
+        "text": "return fetch('/dsh-whale-jump/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1383,
+        "text": "fetch('/dsh-whale-jump/state', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "return JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8')).version || '0.0.0'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "fs.writeFileSync(file, JSON.stringify(value, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 651,
+        "text": "if (this.elapsed > CFG.CLEAR_TIME + this.nextGap) this.spawn()"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 653,
+        "text": "this.spawn()"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 700,
+        "text": "spawn() {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,114 @@
+{
+  "name": "dsh-verify",
+  "version": "0.9.6",
+  "scannedAt": "2026-10-26T10:06:01.177Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/gen.mjs",
+        "line": 126,
+        "text": "const res = await fetch(`${base}/chat/completions`, {"
+      },
+      {
+        "file": "bin/verify.mjs",
+        "line": 8,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/gen.mjs",
+        "line": 196,
+        "text": "const { writeFile } = await import('node:fs/promises');"
+      },
+      {
+        "file": "bin/gen.mjs",
+        "line": 197,
+        "text": "await writeFile(out, JSON.stringify(spec, null, 2));"
+      },
+      {
+        "file": "bin/gen.mjs",
+        "line": 208,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/init.mjs",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/init.mjs",
+        "line": 25,
+        "text": "const contents = await Promise.all(names.map(name => readFile(new URL(`../templates/starter/${name}`, import.meta.url))));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/plugin.mjs",
+        "line": 8,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dsh/plugin.mjs",
+        "line": 13,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/plugin.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dsh/plugin.mjs",
+        "line": 48,
+        "text": "const r = spawnSync(process.execPath, argv, { encoding: 'utf8', timeout: 180000, maxBuffer: 16 * 1024 * 1024 });"
+      },
+      {
+        "file": "scripts/check-buggy.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/check-buggy.mjs",
+        "line": 27,
+        "text": "const run = spawnSync(process.execPath, [resolve(root, 'bin/verify.mjs'), '--spec', 'demo/buggy.json', '--out', '/tmp/dshv-check-buggy', '--json'], {"
+      },
+      {
+        "file": "scripts/make-hero-gif.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 117,
+      "text": "npm install -g dsh-verify          # or: npx dsh-verify after v0.9.5 is published"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,152 @@
+{
+  "name": "dsh-unified-agent-memory",
+  "version": "0.8.8",
+  "scannedAt": "2026-10-26T10:06:00.665Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-ui.js",
+        "line": 705,
+        "text": "window.fetch(STATUS_URL, { signal: abort.signal, cache: \"no-store\" }).then(function(r) {"
+      },
+      {
+        "file": "lib/client-ui.js",
+        "line": 795,
+        "text": "const r = await fetch(UPDATE_URL, {"
+      },
+      {
+        "file": "lib/client-ui.js",
+        "line": 827,
+        "text": "const r = await fetch(url, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client-ui.js",
+        "line": 873,
+        "text": "const r = await fetch(url, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client-ui.js",
+        "line": 924,
+        "text": "const r = await fetch(url, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "const text = readFileSync(path, \"utf-8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "import { chmodSync, existsSync as existsSync3, mkdirSync as mkdirSync2, readFileSync as readFileSync3, writeFileSync as writeFileSync2 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "import { existsSync as existsSync2, mkdirSync, readFileSync as readFileSync2, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 250,
+        "text": "mkdirSync(dirname2(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 796,
+        "text": "ctx.tools.register(factory(cfg));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 805,
+        "text": "ctx.tools.register(defineSetupTool(buildSetupDeps(cfg, extra)));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2239,
+        "text": "var inject = [\"tools\", \"webServer\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 150,
+        "text": "const child = execFile("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "import { execFile as execFile2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1772,
+        "text": "import { execFile as execFile3 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/utils.js",
+        "line": 2,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 186,
+      "text": "从 0.8.1 起，`npm install` 这一步已经把所有东西带齐了——core、`setup/setup.py`、`setup/deploy.py`、vault 模版全部在包内。不需要再克隆仓库，也不需要 `postinstall`（那类脚本在 pnpm 与插件市场里本来就会被拦）。"
+    },
+    {
+      "file": "README.md",
+      "line": 193,
+      "text": "4. **不同意也有降级路径**：什么都不写，`memory_status` 照常可用，只是报「未配置」。手动初始化随时可用：`python <包路径>/setup/setup.py init --vault <路径>`，然后只配 `vaultPath` 即可用检索与提交。"
+    },
+    {
+      "file": "README.md",
+      "line": 226,
+      "text": "pip install -e ./core"
+    },
+    {
+      "file": "README.md",
+      "line": 229,
+      "text": "python setup/setup.py init --vault ~/Documents/AgentMemory"
+    },
+    {
+      "file": "README.md",
+      "line": 275,
+      "text": "python setup/setup.py init --vault ~/Documents/AgentMemory   # 1. 初始化 vault"
+    }
+  ],
+  "skippedEntries": []
+}

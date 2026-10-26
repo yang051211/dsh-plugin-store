@@ -1,0 +1,152 @@
+{
+  "name": "dsh-gsv-tts",
+  "version": "5.0.0",
+  "scannedAt": "2026-10-26T10:06:05.959Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 414,
+        "text": "const resp = await fetch(\"/dsh-gsv-tts/speak\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 560,
+        "text": "const vr = await fetch(\"/dsh-gsv-tts/provider/voices\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: \"{}\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 565,
+        "text": "const hr = await fetch(\"/dsh-gsv-tts/provider/health\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: \"{}\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 582,
+        "text": "const vr = await fetch(\"/dsh-gsv-tts/provider/voices\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: \"{}\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 601,
+        "text": "const resp = await fetch(\"/dsh-gsv-tts/provider/preview\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audio-store.js",
+        "line": 1,
+        "text": "import { createReadStream, existsSync, mkdirSync, readdirSync, statSync, unlinkSync, writeFileSync } from 'fs';"
+      },
+      {
+        "file": "lib/audio-store.js",
+        "line": 29,
+        "text": "mkdirSync(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/audio-store.js",
+        "line": 56,
+        "text": "writeFileSync(file, data);"
+      },
+      {
+        "file": "lib/audio-store.js",
+        "line": 108,
+        "text": "unlinkSync(file);"
+      },
+      {
+        "file": "lib/audio-store.js",
+        "line": 123,
+        "text": "unlinkSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools', 'webServer', 'settings'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 770,
+        "text": "ctx.tools.register(speakTool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 771,
+        "text": "ctx.tools.register(listVoicesTool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 772,
+        "text": "ctx.tools.register(healthCheckTool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 773,
+        "text": "ctx.tools.register(setupEngineTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine-manager.js",
+        "line": 1,
+        "text": "import { execFileSync, spawn } from 'child_process';"
+      },
+      {
+        "file": "lib/engine-manager.js",
+        "line": 54,
+        "text": "const child = spawn(python.bin, [...python.prefix, script, '-p', String(port), '--models_dir', modelsDir], {"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 1,
+        "text": "import { execFileSync, spawn } from 'child_process';"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 180,
+        "text": "const child = spawn(python.bin, [...python.prefix, 'dsh_start_wrapper.py', '-p', String(port), '--models_dir', modelsDir], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 154,
+      "text": "2. 安装核心包：`pip install gsv-tts-lite==0.4.7`"
+    },
+    {
+      "file": "README.md",
+      "line": 156,
+      "text": "4. 安装 API 依赖：`pip install -r <仓库>/API/requirements.txt`"
+    }
+  ],
+  "skippedEntries": []
+}

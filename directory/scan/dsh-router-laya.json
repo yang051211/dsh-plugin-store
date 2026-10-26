@@ -1,0 +1,116 @@
+{
+  "name": "dsh-router-laya",
+  "version": "2.2.1",
+  "scannedAt": "2026-10-26T10:05:33.744Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.mjs",
+        "line": 222,
+        "text": "const res = await fetch(`${base}/health`, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "client.js",
+        "line": 130,
+        "text": "fetch(STATE_URL, { cache: \"no-store\" })"
+      },
+      {
+        "file": "client.js",
+        "line": 145,
+        "text": "fetch(MODE_URL, { cache: \"no-store\" })"
+      },
+      {
+        "file": "client.js",
+        "line": 158,
+        "text": "return fetch(MODE_URL, {"
+      },
+      {
+        "file": "index.js",
+        "line": 563,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.mjs",
+        "line": 27,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 133,
+        "text": "if (fs.existsSync(marker) && fs.readFileSync(marker, 'utf8') === lockStamp) {"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 146,
+        "text": "fs.writeFileSync(marker, lockStamp);"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 158,
+        "text": "const manifest = JSON.parse(fs.readFileSync(path.join(pkg, 'weights', 'manifest.json'), 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "import { closeSync, existsSync as fsExists, openSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 80,
+        "text": "const r = spawnSync(cand.cmd, [...cand.base, '-c', code], { encoding: 'utf8', timeout: 15000 });"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 122,
+        "text": "const r = spawnSync(probe.exe, [...probe.base, '-m', 'venv', VENV_DIR], { stdio: 'inherit' });"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 140,
+        "text": "const r = spawnSync(venvPython, ['-m', 'pip', 'install', '-r', LOCK_FILE], { stdio: 'inherit' });"
+      },
+      {
+        "file": "bin/setup.mjs",
+        "line": 163,
+        "text": "const r = spawnSync(process.execPath, [FETCH_SCRIPT], { stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 55,
+      "text": "npm i -g dsh-router-laya"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,76 @@
+{
+  "name": "dsh-remote-file-system",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:00.944Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "const res = await fetch(\"/remote-file-system/\" + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1123,
+        "text": "var inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1142,
+        "text": "ctx.tools.register(createReadRemoteTool(fs));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1143,
+        "text": "ctx.tools.register(createWriteRemoteTool(fs));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1144,
+        "text": "ctx.tools.register(createEditRemoteTool(fs));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "const child = spawn(\"ssh\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,84 @@
+{
+  "name": "dsh-prompt-vcs",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:05:46.937Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/ui.js",
+        "line": 389,
+        "text": "fetch(path, { signal: c.signal })"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 19,
+        "text": "fetch(`${CHANGE_PATH}?hash=${hash}`).then(async (r) => { if (r.ok)"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 25,
+        "text": "const r = await fetch(ROLLBACK_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ hash }) });"
+      },
+      {
+        "file": "lib/vcs.web.js",
+        "line": 578,
+        "text": "fetch(path, { signal: c.signal }).then(async (r) => {"
+      },
+      {
+        "file": "lib/vcs.web.js",
+        "line": 604,
+        "text": "fetch(`${CHANGE_PATH}?hash=${hash}`).then(async (r) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 1,
+        "text": "import { readFileSync, existsSync, mkdirSync, appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 15,
+        "text": "mkdirSync(this.vcsDir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 19,
+        "text": "appendFileSync(this.historyPath, JSON.stringify(change) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 24,
+        "text": "return readFileSync(this.historyPath, 'utf8')"
+      },
+      {
+        "file": "lib/vcs.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,67 @@
+{
+  "name": "dsh-smart-prompt",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:06:05.461Z",
+  "icon": "dsh-smart-prompt.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 105,
+        "text": "return await (await fetch(API_BASE + endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 71,
+        "text": "const head = await readHead(services.readFile(ref, signal), FILE_BYTES);"
+      },
+      {
+        "file": "lib/prompts.js",
+        "line": 10,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/prompts.js",
+        "line": 35,
+        "text": "const text = readFileSync(candidate, 'utf8');"
+      },
+      {
+        "file": "lib/workspace-knowledge.js",
+        "line": 11,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/workspace-knowledge.js",
+        "line": 33,
+        "text": "return await readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

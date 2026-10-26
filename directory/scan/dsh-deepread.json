@@ -1,0 +1,131 @@
+{
+  "name": "dsh-deepread",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:05:31.639Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 812,
+        "text": "const res = await fetch(\"/api/deepread/budget\", {"
+      },
+      {
+        "file": "lib/types/host/source.js",
+        "line": 98,
+        "text": "result = await web.fetch({ url });"
+      },
+      {
+        "file": "lib/types/host/source.js",
+        "line": 107,
+        "text": "const resp = await globalThis.fetch(url, {"
+      },
+      {
+        "file": "lib/types/host/source.js",
+        "line": 138,
+        "text": "const resp = await globalThis.fetch(url, {"
+      },
+      {
+        "file": "src/client/view.ts",
+        "line": 766,
+        "text": "const res = await fetch('/api/deepread/budget', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/host/plugin.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/types/host/plugin.js",
+        "line": 20,
+        "text": "export const inject = ['fs', 'llm', 'tools', 'web', 'agentDefaultModel', 'sandboxPolicy'];"
+      },
+      {
+        "file": "lib/types/host/plugin.js",
+        "line": 965,
+        "text": "const source = readFileSync(PACKAGED_SKILL_URL, 'utf8');"
+      },
+      {
+        "file": "scripts/build-host.mjs",
+        "line": 2,
+        "text": "import { rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/build-host.mjs",
+        "line": 11,
+        "text": "await rm(typesOutput, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/host/plugin.js",
+        "line": 20,
+        "text": "export const inject = ['fs', 'llm', 'tools', 'web', 'agentDefaultModel', 'sandboxPolicy'];"
+      },
+      {
+        "file": "lib/types/host/plugin.js",
+        "line": 961,
+        "text": "ctx.effect(() => ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/host/plugin.ts",
+        "line": 68,
+        "text": "export const inject = ['fs', 'llm', 'tools', 'web', 'agentDefaultModel', 'sandboxPolicy']"
+      },
+      {
+        "file": "src/host/plugin.ts",
+        "line": 1042,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-host.mjs",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "test/browser-typescript-runtime.mjs",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "test/client-bundle.mjs",
+        "line": 4,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/client-theme-contract.mjs",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/dsh-tui-pack.mjs",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

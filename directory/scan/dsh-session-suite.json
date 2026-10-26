@@ -1,0 +1,136 @@
+{
+  "name": "dsh-session-suite",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:05:56.795Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 522,
+        "text": "const res = await fetch(LIST_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 543,
+        "text": "const res = await fetch(GATE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 575,
+        "text": "const res = await fetch(GATE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 611,
+        "text": "const res = await fetch(PASSCODE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 639,
+        "text": "const res = await fetch(TRASH_EMPTY_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fleet.mjs",
+        "line": 12,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/fleet.mjs",
+        "line": 77,
+        "text": "raw = fs.readFileSync(file, 'utf8'); // 只读"
+      },
+      {
+        "file": "lib/fleet.mjs",
+        "line": 137,
+        "text": "// 无 BOM：fs.writeFileSync(utf8) 不写 BOM"
+      },
+      {
+        "file": "lib/fleet.mjs",
+        "line": 138,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/fleet.mjs",
+        "line": 139,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(payload, null, 2) + '\\n', { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const inject = ['agents', 'sessions', 'tools', 'agentPresets', 'llm'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6346,
+        "text": "return ctx.tools.register(tool);"
+      },
+      {
+        "file": "tools/smoke-fleet-schedule.mjs",
+        "line": 215,
+        "text": "env.ctx.tools = { register: (tool) => { collected.push(tool); return () => {}; } };"
+      },
+      {
+        "file": "tools/smoke-handover.mjs",
+        "line": 163,
+        "text": "ctx.tools = { register: (tool) => { collected.push(tool); return () => {}; } };"
+      },
+      {
+        "file": "tools/smoke-ops.mjs",
+        "line": 96,
+        "text": "ctx.tools = { register: (tool) => { collected.push(tool); return () => {}; } };"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5188,
+        "text": "spawn('explorer.exe', [`/select,${file}`], { windowsHide: true, detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5190,
+        "text": "spawn('open', ['-R', file], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5192,
+        "text": "spawn('xdg-open', [dirname(file)], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/session-package.mjs",
+        "line": 28,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

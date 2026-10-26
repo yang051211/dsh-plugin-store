@@ -1,0 +1,118 @@
+{
+  "name": "dsh-isolation-gate",
+  "version": "1.10.1",
+  "scannedAt": "2026-10-26T10:05:44.430Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/gate-ui.mjs",
+        "line": 16,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "bin/gate-ui.mjs",
+        "line": 73,
+        "text": "const r=await fetch(path,{method:'POST',headers:{'content-type':'application/json','x-gate-token':TOKEN},body:JSON.stringify(body||{})});"
+      },
+      {
+        "file": "bin/gate-ui.mjs",
+        "line": 98,
+        "text": "const s=await (await fetch('/api/report')).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 58,
+        "text": "const res = await fetch(path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/gate-hook-claude.mjs",
+        "line": 29,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/gate-hook-claude.mjs",
+        "line": 51,
+        "text": "return readFileSync(0, 'utf8');"
+      },
+      {
+        "file": "bin/gate-hook-gemini.mjs",
+        "line": 28,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/gate-hook-gemini.mjs",
+        "line": 93,
+        "text": "raw = readFileSync(0, 'utf8');"
+      },
+      {
+        "file": "bin/gate-hook-generic.mjs",
+        "line": 25,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gate-tools.js",
+        "line": 86,
+        "text": "return ctx.effect(() => ctx.tools.register(safe), `dsh-isolation-gate: ${definition.name}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "*   ② **工具执行门**：`ctx.tools.guard()` —— 模型调用 read/write/edit/bash… 时，"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 165,
+        "text": "console.log('[dsh-isolation-gate] 工具执行门已挂载（ctx.tools.guard · fail-closed）');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "const child = spawn('powershell.exe', ['-NoProfile', '-STA', '-WindowStyle', 'Hidden', '-Command', script], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

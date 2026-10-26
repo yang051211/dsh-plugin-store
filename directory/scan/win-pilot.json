@@ -1,0 +1,149 @@
+{
+  "name": "win-pilot",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:05:32.037Z",
+  "icon": "win-pilot.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-session.js",
+        "line": 171,
+        "text": "const ws = new WebSocket(url)"
+      },
+      {
+        "file": "lib/browser-session.js",
+        "line": 881,
+        "text": "=decodeURIComponent(m[1])}const r=await fetch(f,{method,credentials:'include',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:method==='GET'?u"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/activity.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/activity.js",
+        "line": 25,
+        "text": "fs.rmSync(fileFor(id), { force: true }); records.delete(id); continue"
+      },
+      {
+        "file": "lib/activity.js",
+        "line": 30,
+        "text": "fs.writeFileSync(temporary, JSON.stringify(value), { mode:0o600 })"
+      },
+      {
+        "file": "lib/activity.js",
+        "line": 39,
+        "text": "fs.mkdirSync(directory, { recursive:true, mode:0o700 })"
+      },
+      {
+        "file": "lib/activity.js",
+        "line": 78,
+        "text": "if (endpoint) fs.rmSync(fileFor(id), { force:true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "// cordis: apply(ctx) touches ctx.tools — declare the dependency so apply runs"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1601,
+        "text": "  diag('apply called; ctx.tools=' + (ctx.tools ? 'present' : 'MISSING') + ' register=' + typeof ctx.tools?.register + ' ctx.skills=' + (ctx.skills ? 'present' :"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1602,
+        "text": "if (typeof ctx.tools?.register !== 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1603,
+        "text": "console.error(LOG_TAG + ' ctx.tools.register unavailable on host ctx; computer tool NOT registered')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-install.js",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/agent-install.js",
+        "line": 52,
+        "text": "const result = spawnSync(command, args, { encoding: 'utf8', windowsHide: true })"
+      },
+      {
+        "file": "lib/host-context.js",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "const child = spawn(PS_EXE, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', STATUSBAR_TARGET], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/task-desktop/win-pilot-task-desktop.dll",
+    "lib/task-desktop/win-pilot-task-desktop.exe",
+    "lib/wgc/win-pilot-wgc.exe"
+  ],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 55,
+      "text": "npm install -g win-pilot@latest"
+    },
+    {
+      "file": "README.md",
+      "line": 117,
+      "text": "npm install -g win-pilot@latest"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 55,
+      "text": "npm install -g win-pilot@latest"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 96,
+      "text": "npm install -g win-pilot@latest"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-bash-native",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:08.056Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifact.js",
+        "line": 22,
+        "text": "import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/artifact.js",
+        "line": 227,
+        "text": "readText: (path) => readFileSync(path, 'utf8'),"
+      },
+      {
+        "file": "lib/artifact.js",
+        "line": 237,
+        "text": "sha256: (path) => createHash('sha256').update(readFileSync(path)).digest('hex'),"
+      },
+      {
+        "file": "lib/artifact.js",
+        "line": 239,
+        "text": "mkdirSync(path, { recursive: true });"
+      },
+      {
+        "file": "lib/artifact.js",
+        "line": 241,
+        "text": "writeText: (path, text) => writeFileSync(path, text),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/verify.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/verify.js",
+        "line": 91,
+        "text": "* (`spawnSync(..., { encoding: 'utf8' })`) fails with `EPERM` before the engine starts. That would refuse"
+      },
+      {
+        "file": "lib/verify.js",
+        "line": 124,
+        "text": "result = spawnSync(path, [...args], { stdio: capture.stdio, timeout: 10_000, windowsHide: true });"
+      },
+      {
+        "file": "lib/verify.js",
+        "line": 136,
+        "text": "// A synchronously throwing spawn (a NUL in the path, an aborted call, an unwritable temporary"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "engine/win32-x64/brush.exe",
+    "toolchain/win32-x64/awk.exe",
+    "toolchain/win32-x64/cmp.exe",
+    "toolchain/win32-x64/coreutils.exe",
+    "toolchain/win32-x64/diff.exe",
+    "toolchain/win32-x64/find.exe",
+    "toolchain/win32-x64/grep.exe",
+    "toolchain/win32-x64/jq.exe",
+    "toolchain/win32-x64/locate.exe",
+    "toolchain/win32-x64/ps.exe",
+    "toolchain/win32-x64/sed.exe",
+    "toolchain/win32-x64/stat.exe",
+    "toolchain/win32-x64/updatedb.exe",
+    "toolchain/win32-x64/which.exe",
+    "toolchain/win32-x64/xargs.exe"
+  ],
+  "requiredServices": [
+    "agentPresets"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

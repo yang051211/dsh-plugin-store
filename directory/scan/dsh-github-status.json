@@ -1,0 +1,92 @@
+{
+  "name": "dsh-github-status",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:03.525Z",
+  "icon": "dsh-github-status.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 205,
+        "text": "const response = await fetch(API_BASE + path, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/validate.mjs",
+        "line": 9,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/validate.mjs",
+        "line": 26,
+        "text": "const client = fs.readFileSync(clientUrl, \"utf8\");"
+      },
+      {
+        "file": "lib/validate.mjs",
+        "line": 55,
+        "text": "const host = fs.readFileSync(new URL(\"lib/index.js\", ROOT), \"utf8\");"
+      },
+      {
+        "file": "lib/validate.mjs",
+        "line": 68,
+        "text": "const pkg = JSON.parse(fs.readFileSync(new URL(\"package.json\", ROOT), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "execFile(file, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 297,
+        "text": "se: string, userCode: string|null, verificationUri: string|null, error: string|null, startedAt: number, child: import('node:child_process').ChildProcess|null }}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "const child = spawn(gh, [\"auth\", \"login\", \"--hostname\", GH_HOST, \"--git-protocol\", \"https\", \"--web\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

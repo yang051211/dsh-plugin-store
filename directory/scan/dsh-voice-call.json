@@ -1,0 +1,122 @@
+{
+  "name": "dsh-voice-call",
+  "version": "0.3.13",
+  "scannedAt": "2026-10-26T10:05:27.970Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 28,
+        "text": "async function Ne(e){return await(await fetch(\"/voice/call/answer\",{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify(e)})).json()}a"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 304,
+        "text": "t\");async function Ie(){try{let e=await fetch(\"/voice/provision/state\",{headers:{accept:\"application/json\"}});return e.ok?await e.json():void 0}catch{return}}as"
+      },
+      {
+        "file": "lib/provision/download.js",
+        "line": 67,
+        "text": "export const globalFetch = (url, init) => fetch(url, init).then((response) => ({"
+      },
+      {
+        "file": "lib/provision/state.js",
+        "line": 220,
+        "text": "const result = await this.fetch(planned, source, request, steps, base);"
+      },
+      {
+        "file": "lib/provision/state.js",
+        "line": 274,
+        "text": "async fetch(planned, source, request, steps, base) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audio.js",
+        "line": 10,
+        "text": "import { copyFile, mkdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/audio.js",
+        "line": 52,
+        "text": "await mkdir(this.root, { recursive: true });"
+      },
+      {
+        "file": "lib/backends/factory.js",
+        "line": 10,
+        "text": "import { rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/backends/factory.js",
+        "line": 100,
+        "text": "discard: () => rm(dir, { recursive: true, force: true }).catch(() => undefined),"
+      },
+      {
+        "file": "lib/backends/factory.js",
+        "line": 105,
+        "text": "const { mkdtemp } = await import('node:fs/promises');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'userQuestions', 'jobs'];"
+      },
+      {
+        "file": "lib/tools/offer-call.js",
+        "line": 94,
+        "text": "/** Register the `offer_call` tool on `ctx.tools`. */"
+      },
+      {
+        "file": "lib/tools/offer-call.js",
+        "line": 96,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/speak.js",
+        "line": 81,
+        "text": "/** Register the `speak` tool on `ctx.tools`. */"
+      },
+      {
+        "file": "lib/tools/speak.js",
+        "line": 83,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

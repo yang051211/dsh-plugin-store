@@ -1,0 +1,85 @@
+{
+  "name": "dsh-connect-opencode",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:59.458Z",
+  "icon": "dsh-connect-opencode.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.js",
+        "line": 52,
+        "text": "const res = await fetch(shim.baseUrl() + \"/v1/chat/completions\", {"
+      },
+      {
+        "file": "lib/opencode.js",
+        "line": 203,
+        "text": "const res = await fetch(this.base + route, {"
+      },
+      {
+        "file": "lib/shim.js",
+        "line": 5,
+        "text": "import { createServer } from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.js",
+        "line": 9,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 12,
+        "text": "fs.mkdirSync(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { appendFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "try { appendFileSync(traceFile, line); } catch {}"
+      },
+      {
+        "file": "lib/opencode.js",
+        "line": 8,
+        "text": "import { mkdirSync, existsSync, copyFileSync, chmodSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/opencode.js",
+        "line": 5,
+        "text": "import { spawn, execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/opencode.js",
+        "line": 157,
+        "text": "const child = spawn(binary, [\"serve\", \"--pure\", \"--hostname\", \"127.0.0.1\", \"--port\", String(port)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

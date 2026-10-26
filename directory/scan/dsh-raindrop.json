@@ -1,0 +1,85 @@
+{
+  "name": "dsh-raindrop",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:06.644Z",
+  "icon": "dsh-raindrop.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 340,
+        "text": "response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 4,
+        "text": "* 客户端半用**文档相对路径** `fetch('api/dsh-raindrop/...')` 调这里"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 18,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 88,
+        "text": "return normalizeState(JSON.parse(fs.readFileSync(file, 'utf8')));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 96,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 104,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify(state, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 113,
+        "text": "fs.rmSync(tmp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const disposers = definitions.map((definition) => toolCtx.tools.register(definition));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 9,
+        "text": "* 由 `ctx.tools.register()` 直接接收。工具失败一律返回 `{ok:false,code,message}`，"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 244,
+        "text": "* @returns {Array<object>} 可直接交给 `ctx.tools.register()` 的定义。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

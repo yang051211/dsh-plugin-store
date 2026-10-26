@@ -1,0 +1,145 @@
+{
+  "name": "dsh-gitnexus-plus",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:33.455Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1250,
+        "text": "fetch((0, navigation_1.routeUrl)(`/api/gitnexus/file-diff?repo=${encodeURIComponent(projectPath)}` +"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1550,
+        "text": "fetch((0, navigation_2.routeUrl)(query))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2503,
+        "text": "const res = await fetch((0, navigation_3.routeUrl)(`/api/gitnexus/webview?repo=${encodeURIComponent(projectPath)}`), signal ? { signal } : undefined);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2543,
+        "text": "const res = await fetch(url, { method: action === 'stop' ? 'DELETE' : 'POST' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4204,
+        "text": "const res = await fetch((0, navigation_4.routeUrl)('/api/gitnexus/install'));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bin/graph-query-helper.js",
+        "line": 25,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/bin/graph-query-helper.js",
+        "line": 57,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/gitnexus/analyze.js",
+        "line": 37,
+        "text": "import { existsSync, mkdirSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/gitnexus/analyze.js",
+        "line": 179,
+        "text": "rmSync(path.join(repoPath, '.gitnexus', 'lbug.init.lock'), { force: true });"
+      },
+      {
+        "file": "lib/gitnexus/analyze.js",
+        "line": 199,
+        "text": "* which is `fs.rm(dir, { recursive: true, force: true })`. `force` only forgives a"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 302,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 364,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 455,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 527,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gitnexus/git-capture.js",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/gitnexus/git-capture.js",
+        "line": 206,
+        "text": "child = spawn('git', args, {"
+      },
+      {
+        "file": "lib/subprocess.js",
+        "line": 167,
+        "text": "handle = await subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-runtime.mjs"
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 141,
+      "text": "npm install -g gitnexus"
+    }
+  ],
+  "skippedEntries": []
+}

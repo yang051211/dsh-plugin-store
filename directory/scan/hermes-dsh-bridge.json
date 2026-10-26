@@ -1,0 +1,137 @@
+{
+  "name": "hermes-dsh-bridge",
+  "version": "0.11.4",
+  "scannedAt": "2026-10-26T10:06:03.272Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 553,
+        "text": "const res = await fetch(mcpUrl, { method: 'POST', headers, body: JSON.stringify(body), signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 86,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 87,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { appendFile, mkdir, readFile, readdir, realpath, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1610,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1618,
+        "text": "await writeFile(`${dir}/question_${entry.questionId}.json`, JSON.stringify(payload, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1627,
+        "text": "await unlink(`${dir}/${name}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1637,
+        "text": "payload = JSON.parse(await readFile(filePath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3139,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3152,
+        "text": "if (names.length === 0) degrade(\"tools.schemas\", `ctx.tools.schemas() 返回空(无 live agent scope 且全局层为空); liveAgents=${liveAgents.size}`, void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3153,
+        "text": "} else degrade(\"tools.schemas\", \"ctx.tools.schemas() 不可用, harness_list_tools 回退空列表\", void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3155,
+        "text": "degrade(\"tools.schemas\", \"ctx.tools.schemas() 抛错, harness_list_tools 回退空列表\", e);"
+      },
+      {
+        "file": "src/contract.ts",
+        "line": 19,
+        "text": "*   `harness_list_tools` 曾调用从未存在的 `ctx.tools.keys()`, 而清单只登记了 `register`,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-build-artifacts.mjs",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/contract_probe.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-host-deps.mjs",
+        "line": 30,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-host-deps.mjs || echo \"[hermes-dsh-bridge] postinstall: link-host-deps 未成功（多半是找不到 Harness 全局树）—— 请手动跑 `node scripts/link-"
+      }
+    ]
+  },
+  "dependencies": 21,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

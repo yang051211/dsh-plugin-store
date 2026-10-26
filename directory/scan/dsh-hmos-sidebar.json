@@ -1,0 +1,109 @@
+{
+  "name": "dsh-hmos-sidebar",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:05:32.389Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 160,
+        "text": "return fetch('/hmos/api/' + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-hmos-sidebar.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-hmos-sidebar.mjs",
+        "line": 182,
+        "text": "fs.mkdirSync(root, { recursive: true })"
+      },
+      {
+        "file": "bin/dsh-hmos-sidebar.mjs",
+        "line": 191,
+        "text": "fs.rmSync(stage, { recursive: true, force: true })"
+      },
+      {
+        "file": "bin/dsh-hmos-sidebar.mjs",
+        "line": 208,
+        "text": "manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "bin/dsh-hmos-sidebar.mjs",
+        "line": 374,
+        "text": "const existing = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : ''"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 76,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 618,
+        "text": "// 协议交互用官方 MCP SDK Client（与 dsh-mcp-client 同款）：手写 stdio framing 无法完成"
+      },
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 756,
+        "text": "const disposers = definitions.map((d) => ctx.tools.register(d))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 24,
+        "text": "import { spawnSync as cpSpawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 318,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 336,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/dcli-tools.mjs",
+        "line": 353,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 406,
+        "text": "const handle = sub.spawn(spec)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

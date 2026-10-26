@@ -1,0 +1,102 @@
+{
+  "name": "dsh-plugin-wps-office-next",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:05:42.829Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/dist/client/wps-client.js",
+        "line": 16,
+        "text": "const node_fs_1 = require(\"node:fs\");"
+      },
+      {
+        "file": "mcp/dist/index.js",
+        "line": 29,
+        "text": "const node_fs_1 = require(\"node:fs\");"
+      },
+      {
+        "file": "plugin.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "plugin.js",
+        "line": 66,
+        "text": "const { meta, body } = readFrontmatter(readFileSync(skillFile, 'utf8'));"
+      },
+      {
+        "file": "scripts/accept-install.mjs",
+        "line": 14,
+        "text": "import { existsSync, rmSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 13,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 55,
+        "text": "// dsh-mcp-client starts that child from scrubbedParentEnv() (every DSH_* name dropped), so the"
+      },
+      {
+        "file": "scripts/lib/mcp-node.mjs",
+        "line": 6,
+        "text": "*      （宿主以 bin=void 0 启动 Host），而这个变量名又会被 dsh-mcp-client 的"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 19,
+        "text": "# put a node on the host PATH — spawn('node') then fails with ENOENT and, because"
+      },
+      {
+        "file": "mcp/dist/client/com-host.js",
+        "line": 46,
+        "text": "const child_process_1 = require(\"child_process\");"
+      },
+      {
+        "file": "scripts/accept-install.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/accept-install.mjs",
+        "line": 30,
+        "text": "const result = spawnSync(command, args, { encoding: 'utf8', shell: options.shell !== false, timeout: 300000, ...options });"
+      },
+      {
+        "file": "scripts/bench-latency.mjs",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,119 @@
+{
+  "name": "dsh-thesis",
+  "version": "2.0.2",
+  "scannedAt": "2026-10-26T10:05:42.518Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/paper/lib/lit-api.js",
+        "line": 15,
+        "text": "const DEFAULT_FETCH = (url, init) => fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codewalk/engine.js",
+        "line": 55,
+        "text": "/** 宿主文件系统接缝；`inject: ['fs']` 保证其存在。 */"
+      },
+      {
+        "file": "lib/codewalk/engine.js",
+        "line": 57,
+        "text": "return this.ctx.get('fs');"
+      },
+      {
+        "file": "lib/codewalk/skill.js",
+        "line": 12,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/codewalk/skill.js",
+        "line": 47,
+        "text": "content: await readFile(SKILL_BODY_PATH, 'utf8'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['tools', 'fs'];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codewalk/tools.js",
+        "line": 5,
+        "text": "* 都必须穿过引擎校验过的状态迁移，并立刻落盘。工具注册走 `ctx.tools`（只有在"
+      },
+      {
+        "file": "lib/codewalk/tools.js",
+        "line": 75,
+        "text": "tools.register(statusTool(engine));"
+      },
+      {
+        "file": "lib/codewalk/tools.js",
+        "line": 76,
+        "text": "tools.register(nextTool(engine));"
+      },
+      {
+        "file": "lib/codewalk/tools.js",
+        "line": 77,
+        "text": "tools.register(updateTool(ctx, engine));"
+      },
+      {
+        "file": "lib/dedup/index.js",
+        "line": 302,
+        "text": "ctx.tools.register(definePaperTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/paper/lib/defense.js",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/paper/lib/defense.js",
+        "line": 63,
+        "text": "const count = spawnSync('git', ['-C', root, 'rev-list', '--count', 'HEAD'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/paper/lib/defense.js",
+        "line": 66,
+        "text": "const first = spawnSync('git', ['-C', root, 'log', '--reverse', '--format=%cs', 'HEAD'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/paper/lib/defense.js",
+        "line": 67,
+        "text": "const last = spawnSync('git', ['-C', root, 'log', '-1', '--format=%cs', 'HEAD'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/ppt/convert.js",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

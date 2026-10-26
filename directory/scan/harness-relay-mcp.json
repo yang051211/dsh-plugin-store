@@ -1,0 +1,120 @@
+{
+  "name": "harness-relay-mcp",
+  "version": "0.2.19",
+  "scannedAt": "2026-10-26T10:05:54.007Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 133,
+        "text": "eout(()=>o.abort(),5e3);try{let i=await fetch(t,{method:\"POST\",headers:{accept:\"application/json, text/event-stream\",authorization:`Bearer ${e}`,\"content-type\":"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 8,
+        "text": "Ya.default=E_});import{unlink as YL}from\"node:fs/promises\";import XL from\"@deepseek-ai/schemastery\";import{randomUUID as Lz}from\"node:crypto\";import{homedir as "
+      },
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 72,
+        "text": "pen as a$,rename as gz,unlink as Cs}from\"node:fs/promises\";import{dirname as yz}from\"node:path\";import{readFile as az}from\"node:fs/promises\";var sd=[239,187,191"
+      },
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 101,
+        "text": "dAt:this.#n,acquiredAt:this.#s().toISOString()},s=`${e}.${process.pid}.${o}.tmp`;try{let a=await a$(s,\"wx\",384);n=!0;try{await a.writeFile(`${JSON.stringify(i)}"
+      },
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 102,
+        "text": "record-changed-claim-left\"}}try{await n.writeFile(r,{encoding:\"utf8\"}),await n.sync()}finally{await n.close()}return o!==void 0&&await o(t),await Cs(e),{deleted"
+      },
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 103,
+        "text": "mkdir as Nz,open as Dz,unlink as Ng}from\"node:fs/promises\";import{dirname as Mz}from\"node:path\";var w$=p.object({ownerToken:p.string().min(1),processId:p.number"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 72,
+        "text": "==\"object\"&&t!==null&&\"code\"in t&&t.code===e}import{spawn as uz}from\"node:child_process\";import{chmod as lz,stat as dz}from\"node:fs/promises\";var pz=String.raw`"
+      },
+      {
+        "file": "dist/dsh-relay-harness.mjs",
+        "line": 123,
+        "text": "rom\"node:crypto\";import{spawn as DU}from\"node:child_process\";function OR(t,e){let r=new URL(\"/\",t);return r.searchParams.set(\"sessionId\",e),r.href}async functio"
+      },
+      {
+        "file": "dist/dsh-relay-proxy.mjs",
+        "line": 75,
+        "text": "==\"object\"&&t!==null&&\"code\"in t&&t.code===e}import{spawn as kz}from\"node:child_process\";import{chmod as Pz,stat as Iz}from\"node:fs/promises\";var Rz=String.raw`"
+      },
+      {
+        "file": "dist/dsh-relay-proxy.mjs",
+        "line": 106,
+        "text": "Array.isArray(t)}import{spawn as _E}from\"node:child_process\";import{access as wE,constants as bE}from\"node:fs/promises\";import{createConnection as $E}from\"node:"
+      },
+      {
+        "file": "dist/dsh-relay.mjs",
+        "line": 75,
+        "text": "rom\"node:crypto\";import{spawn as nT}from\"node:child_process\";function Xw(t,e){let r=new URL(\"/\",t);return r.searchParams.set(\"sessionId\",e),r.href}async functio"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "dist/dsh-relay-harness.mjs",
+    "dist/dsh-relay-proxy.mjs",
+    "dist/dsh-relay.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 95,
+      "text": "iptor at the backward-compatible path `$DSH_HOME/plugins/dsh-relay/web/relay-endpoint.json`; its Bearer token lives separately in the Host-specific state direct"
+    },
+    {
+      "file": "README.md",
+      "line": 148,
+      "text": "proxy discovers the authority through `$DSH_HOME/plugins/dsh-relay/web/relay-endpoint.json`. When the recorded owner is provably dead and the loopback port is c"
+    },
+    {
+      "file": "README.md",
+      "line": 206,
+      "text": "The proxy defaults to `$DSH_HOME/plugins/dsh-relay/web/relay-endpoint.json`; when `DSH_HOME` is unset it consistently falls back to `.dsh` under the user home, "
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 95,
+      "text": "sh web` 已在运行，安装或升级后需要重启该 Host 才会加载新 bundle。启动后，bundle 会继续在兼容路径 `$DSH_HOME/plugins/dsh-relay/web/relay-endpoint.json` 发布不含密钥的端点描述；Bearer token 单独保存在 Host 专属状态目录。"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 148,
+      "text": "能由 Agent 手工启动第二个 Harness Web。proxy 通过 `$DSH_HOME/plugins/dsh-relay/web/relay-endpoint.json` 发现 authority；从 0.2.8 起，只有旧 owner 可证明已死亡且回环端口确认空闲时，proxy 才会复用上一任 embe"
+    }
+  ],
+  "skippedEntries": []
+}

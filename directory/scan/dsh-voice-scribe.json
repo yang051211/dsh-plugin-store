@@ -1,0 +1,78 @@
+{
+  "name": "dsh-voice-scribe",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-26T10:05:27.152Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 95,
+        "text": "const res = await fetch(API_PREFIX, {"
+      },
+      {
+        "file": "lib/host-utils.js",
+        "line": 697,
+        "text": "const res = await runWithSignal(() => fetch(provider.url, {"
+      },
+      {
+        "file": "lib/local-asr.js",
+        "line": 123,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(600_000), headers: { \"accept-encoding\": \"identity\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-utils.js",
+        "line": 11,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, statSync, renameSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host-utils.js",
+        "line": 40,
+        "text": "const parsed = JSON.parse(readFileSync(settingsPath(), \"utf8\"));"
+      },
+      {
+        "file": "lib/host-utils.js",
+        "line": 49,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/host-utils.js",
+        "line": 54,
+        "text": "writeFileSync(temporary, JSON.stringify(settings, null, 2), { encoding: \"utf8\", mode: 0o600, flag: \"wx\" });"
+      },
+      {
+        "file": "lib/host-utils.js",
+        "line": 57,
+        "text": "try { unlinkSync(temporary); } catch { /* renamed, or not created */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer",
+    "webStartup"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

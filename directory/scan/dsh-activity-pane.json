@@ -1,0 +1,95 @@
+{
+  "name": "dsh-activity-pane",
+  "version": "0.18.0",
+  "scannedAt": "2026-10-26T10:05:59.782Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".dsh-plugin/client.js",
+        "line": 4667,
+        "text": "const response = await fetch(`${PANE_API_BASE}/ack`, {"
+      },
+      {
+        "file": ".dsh-plugin/client.js",
+        "line": 4760,
+        "text": "fetch(`${PANE_API_BASE}/busy?ids=${encodeURIComponent(pending.join(\",\"))}`, { cache: \"no-store\" })"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 4233,
+        "text": "assert.ok(bundle.includes(\"fetch(`${PANE_API_BASE}/ack`\"), \"确认写回经宿主侧 ack 路由（R-01-002/AC-10、AC-11）\");"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 4430,
+        "text": "&& bundle.includes(\"fetch(`${PANE_API_BASE}/ack`\")"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 4431,
+        "text": "&& bundle.includes(\"fetch(`${PANE_API_BASE}/busy?ids=\"),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 1,
+        "text": "import { readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 13,
+        "text": "const core = (await readFile(join(root, 'src/core.mjs'), 'utf8')).replace("
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 17,
+        "text": "const navigation = (await readFile(join(root, 'src/navigation.mjs'), 'utf8')).replace("
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 21,
+        "text": "const client = await readFile(join(root, 'src/client.mjs'), 'utf8')"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 36,
+        "text": "await writeFile(tmp, bundle)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-staged-client.mjs",
+        "line": 3,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/check.mjs",
+        "line": 8,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

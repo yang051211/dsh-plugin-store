@@ -1,0 +1,75 @@
+{
+  "name": "dsh-mastery-loop",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:03.494Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/mastery-loop/scripts/graph.mjs",
+        "line": 373,
+        "text": "res = await fetch(MIYO_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/mastery-loop/scripts/_lib.mjs",
+        "line": 7,
+        "text": "import { readFileSync, writeFileSync, existsSync, statSync, readdirSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "skills/mastery-loop/scripts/_lib.mjs",
+        "line": 20,
+        "text": "return readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "skills/mastery-loop/scripts/_lib.mjs",
+        "line": 27,
+        "text": "mkdirSync(dirname(p), { recursive: true });"
+      },
+      {
+        "file": "skills/mastery-loop/scripts/_lib.mjs",
+        "line": 28,
+        "text": "writeFileSync(p, text, 'utf8');"
+      },
+      {
+        "file": "skills/mastery-loop/scripts/aggregate.mjs",
+        "line": 11,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/mastery-loop/scripts/scan.mjs",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "skills/mastery-loop/scripts/scan.mjs",
+        "line": 41,
+        "text": "const r = spawnSync('git', ['-C', root, '-c', 'core.quotePath=false', ...args], { stdio: ['ignore', fd, fd] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

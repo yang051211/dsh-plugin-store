@@ -1,0 +1,103 @@
+{
+  "name": "dsh-bundle-antigravity-host",
+  "version": "0.1.29",
+  "scannedAt": "2026-10-26T10:05:37.413Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/bridge/mcp-bridge.js",
+        "line": 25,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "dist/runtime/binary.js",
+        "line": 101,
+        "text": "const doFetch = options.fetchImpl ?? ((url2, init) => fetch(url2, init));"
+      },
+      {
+        "file": "dist/runtime/proxied-fetch.js",
+        "line": 5,
+        "text": "const module = (await import('undici'));"
+      },
+      {
+        "file": "dist/runtime/proxied-fetch.js",
+        "line": 71,
+        "text": "const fallback = deps.fallback ?? ((input, init) => globalThis.fetch(input, init));"
+      },
+      {
+        "file": "dist/runtime/proxied-fetch.js",
+        "line": 127,
+        "text": "return route.undici.fetch(url, { ...requestInit, ...init, dispatcher: route.agent });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 10,
+        "text": "import { createReadStream, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/protocol/agent-link.js",
+        "line": 13,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/protocol/agent-link.js",
+        "line": 64,
+        "text": "const version = JSON.parse(readFileSync(file, 'utf8')).version;"
+      },
+      {
+        "file": "dist/runtime/binary.js",
+        "line": 9,
+        "text": "import { createWriteStream } from 'node:fs';"
+      },
+      {
+        "file": "dist/runtime/binary.js",
+        "line": 10,
+        "text": "import { access, chmod, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 335,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "dist/protocol/agent-link.js",
+        "line": 521,
+        "text": "return subprocess.spawn({"
+      },
+      {
+        "file": "dist/runtime/agy-cli.js",
+        "line": 294,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

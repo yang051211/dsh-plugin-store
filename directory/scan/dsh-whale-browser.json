@@ -1,0 +1,108 @@
+{
+  "name": "dsh-whale-browser",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:05:41.880Z",
+  "icon": "dsh-whale-browser.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "index.js",
+        "line": 381,
+        "text": "const socket = new WebSocket(this.url)"
+      },
+      {
+        "file": "index.js",
+        "line": 518,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: AbortSignal.timeout(2000) })"
+      },
+      {
+        "file": "index.js",
+        "line": 603,
+        "text": "const response = await fetch(`${this.endpoint}${path}`, init)"
+      },
+      {
+        "file": "index.js",
+        "line": 868,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: AbortSignal.timeout(2000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 533,
+        "text": "mkdirSync(this.settings.profileDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 536,
+        "text": "const recorded = Number(readFileSync(portFile, 'utf8').split('\\n')[0].trim())"
+      },
+      {
+        "file": "index.js",
+        "line": 544,
+        "text": "rmSync(portFile, { force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 586,
+        "text": "const line = readFileSync(portFile, 'utf8').split('\\n')[0].trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1383,
+        "text": "for (const definition of tools) ctx.effect(() => ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 569,
+        "text": "this.child = spawn(binary, args, { stdio: 'ignore', detached: false, windowsHide: false })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

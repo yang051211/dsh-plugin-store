@@ -1,0 +1,84 @@
+{
+  "name": "dsh-voice-chat",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:05:58.685Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 249,
+        "text": "return window.fetch(\"/dsh-voice-chat/settings\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 404,
+        "text": "window.fetch(\"/dsh-voice-chat/settings\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 762,
+        "text": "const resp = await window.fetch(\"/dsh-voice-chat/speak\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 794,
+        "text": "const resp = await window.fetch(\"/dsh-voice-chat/tts?text=\" + encodeURIComponent(fallbackText));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 874,
+        "text": "const resp = await window.fetch(\"/dsh-voice-chat/latest-message?sessionId=\" + sid);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "import { readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 313,
+        "text": "parsed = JSON.parse(await readFile(SETTINGS_FILE, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 321,
+        "text": "await writeFile(SETTINGS_FILE, JSON.stringify(withoutLegacyFlat(migrated), null, \"\\t\") + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 974,
+        "text": "await writeFile(SETTINGS_FILE, JSON.stringify(merged, null, \"\\t\") + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "test/client-settings.test.mjs",
+        "line": 7,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

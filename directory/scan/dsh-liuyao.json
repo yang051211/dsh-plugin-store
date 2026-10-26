@@ -1,0 +1,93 @@
+{
+  "name": "dsh-liuyao",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:03.845Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 417,
+        "text": "const response = await fetch('/dsh-liuyao/cases?limit=50', { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 430,
+        "text": "const response = await fetch(`/dsh-liuyao/cases/${encodeURIComponent(id)}`, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 441,
+        "text": "await fetch(`/dsh-liuyao/cases/${encodeURIComponent(id)}`, { method: 'DELETE' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 49,
+        "text": "raw = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 90,
+        "text": "if (!existsSync(root)) mkdirSync(root, { recursive: true });"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 91,
+        "text": "writeFileSync(tmp, payload, 'utf8');"
+      },
+      {
+        "file": "lib/doctrine.js",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "// 工具注册：`ctx.tools.register` 内部以 `layers.effect(this.ctx, …)` 绑定本 fiber，"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "ctx.tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

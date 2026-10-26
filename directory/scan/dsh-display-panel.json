@@ -1,0 +1,121 @@
+{
+  "name": "dsh-display-panel",
+  "version": "0.9.1",
+  "scannedAt": "2026-10-26T10:05:51.267Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 10,
+        "text": "* 0.4.0 起画面走**流**（契约 §5.3）：`fetch('/stream')` + `ReadableStream` 解 MJPEG，"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1559,
+        "text": "const res = await fetch(API + '/size?session=' + encodeURIComponent(sid), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1790,
+        "text": "const res = await fetch(API + '/input?session=' + encodeURIComponent(sidRef.current), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1893,
+        "text": "return await fetch(API + path, Object.assign({ cache: 'no-store' }, init || {}, { signal: ctrl.signal }))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2286,
+        "text": "const res = await fetch(API + STREAM_CONFIG_PATH + '?session=' + encodeURIComponent(sid), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const fs = require('fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 721,
+        "text": "return fs.readFileSync(path.join(DISPLAY_HOME, 'token'), 'utf8').trim()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 740,
+        "text": "fs.mkdirSync(DISPLAY_HOME, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 746,
+        "text": "fs.writeFileSync(path.join(DISPLAY_HOME, 'token'), token, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 761,
+        "text": "const raw = fs.readFileSync(path.join(DISPLAY_HOME, 'port'), 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2591,
+        "text": "toolsCtx.effect(() => toolsCtx.tools.register(def), `${NAME}: ${def.name}`)"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 95,
+        "text": "* @returns 工具定义数组，交给 `ctx.tools.register` 逐个注册。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const { spawn, spawnSync } = require('child_process')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1446,
+        "text": "const probe = spawnSync(candidate, ['--version'], { stdio: 'ignore', timeout: 5000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1509,
+        "text": "const child = spawn(python, [SERVICE_SCRIPT], {"
+      },
+      {
+        "file": "scripts/hint.js",
+        "line": 23,
+        "text": "const { spawnSync } = require('child_process')"
+      },
+      {
+        "file": "scripts/hint.js",
+        "line": 60,
+        "text": "const py = spawnSync(process.env.DSH_VIEW_PYTHON || 'python3', ['-V'], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

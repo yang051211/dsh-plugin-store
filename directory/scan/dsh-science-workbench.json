@@ -1,0 +1,95 @@
+{
+  "name": "dsh-science-workbench",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:50.147Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4,
+        "text": "// over same-origin fetch('/biowb/...') (no typert Remote bridge), so it does"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 35,
+        "text": "return fetch(\"/biowb/\" + method, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "function fetch(name) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "function select(name) { setSelectedName(name); fetch(name); }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 81,
+        "text": "return fetch(newName);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "const fs = ctx.get(\"fs\")"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "// host `tools` registry using `defineTool` + `ctx.tools.register`, with the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "//   - `harness.registerTool` -> `ctx.tools.register(...)`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = [\"tools\", \"webServer\"]"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 736,
+        "text": "ctx.effect(function () { return ctx.tools.register(tool) })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

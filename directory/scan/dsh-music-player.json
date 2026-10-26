@@ -1,0 +1,112 @@
+{
+  "name": "dsh-music-player",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:05:59.506Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 307,
+        "text": "// larger ones go out as a plain fetch (the periodic ~5s saves keep the"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 311,
+        "text": "const r = await fetch('/dsh-music/prefs', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 539,
+        "text": "const jsonGet = (url) => fetch(url, { cache: 'no-store' }).then((r) => r.json());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 540,
+        "text": "const jsonPost = (url, body) => fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1289,
+        "text": "fetch('/dsh-music/playlist/add', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 477,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, openSync, readSync, closeSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1514,
+        "text": "export const inject = ['webServer', 'fs', 'shell', 'tools', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1558,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1576,
+        "text": "const prevText = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1580,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1514,
+        "text": "export const inject = ['webServer', 'fs', 'shell', 'tools', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5829,
+        "text": "ctx.effect(() => ctx.tools.register(tool), 'music-player: music_play tool')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6103,
+        "text": "ctx.effect(() => ctx.tools.register(newsBroadcastTool), 'music-player: news_broadcast tool')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6204,
+        "text": "ctx.effect(() => ctx.tools.register(newsScheduleTool), 'music-player: news_schedule tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "llm",
+    "shell",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

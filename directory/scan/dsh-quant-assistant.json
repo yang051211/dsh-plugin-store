@@ -1,0 +1,82 @@
+{
+  "name": "dsh-quant-assistant",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:05:39.918Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/data/http.mjs",
+        "line": 100,
+        "text": "const res = await fetch(url, { headers: { 'User-Agent': UA, Referer: referer }, signal: ctrl.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/data/eventTable.mjs",
+        "line": 12,
+        "text": "import { readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/data/eventTable.mjs",
+        "line": 30,
+        "text": "const payload = JSON.parse(gunzipSync(readFileSync(path)).toString('utf8'))"
+      },
+      {
+        "file": "lib/data/store.mjs",
+        "line": 12,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/data/store.mjs",
+        "line": 139,
+        "text": "if (path !== ':memory:') mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/data/store.mjs",
+        "line": 145,
+        "text": "mkdirSync(tmpDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tools/kit.mjs",
+        "line": 4,
+        "text": "* DSH 的 `ctx.tools.register()` 接受**普通对象**（P0-G4 实测），所以第三方插件包"
+      },
+      {
+        "file": "lib/tools/kit.mjs",
+        "line": 193,
+        "text": "disposers.push(tools.register(def))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

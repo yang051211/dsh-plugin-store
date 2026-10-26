@@ -1,0 +1,106 @@
+{
+  "name": "dsh-win-pwsh7",
+  "version": "0.12.3",
+  "scannedAt": "2026-10-26T10:05:51.788Z",
+  "icon": "dsh-win-pwsh7.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 946,
+        "text": "void fetch(url, { method: 'HEAD' }).then((response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 48,
+        "text": "import { lstatSync, readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 843,
+        "text": "const text = readFileSync(state.file, 'utf8')"
+      },
+      {
+        "file": "tools/check-client.mjs",
+        "line": 14,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "tools/check-client.mjs",
+        "line": 238,
+        "text": "const source = readFileSync(new URL('../client.js', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "tools/check-host.mjs",
+        "line": 16,
+        "text": "import { appendFileSync, copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 56,
+        "text": "export const inject = ['subprocess', 'tools', 'configEditor', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 323,
+        "text": "cleanups.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 352,
+        "text": "cleanups.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1070,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 1112,
+        "text": "return ctx.subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 1196,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "tools/check-host.mjs",
+        "line": 121,
+        "text": "spawn({ argv }) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "configEditor",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

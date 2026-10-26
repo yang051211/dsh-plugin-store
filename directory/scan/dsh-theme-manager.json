@@ -1,0 +1,110 @@
+{
+  "name": "dsh-theme-manager",
+  "version": "1.3.1",
+  "scannedAt": "2026-10-26T10:05:41.934Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1688,
+        "text": "return fetch(url, { signal: controller ? controller.signal : undefined, cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2107,
+        "text": "fetch(apiPath(\"/dsh-theme-manager/api/v1/update\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2144,
+        "text": "fetch(apiPath(\"/dsh-theme-manager/api/v1/rollback\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2179,
+        "text": "fetch(apiPath(\"/dsh-theme-manager/api/v1/restart\"), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "const res = await fetch(\"https://api.github.com/repos/runcat-tommy/dsh-theme-manager/commits/main\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "try { return JSON.parse(readFileSync(file, \"utf8\")); } catch { return undefined; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "try { writeFileSync(join(profileDir, STATE_FILE), JSON.stringify(state, null, 2), \"utf8\"); } catch { /* best effort */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "\"const fs = require('node:fs');\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "\"const note = (m) => { try { fs.appendFileSync(log, '[dsh-theme-manager] ' + m + '\\\\n'); } catch {} };\","
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "const child = spawn(launch.file, args, { cwd: profileDir, stdio: [\"ignore\", \"pipe\", \"pipe\"], windowsHide: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "\"const { spawn } = require('node:child_process');\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 255,
+        "text": "\"      ? spawn('powershell.exe', ['-NoProfile', '-WindowStyle', 'Hidden', '-Command', '& ' + q(exe) + ' ' + args.map(q).join(' ')], { cwd, stdio: 'ignore' })\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "\"      : spawn(exe, args, { cwd, stdio: 'ignore', detached: true });\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

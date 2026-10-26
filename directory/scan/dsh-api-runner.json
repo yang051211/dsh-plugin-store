@@ -1,0 +1,127 @@
+{
+  "name": "dsh-api-runner",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-26T10:05:38.806Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 462,
+        "text": "const res = await fetch(`${API}/${path}`, init);"
+      },
+      {
+        "file": "src/api.js",
+        "line": 152,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "src/java.js",
+        "line": 15,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "src/service.js",
+        "line": 54,
+        "text": "const response = await fetch(health.url, {"
+      },
+      {
+        "file": "test/java.mjs",
+        "line": 154,
+        "text": "const result = await fetch(`http://127.0.0.1:${port}/`).then((r) => r.text()).catch(() => '');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 18,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 25,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 87,
+        "text": "fs.mkdirSync(path.join(tmp, dir), { recursive: true });"
+      },
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 114,
+        "text": "const text = fs.readFileSync(path.join(srcDir, f), 'utf8');"
+      },
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 164,
+        "text": "const meta = JSON.parse(fs.readFileSync(pkgFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/main.js",
+        "line": 24,
+        "text": "export const inject = ['webServer', 'sessions', 'tools', 'connection', 'systemPrompt'];"
+      },
+      {
+        "file": "src/main.js",
+        "line": 471,
+        "text": "ctx.tools?.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-deps.mjs",
+        "line": 21,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/java.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/java.js",
+        "line": 21,
+        "text": "execFile(file, args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 8 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "src/java.js",
+        "line": 527,
+        "text": "execFile(file, args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 8 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/restart.js",
+        "line": 20,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

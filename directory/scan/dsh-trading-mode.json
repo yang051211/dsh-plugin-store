@@ -1,0 +1,113 @@
+{
+  "name": "dsh-trading-mode",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:06:02.705Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 593,
+        "text": "const response = await fetch(API_BASE + path, opts)"
+      },
+      {
+        "file": "lib/trading/http.js",
+        "line": 9,
+        "text": "* accepted the TCP connection and then reset it, so every `fetch()` there failed"
+      },
+      {
+        "file": "lib/trading/http.js",
+        "line": 34,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/trading/http.js",
+        "line": 35,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "lib/trading/providers/eastmoney.js",
+        "line": 104,
+        "text": "async fetch(kind, pathWithQuery, opts = {}) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/trading/persist.js",
+        "line": 19,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/trading/persist.js",
+        "line": 42,
+        "text": "const raw = await fs.promises.readFile(this.filePath, 'utf8');"
+      },
+      {
+        "file": "lib/trading/persist.js",
+        "line": 55,
+        "text": "await fs.promises.mkdir(path.dirname(this.filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/trading/persist.js",
+        "line": 57,
+        "text": "await fs.promises.writeFile(tmp, JSON.stringify(trimmed), 'utf8');"
+      },
+      {
+        "file": "lib/trading/settings.js",
+        "line": 15,
+        "text": "import fsp from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/smoke-artifact.mjs",
+        "line": 46,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/smoke-artifact.mjs",
+        "line": 177,
+        "text": "result = spawnSync(command, args, {"
+      },
+      {
+        "file": "tests/offline/release-scripts.test.mjs",
+        "line": 32,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/offline/release-scripts.test.mjs",
+        "line": 85,
+        "text": "result = spawnSync(command, args, {"
+      },
+      {
+        "file": "tests/offline/run.mjs",
+        "line": 21,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,111 @@
+{
+  "name": "dsh-livebench-panel",
+  "version": "0.2.40",
+  "scannedAt": "2026-10-26T10:06:01.404Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 101,
+        "text": "const response = await fetch(API + path, options);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { createServer, request as httpRequest } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "import { request as httpsRequest } from \"node:https\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { readdirSync, readFileSync, existsSync, statSync, writeFileSync, mkdirSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "const path = JSON.parse(readFileSync(CONFIG_FILE, \"utf8\")).livebenchHome;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 633,
+        "text": "return parse(readFileSync(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 985,
+        "text": "const data = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1317,
+        "text": "writeFileSync(target, doc, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2302,
+        "text": "const child = spawn(layout.pythonExe, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2310,
+        "text": "spawn(\"powershell\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2546,
+        "text": "spawn(\"taskkill\", [\"/PID\", String(record.proc.pid), \"/T\", \"/F\"], { windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 24,
+      "text": ".venv\\Scripts\\python -m pip install -e ."
+    },
+    {
+      "file": "README.md",
+      "line": 27,
+      "text": ".venv\\Scripts\\python -m pip install -r livebench\\code_runner\\requirements_eval.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 145,
+      "text": "- 已配置好的评测 venv：`<root>\\.venv\\Scripts\\python.exe`（Python 3.11，`pip install -e .` 完成）。"
+    }
+  ],
+  "skippedEntries": []
+}

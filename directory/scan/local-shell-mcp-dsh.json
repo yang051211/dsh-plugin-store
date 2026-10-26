@@ -1,0 +1,65 @@
+{
+  "name": "local-shell-mcp-dsh",
+  "version": "5.1.4",
+  "scannedAt": "2026-10-26T10:05:48.313Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 445,
+        "text": "const liveHtmlSource = await readFile(LIVE_WORKSPACE_HTML, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer', 'agents']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 348,
+        "text": "next.set(publicName, ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 298,
+      "text": "pip install -e '.[dev,docs]'"
+    }
+  ],
+  "skippedEntries": []
+}

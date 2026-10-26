@@ -1,0 +1,48 @@
+{
+  "name": "dsh-read-guard",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:05:49.446Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vendor/rig-core/rules.js",
+        "line": 26,
+        "text": " variable VALUE, a broad environment dump, or curl/wget POST paired with secret references in the same file. Prose merely mentioning \"env vars\" does not fire.',"
+      },
+      {
+        "file": "lib/vendor/rig-core/rules.js",
+        "line": 99,
+        "text": "const POST_TOOL_RE = /\\b(?:curl|wget|Invoke-WebRequest|Invoke-RestMethod)\\b/i;"
+      },
+      {
+        "file": "lib/vendor/rig-core/rules.js",
+        "line": 228,
+        "text": "ush('CREDS_EXFIL', 'Credential/environment exfiltration: curl/wget POST combined with secret references elsewhere in the same file.', line, fileLineOf(ctx, i));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

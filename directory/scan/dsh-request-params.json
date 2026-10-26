@@ -1,0 +1,71 @@
+{
+  "name": "dsh-request-params",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:56.752Z",
+  "icon": "dsh-request-params.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1194,
+        "text": "response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "openrouter.js",
+        "line": 46,
+        "text": "export function createCatalog({ fetch: request = (...args) => globalThis.fetch(...args), now = Date.now, bundled = readBundled } = {}) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "config-store.js",
+        "line": 9,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "config-store.js",
+        "line": 53,
+        "text": "text = await readFile(this.path, 'utf8')"
+      },
+      {
+        "file": "config-store.js",
+        "line": 82,
+        "text": "await mkdir(this.dir, { recursive: true })"
+      },
+      {
+        "file": "config-store.js",
+        "line": 84,
+        "text": "await writeFile(temporary, `${JSON.stringify({ version: VERSION, revision: next.revision, ...next.config }, null, 2)}\\n`)"
+      },
+      {
+        "file": "fs-retry.js",
+        "line": 8,
+        "text": "import { rename } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "configEditor"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

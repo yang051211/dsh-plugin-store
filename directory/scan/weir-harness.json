@@ -1,0 +1,139 @@
+{
+  "name": "weir-harness",
+  "version": "2.0.0",
+  "scannedAt": "2026-10-26T10:05:53.208Z",
+  "icon": "weir-harness.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 505,
+        "text": "response = await fetch(endpoint, {"
+      },
+      {
+        "file": "src/delegate/robash-guard-core.js",
+        "line": 57,
+        "text": "'Invoke-WebRequest', 'Invoke-RestMethod',"
+      },
+      {
+        "file": "src/intent-gate/classifier.js",
+        "line": 146,
+        "text": "const response = await fetch(jev.endpoint, {"
+      },
+      {
+        "file": "whitelist-defaults.json",
+        "line": 224,
+        "text": "\"Invoke-WebRequest\","
+      },
+      {
+        "file": "whitelist-defaults.json",
+        "line": 225,
+        "text": "\"Invoke-RestMethod\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/blackboard/storage.js",
+        "line": 3,
+        "text": "import * as fs from 'node:fs/promises'"
+      },
+      {
+        "file": "src/blackboard/storage.js",
+        "line": 4,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "src/blackboard/storage.js",
+        "line": 69,
+        "text": "try { bytes = await handle.readFile() } finally { await handle.close() }"
+      },
+      {
+        "file": "src/blackboard/storage.js",
+        "line": 118,
+        "text": "try { return await fd.readFile('utf8') } finally { await fd.close() }"
+      },
+      {
+        "file": "src/blackboard/storage.js",
+        "line": 133,
+        "text": "try { await fd.writeFile(text); await hook('file-fsync', temp); await fd.sync() } finally { await fd.close() }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/blackboard/index.js",
+        "line": 30,
+        "text": "const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/blackboard/index.js",
+        "line": 81,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/blackboard/index.js",
+        "line": 99,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/blackboard/index.js",
+        "line": 117,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/blackboard/index.js",
+        "line": 138,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/capabilities/store/liveness.js",
+        "line": 6,
+        "text": "import { execFile as nodeExecFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/delegate/spawn-adapter.js",
+        "line": 56,
+        "text": "*   live child agent captured at spawn (0.2.1 resolves `result` only after"
+      },
+      {
+        "file": "src/delegate/tool.js",
+        "line": 484,
+        "text": "started = await spawn()"
+      },
+      {
+        "file": "src/file-lease/spawn.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/file-lease/spawn.js",
+        "line": 44,
+        "text": "* @returns {import('node:child_process').ChildProcess | null} the detached child, or `null` when the spawn failed"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionQuery",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

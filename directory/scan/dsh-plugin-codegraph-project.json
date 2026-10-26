@@ -1,0 +1,112 @@
+{
+  "name": "dsh-plugin-codegraph-project",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:06:00.173Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 37,
+        "text": "import { existsSync, lstatSync, readdirSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-node-compat.mjs",
+        "line": 17,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-node-compat.mjs",
+        "line": 25,
+        "text": "const MIN_NODE_MAJOR = Number(/(\\d+)/.exec(JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).engines?.node ?? '20')?.[1] ?? 20)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-tools.js",
+        "line": 5,
+        "text": "* agent-scoped registration (`ctx.tools.register()` through `agent.ctx`), but the model's tool"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 14,
+        "text": "* The mechanisms that DO work per session are `ctx.tools.guard()` (proven: a guard registered"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 237,
+        "text": "* @param {object} options.tools - The root `ctx.tools` service."
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 299,
+        "text": "dispose = this.tools.register(definition)"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 365,
+        "text": "* plugin: `agent.ctx` does not carry `tools` as a readable dependency (`ctx.tools` throws"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 613,
+        "text": "const handle = deps.subprocess.spawn({"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 86,
+        "text": "/** @type {import('node:child_process').ChildProcess | undefined} */"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 116,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "scripts/real-codegraph-e2e.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/stdio-probe.mjs",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

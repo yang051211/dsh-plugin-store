@@ -1,0 +1,80 @@
+{
+  "name": "dsh-openai-codex-auth",
+  "version": "0.6.3",
+  "scannedAt": "2026-10-26T10:05:38.723Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proxy-manager.js",
+        "line": 24,
+        "text": "return mode === \"system\" ? route.transport.fetch(...args) : hostFetch(...args);"
+      },
+      {
+        "file": "lib/system-proxy.js",
+        "line": 4,
+        "text": "import { ProxyAgent, fetch as proxyFetch } from \"undici\";"
+      },
+      {
+        "file": "lib/system-proxy.js",
+        "line": 60,
+        "text": "async fetch(input, init) {"
+      },
+      {
+        "file": "lib/system-proxy.js",
+        "line": 64,
+        "text": "const { Agent } = await import(\"undici\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "const inject = [\"llm\", \"credentials\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 476,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 507,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 536,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/system-proxy.js",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

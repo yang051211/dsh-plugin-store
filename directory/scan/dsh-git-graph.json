@@ -1,0 +1,84 @@
+{
+  "name": "dsh-git-graph",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:06:01.342Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 448,
+        "text": "const res = await fetch(\"/git\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 462,
+        "text": "const res = await fetch(\"/fs\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1002,
+        "text": "async fetch(payload) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { rm, readdir, readFile, writeFile, stat, lstat, mkdir, realpath } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 766,
+        "text": "await rm(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 877,
+        "text": "const buf = await readFile(full);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1306,
+        "text": "const buf = await readFile(file);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1330,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

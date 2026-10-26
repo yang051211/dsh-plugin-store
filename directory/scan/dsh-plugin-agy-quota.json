@@ -1,0 +1,84 @@
+{
+  "name": "dsh-plugin-agy-quota",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:05:33.692Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 437,
+        "text": "const res = await fetch(`/api/agy-quota/status${force ? '?force=true' : ''}`);"
+      },
+      {
+        "file": "client.js",
+        "line": 472,
+        "text": "const res = await fetch('/api/agy-quota/detect', { method: 'POST' });"
+      },
+      {
+        "file": "client.js",
+        "line": 488,
+        "text": "const res = await fetch('/api/agy-quota/oauth/start', { method: 'POST' });"
+      },
+      {
+        "file": "client.js",
+        "line": 517,
+        "text": "const res = await fetch('/api/agy-quota/manual', {"
+      },
+      {
+        "file": "client.js",
+        "line": 538,
+        "text": "await fetch('/api/agy-quota/logout', { method: 'POST' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth.js",
+        "line": 1,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "src/auth.js",
+        "line": 32,
+        "text": "try { fs.mkdirSync(dir, { recursive: true, mode: 0o700 }); } catch (_) {}"
+      },
+      {
+        "file": "src/auth.js",
+        "line": 41,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "src/auth.js",
+        "line": 52,
+        "text": "fs.writeFileSync(file, JSON.stringify(auth, null, 2), { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "src/auth.js",
+        "line": 62,
+        "text": "fs.unlinkSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

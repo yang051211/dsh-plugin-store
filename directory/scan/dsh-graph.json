@@ -1,0 +1,138 @@
+{
+  "name": "dsh-graph",
+  "version": "0.22.0",
+  "scannedAt": "2026-10-26T10:05:49.384Z",
+  "icon": "dsh-graph.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4504,
+        "text": "const res = await fetch(GUI_PROMPT_ASSET_URL + name, { headers: { accept: \"text/markdown\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5585,
+        "text": "fetch(graphUrl(\"/api/dsh-graph/spawn-options\"))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5645,
+        "text": "const r = await fetch(graphUrl(url), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5764,
+        "text": "const r = await fetch(graphUrl(\"/api/dsh-graph/unbind\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5934,
+        "text": "fetch(url, { method: \"GET\", credentials: \"same-origin\" }).then((res) => res.ok ? res.json() : null)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/cache-state.js",
+        "line": 2,
+        "text": "import { watch } from \"node:fs\";"
+      },
+      {
+        "file": "core/cache.js",
+        "line": 3,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "core/events.js",
+        "line": 2,
+        "text": "import { appendFileSync, readFileSync, existsSync, mkdirSync, openSync, writeSync, fsyncSync, closeSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "core/events.js",
+        "line": 33,
+        "text": "appendFileSync(join(root, \"events.jsonl\"), JSON.stringify(rec) + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "core/events.js",
+        "line": 47,
+        "text": "const lines = readFileSync(file, \"utf8\").split(\"\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 503,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 2375,
+        "text": "// `ctx.tools` 可能整个服务未注入（测试夹具 / 精简宿主）——取值本身也要兜住，否则会抛在派发路径上。"
+      },
+      {
+        "file": "index.js",
+        "line": 6356,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 6378,
+        "text": "//   `ctx.on(\"agent/created\", ({ agent }) => agent.ctx.tools.restrict({ deny }))`"
+      },
+      {
+        "file": "index.js",
+        "line": 6382,
+        "text": "//   量测口 = `ctx.tools.schemas(agent)`（criterion 2 的可验证面）。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/ops.js",
+        "line": 2,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "core/root.js",
+        "line": 32,
+        "text": "import { execSync, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "core/root.js",
+        "line": 95,
+        "text": "execSync: (cmd, options) => execSync(cmd, options),"
+      },
+      {
+        "file": "core/root.js",
+        "line": 173,
+        "text": "_gitRunner.execSync(\"git rev-parse --is-inside-work-tree\", {"
+      },
+      {
+        "file": "core/root.js",
+        "line": 178,
+        "text": "const rawOutput = _gitRunner.execSync(\"git worktree list --porcelain\", {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

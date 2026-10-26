@@ -1,0 +1,75 @@
+{
+  "name": "dsh-safety-brief-check",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:05:56.370Z",
+  "icon": "dsh-safety-brief-check.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1284,
+        "text": "const pending = readFile(path, \"utf8\").then((text) => loadRuleset(text));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1334,
+        "text": "text: await readFile(path, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 1292,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1350,
+        "text": "* Registration is an effect: `ctx.tools.register` returns the disposer that"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1358,
+        "text": "return ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,103 @@
+{
+  "name": "dsh-read-url",
+  "version": "1.9.3",
+  "scannedAt": "2026-10-26T10:05:29.256Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 191,
+        "text": "res = await fetch(currentUrl, {"
+      },
+      {
+        "file": "index.js",
+        "line": 283,
+        "text": "// the proxy channel (curl --max-time ~20s) is the natural ceiling, and the"
+      },
+      {
+        "file": "index.js",
+        "line": 375,
+        "text": "Promise.resolve().then(() => web.fetch({ url }, signal)).then(resolve, reject)"
+      },
+      {
+        "file": "index.js",
+        "line": 393,
+        "text": "// Never send an exception through curl -L or a browser: both may make further"
+      },
+      {
+        "file": "index.js",
+        "line": 2382,
+        "text": "// Duplicate URLs collapse to one fetch (parallel copies would race the"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "proxy-fallback.js",
+        "line": 12,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 2682,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 2739,
+        "text": "ctx.tools.register(readLinksTool(ctx, cfg))"
+      },
+      {
+        "file": "index.js",
+        "line": 2740,
+        "text": "ctx.tools.register(readUrlBatchTool(ctx, cfg))"
+      },
+      {
+        "file": "index.js",
+        "line": 2741,
+        "text": "ctx.tools.register(readUrlSiteTool(ctx, cfg))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "proxy-fallback.js",
+        "line": 11,
+        "text": "import { execFile, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "proxy-fallback.js",
+        "line": 209,
+        "text": "      execFile(systemExecutable('curl'), args, { maxBuffer: cfg.maxBytes + 8192, encoding: 'buffer', windowsHide: true, signal: externalSignal || undefined }, ("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

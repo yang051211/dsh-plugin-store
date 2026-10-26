@@ -1,0 +1,141 @@
+{
+  "name": "dsh-short-video-studio",
+  "version": "1.14.1",
+  "scannedAt": "2026-10-26T10:05:45.666Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 217,
+        "text": "fetch(CONFIG_API).then((r) => r.json()),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 218,
+        "text": "fetch(WORKFLOWS_API).then((r) => r.json()),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 241,
+        "text": "fetch(url, { method, headers: { 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 274,
+        "text": "fetch(WORKFLOWS_API).then((r) => r.json()).then((w) => { if (w && w.ok) setRegistry(w) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 415,
+        "text": "fetch(WORKFLOWS_API + '?id=' + encodeURIComponent(id), { method: 'DELETE' }).then((r) => r.json()).then((d) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/assets.js",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, cpSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/assets.js",
+        "line": 71,
+        "text": "const p = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/assets.js",
+        "line": 81,
+        "text": "mkdirSync(assetDir(root), { recursive: true })"
+      },
+      {
+        "file": "lib/assets.js",
+        "line": 82,
+        "text": "writeFileSync(assetFile(root), JSON.stringify({ version: 1, assets: (lib && lib.assets) || {} }, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/assets.js",
+        "line": 251,
+        "text": "mkdirSync(assetImagesDir(root), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt', 'workspaceRegistry']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3127,
+        "text": "// - send_file 是 dsh-lark per-agent 注册的工具；本插件用 ctx.tools.get(name, agent)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3263,
+        "text": "await ctx.tools.execute({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3293,
+        "text": "if (!agent || typeof ctx.tools?.get !== 'function') return next()"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3295,
+        "text": "if (!ctx.tools.get('send_file', agent)) return next()"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/concat.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/concat.js",
+        "line": 63,
+        "text": "child = spawn(bin, args, { stdio: ['ignore', 'ignore', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "execFile('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=nw=1:nk=1', absPath],"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2816,
+        "text": "execFile('ffmpeg', ['-y', '-i', abs, '-vn', '-ac', '2', '-ar', '32000', join(dir, outName)],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

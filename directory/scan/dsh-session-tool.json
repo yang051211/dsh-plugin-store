@@ -1,0 +1,79 @@
+{
+  "name": "dsh-session-tool",
+  "version": "0.12.6",
+  "scannedAt": "2026-10-26T10:06:07.438Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "await fetch(DIAG_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 151,
+        "text": "const res = await fetch(CONFIG_ENDPOINT, { headers: { accept: \"application/json\" }, signal: AbortSignal.timeout(3000) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "const res = await fetch(DELETE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 183,
+        "text": "const res = await fetch(LIST_ENDPOINT, { headers: { accept: \"application/json\" }, signal: AbortSignal.timeout(5000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "rmSync(rotated, { force: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "appendFileSync(file, '[' + new Date().toISOString() + '] ' + category.padEnd(7) + level.padEnd(7) + message + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 295,
+        "text": "const record = JSON.parse(readFileSync(projectionPath(id), 'utf8'))?.record ?? {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "dsh-study-desk",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:05:55.265Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bbdc.js",
+        "line": 194,
+        "text": "const res = await fetch(url, { headers: { 'user-agent': UA, referer: `${HOST}/` } })"
+      },
+      {
+        "file": "client.js",
+        "line": 207,
+        "text": "const res = await fetch(API + '?op=state', { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 216,
+        "text": "const res = await fetch(API, {"
+      },
+      {
+        "file": "client.js",
+        "line": 241,
+        "text": "const res = await fetch(API, {"
+      },
+      {
+        "file": "client.js",
+        "line": 274,
+        "text": "fetch(API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bbdc.js",
+        "line": 24,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bbdc.js",
+        "line": 171,
+        "text": "try { buf = fs.readFileSync(f) } catch { continue }"
+      },
+      {
+        "file": "bbdc.js",
+        "line": 432,
+        "text": "try { return JSON.parse(fs.readFileSync(bbdcFile(), 'utf8')) } catch { return null }"
+      },
+      {
+        "file": "bbdc.js",
+        "line": 438,
+        "text": "fs.mkdirSync(deskDir(), { recursive: true })"
+      },
+      {
+        "file": "bbdc.js",
+        "line": 440,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(data, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 171,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 727,
+        "text": "const tools = ctx.get('tools') || ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 729,
+        "text": "ctx.effect(() => tools.register(makeTool()), 'dsh-study-desk: tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bbdc.js",
+        "line": 27,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

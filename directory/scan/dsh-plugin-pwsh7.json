@@ -1,0 +1,109 @@
+{
+  "name": "dsh-plugin-pwsh7",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:05:33.944Z",
+  "icon": "dsh-plugin-pwsh7.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 592,
+        "text": "return fetch(url, options);"
+      },
+      {
+        "file": "lib/dialect.mjs",
+        "line": 123,
+        "text": "wget: 'Invoke-WebRequest',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/elevate.mjs",
+        "line": 12,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/elevate.mjs",
+        "line": 105,
+        "text": "fs.writeFileSync(scriptPath, elevatedPublishScript({ from, to, pathDir, logPath: markerPath }), 'utf8');"
+      },
+      {
+        "file": "lib/elevate.mjs",
+        "line": 106,
+        "text": "fs.writeFileSync(wrapperPath, elevatedWrapperScript({ powershell, script: scriptPath, marker: markerPath }), 'utf8');"
+      },
+      {
+        "file": "lib/elevate.mjs",
+        "line": 115,
+        "text": "marker = fs.readFileSync(markerPath, 'utf8').trim();"
+      },
+      {
+        "file": "lib/elevate.mjs",
+        "line": 133,
+        "text": "fs.rmSync(tmp, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/router-features.mjs",
+        "line": 193,
+        "text": "tools.register(createToolDefinition(scope, setup, () => registeredPaths.slice()));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/elevate.mjs",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/elevate.mjs",
+        "line": 86,
+        "text": "execFile(file, args, options, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/install.mjs",
+        "line": 27,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/install.mjs",
+        "line": 146,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/paths.mjs",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

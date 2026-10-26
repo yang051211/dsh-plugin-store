@@ -1,0 +1,87 @@
+{
+  "name": "iamchinese",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:05:51.507Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/share-server.mjs",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/profile.js",
+        "line": 9,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/core/profile.js",
+        "line": 42,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/core/profile.js",
+        "line": 44,
+        "text": "await writeFile(tmp, text, { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/core/profile.js",
+        "line": 48,
+        "text": "await rm(tmp, { force: true })"
+      },
+      {
+        "file": "lib/core/profile.js",
+        "line": 84,
+        "text": "raw = await readFile(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/mount.js",
+        "line": 28,
+        "text": "() => ctx.tools.register(definition),"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* 失败。所以定义直接按宿主 `tools.register()` 的契约手写。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 63,
+        "text": "* @returns {object[]} 可直接 `ctx.tools.register()` 的定义数组。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

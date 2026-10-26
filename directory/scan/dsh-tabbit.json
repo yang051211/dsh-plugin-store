@@ -1,0 +1,142 @@
+{
+  "name": "dsh-tabbit",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:05:54.465Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 109,
+        "text": "const response = await fetch('/tabbit/mention/tabs?session=' + encodeURIComponent(sessionId));"
+      },
+      {
+        "file": "client/client.js",
+        "line": 247,
+        "text": "const response = await fetch('/tabbit/mention/extract', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 373,
+        "text": "const response = await fetch('/tabbit/mention/extract', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 400,
+        "text": "fetch('/tabbit/instance-hint', { method: 'POST' }).catch(() => {});"
+      },
+      {
+        "file": "lib/web-fetch/index.js",
+        "line": 75,
+        "text": "async fetch(request, signal) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/index.js",
+        "line": 54,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 55,
+        "text": "import { readFile, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 543,
+        "text": "const source = await readFile(SKILL_URL, { encoding: 'utf8', ...(signal ? { signal } : {}) });"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 626,
+        "text": "await rm(targetDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/core/legacy-settings.js",
+        "line": 2,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/index.js",
+        "line": 29,
+        "text": "*    dsh 自身的核心能力也都是服务：ctx.settings（设置）、ctx.tools（工具注册）、"
+      },
+      {
+        "file": "lib/installer/index.js",
+        "line": 45,
+        "text": "export const inject = ['tools', 'jobs', 'tabbit'];"
+      },
+      {
+        "file": "lib/installer/index.js",
+        "line": 59,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/installer/index.js",
+        "line": 207,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/permissions/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'tabbit'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installer/detect.js",
+        "line": 28,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/installer/detect.js",
+        "line": 37,
+        "text": "const result = spawnSync(command, args, { encoding: 'utf8', windowsHide: true, maxBuffer: 16 * 1024 * 1024 });"
+      },
+      {
+        "file": "lib/runtime/cli.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/runtime/cli.js",
+        "line": 48,
+        "text": "*   - spawn() 启动子进程，stdio 三路都接管为管道（pipe）；"
+      },
+      {
+        "file": "lib/runtime/cli.js",
+        "line": 63,
+        "text": "child = spawn(options.launcherPath, argv, { env, stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "settings",
+    "tabbit",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

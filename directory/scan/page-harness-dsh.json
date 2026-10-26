@@ -1,0 +1,123 @@
+{
+  "name": "page-harness-dsh",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:36.445Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bring-up.js",
+        "line": 5,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/bring-up.js",
+        "line": 6,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 193,
+        "text": "const res = await fetch(pluginUrl(), {"
+      },
+      {
+        "file": "lib/detect.js",
+        "line": 2,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/detect.js",
+        "line": 8,
+        "text": "const req = http.get({ host: '127.0.0.1', port, path: '/', timeout: timeoutMs, headers: { accept: 'text/html' } }, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bring-up.js",
+        "line": 4,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/bring-up.js",
+        "line": 78,
+        "text": "const pkg = JSON.parse(readFileSync(path.join(dir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/page-preview.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/page-preview.js",
+        "line": 110,
+        "text": "data = JSON.parse(readFileSync(path.join(project, '.page-harness', 'review.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/preview.js",
+        "line": 4,
+        "text": "import { existsSync, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 9,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 32,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 55,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 70,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 92,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/preview.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/preview.js",
+        "line": 145,
+        "text": "const child = this.spawn(process.execPath, cliArgs(cli, o), { cwd: o.project, stdio: ['ignore', 'pipe', 'pipe'], env: process.env })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

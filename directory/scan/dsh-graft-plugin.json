@@ -1,0 +1,135 @@
+{
+  "name": "dsh-graft-plugin",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:05:45.905Z",
+  "icon": "dsh-graft-plugin.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 370,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/postinstall.mjs",
+        "line": 26,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/test-command.mjs",
+        "line": 14,
+        "text": "import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/test-command.mjs",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/test-command.mjs",
+        "line": 34,
+        "text": "const readJson = async (p) => { try { return JSON.parse(await readFile(p, 'utf8')) } catch { return undefined } }"
+      },
+      {
+        "file": "scripts/test-command.mjs",
+        "line": 44,
+        "text": "await rm(FRESH, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 61,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 721,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `graft-status: ${tool.name}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/postinstall.mjs",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/postinstall.mjs",
+        "line": 57,
+        "text": "child = spawn(command, args, { stdio: 'inherit', shell: process.platform === 'win32' })"
+      },
+      {
+        "file": "src/auto-sync.js",
+        "line": 40,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/graft-tools.js",
+        "line": 42,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 45,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/postinstall.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 48,
+      "text": "npm install -g @nanonets/graft"
+    },
+    {
+      "file": "README.md",
+      "line": 79,
+      "text": "plugins **do not update automatically yet** — to upgrade, uninstall and install again. The graft CLI requirement (`npm install -g @nanonets/graft`) is the same."
+    },
+    {
+      "file": "README.md",
+      "line": 181,
+      "text": "- the `graft` CLI on PATH (`npm install -g @nanonets/graft`). A bun global install (`bun add -g @nanonets/graft`) is detected too, via `$BUN_INSTALL` or `~/.bun"
+    },
+    {
+      "file": "README.md",
+      "line": 214,
+      "text": "**`/graft` says the graft CLI is not on PATH.** The postinstall was blocked or skipped (see Install): `npm install -g @nanonets/graft`."
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 48,
+      "text": "npm install -g @nanonets/graft"
+    }
+  ],
+  "skippedEntries": []
+}

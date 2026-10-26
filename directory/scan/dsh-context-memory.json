@@ -1,0 +1,103 @@
+{
+  "name": "dsh-context-memory",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:05:37.611Z",
+  "icon": "dsh-context-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/ui.js",
+        "line": 389,
+        "text": "fetch(path, { signal: c.signal })"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 45,
+        "text": "            const r = await fetch(REMEMBER_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text, subject: subjec"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 66,
+        "text": "        const r = await fetch(PREFS_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ [key]: !(prefs?.[key] ?? tru"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 70,
+        "text": "useEffect(() => { void fetch(PREFS_PATH).then(async (r) => { if (r.ok)"
+      },
+      {
+        "file": "lib/client/view.js",
+        "line": 81,
+        "text": "const r = await fetch(`${RECALL_PATH}?q=${encodeURIComponent(searchQuery)}&limit=10`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/candidates.js",
+        "line": 20,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/candidates.js",
+        "line": 58,
+        "text": "mkdirSync(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/candidates.js",
+        "line": 59,
+        "text": "appendFileSync(this.logPath, `${JSON.stringify(event)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/candidates.js",
+        "line": 81,
+        "text": "const lines = readFileSync(this.logPath, 'utf8').split('\\n');"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 45,
+        "text": "import { closeSync, openSync, readSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 81,
+        "text": "toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 165,
+        "text": "toolCtx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guard.js",
+        "line": 22,
+        "text": "* command string and run it with `spawnSync(..., { shell: true })`, branching on"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client/view.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

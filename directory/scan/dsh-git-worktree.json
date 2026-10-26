@@ -1,0 +1,118 @@
+{
+  "name": "dsh-git-worktree",
+  "version": "0.11.0",
+  "scannedAt": "2026-10-26T10:05:31.852Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/files.js",
+        "line": 9,
+        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, rmdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/adapters/files.js",
+        "line": 10,
+        "text": "import { lstat, readdir, realpath, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/adapters/files.js",
+        "line": 82,
+        "text": "await rm(path, {"
+      },
+      {
+        "file": "lib/adapters/files.js",
+        "line": 95,
+        "text": "ensureDirectory: (path) => mkdirSync(path, { recursive: true }),"
+      },
+      {
+        "file": "lib/adapters/git.js",
+        "line": 17,
+        "text": "import { realpath, lstat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "// first ctx.tools access then fails with \"cannot get property without inject\"."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 26,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 64,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 117,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 159,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/git.js",
+        "line": 55,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/console-host/review-diff.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/console-host/review-diff.js",
+        "line": 18,
+        "text": "const child = spawn('git', ['-c', 'core.quotePath=false', ...(process.platform === 'win32' ? ['-c', 'core.longpaths=true'] : []), ...args], {"
+      },
+      {
+        "file": "lib/session-checkout-apply.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/session-checkout-apply.js",
+        "line": 24,
+        "text": "const child = spawn('git', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

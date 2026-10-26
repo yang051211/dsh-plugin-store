@@ -1,0 +1,114 @@
+{
+  "name": "dsh-better-edit",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:05:34.287Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/canonical-path.js",
+        "line": 10,
+        "text": "import { lstat as lstatAsync, readlink as readlinkAsync } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/canonical-path.js",
+        "line": 11,
+        "text": "import { lstatSync, readlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/file-view.js",
+        "line": 20,
+        "text": "import { constants } from \"node:fs\";"
+      },
+      {
+        "file": "lib/file-view.js",
+        "line": 21,
+        "text": "import { open as fsOpen, stat as fsStat } from \"fs/promises\";"
+      },
+      {
+        "file": "lib/file-view.js",
+        "line": 22,
+        "text": "import { access as fsAccess } from \"fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"fs\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "disposers.push(agent.ctx.tools.register(hashReadDef));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "disposers.push(agent.ctx.tools.register(hashEditDef));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 102,
+        "text": "disposers.push(agent.ctx.tools.register(hashStrReplaceDef));"
+      },
+      {
+        "file": "lib/self-heal.js",
+        "line": 67,
+        "text": "agentCtx.tools.register(def);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 168,
+      "text": "**Store** central by default `$DSH_HOME/plugins/dsh-better-edit/runtime/<name>-<hash8>/` (`ls`-readable + `.wsPath` sidecar). DBs are disposable caches — `rm -r"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "text": "# $DSH_HOME/plugins/dsh-better-edit/config.yaml"
+    },
+    {
+      "file": "README.md",
+      "line": 181,
+      "text": "dit` are plain markdown per preset at `$DSH_HOME/plugins/dsh-better-edit/<preset>/<section>.md`. The default order is the harness's own tool slot (`systemPrompt"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 124,
+      "text": "默认无仓库污染。存储位于 `$DSH_HOME/plugins/dsh-better-edit/runtime/<name>-<hash8>/`（`central`）。"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 132,
+      "text": "# $DSH_HOME/plugins/dsh-better-edit/config.yaml"
+    }
+  ],
+  "skippedEntries": []
+}

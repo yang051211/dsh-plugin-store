@@ -1,0 +1,61 @@
+{
+  "name": "dsh-mask",
+  "version": "0.2.23",
+  "scannedAt": "2026-10-26T10:05:31.710Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/deliver.mjs",
+        "line": 23,
+        "text": "import { chmod, lstat, mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/deliver.mjs",
+        "line": 65,
+        "text": "* @returns {Promise<import('node:fs').Stats|undefined>} 存在时的 lstat 结果。"
+      },
+      {
+        "file": "lib/deliver.mjs",
+        "line": 94,
+        "text": "await mkdir(dir, { recursive: true, mode: DIR_MODE })"
+      },
+      {
+        "file": "lib/deliver.mjs",
+        "line": 107,
+        "text": "await writeFile(target, body, { encoding: 'utf8', mode: FILE_MODE, flag: 'w' })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 513,
+        "text": "toolCtx.tools.register(makeMaskTestTool(resolved.entities, resolved.maxRestoreEntriesPerSession))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

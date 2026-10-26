@@ -1,0 +1,88 @@
+{
+  "name": "dsh-auth-gateway",
+  "version": "0.8.7",
+  "scannedAt": "2026-10-26T10:05:33.118Z",
+  "icon": "dsh-auth-gateway.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 1323,
+        "text": "getSettings: async () => (await fetch(BASE + \"/login-api/settings\")).json(),"
+      },
+      {
+        "file": "client/index.js",
+        "line": 1324,
+        "text": "getVersion: async () => (await fetch(BASE + \"/login-api/version\")).json(),"
+      },
+      {
+        "file": "client/index.js",
+        "line": 1327,
+        "text": "checkForUpdates: async () => (await fetch(BASE + \"/login-api/version?refresh=1\")).json(),"
+      },
+      {
+        "file": "client/index.js",
+        "line": 1328,
+        "text": "enableOtp: async () => (await fetch(BASE + \"/otp/enable\", { method: \"POST\" })).json(),"
+      },
+      {
+        "file": "client/index.js",
+        "line": 1329,
+        "text": "verifyOtpSetup: async (otp) => (await fetch(BASE + \"/otp/verify-setup\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 17,
+        "text": "import { writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 59,
+        "text": "writeFileSync(outfile, bundle)"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 60,
+        "text": "writeFileSync(join(root, 'client', 'index.js.map'), map)"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 33,
+        "text": "* - writes go through fs.appendFile (open-write-close per line), so the"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 47,
+        "text": "import { chmod, link, mkdir, readdir, appendFile, stat, unlink } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

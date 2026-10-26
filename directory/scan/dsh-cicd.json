@@ -1,0 +1,139 @@
+{
+  "name": "dsh-cicd",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:03.260Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 173,
+        "text": "const res = await fetch(`${PREFIX}/branch/request`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 229,
+        "text": "const res = await fetch(`${PREFIX}/branch/answer`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 248,
+        "text": "await fetch(`${PREFIX}/branch/answer`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 320,
+        "text": "const res = await fetch(`${PREFIX}/config/prefs`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 347,
+        "text": "const res = await fetch(`${PREFIX}/notices?since=${lastSeqRef.current}`, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/branch-broker.js",
+        "line": 16,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/branch-broker.js",
+        "line": 107,
+        "text": "const raw = JSON.parse(readFileSync(this.#storePath, 'utf8'));"
+      },
+      {
+        "file": "lib/branch-broker.js",
+        "line": 131,
+        "text": "mkdirSync(dirname(this.#storePath), { recursive: true });"
+      },
+      {
+        "file": "lib/branch-broker.js",
+        "line": 132,
+        "text": "writeFileSync(this.#storePath, JSON.stringify({ notices: this.#notices }), 'utf8');"
+      },
+      {
+        "file": "lib/config-service.js",
+        "line": 9,
+        "text": "import { readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 35,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 95,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 7,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 149,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/t', '/f'], { windowsHide: true });"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 220,
+        "text": "const child = spawn(commandFile, commandArgs, {"
+      },
+      {
+        "file": "src/runner.ts",
+        "line": 1,
+        "text": "import type { ChildProcess } from 'node:child_process'"
+      },
+      {
+        "file": "src/runner.ts",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

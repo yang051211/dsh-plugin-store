@@ -1,0 +1,98 @@
+{
+  "name": "dsh-session-bus",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:05:41.483Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bus.js",
+        "line": 23,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/bus.js",
+        "line": 24,
+        "text": "import { appendFile, mkdir, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/bus.js",
+        "line": 1019,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/bus.js",
+        "line": 1021,
+        "text": "await writeFile(path, body, 'utf8');"
+      },
+      {
+        "file": "lib/bus.js",
+        "line": 1037,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'sessionController'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 50,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 123,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 219,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 286,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bus.js",
+        "line": 434,
+        "text": "async spawn(input) {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 347,
+        "text": "const receipt = await bus.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

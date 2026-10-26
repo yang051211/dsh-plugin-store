@@ -1,0 +1,108 @@
+{
+  "name": "dsh-easyrewrite",
+  "version": "2.6.0",
+  "scannedAt": "2026-10-26T10:06:01.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 55,
+        "text": "fetch(\"/bubble/log\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 275,
+        "text": "var resp = await fetch(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 381,
+        "text": "var resp2 = await fetch(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 511,
+        "text": "fetch(\"/bubble/backup/delete\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 626,
+        "text": "var resp = await fetch(\"/bubble/clean-ghost\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { appendFile, mkdir, writeFile, rm, readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "await appendFile(file, content, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "const raw = await readFile(pkgPath, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "const p = JSON.parse(await readFile(c, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 532,
+        "text": "execFile('pnpm', ['up', 'dsh-easyrewrite'], { cwd: profileDir, timeout: 90000, windowsHide: true }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

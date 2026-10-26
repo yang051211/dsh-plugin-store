@@ -1,0 +1,126 @@
+{
+  "name": "dsh-grok-byapi",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:06:00.482Z",
+  "icon": "dsh-grok-byapi.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 82,
+        "text": "      response = await fetch(baseURL + '/models', { headers: { authorization: 'Bearer ' + key }, redirect: 'error', signal: AbortSignal.timeout(Math.min(capture"
+      },
+      {
+        "file": "src/index.js",
+        "line": 97,
+        "text": "    const response = await fetch(baseURL + '/models', { headers: { authorization: 'Bearer ' + key, accept: 'application/json' }, redirect: 'error', signal: Abor"
+      },
+      {
+        "file": "src/index.js",
+        "line": 127,
+        "text": "      const response = await fetch(baseURL + '/models', { headers: { authorization: 'Bearer ' + await resolveKey(), accept: 'application/json' }, redirect: 'err"
+      },
+      {
+        "file": "src/media.js",
+        "line": 98,
+        "text": "    return this.fetch(this.baseURL + path, { method: payload === undefined ? 'GET' : 'POST', headers: { authorization: 'Bearer ' + key, 'content-type': 'applica"
+      },
+      {
+        "file": "src/media.js",
+        "line": 116,
+        "text": "const response = await this.fetch(current, { redirect: 'manual', signal, credentials: 'omit' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 2,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 3,
+        "text": "const result = await transform(await readFile(new URL('../src/client.js', import.meta.url), 'utf8'), { format: 'cjs', target: 'es2022', platform: 'browser' });"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 5,
+        "text": "await mkdir(new URL('../lib/', import.meta.url), { recursive: true });"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 6,
+        "text": "await writeFile(new URL('../lib/client.js', import.meta.url), built);"
+      },
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "import { mkdir, writeFile, rename } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 15,
+        "text": "export const inject = ['llm', 'credentials', 'tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 215,
+        "text": "toolDisposers.push(ctx.tools.register(build()));"
+      },
+      {
+        "file": "src/index.js",
+        "line": 220,
+        "text": "for (const build of toolFactories) toolDisposers.push(ctx.tools.register(build()));"
+      },
+      {
+        "file": "src/media-entry.js",
+        "line": 5,
+        "text": "export const inject = ['grok-byapi', 'tools'];"
+      },
+      {
+        "file": "src/media-entry.js",
+        "line": 26,
+        "text": "return ctx.tools.register(defineTool(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "grok-byapi",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 159,
+      "text": "- **Files:** generated media goes to `$DSH_HOME/plugins/dsh-grok-byapi` (or `media.dataDir`). Task records may contain signed upstream URLs; treat them as priva"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 159,
+      "text": "- **文件**：生成物写入 `$DSH_HOME/plugins/dsh-grok-byapi`（或 `media.dataDir`）。任务记录可能包含上游签名 URL，请当作私有数据。"
+    }
+  ],
+  "skippedEntries": []
+}

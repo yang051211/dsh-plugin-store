@@ -1,0 +1,97 @@
+{
+  "name": "dsh-gotofile",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:05:28.365Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 47,
+        "text": "fetch(\"/api/goto-file/config\", { method: \"GET\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 62,
+        "text": "fetch(\"/api/goto-file/config\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 241,
+        "text": "const res = await fetch(\"/api/goto-file/open\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 349,
+        "text": "fetch(\"/api/goto-file/check\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 372,
+        "text": "fetch(\"/api/goto-file/open\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { existsSync, realpathSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "test/host.test.js",
+        "line": 9,
+        "text": "import { mkdir, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "test/host.test.js",
+        "line": 273,
+        "text": "await mkdir(foreignRoot, { recursive: true })"
+      },
+      {
+        "file": "test/host.test.js",
+        "line": 275,
+        "text": "await writeFile(probeFile, 'probe\\n', 'utf8')"
+      },
+      {
+        "file": "test/host.test.js",
+        "line": 282,
+        "text": "await rm(foreignRoot, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 947,
+        "text": "execFile(command, cleanArgs, { timeout: 10000 }, (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

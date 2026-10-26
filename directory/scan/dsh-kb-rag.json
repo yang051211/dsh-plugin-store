@@ -1,0 +1,127 @@
+{
+  "name": "dsh-kb-rag",
+  "version": "1.6.8",
+  "scannedAt": "2026-10-26T10:05:53.772Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 50,
+        "text": "return await fetch(url, { headers, redirect: \"manual\" });"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 167,
+        "text": "    const r = await fetch(`https://api.unpaywall.org/v2/${encodeURIComponent(d)}?email=${encodeURIComponent(process.env.UNPAYWALL_EMAIL || \"researcher@universit"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 177,
+        "text": "const r = await fetch(`https://api.crossref.org/works/${encodeURIComponent(d)}`, { headers: { \"User-Agent\": UA } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 12,
+        "text": "import { writeFileSync, mkdirSync, existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 26,
+        "text": "const txt = readFileSync(p, \"utf8\");"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 36,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "scripts/doi_pdf.mjs",
+        "line": 216,
+        "text": "writeFileSync(p, g.buf);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "const inject = [\"tools\", \"timer\", \"subprocess\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 142,
+        "text": "const toolDisposers = [];      // 硬关闭用：ctx.tools.register 返回的 disposer"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "const dispose = ctx.tools.register(wrapped);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 11,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "install.mjs",
+        "line": 41,
+        "text": "const r = spawnSync("
+      },
+      {
+        "file": "install.mjs",
+        "line": 48,
+        "text": "const r = spawnSync(\"bash\", [join(here, \"scripts\", \"install.sh\"), ...finalArgs], { stdio: \"inherit\", shell: false });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 645,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 149,
+      "text": "pip install pymupdf faiss-cpu sentence-transformers"
+    },
+    {
+      "file": "README.md",
+      "line": 152,
+      "text": " checks these at startup and reports the complete missing list. Missing packages do not block plugin loading; tool calls return the exact `pip install` command."
+    }
+  ],
+  "skippedEntries": []
+}

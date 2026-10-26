@@ -1,0 +1,80 @@
+{
+  "name": "dsh-notify-windows",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:05:58.970Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.ps1",
+        "line": 90,
+        "text": "$ver = Invoke-WebRequest -Uri \"http://127.0.0.1:$port/json/version\" -TimeoutSec 1 -UseBasicParsing"
+      },
+      {
+        "file": "lib/launcher.ps1",
+        "line": 93,
+        "text": "$list = Invoke-WebRequest -Uri \"http://127.0.0.1:$port/json/list\" -TimeoutSec 1 -UseBasicParsing"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { appendFileSync, existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 342,
+        "text": "mkdirSync(join(tmpdir(), \"dsh-notify\"), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 343,
+        "text": "appendFileSync(logPath, JSON.stringify({ time: Date.now(), ...entry }) + \"\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "const r = spawnSync(\"wslpath\", [\"-w\", p], { encoding: \"utf8\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "//     Windows directories (spawn(\"powershell.exe\") would then fail with ENOENT"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 401,
+        "text": "const child = spawn(POWERSHELL, args, { stdio: [\"ignore\", \"pipe\", \"pipe\"], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

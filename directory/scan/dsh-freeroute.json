@@ -1,0 +1,75 @@
+{
+  "name": "dsh-freeroute",
+  "version": "0.10.3",
+  "scannedAt": "2026-10-26T10:05:39.081Z",
+  "icon": "dsh-freeroute.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "const { realpathSync } = await import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 618,
+        "text": "try { fs.mkdirSync(dir, { recursive: true }) } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 620,
+        "text": "fs.writeFileSync(path, line, { flag: 'a' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 634,
+        "text": "const raw = JSON.parse(fsx.readFileSync(configPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1616,
+        "text": "          proc = subprocess.spawn({ argv: argv, cwd: '/tmp', stdio: { stdin: { data: body }, stdout: 'pipe', stderr: { maxBytes: 4096 } }, graceMs: 5000, signal"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2427,
+        "text": "proc = subprocess.spawn({ argv: argv, cwd: '/tmp', stdio: { stdin: 'ignore', stdout: 'pipe', stderr: { maxBytes: 2048 } }, graceMs: 3000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "settings",
+    "subprocess",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

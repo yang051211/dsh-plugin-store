@@ -1,0 +1,107 @@
+{
+  "name": "dsh-session-bridge",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:05:32.123Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "const raw = await readFile(recordFilePath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "await writeFile(path, JSON.stringify([...this.records.values()], null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13298,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13332,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14221,
+        "text": "env.ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14319,
+        "text": "env.ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14391,
+        "text": "env.ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 29,
+        "text": "import { execFileSync, execSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 60,
+        "text": "// Anchor 1: the global install root. execSync (string command) rather than"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 65,
+        "text": "globalRoot = execSync('npm root -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()"
+      },
+      {
+        "file": "scripts/check-dsh-compat.mjs",
+        "line": 75,
+        "text": "const found = execSync(process.platform === 'win32' ? 'where dsh' : 'which dsh', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "dsh-copilot-vision",
+  "version": "1.3.2",
+  "scannedAt": "2026-10-26T10:06:02.908Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/actions.js",
+        "line": 5,
+        "text": "import { mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/actions.js",
+        "line": 31,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 6,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 37,
+        "text": "mkdirSync(resolveShotsDir(), { recursive: true })"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 38,
+        "text": "appendFileSync(auditLogPath(), `${JSON.stringify(entry)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'userQuestions']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 64,
+        "text": "ctx.tools.register(tool)"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 15,
+        "text": "export const inject = ['tools', 'userQuestions']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

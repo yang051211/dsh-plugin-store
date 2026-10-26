@@ -1,0 +1,91 @@
+{
+  "name": "dsh-zed-provider",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:06:02.478Z",
+  "icon": "dsh-zed-provider.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "response = await fetch(`${baseUrl}/client/llm_tokens`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "response = await fetch(`${baseUrl}/models`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 386,
+        "text": "const send = (token, payload) => fetch(`${baseUrl}/completions`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 590,
+        "text": "const response = await fetch(`${baseUrl}/client/users/me`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/bundle.test.mjs",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "test/bundle.test.mjs",
+        "line": 18,
+        "text": "const read = (name) => readFile(new URL(`../lib/${name}`, import.meta.url), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "execFile(file, args, { timeout }, (error, stdout) => resolve(error ? undefined : stdout));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 481,
+        "text": "execFile(command, args, () => { });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

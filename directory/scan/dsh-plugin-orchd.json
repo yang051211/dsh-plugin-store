@@ -1,0 +1,93 @@
+{
+  "name": "dsh-plugin-orchd",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:06.417Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 484,
+        "text": "const response = await fetch(`${path}?${search.toString()}`, { signal, headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1503,
+        "text": "const response = await fetch('/orchd/api/install-entry', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1522,
+        "text": "const response = await fetch('/orchd/api/install-inject', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 16,
+        "text": "import { statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/ideas.js",
+        "line": 21,
+        "text": "import { createReadStream, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/master.js",
+        "line": 13,
+        "text": "import { readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/master.js",
+        "line": 91,
+        "text": "marker = JSON.parse(readFileSync(markerPath, 'utf8'))"
+      },
+      {
+        "file": "lib/master.js",
+        "line": 158,
+        "text": "marker = JSON.parse(readFileSync(markerPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/orchd-cli.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 57,
+        "text": "const result = spawnSync(candidate.command, [...candidate.args, '-c', PROBE_SCRIPT], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

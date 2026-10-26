@@ -1,0 +1,95 @@
+{
+  "name": "dsh-skills-mcp-group-manager",
+  "version": "0.3.9",
+  "scannedAt": "2026-10-26T10:05:34.386Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 187,
+        "text": "const res = await fetch(RPC_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 20,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 67,
+        "text": "state = normalizeState(JSON.parse(readFileSync(file, 'utf8')));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 80,
+        "text": "const raw = await readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 113,
+        "text": "await mkdir(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "*     real `@deepseek-ai/dsh-mcp-client` plugin."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "export const inject = ['skills', 'tools', 'agents', 'loader'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "const MCP_PLUGIN_NAME = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 205,
+        "text": "const deny = denyNamesForDisabled(store.get(), ctx.tools.schemas());"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 233,
+        "text": "// '@deepseek-ai/dsh-mcp-client' (resolved from the global dsh install,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "loader",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

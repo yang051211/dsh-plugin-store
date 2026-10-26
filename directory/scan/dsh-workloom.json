@@ -1,0 +1,78 @@
+{
+  "name": "dsh-workloom",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:50.049Z",
+  "icon": "dsh-workloom.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 9114,
+        "text": "fetch(`api/changes.summary?${query.toString()}`, { signal: controller.signal }).then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 9152,
+        "text": "fetch(`api/changes.diff?${query.toString()}`, { signal: controller.signal }).then(async (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7856,
+        "text": "const result = await readFile(sessionId, path, offset, signal);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { lstat, mkdir, open, readFile, readdir, rename, rm, rmdir, stat, symlink, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "text = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 308,
+        "text": "await handle.writeFile(text + \"\\n\", \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "remoteAccess",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

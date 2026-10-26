@@ -1,0 +1,167 @@
+{
+  "name": "dsh-hashline-edittool",
+  "version": "0.10.3",
+  "scannedAt": "2026-10-26T10:05:59.394Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/lib/client.js",
+        "line": 3133,
+        "text": "const response = await fetch(`${MANAGER_ROUTE}/updates`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/lib/client.js",
+        "line": 3299,
+        "text": "const response = await fetch(MANAGER_ROUTE, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/lib/client.js",
+        "line": 3330,
+        "text": "const response = await fetch(LSP_ROUTE, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/lib/client.js",
+        "line": 3428,
+        "text": "const response = await fetch(`${LSP_ROUTE}/install`, {"
+      },
+      {
+        "file": "client/lib/client.js",
+        "line": 3467,
+        "text": "const response = await fetch(`${MANAGER_ROUTE}/${action}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ast/language.js",
+        "line": 24,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/ast/registry.js",
+        "line": 25,
+        "text": "import { mkdir, readdir, readFile, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/ast/registry.js",
+        "line": 151,
+        "text": "const raw = await readFile(join(root, id, version, \"install.json\"), \"utf-8\");"
+      },
+      {
+        "file": "lib/ast/registry.js",
+        "line": 271,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/ast/registry.js",
+        "line": 272,
+        "text": "await writeFile(join(dir, \"grammar.wasm\"), bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"fs\"];"
+      },
+      {
+        "file": "lib/tools/tool-ast-edit.js",
+        "line": 427,
+        "text": "return agentCtx.tools.register(buildAstEditTool(io, sandbox));"
+      },
+      {
+        "file": "lib/tools/tool-ast-grep.js",
+        "line": 613,
+        "text": "return agentCtx.tools.register(buildAstGrepTool(io));"
+      },
+      {
+        "file": "lib/tools/tool-edit.js",
+        "line": 745,
+        "text": "return agentCtx.tools.register(buildEditTool(io, sandbox));"
+      },
+      {
+        "file": "lib/tools/tool-format.js",
+        "line": 176,
+        "text": "return agentCtx.tools.register(buildFormatTool(io, sandbox));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ast/client.js",
+        "line": 76,
+        "text": "const worker = this.#spawn();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 319,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/lsp/install-server.js",
+        "line": 125,
+        "text": "handle = spawn({"
+      },
+      {
+        "file": "lib/lsp/manager.js",
+        "line": 83,
+        "text": "const { transport } = this.#options.spawn(server, workspaceRoot);"
+      },
+      {
+        "file": "lib/tools/grep-rg.js",
+        "line": 23,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 92,
+      "text": "t/write lands, the plugin baselines the language server with the pre-write text, pulls diagnostics, and delivers them per written file — an inline, severity-tin"
+    },
+    {
+      "file": "README.md",
+      "line": 94,
+      "text": "**Formatting through the language server.** The `format` tool asks the server's formatter to do the work — with indentation inferred from the file (or read from"
+    },
+    {
+      "file": "README.md",
+      "line": 358,
+      "text": "$DSH_HOME/plugins/dsh-hashline-edittool/<projectKey>/hash-store.sqlite"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 293,
+      "text": "$DSH_HOME/plugins/dsh-hashline-edittool/<projectKey>/hash-store.sqlite"
+    }
+  ],
+  "skippedEntries": []
+}

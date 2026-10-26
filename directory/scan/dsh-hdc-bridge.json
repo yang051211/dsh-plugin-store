@@ -1,0 +1,115 @@
+{
+  "name": "dsh-hdc-bridge",
+  "version": "0.10.2",
+  "scannedAt": "2026-10-26T10:06:07.396Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 162,
+        "text": "fetch('/api2/hdc-bridge/panel-state')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 174,
+        "text": "        fetch('/api2/hdc-bridge/refresh', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ shot: !!shot, target: target"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 181,
+        "text": "fetch('/api2/hdc-bridge/select', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ target: id }) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/arkts-check.cjs",
+        "line": 14,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "assets/arkts-check.cjs",
+        "line": 108,
+        "text": "const content = fs.readFileSync(resFile, 'utf-8');"
+      },
+      {
+        "file": "assets/arkts-check.cjs",
+        "line": 126,
+        "text": "const content = fs.readFileSync(filePath, 'utf-8');"
+      },
+      {
+        "file": "assets/arkts-check.cjs",
+        "line": 162,
+        "text": "config = JSON.parse(fs.readFileSync(mainPagesPath, 'utf-8'));"
+      },
+      {
+        "file": "assets/arkts-check.cjs",
+        "line": 192,
+        "text": "const content = fs.readFileSync(file, 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 19,
+        "text": "export const inject = ['shell', 'tools']"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 664,
+        "text": "ctx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/panel.mjs",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/panel.mjs",
+        "line": 36,
+        "text": "execFile(file, args, { timeout: timeoutMs || 12000, maxBuffer: maxBuffer || 65536, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/panel.mjs",
+        "line": 95,
+        "text": "execFile(hdcPath, args, { timeout: timeoutMs || CMD_TIMEOUT, maxBuffer: maxBuffer || 1048576, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/studio.mjs",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 81,
+      "text": "- **路线 A｜DevEco Studio**：本机装 DevEco Studio ≥ 6.1.0（macOS/Windows）+ `npm i -g @deveco/deveco-cli`；"
+    }
+  ],
+  "skippedEntries": []
+}

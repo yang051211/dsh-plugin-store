@@ -1,0 +1,82 @@
+{
+  "name": "dsh-plugin-subagent-roles",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:05:53.856Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/roles.js",
+        "line": 18,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/roles.js",
+        "line": 474,
+        "text": "raw = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "scripts/inspect-session-budget.mjs",
+        "line": 16,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/inspect-session-budget.mjs",
+        "line": 91,
+        "text": "const raw = readFileSync(path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['tools', 'subagents']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "disposeTool = ctx.effect(() => ctx.tools.register(created), 'subagent-roles: delegation tool')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "if (ctx.tools.get(toolName, context.scope ?? agent) !== definition) return ''"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "ctx.effect(() => ctx.tools.register(createRoleListTool({ ctx, config, loader, readBudgetSettings })), 'subagent-roles: list tool')"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 47,
+        "text": "const schemas = ctx.tools.schemas(agent)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

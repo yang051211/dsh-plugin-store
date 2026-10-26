@@ -1,0 +1,54 @@
+{
+  "name": "dsh-ptc-moejs",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:05:36.075Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "static inject = ['fs', 'sandbox', 'sandboxPolicy'];"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 12,
+        "text": "import { closeSync, openSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launch.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 52,
+        "text": "child = spawn(command, args, { cwd, env: sidecarEnvironment(), stdio: [...stdio], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

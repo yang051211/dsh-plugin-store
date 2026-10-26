@@ -1,0 +1,82 @@
+{
+  "name": "dsh-host-fs",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:06:02.312Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 64,
+        "text": "const response = await fetch(BASE + pathname, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guard.js",
+        "line": 9,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "fs.rmSync(target, { recursive, force: true, maxRetries: 2 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 148,
+        "text": "fs.rmSync(target, { recursive, force: true, maxRetries: 2 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 325,
+        "text": "fs.mkdirSync(path.dirname(to), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 371,
+        "text": "ctx.tools.register(makeRemoveTool(ctx, cfg))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 372,
+        "text": "ctx.tools.register(makeMoveTool(ctx, cfg))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 406,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

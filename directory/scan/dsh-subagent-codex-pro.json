@@ -1,0 +1,77 @@
+{
+  "name": "dsh-subagent-codex-pro",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-26T10:06:06.433Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { appendFileSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "appendFileSync(join(process.env.DSH_HOME ?? join(homedir(), '.dsh'), 'codex-pro.log'), `${new Date().toISOString()} ${message}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 483,
+        "text": "payloads.push({ data: readFileSync(image.path), mediaType });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 670,
+        "text": "agent.ctx.tools.register(createCodexTool({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 24,
+        "text": "* @returns a definition ready for `agent.ctx.tools.register`."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-exec.js",
+        "line": 48,
+        "text": "const child = spawn(command, argv, {"
+      },
+      {
+        "file": "lib/run.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/run.js",
+        "line": 84,
+        "text": "const proc = spawn(spec.command, ['app-server', '--stdio'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

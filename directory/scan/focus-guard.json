@@ -1,0 +1,131 @@
+{
+  "name": "focus-guard",
+  "version": "3.0.7",
+  "scannedAt": "2026-10-26T10:05:43.869Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hooks/guard.mjs",
+        "line": 72,
+        "text": "//   [P2] SQL 的 WHERE 豁免改为按语句判定；curl 的 -d 与 -D 区分大小写；补 find -delete/rimraf/wget post/Invoke-WebRequest POST；"
+      },
+      {
+        "file": "src/core/redlines.mjs",
+        "line": 23,
+        "text": "//   wget --post-data / Invoke-WebRequest -Method POST / curl -d），并修掉两处误伤"
+      },
+      {
+        "file": "src/core/redlines.mjs",
+        "line": 55,
+        "text": "\"(?:Invoke-WebRequest|Invoke-RestMethod)\\\\b[^&|;]*-Method\\\\s+POST\","
+      },
+      {
+        "file": "tools/sentinel.mjs",
+        "line": 23,
+        "text": "{ re: /\\b(?:curl|wget|Invoke-WebRequest|iwr|irm|Invoke-RestMethod)\\b[^&|;]*\\|\\s*(?:sudo\\s+)?(?:ba|z|da|k)?sh\\b/i, w: 3, why: \"下载内容直接管道给 shell 执行\" },"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hooks/guard.mjs",
+        "line": 31,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "hooks/guard.mjs",
+        "line": 91,
+        "text": "rmSync(path, { force: true });"
+      },
+      {
+        "file": "hooks/guard.mjs",
+        "line": 114,
+        "text": "let t = readFileSync(cp, \"utf8\");"
+      },
+      {
+        "file": "hooks/guard.mjs",
+        "line": 118,
+        "text": "writeFileSync(tmp, t);"
+      },
+      {
+        "file": "hooks/guard.mjs",
+        "line": 129,
+        "text": "readFileSync(join(projDir, \"HANDOFF.md\"), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters/dsh/fg-appeal-tool.mjs",
+        "line": 13,
+        "text": "/** 依赖注入：注册到 ctx.tools 即可。 */"
+      },
+      {
+        "file": "src/adapters/dsh/fg-appeal-tool.mjs",
+        "line": 14,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/adapters/dsh/fg-appeal-tool.mjs",
+        "line": 43,
+        "text": "/** Cordis 插件入口：把 fg_appeal 注册进 ctx.tools。 */"
+      },
+      {
+        "file": "src/adapters/dsh/fg-appeal-tool.mjs",
+        "line": 46,
+        "text": "ctx.tools.register(buildFgAppealTool())"
+      },
+      {
+        "file": "src/adapters/dsh/fg-apply-tool.mjs",
+        "line": 16,
+        "text": "/** 依赖注入：注册到 ctx.tools 即可，无需其它服务。 */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hooks/guard.mjs",
+        "line": 35,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/adapters/dsh/protocol.mjs",
+        "line": 10,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/core/approval.mjs",
+        "line": 10,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/core/audit.mjs",
+        "line": 10,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/core/backup.mjs",
+        "line": 10,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

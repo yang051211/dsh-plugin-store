@@ -1,0 +1,84 @@
+{
+  "name": "dsh-model-arena",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:05:43.222Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/arena.web.js",
+        "line": 549,
+        "text": "fetch(path, { signal: c.signal }).then(async (r) => {"
+      },
+      {
+        "file": "lib/arena.web.js",
+        "line": 585,
+        "text": "fetch(`${RUN_PATH}?id=${runId}`).then(async (r) => r.json()).then(setRun).catch(() => setRun(null)).finally(() => setLoading(false));"
+      },
+      {
+        "file": "lib/arena.web.js",
+        "line": 588,
+        "text": "    fetch(RATE_PATH, { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ runId, model, rating }) }).then(async (r) => r.js"
+      },
+      {
+        "file": "lib/arena.web.js",
+        "line": 592,
+        "text": "const r = await fetch(DELETE_PATH, { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify({ runId }) });"
+      },
+      {
+        "file": "lib/client/ui.js",
+        "line": 389,
+        "text": "fetch(path, { signal: c.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 1,
+        "text": "import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 13,
+        "text": "mkdirSync(this.arenaDir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 17,
+        "text": "writeFileSync(join(this.arenaDir, `${run.id}.json`), JSON.stringify(run, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 23,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 30,
+        "text": ".map((f) => JSON.parse(readFileSync(join(this.arenaDir, f), 'utf8')))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,88 @@
+{
+  "name": "dsh-rea-agents",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:05:34.461Z",
+  "icon": "dsh-rea-agents.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 353,
+        "text": "return fetch(API_PREFIX + '/' + route, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { access, constants, mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 364,
+        "text": "return createHash('sha256').update(await readFile(join(dir, 'package.json'))).digest('hex').slice(0, 16)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 495,
+        "text": "await mkdir(dirname(pinFile(dir)), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 52,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 648,
+        "text": "|| row.name === '@deepseek-ai/dsh-mcp-client'),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 174,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

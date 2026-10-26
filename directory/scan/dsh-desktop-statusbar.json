@@ -1,0 +1,114 @@
+{
+  "name": "dsh-desktop-statusbar",
+  "version": "2.2.2",
+  "scannedAt": "2026-10-26T10:05:37.597Z",
+  "icon": "dsh-desktop-statusbar.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 524,
+        "text": "return window.fetch(PRICES_URL, { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 540,
+        "text": "return window.fetch(HOLIDAYS_URL + \"?year=\" + String(year), { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2050,
+        "text": "window.fetch(TIP_DIAG_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4402,
+        "text": "return window.fetch(VERSION_URL + \"?current=\" + encodeURIComponent(VERSION), { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4428,
+        "text": "window.fetch(UPDATE_FAILURE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "import { appendFileSync, closeSync, copyFileSync, mkdirSync, openSync, readFileSync, readSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1152,
+        "text": "const text = readFileSync(join(home, '.credentials.yaml'), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1944,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1947,
+        "text": "writeFileSync(temp, JSON.stringify({ updatedAt: Date.now(), days: merged }), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2350,
+        "text": "buf = readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/self-update.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/self-update.js",
+        "line": 336,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "tools/shot.cjs",
+        "line": 16,
+        "text": "const { execFileSync } = require('child_process');"
+      },
+      {
+        "file": "tools/shot.cjs",
+        "line": 347,
+        "text": "const run = require('child_process').spawnSync(chrome, args, { encoding: 'utf8' });"
+      },
+      {
+        "file": "tools/test.cjs",
+        "line": 8,
+        "text": "*    原先用 `spawnSync(..., { encoding: 'utf8' })`（默认 pipe）在某些受限环境下会直接"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessionProjections",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

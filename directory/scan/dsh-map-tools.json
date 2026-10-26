@@ -1,0 +1,118 @@
+{
+  "name": "dsh-map-tools",
+  "version": "0.7.3",
+  "scannedAt": "2026-10-26T10:05:59.479Z",
+  "icon": "dsh-map-tools.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 345,
+        "text": "return fetch(CONFIG_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 373,
+        "text": "fetch(CONFIG_URL, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 400,
+        "text": "fetch(CONFIG_URL + '?open=true', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/clients/amap.js",
+        "line": 268,
+        "text": "res = await fetch(url, { signal: controller.signal, headers: { Accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/clients/amap.js",
+        "line": 324,
+        "text": "res = await fetch(url, { signal: controller.signal, headers: { Accept: 'image/png,application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-file.js",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, lstatSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-file.js",
+        "line": 26,
+        "text": "raw = readFileSync(configPath(), 'utf8');"
+      },
+      {
+        "file": "lib/config-file.js",
+        "line": 64,
+        "text": "mkdirSync(dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/config-file.js",
+        "line": 65,
+        "text": "writeFileSync(configPath(), `${JSON.stringify(current, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools/geocode.js",
+        "line": 5,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/geocode.js",
+        "line": 70,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/poi.js",
+        "line": 5,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/routes.js",
+        "line": 263,
+        "text": "disposers.push(ctx.tools.register(routeTool('map_driving_route', '规划驾车路线，返回距离、预计耗时和分段指引。起点/终点支持地址或 \"lng,lat\" 坐标。', 'driving', clients)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-route.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/config-route.js",
+        "line": 51,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

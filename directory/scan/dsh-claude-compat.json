@@ -1,0 +1,129 @@
+{
+  "name": "dsh-claude-compat",
+  "version": "0.8.4",
+  "scannedAt": "2026-10-26T10:05:45.402Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/dsh-restart.sh",
+        "line": 98,
+        "text": "if curl -sf -o /dev/null \"http://127.0.0.1:$PORT\"; then"
+      },
+      {
+        "file": "scripts/gen-downloads-chart.mjs",
+        "line": 11,
+        "text": "const res = await fetch(`https://api.npmjs.org/downloads/range/${iso(start)}:${iso(end)}/${PKG}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/cc-export.mjs",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/cc-export.mjs",
+        "line": 89,
+        "text": "const raw = readFileSync(s.file, 'utf8');"
+      },
+      {
+        "file": "scripts/cc-export.mjs",
+        "line": 111,
+        "text": "mkdirSync(targetDir, { recursive: true });"
+      },
+      {
+        "file": "scripts/cc-export.mjs",
+        "line": 112,
+        "text": "writeFileSync(targetFile, `---\\n${yaml}\\n---\\n\\n${body}\\n`);"
+      },
+      {
+        "file": "scripts/cc-resume.mjs",
+        "line": 30,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 24,
+        "text": "//   4. MCP servers from <projectRoot>/.mcp.json — mounted as dsh-mcp-client"
+      },
+      {
+        "file": "src/mcp.js",
+        "line": 3,
+        "text": "// mounted as an @deepseek-ai/dsh-mcp-client plugin instance (stdio for"
+      },
+      {
+        "file": "src/mcp.js",
+        "line": 7,
+        "text": "// or an absent dsh-mcp-client package logs a warning and skips, never crashing"
+      },
+      {
+        "file": "src/mcp.js",
+        "line": 17,
+        "text": "// Pure translation of Claude Code's .mcp.json body into dsh-mcp-client plugin"
+      },
+      {
+        "file": "src/mcp.js",
+        "line": 39,
+        "text": "// serverName must match /^[A-Za-z0-9_-]{1,32}$/ (dsh-mcp-client contract)."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/zstd-compat.mjs",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/hooks.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/hooks.js",
+        "line": 137,
+        "text": "const child = execFile('/bin/sh', ['-c', command], {"
+      },
+      {
+        "file": "src/plugin-manager.js",
+        "line": 25,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 178,
+      "text": "l/enable/disable; for marketplace add/update, install Claude Code (`npm install -g @anthropic-ai/claude-code`) or manage marketplaces from Claude Code directly."
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 173,
+      "text": "` 提示 claude CLI 不可用。** 降级引擎已覆盖 install/enable/disable；marketplace add/update 需要安装 Claude Code（`npm install -g @anthropic-ai/claude-code`）或直接在 Claude Code 里管理市场。"
+    }
+  ],
+  "skippedEntries": []
+}

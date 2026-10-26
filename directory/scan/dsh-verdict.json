@@ -1,0 +1,95 @@
+{
+  "name": "dsh-verdict",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:05:57.074Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/verdict.web.js",
+        "line": 696,
+        "text": "fetch(VERDICT_PANEL_PATH, { signal: controller.signal }).then(async (response) => {"
+      },
+      {
+        "file": "lib/verdict.web.js",
+        "line": 717,
+        "text": "await fetch(VERDICT_SKILLS_WRITE_PATH, {"
+      },
+      {
+        "file": "lib/verdict.web.js",
+        "line": 730,
+        "text": "await fetch(VERDICT_LEARN_PATH, {"
+      },
+      {
+        "file": "lib/verdict.web.js",
+        "line": 743,
+        "text": "await fetch(VERDICT_CHECK_PATH, { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 14,
+        "text": "import { mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 96,
+        "text": "mkdirSync(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 85,
+        "text": "writeFileSync(join(dir, `${slot}.json`), `${JSON.stringify(snap, null, 2)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 172,
+        "text": "proc = spawnSync(guard.command, { cwd, shell: true, encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

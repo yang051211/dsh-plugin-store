@@ -1,0 +1,94 @@
+{
+  "name": "oh-my-dsh-slim",
+  "version": "0.8.4",
+  "scannedAt": "2026-10-26T10:05:56.560Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-settings.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-settings.js",
+        "line": 10,
+        "text": "const factoryDefaults = JSON.parse(readFileSync(new URL('../preset/defaults.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/config-settings.js",
+        "line": 49,
+        "text": "const defaults = JSON.parse(readFileSync(new URL('../preset/defaults.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/config-settings.js",
+        "line": 101,
+        "text": "const document = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "preset/config.js",
+        "line": 14,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preset/council-mode.js",
+        "line": 19,
+        "text": "export const inject = ['systemPrompt', 'tools'];"
+      },
+      {
+        "file": "preset/council-mode.js",
+        "line": 58,
+        "text": "return ctx.tools.get(row.toolName, context.scope) !== undefined;"
+      },
+      {
+        "file": "preset/council-mode.js",
+        "line": 100,
+        "text": "if (ctx.tools.get(COUNCIL_TOOL_NAME, context.scope) === undefined) {"
+      },
+      {
+        "file": "preset/role-composition.js",
+        "line": 11,
+        "text": "//   agent.ctx.tools.restrict(filter)"
+      },
+      {
+        "file": "preset/role-composition.js",
+        "line": 87,
+        "text": "const tools = agent.ctx.get?.('tools') ?? agent.ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node -e \"const fs=require('node:fs');for(const f of ['README.md','CHANGELOG.md']){const src='../'+f;if(!fs.existsSync(src))throw new Error('pre"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "configEditor",
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

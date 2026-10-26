@@ -1,0 +1,102 @@
+{
+  "name": "dsh-study-mode",
+  "version": "0.3.20",
+  "scannedAt": "2026-10-26T10:05:39.450Z",
+  "icon": "dsh-study-mode.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 787,
+        "text": "const res = await fetch(`${API}${path}${query ? '?' + query : ''}`, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 798,
+        "text": "const res = await fetch(API + path, {"
+      },
+      {
+        "file": "scripts/probe-network.mjs",
+        "line": 43,
+        "text": "const response = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(TIMEOUT_MS) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/store.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "plugin/store.js",
+        "line": 101,
+        "text": "const raw = fs.readFileSync(pendingFile(), 'utf8')"
+      },
+      {
+        "file": "plugin/store.js",
+        "line": 113,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "plugin/store.js",
+        "line": 114,
+        "text": "fs.writeFileSync(file, JSON.stringify(state))"
+      },
+      {
+        "file": "plugin/store.js",
+        "line": 319,
+        "text": "fs.mkdirSync(topicsDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/tools.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugin/tools.js",
+        "line": 895,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "plugin/tools.js",
+        "line": 1015,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "plugin/tools.js",
+        "line": 1338,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "plugin/tools.js",
+        "line": 1456,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

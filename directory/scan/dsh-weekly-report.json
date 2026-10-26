@@ -1,0 +1,83 @@
+{
+  "name": "dsh-weekly-report",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:05:28.568Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 147,
+        "text": "const response = await fetch(BASE + path, options);"
+      },
+      {
+        "file": "scripts/save-report.mjs",
+        "line": 30,
+        "text": "const response = await fetch(new URL('/dsh-weekly-report/reports', url), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/dsh-home.js",
+        "line": 7,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/dsh-home.js",
+        "line": 50,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/core/git.js",
+        "line": 8,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/reports.js",
+        "line": 7,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/reports.js",
+        "line": 76,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/git.js",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

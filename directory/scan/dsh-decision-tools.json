@@ -1,0 +1,102 @@
+{
+  "name": "dsh-decision-tools",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:05:31.337Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 677,
+        "text": "fetch('/decision-tools-models', { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/decision-entry.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'fs', 'skills'];"
+      },
+      {
+        "file": "lib/monitor-entry.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'fs', 'jobs', 'agents'];"
+      },
+      {
+        "file": "lib/monitor.js",
+        "line": 212,
+        "text": "const fs = probeProperty(ctx, 'fs');"
+      },
+      {
+        "file": "lib/pipe.js",
+        "line": 25,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/pipe.js",
+        "line": 395,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/decision-entry.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'fs', 'skills'];"
+      },
+      {
+        "file": "lib/monitor-entry.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'fs', 'jobs', 'agents'];"
+      },
+      {
+        "file": "lib/monitor-tool.js",
+        "line": 376,
+        "text": "*   **可直接交给 `ctx.tools.register`** 的对象；`registered` 表示本次调用是否真的注册了。"
+      },
+      {
+        "file": "lib/monitor-tool.js",
+        "line": 638,
+        "text": "? (built) => tools.register(built)"
+      },
+      {
+        "file": "lib/pipe.js",
+        "line": 4,
+        "text": "* 本模块**只碰 `ctx.tools`**（其余是纯函数 + 同步 fs）。三条硬约束都是本机整实例真跑踩出来的："
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/rebuild-node-modules.mjs",
+        "line": 19,
+        "text": "'url','util','events','stream','crypto','child_process','buffer','assert','module','process','timers','net','http','https','zlib','readline','worker_threads','p"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "jobs",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

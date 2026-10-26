@@ -1,0 +1,144 @@
+{
+  "name": "dsh-knowledge",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:05:42.322Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "const response = await fetch(`/knowledge${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4915,
+        "text": "void fetch(`/knowledge/documents/${doc.id}/raw`, { signal: AbortSignal.timeout(3e4) }).then(async (response) => {"
+      },
+      {
+        "file": "lib/knowledge/embed-process.mjs",
+        "line": 7,
+        "text": "import { EnvHttpProxyAgent, setGlobalDispatcher } from \"undici\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 32,
+        "text": "import { EnvHttpProxyAgent, setGlobalDispatcher } from \"undici\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 58,
+        "text": "return await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/knowledge/embed-process.mjs",
+        "line": 4,
+        "text": "import { readdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 504,
+        "text": "t { mkdir as mkdir2, readFile as readFile2, readdir as readdir2, rename as rename2, rm as rm2, stat as stat2, writeFile as writeFile2 } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1244,
+        "text": "import { mkdir as mkdir3, readdir as readdir3, rename as rename3, rm as rm3, writeFile as writeFile3 } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1246,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1873,
+        "text": "{ cp, mkdir as mkdir9, readdir as readdir8, readFile as readFile9, realpath as realpath2, rename as rename7, rm as rm6, stat as stat6 } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool-knowledge/index.js",
+        "line": 1110,
+        "text": "var inject = [\"knowledge\", \"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/tool-knowledge/index.js",
+        "line": 1139,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/tool-knowledge/index.js",
+        "line": 1151,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-knowledge/index.js",
+        "line": 1297,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-knowledge/index.js",
+        "line": 1364,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 154,
+        "text": "import { fork } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 507,
+        "text": "import { fork as fork2 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1084,
+        "text": "import { fork as fork3 } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1107,
+        "text": "spawn() {"
+      },
+      {
+        "file": "lib/knowledge/index.js",
+        "line": 1175,
+        "text": "const child2 = this.spawn();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 15,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

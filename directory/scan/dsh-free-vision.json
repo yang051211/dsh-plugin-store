@@ -1,0 +1,119 @@
+{
+  "name": "dsh-free-vision",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:05:55.660Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 48,
+        "text": "fetch(\"/dsh-free-vision/config\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 61,
+        "text": "fetch(\"/dsh-free-vision/config\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 277,
+        "text": "const response = await fetch(\"/dsh-free-vision/attach\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 301,
+        "text": "const res = await fetch(\"/dsh-free-vision/config\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 454,
+        "text": "fetch(\"/dsh-free-vision/config\", { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 23,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 24,
+        "text": "import { readFile, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 132,
+        "text": "const raw = readFileSync(CONFIG_PATH, 'utf-8')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 180,
+        "text": "mkdirSync(homedir() + '/.dsh', { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 181,
+        "text": "writeFileSync(CONFIG_PATH, JSON.stringify(next, null, 2), 'utf-8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 5,
+        "text": "// PATH lookup) and registers its image_understand tool on ctx.tools, so"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 215,
+        "text": "export const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 639,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 731,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 929,
+        "text": "disposers.push(ctx.tools.register(buildShowImageTool(ctx, { getEffective, label, log })))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/patch-luma.mjs"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

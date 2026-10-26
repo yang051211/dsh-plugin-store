@@ -1,0 +1,104 @@
+{
+  "name": "minecraft-dev",
+  "version": "0.10.1",
+  "scannedAt": "2026-10-26T10:05:59.252Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex.js",
+        "line": 18,
+        "text": "import { mkdir, readFile, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "codex.js",
+        "line": 108,
+        "text": "return { ...candidate, content: await readFile(SKILL_LOCATOR, 'utf8') }"
+      },
+      {
+        "file": "codex.js",
+        "line": 240,
+        "text": "const template = await readFile(new URL('./assets/codex-architect/references/architect-prompt.md', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "codex.js",
+        "line": 244,
+        "text": "await mkdir(dotDsh, { recursive: true })"
+      },
+      {
+        "file": "codex.js",
+        "line": 246,
+        "text": "await writeFile(promptFile, brief, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex.js",
+        "line": 39,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "codex.js",
+        "line": 118,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "tools.js",
+        "line": 38,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "tools.js",
+        "line": 51,
+        "text": "/** Register the minecraft-dev tools on `ctx.tools`. */"
+      },
+      {
+        "file": "tools.js",
+        "line": 53,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-app-server.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/run-process.js",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/run-process.js",
+        "line": 187,
+        "text": "/** @type {import('node:child_process').ChildProcess} */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

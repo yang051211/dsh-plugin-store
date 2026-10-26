@@ -1,0 +1,97 @@
+{
+  "name": "dsh-llm-workbuddy",
+  "version": "0.1.27",
+  "scannedAt": "2026-10-26T10:05:46.061Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 351,
+        "text": "return fetch(\"/api/workbuddy/status\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 368,
+        "text": "fetch(\"/api/workbuddy/login\" + (force ? \"?force=1\" : \"\"), { method: \"POST\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 499,
+        "text": "fetch(\"/api/workbuddy/diagnose\", { method: \"POST\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 609,
+        "text": "fetch(\"/api/workbuddy/usage\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 703,
+        "text": "fetch(\"/api/workbuddy/checkin\", { method: \"POST\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, appendFileSync, openSync, statSync, closeSync, writeFileSync, renameSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 596,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 608,
+        "text": "appendFileSync(file, `${line}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 678,
+        "text": "try { rmSync(lock, { force: true }); } catch { /* ditto */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 703,
+        "text": "rmSync(lock, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2219,
+        "text": "const child = spawn(\"python3\", args, { env: { ...process.env, PYTHONUNBUFFERED: \"1\" } });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,71 @@
+{
+  "name": "dsh-secure-audit",
+  "version": "0.2.13",
+  "scannedAt": "2026-10-26T10:05:58.999Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "const manifest = JSON.parse(readFileSync(join(dirname(entry), '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 71,
+        "text": "return readFileSync(url, 'utf8');"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 16,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 168,
+        "text": "return readFileSync(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 196,
+        "text": "ctx.tools.register(def);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

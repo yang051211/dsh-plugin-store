@@ -1,0 +1,93 @@
+{
+  "name": "dsh-agent-skills",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:06:01.928Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 371,
+        "text": "const response = await fetch(`${window.location.origin}/?dsh-agent-skills-restart=${Date.now()}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discovery.js",
+        "line": 11,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/preset-manager.js",
+        "line": 8,
+        "text": "import { existsSync, readFileSync, realpathSync, renameSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/preset-manager.js",
+        "line": 45,
+        "text": "const pkg = JSON.parse(readFileSync(manifest, \"utf8\"));"
+      },
+      {
+        "file": "lib/preset-manager.js",
+        "line": 228,
+        "text": "const text = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/preset-manager.js",
+        "line": 245,
+        "text": "writeFileSync(temporary, content, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/restart.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 62,
+        "text": "\"const { spawn } = require('node:child_process')\","
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 81,
+        "text": "\"    const child = spawn(file, args, { cwd, detached, stdio: ['ignore', out, err], env: process.env, shell: viaShell })\","
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 94,
+        "text": "const helper = spawn(process.execPath, [\"-e\", helperCode], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

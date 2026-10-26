@@ -1,0 +1,79 @@
+{
+  "name": "dsh-free-models-hub",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:50.194Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 866,
+        "text": "const res = await fetch(endpoint, { signal, credentials: 'omit', headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 1004,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/p/ping`, {"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 1080,
+        "text": "const existingRes = await fetch(`http://127.0.0.1:${port}/p/load-pools`, { mode: 'cors', credentials: 'omit' }).catch(() => null)"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 1088,
+        "text": "await fetch(`http://127.0.0.1:${port}/p/save-pools`, {"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 1139,
+        "text": "const existingRes = await fetch(`http://127.0.0.1:${port}/p/load-pools`, { mode: 'cors', credentials: 'omit' }).catch(() => null)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 74,
+        "text": "const raw = JSON.parse(fs.readFileSync(poolFilePath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "const diskPools = JSON.parse(fs.readFileSync(poolFilePath, 'utf8')).keyPools || {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 100,
+        "text": "fs.writeFileSync(poolFilePath, JSON.stringify({ keyPools: pools, targets }, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

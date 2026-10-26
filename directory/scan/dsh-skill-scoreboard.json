@@ -1,0 +1,92 @@
+{
+  "name": "dsh-skill-scoreboard",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:05:41.150Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client-parts/i18n.js",
+        "line": 22,
+        "text": "const res = await fetch('/api/skill-scoreboard/i18n', {"
+      },
+      {
+        "file": "lib/client-parts/io.js",
+        "line": 2,
+        "text": "fetch('/api/skill-scoreboard/export', { credentials: 'same-origin', signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })"
+      },
+      {
+        "file": "lib/client-parts/io.js",
+        "line": 57,
+        "text": "const response = await fetch('/api/skill-scoreboard/import?merge=' + (merge ? 'true' : 'false'), {"
+      },
+      {
+        "file": "lib/client-parts/ui/fetcher.js",
+        "line": 28,
+        "text": "fetch(fetcherCfg.apiBase, { credentials: 'same-origin', signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "const res = await fetch('/api/skill-scoreboard/i18n', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { readFileSync, writeFileSync, promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "try { current = JSON.parse(await fs.readFile(file, 'utf8')); } catch { current = null; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 138,
+        "text": "try { parsed = JSON.parse(readFileSync(file, 'utf8')); } catch { parsed = emptyV2(); }"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 284,
+        "text": "const zh = JSON.parse(readFileSync(new URL('zh.json', I18N_DIR_URL), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

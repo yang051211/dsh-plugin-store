@@ -1,0 +1,85 @@
+{
+  "name": "dsh-session-shift",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:06:04.027Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/handoff-client.js",
+        "line": 111,
+        "text": "fetch('/api/handoff/client', {"
+      },
+      {
+        "file": "client/handoff-client.js",
+        "line": 199,
+        "text": "const response = await fetch('/api/handoff/status', { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 614,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 617,
+        "text": "writeFileSync(filePath, text, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 840,
+        "text": "mkdirSync(home, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 842,
+        "text": "writeFileSync(join(home, 'handoff-client-report.json'), JSON.stringify({ reports: state.clientLog }, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 851,
+        "text": "ctx.tools.register(defineTool(handoffToolOptions((session, reason, cwd, dryRun) => runOnce(session, reason, cwd, dryRun))))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "connection",
+    "permissionPresets",
+    "sessionProjections",
+    "sessionTitle",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-backup-sync",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:06:05.747Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3167,
+        "text": "const res = await fetch(API + path, {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 19,
+        "text": "* `fetch('/api/dsh-backup-sync/state')` 就够了，不用管凭据。"
+      },
+      {
+        "file": "lib/webdav.js",
+        "line": 13,
+        "text": "*     `https.request({rejectUnauthorized:false})` 是稳定的、语义明确的一行。"
+      },
+      {
+        "file": "lib/webdav.js",
+        "line": 24,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/webdav.js",
+        "line": 25,
+        "text": "import { request as httpsRequest, Agent as HttpsAgent } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.js",
+        "line": 25,
+        "text": "import { cp, mkdir, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 185,
+        "text": "await mkdir(dirname(dest), { recursive: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 192,
+        "text": "await writeFile("
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 228,
+        "text": "await mkdir(dirname(t.abs), { recursive: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 232,
+        "text": "await rm(tmp, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 122,
+        "text": "const p = spawn(cmd, args, { windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-bootstrap",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:05:47.557Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/bootstrap.js",
+        "line": 115,
+        "text": "return fetch(API + path, init).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-bootstrap.mjs",
+        "line": 10,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-bootstrap.mjs",
+        "line": 222,
+        "text": "if (text.startsWith('@')) return readFileSync(text.slice(1), 'utf8')"
+      },
+      {
+        "file": "bin/dsh-bootstrap.mjs",
+        "line": 225,
+        "text": "return readFileSync(text, 'utf8')"
+      },
+      {
+        "file": "bin/dsh-bootstrap.mjs",
+        "line": 274,
+        "text": "writeFileSync(values.out, JSON.stringify(report, null, 2), 'utf8')"
+      },
+      {
+        "file": "bin/dsh-bootstrap.mjs",
+        "line": 291,
+        "text": "writeFileSync(values.out, `${result.exported.code}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client/bootstrap.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

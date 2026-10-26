@@ -1,0 +1,82 @@
+{
+  "name": "dsh-agnes-tools",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:06:02.913Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "const res = await fetch(url, { signal, redirect: 'error' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 178,
+        "text": "await writeFile(target, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "const bytes = await readFile(abs)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "* 工具定义直接满足 ctx.tools.register() 的契约："
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "for (const definition of definitions) ctx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

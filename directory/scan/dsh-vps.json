@@ -1,0 +1,112 @@
+{
+  "name": "dsh-vps",
+  "version": "1.16.1",
+  "scannedAt": "2026-10-26T10:06:01.990Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gate/server.js",
+        "line": 18,
+        "text": "const http = require(\"node:http\");"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 19,
+        "text": "const https = require(\"node:https\");"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 582,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "gate/server.js",
+        "line": 644,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "gate/server.js",
+        "line": 928,
+        "text": "fetch('/gate/health',{cache:'no-store'}).then(function(r){return r.json()}).then(function(h){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gate/server.js",
+        "line": 23,
+        "text": "const fs = require(\"node:fs\");"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 309,
+        "text": "fs.mkdirSync(STATE_DIR, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 323,
+        "text": "const key = fs.readFileSync(file);"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 329,
+        "text": "fs.writeFileSync(file, key, { mode: 0o600 });"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 336,
+        "text": "const admin = JSON.parse(fs.readFileSync(adminPath(), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gate/server.js",
+        "line": 25,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 493,
+        "text": "const child = spawn(process.execPath, args, {"
+      },
+      {
+        "file": "gate/server.js",
+        "line": 1533,
+        "text": "const child = spawn(process.execPath, [DSH_BIN, ...cmdArgs], {"
+      },
+      {
+        "file": "plugin/remote-install.mjs",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/bootstrap.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "gate/server.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

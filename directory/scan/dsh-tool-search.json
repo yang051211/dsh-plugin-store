@@ -1,0 +1,88 @@
+{
+  "name": "dsh-tool-search",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:05:58.431Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/matcher.js",
+        "line": 17,
+        "text": "const response = await fetch(matcher.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 201,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 202,
+        "text": "await writeFile(path, `${JSON.stringify({ version: 1, scope, ...data }, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 217,
+        "text": "const text = await readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 24,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 47,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 63,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 84,
+        "text": "const result = await ctx.tools.execute(input);"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 22,
+        "text": "* @param schemas - the registry's visible schemas (`ctx.tools.schemas(scope)`)."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

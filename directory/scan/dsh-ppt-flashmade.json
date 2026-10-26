@@ -1,0 +1,124 @@
+{
+  "name": "dsh-ppt-flashmade",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:05:28.505Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 734,
+        "text": "fetch('/dsh-ppt/preview/' + props.previewId + '/pptx')"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 1071,
+        "text": "fetch(previewBundleUrl(previewId))"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 1138,
+        "text": "fetch(previewBundleUrl(previewId))"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 1449,
+        "text": "fetch(PROPOSE_ROUTE + '/' + id)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 3,
+        "text": "import { readFileSync, existsSync, mkdirSync, rmSync, renameSync, writeFileSync, readdirSync, statSync } from 'fs';"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 368,
+        "text": "return readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 373,
+        "text": "writeText: (path, text) => writeFileSync(path, text, \"utf8\"),"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 376,
+        "text": "return readFileSync(path);"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 381,
+        "text": "writeBytes: (path, bytes) => writeFileSync(path, bytes),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 26,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 107,
+        "text": "ctx.tools.register(preview.tool)"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 120,
+        "text": "ctx.tools.register(propose.tool)"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 147,
+        "text": "scope.tools.register(review.tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'child_process';"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 138,
+        "text": "const result = spawnSync(command, [...args], {"
+      },
+      {
+        "file": "dsh/spawnHidden.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/spawnHidden.js",
+        "line": 21,
+        "text": "return spawn(command, args, { ...options, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

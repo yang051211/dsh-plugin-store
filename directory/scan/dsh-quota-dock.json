@@ -1,0 +1,86 @@
+{
+  "name": "dsh-quota-dock",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:05:29.963Z",
+  "icon": "dsh-quota-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1371,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1399,
+        "text": "await fetch(REFRESH_URL, { method: 'POST', signal: timeoutSignal(15000) })"
+      },
+      {
+        "file": "client.js",
+        "line": 1417,
+        "text": "const response = await fetch(PLATFORMS_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1431,
+        "text": "const response = await fetch(PLATFORMS_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1478,
+        "text": ".then(() => fetch(REFRESH_URL, { method: 'POST', signal: timeoutSignal(15000) }))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 544,
+        "text": "text = await readFile(storePath(), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 571,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "index.js",
+        "line": 573,
+        "text": "await writeFile(temp, `${JSON.stringify({ version: 1, refreshMs: storeRefreshMs, platforms: records }, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "test/smoke.cjs",
+        "line": 19,
+        "text": "const fs = require('node:fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

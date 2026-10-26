@@ -1,0 +1,120 @@
+{
+  "name": "dsh-agent-board",
+  "version": "1.8.4",
+  "scannedAt": "2026-10-26T10:05:32.096Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "; a.sessionId = state.sessionId; return fetch('/dsh-agent-board', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ meth"
+      },
+      {
+        "file": "lib/client/kernel.js",
+        "line": 269,
+        "text": "; a.sessionId = state.sessionId; return fetch('/dsh-agent-board', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ meth"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 26,
+        "text": "export const inject = ['fs', 'timer', 'subagents', 'agents', 'tools', 'webServer']"
+      },
+      {
+        "file": "lib/cleanup.mjs",
+        "line": 16,
+        "text": "import fsNode from 'node:fs'"
+      },
+      {
+        "file": "lib/cleanup.mjs",
+        "line": 246,
+        "text": "pts.statSession); await fsNode.promises.rm(dir, { recursive: true, force: true }); freed += db } catch (e) { skipped.push({ id: it.id, reason: 'rm-failed' }); c"
+      },
+      {
+        "file": "lib/cleanup.mjs",
+        "line": 250,
+        "text": "try { var pb = fileSizeOf(pcPath); await fsNode.promises.rm(pcPath, { force: true }); freed += pb } catch (_) { /* projcache 删不掉不阻断主目标 */ }"
+      },
+      {
+        "file": "lib/dispatch.mjs",
+        "line": 6,
+        "text": "import { statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 26,
+        "text": "export const inject = ['fs', 'timer', 'subagents', 'agents', 'tools', 'webServer']"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 238,
+        "text": "    ctx.tools.register(defineTool({ name: 'task_list', description: '列出当前会话任务。', parameters: { type: 'object', properties: { status: { type: 'string', enum: ['p"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 239,
+        "text": "    ctx.tools.register(defineTool({ name: 'task_context', description: '获取任务完整上下文。', parameters: { type: 'object', properties: { taskId: { type: 'string' }, exp"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 240,
+        "text": "    ctx.tools.register(defineTool({ name: 'task_preview_context', description: '派发前上下文预览：预演 task_create 的 contextFiles/contextNotes 将注入给子代理的瘦身清单形态（调研笔记全文 + 文件清单"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 241,
+        "text": "    ctx.tools.register(defineTool({ name: 'task_claim', description: '领取待办任务→in-progress。', parameters: { type: 'object', properties: { taskId: { type: 'string'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/core.test.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 3533,
+        "text": "    const child = spawnSync(process.execPath, ['-e', PROBE_CONTINUABLE_SOURCE], { env: Object.assign({}, process.env, { HOME: tmp, USERPROFILE: tmp }), encoding"
+      },
+      {
+        "file": "test/core.test.mjs",
+        "line": 3844,
+        "text": "    const child = spawnSync(process.execPath, ['-e', PROBE_RESUME_BASELINE_SOURCE], { env: Object.assign({}, process.env, { HOME: tmp, USERPROFILE: tmp }), enco"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/rpc.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "subagents",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

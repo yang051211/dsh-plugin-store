@@ -1,0 +1,101 @@
+{
+  "name": "dsh-agent-picker",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-26T10:05:51.643Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 212,
+        "text": "const res = await fetch('/dsh-agent-picker' + path, Object.assign({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discover.js",
+        "line": 10,
+        "text": "import { existsSync, statSync, accessSync, constants, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { access, appendFile, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 715,
+        "text": "return JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 779,
+        "text": "appendFileSync(file, `[${stamp}] ${line}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "export const inject = ['webServer', 'systemPrompt', 'tools', 'subprocess']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 794,
+        "text": "if (!ctx || typeof ctx.tools?.register !== 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 795,
+        "text": "diagnose('registerLaunchTools: 中止 —— ctx.tools.register 不是函数')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 798,
+        "text": "const taken = ctx.tools.registeredNames instanceof Set ? ctx.tools.registeredNames : null"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 831,
+        "text": "const registered = ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 426,
+        "text": "handle = ctx.subprocess.spawn({ argv, cwd, env, signal: control.signal, stdio: io, graceMs: launch.graceMs })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

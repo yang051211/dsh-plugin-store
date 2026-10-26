@@ -1,0 +1,87 @@
+{
+  "name": "dsh-api-thinking",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:06:08.289Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 411,
+        "text": "const response = await fetch(url, { headers, signal: AbortSignal.timeout(options.timeoutMs) })"
+      },
+      {
+        "file": "tools/paths.mjs",
+        "line": 92,
+        "text": "const response = await fetch(`${baseURL}/models`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { readFileSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 333,
+        "text": "const raw = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 338,
+        "text": "writeFileSync(temporary, planned.lines.join(eol), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 436,
+        "text": "previous = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 440,
+        "text": "writeFileSync(file, `${JSON.stringify({ ...previous, ...patch, statusFile: file, updatedAt: new Date().toISOString() }, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/install_bundle.mjs",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/install_bundle.mjs",
+        "line": 90,
+        "text": "const result = spawnSync(isScript ? process.execPath : pnpm, [...(isScript ? [pnpm] : []), 'add', spec, '--prefer-offline'], {"
+      },
+      {
+        "file": "tools/install_bundle.mjs",
+        "line": 130,
+        "text": "const probe = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "configEditor"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

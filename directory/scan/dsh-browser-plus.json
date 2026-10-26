@@ -1,0 +1,142 @@
+{
+  "name": "dsh-browser-plus",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:05:58.181Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 66,
+        "text": "return fetch(OPEN_PATH, { method: 'POST' }).then((response) => response.json().catch(() => null).then((body) => {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 76,
+        "text": "      return fetch(STATUS_PATH).then((response) => response.json()).then((body) => (body !== null && body.ok === true && typeof body.tasks === 'number' ? body.t"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 1159,
+        "text": "const response = await view.webContents.session.fetch(rawUrl, { signal: controller.signal });"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 2509,
+        "text": "const r = await fetch(${JSON.stringify(url)}, { credentials: 'include', signal: AbortSignal.timeout(${String(DOWNLOAD_FETCH_TIMEOUT_MS)}) })"
+      },
+      {
+        "file": "lib/browser-electron/provider.js",
+        "line": 608,
+        "text": "* Admit one URL for a provider-driven fetch (navigation or download)."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 23,
+        "text": "import { appendFileSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 85,
+        "text": "writeFileSync(path, '');"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 86,
+        "text": "appendFileSync(path, `=== boot pid=${process.pid} at ${new Date().toISOString()} ===\\n`);"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 107,
+        "text": "appendFileSync(diagLogPath(), stamped + '\\n');"
+      },
+      {
+        "file": "lib/browser-electron/host-main.js",
+        "line": 123,
+        "text": "appendFileSync(diagLogPath(), lines.join('\\n'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'browser', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 316,
+        "text": "/** Register all browser tools with `ctx.tools`. */"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 335,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 365,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-browser/index.js",
+        "line": 384,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 284,
+        "text": "this.child = spawn(electron, [hostMainPath, '--rpc-port', String(port), ...childArgs], {"
+      },
+      {
+        "file": "lib/browser-electron/remote-host.js",
+        "line": 294,
+        "text": "// A failed spawn (bad/corrupt binary) emits 'error' — without a listener"
+      },
+      {
+        "file": "scripts/test-orb-drag.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-orb-drag.mjs",
+        "line": 74,
+        "text": "const run = spawnSync(process.execPath, [require.resolve('electron/cli.js'), join(dir, 'drive.cjs'), join(dir, 'page.html'), out, JSON.stringify(CENTER)], { enc"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "browser",
+    "commands",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

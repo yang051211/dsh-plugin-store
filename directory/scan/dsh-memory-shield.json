@@ -1,0 +1,105 @@
+{
+  "name": "dsh-memory-shield",
+  "version": "0.1.15",
+  "scannedAt": "2026-10-26T10:06:05.545Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 39,
+        "text": "const res = await fetch(API + p, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 44,
+        "text": "const res = await fetch(API + p, {"
+      },
+      {
+        "file": "client.js",
+        "line": 184,
+        "text": "const res = await fetch('/api/memory-core/pending', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 203,
+        "text": "const res = await fetch('/api/memory-core/entry', {"
+      },
+      {
+        "file": "client.js",
+        "line": 250,
+        "text": "fetch('/api/memory-core/files', { credentials: 'same-origin' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "const pkg = JSON.parse(readFileSync(join(HERE, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "return JSON.parse(readFileSync(UI_CFG, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "try { mkdirSync(UI_DIR, { recursive: true }); } catch {}"
+      },
+      {
+        "file": "index.js",
+        "line": 54,
+        "text": "writeFileSync(UI_CFG, JSON.stringify(next, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "const inject = [\"systemPrompt\", \"tools\", \"webServer\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 292,
+        "text": "ctx.effect(() => ctx.tools.register(shadowDiagnoseTool(ctx, s)), `${name}: shadow diagnose tool`);"
+      },
+      {
+        "file": "index.js",
+        "line": 348,
+        "text": "ctx.effect(() => ctx.tools.register(shadowTool(toolName, s)), `${name}: shadow tool ${toolName}`);"
+      },
+      {
+        "file": "index.js",
+        "line": 366,
+        "text": "ctx.effect(() => ctx.tools.register(shadowTool(toolName, s)), `${name}: auto-shadow ${toolName}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

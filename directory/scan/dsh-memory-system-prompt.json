@@ -1,0 +1,94 @@
+{
+  "name": "dsh-memory-system-prompt",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:05:52.205Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 106,
+        "text": "const response = await fetch(path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "const parsed = JSON.parse(readFileSync(GLOBAL_CFG_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "mkdirSync(DSH_HOME, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "writeFileSync(GLOBAL_CFG_FILE, JSON.stringify(next, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'webServer', 'commands']"
+      },
+      {
+        "file": "index.js",
+        "line": 283,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 322,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 356,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 415,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

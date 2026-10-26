@@ -1,0 +1,124 @@
+{
+  "name": "dsh-tongflow",
+  "version": "0.8.4",
+  "scannedAt": "2026-10-26T10:06:04.413Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 125,
+        "text": "const res = await fetch(`${PREFIX}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 164,
+        "text": "const res = await fetch(fileUrl(pid, key), { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 173,
+        "text": "const res = await fetch(`${PREFIX}/p/${pid}/upload?dir=${encodeURIComponent(dir)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 765,
+        "text": "const res = await fetch(\"/tongflow/env\", { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 770,
+        "text": "const res = await fetch(\"/tongflow/env\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 112382,
+        "text": "this.readFile(arraybuffer, path);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 112393,
+        "text": "readFile(arraybuffer, path) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { chmod, copyFile, mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { createReadStream } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "return JSON.parse(await readFile(path, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4690,
+        "text": "/** Register every tongflow_* tool on ctx.tools; registrations are effects (disposed on unload). */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4694,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `dsh-tongflow: tool ${tool.name}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4789,
+        "text": "const inject = [\"tools\", \"agents\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1894,
+        "text": "const child = spawn(cmd, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2312,
+        "text": "const child = spawn(python, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 103,
+      "text": "ommands:** `python` (creates the venv, `pip install`s the `tongflow` SDK and plugin requirements, runs plugin processes), `git` (shallow-clones plugins), `ffmpe"
+    }
+  ],
+  "skippedEntries": []
+}

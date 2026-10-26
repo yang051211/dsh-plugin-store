@@ -1,0 +1,92 @@
+{
+  "name": "dsh-zcode-plan-bridge",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:05:29.393Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app-server.js",
+        "line": 57,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/credentials.js",
+        "line": 22,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/credentials.js",
+        "line": 151,
+        "text": "raw = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 26,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 101,
+        "text": "const raw = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app-server.js",
+        "line": 55,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/app-server.js",
+        "line": 248,
+        "text": "/** @type {import('node:child_process').ChildProcessWithoutNullStreams | undefined} */"
+      },
+      {
+        "file": "lib/app-server.js",
+        "line": 328,
+        "text": "const child = spawn(options.zcodeCliNode, [options.zcodeCliPath, 'app-server', '--surface', 'terminal', '--no-color'], {"
+      },
+      {
+        "file": "lib/app-server.js",
+        "line": 353,
+        "text": "// A failed spawn (wrong node path, EPERM from a sandbox, ...) is an 'error' event:"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 57,
+      "text": "1. 装一份 ZCode CLI（`npm i -g zcode-app-cli`，或桌面客户端自带的 `zcode.cjs`），并登录有额度的账号。装了桌面端的注意：**保持 npm 全局包跟着桌面端一起升级**——桌面升级后会在 `~/.zcode/v2` 写入新版 builtin，老 CLI（<3.15.3）解析"
+    }
+  ],
+  "skippedEntries": []
+}

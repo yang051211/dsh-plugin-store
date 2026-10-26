@@ -1,0 +1,93 @@
+{
+  "name": "dsh-remote-pure",
+  "version": "0.12.1",
+  "scannedAt": "2026-10-26T10:05:51.047Z",
+  "icon": "dsh-remote-pure.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 70,
+        "text": "return fetch('/remote-pure/api' + path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 180,
+        "text": "ws = new WebSocket(proto + window.location.host + '/remote-pure/terminal?hostId=' + encodeURIComponent(hostId) + '&cols=' + term.cols + '&rows=' + term.rows);"
+      },
+      {
+        "file": "lib/update.js",
+        "line": 24,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${pkg.name}/latest`, { signal: AbortSignal.timeout(5000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http-api.js",
+        "line": 64,
+        "text": "'/mkdir': async (body) => ({ path: await fs.mkdir(str(body, 'hostId'), str(body, 'path')) }),"
+      },
+      {
+        "file": "lib/remote-fs.js",
+        "line": 43,
+        "text": "async function mkdir(hostId, path) {"
+      },
+      {
+        "file": "lib/ssh-config.js",
+        "line": 6,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ssh-config.js",
+        "line": 57,
+        "text": "return parseSshConfig(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/terminal.js",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager.js",
+        "line": 62,
+        "text": "const { child } = spawn({ host: target, ssh: target.ssh, target, command: `${command} --profile sdk`, argv: [] });"
+      },
+      {
+        "file": "lib/ssh.js",
+        "line": 7,
+        "text": "import { spawn as spawnProcess, execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ssh.js",
+        "line": 37,
+        "text": "execFile('ssh', [...sshArgs(target), command], { maxBuffer: 64 * 1024 * 1024, timeout }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

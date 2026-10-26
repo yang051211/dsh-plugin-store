@@ -1,0 +1,68 @@
+{
+  "name": "dsh-yolo-mode",
+  "version": "0.6.6",
+  "scannedAt": "2026-10-26T10:05:32.943Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 24,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": "fs.mkdirSync(path.dirname(auditFile()), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 181,
+        "text": "fs.promises.appendFile(file, line, 'utf8').catch((err) => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 89,
+        "text": "child = spawn(command, args, { detached: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

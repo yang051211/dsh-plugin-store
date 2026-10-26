@@ -1,0 +1,72 @@
+{
+  "name": "dsh-memory-local",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:05:37.752Z",
+  "icon": "dsh-memory-local.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 70,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 78,
+        "text": "writeFileSync(file, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 86,
+        "text": "mkdirSync(this.projectsDir, { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 94,
+        "text": "const parsed = JSON.parse(readFileSync(this.indexFile, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'workingDirectory']"
+      },
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

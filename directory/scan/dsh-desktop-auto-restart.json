@@ -1,0 +1,91 @@
+{
+  "name": "dsh-desktop-auto-restart",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:05:44.652Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 113,
+        "text": "const post = (force) => fetch(API, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 208,
+        "text": "fetch(API_BASE + '/panel', { headers: Object.assign({ accept: 'application/json' }, HEADERS) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 234,
+        "text": "fetch(API_BASE + '/config', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "mkdirSync(home(), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 167,
+        "text": "appendFileSync(join(home(), 'restart-debug.log'), new Date().toISOString() + ' pid=' + process.pid + ' ' + line + String.fromCharCode(10), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "const parsed = JSON.parse(readFileSync(pendingFile(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 286,
+        "text": "mkdirSync(home(), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 626,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 549,
+        "text": "child = spawn('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', psCommand],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

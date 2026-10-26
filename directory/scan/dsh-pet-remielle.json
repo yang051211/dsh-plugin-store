@@ -1,0 +1,113 @@
+{
+  "name": "dsh-pet-remielle",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:05:54.369Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 432,
+        "text": "return global.fetch(url, { credentials: 'same-origin' }).then(function (res) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1320,
+        "text": "fetch(UPDATE_ENDPOINT, { method: 'POST' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1374,
+        "text": "return fetch(STATE_ENDPOINT, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1385,
+        "text": "return fetch(url, { cache: 'no-store' }).then(function (response) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1393,
+        "text": "return fetch(CONFIG_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 25,
+        "text": "const readSrc = (name) => readFileSync(resolve(root, 'src', name), 'utf8').replace(/\\r\\n/g, '\\n')"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 38,
+        "text": "const { version } = JSON.parse(readFileSync(pkgFile, 'utf8'))"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 70,
+        "text": "writeFileSync(outFile, output)"
+      },
+      {
+        "file": "src/balance.js",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/desktop-window.js",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/desktop-window.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/electron-fetch.mjs",
+        "line": 35,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/electron-fetch.mjs",
+        "line": 201,
+        "text": "* @param {(cmd: string, args: string[], opts: object) => import('node:child_process').ChildProcess} [options.spawnImpl] injectable spawn (for tests)."
+      },
+      {
+        "file": "src/pet-window.cjs",
+        "line": 19,
+        "text": "const { execFileSync } = require('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

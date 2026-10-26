@@ -1,0 +1,66 @@
+{
+  "name": "dsh-session-backup",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:05:50.027Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 219,
+        "text": "const response = await fetch(`${ROUTE}.${action}`, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { copyFile, cp, mkdir, readdir, readFile, realpath, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 293,
+        "text": "parsed = JSON.parse(await readFile(join(dir, MANIFEST_FILE), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 326,
+        "text": "await mkdir(group, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 340,
+        "text": "await writeFile(join(destination, MANIFEST_FILE), `${JSON.stringify(manifest, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 445,
+        "text": "await mkdir(dirname(destination), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

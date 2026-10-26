@@ -1,0 +1,139 @@
+{
+  "name": "dsh-armory",
+  "version": "2.4.1",
+  "scannedAt": "2026-10-26T10:05:49.187Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/expert-market.js",
+        "line": 98,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/expert-market.js",
+        "line": 130,
+        "text": "const response = await fetch(EXPERT_ORIGIN + EXPERT_MANIFEST_PATH, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 586,
+        "text": "const response = await fetch(UPDATE_CHECK_URL, {"
+      },
+      {
+        "file": "lib/mcp-oauth.js",
+        "line": 26,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/mcp-oauth.js",
+        "line": 156,
+        "text": "return await fetch(url, { ...init, signal: AbortSignal.timeout(NET_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/community-meta.js",
+        "line": 13,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/community-meta.js",
+        "line": 106,
+        "text": "const raw = JSON.parse(await readFile(repoMetaPath(options), \"utf8\"));"
+      },
+      {
+        "file": "lib/community-meta.js",
+        "line": 125,
+        "text": "await mkdir(dirnameOf(path), { recursive: true });"
+      },
+      {
+        "file": "lib/community-meta.js",
+        "line": 130,
+        "text": "await writeFile(tmp, JSON.stringify(cache, null, 2));"
+      },
+      {
+        "file": "lib/community-meta.js",
+        "line": 133,
+        "text": "await rm(tmp, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 974,
+        "text": "//   3) 当前注册表里的全部工具 Schema（ctx.tools.schemas()，全局 + 项目 + 内置）。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 999,
+        "text": "const schemas = [...ctx.tools.schemas()].map(projectToolSchema);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1352,
+        "text": "static inject = [\"loader\", \"tools\"];"
+      },
+      {
+        "file": "lib/mcp-config.js",
+        "line": 4,
+        "text": "export const MCP_PLUGIN_NAME = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/mcp-oauth.js",
+        "line": 4,
+        "text": "* 背景：`@deepseek-ai/dsh-mcp-client` 的 transport 只认 `requestInit.headers`，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "spawn(\"rundll32\", [\"url.dll,FileProtocolHandler\", target], { detached: true, stdio: \"ignore\" }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "spawn(process.platform === \"darwin\" ? \"open\" : \"xdg-open\", [target], { detached: true, stdio: \"ignore\" }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1799,
+        "text": "const { spawn } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1800,
+        "text": "if (process.platform === \"win32\") spawn(\"explorer\", [\"/select,\", path], { detached: true, stdio: \"ignore\" }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

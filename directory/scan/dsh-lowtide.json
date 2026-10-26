@@ -1,0 +1,97 @@
+{
+  "name": "dsh-lowtide",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:05:58.828Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1990,
+        "text": "const res = await fetch(\"/ds-lowtide/state\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2117,
+        "text": "return await (await fetch(\"/ds-lowtide/estimate\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2129,
+        "text": "return await (await fetch(\"/ds-lowtide/tasks\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2142,
+        "text": "return await (await fetch(`/ds-lowtide/tasks/${encodeURIComponent(id)}/edit`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2149,
+        "text": "return await (await fetch(`/ds-lowtide/tasks/${id}/${action}`, { method: \"POST\" })).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { chmodSync, createReadStream, existsSync, mkdirSync, readFileSync, realpathSync, renameSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5119,
+        "text": "const converted = convertLegacyState(JSON.parse(readFileSync(legacy, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5122,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5123,
+        "text": "writeFileSync(file, JSON.stringify(parsed.data, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5130,
+        "text": "const parsed = stateSchema.safeParse(JSON.parse(readFileSync(file, \"utf8\")));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4713,
+        "text": "execFile(\"git\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,126 @@
+{
+  "name": "whale-persona",
+  "version": "0.17.7",
+  "scannedAt": "2026-10-26T10:05:50.434Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh-ui/client.js",
+        "line": 219,
+        "text": "p = Promise.resolve(fetch(url, { headers: { accept: 'application/json' } }));"
+      },
+      {
+        "file": "adapters/dsh-ui/client.js",
+        "line": 242,
+        "text": "p = Promise.resolve(fetch(CONFIG_API, {"
+      },
+      {
+        "file": "adapters/dsh-ui/client.js",
+        "line": 830,
+        "text": "fetch(AGENT_PRESET_API, {"
+      },
+      {
+        "file": "adapters/dsh-ui/client.js",
+        "line": 1068,
+        "text": "return fetch(PRESETS_API, { headers: { accept: 'application/json' } }).then(readBody).then(function (res) {"
+      },
+      {
+        "file": "adapters/dsh-ui/client.js",
+        "line": 1078,
+        "text": "return fetch(PRESETS_API + '/' + action, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh-ui/index.js",
+        "line": 24,
+        "text": "import { existsSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "adapters/dsh/reflex/log.js",
+        "line": 8,
+        "text": "import { appendFileSync, mkdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "adapters/dsh/reflex/log.js",
+        "line": 17,
+        "text": "mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "adapters/dsh/reflex/log.js",
+        "line": 18,
+        "text": "appendFileSync(file, JSON.stringify(Object.assign({ t: new Date().toISOString() }, row)) + '\\n', 'utf8')"
+      },
+      {
+        "file": "adapters/dsh/reflex/rules.js",
+        "line": 11,
+        "text": "import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/reflex/index.js",
+        "line": 114,
+        "text": "const t = agent && agent.ctx && agent.ctx.tools"
+      },
+      {
+        "file": "adapters/dsh/reflex/index.js",
+        "line": 237,
+        "text": "const svc = agent.ctx.tools"
+      },
+      {
+        "file": "adapters/dsh/reflex/toolnarrow.js",
+        "line": 6,
+        "text": "*   · `agent.ctx.tools.restrict({allow})` 返回**解除函数**（dsh-tools/lib/index.js:2887-2907），所以是\"本步裁、回合末放\"；"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "qa/probes/probe-security.js",
+        "line": 39,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "qa/probes/probe-security.js",
+        "line": 116,
+        "text": "const susps = lineHits((line) => (/spawn(Sync)?\\s*\\(/.test(line) && !/shell\\s*:\\s*false/.test(line) ? 'spawn 未显式 shell:false' : null))"
+      },
+      {
+        "file": "qa/probes/probe-security.js",
+        "line": 276,
+        "text": "const gitR = spawnSync('git', ['-C', ROOT, 'ls-files', '-z'], { encoding: 'utf8', shell: false })"
+      },
+      {
+        "file": "qa/probes/probe-security.js",
+        "line": 309,
+        "text": "const gitR = spawnSync('git', ['-C', ROOT, 'ls-files', '-z'], { encoding: 'utf8', shell: false })"
+      },
+      {
+        "file": "qa/probes/probe-security.js",
+        "line": 347,
+        "text": "const r = spawnSync('git', ['-C', ROOT, 'ls-files'], { encoding: 'utf8', shell: false })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

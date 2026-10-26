@@ -1,0 +1,100 @@
+{
+  "name": "dsh-font-enhancer",
+  "version": "1.5.3",
+  "scannedAt": "2026-10-26T10:05:36.728Z",
+  "icon": "dsh-font-enhancer.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 590,
+        "text": "fetch(\"/dsh-font-enhancer/get\", { cache: \"no-store\" }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 609,
+        "text": "fetch(\"/dsh-font-enhancer/set\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 868,
+        "text": "return fetch(\"/dsh-font-enhancer/installed-fonts\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1279,
+        "text": "      try { fetch(\"/dsh-font-enhancer/log\", { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(payload) }).catch(function()"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1928,
+        "text": "try { fetch(\"/dsh-font-enhancer/client-alive\").catch(function(){}); } catch (e) {}"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, appendFileSync, copyFileSync, unlinkSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "if (existsSync(SETTINGS_STORE)) return JSON.parse(readFileSync(SETTINGS_STORE, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "mkdirSync(dirname(SETTINGS_STORE), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "writeFileSync(SETTINGS_STORE, JSON.stringify(data, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "          try { writeFileSync(dest, Buffer.concat(chunks)); if (fontId) DOWNLOAD_PROGRESS[fontId] = { state: \"done\", pct: 100, received: received, total: total,"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 188,
+        "text": "execFile(\"reg.exe\", [\"add\", USER_FONTS_REG_KEY, \"/v\", regName, \"/t\", \"REG_SZ\", \"/d\", filePath, \"/f\"], { windowsHide: true, timeout: 20000 }, function (regErr) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "      execFile(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-Command\", ps], { windowsHide: true, timeout: 30000 }, functio"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

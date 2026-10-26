@@ -1,0 +1,160 @@
+{
+  "name": "dsh-nexus",
+  "version": "0.2.62",
+  "scannedAt": "2026-10-26T10:06:05.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 51,
+        "text": "const response = await fetch(\"/api/nexus-coder-tasks/get\", {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 346,
+        "text": "const response = await fetch(`/api/nexus-coder-tasks/${method}`, {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 640,
+        "text": "const response = await fetch(`/api/nexus-channels/${method}`, {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 1008,
+        "text": "const response = await fetch(`/api/nexus-coders/${method}`, {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 1766,
+        "text": "const response = await fetch(`/api/nexus-assistant/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/channels/files.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "dist/src/channels/files.js",
+        "line": 2,
+        "text": "import { open, realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/src/channels/inbox.js",
+        "line": 1,
+        "text": "import { mkdir, open, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/src/channels/inbox.js",
+        "line": 41,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "dist/src/channels/inbox.js",
+        "line": 52,
+        "text": "await handle.writeFile(attachment.bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/assistant/prompt.js",
+        "line": 4,
+        "text": "memory: !!ctx.tools.get('memory_recall', context.scope),"
+      },
+      {
+        "file": "dist/src/assistant/prompt.js",
+        "line": 5,
+        "text": "skills: !!ctx.tools.get('skill', context.scope),"
+      },
+      {
+        "file": "dist/src/assistant/prompt.js",
+        "line": 6,
+        "text": "automation: !!ctx.tools.get('nexus_automation', context.scope),"
+      },
+      {
+        "file": "dist/src/assistant/prompt.js",
+        "line": 7,
+        "text": "agenda: !!ctx.tools.get('calendar', context.scope), reminders: !!ctx.tools.get('schedule_create', context.scope),"
+      },
+      {
+        "file": "dist/src/coders/brief.js",
+        "line": 178,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/coders/habits.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/coders/install-worker.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/coders/install-worker.js",
+        "line": 41,
+        "text": "const npm = spawn(command, [...args, '--prefer-offline'], { stdio: ['ignore', 'inherit', 'inherit'], windowsHide: true });"
+      },
+      {
+        "file": "dist/src/coders/install.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/coders/install.js",
+        "line": 64,
+        "text": "child = spawn(command, args, { env, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 14,
+  "minifiedFiles": [
+    "dist/src/client/AssistantSettings.js",
+    "dist/src/client/CoderSettings.js",
+    "dist/src/client/ConnectorSettings.js",
+    "dist/src/client/MemorySettings.js",
+    "dist/src/client/UpdateSettings.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "credentials",
+    "jobs",
+    "llm",
+    "nexusConnectors",
+    "nexusMemoryData",
+    "sandbox",
+    "sandboxPolicy",
+    "sessionController",
+    "sessionPersistence",
+    "sessions",
+    "storageDomain",
+    "systemPrompt",
+    "tools",
+    "userQuestions",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

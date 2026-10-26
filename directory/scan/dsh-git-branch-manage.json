@@ -1,0 +1,87 @@
+{
+  "name": "dsh-git-branch-manage",
+  "version": "1.0.4",
+  "scannedAt": "2026-10-26T10:05:52.954Z",
+  "icon": "dsh-git-branch-manage.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 116,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 151,
+        "text": "const response = await fetch(`${ROUTE_STATUS}?path=${encodeURIComponent(path)}`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2876,
+        "text": "/** Remote-sync flow: POST /fetch (fetch every remote + prune), then"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/copy-files.js",
+        "line": 6,
+        "text": "import { copyFile, mkdir, readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/copy-files.js",
+        "line": 12,
+        "text": "return await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/copy-files.js",
+        "line": 33,
+        "text": "await mkdir(path, { recursive: true });"
+      },
+      {
+        "file": "lib/copy-files.js",
+        "line": 95,
+        "text": "await seams.mkdir(dirname(dest));"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 7,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 6,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 35,
+        "text": "        execFile(file, args, { cwd: options.cwd, encoding: 'utf8', timeout: options.timeoutMs ?? GIT_TIMEOUT_MS, windowsHide: true, maxBuffer: 4 * 1024 * 1024 }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
