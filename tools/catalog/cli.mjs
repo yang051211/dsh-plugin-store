@@ -6,6 +6,7 @@
  *   build                      make market/ exactly the published catalog: index, details, icons of listed plugins
  *   check                      validate the catalog, run the preflight checks, and confirm market/ matches build
  *   services <dir>             write catalog/scan/dsh-services.json from an installed DSH's @deepseek-ai packages directory
+ *   updates                    compare each listed plugin's newer upstream version with the reviewed one; report to stdout
  * Options: --registry <url> (default: `npm config get registry`); GITHUB_TOKEN raises the GitHub API rate limit.
  * Tools never write catalog/catalog.yaml (tests/catalog/curation.test.mjs guards every write call).
  */
@@ -20,6 +21,8 @@ import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
 import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
 import { preflightIssues, servicesProvidedBy } from './preflight.mjs'
 import { scanPackage } from './scan.mjs'
+import { compareFiles, compareScans, selfUpdateLines, updatesReport } from './updates.mjs'
+import semver from 'semver'
 import { slugOf } from './slug.mjs'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
@@ -194,7 +197,49 @@ async function check() {
   console.log(`catalog OK: ${index.plugins.length} plugin(s), index valid, market/ up to date`)
 }
 
-const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check, services }
+/** The packument of one package. */
+async function packument(name, context) {
+  const response = await fetch(`${context.registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
+  if (!response.ok) throw new Error(`${name}: registry answered HTTP ${response.status}`)
+  return response.json()
+}
+
+/**
+ * Compare every listed plugin's newer npm `latest` against its reviewed version and write the review report.
+ * Reads catalog/upstream (run fetch first); writes a scan of each new version next to the reviewed scans.
+ */
+async function updates(args) {
+  const curation = loadCuration(CURATION_FILE)
+  const context = io(args)
+  const items = []
+  for (const plugin of curation.plugins.filter(p => p.review.status === 'approved')) {
+    const slug = slugOf(plugin.name)
+    const reviewed = String(plugin.review.version)
+    const latest = readJson(join(UPSTREAM_DIR, `${slug}.json`))?.latest
+    if (!latest || !semver.valid(latest) || !semver.gt(latest, reviewed)) continue
+    const item = { name: plugin.name, reviewed, latest }
+    try {
+      const doc = await packument(plugin.name, context)
+      const [old, now] = [doc.versions?.[reviewed], doc.versions?.[latest]]
+      if (!old?.dist || !now?.dist) throw new Error('version missing from the registry')
+      const [before, after] = [(await downloadTarball(old, context)).files, (await downloadTarball(now, context)).files]
+      const reviewedScan = readJson(join(SCAN_DIR, `${slug}@${reviewed}.json`)) ?? scanPackage(before)
+      const latestScan = { name: plugin.name, version: latest, scannedAt: new Date().toISOString(), ...scanPackage(after), skippedEntries: [] }
+      mkdirSync(SCAN_DIR, { recursive: true })
+      writeFileSync(join(SCAN_DIR, `${slug}@${latest}.json`), toJson(latestScan))
+      Object.assign(item, compareScans(reviewedScan, latestScan), { files: compareFiles(before, after), selfUpdate: selfUpdateLines(before, after) })
+    } catch (error) {
+      item.error = error.message
+    }
+    // Progress on stderr: stdout carries only the report, so callers can redirect it.
+    console.error(`${plugin.name}: ${reviewed} → ${latest} ${item.error ? `FAILED ${item.error}` : item.verdict}`)
+    items.push(item)
+  }
+  process.stdout.write(`${updatesReport(items, new Date().toISOString().slice(0, 10))}
+`)
+}
+
+const COMMANDS = { fetch: fetchAll, scan: scanOne, build, check, services, updates }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const [command, ...args] = process.argv.slice(2)
