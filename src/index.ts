@@ -3,6 +3,7 @@ import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-connection'
 import { createCatalogCache } from './host/catalog-cache.ts'
 import { createDetailFetch, createIndexFetch, DETAIL_ROUTE, INDEX_ROUTE, INDEX_SOURCES } from './host/index-route.ts'
+import { createReadmeFetch, README_ROUTE } from './host/readme-route.ts'
 import { createVersionReader } from './host/runtime-version.ts'
 
 export const name = 'plugin-store'
@@ -22,4 +23,7 @@ export function apply(ctx: Context): void {
   ctx.effect(() => ctx.connection.fetch.register({
     path: DETAIL_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createDetailFetch(cache),
   }), 'plugin-store: detail route')
+  ctx.effect(() => ctx.connection.fetch.register({
+    path: README_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createReadmeFetch(cache, fetch),
+  }), 'plugin-store: readme route')
 }

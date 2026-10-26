@@ -7,7 +7,6 @@ import { json } from './http.ts'
 export const INDEX_ROUTE = '/api/plugin-store/index'
 export const DETAIL_ROUTE = '/api/plugin-store/detail'
 
-/** The store's own hand-reviewed catalog, published from market/ in this repository through jsDelivr. */
 /**
  * Where the published catalog is read from, in order. GitHub serves a push within minutes; jsDelivr's `@main` can
  * keep resolving the branch to an older commit for hours, so it is the fallback for networks that cannot reach GitHub.

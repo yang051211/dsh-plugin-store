@@ -7,7 +7,7 @@
 import { fetchJson } from './http.ts'
 
 /** Largest catalog document accepted. */
-export const MAX_INDEX_BYTES = 8 * 1024 * 1024
+export const MAX_INDEX_BYTES = 16 * 1024 * 1024
 /** Largest detail document accepted. */
 export const MAX_DETAIL_BYTES = 4 * 1024 * 1024
 /** Deadline for one upstream fetch, matching the official Discover default. */

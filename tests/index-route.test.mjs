@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import * as host from '../lib/index.js'
-import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, INDEX_SOURCES, MAX_DETAIL_BYTES } from '../lib/test/host.js'
+import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, INDEX_SOURCES, MAX_DETAIL_BYTES, README_ROUTE } from '../lib/test/host.js'
 
 const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 
@@ -81,7 +81,7 @@ test('a detail the serving source cannot give is read from the other source', as
   assert.equal(json.detail.name, 'alpha')
 })
 
-test('registers both routes through the authenticated connection channel, GET only', () => {
+test('registers the catalog, detail and README routes through the authenticated connection channel, GET only', () => {
   const registered = []
   const ctx = {
     connection: { fetch: { register: (route) => { registered.push(route); return async () => {} } } },
@@ -90,7 +90,7 @@ test('registers both routes through the authenticated connection channel, GET on
   }
   host.apply(ctx)
   assert.deepEqual(host.inject, ['connection'])
-  assert.deepEqual(registered.map(r => r.path).sort(), [DETAIL_ROUTE, INDEX_ROUTE].sort())
+  assert.deepEqual(registered.map(r => r.path).sort(), [DETAIL_ROUTE, INDEX_ROUTE, README_ROUTE].sort())
   for (const route of registered) {
     assert.deepEqual(route.methods, ['GET'])
     assert.equal(route.requestBody, 'buffered')
