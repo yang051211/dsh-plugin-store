@@ -1,0 +1,98 @@
+{
+  "name": "@goodandready/dsh-session-control",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:12:29.872Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 980,
+        "text": "fetch('/dsh-session-control/transcript?session=' + encodeURIComponent(sessionId) + (workspaceId ? '&workspace=' + encodeURIComponent(workspaceId) : ''),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1011,
+        "text": "const grab = () => fetch('/dsh-session-control/transcript?session='"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1624,
+        "text": "fetch('/dsh-session-control/titles?sessions=' + want.map(encodeURIComponent).join(','))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1661,
+        "text": "fetch('/dsh-session-control/sizes?sessions=' + want.map(encodeURIComponent).join(','))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1694,
+        "text": "response = await fetch('/dsh-session-control/handoff-summary', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 329,
+        "text": "const raw = fs.readFileSync(storageFile, 'utf8')"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 66,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 186,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

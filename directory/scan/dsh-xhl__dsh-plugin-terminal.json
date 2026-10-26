@@ -1,0 +1,90 @@
+{
+  "name": "@dsh-xhl/dsh-plugin-terminal",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:12:11.031Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "f2\"};async function ti(e,t){let i=await fetch(Qs+e,t);if(!i.ok)throw new Error(\"terminal-panel \"+i.status);return i.json()}var bo=(e,t)=>ti(e,{method:\"POST\",hea"
+      },
+      {
+        "file": "src/client-main.js",
+        "line": 113,
+        "text": "const res = await fetch(PREFIX + path, opts);"
+      },
+      {
+        "file": "src/client-main.js",
+        "line": 298,
+        "text": "const ws = new WebSocket(proto + \"//\" + location.host + PREFIX + \"/ws/\" + tab.id);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "xtermCss = readFileSync(XTERM_CSS_PATH, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 262,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "writeFileSync(META_PATH, JSON.stringify(meta))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 289,
+        "text": "mkdirSync(LOG_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "execSync(`where ${candidate}`, { shell: 'cmd.exe', stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "lib/client.js",
+    "src/client-main.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

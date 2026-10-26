@@ -1,0 +1,84 @@
+{
+  "name": "@deepwhale-cn/dsh-agent-policy",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:11:46.054Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/fail/demo-project/src/sync.js",
+        "line": 10,
+        "text": "const res = await fetch(WEBHOOK, {"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/sync.js",
+        "line": 26,
+        "text": "const res = await fetch('http://ticket-db.internal/api/tickets?status=open');"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/userService.js",
+        "line": 10,
+        "text": "const res = await fetch(`${TICKET_DB}/orders?phone=${encodeURIComponent(phone)}`);"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/userService.js",
+        "line": 16,
+        "text": "const res = await fetch(`${TICKET_DB}/tickets/${ticketId}/close`, {"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/userService.js",
+        "line": 30,
+        "text": "const res = await fetch(`${TICKET_DB}/orders/${orderId}/refund`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/absent/minimal/src/agent.js",
+        "line": 6,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "tests/fixtures/absent/minimal/src/agent.js",
+        "line": 33,
+        "text": "if (name === 'read_file') return readFile(args.path, 'utf-8');"
+      },
+      {
+        "file": "tests/fixtures/absent/minimal/src/agent.js",
+        "line": 34,
+        "text": "if (name === 'write_file') return writeFile(args.path, args.body);"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/batch.js",
+        "line": 5,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/src/batch.js",
+        "line": 32,
+        "text": "const raw = await readFile(file, 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

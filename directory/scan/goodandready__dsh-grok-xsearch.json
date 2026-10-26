@@ -1,0 +1,112 @@
+{
+  "name": "@goodandready/dsh-grok-xsearch",
+  "version": "0.3.30",
+  "scannedAt": "2026-10-26T10:12:28.129Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 151,
+        "text": "const res = await fetch('/api/dsh-grok-xsearch/update')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 162,
+        "text": "const res = await fetch('/api/dsh-grok-xsearch/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 242,
+        "text": "fetch('/dsh-grok-xsearch/config', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 276,
+        "text": "const res = await fetch('/dsh-grok-xsearch/config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 286,
+        "text": "const res = await fetch('/dsh-grok-xsearch/oauth/start', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 55,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 160,
+        "text": "const raw = await readFile(manifestUrl, 'utf8')"
+      },
+      {
+        "file": "lib/xsearch.js",
+        "line": 4,
+        "text": "import { readFileSync, unlinkSync, existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'credentials', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 194,
+        "text": "const child = spawn(process.execPath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

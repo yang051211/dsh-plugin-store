@@ -1,0 +1,153 @@
+{
+  "name": "@joekytc/dsh-swarm",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:12:53.823Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/ConfigSection.tsx",
+        "line": 29,
+        "text": "if (!storeRef.current) storeRef.current = createConfigStore(fetchImpl ?? ((...args: Parameters<typeof fetch>) => fetch(...args)));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1836,
+        "text": "if (!storeRef.current) storeRef.current = createConfigStore(fetchImpl ?? ((...args) => fetch(...args)));"
+      },
+      {
+        "file": "lib/services/im-bot-probe.js",
+        "line": 126,
+        "text": "fetchImpl: ((...args) => fetch(...args)),"
+      },
+      {
+        "file": "lib/wiki/wiki-vault-client.js",
+        "line": 20,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "skills/llm-wiki-skill/deps/baoyu-url-to-markdown/scripts/main.ts",
+        "line": 106,
+        "text": "const response = await fetch(apiUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dispatcher/agent-runner.js",
+        "line": 2,
+        "text": "import { writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/dispatcher/agent-runner.js",
+        "line": 45,
+        "text": "writeFileSync(join(storageDir, 'dispatcher.log'), new Date().toISOString() + ' ' + msg + '\\n', { flag: 'a' });"
+      },
+      {
+        "file": "lib/dispatcher/chain-auditor.js",
+        "line": 2,
+        "text": "import { readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/dispatcher/dispatcher.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/dispatcher/dispatcher.js",
+        "line": 48,
+        "text": "const raw = JSON.parse(readFileSync(stateFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dispatcher/agent-runner.js",
+        "line": 649,
+        "text": "// 标记缺失/不匹配 → 绝不盲用。工具注册表（live.ctx.tools，与 installRoleTools 同一访问路径）："
+      },
+      {
+        "file": "lib/roles/clean-fs-tools.js",
+        "line": 101,
+        "text": "tools.register({"
+      },
+      {
+        "file": "lib/roles/toolsets.js",
+        "line": 291,
+        "text": "/** 工具注册表解析：直取 ctx.tools（官方语义），失败回退 ctx.get('tools')（cordis 服务路径，"
+      },
+      {
+        "file": "personas/kanban-d/agent.cordis.yml",
+        "line": 10,
+        "text": "# MCP（2026-09-09）：文件尾留 dsh-mcp-client 模板行（默认注释，接入 server 时填参启用）。"
+      },
+      {
+        "file": "personas/kanban-d/agent.cordis.yml",
+        "line": 157,
+        "text": "# 宿主已装 @deepseek-ai/dsh-mcp-client（MCP client bridge）：每 server 一个插件实例，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dispatcher/git-credentials.js",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dispatcher/merge-gate.js",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/routes/kanban-http.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/routes/kanban-http.js",
+        "line": 24,
+        "text": "const child = execFile('npm', ['install', '-g', OCR_PACKAGE], { timeout: 600_000 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/services/gate-runner.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "skills/llm-wiki-skill/deps/d3.min.js",
+    "skills/llm-wiki-skill/deps/marked.min.js",
+    "skills/llm-wiki-skill/deps/purify.min.js",
+    "skills/llm-wiki-skill/deps/rough.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 199,
+      "text": "- or run `npm install -g @alibaba-group/open-code-review` in a terminal, then verify with `ocr --version`."
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 200,
+      "text": "- 或在终端执行 `npm install -g @alibaba-group/open-code-review`，装后用 `ocr --version` 验证。"
+    }
+  ],
+  "skippedEntries": []
+}

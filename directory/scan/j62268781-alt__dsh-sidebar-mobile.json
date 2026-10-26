@@ -1,0 +1,134 @@
+{
+  "name": "@j62268781-alt/dsh-sidebar-mobile",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:49.179Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(`${PREFIX}/${route}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 197,
+        "text": "response = await fetch(streamUrl, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 905,
+        "text": "const response = await fetch(`${PREFIX}/${ROUTE_PANEL_OPEN}`, { method: \"GET\" });"
+      },
+      {
+        "file": "lib/device/daemon-rpc.js",
+        "line": 35,
+        "text": "*     不是 HTTP —— 用 `curl --unix-socket` 会被拒（回 \"HTTP/0.9 not allowed\"）。"
+      },
+      {
+        "file": "src/client/index.jsx",
+        "line": 103,
+        "text": "response = await fetch(`${PREFIX}/${route}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent/skills.js",
+        "line": 29,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/agent/skills.js",
+        "line": 122,
+        "text": "raw = readFileSync(join(SKILL_DIR, \"SKILL.md\"), \"utf8\");"
+      },
+      {
+        "file": "lib/agent/skills.js",
+        "line": 139,
+        "text": "reference = readFileSync(join(SKILL_DIR, \"reference.md\"), \"utf8\");"
+      },
+      {
+        "file": "lib/agent/tools.js",
+        "line": 933,
+        "text": "const { stat } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/device/android-toolchain.js",
+        "line": 30,
+        "text": "import { existsSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 6,
+        "text": "# 它不依赖 @deepseek-ai/dsh-mcp-client —— mobilecli 不是 MCP server，而是一个"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 345,
+        "text": "() => ctx.tools.register(definition),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/device/android-toolchain.js",
+        "line": 29,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/device/mobilecli.js",
+        "line": 26,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/device/mobilecli.js",
+        "line": 341,
+        "text": "* ⚠️ **必须挂 `child.on(\"error\")`**。`spawn()` 对\"起不来\"（二进制不存在、"
+      },
+      {
+        "file": "lib/device/mobilecli.js",
+        "line": 344,
+        "text": "*     spawn()          → 立刻返回 ChildProcess（不抛）"
+      },
+      {
+        "file": "lib/device/mobilecli.js",
+        "line": 356,
+        "text": "* @returns {{child: import(\"node:child_process\").ChildProcess, stdout: NodeJS.ReadableStream, stderr: () => string, error: () => Error|null, kill: () => void}}"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 64,
+      "text": "npm install -g mobilecli@latest"
+    }
+  ],
+  "skippedEntries": []
+}

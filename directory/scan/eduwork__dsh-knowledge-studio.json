@@ -1,0 +1,128 @@
+{
+  "name": "@eduwork/dsh-knowledge-studio",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-26T10:12:14.599Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pdfjs.js",
+        "line": 722,
+        "text": " && (i = this.#e.get(r))), i instanceof L && this.xref ? e ? this.xref.fetchAsync(i, this.suppressEncryption) : this.xref.fetch(i, this.suppressEncryption) : i;"
+      },
+      {
+        "file": "lib/pdfjs.js",
+        "line": 734,
+        "text": "for (let e = 0, t = r.length; e < t; e++) r[e] instanceof L && this.xref && (r[e] = this.xref.fetch(r[e], this.suppressEncryption));"
+      },
+      {
+        "file": "lib/pdfjs.js",
+        "line": 775,
+        "text": "for (let [e, t] of this.#e) yield [e, t instanceof L && this.xref ? this.xref.fetch(t, this.suppressEncryption) : t];"
+      },
+      {
+        "file": "lib/pdfjs.js",
+        "line": 1246,
+        "text": "let t = await fetch(e);"
+      },
+      {
+        "file": "lib/pdfjs.js",
+        "line": 1270,
+        "text": "e = n.fetch(t);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 88,
+        "text": "try { state = normalizeState(JSON.parse(await readFile(this.#path, 'utf8'))) }"
+      },
+      {
+        "file": "lib/atomic-json.js",
+        "line": 1,
+        "text": "import {mkdir,writeFile,rename,unlink} from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/atomic-json.js",
+        "line": 11,
+        "text": "await mkdir(dirname(path),{recursive:true})"
+      },
+      {
+        "file": "lib/atomic-json.js",
+        "line": 12,
+        "text": "await writeFile(temporary,JSON.stringify(state,null,2)+'\\n',{encoding:'utf8',mode:0o600,flag:'wx'})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 526,
+        "text": ":now(),provider:execution?.agent&&this.#ctx.tools?.get({docx:'office_document',pptx:'office_presentation',xlsx:'office_spreadsheet'}[officeFormat])?'office-tool"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "static inject = ['tools', 'workspaceRegistry', 'fs', 'settings', 'skills', 'llm', 'agents', 'agentDefaultModel', 'artifactServices']"
+      },
+      {
+        "file": "lib/office-tools.js",
+        "line": 10,
+        "text": "if(!name||!execution?.agent||!ctx.tools?.get(name))return null"
+      },
+      {
+        "file": "lib/office-tools.js",
+        "line": 14,
+        "text": "    const result=await ctx.tools.execute({callId:randomUUID(),rootCallId:execution.rootCallId||execution.callId,parent:execution.token,agent:execution.agent,sig"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 24,
+        "text": "if (artifacts) ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/video-poster.js",
+        "line": 2,
+        "text": "import {execFile} from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/pdfjs.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "artifactServices",
+    "fs",
+    "llm",
+    "settings",
+    "skills",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

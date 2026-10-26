@@ -1,0 +1,119 @@
+{
+  "name": "@gm-hz/agent-dag-workflow",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:12:27.387Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/install-showcases.mjs",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "examples/install-showcases.mjs",
+        "line": 33,
+        "text": "const template = parseWorkflowTemplate(readFileSync(resolve(examplesDirectory, filename), 'utf8'))"
+      },
+      {
+        "file": "examples/run-approval-gate.mjs",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "examples/run-approval-gate.mjs",
+        "line": 8,
+        "text": "const template = JSON.parse(await readFile(new URL('./approval-gate.workflow.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "examples/run-codex-examples.mjs",
+        "line": 2,
+        "text": "import { mkdtempSync, readFileSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/dsh/authoring.js",
+        "line": 14,
+        "text": "static inject = ['tools', 'subagents', 'skills', 'workflowNodes', 'workflowScripts', 'workflowTemplates', 'dagWorkflowEngine'];"
+      },
+      {
+        "file": "lib/adapters/dsh/authoring.js",
+        "line": 21,
+        "text": "const disposers = workflowToolDefinitions(ctx).map(definition => ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/adapters/dsh/authoring.js",
+        "line": 68,
+        "text": "tools: ctx.tools.schemas(execution.agent)"
+      },
+      {
+        "file": "lib/adapters/dsh/bundle.js",
+        "line": 8,
+        "text": "export const inject = ['tools', 'subagents', 'approval', 'skills', 'agents'];"
+      },
+      {
+        "file": "lib/adapters/dsh/index.js",
+        "line": 4,
+        "text": "export const inject = ['tools', 'subagents', 'approval', 'skills'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/run-codex-examples.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "examples/run-codex-examples.mjs",
+        "line": 85,
+        "text": "const result = spawnSync(process.execPath, [wrapper, ...args, '--db', database, '--host', host], {"
+      },
+      {
+        "file": "integrations/codex/agent-dag-workflow/scripts/agent-workflow.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "integrations/codex/agent-dag-workflow/scripts/agent-workflow.mjs",
+        "line": 32,
+        "text": "const child = spawn(command.executable, command.args, { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "lib/canvas/client.js",
+    "lib/canvas/client/studio.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "skills",
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

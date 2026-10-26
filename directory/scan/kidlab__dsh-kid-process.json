@@ -1,0 +1,75 @@
+{
+  "name": "@kidlab/dsh-kid-process",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:12:59.095Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 113,
+        "text": "fetch(PATH, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": ".map((tool) => child.tools.register(tool))"
+      },
+      {
+        "file": "tools.js",
+        "line": 6,
+        "text": "//   改成返回普通对象，由 index.js 交给 ctx.tools.register()。"
+      },
+      {
+        "file": "tools.js",
+        "line": 105,
+        "text": "* @returns {object[]} 可直接交给 ctx.tools.register 的普通对象"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "collect.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "collect.js",
+        "line": 47,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, maxBuffer: 8 * 1024 * 1024 }, (_err, stdout) => {"
+      },
+      {
+        "file": "tools.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "tools.js",
+        "line": 53,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, encoding: 'utf8' }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

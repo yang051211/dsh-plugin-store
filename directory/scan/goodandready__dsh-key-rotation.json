@@ -1,0 +1,100 @@
+{
+  "name": "@goodandready/dsh-key-rotation",
+  "version": "0.8.72",
+  "scannedAt": "2026-10-26T10:12:28.854Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 597,
+        "text": "          fetch('/dsh-key-rotation/status', { headers: { accept: 'application/json' }, signal: (typeof AbortSignal !== 'undefined' && typeof AbortSignal.timeout"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 627,
+        "text": "          fetch('/dsh-key-rotation/sandbox-cache', { headers: { accept: 'application/json' }, signal: (typeof AbortSignal !== 'undefined' && typeof AbortSignal."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 904,
+        "text": "const res = await fetch('/api/dsh-key-rotation/update', { headers: { 'x-dsh-plugin-update': '1' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 921,
+        "text": "const res = await fetch('/api/dsh-key-rotation/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 977,
+        "text": "return fetch(CONFIG_PATH, { headers: { accept: 'application/json' }, signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic-io.js",
+        "line": 4,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/atomic-io.js",
+        "line": 16,
+        "text": "await fs.mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/atomic-io.js",
+        "line": 20,
+        "text": "await fh.writeFile(data);"
+      },
+      {
+        "file": "lib/atomic-io.js",
+        "line": 50,
+        "text": "const raw = await fs.readFile(filePath, 'utf8');"
+      },
+      {
+        "file": "lib/ops-config-io.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 270,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,135 @@
+{
+  "name": "@goodandready/dsh-shadow-auditor",
+  "version": "0.2.35",
+  "scannedAt": "2026-10-26T10:12:29.992Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 115,
+        "text": "fetch('/dsh-shadow-auditor/audit', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 242,
+        "text": "const res = await fetch('/dsh-shadow-auditor/update');"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 266,
+        "text": "const res = await fetch('/dsh-shadow-auditor/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 336,
+        "text": "fetch('/dsh-shadow-auditor/audit', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 344,
+        "text": "fetch('/dsh-shadow-auditor/events?limit=30&filter=' + encodeURIComponent(filter), { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/recorder.js",
+        "line": 2,
+        "text": "import { createReadStream, createWriteStream } from 'node:fs';"
+      },
+      {
+        "file": "lib/recorder.js",
+        "line": 3,
+        "text": "import { appendFile, mkdir, open, readFile, readdir, stat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/recorder.js",
+        "line": 107,
+        "text": "await mkdir(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/recorder.js",
+        "line": 119,
+        "text": "await appendFile(file, line, 'utf8');"
+      },
+      {
+        "file": "lib/recorder.js",
+        "line": 127,
+        "text": "await unlink(file).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guards/lifecycle-hooks.js",
+        "line": 186,
+        "text": "if (!ctx || !ctx.tools || typeof ctx.tools.guard !== 'function') return;"
+      },
+      {
+        "file": "lib/guards/lifecycle-hooks.js",
+        "line": 190,
+        "text": "const off = ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'settings', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "if (ctx.tools) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 157,
+        "text": "offs.push(ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/system-audit.js",
+        "line": 10,
+        "text": "import child_process from 'node:child_process';"
+      },
+      {
+        "file": "lib/system-audit.js",
+        "line": 480,
+        "text": "const out = child_process.spawnSync('zstd', ['-d', '-c', filePath], {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 205,
+        "text": "const child = spawn(process.execPath, installArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

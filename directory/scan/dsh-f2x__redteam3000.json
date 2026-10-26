@@ -1,0 +1,136 @@
+{
+  "name": "@dsh-f2x/redteam3000",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:12:06.435Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "      void fetch(`${MANAGER_ROUTE}/state`, { headers: { accept: \"application/json\" } }).then((response) => response.ok ? response.json() : Promise.reject(new Er"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 69,
+        "text": "void fetch(`${MANAGER_ROUTE}${route}`, { method: \"POST\", body }).then((response) => response.text()).then((text) => {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1767,
+        "text": "fetch('/f2x-console/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/manager.mjs",
+        "line": 182,
+        "text": "return (await fetch(url, {"
+      },
+      {
+        "file": "lib/manager.mjs",
+        "line": 862,
+        "text": "const response = await fetch(archiveUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 3,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, statSync, writeSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 9,
+        "text": "import { mkdir, readFile, rename, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 672,
+        "text": "const raw = await readFile(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 703,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 736,
+        "text": "await writeFile(temp, text, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 1887,
+        "text": "return ctx.tools.schemas().some((schema) => schema.name === toolName);"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1909,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2001,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2053,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2107,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager.mjs",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/manager.mjs",
+        "line": 110,
+        "text": "child = spawn(file, [...args], {"
+      },
+      {
+        "file": "scripts/race-check.mjs",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/race-check.mjs",
+        "line": 106,
+        "text": "const child = spawn(process.execPath, ['--experimental-strip-types', childPath, stateDir, prefix, String(per)], {"
+      },
+      {
+        "file": "scripts/release-check.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

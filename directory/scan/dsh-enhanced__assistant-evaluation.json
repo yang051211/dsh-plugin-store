@@ -1,0 +1,90 @@
+{
+  "name": "@dsh-enhanced/assistant-evaluation",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:00.687Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/benchmark/cli.js",
+        "line": 10,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/benchmark/cli.js",
+        "line": 11,
+        "text": "import { lstat, mkdir, open, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/benchmark/cli.js",
+        "line": 363,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/benchmark/cli.js",
+        "line": 364,
+        "text": "await writeFile(path, text, { flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/benchmark/holdout-evidence.js",
+        "line": 2,
+        "text": "xistsSync, fstatSync, fsyncSync, linkSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, unlinkSync, writeFileSync, } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/benchmark/strategy-capabilities.js",
+        "line": 255,
+        "text": "const tools = this.#ctx.tools ?? this.#ctx.get('tools');"
+      },
+      {
+        "file": "lib/benchmark/strategy-owner.js",
+        "line": 141,
+        "text": "agent.ctx.tools.restrict({ allow: allowedToolNames });"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 67,
+        "text": "const disposeReview = tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 169,
+        "text": "const disposeSelfAssess = tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/benchmark/holdout-provider.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/benchmark/holdout-provider.js",
+        "line": 373,
+        "text": "        child = spawn(config.executable, [...config.args], { cwd: '/', env: { ...config.environment }, shell: false, detached: process.platform !== 'win32', std"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

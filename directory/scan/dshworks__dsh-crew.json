@@ -1,0 +1,131 @@
+{
+  "name": "@dshworks/dsh-crew",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:12:11.974Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 7,
+        "text": "ttach\";async function Fe(e){let t=await fetch(Qn,{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify(e)}),i=await t.text(),s;try{s=JS"
+      },
+      {
+        "file": "src/client/api.js",
+        "line": 23,
+        "text": "const response = await fetch(CONTROL_PATH, {"
+      },
+      {
+        "file": "src/client/api.js",
+        "line": 52,
+        "text": "return new WebSocket(`${scheme}://${window.location.host}${ATTACH_PATH}?token=${encodeURIComponent(token)}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/roster.js",
+        "line": 15,
+        "text": "import { access, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/roster.js",
+        "line": 16,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 22,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 34,
+        "text": "const { name: MODULE_ID } = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 73,
+        "text": "mkdirSync(join(root, 'dist'), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 238,
+        "text": "* @param {import('@deepseek-ai/cordis').Context} ctx - context with `ctx.tools`."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 259,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 287,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 343,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 435,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "const pane = await panes.spawn({"
+      },
+      {
+        "file": "lib/panes.js",
+        "line": 172,
+        "text": "async spawn(request) {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 321,
+        "text": "const pane = await panes.spawn({"
+      },
+      {
+        "file": "scripts/check-dsh-release.mjs",
+        "line": 43,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/check-dsh-release.mjs",
+        "line": 124,
+        "text": "const added = spawnSync(bin, ['plugin', '--profile', PROFILE, 'add', spec], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

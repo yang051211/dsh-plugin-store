@@ -1,0 +1,78 @@
+{
+  "name": "@jw-king/dsh-plugin-zentao",
+  "version": "0.1.17",
+  "scannedAt": "2026-10-26T10:12:55.352Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/net.js",
+        "line": 1,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/net.js",
+        "line": 2,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-my-bugs.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-my-bugs.js",
+        "line": 7,
+        "text": "const file = readFileSync(join(homedir(), '.dsh', '.credentials.yaml'), 'utf8')"
+      },
+      {
+        "file": "src/net.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/net.js",
+        "line": 7,
+        "text": "const pkg = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "export const inject = ['tools', 'credentials']"
+      },
+      {
+        "file": "index.js",
+        "line": 84,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

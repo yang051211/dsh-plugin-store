@@ -1,0 +1,64 @@
+{
+  "name": "@gzmuldyxx/dsh-windows-tray",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:34.187Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tray.js",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tray.js",
+        "line": 7,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tray.js",
+        "line": 23,
+        "text": "const res = spawnSync('where.exe', ['powershell.exe'], { stdio: 'ignore', shell: true })"
+      },
+      {
+        "file": "lib/tray.js",
+        "line": 34,
+        "text": "const res = spawnSync('powershell.exe', ["
+      },
+      {
+        "file": "lib/tray.js",
+        "line": 59,
+        "text": "const child = spawn(file, [...args, '--profile', 'web'], {"
+      },
+      {
+        "file": "lib/tray.js",
+        "line": 74,
+        "text": "spawnSync('taskkill.exe', ['/PID', String(pid), '/F', '/T'], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

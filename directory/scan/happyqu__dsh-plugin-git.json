@@ -1,0 +1,105 @@
+{
+  "name": "@happyqu/dsh-plugin-git",
+  "version": "0.1.26",
+  "scannedAt": "2026-10-26T10:12:35.647Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git/hosting.js",
+        "line": 68,
+        "text": "const response = await fetch(`https://api.github.com/${endpoint}`, {"
+      },
+      {
+        "file": "lib/git/write.js",
+        "line": 591,
+        "text": "export async function fetch(repo, request, options = {}) {"
+      },
+      {
+        "file": "lib/git/write.js",
+        "line": 649,
+        "text": "const result = await fetch(repo, { name: request.name, upstream: request.upstream, updateLocal: true }, options)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 208,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 14,
+        "text": "import { mkdir, readFile, writeFile, rename } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 119,
+        "text": "const text = await readFile(this.path, 'utf8')"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 159,
+        "text": "await mkdir(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 161,
+        "text": "await writeFile(temp, `${JSON.stringify(this.current, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/editor.js",
+        "line": 1,
+        "text": "import { stat, realpath } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/editorLauncher.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git/exec.js",
+        "line": 19,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git/exec.js",
+        "line": 148,
+        "text": "execFile(command, ['--version'], { timeout: 8000, windowsHide: true }, async (error, stdout) => {"
+      },
+      {
+        "file": "lib/git/exec.js",
+        "line": 181,
+        "text": "execFile(locator, [command], { timeout: 8000, windowsHide: true }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/git/exec.js",
+        "line": 223,
+        "text": "const child = execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

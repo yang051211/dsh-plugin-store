@@ -1,0 +1,119 @@
+{
+  "name": "@goodandready/dsh-server-monitor",
+  "version": "0.1.20",
+  "scannedAt": "2026-10-26T10:12:29.748Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 160,
+        "text": "      const response = await fetch(API + path, { credentials: 'same-origin', ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1082,
+        "text": "socket = new WebSocket(protocol + '//' + location.host + API + '/pty?profileId=' + encodeURIComponent(profile.id) + tmuxParam);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 180,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 117,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/metric-store.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/metric-store.js",
+        "line": 53,
+        "text": "const lines = fs.readFileSync(file, 'utf8').split(/\\n/).filter(Boolean);"
+      },
+      {
+        "file": "lib/metric-store.js",
+        "line": 67,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/metric-store.js",
+        "line": 69,
+        "text": "fs.writeFileSync(file, body ? `${body}\\n` : '');"
+      },
+      {
+        "file": "lib/metric-store.js",
+        "line": 97,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 296,
+        "text": "tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 304,
+        "text": "if (ctx.tools) registerTools(ctx.tools).catch((error) => ctx.logger?.warn?.('[' + NS + '] tool registration failed', error));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 166,
+        "text": "const child = spawn(cmd, args, {"
+      },
+      {
+        "file": "lib/vault-service.js",
+        "line": 4,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/vault-service.js",
+        "line": 21,
+        "text": "execFile(icaclsPath, args, { stdio: 'pipe', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

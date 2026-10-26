@@ -1,0 +1,83 @@
+{
+  "name": "@eduwork/dsh-oidc",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:12:15.127Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop-oidc.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/gateway-backend.js",
+        "line": 363,
+        "text": "        const request = current => this.fetch(target.href, { ...init, headers: { ...Object.fromEntries(new Headers(init.headers)), authorization: `Bearer ${curr"
+      },
+      {
+        "file": "lib/gateway-backend.js",
+        "line": 435,
+        "text": "const response = await this.fetch(descriptor.revocationEndpoint, {"
+      },
+      {
+        "file": "lib/oidc.js",
+        "line": 227,
+        "text": "response = await this.fetch(discoveryURL(profile.oidc.issuer), {"
+      },
+      {
+        "file": "lib/oidc.js",
+        "line": 329,
+        "text": "const response = await this.fetch(discovery.tokenEndpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 355,
+        "text": "const parsed = JSON.parse(readFileSync(profilePath, 'utf8'))"
+      },
+      {
+        "file": "lib/provider/index.js",
+        "line": 121,
+        "text": "hostPath => ctx.get('fs')?.processPathFromHostPath(hostPath),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

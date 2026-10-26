@@ -1,0 +1,82 @@
+{
+  "name": "@gwenlita52299/augean",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:12:33.553Z",
+  "icon": "gwenlita52299__augean.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 92,
+        "text": "writeFileSync(join(ctx.dir, '.doc-index.json'), `${JSON.stringify(graph, null, 2)}\\n`)"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 110,
+        "text": "writeFileSync(join(ctx.dir, 'INDEX.md'), `${lines.join('\\n')}\\n`)"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 124,
+        "text": "const raw = path ? JSON.parse(readFileSync(path, 'utf8')) : {}"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 131,
+        "text": "writeFileSync(target, `${JSON.stringify(raw, null, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 44,
+        "text": "const defineTool = (definition) => ctx.effect(() => ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/retention.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/retention.js",
+        "line": 33,
+        "text": "const result = spawnSync('git', args, { cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

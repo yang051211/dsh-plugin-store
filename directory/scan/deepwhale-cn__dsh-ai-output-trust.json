@@ -1,0 +1,49 @@
+{
+  "name": "@deepwhale-cn/dsh-ai-output-trust",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:11:45.952Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/fail/demo-project/agent.js",
+        "line": 8,
+        "text": "fs.writeFileSync(aiResponse, data);"
+      },
+      {
+        "file": "tests/fixtures/pass/clean-project/agent.js",
+        "line": 17,
+        "text": "fs.writeFileSync(target, data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "rules/02-shell-from-ai.json",
+        "line": 6,
+        "text": "\"advice\": \"把模型输出拼进 exec/spawn/system 的字符串里，等于把 shell 交给它。改用参数数组形式（execFile / spawn(cmd, [args])），并对每个参数做白名单校验。\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

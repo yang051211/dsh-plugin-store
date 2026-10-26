@@ -1,0 +1,126 @@
+{
+  "name": "@hs666-ai/dsh-tencent-docs-bridge",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:12:39.642Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/tdoc-auth.mjs",
+        "line": 55,
+        "text": "const r = await fetch(TDOC_MCP.endpoint, {"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 20,
+        "text": "import { get } from 'node:http';"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 102,
+        "text": "const ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 138,
+        "text": "const r = await fetch('https://docs.qq.com/oauth/v2/space/create_secret?refresh=${refresh ? 1 : 0}&mcp_source=desktop&xsrf=' + encodeURIComponent(xsrf), {"
+      },
+      {
+        "file": "lib/resolver.js",
+        "line": 15,
+        "text": "const r = await fetch(url + '/internal/tencent-docs/tokens', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/tdoc-auth.mjs",
+        "line": 113,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "bin/tdoc-auth.mjs",
+        "line": 114,
+        "text": "const d = JSON.parse(fs.readFileSync(a.file, 'utf8'));"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 17,
+        "text": "import { accessSync, mkdtempSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 246,
+        "text": "try { rmSync(profileDir, { recursive: true, force: true }); } catch { /* temp 清理失败可忽略 */ }"
+      },
+      {
+        "file": "lib/vault.js",
+        "line": 11,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, chmodSync, existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/applier.js",
+        "line": 36,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "lib/applier.js",
+        "line": 46,
+        "text": "const msg = `挂载官方 mcp-client 失败（需先安装 @deepseek-ai/dsh-mcp-client）：${e?.message ?? e}`;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "*  2. 若持有 token，动态挂载 @deepseek-ai/dsh-mcp-client 指向官方 MCP 端点；"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 53,
+        "text": "#       name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "scripts/pipeline-dryrun.mjs",
+        "line": 42,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/login.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 253,
+        "text": "return spawn(browser, ["
+      },
+      {
+        "file": "lib/vault.js",
+        "line": 12,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,130 @@
+{
+  "name": "@goodandready/dsh-messenger-gateway",
+  "version": "0.4.21",
+  "scannedAt": "2026-10-26T10:12:29.130Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 83,
+        "text": "const res = await fetch(this.webhookUrl, {"
+      },
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 121,
+        "text": "const res = await fetch(`${DISCORD_API}/channels/${targetChannel}/messages`, {"
+      },
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 156,
+        "text": "const res = await fetch(`${DISCORD_API}/channels/${channelId}/messages/${messageId}`, {"
+      },
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 176,
+        "text": "const res = await fetch(`${DISCORD_API}/channels/${channelId}/messages`, {"
+      },
+      {
+        "file": "lib/adapters/slack.js",
+        "line": 82,
+        "text": "const res = await fetch(this.webhookUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/adapters/discord.js",
+        "line": 114,
+        "text": "const bytes = file.bytes || (file.path ? await readFile(file.path) : null)"
+      },
+      {
+        "file": "lib/adapters/telegram.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/adapters/telegram.js",
+        "line": 622,
+        "text": "const bytes = file.bytes || (file.path ? await readFile(file.path) : null)"
+      },
+      {
+        "file": "lib/documents.js",
+        "line": 1,
+        "text": "import { open } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gateway-commands.js",
+        "line": 178,
+        "text": "const tools = gw.ctx.get?.('tools') || gw.ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['agentDefaultModel', 'agents', 'sessions', 'loader', 'settings', 'webServer', 'attachments', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 321,
+        "text": "const tools = ctx.get?.('tools') || ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 323,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tts.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 62,
+        "text": "const child = spawn('ffmpeg', args, { stdio: ['ignore', 'ignore', 'pipe'] })"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "attachments",
+    "loader",
+    "sessions",
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

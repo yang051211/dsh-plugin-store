@@ -1,0 +1,85 @@
+{
+  "name": "@duke-dsh-plugins/dsh-git-manager",
+  "version": "1.7.0",
+  "scannedAt": "2026-10-26T10:12:12.867Z",
+  "icon": "duke-dsh-plugins__dsh-git-manager.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1163,
+        "text": "r = await unwrap(kind === \"fetch\" ? await remote.fetch({ path: n.path }) : await remote.pull({ path: n.path }));"
+      },
+      {
+        "file": "client.js",
+        "line": 1221,
+        "text": "const fn = label === \"Fetch\" ? () => remote.fetch({ path: scopedRepoPath })"
+      },
+      {
+        "file": "index.js",
+        "line": 421,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "git-core.mjs",
+        "line": 13,
+        "text": "import { rm, writeFile, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "git-core.mjs",
+        "line": 14,
+        "text": "import { existsSync, statSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "git-core.mjs",
+        "line": 1216,
+        "text": "await writeFile(tmpFile, patch, \"utf8\");"
+      },
+      {
+        "file": "git-core.mjs",
+        "line": 1222,
+        "text": "await rm(tmpFile, { force: true });"
+      },
+      {
+        "file": "git-core.mjs",
+        "line": 1368,
+        "text": "await writeFile(tmpFile, patch, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "git-core.mjs",
+        "line": 12,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "git-core.mjs",
+        "line": 45,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,132 @@
+{
+  "name": "@ifrankwang/openspec-agents",
+  "version": "0.151.2",
+  "scannedAt": "2026-10-26T10:12:46.952Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".mcp-server/cli.mjs",
+        "line": 30734,
+        "text": "import { createServer as createServer2 } from \"node:http\";"
+      },
+      {
+        "file": ".mcp-server/cli.mjs",
+        "line": 30742,
+        "text": "import { STATUS_CODES, ServerResponse, createServer } from \"node:http\";"
+      },
+      {
+        "file": "src/adapters/mcp-common/index.ts",
+        "line": 6,
+        "text": "import { createServer, type Server } from \"node:http\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 7,
+        "text": "import { rmdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 66,
+        "text": "import { readFile, writeFile, stat, rm, realpath } from \"node:fs/promises\";"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 122,
+        "text": "await rm(wtPath, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 237,
+        "text": "content = await readFile(tasksMdPath, \"utf-8\");"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 262,
+        "text": "await writeFile(tasksMdPath, result.join(`"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 9109,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 9114,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/adapters/deepseek-harness/index.ts",
+        "line": 17,
+        "text": "*   角色与工具组合改由 preset 表达。opx_* 工具不再经 `@deepseek-ai/dsh-mcp-client` 桥接——"
+      },
+      {
+        "file": "src/adapters/deepseek-harness/plugin.ts",
+        "line": 9,
+        "text": "* cordis 插件契约三处缺一不可（官方 dsh-tool-skill / dsh-tool-fs / dsh-mcp-client 同形）："
+      },
+      {
+        "file": "src/adapters/deepseek-harness/plugin.ts",
+        "line": 46,
+        "text": "/** cordis 依赖声明：apply 内访问 ctx.tools，未声明即抛「cannot get property \"tools\" without inject」。 */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 65,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": ".dsh-plugin/opx-tools.mjs",
+        "line": 77,
+        "text": "const child = execFile(\"git\", args, { encoding: \"utf-8\", maxBuffer: 10 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": ".mcp-server/cli.mjs",
+        "line": 21725,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": ".mcp-server/cli.mjs",
+        "line": 21737,
+        "text": "const child = execFile(\"git\", args, { encoding: \"utf-8\", maxBuffer: 10 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "src/adapters/plugin-common/index.ts",
+        "line": 15,
+        "text": "import { spawnSync } from \"node:child_process\""
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 51,
+      "text": "npm install -g @fission-ai/openspec"
+    }
+  ],
+  "skippedEntries": []
+}

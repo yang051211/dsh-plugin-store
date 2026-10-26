@@ -1,0 +1,133 @@
+{
+  "name": "@firetruck666/dsh-task-board",
+  "version": "1.3.21",
+  "scannedAt": "2026-10-26T10:12:20.091Z",
+  "icon": "firetruck666__dsh-task-board.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 10620,
+        "text": "const result = await this.deps.transport.fetch(this.clientId, void 0).catch(() => void 0);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11018,
+        "text": "const result = await this.deps.transport.fetch(this.clientId, this.baseline.revision).catch(() => void 0);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11669,
+        "text": "async fetch(clientId, since) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11674,
+        "text": "const response = await fetch(`${ROUTE}?${params.toString()}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11689,
+        "text": "const response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/board-service-D8BrDmzW.js",
+        "line": 2,
+        "text": "import { readFile, rename, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/board-service-D8BrDmzW.js",
+        "line": 3550,
+        "text": "header = JSON.parse(await readFile(legacyPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1581,
+        "text": "const spec = JSON.parse(fs.readFileSync(path.join(dir, \"package.json\"), \"utf8\")).dependencies?.[PACKAGE_NAME];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1598,
+        "text": "const manifest = JSON.parse(fs.readFileSync(candidate, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-agent.js",
+        "line": 4944,
+        "text": "if (tools !== void 0) for (const tool of createTaskboardTools(deps)) disposers.push(tools.register(tool));"
+      },
+      {
+        "file": "src/host-agent.ts",
+        "line": 6,
+        "text": "* means `ctx.tools`, `ctx.commands` and `ctx.systemPrompt` are never touched —"
+      },
+      {
+        "file": "src/host-agent.ts",
+        "line": 24,
+        "text": "export const inject = ['tools', 'commands', 'systemPrompt']"
+      },
+      {
+        "file": "src/host/agent/register.ts",
+        "line": 74,
+        "text": "for (const tool of createTaskboardTools(deps)) disposers.push(tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1239,
+        "text": "const child = spawn(step.command, step.args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1619,
+        "text": "execFile(\"git\", args, {"
+      },
+      {
+        "file": "src/host/update-apply.ts",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/update-apply.ts",
+        "line": 303,
+        "text": "const child = spawn(step.command, step.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

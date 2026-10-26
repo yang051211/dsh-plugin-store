@@ -1,0 +1,75 @@
+{
+  "name": "@ddtcorex/dsh-maestro-review",
+  "version": "0.15.0",
+  "scannedAt": "2026-10-26T10:11:44.375Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/providers/gitlab.ts",
+        "line": 1,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 36,
+        "text": "return JSON.parse(await readFile(runtimeStatePath(dshHome), 'utf8'));"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 45,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 46,
+        "text": "await writeFile(path, JSON.stringify(merged, null, 2), { encoding: 'utf-8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/host-orchestrator.js",
+        "line": 1,
+        "text": "import { mkdir, writeFile, symlink, stat, lstat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-orchestrator.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/host/host-orchestrator.ts",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

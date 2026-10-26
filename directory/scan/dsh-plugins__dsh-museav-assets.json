@@ -1,0 +1,97 @@
+{
+  "name": "@dsh-plugins/dsh-museav-assets",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:12:09.120Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 603,
+        "text": "fetch(`${API}/assets?project=${encodeURIComponent(project.id)}`).then((r) => r.json()),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 604,
+        "text": "fetch(`${API}/jobs?limit=50`).then((r) => r.json()).catch(() => ({ ok: false, error: t('netFail') })),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 629,
+        "text": "return fetch(`${API}/templates?source=${source}`, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 640,
+        "text": "return fetch(`${API}/projects`, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 675,
+        "text": "fetch(`${API}/projects`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "await writeFile(target, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "await writeFile(target, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "await rm(dir, { recursive: true, force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 393,
+        "text": "await rm(dir, { recursive: true, force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/museav.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/museav.js",
+        "line": 39,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

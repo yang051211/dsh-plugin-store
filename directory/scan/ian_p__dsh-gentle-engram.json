@@ -1,0 +1,92 @@
+{
+  "name": "@ian_p/dsh-gentle-engram",
+  "version": "0.7.3",
+  "scannedAt": "2026-10-26T10:12:45.450Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1284,
+        "text": "return { response: await fetch(`${baseUrl}${redactUrlPath(path)}`, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1363,
+        "text": "response = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(HEALTH_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1423,
+        "text": "const project = asString(JSON.parse(readFileSync(configPath, \"utf8\")).project_name);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# It deliberately does NOT insert an @deepseek-ai/dsh-mcp-client row: Engram's"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 2485,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 2514,
+        "text": "const OWN_TOOL_NAMES = new Set(registerTools((definition) => ctx.tools.register(definition), {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 4,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1564,
+        "text": "const result = spawnSync(config.binary, [\"instance-id\"], {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1611,
+        "text": "child = spawn(config.binary, [\"serve\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,68 @@
+{
+  "name": "@eternalnight/dsh-theme",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:12:16.153Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 65,
+        "text": ".onload=()=>{let R=String(m.result||\"\");fetch(\"/dsh-theme/api/import\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({kind:t,nam"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 64,
+        "text": "fs.mkdir(IMAGE_IMPORTS_DIR, { recursive: true }).catch((e) => console.error('[dsh-theme] mkdir import-images failed:', e))"
+      },
+      {
+        "file": "index.js",
+        "line": 65,
+        "text": "fs.mkdir(VIDEO_IMPORTS_DIR, { recursive: true }).catch((e) => console.error('[dsh-theme] mkdir import-videos failed:', e))"
+      },
+      {
+        "file": "index.js",
+        "line": 114,
+        "text": "const buf = await fs.readFile(file).catch(() => null)"
+      },
+      {
+        "file": "index.js",
+        "line": 150,
+        "text": "await fs.rm(path.join(dir, name), { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

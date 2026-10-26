@@ -1,0 +1,104 @@
+{
+  "name": "@fish-under-sea/dsh-visual-companion",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:12:20.879Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 22,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 117,
+        "text": "try{fetch(\"/event?key=\"+KEY,{method:\"POST\",headers:{\"Content-Type\":\"text/plain\"},body:JSON.stringify(payload)});}catch(e){}"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 121,
+        "text": "setInterval(function(){if(!last){fetch(\"/version?key=\"+KEY,{cache:\"no-store\"}).then(function(r){return r.json()})"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 123,
+        "text": "fetch(\"/version?key=\"+KEY,{cache:\"no-store\"}).then(function(r){return r.json()}).then(function(j){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 24,
+        "text": "import { mkdir, readdir, readFile, stat, writeFile, appendFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 50,
+        "text": "await mkdir(screenDir, { recursive: true });"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 51,
+        "text": "await mkdir(stateDir, { recursive: true });"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 158,
+        "text": "const raw = await readFile(join(screenDir, latest.name), \"utf8\");"
+      },
+      {
+        "file": "bin/visual-companion.mjs",
+        "line": 167,
+        "text": "try { const t = await readFile(file, \"utf8\"); return t.trim() === \"\" ? 0 : t.trim().split(\"\\n\").length; } catch { return 0; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 283,
+        "text": "const child = spawn(process.execPath, args, { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "@goodandready/dsh-clinebot",
+  "version": "0.6.16",
+  "scannedAt": "2026-10-26T10:12:27.744Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 384,
+        "text": "||controller.signal;try{const res=await fetch(url,{...opts,signal});return res}catch(err){if(err&&(err.name===\"AbortError\"||controller.signal.aborted)){const se"
+      },
+      {
+        "file": "lib/routes/auth.js",
+        "line": 50,
+        "text": "fetch(`${base}/users/me`, {"
+      },
+      {
+        "file": "lib/routes/auth.js",
+        "line": 54,
+        "text": "fetch(`${base}/users/me/plan`, {"
+      },
+      {
+        "file": "lib/transport/cline-transport.js",
+        "line": 196,
+        "text": "return await fetch(`${String(baseUrl).replace(/\\/+$/, '')}/chat/completions`, {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 165,
+        "text": "const response = await fetch(`${reg}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/account-events.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/account-events.js",
+        "line": 36,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/account-events.js",
+        "line": 73,
+        "text": "mkdirSync(path.dirname(activePath), { recursive: true })"
+      },
+      {
+        "file": "lib/account-events.js",
+        "line": 75,
+        "text": "writeFileSync(temp, JSON.stringify({ version: 1, events }, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/key-discovery.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

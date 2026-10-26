@@ -1,0 +1,136 @@
+{
+  "name": "@goodandready/dsh-vision-bridge",
+  "version": "0.6.22",
+  "scannedAt": "2026-10-26T10:12:30.648Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/channels.js",
+        "line": 62,
+        "text": "const res = await fetch(baseURL.replace(/\\/v1\\/?$/, '') + '/api/tags', {"
+      },
+      {
+        "file": "lib/channels.js",
+        "line": 196,
+        "text": "const res = await fetch(url, { method: 'POST', headers, body, signal: mergeSignal(timeoutMs, signal) })"
+      },
+      {
+        "file": "lib/channels.js",
+        "line": 248,
+        "text": "const res = await fetch(baseURL + '/chat/completions', {"
+      },
+      {
+        "file": "lib/channels.js",
+        "line": 329,
+        "text": "const res = await fetch(baseURL + '/chat/completions', {"
+      },
+      {
+        "file": "lib/channels.js",
+        "line": 429,
+        "text": "const res = await fetch(channel.baseURL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evidence.js",
+        "line": 9,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 21,
+        "text": "const raw = fs.readFileSync(this.file, 'utf8')"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 65,
+        "text": "fs.mkdirSync(path.dirname(this.file), { recursive: true })"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 67,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(Object.fromEntries(this.map)))"
+      },
+      {
+        "file": "lib/image-resolution.js",
+        "line": 62,
+        "text": "const dshFs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-boundary.js",
+        "line": 14,
+        "text": "// the per-agent capability filter (`agent.ctx.tools.restrict`), which the"
+      },
+      {
+        "file": "lib/agent-boundary.js",
+        "line": 102,
+        "text": "const scoped = agent.ctx && (agent.ctx.tools || (typeof agent.ctx.get === 'function' ? agent.ctx.get('tools') : null))"
+      },
+      {
+        "file": "lib/tools/analysis.js",
+        "line": 17,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/analysis.js",
+        "line": 61,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/analysis.js",
+        "line": 78,
+        "text": "if (config.selfCheckEnabled) ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/process.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 16,
+        "text": "const child = execFile(bin, args, { timeout, signal, maxBuffer, encoding: 'utf8' }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/tools/media.js",
+        "line": 22,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/tools/media.js",
+        "line": 25,
+        "text": "const proc = spawn(chrome, ["
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

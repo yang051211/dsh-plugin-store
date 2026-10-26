@@ -1,0 +1,78 @@
+{
+  "name": "@jetecho/dsh-csv-and-image-preview",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:12:50.590Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 127,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { mkdir, open, rename, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 75,
+        "text": "await mkdir(this.directory, { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 80,
+        "text": "await file.writeFile(body, { encoding: 'utf8', signal })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 86,
+        "text": "await unlink(temporary).catch(error => { if (error.code !== 'ENOENT') throw error })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools', 'connection']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 392,
+        "text": "ctx.tools.register(createPreviewTool(store))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 393,
+        "text": "ctx.tools.register(createCsvTool(store))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

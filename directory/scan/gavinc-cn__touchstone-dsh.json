@@ -1,0 +1,138 @@
+{
+  "name": "@gavinc-cn/touchstone-dsh",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:12:26.156Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "backend/lib/dshdriver.js",
+        "line": 993,
+        "text": "* ⇒ 普通对象被塞进 `fetch(..., {signal})`，而 `fetch`/`sse` 只认真 EventTarget。"
+      },
+      {
+        "file": "backend/lib/feishu_device.js",
+        "line": 331,
+        "text": "const response = await globalThis.fetch(`${state.baseUrl}${DEVICE_ENDPOINT}`, {"
+      },
+      {
+        "file": "backend/lib/feishu_rest.js",
+        "line": 221,
+        "text": "const resp = await globalThis.fetch("
+      },
+      {
+        "file": "backend/lib/feishu_rest.js",
+        "line": 283,
+        "text": "resp = await globalThis.fetch(url, requestInit({ method, jsonBody, token, timeout }));"
+      },
+      {
+        "file": "backend/lib/feishu_rest.js",
+        "line": 354,
+        "text": "resp = await globalThis.fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "backend/lib/agents.js",
+        "line": 20,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "backend/lib/board.js",
+        "line": 95,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "backend/lib/board.js",
+        "line": 3459,
+        "text": "const usid = String(JSON.parse(fs.readFileSync(rec.usage_path, 'utf8')).session_id || '');"
+      },
+      {
+        "file": "backend/lib/board.js",
+        "line": 6111,
+        "text": "const text = fs.readFileSync(logPath, 'utf8');"
+      },
+      {
+        "file": "backend/lib/builtin-assets.js",
+        "line": 26,
+        "text": "* `fs.readFileSync(p, \"utf8\")` 会把非法字节**静默**换成 U+FFFD，而 Python 抛"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "backend/lib/agents.js",
+        "line": 19,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "backend/lib/agents.js",
+        "line": 218,
+        "text": "const p = spawnSync(exePath, ['--version'], {"
+      },
+      {
+        "file": "backend/lib/lib.js",
+        "line": 48,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "backend/lib/lib.js",
+        "line": 980,
+        "text": "const p = spawnSync('git', cmd, { encoding: 'utf8', timeout: 20_000, maxBuffer: 64 * 1024 * 1024 });"
+      },
+      {
+        "file": "backend/lib/lib.js",
+        "line": 1021,
+        "text": "const p = spawnSync('git', cmd, { encoding: 'utf8', timeout: 20_000, maxBuffer: 64 * 1024 * 1024 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "webui/dist-plugin/assets/index-D0vUS56J.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 148,
+      "text": "python3 -m pip install -r backend_py/requirements.txt   # needed for standalone mode / plugin mode with backend: python"
+    },
+    {
+      "file": "README.md",
+      "line": 206,
+      "text": "pip install -r ~/.dsh/profiles/web/node_modules/@gavinc-cn/touchstone-dsh/backend_py/requirements.txt"
+    },
+    {
+      "file": "README.md",
+      "line": 207,
+      "text": "# Windows: python -m pip install ...   (the official installer ships python.exe, not python3)"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 136,
+      "text": "python3 -m pip install -r backend_py/requirements.txt   # 独立形态 / 插件形态配了 backend: python 才需要"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 184,
+      "text": "pip install -r ~/.dsh/profiles/web/node_modules/@gavinc-cn/touchstone-dsh/backend_py/requirements.txt"
+    }
+  ],
+  "skippedEntries": []
+}

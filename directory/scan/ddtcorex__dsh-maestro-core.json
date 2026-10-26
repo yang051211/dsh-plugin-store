@@ -1,0 +1,136 @@
+{
+  "name": "@ddtcorex/dsh-maestro-core",
+  "version": "0.13.0",
+  "scannedAt": "2026-10-26T10:11:43.980Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boot-lock.js",
+        "line": 112,
+        "text": "await fetch('http://127.0.0.1:3080/', { signal: ctrl.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 53,
+        "text": "const res = await fetch(\"/\", { method: \"HEAD\", cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 93,
+        "text": "fetch(\"/\", { method: \"HEAD\", cache: \"no-store\" }).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 120,
+        "text": "void fetch(\"/\", { method: \"HEAD\", cache: \"no-store\" }).catch(() => startPolling());"
+      },
+      {
+        "file": "lib/debug-agent.js",
+        "line": 115,
+        "text": "$!; for i in $(seq 1 5); do sleep 1; if curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:${port}/ 2>&1 | grep -q 200; then echo ok; exit 0; fi; done; ech"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boot-lock.js",
+        "line": 1,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "lib/boot-lock.js",
+        "line": 26,
+        "text": "fs.mkdirSync(path.dirname(p), { recursive: true });"
+      },
+      {
+        "file": "lib/boot-lock.js",
+        "line": 27,
+        "text": "fs.writeFileSync(p, body, { flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/boot-lock.js",
+        "line": 36,
+        "text": "return fs.readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "lib/boot-lock.js",
+        "line": 43,
+        "text": "fs.unlinkSync(p);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 26,
+        "text": "inject: ['tools', 'connection', 'webServer']"
+      },
+      {
+        "file": "lib/guard/full-scan-tool.js",
+        "line": 6,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/guard/full-scan-tool.js",
+        "line": 32,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/guard/index.js",
+        "line": 153,
+        "text": "inject: ['tools'],"
+      },
+      {
+        "file": "lib/guard/status-tool.js",
+        "line": 141,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 79,
+        "text": "const { execSync } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 81,
+        "text": "diff = execSync('git diff 2>/dev/null | head -n 200', { encoding: 'utf-8', timeout: 2000 });"
+      },
+      {
+        "file": "lib/daemon-freshness.js",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/debug-agent.js",
+        "line": 92,
+        "text": "const { execSync } = require('node:child_process');"
+      },
+      {
+        "file": "lib/debug-agent.js",
+        "line": 93,
+        "text": "return execSync(cmd, { encoding: 'utf-8', ...opts });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

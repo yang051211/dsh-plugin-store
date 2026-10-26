@@ -1,0 +1,71 @@
+{
+  "name": "@ignotuss/dsh-desktop-bridge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:47.346Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bridge-client.mjs",
+        "line": 73,
+        "text": "const response = await fetch(url, init)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/bridge-client.mjs",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/bridge-client.mjs",
+        "line": 30,
+        "text": "connection = JSON.parse(await readFile(descriptorPath, 'utf8'))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 3,
+        "text": "import { appendFile, mkdir, rename, stat, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 286,
+        "text": "? (entry) => { void appendFile(logPath, `${JSON.stringify(entry)}\\n`, { mode: 0o600 }).catch(() => {}) }"
+      },
+      {
+        "file": "src/index.js",
+        "line": 304,
+        "text": "await mkdir(dirname(descriptorPath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

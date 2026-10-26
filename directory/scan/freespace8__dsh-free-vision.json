@@ -1,0 +1,99 @@
+{
+  "name": "@freespace8/dsh-free-vision",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:12:23.048Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 24,
+        "text": "const res = await fetch(UPLOAD_URL, {"
+      },
+      {
+        "file": "src/swift.js",
+        "line": 123,
+        "text": "const resp = await fetch(imageUrl)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/swift.js",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/swift.js",
+        "line": 14,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/swift.js",
+        "line": 129,
+        "text": "await writeFile(file, buf)"
+      },
+      {
+        "file": "src/swift.js",
+        "line": 130,
+        "text": "return { path: file, cleanup: () => rm(dir, { recursive: true, force: true }) }"
+      },
+      {
+        "file": "src/swift.js",
+        "line": 132,
+        "text": "await rm(dir, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 14,
+        "text": "* - inject: ['tools', 'subprocess']：工具注册与 swift 执行是硬依赖，两个服务"
+      },
+      {
+        "file": "src/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 68,
+        "text": "const disposeViewImage = ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 94,
+        "text": "const disposeOcrImage = ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/swift.js",
+        "line": 188,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

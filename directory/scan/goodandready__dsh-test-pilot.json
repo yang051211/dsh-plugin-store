@@ -1,0 +1,94 @@
+{
+  "name": "@goodandready/dsh-test-pilot",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:12:30.280Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 311,
+        "text": "const response = await fetch('/api/dsh-test-pilot/status?sessionId=' + encodeURIComponent(sessionId), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'subprocess', 'settings', 'fs', 'connection', 'sessionController', 'workspaceChanges'];"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 2,
+        "text": "import { mkdir as makeDirectory, readFile as readText } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/persistence.js",
+        "line": 167,
+        "text": "return parsePersistedState(await readFile(filePath, 'utf8'), now());"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-tools.js",
+        "line": 6,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== 'function') return;"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 8,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/agent-tools.js",
+        "line": 25,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'subprocess', 'settings', 'fs', 'connection', 'sessionController', 'workspaceChanges'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 592,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 72,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "fs",
+    "sessionController",
+    "settings",
+    "subprocess",
+    "tools",
+    "workspaceChanges"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

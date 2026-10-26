@@ -1,0 +1,95 @@
+{
+  "name": "@dsh-enhanced/assistant-isolation",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:03.037Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit-archive.js",
+        "line": 2,
+        "text": ", existsSync, fchmodSync, fstatSync, fsyncSync, linkSync, lstatSync, openSync, readFileSync, readdirSync, realpathSync, unlinkSync, writeSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit-archive.js",
+        "line": 142,
+        "text": "const content = readFileSync(opened.descriptor);"
+      },
+      {
+        "file": "lib/audit-archive.js",
+        "line": 453,
+        "text": "const content = readFileSync(descriptor);"
+      },
+      {
+        "file": "lib/audit-archive.js",
+        "line": 463,
+        "text": "unlinkSync(temporaryPath);"
+      },
+      {
+        "file": "lib/audit-archive.js",
+        "line": 632,
+        "text": "unlinkSync(temporary);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 45,
+        "text": "ctx.tools.register(grants);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 46,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cleanup-receipt.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cleanup-receipt.js",
+        "line": 42,
+        "text": "child = spawn(dockerPath, ['--config', configDirectory, '-H', `unix://${socketPath}`, ...args], {"
+      },
+      {
+        "file": "lib/daemon-binding.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/daemon-binding.js",
+        "line": 27,
+        "text": "            child = spawn(systemctl, ['show', unit, ...properties.map(property => `--property=${property}`)], { shell: false, env: { LANG: 'C', LC_ALL: 'C' }, s"
+      },
+      {
+        "file": "lib/native-macos.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

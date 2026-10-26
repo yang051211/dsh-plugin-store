@@ -1,0 +1,135 @@
+{
+  "name": "@goodandready/dsh-time-machine",
+  "version": "0.1.31",
+  "scannedAt": "2026-10-26T10:12:30.311Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 241,
+        "text": "fetch('/dsh-time-machine/snapshots' + q).then(r => r.json()).then(j => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 252,
+        "text": "fetch('/dsh-time-machine/create', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ label, sessionId: sid }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 260,
+        "text": "fetch('/dsh-time-machine/diff?from=' + encodeURIComponent(id) + '&format=patch').then(r => r.json()).then(j => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 269,
+        "text": "fetch('/dsh-time-machine/rollback-file', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "fetch('/dsh-time-machine/rollback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id, confirm: true }) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/snapshot.js",
+        "line": 3,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/snapshot.js",
+        "line": 75,
+        "text": "await fs.unlink(path.join(resolvedGitDir, file)).catch(() => {});"
+      },
+      {
+        "file": "lib/snapshot.js",
+        "line": 198,
+        "text": "await fs.unlink(tempIndexFile).catch(() => {});"
+      },
+      {
+        "file": "lib/snapshot.js",
+        "line": 423,
+        "text": "await fs.unlink(resolvedPath).catch((err) => {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "export const inject = ['tools', 'settings', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 359,
+        "text": "tctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 383,
+        "text": "tctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 400,
+        "text": "tctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 420,
+        "text": "tctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/snapshot.js",
+        "line": 4,
+        "text": "import { execFile as execFileCb } from 'node:child_process';"
+      },
+      {
+        "file": "lib/snapshot.js",
+        "line": 11,
+        "text": "const { stdout } = await execFile(cmd, args, { encoding: 'utf8', maxBuffer: 10 * 1024 * 1024, ...opts });"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 238,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

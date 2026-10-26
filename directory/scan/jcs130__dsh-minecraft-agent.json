@@ -1,0 +1,90 @@
+{
+  "name": "@jcs130/dsh-minecraft-agent",
+  "version": "0.3.0-rc.22",
+  "scannedAt": "2026-10-26T10:12:50.427Z",
+  "icon": "jcs130__dsh-minecraft-agent.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugins/dsh-compat.mjs",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, copyFileSync, openSync, closeSync, renameSync, unlinkSync, existsSync, statSync, realpathSync, constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/plugins/dsh-compat.mjs",
+        "line": 24,
+        "text": "if (JSON.parse(readFileSync(anchor, 'utf8')).name !== '@deepseek-ai/dsh') throw Error('The selected directory is not the DSH package');"
+      },
+      {
+        "file": "lib/plugins/dsh-compat.mjs",
+        "line": 27,
+        "text": "if (JSON.parse(readFileSync(manifest, 'utf8')).version !== '0.2.1-rc.2') throw Error('No exact-byte repair for this DSH release; no files changed');"
+      },
+      {
+        "file": "lib/plugins/dsh-compat.mjs",
+        "line": 30,
+        "text": "const path = join(root, relative), bytes = readFileSync(path), before = digest(bytes);"
+      },
+      {
+        "file": "lib/plugins/dsh-compat.mjs",
+        "line": 34,
+        "text": "else if (existsSync(backup) && digest(readFileSync(backup)) === stockHash) stock = readFileSync(backup);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugins/mc-harness.mjs",
+        "line": 34,
+        "text": "export const inject = ['llm', 'agents', 'agentLoop', 'tools', 'systemPrompt', 'goals', 'sessionPersistence', 'sessionQuery', 'sessions', 'tokenMeter'];"
+      },
+      {
+        "file": "lib/plugins/mc-harness.mjs",
+        "line": 277,
+        "text": "      agentCtx.tools.register({ name: spec.name, description: !lean || coreBudget ? spec.description : slimDescription(spec, helpName, view.descriptionChars), p"
+      },
+      {
+        "file": "lib/plugins/mc-harness.mjs",
+        "line": 299,
+        "text": "agentCtx.tools.register({ name: 'dsh_history', description: '查询本人的原始 DSH 会话，包括已被新现场替换或整理过的记录。offset 是日志序号。',"
+      },
+      {
+        "file": "lib/plugins/mc-harness.mjs",
+        "line": 314,
+        "text": "if(practiceTool)agentCtx.tools.register(practiceTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentLoop",
+    "agents",
+    "goals",
+    "llm",
+    "sessionPersistence",
+    "sessionQuery",
+    "sessions",
+    "systemPrompt",
+    "tokenMeter",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

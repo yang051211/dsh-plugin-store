@@ -1,0 +1,84 @@
+{
+  "name": "@helibeiqi/dsh-excel-kit",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:12:37.598Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/stream/xlsx-stream-reader.js",
+        "line": 53,
+        "text": "const fs = __importStar(require(\"fs\"));"
+      },
+      {
+        "file": "lib/stream/xlsx-stream-reader.js",
+        "line": 113,
+        "text": "this.writeChain = this.writeChain.then(() => fs.promises.writeFile(file, JSON.stringify(strings), 'utf8'));"
+      },
+      {
+        "file": "lib/stream/xlsx-stream-reader.js",
+        "line": 145,
+        "text": "const strings = JSON.parse(await fs.promises.readFile(this.chunks[c].file, 'utf8'));"
+      },
+      {
+        "file": "lib/stream/xlsx-stream-reader.js",
+        "line": 158,
+        "text": "await fs.promises.unlink(c.file).catch(() => {"
+      },
+      {
+        "file": "lib/tools/describe.js",
+        "line": 45,
+        "text": "const fs = __importStar(require(\"fs\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "exports.inject = ['tools'];"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 8,
+        "text": "* 在 ctx.tools 上注册 excel_describe / excel_filter / excel_pivot 三个只读工具。"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 116,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 144,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 172,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

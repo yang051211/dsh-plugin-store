@@ -1,0 +1,116 @@
+{
+  "name": "@hotpot1993/dsh-pocket",
+  "version": "1.14.6",
+  "scannedAt": "2026-10-26T10:12:39.231Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proxy.mjs",
+        "line": 14,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 15,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 88,
+        "text": "try { head = await fetch(url, { method: 'HEAD', signal }); } catch { head = null; }"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 94,
+        "text": "const res = await fetch(url, { signal });"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 104,
+        "text": "const probeRes = await fetch(url, { signal, headers: { Range: `bytes=0-${probeBytes - 1}` } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 44,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 45,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "mkdirSync(dirname(p), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.mjs",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/service.mjs",
+        "line": 119,
+        "text": "execFile(candidates[i], [], { timeout: 5000, windowsHide: true }, (err, stdout) => {"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 6,
+        "text": "import { spawn, execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 244,
+        "text": "const child = spawn('tar', ['-xzf', tmpFile, '-C', extractDir], { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 282,
+        "text": "execSync(process.platform === 'win32' ? 'where cloudflared' : 'command -v cloudflared', { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/install-git-hooks.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

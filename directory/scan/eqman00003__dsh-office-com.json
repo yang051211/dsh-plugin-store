@@ -1,0 +1,134 @@
+{
+  "name": "@eqman00003/dsh-office-com",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:12:15.578Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 414,
+        "text": "const res = await fetch(`${this.base}/sse`)"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 478,
+        "text": "await fetch(`${this.base}${this.msgUrl}`, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 488,
+        "text": "await fetch(`${this.base}${this.msgUrl}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 22,
+        "text": "import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync, realpathSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 72,
+        "text": "const cur = readFileSync(join(base, 'current'), 'utf-8').trim()"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 220,
+        "text": "try { return JSON.parse(readFileSync(LOCK_FILE, 'utf-8')) } catch { return null }"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 225,
+        "text": "mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 226,
+        "text": "writeFileSync(LOCK_FILE, JSON.stringify(rec))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 11,
+        "text": "//   上层  语义化工具层：ctx.tools.register 把 RunPython 封装成领域工具"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1266,
+        "text": "// MCP 形态的退路（**别删**）：经 dsh-mcp-client 接入的工具，结果是"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1293,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3436,
+        "text": "*  §1.4 修正（DSH 验收 2026-10-06）：MCP 工具经 dsh-mcp-client 注册时用的是 public name"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 21,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 107,
+        "text": "return spawnSync(cmd, args, { env: cleanEnv(), windowsHide: true, encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 249,
+        "text": "const r = spawnSync('tasklist', ['/FI', `IMAGENAME eq ${image}`, '/FO', 'CSV', '/NH'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 327,
+        "text": "spawnSync(py, ['-c', script, ...owned], { env: cleanEnv(), windowsHide: true, stdio: 'ignore', timeout: 15000 })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 345,
+        "text": "const child = spawn(py, ['-c', script], { env: cleanEnv(), windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 345,
+      "text": "<workbuddy 的 python.exe> -m pip install \"officemcp==1.0.5\""
+    }
+  ],
+  "skippedEntries": []
+}

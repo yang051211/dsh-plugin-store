@@ -1,0 +1,112 @@
+{
+  "name": "@hjj345345/dsh-sm-version-display",
+  "version": "1.2.26",
+  "scannedAt": "2026-10-26T10:12:38.304Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 133,
+        "text": "\t\t\tcheckStore.request = fetch(url, { headers: { accept: \"application/json\", \"x-dsh-sm-version-display-token\": typeof window.__DSH_UPDATE_TOKEN__ === \"string\" ? "
+      },
+      {
+        "file": "client/client.js",
+        "line": 149,
+        "text": "\t\t\t\t\tconst response = await fetch(UPDATE_STATUS_ROUTE, { headers: { accept: \"application/json\", \"x-dsh-sm-version-display-token\": typeof window.__DSH_UPDATE_TOK"
+      },
+      {
+        "file": "client/client.js",
+        "line": 166,
+        "text": "\t\t\t\tconst response = await fetch(UPDATE_STATUS_ROUTE, { headers: { accept: \"application/json\", \"x-dsh-sm-version-display-token\": typeof window.__DSH_UPDATE_TOKE"
+      },
+      {
+        "file": "client/client.js",
+        "line": 178,
+        "text": "\t\t\t\tconst response = await fetch(UPDATE_ACTION_ROUTE, { method: \"POST\", headers: { accept: \"application/json\", \"content-type\": \"application/json\", \"x-dsh-sm-ver"
+      },
+      {
+        "file": "client/client.js",
+        "line": 470,
+        "text": "\t\t\tconst response = await fetch(\"/api/dsh-sm-version-display/backups\" + suffix, { method: body === undefined ? \"GET\" : \"POST\", headers: { accept: \"application/j"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backup-manager.mjs",
+        "line": 1,
+        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/backup-manager.mjs",
+        "line": 5,
+        "text": "const read = (path) => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };"
+      },
+      {
+        "file": "lib/backup-manager.mjs",
+        "line": 16,
+        "text": "mkdirSync(stateDir, { recursive: true });"
+      },
+      {
+        "file": "lib/backup-manager.mjs",
+        "line": 19,
+        "text": "try { writeFileSync(temporary, JSON.stringify(data)); renameSync(temporary, path); }"
+      },
+      {
+        "file": "lib/backup-manager.mjs",
+        "line": 20,
+        "text": "finally { rmSync(temporary, { force: true }); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 566,
+        "text": "\tconst child = spawn(process.execPath, [join(job.runtimeDir, 'update-worker.mjs'), \"--state\", UPDATE_STATE_FILE, '--job', job.id], { stdio: \"ignore\", windowsHid"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 784,
+        "text": "\t\t\tconst child = spawn(process.execPath, [join(next.runtimeDir, 'update-worker.mjs'), \"--state\", UPDATE_STATE_FILE, '--job', state.id, \"--action\", action], { st"
+      },
+      {
+        "file": "lib/update-runtime.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/update-runtime.mjs",
+        "line": 90,
+        "text": "    const child = spawn(ps, ['-NoProfile', '-NonInteractive', '-EncodedCommand', encode(bootstrap)], { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'], she"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

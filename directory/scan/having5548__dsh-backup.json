@@ -1,0 +1,90 @@
+{
+  "name": "@having5548/dsh-backup",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:12:36.249Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 116,
+        "text": "return fetch('/dsh-backup/status').then(function (r) { return r.json() })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "return fetch('/dsh-backup/estimate?components=' + encodeURIComponent(components.join(','))).then(function (r) { return r.json() })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 122,
+        "text": "return fetch('/dsh-backup/import?mode=preview&verify=' + (verify ? '1' : '0'), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "return fetch('/dsh-backup/import/execute?token=' + encodeURIComponent(token) +"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 135,
+        "text": "return fetch('/dsh-backup/disk').then(function (r) { return r.json() })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backupdir.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/backupdir.js",
+        "line": 83,
+        "text": "await fs.promises.mkdir(destination, { recursive: true })"
+      },
+      {
+        "file": "lib/backupdir.js",
+        "line": 89,
+        "text": "await fs.promises.writeFile(abs, l.body, 'utf8').catch(() => {})"
+      },
+      {
+        "file": "lib/backupdir.js",
+        "line": 119,
+        "text": "await fs.promises.mkdir(dest, { recursive: true })"
+      },
+      {
+        "file": "lib/backupdir.js",
+        "line": 147,
+        "text": "await fs.promises.writeFile(final + '.sha256', digest + '  ' + name + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 268,
+        "text": "assistant.spawn(rep, preview ? preview.manifest : null).then(function (sid) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

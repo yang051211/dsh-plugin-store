@@ -1,0 +1,130 @@
+{
+  "name": "@jieai/dsh-malong-bridge",
+  "version": "0.5.28",
+  "scannedAt": "2026-10-26T10:12:51.705Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "server/code-index.js",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "server/tools/tool-dependency-gatekeeper/handler.js",
+        "line": 41,
+        "text": "lodash: 'lodash', axios: 'axios', react: 'react', 'react-dom': 'react-dom',"
+      },
+      {
+        "file": "server/vendor/sql-wasm.cjs",
+        "line": 94,
+        "text": "stIndexOf(\"/\")+1),ba&&(Ea=a=>{var b=new XMLHttpRequest;b.open(\"GET\",a,!1);b.responseType=\"arraybuffer\";b.send(null);return new Uint8Array(b.response)}),Da=a=>Ga"
+      },
+      {
+        "file": "server/vendor/sql-wasm.cjs",
+        "line": 98,
+        "text": "|ca||\"function\"!=typeof fetch?ab(c,a,b):fetch(c,{credentials:\"same-origin\"}).then(d=>WebAssembly.instantiateStreaming(d,a).then(b,function(e){C(`wasm streaming "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync } from \"node:fs\""
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 25,
+        "text": "return JSON.parse(readFileSync(pkgUrl, \"utf-8\")).version || \"unknown\""
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 28,
+        "text": "return JSON.parse(readFileSync(new URL(\"./../package.json\", import.meta.url), \"utf-8\")).version || \"unknown\""
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 123,
+        "text": "mkdirSync(stateDir, { recursive: true })"
+      },
+      {
+        "file": "server/code-index.js",
+        "line": 7,
+        "text": "import { readFileSync, writeFileSync, existsSync, unlinkSync, renameSync, watch, chmodSync, statSync, mkdirSync, realpathSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 9,
+        "text": "// No dependency on dsh-mcp-client; does not modify dsh node_modules; dsh upgrades are safe."
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 50,
+        "text": "export const inject = [\"tools\"]"
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 67,
+        "text": "/** Output shape required by dsh tool registration (equivalent to dsh-mcp-client's createOutput, with a native text projection). */"
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 312,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 13,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "dsh-bridge.mjs",
+        "line": 157,
+        "text": "const c = spawn(process.execPath, [serverPath, \"--workspace\", stateDir, \"--max-old-space-size=512\"], {"
+      },
+      {
+        "file": "server/host-config.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "server/host-config.js",
+        "line": 133,
+        "text": "const res = spawnSync(process.execPath, [cli, legacyDir, nextDir], { timeout: 60_000, encoding: 'utf8', windowsHide: true, maxBuffer: 1024 * 1024 })"
+      },
+      {
+        "file": "server/mcp-server.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "server/vendor/sql-wasm.wasm"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

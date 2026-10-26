@@ -1,0 +1,121 @@
+{
+  "name": "@dsh-enhanced/plugin-control-plane",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:05.529Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/npm-publish.js",
+        "line": 2,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "lib/registry-fetch.js",
+        "line": 4,
+        "text": "import { request as httpsRequest, createServer as createHttpsServer } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-live-qualification-authority.js",
+        "line": 3,
+        "text": "import { realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 45,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 107,
+        "text": "if (!existsSync(current)) mkdirSync(current, { mode: 0o700 })"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 202,
+        "text": "const bytes = readFileSync(entryPath)"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 226,
+        "text": "mkdirSync(destination, { mode: 0o700 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/creation-capability-runtime.js",
+        "line": 306,
+        "text": "if (this.ctx.tools.get(tool.name))"
+      },
+      {
+        "file": "lib/creation-capability-runtime.js",
+        "line": 312,
+        "text": "const plugin = { name: `created-capability-${sha(record.planId).slice(0, 16)}`, inject: ['tools'],"
+      },
+      {
+        "file": "lib/creation-capability-runtime.js",
+        "line": 314,
+        "text": "ctx.tools.register(definition); } };"
+      },
+      {
+        "file": "lib/creation-capability-runtime.js",
+        "line": 329,
+        "text": "if (fiber.state !== 2 || definitions.some(definition => this.ctx.tools.get(definition.name) !== definition))"
+      },
+      {
+        "file": "lib/creation-capability-runtime.js",
+        "line": 375,
+        "text": "if (mounted.aliases.some(name => this.ctx.tools.get(name)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 478,
+        "text": "const result = spawnSync(`/proc/self/fd/${descriptor}`, args, {"
+      },
+      {
+        "file": "bin/dsh-local-release-adapter.js",
+        "line": 503,
+        "text": "const result = spawnSync('/proc/self/fd/4', ['--input-type=module', '-e', source], { cwd, input, encoding: null, maxBuffer: 32 * 1024 * 1024,"
+      },
+      {
+        "file": "lib/adapter-process.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/adapter-process.js",
+        "line": 170,
+        "text": "child = spawn(options.command, [...options.args], { env: options.env, shell: false, detached: true, stdio: options.stdio });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

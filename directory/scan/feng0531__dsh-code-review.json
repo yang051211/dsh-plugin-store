@@ -1,0 +1,100 @@
+{
+  "name": "@feng0531/dsh-code-review",
+  "version": "0.86.1",
+  "scannedAt": "2026-10-26T10:12:19.734Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/review-bench-adapter.mjs",
+        "line": 6,
+        "text": "import { writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/review-bench-adapter.mjs",
+        "line": 109,
+        "text": "  await writeFile(config.out + '.report.json', JSON.stringify({ mock: config.mock, profile: 'single-pass-direct', mergeBase: bases[0], report }, null, 2) + '\\n'"
+      },
+      {
+        "file": "scripts/review-bench-adapter.mjs",
+        "line": 116,
+        "text": "await writeFile(config.mock ? config.out + '.smoke.json' : config.out, JSON.stringify(output, null, 2) + '\\n', { flag: 'wx' });"
+      },
+      {
+        "file": "src/content.mjs",
+        "line": 3,
+        "text": "import { lstat, realpath, open } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/content.mjs",
+        "line": 4,
+        "text": "import { constants } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 7,
+        "text": "export const inject = ['tools', 'llm'];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 18,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 22,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/background-review.mjs",
+        "line": 99,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/background-review.mjs",
+        "line": 103,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/process.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/process.mjs",
+        "line": 11,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "index.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

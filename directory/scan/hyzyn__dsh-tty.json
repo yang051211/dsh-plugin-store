@@ -1,0 +1,129 @@
+{
+  "name": "@hyzyn/dsh-tty",
+  "version": "0.33.1",
+  "scannedAt": "2026-10-26T10:12:44.741Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 3765,
+        "text": "ync function O_(){try{let t=await(await fetch(\"/api/dsh-tty/credential-refs\",{cache:\"no-store\"})).json();if(t.ok&&Array.isArray(t.names))return t.names.filter(r"
+      },
+      {
+        "file": "client.js",
+        "line": 3766,
+        "text": "sync()=>{let u=[];try{let m=await(await fetch(\"/api/dsh-tty/tunnels\",{cache:\"no-store\"})).json();m.ok&&Array.isArray(m.tunnels)&&(u=m.tunnels)}catch{}if(Er!==r)"
+      },
+      {
+        "file": "scripts/integration.mjs",
+        "line": 91,
+        "text": "const client = new WebSocket(`ws://127.0.0.1:${port}/api/dsh-tty/ws`, { headers })"
+      },
+      {
+        "file": "scripts/integration.mjs",
+        "line": 446,
+        "text": "const res1 = await fetch(base)"
+      },
+      {
+        "file": "scripts/integration.mjs",
+        "line": 450,
+        "text": "    const res2 = await fetch(base, { method: 'POST', headers: { ...SAME_ORIGIN, 'content-type': 'application/json' }, body: JSON.stringify({ maxSessions: 3, ter"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 3766,
+        "text": "),At=e,Ne({t:\"statsOn\",sid:e})}function rm(){let e=Pt();return e===void 0||e.embedded===!0?null:e.releasePending===!0?{kind:\"released\",tab:e}:e.exited===!0?{kin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { accessSync, constants as fsConstants, existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { mkdir as fsMkdir, readdir as fsReaddir, rename as fsRename, rm as fsRm, stat as fsStat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3566,
+        "text": "const lines = readFileSync(file, 'utf8').split('\\n');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3629,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3920,
+        "text": "inject: ['tools'],"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5202,
+        "text": "return tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ssh.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ssh.js",
+        "line": 604,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "lib/stats.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/stats.js",
+        "line": 659,
+        "text": "execFile(command, args, { timeout: EXEC_TIMEOUT_MS, maxBuffer: 8 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/tmux.js",
+        "line": 28,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 252,
+      "text": "- **PowerShell（Windows）**：`-File` 稳定桩（`<DSH_HOME|~/.dsh>/tty[/<profile>]/shell/powershell/bootstrap.ps1`，"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,82 @@
+{
+  "name": "@fish-under-sea/dsh-git-sync",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:12:20.516Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 68,
+        "text": "return fetch(`${API}/status`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "return fetch(`${API}/run?${params}`, { method: 'POST', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 104,
+        "text": "return fetch(`${API}/config?${params}`, { method: 'POST', credentials: 'same-origin' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 261,
+        "text": "return JSON.parse(fs.readFileSync(statePath(home), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 269,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 271,
+        "text": "fs.writeFileSync(statePath(home), JSON.stringify(next, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 450,
+        "text": "try { fs.rmSync(dst, { force: true }); } catch { /* 交给最后一次尝试报错 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,124 @@
+{
+  "name": "@evaldock/dsh-top100-plugin",
+  "version": "1.3.14",
+  "scannedAt": "2026-10-26T10:12:17.215Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 49,
+        "text": "fetch(\"/dsh-top100/status\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 578,
+        "text": "const response = await fetch(\"/dsh-top100/diagnose\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1554,
+        "text": "const response = await fetch(url, init);"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1932,
+        "text": "const response = await fetch(\"/dsh-top100/status\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1997,
+        "text": "const response = await fetch(\"/dsh-top100/status\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/catalog.js",
+        "line": 5,
+        "text": "import { mkdir, mkdtemp, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/catalog.js",
+        "line": 366,
+        "text": "const payload = JSON.parse(await readFile(catalogCachePath(url), \"utf8\"));"
+      },
+      {
+        "file": "lib/host/catalog.js",
+        "line": 380,
+        "text": "const payload = JSON.parse(await readFile(manifestCachePath(dataUrl), \"utf8\"));"
+      },
+      {
+        "file": "lib/host/catalog.js",
+        "line": 403,
+        "text": "await mkdir(catalogCacheDirectory(), { recursive: true });"
+      },
+      {
+        "file": "lib/host/catalog.js",
+        "line": 405,
+        "text": "await writeFile(temporary, `${JSON.stringify(payload)}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/recommendations.js",
+        "line": 126,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = [\"skills\", \"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/catalog.js",
+        "line": 3,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host/restart-helper.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host/restart-helper.js",
+        "line": 46,
+        "text": "const child = spawn(launch.file, launch.args, { cwd: launch.cwd, env: launch.env, detached: true, stdio: \"ignore\", windowsHide: true });"
+      },
+      {
+        "file": "lib/host/restart.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host/restart.js",
+        "line": 66,
+        "text": "const helper = spawn(process.execPath, [fileURLToPath(new URL(\"./restart-helper.js\", import.meta.url))], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "@hualiong/dsh-qq-bot",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:12:41.492Z",
+  "icon": "hualiong__dsh-qq-bot.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/rpc.js",
+        "line": 79,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.js",
+        "line": 4,
+        "text": "import { cp, mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/config.js",
+        "line": 36,
+        "text": "await mkdir(target, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "src/config.js",
+        "line": 48,
+        "text": "return JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "src/config.js",
+        "line": 94,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "src/config.js",
+        "line": 97,
+        "text": "await writeFile(temporary, `${JSON.stringify(doc, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools.js",
+        "line": 70,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

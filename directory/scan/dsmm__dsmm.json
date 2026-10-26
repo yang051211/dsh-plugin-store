@@ -1,0 +1,141 @@
+{
+  "name": "@dsmm/dsmm",
+  "version": "0.3.18",
+  "scannedAt": "2026-10-26T10:12:12.647Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/web-fetch-fakeip.js",
+        "line": 70,
+        "text": "fetch(request, signal) {"
+      },
+      {
+        "file": "lib/web-fetch-fakeip.js",
+        "line": 100,
+        "text": "return new HttpFetchProvider(limits, resolve).fetch(request, signal);"
+      },
+      {
+        "file": "skills/ast-grep/install.ps1",
+        "line": 161,
+        "text": "Invoke-WebRequest -Uri $url -OutFile (Join-Path $tmp $asset) -UseBasicParsing"
+      },
+      {
+        "file": "skills/ast-grep/install.sh",
+        "line": 189,
+        "text": "command -v curl >/dev/null 2>&1 || command -v wget >/dev/null 2>&1 || {"
+      },
+      {
+        "file": "skills/ast-grep/install.sh",
+        "line": 190,
+        "text": "err \"need curl or wget for GitHub fallback\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-file-store.js",
+        "line": 1,
+        "text": "import { renameSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host-llm.js",
+        "line": 307,
+        "text": "return path === undefined ? undefined : this.ctx.get(\"fs\")?.processPathFromHostPath(path);"
+      },
+      {
+        "file": "lib/native-pi-ai-wire.js",
+        "line": 173,
+        "text": "resolveImageAccess: (attachments, ref) => resolveImageAttachmentAccess(attachments, path => ctx.get(\"fs\")?.processPathFromHostPath(path), ref),"
+      },
+      {
+        "file": "lib/permission-controller.js",
+        "line": 28,
+        "text": "if (module === \"fs\")"
+      },
+      {
+        "file": "lib/permission-fs.js",
+        "line": 5,
+        "text": "return Native.apply(DsmmPermissionController.toolScope(ctx, \"fs\"), config);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lsp.js",
+        "line": 31,
+        "text": "const modulePath = createRequire(anchor).resolve(\"@deepseek-ai/dsh-mcp-client\");"
+      },
+      {
+        "file": "lib/lsp.js",
+        "line": 129,
+        "text": "\"      name: '@deepseek-ai/dsh-mcp-client'\","
+      },
+      {
+        "file": "lib/permission-control.js",
+        "line": 121,
+        "text": "|| this.ctx.tools.get(binding.name, binding.agent) !== registration.registered)"
+      },
+      {
+        "file": "lib/permission-controller.js",
+        "line": 96,
+        "text": "const definition = ctx.tools.get(exec.name, exec.agent), managed = definition === undefined ? undefined : this.registrations.get(definition);"
+      },
+      {
+        "file": "lib/permission-controller.js",
+        "line": 121,
+        "text": "const definition = ctx.tools.get(exec.name, exec.agent);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/debugging/references/scripts/dap.mjs",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "skills/debugging/references/scripts/dap.mjs",
+        "line": 309,
+        "text": "const child = spawn(cmd, argv, { stdio: [\"pipe\", \"pipe\", \"inherit\"] });"
+      },
+      {
+        "file": "skills/debugging/references/scripts/dap.test.mjs",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "skills/debugging/references/scripts/dap.test.mjs",
+        "line": 23,
+        "text": "const child = spawn(process.execPath, [client], {"
+      },
+      {
+        "file": "skills/debugging/references/scripts/dap.test.mjs",
+        "line": 119,
+        "text": "const child = spawn(process.execPath, [paths.adapter], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client/PermissionsPanel.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "profileContext"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

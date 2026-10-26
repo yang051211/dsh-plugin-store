@@ -1,0 +1,161 @@
+{
+  "name": "@hope_phenom/dsh-plugin-remote-use",
+  "version": "0.2.21",
+  "scannedAt": "2026-10-26T10:12:38.885Z",
+  "icon": "hope_phenom__dsh-plugin-remote-use.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1507,
+        "text": "const response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1676,
+        "text": "const response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2521,
+        "text": "const response = await fetch(ROUTE, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2526,
+        "text": "const response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "slave/relay.mjs",
+        "line": 40,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge/peer-connection.js",
+        "line": 28,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/bridge/peer-connection.js",
+        "line": 324,
+        "text": "mkdirSync(this.shotDir, { recursive: true })"
+      },
+      {
+        "file": "lib/bridge/peer-connection.js",
+        "line": 327,
+        "text": "writeFileSync(localPath, buf)"
+      },
+      {
+        "file": "lib/core/audit-log.js",
+        "line": 17,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, statSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/core/audit-log.js",
+        "line": 123,
+        "text": "const text = readFileSync(this.file, 'utf8').slice(start)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 19,
+        "text": "# The plugin therefore registers `remote_subagent` itself through `ctx.tools.register()`,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 52,
+        "text": "// that was WRONG as of 0.2.0: the plugin registers its own delegation tool through `ctx.tools`,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "* registry, and the control tools are ordinary `ctx.tools` registrations."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "export const inject = ['subagents', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 768,
+        "text": "ctx.effect(() => ctx.tools.register(def), `remote-use: tool ${def.name}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 979,
+        "text": "// The mode the relay will actually spawn (above) versus the mode the WORKER's settings page"
+      },
+      {
+        "file": "lib/core/desktop-notify.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/relay-supervisor.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/relay-supervisor.js",
+        "line": 184,
+        "text": "const child = this.spawn(process.execPath, args, {"
+      },
+      {
+        "file": "lib/core/sandbox-probe.js",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": [
+    "slave/node_modules/ws/LICENSE (outside the package)",
+    "slave/node_modules/ws/browser.js (outside the package)",
+    "slave/node_modules/ws/lib/buffer-util.js (outside the package)",
+    "slave/node_modules/ws/lib/constants.js (outside the package)",
+    "slave/node_modules/ws/lib/event-target.js (outside the package)",
+    "slave/node_modules/ws/lib/extension.js (outside the package)",
+    "slave/node_modules/ws/index.js (outside the package)",
+    "slave/node_modules/ws/lib/limiter.js (outside the package)",
+    "slave/node_modules/ws/lib/permessage-deflate.js (outside the package)",
+    "slave/node_modules/ws/lib/receiver.js (outside the package)",
+    "slave/node_modules/ws/lib/sender.js (outside the package)",
+    "slave/node_modules/ws/lib/stream.js (outside the package)",
+    "slave/node_modules/ws/lib/subprotocol.js (outside the package)",
+    "slave/node_modules/ws/lib/validation.js (outside the package)",
+    "slave/node_modules/ws/lib/websocket-server.js (outside the package)",
+    "slave/node_modules/ws/lib/websocket.js (outside the package)",
+    "slave/node_modules/.package-lock.json (outside the package)",
+    "slave/node_modules/ws/package.json (outside the package)",
+    "slave/node_modules/ws/README.md (outside the package)",
+    "slave/node_modules/ws/wrapper.mjs (outside the package)"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "name": "@dsh-plugins/dsh-llm-hub",
+  "version": "1.9.7",
+  "scannedAt": "2026-10-26T10:12:09.106Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 439,
+        "text": "fetch(ALIASES_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 878,
+        "text": "fetch(BALANCE_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 916,
+        "text": "fetch(WARNING_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 981,
+        "text": "fetch(BILLING_MODE_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1213,
+        "text": "fetch(`${PIAI_BASE}/balance?provider=${encodeURIComponent(provider)}`, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1574,
+        "text": "const pkg = JSON.parse(readFileSync(here, 'utf8'))"
+      },
+      {
+        "file": "scripts/gate-lib.mjs",
+        "line": 11,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/gate-lib.mjs",
+        "line": 70,
+        "text": "try { return createHash('sha256').update(readFileSync(join(root, rel))).digest('hex') }"
+      },
+      {
+        "file": "scripts/prepublish-gate.mjs",
+        "line": 28,
+        "text": "import { readFileSync, mkdtempSync, rmSync, readdirSync, statSync, existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/harness.js",
+        "line": 253,
+        "text": "const child = deps.spawn({"
+      },
+      {
+        "file": "lib/harness.js",
+        "line": 360,
+        "text": "spawn: (spec) => ctx.subprocess.spawn(spec),"
+      },
+      {
+        "file": "scripts/prepublish-gate.mjs",
+        "line": 29,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

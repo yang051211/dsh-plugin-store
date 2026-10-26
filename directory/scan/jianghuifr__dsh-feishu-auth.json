@@ -1,0 +1,64 @@
+{
+  "name": "@jianghuifr/dsh-feishu-auth",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:12:52.467Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "const anonymous = await fetch(probeUrl, { headers: probeHeaders, redirect: 'manual' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const authenticated = await fetch(probeUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session.js",
+        "line": 12,
+        "text": "import { chmodSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 189,
+        "text": "const existing = readFileSync(file, 'utf8').trim();"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 196,
+        "text": "mkdirSync(dirname(file), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 198,
+        "text": "writeFileSync(temporary, `${encodeBase64Url(secret)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

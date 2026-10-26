@@ -1,0 +1,95 @@
+{
+  "name": "@kidlab/dsh-kid-network",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:13:01.317Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 6,
+        "text": "//     fetch(PATH) → 取回 {lan,gw,dns,neighbors,pub,speedKBps,letters,ts} → 每 8 秒自动刷新。"
+      },
+      {
+        "file": "client.js",
+        "line": 96,
+        "text": "fetch(PATH, { cache: 'no-store' })"
+      },
+      {
+        "file": "index.js",
+        "line": 129,
+        "text": "const pubRaw = await run('curl -s --max-time 5 cip.cc', netT)"
+      },
+      {
+        "file": "index.js",
+        "line": 131,
+        "text": "const speedRaw = await run(\"curl -s -o /dev/null -w '%{speed_download}' --max-time 8 'https://speed.cloudflare.com/__down?bytes=2000000'\", netT)"
+      },
+      {
+        "file": "tools.js",
+        "line": 120,
+        "text": "const pub = (await safe('公网', 'curl -s --max-time 6 cip.cc', t)).trim()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 197,
+        "text": "const offs = buildNetworkTools({ timeoutMs: t }).map((tool) => child.tools.register(tool))"
+      },
+      {
+        "file": "tools.js",
+        "line": 6,
+        "text": "//   改成返回普通对象，由 index.js 交给 ctx.tools.register()。"
+      },
+      {
+        "file": "tools.js",
+        "line": 99,
+        "text": "* @returns {object[]} 可直接交给 ctx.tools.register 的普通对象"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, maxBuffer: 8 * 1024 * 1024, encoding: 'utf8' }, (_err, stdout) => {"
+      },
+      {
+        "file": "tools.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "tools.js",
+        "line": 79,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, encoding: 'utf8' }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

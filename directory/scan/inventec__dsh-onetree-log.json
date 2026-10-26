@@ -1,0 +1,87 @@
+{
+  "name": "@inventec/dsh-onetree-log",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:12:48.255Z",
+  "icon": "inventec__dsh-onetree-log.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const response = await fetch(`${BASE}${path}`, { cache: 'no-store', ...options })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 72,
+        "text": "const xhr = new XMLHttpRequest()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/detect.js",
+        "line": 18,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 14,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 98,
+        "text": "fs.mkdirSync(destDir, { recursive: true })"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 137,
+        "text": "if (name !== '' && name !== './') fs.mkdirSync(safeJoin(destDir, name), { recursive: true })"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 147,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extract.js",
+        "line": 17,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 236,
+        "text": "execFile(cmd, args, EXEC_OPTS, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 317,
+        "text": "const child = spawn('zstd', ['-dc', String(archivePath)], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

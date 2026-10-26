@@ -1,0 +1,99 @@
+{
+  "name": "@dsh-enhanced/coding-subscription-provider",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:03.881Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 96,
+        "text": "return await this.#fetch(CODEX_RESPONSES_URL, {"
+      },
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 138,
+        "text": "response = await this.#fetch(CODEX_OAUTH_REFRESH_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 2,
+        "text": "import { lstat, open, realpath, rename, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 220,
+        "text": "await handle.writeFile(serialized, 'utf8');"
+      },
+      {
+        "file": "lib/codex-direct-auth.js",
+        "line": 261,
+        "text": "await unlink(temporary).catch(() => { });"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 2,
+        "text": "import { chmod, mkdtemp, open, rmdir, unlink } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 1,
+        "text": "import { execFile as nodeExecFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/codex-catalog.js",
+        "line": 1,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/codex-catalog.js",
+        "line": 32,
+        "text": "const child = spawn(invocation.command, APP_SERVER_ARGS, {"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 1,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 264,
+        "text": "// A temporary-file path already entered spawn argv when spawn() returned, so"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

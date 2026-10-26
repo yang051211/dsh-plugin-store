@@ -1,0 +1,110 @@
+{
+  "name": "@jhfnetboy/dsh-devloop",
+  "version": "0.6.11",
+  "scannedAt": "2026-10-26T10:12:50.817Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dashboard/app.js",
+        "line": 77,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "dashboard/app.js",
+        "line": 95,
+        "text": "const res = await fetch(path, { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "dashboard/client.js",
+        "line": 77,
+        "text": "return readValue(await fetch(PROJECTS_PATH))"
+      },
+      {
+        "file": "dashboard/client.js",
+        "line": 82,
+        "text": "return readValue(await fetch(`${BROWSE_PATH}?path=${encodeURIComponent(path.join('/'))}`))"
+      },
+      {
+        "file": "dashboard/client.js",
+        "line": 94,
+        "text": "return readValue(await fetch(`${PROJECTS_PATH}/${projectId}/${verb}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 1,
+        "text": "import { constants, lstat, open, realpath, rename, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 69,
+        "text": "await unlink(file);"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 91,
+        "text": "await handle.writeFile(stdout.endsWith('\\n') ? stdout : `${stdout}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 100,
+        "text": "await unlink(temp).catch(() => undefined);"
+      },
+      {
+        "file": "lib/dashboard.js",
+        "line": 1,
+        "text": "import { constants, lstat, open, readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/prepr.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/prepr.js",
+        "line": 71,
+        "text": "execFile(command, args, { cwd, timeout: timeoutMs, maxBuffer: MAX_OUTPUT, env, encoding: 'utf8' }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 143,
+        "text": "return spawn(command, [...argv], { ...options, detached: true });"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 145,
+        "text": "return spawn(process.env.ComSpec || 'cmd.exe', winCmdSpawnArgs(command, argv), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

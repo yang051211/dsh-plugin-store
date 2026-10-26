@@ -1,0 +1,147 @@
+{
+  "name": "@goodandready/dsh-kanban",
+  "version": "0.2.38",
+  "scannedAt": "2026-10-26T10:12:28.617Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 440,
+        "text": "res = await fetch('/dsh-kanban' + path, fetchOpts)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1712,
+        "text": "const res = await fetch('/api/dsh-kanban/remote/test', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1772,
+        "text": "const res = await fetch('/api/dsh-kanban/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1790,
+        "text": "const res = await fetch('/api/dsh-kanban/update', {"
+      },
+      {
+        "file": "lib/gitea.js",
+        "line": 4,
+        "text": "// Network calls use injectable fetch (`fetchImpl`), and token resolution is provided via callback."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/power.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 14,
+        "text": "import { mkdirSync, copyFileSync, readdirSync, unlinkSync, statSync, chmodSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 237,
+        "text": "mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 485,
+        "text": "mkdirSync(backupsDir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 504,
+        "text": "try { unlinkSync(old.path) } catch { /* unlink old backup best-effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "export const inject = ['settings', 'webServer', 'agents', 'agentDefaultModel', 'credentials', 'llm', 'tools', 'connection']"
+      },
+      {
+        "file": "lib/server/services.js",
+        "line": 192,
+        "text": "ctx.tools.register(defineTool(boardMoveDefinition({ store, config: getConfig, eventHub }))),"
+      },
+      {
+        "file": "lib/server/services.js",
+        "line": 193,
+        "text": "ctx.tools.register(defineTool(boardPlanDefinition({ store, eventHub }))),"
+      },
+      {
+        "file": "lib/server/services.js",
+        "line": 194,
+        "text": "ctx.tools.register(defineTool(boardChecklistDefinition({ store, eventHub }))),"
+      },
+      {
+        "file": "lib/server/services.js",
+        "line": 195,
+        "text": "ctx.tools.register(defineTool(boardReportDefinition({ store }))),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/power.js",
+        "line": 4,
+        "text": "import { spawn as defaultSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/power.js",
+        "line": 81,
+        "text": "this.child = this.spawn(psPath, ['-NoProfile', '-NonInteractive', '-Command', WINDOWS_HELPER], {"
+      },
+      {
+        "file": "lib/power.js",
+        "line": 87,
+        "text": "this.child = this.spawn('/usr/bin/caffeinate', ['-i', '-w', String(this.pid)], {"
+      },
+      {
+        "file": "lib/power.js",
+        "line": 98,
+        "text": "this.child = this.spawn("
+      },
+      {
+        "file": "lib/remote-runner.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "connection",
+    "credentials",
+    "llm",
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

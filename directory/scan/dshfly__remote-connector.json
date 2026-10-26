@@ -1,0 +1,112 @@
+{
+  "name": "@dshfly/remote-connector",
+  "version": "0.3.8",
+  "scannedAt": "2026-10-26T10:12:11.402Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/cloud.js",
+        "line": 8,
+        "text": "const res = await fetch(`${base}${path}`, {"
+      },
+      {
+        "file": "core/connector-core.js",
+        "line": 992,
+        "text": "const res = await fetch(`${clean.replace(/\\/$/, '')}/healthz`, { signal: AbortSignal.timeout(5000) });"
+      },
+      {
+        "file": "core/connector-core.js",
+        "line": 1157,
+        "text": "const res = await fetch(`${this.cfg.relayUrl}/api/v1/usage`, {"
+      },
+      {
+        "file": "core/tunnel.js",
+        "line": 112,
+        "text": "const res = await fetch(u, {"
+      },
+      {
+        "file": "core/tunnel.js",
+        "line": 335,
+        "text": "s = new WebSocket(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/connector-core.js",
+        "line": 6,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "core/connector-core.js",
+        "line": 2445,
+        "text": "const fresh = JSON.parse(fs.readFileSync(this.cfg.keysFile, 'utf8'));"
+      },
+      {
+        "file": "core/deps-check.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "core/deps-check.js",
+        "line": 58,
+        "text": "src = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "core/grant.js",
+        "line": 24,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "http-api.js",
+        "line": 7,
+        "text": "import { execFile as defaultExecFile } from 'node:child_process';"
+      },
+      {
+        "file": "http-api.js",
+        "line": 988,
+        "text": "execFile(bin, args, { timeout: 120_000 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "http-api.js",
+        "line": 1007,
+        "text": "execFile(bin, args, { timeout: 120_000 }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "mobile-bridge/core/git-status.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "mobile-bridge/core/git-status.js",
+        "line": 24,
+        "text": "execFile('git', args, { cwd, timeout: 8000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

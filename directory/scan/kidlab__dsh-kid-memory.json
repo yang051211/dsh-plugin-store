@@ -1,0 +1,80 @@
+{
+  "name": "@kidlab/dsh-kid-memory",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:12:58.600Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 10,
+        "text": "//   host.call('mem:collect')      → fetch('/kid-memory/collect')"
+      },
+      {
+        "file": "client.js",
+        "line": 152,
+        "text": "fetch(PATH, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": ".map((tool) => child.tools.register(tool))"
+      },
+      {
+        "file": "tools.js",
+        "line": 6,
+        "text": "//   改成返回普通对象，由 index.js 交给 ctx.tools.register()。"
+      },
+      {
+        "file": "tools.js",
+        "line": 80,
+        "text": "* @returns {object[]} 可直接交给 ctx.tools.register 的普通对象"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "collect.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "collect.js",
+        "line": 37,
+        "text": "execFile(file, args, { timeout: timeoutMs, maxBuffer: 8 * 1024 * 1024, encoding: 'utf8' }, (error, stdout) => {"
+      },
+      {
+        "file": "tools.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "tools.js",
+        "line": 38,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, encoding: 'utf8' }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,100 @@
+{
+  "name": "@goodandready/dsh-smart-restart",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:12:30.099Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 237,
+        "text": "const res = await fetch('/dsh-smart-restart/status')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 304,
+        "text": "const res = await fetch('/dsh-smart-restart/restart', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 339,
+        "text": "const res = await fetch('/dsh-smart-restart/cancel', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "return JSON.parse(readFileSync(pathOf(file), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "mkdirSync(stateDir(), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 188,
+        "text": "writeFileSync(pathOf(file), `${JSON.stringify(clean, null, 2)}\\n`, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "const data = JSON.parse(readFileSync(p, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 607,
+        "text": "const reg = ctx.tools.register(definition)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1208,
+        "text": "export const inject = ['tools', 'agents', 'settings']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 648,
+        "text": "const child = execFile('systemctl', restartArgs, { detached: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

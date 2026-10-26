@@ -1,0 +1,67 @@
+{
+  "name": "@deepwhale-cn/dsh-cn-compliance",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:11:46.716Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skill/scan.sh",
+        "line": 154,
+        "text": "c=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 12 \"$SITE_HOST/$f\" 2>/dev/null)"
+      },
+      {
+        "file": "skill/scan.sh",
+        "line": 164,
+        "text": "home=$(curl -s -L --max-time 25 \"$SITE_HOST/\" 2>/dev/null)"
+      },
+      {
+        "file": "skill/scan.sh",
+        "line": 182,
+        "text": "body=$(curl -s -L --max-time 25 \"$SITE_HOST/$p\" 2>/dev/null)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { readFileSync, existsSync, statSync, chmodSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "const raw = readFileSync(join(skillDir, 'compliance-audit.md'), 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "* 依赖 `ctx.skills`（由 @deepseek-ai/dsh-skill 提供）与 `ctx.tools`（可选，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

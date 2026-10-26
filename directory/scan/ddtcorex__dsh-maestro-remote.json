@@ -1,0 +1,95 @@
+{
+  "name": "@ddtcorex/dsh-maestro-remote",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:11:44.038Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/remote-proxy.js",
+        "line": 1,
+        "text": "import { createServer, request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "src/host/remote-proxy.ts",
+        "line": 1,
+        "text": "import { createServer, request as httpRequest, type IncomingMessage, type Server, type ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 1,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/access-log.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir, readdir, rename, stat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/access-log.js",
+        "line": 56,
+        "text": "* between listing and stat/unlink (rotated or pruned concurrently) is not"
+      },
+      {
+        "file": "lib/access-log.js",
+        "line": 76,
+        "text": "await unlink(full);"
+      },
+      {
+        "file": "lib/access-log.js",
+        "line": 86,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared-fetch.js",
+        "line": 1,
+        "text": "import { spawn, execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cloudflared-fetch.js",
+        "line": 271,
+        "text": "execSync(process.platform === 'win32' ? 'where cloudflared' : 'command -v cloudflared', { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/tunnel.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tunnel.js",
+        "line": 47,
+        "text": "const child = spawn(bin, ['tunnel', '--url', `http://127.0.0.1:${port}`, '--protocol', 'http2', '--no-autoupdate'], { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/tunnel.js",
+        "line": 169,
+        "text": "const child = spawn('cloudflared', namedTunnelArgs(configPath, tunnelId), { stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

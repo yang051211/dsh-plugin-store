@@ -1,0 +1,57 @@
+{
+  "name": "@hunterchcl/dsh-usage-meter",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:12:43.288Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 156,
+        "text": "   return \"(async()=>{try{const r=await fetch('\" + BALANCE_URL + \"',{headers:{Authorization:'Bearer '+process.env.DSH_BALANCE_KEY,Accept:'application/json'}});c"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 147,
+        "text": "const { stdout } = await this.runNode(\"try{console.log(require('fs').readFileSync(process.env.DSH_F,'utf8'))}catch(e){console.log('{}')}\", { DSH_F: p }, 8000)"
+      },
+      {
+        "file": "host.js",
+        "line": 152,
+        "text": "    await this.runNode(\"try{require('fs').writeFileSync(process.env.DSH_F, process.env.DSH_V)}catch(e){console.error(e)}\", { DSH_F: p, DSH_V: JSON.stringify(obj"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host.js",
+        "line": 133,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

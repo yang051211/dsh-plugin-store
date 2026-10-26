@@ -1,0 +1,116 @@
+{
+  "name": "@ds-hu/dsh-pocket",
+  "version": "2.10.6",
+  "scannedAt": "2026-10-26T10:11:56.376Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 416,
+        "text": "const meta = await (await fetch(\"https://raw.githubusercontent.com/cup113/dsh-pocket-oauth/main/package.json\", { cache: \"no-store\" })).json();"
+      },
+      {
+        "file": "client/index.jsx",
+        "line": 131,
+        "text": "const meta = await (await fetch('https://raw.githubusercontent.com/cup113/dsh-pocket-oauth/main/package.json', { cache: 'no-store' })).json();"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 23,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 24,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/rpc-route.js",
+        "line": 68,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-pocket.mjs",
+        "line": 14,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 4,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 81,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 82,
+        "text": "await writeFile(outputPath, wrapBundle(bundled, target.id), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { readFileSync, existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "// Windows 上裸 spawn('dsh') 解析到无扩展名 POSIX shim → ENOENT；"
+      },
+      {
+        "file": "lib/restart-helper.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restart-helper.mjs",
+        "line": 43,
+        "text": "const child = spawn(config.file, config.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/link-mobile-package.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

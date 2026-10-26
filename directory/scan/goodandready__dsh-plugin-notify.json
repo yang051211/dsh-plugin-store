@@ -1,0 +1,101 @@
+{
+  "name": "@goodandready/dsh-plugin-notify",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-26T10:12:29.464Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 340,
+        "text": "const keyRes = await fetch(pluginUrl('dsh-plugin-notify/push/key'))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 351,
+        "text": "const saveRes = await fetch(pluginUrl('dsh-plugin-notify/push/subscribe'), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 364,
+        "text": "const keyRes = await fetch(pluginUrl('dsh-plugin-notify/push/key'))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 668,
+        "text": "const res = await fetch(pluginUrl('dsh-plugin-notify/push/test'), { method: 'POST' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1091,
+        "text": "fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import fsp from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 403,
+        "text": "const raw = await fsp.readFile(statePath, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 419,
+        "text": "await fsp.mkdir(path.dirname(statePath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 421,
+        "text": "await fsp.writeFile(tmp, JSON.stringify(state, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1318,
+        "text": "spawn('osascript', ['-e', script], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "sessions",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

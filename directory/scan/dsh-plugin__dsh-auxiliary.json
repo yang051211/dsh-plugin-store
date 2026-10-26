@@ -1,0 +1,99 @@
+{
+  "name": "@dsh-plugin/dsh-auxiliary",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-26T10:12:08.762Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 468,
+        "text": "const response = await fetch(\"/dsh-auxiliary/state\", { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 180,
+        "text": "const response = await fetch(`${root}/${referenceBytes !== undefined ? 'images/edits' : 'images/generations'}`, {"
+      },
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 207,
+        "text": "const imageResponse = await fetch(item.url, { signal: exec.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 197,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 216,
+        "text": "await writeFile(file, buffer);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['dshLoader', 'llm', 'tools', 'systemPrompt', 'attachments', 'fs', 'settings', 'credentials'];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/imagegen-tool.js",
+        "line": 60,
+        "text": "const disposeTool = ctx.tools.register(dsh().tools.defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['dshLoader', 'llm', 'tools', 'systemPrompt', 'attachments', 'fs', 'settings', 'credentials'];"
+      },
+      {
+        "file": "lib/vision-tool.js",
+        "line": 194,
+        "text": "const disposeTool = ctx.tools.register(dsh().tools.defineTool({"
+      },
+      {
+        "file": "lib/vision-tool.js",
+        "line": 247,
+        "text": "const disposeDescribe = ctx.tools.register(dsh().tools.defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "dshLoader",
+    "fs",
+    "llm",
+    "settings",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

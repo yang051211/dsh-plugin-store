@@ -1,0 +1,110 @@
+{
+  "name": "@hystudio/dsh-quota-pill",
+  "version": "0.2.13",
+  "scannedAt": "2026-10-26T10:12:46.082Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 181,
+        "text": "'1. 运行 curl -s \"http://127.0.0.1:8319/setup?fresh=1\"，读取 catalog、unadaptedCatalog、userAdapters，确认未知的 DSH provider id。',"
+      },
+      {
+        "file": "client.js",
+        "line": 193,
+        "text": "'1. Run curl -s \"http://127.0.0.1:8319/setup?fresh=1\"; inspect catalog, unadaptedCatalog and userAdapters to identify the unknown DSH provider id.',"
+      },
+      {
+        "file": "client.js",
+        "line": 797,
+        "text": "fetch(`${SIDECAR}/quota/all${fresh ? '?fresh=1' : ''}`)"
+      },
+      {
+        "file": "client.js",
+        "line": 866,
+        "text": "fetch(`${SIDECAR}/quota?model=${encodeURIComponent(model)}${fresh ? '&fresh=1' : ''}`)"
+      },
+      {
+        "file": "src/dsh.js",
+        "line": 72,
+        "text": "const res = await fetch(base + '/api/' + method.replace(/\\./g, '/'), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/opendesign-login.js",
+        "line": 12,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/opendesign-login.js",
+        "line": 69,
+        "text": "try { text = fs.readFileSync(credentialsFile, 'utf8'); } catch { /* new file */ }"
+      },
+      {
+        "file": "bin/opendesign-login.js",
+        "line": 72,
+        "text": "fs.mkdirSync(path.dirname(credentialsFile), { recursive: true });"
+      },
+      {
+        "file": "bin/opendesign-login.js",
+        "line": 73,
+        "text": "fs.writeFileSync(credentialsFile, text, { mode: 0o600 });"
+      },
+      {
+        "file": "src/adapters-cliproxy.js",
+        "line": 13,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters-cliproxy.js",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/adapters-cliproxy.js",
+        "line": 34,
+        "text": "const probe = spawnSync('nc', ['-z', '127.0.0.1', '1082'], { timeout: 1500 });"
+      },
+      {
+        "file": "src/adapters-cliproxy.js",
+        "line": 668,
+        "text": "import('node:child_process').then(({ execFile }) => {"
+      },
+      {
+        "file": "src/adapters-cliproxy.js",
+        "line": 669,
+        "text": "execFile('curl', args, { maxBuffer: 16 * 1024 * 1024 }, (err, stdout) => {"
+      },
+      {
+        "file": "src/autostart.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

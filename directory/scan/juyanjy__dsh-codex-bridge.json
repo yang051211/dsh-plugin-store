@@ -1,0 +1,72 @@
+{
+  "name": "@juyanjy/dsh-codex-bridge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:55.510Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/app-server.js",
+        "line": 21,
+        "text": "import { existsSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 24,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 63,
+        "text": "for (const tool of tools) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/app-server.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "src/app-server.js",
+        "line": 109,
+        "text": "const child = spawn(this.bin, this.args, {"
+      },
+      {
+        "file": "src/codex.js",
+        "line": 7,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "src/codex.js",
+        "line": 117,
+        "text": "execFile(\"ps\", [\"-axo\", \"pid=,etime=,command=\"], { maxBuffer: 8 * 1024 * 1024 }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

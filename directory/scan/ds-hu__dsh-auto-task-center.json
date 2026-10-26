@@ -1,0 +1,88 @@
+{
+  "name": "@ds-hu/dsh-auto-task-center",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:11:56.472Z",
+  "icon": "ds-hu__dsh-auto-task-center.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 66,
+        "text": "const response = await fetch(API_BASE + path, {"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 21,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 22,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/task-center.mjs",
+        "line": 18,
+        "text": "import { readdirSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/task-center.mjs",
+        "line": 19,
+        "text": "import { rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/task-center.mjs",
+        "line": 92,
+        "text": "const doc = JSON.parse(readFileSync(`${dir}/${STORE_FILE}`, 'utf8'));"
+      },
+      {
+        "file": "bin/task-center.mjs",
+        "line": 177,
+        "text": "await rm(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 12,
+        "text": "import { mkdir, rename, unlink, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 25,
+        "text": "ctx.effect(() => ctx.tools.register(TASK_CENTER_TOOL), 'task-center: task_center tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

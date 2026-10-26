@@ -1,0 +1,62 @@
+{
+  "name": "@iasiv5/dsh-quota-watch",
+  "version": "0.1.36",
+  "scannedAt": "2026-10-26T10:12:45.712Z",
+  "icon": "iasiv5__dsh-quota-watch.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/legacy-auto-settings.mjs",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/core/legacy-auto-settings.mjs",
+        "line": 38,
+        "text": "original = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "src/core/legacy-auto-settings.mjs",
+        "line": 56,
+        "text": "mkdirSync(directory, { recursive: true })"
+      },
+      {
+        "file": "src/core/legacy-auto-settings.mjs",
+        "line": 61,
+        "text": "writeFileSync(tempPath, `${JSON.stringify(document, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "src/core/legacy-auto-settings.mjs",
+        "line": 65,
+        "text": "try { unlinkSync(tempPath) } catch { /* temp file was never created */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

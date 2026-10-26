@@ -1,0 +1,101 @@
+{
+  "name": "@klarkxy/dsh-dev-index",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-26T10:13:01.953Z",
+  "icon": "klarkxy__dsh-dev-index.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/docs.js",
+        "line": 63,
+        "text": "this.fetcher = options.fetcher ?? ((...args) => globalThis.fetch(...args));"
+      },
+      {
+        "file": "lib/github.js",
+        "line": 261,
+        "text": "this.fetcher = deps.fetcher ?? ((...args) => globalThis.fetch(...args));"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 78,
+        "text": "this.fetcher = options.fetcher ?? ((...args) => globalThis.fetch(...args));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gh.js",
+        "line": 1,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 2,
+        "text": "import { existsSync, realpathSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = [\"systemPrompt\", \"agentPresets\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "ctx.tools.register(githubFetchTool(github));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 33,
+        "text": "const result = spawnSync(process.execPath, [process.env.npm_execpath, 'run', 'build'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

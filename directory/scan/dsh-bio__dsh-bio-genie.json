@@ -1,0 +1,158 @@
+{
+  "name": "@dsh-bio/dsh-bio-genie",
+  "version": "0.6.52",
+  "scannedAt": "2026-10-26T10:11:58.870Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "*   - 浏览器 fetch('/api/dsh-bio-genie/<endpoint>') 同源调宿主侧 server.js 注册的路由"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 195,
+        "text": "return fetch(RPC_PREFIX + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 583,
+        "text": "return fetch(RPC_PREFIX + path, {"
+      },
+      {
+        "file": "src/domain-adapter.js",
+        "line": 21,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/domain-adapter.js",
+        "line": 224,
+        "text": "const request = http.get({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "design/packet/build/bundle_loader.mjs",
+        "line": 6,
+        "text": "import { existsSync, readFileSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "design/packet/build/bundle_loader.mjs",
+        "line": 17,
+        "text": "return createHash(\"sha256\").update(readFileSync(p)).digest(\"hex\");"
+      },
+      {
+        "file": "design/packet/build/bundle_loader.mjs",
+        "line": 30,
+        "text": "manifest = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
+      },
+      {
+        "file": "design/packet/build/bundle_loader.mjs",
+        "line": 76,
+        "text": "doc = JSON.parse(readFileSync(p, \"utf8\"));"
+      },
+      {
+        "file": "design/packet/build/check_compile.mjs",
+        "line": 7,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 39,
+        "text": "export const inject = ['tools', 'skills', 'systemPrompt']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 1025,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 1112,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 1164,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 1196,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/design-casefile.js",
+        "line": 17,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/design-casefile.js",
+        "line": 179,
+        "text": "const r = spawnSync(process.execPath, [C14N_IMPL, '--batch', casePath, '--out', outPath], { encoding: 'utf8', timeout: 120000 })"
+      },
+      {
+        "file": "src/design-dispatch.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/design-dispatch.js",
+        "line": 365,
+        "text": "const r = spawnSync(process.execPath, [join(PACKET_DIR, 'impl', 'c14n.mjs'), '--batch', casePath, '--out', outPath], { encoding: 'utf8', timeout: 120000 })"
+      },
+      {
+        "file": "src/python.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/install-preset.js"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 168,
+      "text": "**绝不**：编造结果、死循环、自行 pip install、跳过错误"
+    },
+    {
+      "file": "README.en.md",
+      "line": 271,
+      "text": "4. uv pip install         → biopython + numpy + matplotlib + reportlab (auto-fallback to Tsinghua PyPI on failure)"
+    },
+    {
+      "file": "README.md",
+      "line": 341,
+      "text": "4. uv pip install     → biopython + numpy + matplotlib + reportlab + pandas/scipy/seaborn/Pillow（出版级绘图栈；官方 PyPI 失败自动切换清华镜像）"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,99 @@
+{
+  "name": "@f12o/dsh-dots",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:12:17.937Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "const response = await fetch(\"/dots/api\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/controller.js",
+        "line": 8,
+        "text": "import { appendFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/controller.js",
+        "line": 75,
+        "text": "await mkdir(this.root, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/controller.js",
+        "line": 77,
+        "text": "await mkdir(paths.directory, { mode: 0o700 });"
+      },
+      {
+        "file": "lib/controller.js",
+        "line": 86,
+        "text": "await mkdir(`${paths.directory}/.dsh-dot`, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/controller.js",
+        "line": 87,
+        "text": "await writeFile(paths.contract, renderContract({"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'sessionController'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 18,
+        "text": "* @param ctx - Host context with `ctx.tools`."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 22,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 84,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 99,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

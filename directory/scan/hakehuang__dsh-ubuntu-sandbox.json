@@ -1,0 +1,72 @@
+{
+  "name": "@hakehuang/dsh-ubuntu-sandbox",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:12:34.946Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 6,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 62,
+        "text": "privateKey = readFileSync(auth.keyPath)"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 355,
+        "text": "async readFile(alias, absPath, { maxBytes = 200 * 1024, timeoutMs = DEFAULT_FS_TIMEOUT_MS } = {}) {"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 399,
+        "text": "async writeFile(alias, absPath, content, { createDirs = true, timeoutMs = DEFAULT_FS_TIMEOUT_MS } = {}) {"
+      },
+      {
+        "file": "lib/host-store.js",
+        "line": 5,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

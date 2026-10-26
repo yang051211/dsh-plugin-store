@@ -1,0 +1,97 @@
+{
+  "name": "@ddtcorex/maestro-skills",
+  "version": "2.19.0",
+  "scannedAt": "2026-10-26T10:11:44.516Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/helper.js",
+        "line": 80,
+        "text": "ws = new WebSocket(websocketUrl());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 2,
+        "text": "const http = require('http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readdir, readFile, stat } from 'fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "const rawContent = await readFile(skillFilePath, 'utf-8').catch(() => '');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "const rawContent = await readFile(filePath, 'utf-8');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 3,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 93,
+        "text": "const p = Number(fs.readFileSync(PORT_FILE, 'utf-8').trim());"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      },
+      {
+        "file": "skills/diagram-studio/tests/verify-cli.test.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from 'child_process';"
+      },
+      {
+        "file": "skills/diagram-studio/tests/verify-cli.test.mjs",
+        "line": 109,
+        "text": "const r = spawnSync('node', [script, '-', '--require-parser'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

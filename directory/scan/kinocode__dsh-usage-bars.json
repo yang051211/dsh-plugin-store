@@ -1,0 +1,85 @@
+{
+  "name": "@kinocode/dsh-usage-bars",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:13:01.079Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sources.js",
+        "line": 6,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/sources.js",
+        "line": 268,
+        "text": "import httpModule from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "fs.writeFileSync(tmp, text, { mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "try { fs.unlinkSync(tmp) } catch (error) { if (error.code !== 'ENOENT') throw error }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "try { return normalize(JSON.parse(fs.readFileSync(configPath, 'utf8'))) } catch { return normalize({}) }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/kiro.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/providers/kiro.js",
+        "line": 11,
+        "text": "    execFile(bin, ['chat', '--no-interactive', '/usage'], { timeout: 20000, maxBuffer: 1 << 20, cwd: os.tmpdir(), env: Object.fromEntries([...['PATH', 'HOME', '"
+      },
+      {
+        "file": "lib/sources.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,138 @@
+{
+  "name": "@goodandready/dsh-remote-workspace",
+  "version": "0.3.23",
+  "scannedAt": "2026-10-26T10:12:29.577Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap-service.js",
+        "line": 11,
+        "text": "curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -n -E bash -"
+      },
+      {
+        "file": "lib/bootstrap-service.js",
+        "line": 43,
+        "text": "curl -fsSL https://get.docker.com | sudo -n sh"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 644,
+        "text": "const res = await fetch('/dsh-remote-workspace/env/view', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 674,
+        "text": "const res = await fetch('/dsh-remote-workspace/env/save', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 750,
+        "text": "const res = await fetch(`/dsh-remote-workspace/docker/list?profileId=${activeProfile.id}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/docker-service.js",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/docker-service.js",
+        "line": 192,
+        "text": "fs.unlinkSync(localSocketPath);"
+      },
+      {
+        "file": "lib/docker-service.js",
+        "line": 340,
+        "text": "fs.unlinkSync(forward.localSocketPath);"
+      },
+      {
+        "file": "lib/env-service.js",
+        "line": 63,
+        "text": "const content = await this.remoteFsService.readFile(profile, filePath);"
+      },
+      {
+        "file": "lib/env-service.js",
+        "line": 85,
+        "text": "currentContent = await this.remoteFsService.readFile(profile, filePath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 80,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 93,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 128,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 168,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proxy-command.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/proxy-command.js",
+        "line": 70,
+        "text": "const child = spawn(shell, args, { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/tar-sync-service.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tar-sync-service.js",
+        "line": 35,
+        "text": "const localTar = spawn('tar', ['-xzf', '-', '-C', localDir]);"
+      },
+      {
+        "file": "lib/tar-sync-service.js",
+        "line": 88,
+        "text": "const localTar = spawn('tar', ['--exclude=.git', '--exclude=node_modules', '-czf', '-', '-C', localDir, '.']);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

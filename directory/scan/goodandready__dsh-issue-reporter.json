@@ -1,0 +1,96 @@
+{
+  "name": "@goodandready/dsh-issue-reporter",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:12:28.571Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 340,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 151,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 2,
+        "text": "import { access, chmod, constants, mkdtemp, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 160,
+        "text": "await writeFile(bodyPath, draft.body || '', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 179,
+        "text": "await writeFile(filePath, file.data, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/attachments.js",
+        "line": 215,
+        "text": "await rm(workDir, { recursive: true }).catch((error) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/routes/agent-tool.js",
+        "line": 13,
+        "text": "scopedCtx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachments.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 187,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "loader",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

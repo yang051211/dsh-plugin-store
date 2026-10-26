@@ -1,0 +1,111 @@
+{
+  "name": "@eave_bounty/dsh-programmer-chatroom",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:12:17.132Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dshc-relay.js",
+        "line": 32,
+        "text": "const http = require('http')"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 33,
+        "text": "const https = require('https')"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 152,
+        "text": "      const req = http.request(args.rendezvous, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) } }, "
+      },
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "return fetch(url, o).then((r) => { clearTimeout(timer); return r }, (e) => { clearTimeout(timer); throw e })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "return fetch(url, o)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dshc-relay.js",
+        "line": 68,
+        "text": "const fs = require('fs')"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 170,
+        "text": "try { txt = fs.readFileSync(args.outboxFile, 'utf8') } catch (e) { return }"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 180,
+        "text": "if (lines.length) { try { fs.writeFileSync(args.outboxFile, '') } catch (e) {} }"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 186,
+        "text": "fs.writeFileSync(args.stateFile, payload)"
+      },
+      {
+        "file": "dshc-relay.js",
+        "line": 245,
+        "text": "try { txt = fs.readFileSync(args.netmodeFile, 'utf8') } catch (e) { return }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 245,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 72,
+      "text": "npm install -g @eave_bounty/dsh-programmer-chatroom"
+    },
+    {
+      "file": "README.md",
+      "line": 111,
+      "text": "(deploy per `docs/RENDEZVOUS.md`), then **内网穿透** → install cpolar (`npm i -g cpolar`, free account"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 64,
+      "text": "npm install -g @eave_bounty/dsh-programmer-chatroom"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 102,
+      "text": "- 再到 **内网穿透** 一键启动 cpolar（`npm i -g cpolar`，免费账号 `cpolar authtoken <token>`），拿到公网地址；"
+    }
+  ],
+  "skippedEntries": []
+}

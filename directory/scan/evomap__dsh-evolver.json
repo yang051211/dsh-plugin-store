@@ -1,0 +1,109 @@
+{
+  "name": "@evomap/dsh-evolver",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:12:17.558Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/proxy.js",
+        "line": 98,
+        "text": "response = await fetch(base + requestPath, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/commands.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/commands.js",
+        "line": 121,
+        "text": "const { fields, body } = splitFrontmatter(readFileSync(EVOLVE_PATH, 'utf8'));"
+      },
+      {
+        "file": "src/diagnostics.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/diagnostics.js",
+        "line": 12,
+        "text": "const PLUGIN_VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;"
+      },
+      {
+        "file": "src/injected-assets.js",
+        "line": 4,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/commands.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/commands.js",
+        "line": 88,
+        "text": "const child = execFile(file, args, { maxBuffer: 16 * 1024 * 1024, detached: grouped }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/engine-setup.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/engine-setup.js",
+        "line": 15,
+        "text": "execFile(command, args, { timeout: timeoutMs, encoding: 'utf8', shell: process.platform === 'win32', windowsHide: true },"
+      },
+      {
+        "file": "src/engine-version.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 90,
+      "text": "- `evolver` missing, or older than 2.0.39: it runs `npm install -g @evomap/evolver@latest`,"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 81,
+      "text": "- 没装 `evolver`，或版本低于 2.0.39：执行 `npm install -g @evomap/evolver@latest`，然后执行 `evolver lifecycle start`（升级后用 `restart`）。"
+    }
+  ],
+  "skippedEntries": []
+}

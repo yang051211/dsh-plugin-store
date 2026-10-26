@@ -1,0 +1,138 @@
+{
+  "name": "@jieai/dsh-plugin-vet",
+  "version": "0.3.18",
+  "scannedAt": "2026-10-26T10:12:51.811Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 189,
+        "text": "\"rule.R20.desc\": \"exec/spawn 实参中的下载即执行组合（curl|sh、wget|sh、curl -o 落盘）；命令别名、util.promisify 绑定、数组拼接/编码/动态段等混淆形态同判。\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 512,
+        "text": "s in exec/spawn args (curl|sh, wget|sh, curl -o to disk); command aliases, util.promisify bindings, array-join / encoding / dynamic-segment obfuscations covered"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1946,
+        "text": "const res = await fetch(\"/vet/plugin?name=\" + encodeURIComponent(name), { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2215,
+        "text": "const res = await fetch(\"/vet/status.json\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2297,
+        "text": "const res = await fetch(\"/vet/runtime-guard\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit/archive.js",
+        "line": 1,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/guard/config-diff.js",
+        "line": 21,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/guard/config-diff.js",
+        "line": 181,
+        "text": "out.push(readFileSync(p, 'utf8'));"
+      },
+      {
+        "file": "lib/guard/confirm-block.js",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/guard/confirm-block.js",
+        "line": 175,
+        "text": "// round-15 review（Buffer/URL 逃逸）：此前只认 string 实参——fs.rmSync(Buffer.from(cred))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guards/official-catalog-seed.js",
+        "line": 208,
+        "text": "'@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "lib/index.bundle.js",
+        "line": 2154,
+        "text": "\"@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "lib/index.bundle.js",
+        "line": 10997,
+        "text": "var inject = [\"tools\", \"skills\"];"
+      },
+      {
+        "file": "lib/index.bundle.js",
+        "line": 11002,
+        "text": "ctx.tools.register(createScanPluginTool(cfg));"
+      },
+      {
+        "file": "lib/index.bundle.js",
+        "line": 11003,
+        "text": "ctx.tools.register(createVetDiffTool());"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 594,
+        "text": "\"suggest.spawn.unattributed\": \"Check why there is an unattributed process spawn (may come from host/core code)\","
+      },
+      {
+        "file": "lib/guard/exfil-ledger.js",
+        "line": 227,
+        "text": "if (evt.module === 'child_process' && PROC_OPS.has(evt.op)) {"
+      },
+      {
+        "file": "lib/guard/metrics.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/guard/metrics.js",
+        "line": 43,
+        "text": "        const cp = execFile(cmd, args, { encoding: 'utf8', timeout: timeoutMs, maxBuffer: 8 * 1024 * 1024 }, (err, stdout) => cb(err !== null || typeof stdout !"
+      },
+      {
+        "file": "lib/guard/runtime-classify.js",
+        "line": 42,
+        "text": "if (module === 'child_process' && PROC_OPS.has(name)) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

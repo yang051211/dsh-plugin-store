@@ -1,0 +1,69 @@
+{
+  "name": "@domitor-syh/dsh-rollback",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:11:55.167Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 784,
+        "text": "const resp = await fetch(url);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 864,
+        "text": "const resp = await fetch(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { lstat, open, readFile, realpath, rename, stat, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 470,
+        "text": "await handle.writeFile(content, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 485,
+        "text": "await unlink(tempPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 499,
+        "text": "const buffer = await readFile(hostPath, signal === void 0 ? {} : { signal });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

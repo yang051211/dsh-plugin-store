@@ -1,0 +1,142 @@
+{
+  "name": "@furongjun1999/dsh-memory",
+  "version": "0.9.14",
+  "scannedAt": "2026-10-26T10:12:24.591Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lib/roleplay_web.js",
+        "line": 252,
+        "text": "const r = await fetch('/roleplay/api/roles').then(x => x.json());"
+      },
+      {
+        "file": "lib/lib/roleplay_web.js",
+        "line": 276,
+        "text": "const r = await fetch('/roleplay/api/history?role_id=' + encodeURIComponent(roleId), { headers: apiHeaders() }).then(x => x.json());"
+      },
+      {
+        "file": "lib/lib/roleplay_web.js",
+        "line": 303,
+        "text": "    const r = await fetch('/roleplay/api/chat', { method:'POST', headers: apiHeaders(), body: JSON.stringify({ role_id: role, message: text }) }).then(x => x.js"
+      },
+      {
+        "file": "lib/lib/roleplay_web.js",
+        "line": 335,
+        "text": "const r = await fetch('/roleplay/api/roles/' + encodeURIComponent(role) + '/items?kind=' + rdKind, { headers: apiHeaders() }).then(x => x.json());"
+      },
+      {
+        "file": "lib/lib/roleplay_web.js",
+        "line": 368,
+        "text": "m = await fetch('/roleplay/api/roles/' + encodeURIComponent(role) + '/meta', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 11,
+        "text": "import { mkdirSync, appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 27,
+        "text": "mkdirSync(dirname(DEBUG_LOG), { recursive: true });"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 30,
+        "text": "appendFileSync(DEBUG_LOG, `[${new Date().toISOString()}] ${msg}\\n`);"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 181,
+        "text": "mkdirSync(dirname(dbPath), { recursive: true });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 3,
+        "text": "import { realpathSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/hive-mcp-probe.mjs",
+        "line": 6,
+        "text": "*   - 用与 dsh-mcp-client 同一个 SDK（版本一致）走 stdio 握手"
+      },
+      {
+        "file": "dsh/hive-mcp.example.yml",
+        "line": 18,
+        "text": "#     1) profile 需能解析 @deepseek-ai/dsh-mcp-client（DSH 自带此包，用 link: 指过去）："
+      },
+      {
+        "file": "dsh/hive-mcp.example.yml",
+        "line": 19,
+        "text": "#        {\"@deepseek-ai/dsh-mcp-client\": \"link:<你的 DSH 安装目录>/node_modules/@deepseek-ai/dsh-mcp-client\"}"
+      },
+      {
+        "file": "dsh/hive-mcp.example.yml",
+        "line": 22,
+        "text": "#          New-Item -ItemType Junction -Path <profile>\\\\node_modules\\\\@deepseek-ai\\\\dsh-mcp-client -Target <上面的路径>"
+      },
+      {
+        "file": "dsh/hive-mcp.example.yml",
+        "line": 48,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 187,
+        "text": "const proc = spawn(python, args, {"
+      },
+      {
+        "file": "lib/lib/mutual.js",
+        "line": 14,
+        "text": "import { exec, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/lib/mutual.js",
+        "line": 125,
+        "text": "child = spawn(python, ['-m', 'harness.guardian'], {"
+      },
+      {
+        "file": "lib/lib/python_path.js",
+        "line": 7,
+        "text": "* `python3`——发行版默认状态就是这样，不是用户把环境装坏了。于是 `spawn('python')`"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node -e \"const fs=require('fs');const tsc='node_modules/typescript/bin/tsc';if(fs.existsSync(tsc)){fs.rmSync('lib',{recursive:true,force:true})"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

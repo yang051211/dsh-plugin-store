@@ -1,0 +1,131 @@
+{
+  "name": "@goodandready/dsh-gitea",
+  "version": "0.7.39",
+  "scannedAt": "2026-10-26T10:12:28.224Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/action-cards.js",
+        "line": 77,
+        "text": "const res = await fetch('/dsh-gitea/hub', {"
+      },
+      {
+        "file": "lib/action-cards.js",
+        "line": 184,
+        "text": "const res = await fetch('/dsh-gitea/hub', {"
+      },
+      {
+        "file": "lib/action-cards.js",
+        "line": 263,
+        "text": "const res = await fetch('/dsh-gitea/hub', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 143,
+        "text": "return fetch(url, options)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 158,
+        "text": "return fetch(url, { ...options, signal: controller.signal }).finally(() => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 2,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 555,
+        "text": "fileContent = await fs.readFile(path.join(cwd, filePath), 'utf8')"
+      },
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 633,
+        "text": "rawConflictedText = await fs.readFile(path.join(cwd, filePath), 'utf8')"
+      },
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 696,
+        "text": "await fs.writeFile(fullPath, preview.resolvedText, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'credentials', 'settings', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 350,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 1,
+        "text": "import { execFile as execFileCb } from 'node:child_process'"
+      },
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 456,
+        "text": "const res = await execFile(gitWrapper, ['-C', cwd, ...gitArgs], { timeout: 20_000, maxBuffer: 4 * 1024 * 1024 })"
+      },
+      {
+        "file": "lib/conflict-assistant.js",
+        "line": 682,
+        "text": "const res = await execFile(gitWrapper, ['-C', cwd, ...gitArgs], { timeout: 20_000 })"
+      },
+      {
+        "file": "lib/git-local.js",
+        "line": 1,
+        "text": "import { execFile as execFileCb } from 'node:child_process'"
+      },
+      {
+        "file": "lib/graph.js",
+        "line": 156,
+        "text": "const run = execFile || (await import('node:child_process')).execFile"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

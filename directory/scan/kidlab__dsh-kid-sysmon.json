@@ -1,0 +1,70 @@
+{
+  "name": "@kidlab/dsh-kid-sysmon",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:13:00.121Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 99,
+        "text": "fetch(PATH, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 66,
+        "text": "const offs = buildSysmonTools(cfg).map((tool) => child.tools.register(tool))"
+      },
+      {
+        "file": "tools.js",
+        "line": 48,
+        "text": "* @returns {object[]} 可直接交给 ctx.tools.register 的普通对象"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "collect.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "collect.js",
+        "line": 14,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, encoding: 'utf8' }, (err, stdout) => {"
+      },
+      {
+        "file": "tools.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "tools.js",
+        "line": 14,
+        "text": "execFile('/bin/sh', ['-c', cmd], { timeout: timeoutMs, encoding: 'utf8' }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

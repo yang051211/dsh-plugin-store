@@ -1,0 +1,88 @@
+{
+  "name": "@hto404/dsh-chime",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:12:40.652Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "return fetch(\"/dsh-chime/poll\").then(function (r) { return r.json(); }).catch(function () { return null; });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "return fetch(\"/dsh-chime/presets\").then(function (r) { return r.json(); }).catch(function () { return null; });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 90,
+        "text": "return fetch(\"/dsh-chime/prefs\").then(function (r) { return r.json(); }).catch(function () { return null; });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 93,
+        "text": "return fetch(\"/dsh-chime/prefs\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 100,
+        "text": "return fetch(\"/dsh-chime/preset-audio?id=\" + encodeURIComponent(id))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "prefs = JSON.parse(fs.readFileSync(PREFS_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "fs.mkdirSync(path.dirname(PREFS_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "fs.writeFileSync(PREFS_FILE, JSON.stringify(prefs))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "fs.mkdirSync(SOUNDS_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

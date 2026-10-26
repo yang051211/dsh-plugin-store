@@ -1,0 +1,138 @@
+{
+  "name": "@having5548/dsh-downloader",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:12:36.804Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 201,
+        "text": "return fetch(API_BASE + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 403,
+        "text": "return fetch(API_BASE + path, {"
+      },
+      {
+        "file": "lib/core/proxy-server.js",
+        "line": 91,
+        "text": "* `Basic dsh:<token>` form (what `curl -x dsh:<token>@…` would send) count."
+      },
+      {
+        "file": "lib/core/shell-proxy.js",
+        "line": 20,
+        "text": "const DOWNLOAD_HINT = /\\b(git\\s+(?:clone|fetch|pull|submodule)|curl|wget|Invoke-WebRequest|iwr|Start-BitsTransfer)\\b/i;"
+      },
+      {
+        "file": "lib/core/shell-proxy.js",
+        "line": 49,
+        "text": "* `curl`、`wget`、`Invoke-WebRequest`。SSH 形式（`git@github.com:…`）不走 HTTP，"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/harness-proxy.js",
+        "line": 18,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core/harness-proxy.js",
+        "line": 51,
+        "text": "const raw = readFileSync(file, \"utf8\").trim();"
+      },
+      {
+        "file": "lib/core/harness-proxy.js",
+        "line": 58,
+        "text": "mkdirSync(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/core/harness-proxy.js",
+        "line": 59,
+        "text": "writeFileSync(file, `${token}\\n`, { encoding: \"utf8\", mode: 0o600 });"
+      },
+      {
+        "file": "lib/core/harness-proxy.js",
+        "line": 71,
+        "text": "unlinkSync(tokenPath(dataDir));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 465,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 580,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 672,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 700,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/transports.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/core/transports.js",
+        "line": 634,
+        "text": "const child = spawn(CONNECTOR_PATH, [proto, nodeB64, host, String(port)], {"
+      },
+      {
+        "file": "lib/download/auth.js",
+        "line": 14,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/download/auth.js",
+        "line": 22,
+        "text": "execFile(command, args, { timeout: timeoutMs, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/download/net-probe.js",
+        "line": 10,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/native/connector.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

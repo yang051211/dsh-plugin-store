@@ -1,0 +1,92 @@
+{
+  "name": "@iasiv5/dsh-skip-browser-auth",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-26T10:12:46.220Z",
+  "icon": "iasiv5__dsh-skip-browser-auth.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 90,
+        "text": "const response = await apiHandler.fetch(request, peer);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4611,
+        "text": "const send = doFetch ?? ((input, init) => globalThis.fetch(input, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 11033,
+        "text": "const send = doFetch ?? ((input, init) => globalThis.fetch(input, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 12474,
+        "text": "const send = doFetch ?? ((input, init) => globalThis.fetch(input, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 13975,
+        "text": "const send = doFetch ?? ((input, init) => globalThis.fetch(input, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 21,
+        "text": " fsModule = processRef.getBuiltinModule('node:fs'); const urlModule = processRef.getBuiltinModule('node:url'); if (!fsModule || typeof fsModule.readFileSync !=="
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 35,
+        "text": " fsModule = processRef.getBuiltinModule('node:fs'); const urlModule = processRef.getBuiltinModule('node:url'); if (!fsModule || typeof fsModule.readFileSync !=="
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 42,
+        "text": " fsModule = processRef.getBuiltinModule('node:fs'); const urlModule = processRef.getBuiltinModule('node:url'); if (!fsModule || typeof fsModule.readFileSync !=="
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 43,
+        "text": "l; const manifest = JSON.parse(fsModule.readFileSync(urlModule.fileURLToPath(url), 'utf8')); return manifest !== null && typeof manifest === 'object' && typeof "
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 55,
+        "text": " fsModule = processRef.getBuiltinModule('node:fs'); const urlModule = processRef.getBuiltinModule('node:url'); if (!fsModule || typeof fsModule.readFileSync !=="
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

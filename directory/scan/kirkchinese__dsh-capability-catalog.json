@@ -1,0 +1,87 @@
+{
+  "name": "@kirkchinese/dsh-capability-catalog",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:13:01.566Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sources/mcp.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/sources/mcp.js",
+        "line": 101,
+        "text": "const cached = JSON.parse(await readFile(this.cachePath, 'utf8'));"
+      },
+      {
+        "file": "lib/sources/mcp.js",
+        "line": 160,
+        "text": "await mkdir(dirname(this.cachePath), { recursive: true });"
+      },
+      {
+        "file": "lib/sources/mcp.js",
+        "line": 162,
+        "text": "await writeFile(temp, JSON.stringify(cache), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/toggles.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "ctx.tools.register(tools.search);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 188,
+        "text": "ctx.tools.register(tools.describe);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "ctx.tools.register(tools.call);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "const unregister = agentCtx.tools.register(tools.skill);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

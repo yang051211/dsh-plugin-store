@@ -1,0 +1,104 @@
+{
+  "name": "@dbaiops/bicqa-plugin",
+  "version": "1.0.11",
+  "scannedAt": "2026-10-26T10:11:43.644Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "PLUGIN_VERSION = JSON.parse(_require('node:fs').readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version || null"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "_require('node:fs').writeFileSync(new URL('./apply-diag.json', import.meta.url), JSON.stringify(obj, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "export const inject = ['subprocess', 'fs', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "const fsSvc = ctx.get('fs')"
+      },
+      {
+        "file": "index.js",
+        "line": 1165,
+        "text": "fs: !!ctx.get('fs'),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "// ctx.tools.register 校验 output {schema,render} + timeoutMs，execute 透传）。"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "export const inject = ['subprocess', 'fs', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1152,
+        "text": "const disp = ctx.tools.register(normalized)"
+      },
+      {
+        "file": "index.js",
+        "line": 1168,
+        "text": "ctxToolsRegister: typeof (ctx.tools || {}).register,"
+      },
+      {
+        "file": "index.js",
+        "line": 1169,
+        "text": "ctxToolsKeys: ctx.tools ? Object.keys(ctx.tools).slice(0, 20) : null,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 176,
+        "text": "const h = subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 333,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 490,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,103 @@
+{
+  "name": "@dfy-plugins/dsh-codex-bridge",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:11:51.827Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex-marketplace/plugins/dfy-dsh/server.mjs",
+        "line": 321,
+        "text": "const response = await fetch(new URL('/v1/rpc', discovery.origin), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "return fetch(STATUS_PATH, { cache: \"no-store\" }).then(async (response) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex-marketplace/plugins/dfy-dsh/server.mjs",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "codex-marketplace/plugins/dfy-dsh/server.mjs",
+        "line": 314,
+        "text": "discovery = JSON.parse(await readFile(DISCOVERY_PATH, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "await mkdir(dirname(DISCOVERY_PATH), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "await writeFile(temporary, discoveryDocument(origin, token), { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['agents', 'agentPresets', 'tools', 'skills', 'settings', 'webServer', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 346,
+        "text": "const schemas = ctx.tools.schemas(agent);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "return ctx.agents.withInitiator(agent, () => ctx.tools.execute({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 373,
+        "text": "const outer = await ctx.agents.withInitiator(agent, () => ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "settings",
+    "skills",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

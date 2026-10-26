@@ -1,0 +1,75 @@
+{
+  "name": "@hope_phenom/dsh-plugin-notify",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:38.765Z",
+  "icon": "hope_phenom__dsh-plugin-notify.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 347,
+        "text": "const response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "return { settings: normalizeSettings(JSON.parse(readFileSync(file, 'utf8'))), file, error: '' }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "writeFileSync(temporary, `${JSON.stringify(normalized, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "rmSync(temporary, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

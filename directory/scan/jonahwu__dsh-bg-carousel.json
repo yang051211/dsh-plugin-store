@@ -1,0 +1,75 @@
+{
+  "name": "@jonahwu/dsh-bg-carousel",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:12:54.589Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "return fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "* 服务依赖经 `ctx.inject(['fs','sandboxPolicy','webServer'], …)` 在运行时等齐："
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "mkdirSync(THUMB_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "writeFileSync(scriptFile, script, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', scriptFile], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

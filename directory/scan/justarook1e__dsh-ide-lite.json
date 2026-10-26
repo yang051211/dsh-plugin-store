@@ -1,0 +1,107 @@
+{
+  "name": "@justarook1e/dsh-ide-lite",
+  "version": "1.32.11",
+  "scannedAt": "2026-10-26T10:12:55.280Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/dist/client.js",
+        "line": 9,
+        "text": "// RPC to the host plugin goes through fetch('/dsh-file-edit/api')."
+      },
+      {
+        "file": "client/dist/client.js",
+        "line": 16,
+        "text": "// wedged long-poll fetch (one that never settles in this environment)"
+      },
+      {
+        "file": "client/dist/client.js",
+        "line": 32,
+        "text": "const r = await fetch('/dsh-file-edit/api', init)"
+      },
+      {
+        "file": "client/dist/client.js",
+        "line": 3215,
+        "text": "ort-Csv ConvertTo-Json ConvertFrom-Json Invoke-WebRequest Invoke-RestMethod Test-Path Join-Path Split-Path Resolve-Path New-Object Set-Variable Get-Variable Cle"
+      },
+      {
+        "file": "client/dist/client.js",
+        "line": 5214,
+        "text": "await fetch(true)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/index.mjs",
+        "line": 6,
+        "text": "ort { readFileSync, writeFileSync, mkdirSync, existsSync, renameSync, readdirSync, rmSync, statSync, createWriteStream, realpathSync, chmodSync } from 'node:fs'"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 7,
+        "text": "import { open as openP } from 'node:fs/promises'"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 26,
+        "text": "mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 77,
+        "text": "inject: ['fs', 'sandboxPolicy', 'sessions', 'webServer', 'shell'],"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 439,
+        "text": "try { if (options.writePath !== undefined) rmSync(options.writePath, { force: true }) } catch (e3) {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/index.mjs",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 2276,
+        "text": "child = spawn(bin, args, { cwd: cwd, windowsHide: true, env: Object.assign({}, process.env, { GIT_OPTIONAL_LOCKS: '0' }) })"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 4422,
+        "text": "const killer = spawn('taskkill', ['/PID', String(pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 4465,
+        "text": "child = spawn(spec.exe, spec.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

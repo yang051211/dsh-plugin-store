@@ -1,0 +1,72 @@
+{
+  "name": "@dshapp/dsh-claude-subscription",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:12:11.052Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-code.js",
+        "line": 223,
+        "text": "const response = await fetch(OAUTH_TOKEN_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-code.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/claude-code.js",
+        "line": 139,
+        "text": "const text = candidate.kind === 'file' ? await readFile(candidate.path, 'utf8') : await readKeychain(candidate.service, options.keychainAccount);"
+      },
+      {
+        "file": "lib/claude-code.js",
+        "line": 179,
+        "text": "await mkdir(join(credential.path, '..'), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/claude-code.js",
+        "line": 180,
+        "text": "await writeFile(credential.path, `${text}\\n`, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/claude-code.js",
+        "line": 195,
+        "text": "await mkdir(backupDir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claude-code.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

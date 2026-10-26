@@ -1,0 +1,133 @@
+{
+  "name": "@grainytech/dsh-remote",
+  "version": "0.3.10",
+  "scannedAt": "2026-10-26T10:12:31.171Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 196,
+        "text": "const resp = await fetch(serverUrl + '/files/upload', {"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 84,
+        "text": "const res = await fetch(relay + path, {"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 105,
+        "text": "const res = await fetch('http://127.0.0.1:' + port + '/', { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 465,
+        "text": "const res = await fetch('https://registry.npmjs.org/' + encodeURIComponent(PKG).replace('%40', '@'), { signal: AbortSignal.timeout(8000) });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 529,
+        "text": "const res = await fetch(cfg.serverUrl.replace(/:\\d+$/, ':3100') + '/t/' + cfg.terminalId + '/', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 7,
+        "text": "import { readFileSync, existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 192,
+        "text": "const data = readFileSync(filePath).toString('base64');"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 126,
+        "text": "mkdirSync(join(priv, '..'), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 186,
+        "text": "mkdirSync(join(dir, 'node_modules', '@grainytech'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "    static inject = ['agents', 'tools', 'sessions', 'llm', 'agentDefaultModel', 'sessionProjections', 'sessionQuery', 'workspaceRegistry', 'userQuestions', 'age"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1571,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 127,
+        "text": "const r = spawnSync('ssh-keygen', ['-t', 'ed25519', '-f', priv, '-N', '', '-C', 'dsh-remote@' + hostname()], { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 133,
+        "text": "const r = spawnSync('ssh-keygen', ['-y', '-f', priv], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 329,
+        "text": "const r = spawnSync('npm', ['install', '--no-audit', '--no-fund'], { cwd: dir, stdio: 'inherit' });"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 373,
+        "text": "const r = spawnSync(pm, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "attachments",
+    "llm",
+    "sessionProjections",
+    "sessionQuery",
+    "sessions",
+    "tools",
+    "userQuestions",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "@dsh-plugins/dsh-env-inspector",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:12:08.998Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 881,
+        "text": "fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(5000) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1008,
+        "text": "fetch(SELF_CHECK_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1044,
+        "text": "fetch('/api/dsh-env-inspector/kill-port', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1128,
+        "text": "fetch(SELF_CHECK_URL, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 292,
+        "text": "pkg = JSON.parse(fs.readFileSync(path.join(profilesRoot, profile, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawnSync, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "const result = spawnSync(cmd, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "execFile(cmd, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "const r = spawnSync(spPath, ['-json', 'SPDisplaysDataType', 'SPHardwareDataType'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "execFile(spPath, ['-json', 'SPDisplaysDataType', 'SPHardwareDataType'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

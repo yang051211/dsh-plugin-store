@@ -1,0 +1,110 @@
+{
+  "name": "@goodandready/dsh-agent-loop-guard",
+  "version": "0.2.26",
+  "scannedAt": "2026-10-26T10:12:27.453Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 270,
+        "text": "const res = await fetch('/api/@goodandready/dsh-agent-loop-guard/update');"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 287,
+        "text": "const res = await fetch('/api/@goodandready/dsh-agent-loop-guard/telemetry');"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 338,
+        "text": "const res = await fetch('/api/@goodandready/dsh-agent-loop-guard/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 356,
+        "text": "const res = await fetch('/api/@goodandready/dsh-agent-loop-guard/telemetry', {"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 277,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 195,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 292,
+        "text": "const raw = await readFile(manifestUrl, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'agents', 'sessions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 368,
+        "text": "return ctx.tools.guard((execution) => state.denyReason(execution.agent, execution.name, execution.arguments, execution.callId));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 329,
+        "text": "? spawn(target.cliEntry, ["
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 340,
+        "text": ": spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

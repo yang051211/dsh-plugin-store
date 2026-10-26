@@ -1,0 +1,94 @@
+{
+  "name": "@deepwhale-cn/dsh-design-line",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:11:48.664Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 43,
+        "text": "const res = await fetch(API + 路, 选项);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 49,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 51,
+        "text": "const j = JSON.parse(fs.readFileSync(join(包根, '流水线', f), 'utf8'));"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 58,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, chmodSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "const 读JSON = (f) => { try { return JSON.parse(readFileSync(f, 'utf8')); } catch { return null; } };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 39,
+        "text": "const r = spawnSync(process.execPath, [内核, 命令, ...参数], { stdio: 'inherit' });"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 44,
+        "text": "const r = spawnSync(process.execPath, [join(包根, '回执模块', 'verify.mjs'), ...参数], { stdio: 'inherit' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn, execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "execFile(process.execPath, [CLI, ...参数], { timeout: 超时, windowsHide: true, maxBuffer: 8 << 20 },"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "skills",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

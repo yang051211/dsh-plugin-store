@@ -1,0 +1,87 @@
+{
+  "name": "@fonlan/dsh-web-auth",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:12:22.527Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 90,
+        "text": "const response = await fetch(\"/api/web-auth/password\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const response = await fetch(\"/api/web-auth/status\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 125,
+        "text": "const response = await fetch(\"/api/web-auth/listen\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "const response = await fetch(url, { redirect: 'manual', headers: { [MINT_REENTRY_HEADER]: '1' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile-patch.js",
+        "line": 31,
+        "text": "import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/profile-patch.js",
+        "line": 182,
+        "text": "return readFileSync(patchPath, 'utf8');"
+      },
+      {
+        "file": "lib/profile-patch.js",
+        "line": 212,
+        "text": "writeFileSync(tmp, content);"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 9,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 20,
+        "text": "mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

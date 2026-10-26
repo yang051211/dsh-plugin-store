@@ -1,0 +1,129 @@
+{
+  "name": "@goodandready/dsh-cron",
+  "version": "0.3.21",
+  "scannedAt": "2026-10-26T10:12:27.757Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 156,
+        "text": "'form.promptPlaceholderScript': 'curl -fsSL https://... || exit 1',"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 560,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1616,
+        "text": "const res = await fetch('/dsh-cron/tasks?status=' + encodeURIComponent(tab) + '&query=' + encodeURIComponent(query), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1644,
+        "text": "const res = await fetch(url, { signal: controller ? controller.signal : undefined });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1679,
+        "text": "fetch('/dsh-cron/tasks?status=' + encodeURIComponent(tab) + '&query=' + encodeURIComponent(query), fetchOpts)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 28,
+        "text": "fs.mkdirSync(this.baseDir, { recursive: true });"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 81,
+        "text": "fs.writeFileSync(filePath, buf);"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 107,
+        "text": "return fs.readFileSync(filePath);"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 170,
+        "text": "fs.unlinkSync(item.path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "export const inject = ['tools', 'webServer', 'llm', 'agents', 'agentDefaultModel', 'credentials', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 365,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git-diff.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/runner-external.js",
+        "line": 35,
+        "text": "import('node:child_process').then(({ exec }) => {"
+      },
+      {
+        "file": "lib/runner-external.js",
+        "line": 175,
+        "text": "const { spawn, exec } = await import('node:child_process');"
+      },
+      {
+        "file": "lib/runner-external.js",
+        "line": 219,
+        "text": "child = spawn(invocation.file, invocation.args || [], options);"
+      },
+      {
+        "file": "lib/runner-external.js",
+        "line": 223,
+        "text": "child = spawn(shellPath, shellArgs, options);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "credentials",
+    "llm",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

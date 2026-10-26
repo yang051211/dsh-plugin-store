@@ -1,0 +1,113 @@
+{
+  "name": "@dely0/dsh-personal-workbench",
+  "version": "1.17.1",
+  "scannedAt": "2026-10-26T10:11:50.866Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1274,
+        "text": " r=0;r<=Be.length;r+=1)try{return await fetch(e,t)}catch(e){if(n=e,!ze(e))throw e;let t=Be[r];if(t===void 0)break;await Ve(t)}throw n}async function Y(e,t){let "
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 44,
+        "text": "return await fetch(path, init);"
+      },
+      {
+        "file": "lib/reminder/weixin-status.js",
+        "line": 15,
+        "text": "const response = await route.fetch(new Request(`http://127.0.0.1${WEIXIN_RPC_PATH}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api/localDirRoute.js",
+        "line": 6,
+        "text": "import { readdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/api/openFileRoute.js",
+        "line": 7,
+        "text": "import { stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/api/routes.js",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/api/routes.js",
+        "line": 38,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/api/routes.js",
+        "line": 57,
+        "text": "const info = JSON.parse(readFileSync(new URL('../../lib/build-info.json', import.meta.url), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/experts/host-adapter.js",
+        "line": 354,
+        "text": "/** 软探测 `ctx.tools`（只为校验 deny 名单里没有不存在的工具名）。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "export const inject = ['webServer', 'systemPrompt', 'tools', 'commands'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 473,
+        "text": "].map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 502,
+        "text": "disposers.push(ctx.tools.register(summonExpertTool(experts)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api/openFileRoute.js",
+        "line": 6,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/api/openFileRoute.js",
+        "line": 53,
+        "text": "execFile(command, args, { windowsVerbatimArguments: process.platform === 'win32' }, (error) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

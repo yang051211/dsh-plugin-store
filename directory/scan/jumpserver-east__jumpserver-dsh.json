@@ -1,0 +1,136 @@
+{
+  "name": "@jumpserver-east/jumpserver-dsh",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:12:54.867Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 136,
+        "text": "return (url, init) => globalThis.fetch(url, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 207,
+        "text": "const undici = await import('undici');"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 211,
+        "text": "fetch: (url, init) => undici.fetch(url, { ...init, dispatcher }),"
+      },
+      {
+        "file": "vendor/ssh2/lib/http-agents.js",
+        "line": 3,
+        "text": "const { Agent: HttpAgent } = require('http');"
+      },
+      {
+        "file": "vendor/ssh2/lib/http-agents.js",
+        "line": 4,
+        "text": "const { Agent: HttpsAgent } = require('https');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/db-session.js",
+        "line": 151,
+        "text": "async readFile() {"
+      },
+      {
+        "file": "lib/db-session.js",
+        "line": 154,
+        "text": "async writeFile() {"
+      },
+      {
+        "file": "lib/sessions.js",
+        "line": 58,
+        "text": "async readFile(sessionId, remotePath, signal) {"
+      },
+      {
+        "file": "lib/sessions.js",
+        "line": 60,
+        "text": "const result = await this.withBusy(live, () => live.connection.readFile(remotePath, this.options.outputMaxBytes, signal));"
+      },
+      {
+        "file": "lib/sessions.js",
+        "line": 64,
+        "text": "async writeFile(sessionId, remotePath, content, encoding, signal) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools-catalog.js",
+        "line": 8,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools-catalog.js",
+        "line": 19,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools-catalog.js",
+        "line": 51,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools-catalog.js",
+        "line": 66,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/ssh2/lib/agent.js",
+        "line": 7,
+        "text": "const { execFile, spawn } = require('child_process');"
+      },
+      {
+        "file": "vendor/ssh2/lib/agent.js",
+        "line": 218,
+        "text": "const proc = this.proc = spawn(EXEPATH, [ data.length ]);"
+      },
+      {
+        "file": "vendor/ssh2/lib/agent.js",
+        "line": 284,
+        "text": "execFile('cygpath', ['-w', socketPath], (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "vendor/ssh2/lib/protocol/crypto/poly1305.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

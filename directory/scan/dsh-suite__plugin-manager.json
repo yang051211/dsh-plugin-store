@@ -1,0 +1,88 @@
+{
+  "name": "@dsh-suite/plugin-manager",
+  "version": "0.8.7",
+  "scannedAt": "2026-10-26T10:12:10.282Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 291,
+        "text": "const r = await fetch(url)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 505,
+        "text": "const res = await fetch('/plugin-manager/install-stream', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 546,
+        "text": "const res = await fetch('/plugin-manager/install', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 579,
+        "text": "const res = await fetch('/plugin-manager/install', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 632,
+        "text": "const r = await fetch('/plugin-manager/catalog')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "try { return JSON.parse(readFileSync(join(dshHome(), 'profiles', profile, 'package.json'), 'utf8')) } catch { return null }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "return JSON.parse(readFileSync(join(dshHome(), 'profiles', profile, 'node_modules', name, 'package.json'), 'utf8')).version || null"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "const child = spawn(cmd, args, { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,81 @@
+{
+  "name": "@dfy-plugins/dsh-wallpaper",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:11:52.155Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 651,
+        "text": "const response = await fetch(`${API_BASE}/image?region=${target}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 672,
+        "text": "const state = await readApiState(await fetch(`${API_BASE}/image?region=${target}`, { method: \"DELETE\" }));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 687,
+        "text": "await fetch(`${API_BASE}/state`, { method: \"GET\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 755,
+        "text": "await fetch(`${API_BASE}/settings`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "await mkdir(dirname(DATA_DIR), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 79,
+        "text": "const parsed = JSON.parse(await readFile(CONFIG_FILE, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "await mkdir(dirname(file), { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

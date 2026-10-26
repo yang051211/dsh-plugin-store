@@ -1,0 +1,87 @@
+{
+  "name": "@dotdance/dsh-skill-scope",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:11:55.076Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 17,
+        "text": "* - 客户端：`post()` 内部同样补 `/`（`fetch('/' + route, …)`），所以这里存不带斜杠的形式。"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 109,
+        "text": "response = await fetch(`/${route}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2151,
+        "text": "* - 客户端：`post()` 内部同样补 `/`（`fetch('/' + route, …)`），所以这里存不带斜杠的形式。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { access, mkdir, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 479,
+        "text": "async readFile(path) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 480,
+        "text": "return await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 490,
+        "text": "async writeFile(path, text) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 513,
+        "text": "await mkdir(dirname(filePath), {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2281,
+        "text": "* 依据：loader 行里 `options.name === '@deepseek-ai/dsh-mcp-client'` 的"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2300,
+        "text": "if (options[\"name\"] !== \"@deepseek-ai/dsh-mcp-client\") continue;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

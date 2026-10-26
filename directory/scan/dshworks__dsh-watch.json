@@ -1,0 +1,84 @@
+{
+  "name": "@dshworks/dsh-watch",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:12:12.140Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "recipes/ecosystem-watcher/feed.mjs",
+        "line": 60,
+        "text": "res = await fetch(`https://api.github.com${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { closeSync, openSync, readSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "recipes/ecosystem-watcher/feed.mjs",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "recipes/ecosystem-watcher/feed.mjs",
+        "line": 34,
+        "text": "return JSON.parse(readFileSync(statePath, 'utf8')).seen ?? []"
+      },
+      {
+        "file": "recipes/ecosystem-watcher/feed.mjs",
+        "line": 44,
+        "text": "writeFileSync(tmp, JSON.stringify({ seen: [...seen], updated: new Date().toISOString() }))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'systemPrompt', 'jobs']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 395,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "// through `ctx.tools.execute` rather than the internal arming helpers so a"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 535,
+        "text": "const result = await ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

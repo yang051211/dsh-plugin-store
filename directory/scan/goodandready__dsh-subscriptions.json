@@ -1,0 +1,127 @@
+{
+  "name": "@goodandready/dsh-subscriptions",
+  "version": "0.7.22",
+  "scannedAt": "2026-10-26T10:12:30.262Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 984,
+        "text": "const res = await fetch('/dsh-subscriptions/reset-credits/prepare', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1008,
+        "text": "const res = await fetch('/dsh-subscriptions/reset-credits/consume', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1025,
+        "text": "fetch('/dsh-subscriptions/history?limit=50', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1039,
+        "text": "return fetch('/dsh-subscriptions/analyze-session', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1058,
+        "text": "fetch('/dsh-subscriptions/diagnostics', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-subscriptions.mjs",
+        "line": 4,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/dsh-subscriptions.mjs",
+        "line": 242,
+        "text": "const pack = JSON.parse(await readFile(options.packFile, 'utf8'))"
+      },
+      {
+        "file": "lib/accounts.js",
+        "line": 2,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from \"node:fs\""
+      },
+      {
+        "file": "lib/accounts.js",
+        "line": 14,
+        "text": "const content = readFileSync(p, 'utf8')"
+      },
+      {
+        "file": "lib/accounts.js",
+        "line": 29,
+        "text": "mkdirSync(join(p, '..'), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "export const inject = ['llm', 'credentials', 'webServer', 'settings', 'tools']"
+      },
+      {
+        "file": "lib/native-tools.js",
+        "line": 62,
+        "text": "const tools = ctx && ctx.tools"
+      },
+      {
+        "file": "lib/native-tools.js",
+        "line": 68,
+        "text": "const off = tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/import-auth.js",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 226,
+        "text": "const child = spawn(process.execPath, ["
+      },
+      {
+        "file": "lib/vendors/copilot-cli.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

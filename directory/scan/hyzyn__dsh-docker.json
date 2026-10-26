@@ -1,0 +1,118 @@
+{
+  "name": "@hyzyn/dsh-docker",
+  "version": "0.13.5",
+  "scannedAt": "2026-10-26T10:12:44.515Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client-src/index.js",
+        "line": 1102,
+        "text": "const response = await fetch(API + path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 2528,
+        "text": "d(a)}async function _e(a,l){let e=await fetch(To+a,{...l,headers:{\"content-type\":\"application/json\",...l?.headers??{}}}),o=null;try{o=await e.json()}catch{}if(!"
+      },
+      {
+        "file": "scripts/log-perf.mjs",
+        "line": 16,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { accessSync, constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 17,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 1476,
+        "text": "base.privateKey = readFileSync(expandHome(spec.keyPath.trim()));"
+      },
+      {
+        "file": "scripts/client-smoke.mjs",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/client-smoke.mjs",
+        "line": 24,
+        "text": "const code = readFileSync(join(root, 'client.js'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2025,
+        "text": "toolDisposers.push(tools.register(definition));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3289,
+        "text": "* 声明式 `inject: ['tools']`），在插件 ctx 上读 `tools` 会撞 cordis 的 inject 守卫——而"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3295,
+        "text": "*   - 无声明式 inject 的插件 ctx：`ctx.tools` 抛 `cannot get property \"tools\" without"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 840,
+        "text": "* 的机器上，tty 自己拒绝执行，docker 引用同一连接簿条目却照样 `spawn(cmd, {shell:true})`"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 356,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 1566,
+        "text": "const child = spawn(bin, args, { stdio: ['pipe', 'pipe', 'pipe'], env: process.env });"
+      },
+      {
+        "file": "lib/ssh-exec.js",
+        "line": 1692,
+        "text": "const child = spawn(bin, args, { stdio: ['ignore', 'pipe', 'pipe'], env: process.env });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

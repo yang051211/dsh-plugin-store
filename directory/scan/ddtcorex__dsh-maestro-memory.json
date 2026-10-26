@@ -1,0 +1,141 @@
+{
+  "name": "@ddtcorex/dsh-maestro-memory",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-26T10:11:43.609Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 735,
+        "text": "const fetchRes = await syncService.fetch(cwd);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 748,
+        "text": "const res = await syncService.fetch(cwd);"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 20,
+        "text": "async fetch(remoteUrl, branch) {"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 83,
+        "text": "async fetch(remoteUrl, branch) {"
+      },
+      {
+        "file": "lib/sync/service.js",
+        "line": 184,
+        "text": "// fetch (no local mutation)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "mkdirSync(maestroMetaDir(root), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "writeFileSync(flagFile, JSON.stringify({ at: new Date().toISOString(), report }), 'utf8');"
+      },
+      {
+        "file": "lib/memory/repair-runner.js",
+        "line": 15,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/memory/repair-runner.js",
+        "line": 68,
+        "text": "raw = readFileSync(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 14,
+        "text": "inject: ['tools', 'systemPrompt', 'connection', 'sessions', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'systemPrompt', 'connection', 'sessions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 313,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 352,
+        "text": "const dispose = ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 464,
+        "text": "const dispose = ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sync/git.js",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 86,
+        "text": "        const res = spawnSync('git', ['ls-remote', remoteUrl, `refs/heads/${branch}`], { encoding: 'utf8', timeout: 5000, env: { ...process.env, GIT_TERMINAL_PR"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 138,
+        "text": "const res = spawnSync('git', ['--git-dir', barePath, 'show', `${branch}:${f}`], { encoding: 'utf8', timeout: 5000 });"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 154,
+        "text": "const ls = spawnSync('git', ['--git-dir', barePath, 'rev-parse', '--verify', `refs/heads/${branch}`], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/sync/git.js",
+        "line": 168,
+        "text": "let r = spawnSync('git', ['init'], { cwd: tmp, encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessions",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

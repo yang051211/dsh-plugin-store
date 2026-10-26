@@ -1,0 +1,110 @@
+{
+  "name": "@goodandready/dsh-github-ops",
+  "version": "0.6.15",
+  "scannedAt": "2026-10-26T10:12:28.239Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 29,
+        "text": "return fetch(url, signal ? { signal, ...options } : options)"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 154,
+        "text": "const response = await fetch(`${reg}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth-device.js",
+        "line": 11,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/auth-device.js",
+        "line": 124,
+        "text": "await fs.mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/auth-device.js",
+        "line": 126,
+        "text": "await fs.writeFile(path, `${JSON.stringify(record, null, 2)}\\n`, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/auth-device.js",
+        "line": 134,
+        "text": "const text = await fs.readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/auth-device.js",
+        "line": 145,
+        "text": "await fs.rm(path, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "export const inject = ['tools', 'credentials', 'settings']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 370,
+        "text": "ctx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "const child = execFile("
+      },
+      {
+        "file": "lib/tools/release-preflight.js",
+        "line": 8,
+        "text": "import { execFile as defaultExecFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 190,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

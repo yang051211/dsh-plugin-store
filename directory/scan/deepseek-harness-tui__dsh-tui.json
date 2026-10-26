@@ -1,0 +1,351 @@
+{
+  "name": "@deepseek-harness-tui/dsh-tui",
+  "version": "0.17.0",
+  "scannedAt": "2026-10-26T10:11:45.097Z",
+  "icon": "deepseek-harness-tui__dsh-tui.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/backends/codex/rpc/transport.js",
+        "line": 144,
+        "text": "websocket = new WebSocket('ws://localhost/', {"
+      },
+      {
+        "file": "lib/types/dsh-adapter/ide-channel.js",
+        "line": 447,
+        "text": "socket = new WebSocket(`ws://127.0.0.1:${target.port}`);"
+      },
+      {
+        "file": "lib/types/update.js",
+        "line": 306,
+        "text": "const response = await fetch(`${registryBase}/${PACKAGE_NAME}/latest`, {"
+      },
+      {
+        "file": "lib/types/update.js",
+        "line": 409,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/types/update.js",
+        "line": 642,
+        "text": "const response = await fetch(checksumUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 31,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 39,
+        "text": "if (existsSync(oldBinary)) rmSync(oldBinary, { force: true })"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 56,
+        "text": "return JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 605,
+        "text": "// `healProfileModuleFallback` → mkdirSync(ownedModulesDir)），而「装坏了 →"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 684,
+        "text": "const block = /^refs:[ \\t]*\\r?\\n((?:[ \\t]+\\S.*(?:\\r?\\n|$))*)/mu.exec(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/types/dsh-adapter/channel/reports.js",
+        "line": 47,
+        "text": "'      - id: mcp-context7', \"        name: '@deepseek-ai/dsh-mcp-client'\","
+      },
+      {
+        "file": "lib/types/dsh-adapter/childStderr.js",
+        "line": 4,
+        "text": "* MCP servers spawned through `@deepseek-ai/dsh-mcp-client` run under the MCP"
+      },
+      {
+        "file": "presets/liangshen/custom-bash.mjs",
+        "line": 50,
+        "text": "export const inject = ['subprocess', 'tools']"
+      },
+      {
+        "file": "presets/liangshen/custom-bash.mjs",
+        "line": 246,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "presets/liangshen/skill-search.mjs",
+        "line": 31,
+        "text": "export const inject = ['agents', 'tools', 'skills']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 30,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 128,
+        "text": "const child = spawn(...cmd('dsh', ['--version']), { stdio: 'ignore', ...shellOpt })"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 709,
+        "text": "const probe = spawnSync(...cmd(command, ['--version']), { stdio: 'pipe', encoding: 'utf8', ...shellOpt })"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 857,
+        "text": "const child = spawn(...cmd('dsh', ['--profile', profile, ...dshArgs]), {"
+      },
+      {
+        "file": "bin/dsh-tui.js",
+        "line": 889,
+        "text": "const child = spawn(process.execPath, [entry, ...appArgs], { stdio: 'inherit', env: withCompileCache(env) })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare-guard.mjs && npm run compile"
+      }
+    ]
+  },
+  "dependencies": 31,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 290,
+      "text": "npm install -g @openai/codex@0.160.1"
+    }
+  ],
+  "skippedEntries": [
+    "node_modules/@dsh-std/command/LICENSE (outside the package)",
+    "node_modules/@dsh-std/connection/LICENSE (outside the package)",
+    "node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "node_modules/@dsh-std/manifest/LICENSE (outside the package)",
+    "node_modules/@dsh-std/messages/LICENSE (outside the package)",
+    "node_modules/@dsh-std/presentation/LICENSE (outside the package)",
+    "node_modules/@dsh-std/storage/LICENSE (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/LICENSE (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/NOTICE (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/callback.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/callback.js (outside the package)",
+    "node_modules/@dsh-std/command/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/connection/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/manifest/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/messages/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/storage/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/lib/index.js (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/interaction.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/interaction.js (outside the package)",
+    "node_modules/@dsh-std/connection/lib/memory.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/memory.js (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/memory.js (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/operations.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/operations.js (outside the package)",
+    "node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/lib/bundled-packages.json (outside the package)",
+    "node_modules/@dsh-std/manifest/schema/dsh-plugin-0.15.schema.json (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/schema/dsh-plugin-0.15.schema.json (outside the package)",
+    "node_modules/@dsh-std/storage/schema/local-storage-0.15.schema.json (outside the package)",
+    "node_modules/@dsh-std/messages/schema/message-observer-envelope-0.15.schema.json (outside the package)",
+    "node_modules/@dsh-std/command/package.json (outside the package)",
+    "node_modules/@dsh-std/connection/package.json (outside the package)",
+    "node_modules/@dsh-std/core/package.json (outside the package)",
+    "node_modules/@dsh-std/manifest/package.json (outside the package)",
+    "node_modules/@dsh-std/messages/package.json (outside the package)",
+    "node_modules/@dsh-std/presentation/package.json (outside the package)",
+    "node_modules/@dsh-std/storage/package.json (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/package.json (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/package.json (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/package.json (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/package.json (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/package.json (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/package.json (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/package.json (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/package.json (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/package.json (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/package.json (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/package.json (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/callback.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/callback.js.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/command/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/manifest/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/messages/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/storage/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/lib/index.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/command/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/manifest/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/messages/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/storage/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/lib/index.js.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/memory.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/memory.d.ts.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/memory.d.ts.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/memory.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/memory.js.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/memory.js.map (outside the package)",
+    "node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js.map (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js.map (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/resolve-3X6ausgz.js.map (outside the package)",
+    "node_modules/@dsh-std/command/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/connection/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/manifest/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/messages/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/presentation/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/storage/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/CHANGELOG.md (outside the package)",
+    "node_modules/@dsh-std/command/README.md (outside the package)",
+    "node_modules/@dsh-std/connection/README.md (outside the package)",
+    "node_modules/@dsh-std/core/README.md (outside the package)",
+    "node_modules/@dsh-std/manifest/README.md (outside the package)",
+    "node_modules/@dsh-std/messages/README.md (outside the package)",
+    "node_modules/@dsh-std/presentation/README.md (outside the package)",
+    "node_modules/@dsh-std/storage/README.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/README.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/README.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/README.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/README.md (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/README.md (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/README.md (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/README.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/README.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/README.md (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/README.md (outside the package)",
+    "node_modules/@dsh-std/command/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/connection/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/manifest/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/messages/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/presentation/README.zh.md (outside the package)",
+    "node_modules/@dsh-std/storage/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/README.zh.md (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/lib/index.mjs (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/callback.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/callback.d.ts (outside the package)",
+    "node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/connection-CdGcSQnu.d.ts (outside the package)",
+    "node_modules/@dsh-std/command/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/connection/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/manifest/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/messages/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/storage/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/manifest/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/connection/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/manifest/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/messages/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "vendor/dsh-std/packages/storage/node_modules/@dsh-std/core/lib/index.d.ts (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/interaction.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/interaction.d.ts (outside the package)",
+    "node_modules/@dsh-std/connection/lib/memory.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/connection/lib/memory.d.ts (outside the package)",
+    "vendor/dsh-std/packages/presentation/node_modules/@dsh-std/connection/lib/memory.d.ts (outside the package)",
+    "node_modules/@dsh-std/presentation/lib/operations.d.ts (outside the package)",
+    "vendor/dsh-std/packages/command/node_modules/@dsh-std/presentation/lib/operations.d.ts (outside the package)",
+    "node_modules/@dsh-tui-vendor/mathjax-tex-svg/lib/index.mjs.LEGAL.txt (outside the package)"
+  ]
+}

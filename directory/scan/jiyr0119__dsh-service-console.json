@@ -1,0 +1,73 @@
+{
+  "name": "@jiyr0119/dsh-service-console",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:12:53.049Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 142,
+        "text": "const res = await fetch(\"/dsh-sc/api/\" + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/config.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host/config.js",
+        "line": 28,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/host/config.js",
+        "line": 40,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/host/config.js",
+        "line": 41,
+        "text": "writeFileSync(file, JSON.stringify(config, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "const off = tools.register(buildServiceTool({ snapshot }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/process-inspector.js",
+        "line": 1,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

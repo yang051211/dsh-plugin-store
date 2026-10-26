@@ -1,0 +1,77 @@
+{
+  "name": "@evan-williams/vision-tool",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:17.437Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agnes.js",
+        "line": 102,
+        "text": "response = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agnes.js",
+        "line": 11,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/agnes.js",
+        "line": 64,
+        "text": "const data = readFileSync(resolved).toString('base64')"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 8,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 24,
+        "text": "const raw = readFileSync(CONFIG_PATH, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 143,
+        "text": "ctx.tools.register(tool)"
+      },
+      {
+        "file": "test/plugin-load.js",
+        "line": 33,
+        "text": "// —— 2. 模拟 ctx.tools.register 并执行 apply ——"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

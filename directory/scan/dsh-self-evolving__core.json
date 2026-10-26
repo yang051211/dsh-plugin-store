@@ -1,0 +1,69 @@
+{
+  "name": "@dsh-self-evolving/core",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:12:09.486Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/budget/ledger.js",
+        "line": 16,
+        "text": "import { mkdir, open, readFile, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/budget/ledger.js",
+        "line": 54,
+        "text": "const raw = await readFile(ledger.ledgerPath, 'utf8');"
+      },
+      {
+        "file": "lib/budget/ledger.js",
+        "line": 107,
+        "text": "await mkdir(dirname(ledger.ledgerPath), { recursive: true });"
+      },
+      {
+        "file": "lib/budget/ledger.js",
+        "line": 111,
+        "text": "await lockFile.writeFile(`${process.pid}\\n`);"
+      },
+      {
+        "file": "lib/budget/ledger.js",
+        "line": 129,
+        "text": "await rm(lockPath, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proposal/process-sandbox.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/proposal/process-sandbox.js",
+        "line": 158,
+        "text": "const child = spawn('/usr/bin/bwrap', args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

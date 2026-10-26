@@ -1,0 +1,97 @@
+{
+  "name": "@dsh-one/dsh-llm-provider",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:12:07.306Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/shared.js",
+        "line": 15,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 38,
+        "text": "return fetch(url).then(function(response) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 58,
+        "text": "const response = await fetch(REGISTRY, {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 114,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${PACKAGE}/-/pi-ai-${version}.tgz`, { signal: AbortSignal.timeout(12e4) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/run.js",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/adapters/run.js",
+        "line": 60,
+        "text": "\t\tconst value = readFileSync(join(homedir(), \".dsh\", \".credentials.yaml\"), \"utf8\").split(\"\\n\").find((l) => l.trim().startsWith(`${envName}:`))?.split(\":\")[1]?.t"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 4,
+        "text": "stsSync, lstatSync, mkdirSync, readFileSync, readdirSync, readlinkSync, realpathSync, rmSync, statSync, symlinkSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 300,
+        "text": "return readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 431,
+        "text": "return readString(asRecord(JSON.parse(readFileSync(join(root, \"package.json\"), \"utf8\")))[\"version\"]);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 7,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 75,
+        "text": "* 直接 `execFile('npm', …)` 在 Windows 上是 ENOENT（npm 是 npm.cmd）；换成 `npm.cmd` 又会撞"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

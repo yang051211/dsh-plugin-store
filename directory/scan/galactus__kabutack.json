@@ -1,0 +1,116 @@
+{
+  "name": "@galactus/kabutack",
+  "version": "0.0.2",
+  "scannedAt": "2026-10-26T10:12:25.125Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 19,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 12,
+        "text": "return fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 1,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 11,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 18,
+        "text": "appendFileSync(file, line + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/roles.js",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/roles.js",
+        "line": 47,
+        "text": "const text = readFileSync(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.js",
+        "line": 106,
+        "text": "if (item.moduleName === '@deepseek-ai/dsh-mcp-client')"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 127,
+        "text": "const target = entries.find((e) => !e.options.group && e.options.name === '@deepseek-ai/dsh-mcp-client' && e.options.config?.serverName === def.serverName);"
+      },
+      {
+        "file": "lib/loader-ops.js",
+        "line": 1,
+        "text": "export const MCP_MODULE = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/mcp-ops.js",
+        "line": 40,
+        "text": "return [...ctx.loader.entries()].filter((e) => !e.options.group && e.options.name === '@deepseek-ai/dsh-mcp-client');"
+      },
+      {
+        "file": "lib/mcp-ops.js",
+        "line": 54,
+        "text": "return toMcpItem(ctx, entry ?? { id: entryId, options: { name: '@deepseek-ai/dsh-mcp-client', config: def } });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node scripts/postinstall.cjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "skills",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 101,
+      "text": "powershell -ExecutionPolicy Bypass -Command \"irm https://raw.githubusercontent.com/SunQingyuan0/Kabutack/main/bootstrap.ps1 | iex\""
+    },
+    {
+      "file": "README.md",
+      "line": 103,
+      "text": "bash -c \"$(curl -fsSL https://raw.githubusercontent.com/SunQingyuan0/Kabutack/main/bootstrap.sh)\""
+    }
+  ],
+  "skippedEntries": []
+}

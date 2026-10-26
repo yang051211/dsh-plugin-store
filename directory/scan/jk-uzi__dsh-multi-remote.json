@@ -1,0 +1,140 @@
+{
+  "name": "@jk-uzi/dsh-multi-remote",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:12:53.424Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 63,
+        "text": "* 走 HTTP 路由（`fetch('/multi-remote/...')`）—— 实测第三方客户端插件就是这么做的。"
+      },
+      {
+        "file": "src/client.js",
+        "line": 131,
+        "text": "* 实测就吃过一次亏 —— 注册写在 `fetch(...).then(...)` 里**静默失效**，"
+      },
+      {
+        "file": "src/client.js",
+        "line": 139,
+        "text": "fetch(ROUTE_REPORT, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 361,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 374,
+        "text": "return fetch(url).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 49,
+        "text": "import { readFile, writeFile, mkdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 193,
+        "text": "text = await readFile(cmdPath, 'utf8')"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 336,
+        "text": "const parsed = JSON.parse(await readFile(join(profileDir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 357,
+        "text": "const parsed = JSON.parse(await readFile(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 382,
+        "text": "const parsed = JSON.parse(await readFile(manifestPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 91,
+        "text": "export const inject = ['agentPresets', 'tools', 'webServer']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 241,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 347,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 390,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 407,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 48,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 132,
+        "text": "const child = spawn(spawnCommand, spawnArgs, {"
+      },
+      {
+        "file": "src/mirror/git.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/mirror/git.js",
+        "line": 68,
+        "text": "execFile('git', args, {"
+      },
+      {
+        "file": "src/terminal/backend.js",
+        "line": 156,
+        "text": "async spawn(spec) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

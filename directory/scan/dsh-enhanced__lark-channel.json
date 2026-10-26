@@ -1,0 +1,102 @@
+{
+  "name": "@dsh-enhanced/lark-channel",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:04.549Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 111,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), redirect: 'follow' });"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 259,
+        "text": "const response = await fetch(`${REGISTRY}/@larksuite%2fcli/latest`, {"
+      },
+      {
+        "file": "lib/rsi-native-runtime-bootstrap.js",
+        "line": 5,
+        "text": "import { request } from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 3,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 4,
+        "text": "import { access, chmod, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 114,
+        "text": "const { open } = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 176,
+        "text": "writeFile(output, Buffer.concat(chunks), { mode: 0o700 }).then(resolveResult, reject);"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 229,
+        "text": "const provenance = JSON.parse(await readFile(join(platformDir, 'provenance.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 28,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/business-cli-install.js",
+        "line": 150,
+        "text": "const child = spawn(tar, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/launchd-control.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/launchd-control.js",
+        "line": 18,
+        "text": "const run = options.run ?? ((command, args) => spawnSync(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "assistantDelivery"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

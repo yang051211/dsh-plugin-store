@@ -1,0 +1,130 @@
+{
+  "name": "@goodandready/dsh-voice",
+  "version": "0.9.43",
+  "scannedAt": "2026-10-26T10:12:30.528Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 900,
+        "text": "res = await fetch('/dsh-voice/transcribe', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1413,
+        "text": "this.ws = new WebSocket(url)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1498,
+        "text": "voice._chainsPromise = fetch('/dsh-voice/status', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2000,
+        "text": "const pRes = await fetch('/dsh-voice/polish', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2449,
+        "text": "fetch('/dsh-voice/polish', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audio-guard.js",
+        "line": 3,
+        "text": "import { realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 4,
+        "text": "import { createWriteStream, createReadStream, existsSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 6,
+        "text": "import { mkdir, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 238,
+        "text": "await mkdir(modelDir, { recursive: true })"
+      },
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 270,
+        "text": "await unlink(archivePath).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = ['tools', 'credentials', 'webServer', 'shell', 'settings', 'llm']"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 13,
+        "text": "return ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/sensevoice-installer.js",
+        "line": 203,
+        "text": "const child = spawn('tar', ['--no-same-owner', '-xjf', archivePath, '-C', targetDir], { windowsHide: true })"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 313,
+        "text": "const child = spawn(process.execPath, ["
+      },
+      {
+        "file": "lib/wav.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "settings",
+    "shell",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

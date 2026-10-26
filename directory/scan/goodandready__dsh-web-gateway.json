@@ -1,0 +1,109 @@
+{
+  "name": "@goodandready/dsh-web-gateway",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:12:30.820Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 330,
+        "text": "const res = await fetch('/api/dsh-web-gateway/update', { method: 'GET', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 350,
+        "text": "const res = await fetch('/api/dsh-web-gateway/update', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 389,
+        "text": "const res = await fetch('/api/dsh-web-gateway/health', { method: 'GET', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 399,
+        "text": "const res = await fetch('/api/dsh-web-gateway/health', { method: 'POST', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 146,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/caps.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/caps.js",
+        "line": 23,
+        "text": "mkdirSync(resolve(path, '..'), { recursive: true })"
+      },
+      {
+        "file": "lib/caps.js",
+        "line": 30,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/caps.js",
+        "line": 53,
+        "text": "writeFileSync(tmp, JSON.stringify(state, null, 2))"
+      },
+      {
+        "file": "lib/caps.js",
+        "line": 56,
+        "text": "try { writeFileSync(path, JSON.stringify(state)) } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "export const inject = ['tools', 'credentials']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "return ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 182,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

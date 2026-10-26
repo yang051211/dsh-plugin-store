@@ -1,0 +1,97 @@
+{
+  "name": "@dshworks/dsh-ego-browser",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:12:11.657Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "await writeFile(file, code)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "await rm(dir, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/memory.js",
+        "line": 26,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/memory.js",
+        "line": 27,
+        "text": "import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 65,
+        "text": "* @param {object} ctx - the host plugin context, carrying `ctx.tools`."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 73,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ego.js",
+        "line": 198,
+        "text": "async spawn(script, options = {}) {"
+      },
+      {
+        "file": "lib/ego.js",
+        "line": 202,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "lib/ego.js",
+        "line": 244,
+        "text": "const run = await this.spawn(script, { argv: prefix, signal: options.signal, timeoutMs: this.config.probeTimeoutMs })"
+      },
+      {
+        "file": "lib/ego.js",
+        "line": 274,
+        "text": "const run = await this.spawn(script, { argv, signal: options.signal, timeoutMs: this.config.probeTimeoutMs })"
+      },
+      {
+        "file": "lib/ego.js",
+        "line": 303,
+        "text": "const raw = await this.spawn(wrapScript(script), { argv, ...options })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

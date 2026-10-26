@@ -1,0 +1,131 @@
+{
+  "name": "@j62268781-alt/dsh-skills-mcp-manager",
+  "version": "0.5.6",
+  "scannedAt": "2026-10-26T10:12:49.189Z",
+  "icon": "j62268781-alt__dsh-skills-mcp-manager.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1052,
+        "text": "const response = await fetch(`/${NAME}/runtime`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1249,
+        "text": "const response = await fetch(`/${NAME}/rows`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1283,
+        "text": "const response = await fetch(`/${NAME}/skills`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1316,
+        "text": "const response = await fetch(`/${NAME}/skill?path=${encodeURIComponent(path)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1332,
+        "text": "const response = await fetch(`/${NAME}/reconnect`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/diagnostics/heartbeat.js",
+        "line": 5,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/diagnostics/heartbeat.js",
+        "line": 11,
+        "text": "await mkdir(dirname(beatFile()), { recursive: true });"
+      },
+      {
+        "file": "dist/diagnostics/heartbeat.js",
+        "line": 12,
+        "text": "await writeFile(beatFile(), `${JSON.stringify(payload, null, 2)}\\n`);"
+      },
+      {
+        "file": "dist/import/scan.js",
+        "line": 6,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/import/scan.js",
+        "line": 26,
+        "text": "const document = parseJsonLoose(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 25,
+        "text": "import * as mcpClient from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 197,
+        "text": "* mcp-client 自身没有白名单字段，`ctx.tools.restrict()` 又要求 scoped 上下文，"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 462,
+        "text": "* Ordering is the whole ballgame: `dsh-mcp-client` registers a server's first"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 560,
+        "text": "// Everything below exists because `dsh-mcp-client` never passes an `authProvider` to the"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 763,
+        "text": "// `@deepseek-ai/dsh-mcp-client` is a peer dependency, so its own `file:` URL is the one"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/mcp/oauth/browser.js",
+        "line": 27,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/runtime/env.js",
+        "line": 8,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

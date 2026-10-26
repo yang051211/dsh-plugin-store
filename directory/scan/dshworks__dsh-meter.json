@@ -1,0 +1,100 @@
+{
+  "name": "@dshworks/dsh-meter",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-26T10:12:11.677Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1191,
+        "text": "balancePending ??= fetch(BALANCE_ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "scripts/verify-bill.mjs",
+        "line": 159,
+        "text": "const res = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "scripts/verify-pricing.mjs",
+        "line": 325,
+        "text": "const response = await fetch(url, { headers: { accept: 'text/html' }, redirect: 'follow' })"
+      },
+      {
+        "file": "src/ui.js",
+        "line": 310,
+        "text": "balancePending ??= fetch(BALANCE_ROUTE, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 36,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 114,
+        "text": "const source = readFileSync(target, 'utf8')"
+      },
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 132,
+        "text": "writeFileSync(target, spliced)"
+      },
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 141,
+        "text": "writeFileSync(target, source)"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 19,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 137,
+        "text": "const { spawnSync } = await import('node:child_process')"
+      },
+      {
+        "file": "scripts/apply-pricing.mjs",
+        "line": 138,
+        "text": "const check = spawnSync(process.execPath, [join(root, 'scripts/verify-pricing.mjs')], { encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/check-dsh-release.mjs",
+        "line": 45,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/check-dsh-release.mjs",
+        "line": 124,
+        "text": "const added = spawnSync(dsh.bin, ['plugin', '--profile', 'web', 'add', spec], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

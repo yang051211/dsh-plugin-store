@@ -1,0 +1,107 @@
+{
+  "name": "@huliux/dsh-asr-plugin",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:12:42.973Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/asr/funasr/config.js",
+        "line": 83,
+        "text": "sampleRate: frontend.get(\"fs\"),"
+      },
+      {
+        "file": "dist/asr/funasr/punctuator.js",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/asr/funasr/punctuator.js",
+        "line": 16,
+        "text": "readFile(paths.configPath, \"utf8\"),"
+      },
+      {
+        "file": "dist/asr/funasr/punctuator.js",
+        "line": 17,
+        "text": "readFile(paths.tokensPath, \"utf8\"),"
+      },
+      {
+        "file": "dist/asr/funasr/recognizer.js",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 25,
+        "text": "export const inject = [\"tools\", \"jobs\", \"subprocess\"];"
+      },
+      {
+        "file": "dist/tools/meeting-tools.js",
+        "line": 772,
+        "text": "context.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/assets/model-download-transport.js",
+        "line": 63,
+        "text": "const handle = transport.spawn({"
+      },
+      {
+        "file": "dist/assets/recording-helper-signature.js",
+        "line": 63,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "dist/audio/managed-audio-normalizer.js",
+        "line": 138,
+        "text": "handle = input.subprocess.spawn(conversionSpec(input, signal));"
+      },
+      {
+        "file": "dist/recording/helper-client.js",
+        "line": 347,
+        "text": "const handle = this.options.subprocess.spawn({"
+      },
+      {
+        "file": "dist/recording/model-worker.js",
+        "line": 91,
+        "text": "const handle = this.options.spawner.spawn({ ...launch, argv });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [
+    "dist/native/darwin-arm64/fbank.node",
+    "dist/native/darwin-arm64/hcluster.node",
+    "dist/recording-helper/DSHASRRecordingHelper.app/Contents/Helpers/dsh-asr-capture-mic",
+    "dist/recording-helper/DSHASRRecordingHelper.app/Contents/Helpers/dsh-asr-capture-system",
+    "dist/recording-helper/DSHASRRecordingHelper.app/Contents/MacOS/DSHASRRecordingHelper"
+  ],
+  "requiredServices": [
+    "jobs",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

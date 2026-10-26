@@ -1,0 +1,66 @@
+{
+  "name": "@fish-under-sea/dsh-settings-nav-order",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:12:20.729Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 226,
+        "text": "return target.fetch(`${SYNC_API}${pathname}`, { credentials: 'same-origin', ...(options ?? {}) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "const state = normalizeState(JSON.parse(fs.readFileSync(file, 'utf8')));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "fs.writeFileSync(tmp, text, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "try { fs.rmSync(tmp, { force: true }); } catch { /* 清理失败不是主错误 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

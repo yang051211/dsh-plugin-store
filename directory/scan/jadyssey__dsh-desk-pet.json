@@ -1,0 +1,66 @@
+{
+  "name": "@jadyssey/dsh-desk-pet",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:12:49.683Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 241,
+        "text": "const { pid } = JSON.parse(fs.readFileSync(pidFile, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "fs.mkdirSync(manualDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "fs.writeFileSync(pidFile, JSON.stringify({ pid, at: Date.now() }))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 276,
+        "text": "const child = spawn(exePath, [], { detached: true, stdio: 'ignore', env })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

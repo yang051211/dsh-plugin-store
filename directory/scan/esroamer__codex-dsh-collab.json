@@ -1,0 +1,79 @@
+{
+  "name": "@esroamer/codex-dsh-collab",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:12:15.773Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/setup.mjs",
+        "line": 53,
+        "text": "const response = await fetch(settings.base_url + '/health', {headers: {authorization: 'Bearer ' + token}, redirect: 'error', signal: controller.signal});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "admin.mjs",
+        "line": 19,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "admin.mjs",
+        "line": 84,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "admin.mjs",
+        "line": 92,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "admin.mjs",
+        "line": 94,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, { encoding: 'utf8', mode })"
+      },
+      {
+        "file": "admin.mjs",
+        "line": 211,
+        "text": "const stats = await readFile(path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-setup.mjs",
+        "line": 7,
+        "text": "import {spawnSync} from 'node:child_process';"
+      },
+      {
+        "file": "scripts/test-setup.mjs",
+        "line": 15,
+        "text": "const result = spawnSync(process.execPath, [setup, '--dsh-home', dsh, '--codex-home', codex, ...flags], {encoding:'utf8', env});"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

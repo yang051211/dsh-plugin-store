@@ -1,0 +1,95 @@
+{
+  "name": "@dsh-enhanced/assistant-skills",
+  "version": "0.1.62",
+  "scannedAt": "2026-10-26T10:12:03.539Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comparison.js",
+        "line": 1,
+        "text": "import { mkdirSync, lstatSync, realpathSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/comparison.js",
+        "line": 51,
+        "text": "mkdirSync(path, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/comparison.js",
+        "line": 57,
+        "text": "const codeDigest = acceptanceDigest([readFileSync(new URL(import.meta.url), 'utf8'), readFileSync(new URL(import.meta.url.endsWith('.ts') ? './replay.ts' : './r"
+      },
+      {
+        "file": "lib/holdout-cli.js",
+        "line": 2,
+        "text": "import { constants, openSync, closeSync, fstatSync, readFileSync, lstatSync, realpathSync, chmodSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/holdout-cli.js",
+        "line": 24,
+        "text": "const data = readFileSync(fd);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/replay.js",
+        "line": 215,
+        "text": "            const result = await ctx.tools.execute({ callId: ToolCallId(`skill-replay-${done.length + 1}`), name: step.toolName, arguments: step.arguments, sign"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 297,
+        "text": "            runtime.tools.register(defineTool({ name: 'skill_save', description: 'Save the exact successful tool trace of this owner session’s independently ach"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 303,
+        "text": "runtime.tools.register(delegatedRun);"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 308,
+        "text": "runtime.tools.register(delegatedStatus);"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 311,
+        "text": "            runtime.tools.register(defineTool({ name: 'skill_retire', description: 'Retire the current saved skill version following the current authenticated o"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/external-holdout.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/external-holdout.js",
+        "line": 82,
+        "text": "const child = spawn(authority.executable, [...authority.args], { stdio: ['pipe', 'pipe', 'pipe'], detached: process.platform !== 'win32', shell: false });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

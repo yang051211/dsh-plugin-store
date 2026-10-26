@@ -1,0 +1,113 @@
+{
+  "name": "@jipika/dsh-memory",
+  "version": "0.9.2",
+  "scannedAt": "2026-10-26T10:12:52.758Z",
+  "icon": "jipika__dsh-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 150,
+        "text": "return fetch(\"/dsh-memory/settings\", { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "client.js",
+        "line": 166,
+        "text": "return fetch(\"/dsh-memory/settings\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 299,
+        "text": "fetch(\"/dsh-memory/content?target=\" + encodeURIComponent(target))"
+      },
+      {
+        "file": "client.js",
+        "line": 329,
+        "text": "fetch(\"/dsh-memory/write\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 878,
+        "text": "fetch(\"/dsh-memory/activity?turn=\" + number + sid, { headers: { accept: \"application/json\" } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 429,
+        "text": "return normalizeSettings(JSON.parse(readFileSync(SETTINGS_PATH, \"utf8\")));"
+      },
+      {
+        "file": "index.js",
+        "line": 443,
+        "text": "mkdirSync(`${HOME}/.dsh/memory`, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 444,
+        "text": "writeFileSync(SETTINGS_PATH, `${JSON.stringify(next, null, 2)}\\n`);"
+      },
+      {
+        "file": "index.js",
+        "line": 482,
+        "text": "return existsSync(path) ? readFileSync(path, \"utf8\") : \"\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2955,
+        "text": "// 用外层 ctx.tools 在真实宿主是 undefined，注册静默失败（v0.8 首发实测踩的坑）。"
+      },
+      {
+        "file": "index.js",
+        "line": 2960,
+        "text": "toolCtx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { execFile, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 2105,
+        "text": "const child = execFile(shell.file, shell.args, { timeout: timeoutMs, maxBuffer: 1024 * 1024 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 2497,
+        "text": "const r = spawnSync(shell.file, shell.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

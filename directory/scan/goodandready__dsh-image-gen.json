@@ -1,0 +1,114 @@
+{
+  "name": "@goodandready/dsh-image-gen",
+  "version": "0.12.10",
+  "scannedAt": "2026-10-26T10:12:28.401Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 115,
+        "text": "const res = await fetch(path, { ...rest, signal: sig })"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 224,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attachment-helper.js",
+        "line": 3,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/attachment-helper.js",
+        "line": 67,
+        "text": "await mkdir(outDir, { recursive: true })"
+      },
+      {
+        "file": "lib/attachment-helper.js",
+        "line": 69,
+        "text": "await writeFile(filePath, buf)"
+      },
+      {
+        "file": "lib/attachment-helper.js",
+        "line": 181,
+        "text": "await mkdir(outDir, { recursive: true })"
+      },
+      {
+        "file": "lib/attachment-helper.js",
+        "line": 183,
+        "text": "await writeFile(filePath, bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "export const inject = ['tools', 'attachments', 'credentials', 'webServer', 'settings', 'llm', 'systemPrompt']"
+      },
+      {
+        "file": "lib/register-tools.js",
+        "line": 48,
+        "text": "const originalToolsRegister = ctx?.tools?.register ? ctx.tools.register.bind(ctx.tools) : null"
+      },
+      {
+        "file": "lib/register-tools.js",
+        "line": 56,
+        "text": "const wrappedTools = originalToolsRegister ? Object.create(ctx.tools, {"
+      },
+      {
+        "file": "lib/register-tools.js",
+        "line": 91,
+        "text": "if (typeof ctx.tools?.unregister === 'function') {"
+      },
+      {
+        "file": "lib/register-tools.js",
+        "line": 92,
+        "text": "ctx.tools.unregister(def.name)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/updater.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 262,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "llm",
+    "settings",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "@dfy-plugins/dsh-archive-manager",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:11:51.721Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 154,
+        "text": "fetch(\"/api/dsh-archive-manager/list\").then((r) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 183,
+        "text": "fetch(`/api/dsh-archive-manager/${action === \"restore\" ? \"unarchive\" : \"delete\"}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 207,
+        "text": "fetch(\"/api/dsh-archive-manager/delete-all\", { method: \"POST\" }).then(async (r) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/logic.js",
+        "line": 10,
+        "text": "import { readFile, readdir, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/logic.js",
+        "line": 47,
+        "text": "const raw = await readFile(workspaceJsonPath(), 'utf8');"
+      },
+      {
+        "file": "lib/logic.js",
+        "line": 58,
+        "text": "return JSON.parse(await readFile(path, 'utf8'));"
+      },
+      {
+        "file": "lib/logic.js",
+        "line": 209,
+        "text": "return titleFromJsonLines((await readFile(join(sessionDirectory, filename), 'utf8')).split('\\n'));"
+      },
+      {
+        "file": "lib/logic.js",
+        "line": 211,
+        "text": "const buffer = await readFile(join(sessionDirectory, filename));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

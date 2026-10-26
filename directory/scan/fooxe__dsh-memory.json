@@ -1,0 +1,114 @@
+{
+  "name": "@fooxe/dsh-memory",
+  "version": "0.13.10",
+  "scannedAt": "2026-10-26T10:12:22.379Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 174,
+        "text": "fetch(\"/dsh-memory/api/v1/list\").then((r) => {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 259,
+        "text": "fetch(\"/dsh-memory/api/v1/delete\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 332,
+        "text": "fetch(\"/dsh-memory/api/v1/read\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 361,
+        "text": "fetch(editing ? \"/dsh-memory/api/v1/update\" : \"/dsh-memory/api/v1/save\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { promises as fs, existsSync, readFileSync, statSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "* debugging; official tool-fs declares ['tools', 'fs', 'systemPrompt']). */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "await fs.mkdir(memoryDirOf(base), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "const text = await fs.readFile(indexFileOf(base), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "await fs.rm(path.join(dir, files[i]), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1278,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1321,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1372,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1421,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 65,
+      "text": "eb UI; see `~/.dsh/profiles/`). Manual `npm i -g @fooxe/dsh-memory` + `dsh web --patch ./overlay/dsh-memory.cordis.yml` also works, but `plugin add` is the reco"
+    }
+  ],
+  "skippedEntries": []
+}

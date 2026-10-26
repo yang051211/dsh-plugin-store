@@ -1,0 +1,111 @@
+{
+  "name": "@goodandready/dsh-tts",
+  "version": "0.4.36",
+  "scannedAt": "2026-10-26T10:12:30.433Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 94,
+        "text": "return fetch(url, fetchOpts).then((res) => {"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 185,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, '')}/${encodeURIComponent(packageName)}/latest`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 5,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 18,
+        "text": "if (!ready) ready = fs.promises.mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 77,
+        "text": "const meta = JSON.parse(await fs.promises.readFile(path.join(dir, key + '.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 101,
+        "text": "await fs.promises.rm(path.join(dir, key + AUDIO_EXT), { force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 102,
+        "text": "await fs.promises.rm(path.join(dir, key + '.json'), { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'credentials', 'llm', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 861,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engines/f5.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engines/f5.js",
+        "line": 5,
+        "text": "const proc = spawn(pythonBin, [daemonPath, '--ping'], { windowsHide: true })"
+      },
+      {
+        "file": "lib/engines/types.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/local.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/local.js",
+        "line": 13,
+        "text": "? spawn(bin, args, { stdio: ['pipe', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,73 @@
+{
+  "name": "@jiesou/dsh-stream-rules",
+  "version": "0.1.12",
+  "scannedAt": "2026-10-26T10:12:52.767Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { readdir } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'agents'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 27,
+      "text": "l call (`{ kind: 'deny' }`); later attempts are allowed. Steering without over-restricting, e.g. letting `pip install` through when it's already in a container."
+    },
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": " by the agent will be allowed. This provides steering while avoiding overly restricting the model (e.g., allowing `pip install` if it's already in a container)."
+    },
+    {
+      "file": "README.md",
+      "line": 94,
+      "text": "prompt: 'Use `uvx` or `uv venv` + `uv pip` instead of `pip install` directly',"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 25,
+      "text": "- **`reject: true`** — 拒绝**第一次**工具调用（`{ kind: 'deny' }`）；之后的尝试会被放行。在不至于过度限制的前提下进行 steering，例如在容器内已经允许 `pip install` 通过时。"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 78,
+      "text": "- 带 `reject: true` 的规则只在第一次工具调用时拒绝；之后 agent 重试会被放行。既做了引导又不过度限制（例如在容器里时允许 `pip install`）。"
+    }
+  ],
+  "skippedEntries": []
+}

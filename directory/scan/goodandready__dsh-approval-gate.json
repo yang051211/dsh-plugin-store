@@ -1,0 +1,102 @@
+{
+  "name": "@goodandready/dsh-approval-gate",
+  "version": "0.1.31",
+  "scannedAt": "2026-10-26T10:12:27.811Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/classifier.js",
+        "line": 428,
+        "text": "const res = await this.fetch(this.endpoint, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 219,
+        "text": "fetch(\"/dsh-approval-gate/mode\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 294,
+        "text": "const lrRes = await fetch(\"/dsh-approval-gate/learned-rules\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "const rRes = await fetch(\"/dsh-approval-gate/rules\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 313,
+        "text": "await fetch(\"/dsh-approval-gate/learned-rules/revoke\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agents-parser.js",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/agents-parser.js",
+        "line": 105,
+        "text": "const content = fs.readFileSync(fullPath, \"utf-8\");"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 8,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 152,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/audit-log.js",
+        "line": 155,
+        "text": "fs.appendFileSync(this.logPath, line, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "bands: new BandsEngine({ toolRegistry: ctx && ctx.tools }),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 559,
+        "text": "return ctx.tools.guard(guard);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

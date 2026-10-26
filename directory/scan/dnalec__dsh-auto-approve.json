@@ -1,0 +1,71 @@
+{
+  "name": "@dnalec/dsh-auto-approve",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:11:54.592Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/preset-patch.mjs",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/preset-patch.mjs",
+        "line": 356,
+        "text": "const manifest = JSON.parse(readFileSync(join(pkgDir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "src/preset-patch.mjs",
+        "line": 360,
+        "text": "const keys = extractPresetKeysFromPatchText(readFileSync(patchPath, 'utf8'))"
+      },
+      {
+        "file": "src/preset-patch.mjs",
+        "line": 494,
+        "text": "const text = stripBom(readFileSync(patchPath, 'utf8'))"
+      },
+      {
+        "file": "src/preset-patch.mjs",
+        "line": 515,
+        "text": "return readAutoApproveSandboxFromText(stripBom(readFileSync(patchPath, 'utf8')))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 1537,
+        "text": "ctx.effect(() => tools.register(definition), `${NAME}: ${hr.toolName}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "llm",
+    "permissionPresets",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

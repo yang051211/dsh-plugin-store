@@ -1,0 +1,81 @@
+{
+  "name": "@kirkchinese/dsh-recollect",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:13:01.587Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { existsSync, lstatSync, mkdirSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 33,
+        "text": "import { readFile as readFileAsync } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "const m = /^gitdir:\\s*(.+)$/m.exec(readFileSync(dotgit, 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 122,
+        "text": "persisted = { paused: {}, ...JSON.parse(readFileSync(stateFile, 'utf8')) };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "export const inject = ['systemPrompt', 'tools', 'workingDirectory', 'agents'];"
+      },
+      {
+        "file": "index.js",
+        "line": 207,
+        "text": "for (const def of toolDefs) scope.effect(() => scope.tools.register(def), `recollect.tool.${def.name}`);"
+      },
+      {
+        "file": "index.js",
+        "line": 427,
+        "text": "ctx.effect(() => ctx.tools.guard(background.policy.guard), 'recollect.child-guard');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "systemPrompt",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

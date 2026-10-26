@@ -1,0 +1,90 @@
+{
+  "name": "@eternalnight/publish-kit",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:12:19.586Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/bootstrap-release.sh",
+        "line": 86,
+        "text": "de -e \"const p=require('./package.json');p.version=process.argv[1];require('fs').writeFileSync('package.json',JSON.stringify(p,null,2)+'\\n');\" \"$TARGET_VERSION\""
+      },
+      {
+        "file": "scripts/postinstall.js",
+        "line": 5,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "scripts/postinstall.js",
+        "line": 46,
+        "text": "if (FORCE) { fs.unlinkSync(dest); } else { skipped.push(dest); continue; }"
+      },
+      {
+        "file": "scripts/postinstall.js",
+        "line": 57,
+        "text": "try { fs.unlinkSync(dest); } catch { /* may still fail; re-link will try */ }"
+      },
+      {
+        "file": "scripts/postinstall.js",
+        "line": 68,
+        "text": "try { fs.rmSync(dest, { recursive: true, force: true }); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node ./scripts/postinstall.js"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 26,
+      "text": "<br/><sub>Install: <code>npx skills add https://github.com/EternalNight996/publish-kit</code> or <code>npm i -g @eternalnight/publish-kit</code></sub></p>"
+    },
+    {
+      "file": "README.md",
+      "line": 39,
+      "text": "npm install -g @eternalnight/publish-kit"
+    },
+    {
+      "file": "README.md",
+      "line": 69,
+      "text": "After `npm install -g @eternalnight/publish-kit`, two commands are available:"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 27,
+      "text": "<br/><sub>安装：<code>npx skills add https://github.com/EternalNight996/publish-kit</code> 或 <code>npm i -g @eternalnight/publish-kit</code></sub></p>"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 159,
+      "text": "npm install -g @eternalnight/publish-kit"
+    }
+  ],
+  "skippedEntries": []
+}

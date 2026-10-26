@@ -1,0 +1,110 @@
+{
+  "name": "@hhuangpanda/dsh-automation",
+  "version": "0.3.35",
+  "scannedAt": "2026-10-26T10:12:37.937Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1624,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 1,
+        "text": "import { mkdir, open, readFile, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 7,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 12,
+        "text": "await handle.writeFile(content, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 42,
+        "text": "await rm(temporary, { force: true }).catch(() => undefined);"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 59,
+        "text": "raw = await readFile(this.path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool-configuration.js",
+        "line": 39,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-configuration.js",
+        "line": 76,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool-configuration.js",
+        "line": 157,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 64,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 74,
+        "text": "disposers.push(toolCtx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "connection",
+    "llm",
+    "permissionPresets",
+    "sessionTitle",
+    "sessions",
+    "skills",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

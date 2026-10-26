@@ -1,0 +1,76 @@
+{
+  "name": "@hz-jasonlin/dsh-todolist",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:12:44.969Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 59,
+        "text": "const res = await fetch(`/todolist${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "writeFileSync(tmp, JSON.stringify(data, null, 2))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "const parsed = JSON.parse(readFileSync(this.file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 640,
+        "text": "ctx.effect(() => ctx.tools.register(todoToolDefinition(config, store)), 'dsh-todolist: todo tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
