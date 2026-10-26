@@ -39,6 +39,15 @@ test('a name missing from a batch, a null entry, a 404 or a failed batch gives n
   assert.deepEqual([...failing.values()], [null, null])
 })
 
+test('a rate-limited answer is retried after a growing pause instead of becoming unknown', async () => {
+  let calls = 0
+  const waits = []
+  const io = { fetch: async () => (++calls <= 2 ? new Response('slow down', { status: 429, headers: { 'retry-after': '0' } }) : new Response(JSON.stringify({ downloads: 7, package: '@s/a' }))) }
+  const result = await weeklyDownloads(io, ['@s/a'], { sleep: async ms => { waits.push(ms) } })
+  assert.equal(result.get('@s/a'), 7)
+  assert.deepEqual(waits, [2000, 4000])
+})
+
 test('a single unscoped name still reads the flat answer', async () => {
   const { io } = fakeApi({ solo: 9 })
   assert.equal((await weeklyDownloads(io, ['solo'])).get('solo'), 9)
