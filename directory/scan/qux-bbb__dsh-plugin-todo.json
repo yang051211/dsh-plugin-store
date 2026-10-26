@@ -1,0 +1,92 @@
+{
+  "name": "@qux-bbb/dsh-plugin-todo",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:14:08.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 171,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 27,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 28,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 696,
+        "text": "await rm(file, { force: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 932,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 934,
+        "text": "await writeFile(temporary, todos.map((todo) => `${JSON.stringify(todo)}\\n`).join(''), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "* @param {import('@deepseek-ai/cordis').Context} ctx - plugin context. `ctx.tools` is required; `ctx.commands` and `webServer` are used when present."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 218,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 298,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 372,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

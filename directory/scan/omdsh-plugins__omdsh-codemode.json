@@ -1,0 +1,95 @@
+{
+  "name": "@omdsh-plugins/omdsh-codemode",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:13:57.467Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 14315,
+        "text": "socket = new WebSocket(terminalUrl(scope, term.cols, term.rows));"
+      },
+      {
+        "file": "src/client/CodeSurface.tsx",
+        "line": 205,
+        "text": "socket = new WebSocket(terminalUrl(scope, term.cols, term.rows))"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 17,
+        "text": "import type { IncomingMessage } from 'node:http'"
+      },
+      {
+        "file": "src/trust-fence.ts",
+        "line": 17,
+        "text": "import type { IncomingHttpHeaders } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { chmodSync, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/harness-source.ts",
+        "line": 29,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/harness-source.ts",
+        "line": 30,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/harness-source.ts",
+        "line": 84,
+        "text": "const manifest = JSON.parse(await readFile(path, 'utf8')) as Manifest"
+      },
+      {
+        "file": "scripts/harness-source.ts",
+        "line": 88,
+        "text": "await writeFile(path, `${JSON.stringify(manifest, undefined, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 457,
+        "text": "return Promise.resolve(nodePty.spawn(command.file, [...command.args], {"
+      },
+      {
+        "file": "src/harness-pty.ts",
+        "line": 268,
+        "text": "const pty = await spawn(sessionId, cwd, clampDimension(cols), clampDimension(rows))"
+      },
+      {
+        "file": "src/harness-pty.ts",
+        "line": 383,
+        "text": "return Promise.resolve(nodePty.spawn(command.file, [...command.args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

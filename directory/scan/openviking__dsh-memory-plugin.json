@@ -1,0 +1,86 @@
+{
+  "name": "@openviking/dsh-memory-plugin",
+  "version": "0.5.29",
+  "scannedAt": "2026-10-26T10:13:59.533Z",
+  "icon": "openviking__dsh-memory-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "shared/ov-http.mjs",
+        "line": 87,
+        "text": "const response = await fetch(`${baseUrl}${path}`, { ...init, headers, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "servers/mcp-proxy.mjs",
+        "line": 13,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "shared/credentials.mjs",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "shared/credentials.mjs",
+        "line": 27,
+        "text": "return JSON.parse(readFileSync(path, \"utf-8\"));"
+      },
+      {
+        "file": "shared/credentials.mjs",
+        "line": 48,
+        "text": "return str(JSON.parse(readFileSync(manifest, \"utf-8\")).version, \"\");"
+      },
+      {
+        "file": "shared/debug-log.mjs",
+        "line": 9,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 10,
+        "text": "export const inject = [\"agents\", \"sessions\", \"tools\"];"
+      },
+      {
+        "file": "mcp-env.mjs",
+        "line": 10,
+        "text": "* Build the dsh-mcp-client config for the OpenViking stdio proxy."
+      },
+      {
+        "file": "mcp.mjs",
+        "line": 1,
+        "text": "import * as mcpClient from \"@deepseek-ai/dsh-mcp-client\";"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "shared/secret-rules.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

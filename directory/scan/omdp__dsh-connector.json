@@ -1,0 +1,119 @@
+{
+  "name": "@omdp/dsh-connector",
+  "version": "0.3.10",
+  "scannedAt": "2026-10-26T10:13:57.102Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 119,
+        "text": "return fetch('/connector/api' + path, {"
+      },
+      {
+        "file": "index.js",
+        "line": 616,
+        "text": "const res = await fetch(MARKET_BASE + path, {"
+      },
+      {
+        "file": "index.js",
+        "line": 693,
+        "text": "const res = await fetch(DOLPHIN_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { readFile, writeFile, mkdir, readdir, rm, rename } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 154,
+        "text": "text = await readFile(join(resolveHome(), 'settings.yaml.imported'), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 525,
+        "text": "raw = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 589,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 167,
+        "text": "// parser and dsh-mcp-client both key on it, so the prefix is not optional."
+      },
+      {
+        "file": "client.js",
+        "line": 454,
+        "text": "// dsh-mcp-client's own serverName contract; the harness rejects anything"
+      },
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "// Server ids are keys for the mcp-* block (and dsh-mcp-client instances):"
+      },
+      {
+        "file": "index.js",
+        "line": 45,
+        "text": "// dsh-mcp-client's own serverName contract (lib/types/index.js SERVER_NAME_PATTERN)."
+      },
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "// dsh-mcp-client 的 Config schema 是封闭的：未知键会拒收并导致下次启动失败，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 965,
+        "text": "const r = spawnSync('where', [command], { stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 968,
+        "text": "const r = spawnSync('which', [command], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

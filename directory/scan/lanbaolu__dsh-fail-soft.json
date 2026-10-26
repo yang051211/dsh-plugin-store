@@ -1,0 +1,111 @@
+{
+  "name": "@lanbaolu/dsh-fail-soft",
+  "version": "0.1.17",
+  "scannedAt": "2026-10-26T10:13:12.039Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "const res = await fetch(\"/api/fail-soft/status\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 88,
+        "text": "const result = await (await fetch(\"/api/fail-soft/set-enabled\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/context-utils.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/context-utils.js",
+        "line": 48,
+        "text": "const data = JSON.parse(readFileSync(failSoftSwitchFile(), 'utf8'))"
+      },
+      {
+        "file": "lib/context-utils.js",
+        "line": 60,
+        "text": "writeFileSync(file, JSON.stringify({ enabled: !!enabled }, null, 2) + '\\n')"
+      },
+      {
+        "file": "lib/context-utils.js",
+        "line": 82,
+        "text": "existing = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/context-utils.js",
+        "line": 89,
+        "text": "mkdirSync(dirname(file), { recursive: true }) // HOME 下可能还没有 .dsh 目录"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 178,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/heal.js",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/failsoft-web.mjs",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/failsoft-web.mjs",
+        "line": 142,
+        "text": "const child = spawn(cmd, cmdArgs, { stdio: ['inherit', 'inherit', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "@max-null/dsh-skill-mcp-center",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:13:39.844Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1047,
+        "text": "const response = await fetch(\"/api/skill-mcp\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/service.js",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 11,
+        "text": "import { cp, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 121,
+        "text": "text = await readFile(skillPath, 'utf8');"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 332,
+        "text": "text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 341,
+        "text": "await writeFile(path, setDisableModelInvocation(text, fm.modelInvocable), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 2,
+        "text": "# Host half reads ctx.skills (skill catalog) + ctx.loader/ctx.tools (MCP);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 6,
+        "text": "export const inject = ['loader', 'tools'];"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 234,
+        "text": "static inject = ['loader', 'tools'];"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 421,
+        "text": "if (entry.options.name !== '@deepseek-ai/dsh-mcp-client')"
+      },
+      {
+        "file": "dist/service.js",
+        "line": 450,
+        "text": "await this.ctx.loader.create({ id, name: '@deepseek-ai/dsh-mcp-client', config: fullMcpConfig(config) });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

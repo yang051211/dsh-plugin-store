@@ -1,0 +1,124 @@
+{
+  "name": "@openma/dsh-agents-plugins-bridge",
+  "version": "0.0.8",
+  "scannedAt": "2026-10-26T10:13:59.366Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/dsh-agent-plugins-mcp.js",
+        "line": 1,
+        "text": "import { validateHeaderName, validateHeaderValue } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/dsh-output-styles.js",
+        "line": 1,
+        "text": "import { readdirSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/adapters/dsh-output-styles.js",
+        "line": 77,
+        "text": "const parsed = frontmatter(readFileSync(file, 'utf8'), sourcePath);"
+      },
+      {
+        "file": "lib/claude-agents.js",
+        "line": 1,
+        "text": "import { readdirSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/claude-agents.js",
+        "line": 93,
+        "text": "parsed = frontmatter(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/discovery/claude-code-marketplaces.js",
+        "line": 1,
+        "text": "import { lstat, readFile, realpath } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/dsh-agent-plugins-mcp.js",
+        "line": 144,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "lib/adapters/dsh-agent-plugins-mcp.js",
+        "line": 160,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "lib/adapters/dsh-agent-plugins-mcp.js",
+        "line": 187,
+        "text": "diagnostics.push(`agent-plugins-v1: skipped MCP server \"${server}\": transport \"sse\" is not supported by dsh-mcp-client`);"
+      },
+      {
+        "file": "lib/adapters/dsh-codex-apps.js",
+        "line": 47,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      },
+      {
+        "file": "lib/adapters/dsh-mcp.js",
+        "line": 71,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/dsh-claude-monitors.js",
+        "line": 190,
+        "text": "handle = this.ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/codex-app-server.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/codex-app-server.js",
+        "line": 20,
+        "text": "this.child = spawn(options.command ?? 'codex', ['app-server', '--stdio'], {"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 11,
+  "minifiedFiles": [
+    "lib/ui-client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "loader",
+    "pluginBridge",
+    "pluginBridgeRuntime"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

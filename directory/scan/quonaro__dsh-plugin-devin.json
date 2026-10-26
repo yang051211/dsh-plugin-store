@@ -1,0 +1,86 @@
+{
+  "name": "@quonaro/dsh-plugin-devin",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:14:07.956Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provider.js",
+        "line": 3,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 4,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 141,
+        "text": "const toml = readFileSync(join(env.HOME ?? homedir(), \".local/share/devin/credentials.toml\"), \"utf8\");"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 1021,
+        "text": "const data = await readFile(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "const inject = [\"tools\", \"subprocess\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 161,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 1222,
+        "text": "const handle = this.ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

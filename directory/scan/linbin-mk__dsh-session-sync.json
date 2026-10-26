@@ -1,0 +1,88 @@
+{
+  "name": "@linbin-mk/dsh-session-sync",
+  "version": "0.9.1",
+  "scannedAt": "2026-10-26T10:13:19.743Z",
+  "icon": "linbin-mk__dsh-session-sync.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2531,
+        "text": "const response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 789,
+        "text": "await deps.git.fetch();"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 184,
+        "text": "async fetch(branch) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 739,
+        "text": "fetch: () => repository.fetch(settings.branch),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 102,
+        "text": "import { realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 26,
+        "text": "import { mkdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 149,
+        "text": "await mkdir(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "import { mkdir, readFile, readdir, rmdir, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 24,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

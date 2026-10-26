@@ -1,0 +1,89 @@
+{
+  "name": "@log.li/dsh-automode",
+  "version": "0.17.0",
+  "scannedAt": "2026-10-26T10:13:24.699Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bands.js",
+        "line": 222,
+        "text": "* `curl -o /tmp/e … && bash /tmp/e` never get allowPath trust from their"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 99,
+        "text": "'Downloading and executing external code (curl | bash, wget | sh)',"
+      },
+      {
+        "file": "src/bands.ts",
+        "line": 218,
+        "text": "* `curl -o /tmp/e … && bash /tmp/e` never get allowPath trust from their"
+      },
+      {
+        "file": "src/config.ts",
+        "line": 105,
+        "text": "'Downloading and executing external code (curl | bash, wget | sh)',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "const raw = JSON.parse(readFileSync(p, 'utf8'));"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 11,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 21,
+        "text": "mkdirSync(logDir, { recursive: true });"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 22,
+        "text": "appendFileSync(join(logDir, 'decisions.jsonl'), JSON.stringify({ at: new Date().toISOString(), ...entry }) + '\\n');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "patches/dsh-permission-preset-icon.mjs",
+        "line": 79,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "llm",
+    "sessionProjections"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

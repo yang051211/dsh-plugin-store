@@ -1,0 +1,90 @@
+{
+  "name": "@logictan/dsh-openviking",
+  "version": "0.4.12",
+  "scannedAt": "2026-10-26T10:13:26.340Z",
+  "icon": "logictan__dsh-openviking.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "shared/ov-http.mjs",
+        "line": 87,
+        "text": "const response = await fetch(`${baseUrl}${path}`, { ...init, headers, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "shared/credentials.mjs",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "shared/credentials.mjs",
+        "line": 27,
+        "text": "return JSON.parse(readFileSync(path, \"utf-8\"));"
+      },
+      {
+        "file": "shared/credentials.mjs",
+        "line": 48,
+        "text": "return str(JSON.parse(readFileSync(manifest, \"utf-8\")).version, \"\");"
+      },
+      {
+        "file": "shared/pending-queue.mjs",
+        "line": 24,
+        "text": "import { mkdir, readdir, readFile, rename, writeFile, unlink, stat, chmod } from \"node:fs/promises\";"
+      },
+      {
+        "file": "shared/pending-queue.mjs",
+        "line": 49,
+        "text": "await mkdir(dir, { recursive: true, mode: PENDING_DIR_MODE });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 9,
+        "text": "export const inject = [\"agents\", \"sessions\", \"tools\"];"
+      },
+      {
+        "file": "mcp-env.mjs",
+        "line": 6,
+        "text": "* Build the dsh-mcp-client config for the OpenViking MCP endpoint."
+      },
+      {
+        "file": "mcp.mjs",
+        "line": 1,
+        "text": "import * as mcpClient from \"@deepseek-ai/dsh-mcp-client\";"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node ../dsh-openviking-shared/sync.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@ottttto/dsh-scheduled-send",
+  "version": "0.3.9",
+  "scannedAt": "2026-10-26T10:14:00.476Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 679,
+        "text": "const doFetch = fetchImpl || ((...a) => fetch(...a));"
+      },
+      {
+        "file": "src/client-view.js",
+        "line": 402,
+        "text": "const doFetch = fetchImpl || ((...a) => fetch(...a));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/deps.js",
+        "line": 2,
+        "text": "export { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 26,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 32,
+        "text": "const parsed = JSON.parse(await fs.readFile(path, 'utf8'));"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 42,
+        "text": "await fs.writeFile(path, JSON.stringify({ items: queue }, null, 2) + '\\n', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

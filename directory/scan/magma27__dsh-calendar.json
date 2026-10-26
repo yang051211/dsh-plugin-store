@@ -1,0 +1,114 @@
+{
+  "name": "@magma27/dsh-calendar",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:13:36.330Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 710,
+        "text": "return await readJson(await fetch(`${this.base}/state`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 716,
+        "text": "return await readJson(await fetch(`${this.base}/options`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 726,
+        "text": "return await readJson(await fetch(`${this.base}/action`, {"
+      },
+      {
+        "file": "src/client/host-api.ts",
+        "line": 66,
+        "text": "const res = await fetch(`${this.base}/state`, { cache: 'no-store', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) })"
+      },
+      {
+        "file": "src/client/host-api.ts",
+        "line": 71,
+        "text": "const res = await fetch(`${this.base}/options`, { cache: 'no-store', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { chmodSync, closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, renameSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1762,
+        "text": "return this.ctx.get(\"fs\")?.processPathFromHostPath(hostPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7216,
+        "text": "const raw = readFileSync(p, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7227,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7231,
+        "text": "writeFileSync(fd, JSON.stringify(doc, null, 2));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4724,
+        "text": "* `inject`: an inject entry would hold `ctx.tools` — and every tool plugin"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4758,
+        "text": "return this.layers.effect(this.ctx, (layer) => layer.tools.insert(name, definition), { label: \"tools.register()\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9162,
+        "text": "const disposeTool = ctx.tools.register(defineCalendarTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 29,
+        "text": "export const inject = ['webServer', 'sessionController', 'workspaceRegistry', 'systemPrompt', 'tools', 'settings']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 100,
+        "text": "const disposeTool = ctx.tools.register(defineCalendarTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

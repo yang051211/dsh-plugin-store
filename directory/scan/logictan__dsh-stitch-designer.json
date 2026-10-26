@@ -1,0 +1,91 @@
+{
+  "name": "@logictan/dsh-stitch-designer",
+  "version": "2.0.3",
+  "scannedAt": "2026-10-26T10:13:26.597Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/stitch.js",
+        "line": 30,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/project.js",
+        "line": 15,
+        "text": "import { readFile, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/project.js",
+        "line": 38,
+        "text": "const parsed = JSON.parse(await readFile(join(directory, BINDING_FILE), 'utf8'));"
+      },
+      {
+        "file": "lib/project.js",
+        "line": 61,
+        "text": "await writeFile(join(directory, BINDING_FILE), `${JSON.stringify({ projectId }, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/project.js",
+        "line": 76,
+        "text": "await rm(join(directory, BINDING_FILE), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "*  - **The Stitch transport lives here, not in `@deepseek-ai/dsh-mcp-client`.**"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "disposers = next.map((definition) => tools.register(definition));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* rather than a dependency on `@deepseek-ai/dsh-mcp-client`: Stitch's tool"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 24,
+        "text": "*    `@deepseek-ai/dsh-mcp-client`'s `supportedOutputSchema` performs."
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 42,
+        "text": "* Byte-for-byte the same rule `dsh-mcp-client` applies, because the names are"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

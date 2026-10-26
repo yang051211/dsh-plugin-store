@@ -1,0 +1,79 @@
+{
+  "name": "@puxora/dsh-browserpilot",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:14:06.334Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/global-policy.js",
+        "line": 41,
+        "text": "const response = await this.#fetch(this.#endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/global-policy.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/global-policy.js",
+        "line": 68,
+        "text": "this.#token = (await readFile(this.#tokenPath, 'utf8')).trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 10,
+        "text": "export const inject = ['settings', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "const disposeStatus = ctx.tools.register(createStatusTool(bridge, registry, () => connect(bridge, registry, ctx)))"
+      },
+      {
+        "file": "src/tool-registry.js",
+        "line": 39,
+        "text": "next.set(name, this.#ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 47,
+      "text": "npm install -g @puxora/browserpilot"
+    },
+    {
+      "file": "README.md",
+      "line": 47,
+      "text": "npm install -g @puxora/browserpilot"
+    }
+  ],
+  "skippedEntries": []
+}

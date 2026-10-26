@@ -1,0 +1,73 @@
+{
+  "name": "@skkjkk/dsh-usage-dashboard",
+  "version": "0.3.23",
+  "scannedAt": "2026-10-26T10:14:18.132Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1944,
+        "text": "return fetch(\"/dash-api/\" + method + (qs ? \"?\" + qs : \"\")).then((r) => r.json());"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 154,
+        "text": "import('node:fs/promises'),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "const raw = JSON.parse(await mods.fsp.readFile(mods.path.join(cacheDir, name), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 275,
+        "text": "try { await mods.fsp.mkdir(cacheDir, { recursive: true, mode: 0o700 }) } catch (e) { /* exists */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "try { await mods.fsp.rm(tmp, { force: true }) } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 305,
+        "text": "await mods.fsp.writeFile(tmp, payload, { encoding: 'utf8', mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "sessionQuery",
+    "sessions",
+    "timer",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

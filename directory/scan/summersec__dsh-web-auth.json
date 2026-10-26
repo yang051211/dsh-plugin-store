@@ -1,0 +1,59 @@
+{
+  "name": "@summersec/dsh-web-auth",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:26.087Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 2,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-web-auth.js",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/dsh-web-auth.js",
+        "line": 15,
+        "text": "if (!process.stdin.isTTY) return (await readFile(0, 'utf8')).replace(/[\\r\\n]+$/, '')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 37,
+        "text": "const DEEPSEEK_FAVICON = readFileSync(new URL('./assets/deepseek-favicon.svg', import.meta.url), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,120 @@
+{
+  "name": "@kunolu/dsh-sbtd",
+  "version": "0.2.0-rc.2",
+  "scannedAt": "2026-10-26T10:13:11.301Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 260,
+        "text": "ro --version` (never run `maestro test` during preflight).\", \"Example install (only after DSH approval): `curl -Ls \\\"https://get.maestro.mobile.dev\\\" | bash`\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/backends/sbtd-task.js",
+        "line": 10,
+        "text": "import { existsSync, lstatSync, readFileSync, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/backends/sbtd-task.js",
+        "line": 104,
+        "text": "const parsed = JSON.parse(readFileSync(pointerPath, \"utf8\"));"
+      },
+      {
+        "file": "dist/backends/sbtd-task.js",
+        "line": 188,
+        "text": "frontmatter = parseTaskFrontmatter(readFileSync(taskPath.path, \"utf8\"));"
+      },
+      {
+        "file": "dist/hooks.js",
+        "line": 37,
+        "text": "const RM_BASH = /(?:^|[\\s;&|])rm(?:\\s|$)/;"
+      },
+      {
+        "file": "dist/tools/bdd.js",
+        "line": 9,
+        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync, } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 14,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"commands\"];"
+      },
+      {
+        "file": "dist/tools/bdd.js",
+        "line": 776,
+        "text": "ctx.tools.register(createBddTool(host));"
+      },
+      {
+        "file": "dist/tools/clarify.js",
+        "line": 273,
+        "text": "ctx.tools.register(createClarifyTool());"
+      },
+      {
+        "file": "dist/tools/e2e.js",
+        "line": 1183,
+        "text": "ctx.tools.register(createE2eTool(host));"
+      },
+      {
+        "file": "dist/tools/lessons.js",
+        "line": 1022,
+        "text": "ctx.tools.register(createLessonsTool(host));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 9,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 47,
+        "text": "const result = spawnSync(\"java\", [...args], {"
+      },
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 93,
+        "text": "const result = spawnSync(\"maestro\", [\"--version\"], {"
+      },
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 146,
+        "text": "const sim = spawnSync(\"xcrun\", [\"simctl\", \"list\", \"devices\", \"available\"], {"
+      },
+      {
+        "file": "dist/backends/maestro.js",
+        "line": 163,
+        "text": "const adb = spawnSync(\"adb\", [\"devices\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

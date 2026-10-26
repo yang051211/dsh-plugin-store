@@ -1,0 +1,113 @@
+{
+  "name": "@lovedolove/veyra",
+  "version": "0.1.56",
+  "scannedAt": "2026-10-26T10:13:28.877Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/code/client.mjs",
+        "line": 245,
+        "text": "mory-mcp binary not found. Install via 'curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash' or set CBM_EXE. Veyra "
+      },
+      {
+        "file": "src/commands.mjs",
+        "line": 338,
+        "text": "'    curl -fsSL https://raw.githubusercontent.com/DeusData/codebase-memory-mcp/main/install.sh | bash',"
+      },
+      {
+        "file": "src/webui.mjs",
+        "line": 360,
+        "text": "return fetch(u).then(r => r.json())"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/code/client.mjs",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/code/discovery.mjs",
+        "line": 14,
+        "text": "import { existsSync, lstatSync, realpathSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "src/code/discovery.mjs",
+        "line": 198,
+        "text": "const fd = readFileSync(absPath, { flag: 'r' })"
+      },
+      {
+        "file": "src/code/discovery.mjs",
+        "line": 285,
+        "text": "gitignoreRules.push(...parseGitignoreContent(readFileSync(gitignorePath, 'utf8')))"
+      },
+      {
+        "file": "src/code/engine.mjs",
+        "line": 12,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.mjs",
+        "line": 9,
+        "text": "*   - ctx.tools             — remember / recall / inspect / forget / promote"
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 38,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 272,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 72,
+        "text": "* `ctx.tools.register` validates. Per-property `required: true` becomes"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 1212,
+        "text": "if (!ctx?.tools || typeof ctx.tools.register !== 'function') return []"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/code/client.mjs",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/code/client.mjs",
+        "line": 109,
+        "text": "this.child = spawn(this.exePath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

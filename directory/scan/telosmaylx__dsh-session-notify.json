@@ -1,0 +1,112 @@
+{
+  "name": "@telosmaylx/dsh-session-notify",
+  "version": "0.1.23",
+  "scannedAt": "2026-10-26T10:14:29.871Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 18,
+        "text": "const l = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json()"
+      },
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 21,
+        "text": "const ws = new WebSocket(page.webSocketDebuggerUrl)"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 37,
+        "text": "const list = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json()"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 42,
+        "text": "const list = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json()"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 47,
+        "text": "const ws = new WebSocket(target.webSocketDebuggerUrl)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { appendFileSync, statSync, truncateSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 750,
+        "text": "appendFileSync(file, `${new Date().toISOString()} ${line}\\n`, 'utf8')"
+      },
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 3,
+        "text": "import { mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 99,
+        "text": "try { rmSync(profile, { recursive: true, force: true }) } catch {}"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 6,
+        "text": "import { mkdtempSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/probe-card-render.mjs",
+        "line": 10,
+        "text": "const chrome = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`, '--no-first-run', '--disable-gpu', '--window-si"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/probe-client-e2e.mjs",
+        "line": 17,
+        "text": "const chrome = spawn(CHROME, ["
+      },
+      {
+        "file": "scripts/probe-client.mjs",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

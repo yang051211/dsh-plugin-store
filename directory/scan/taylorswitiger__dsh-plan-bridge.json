@@ -1,0 +1,81 @@
+{
+  "name": "@taylorswitiger/dsh-plan-bridge",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:14:29.520Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.js",
+        "line": 17,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 19,
+        "text": "const { ok, plans } = await (await fetch(`http://127.0.0.1:${port}/health`)).json()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/util.js",
+        "line": 8,
+        "text": "import { readFileSync, writeFileSync, renameSync, existsSync, appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/adapters/util.js",
+        "line": 26,
+        "text": "try { appendFileSync(target, `${new Date().toISOString()} ${line}\\n`) } catch { /* best effort */ }"
+      },
+      {
+        "file": "lib/adapters/util.js",
+        "line": 82,
+        "text": "return { ok: true, data: JSON.parse(readFileSync(path, 'utf8')) }"
+      },
+      {
+        "file": "lib/adapters/util.js",
+        "line": 96,
+        "text": "writeFileSync(staged, JSON.stringify(data, null, 2))"
+      },
+      {
+        "file": "lib/adapters/util.js",
+        "line": 100,
+        "text": "writeFileSync(path, JSON.stringify(data, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 12,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 120,
+      "text": "cli: { name: 'Foo CLI', loginCommand: 'foo login', installHint: 'npm i -g foo',"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,119 @@
+{
+  "name": "@sakura12/oh-my-deepseekharness",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:14:14.149Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "fetch(HUD_ROUTE + '?cwd=' + encodeURIComponent(cwd) + '&_=' + Date.now(), { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/skills/self-improve/scripts/resolve-paths.mjs",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "assets/skills/self-improve/scripts/resolve-paths.mjs",
+        "line": 141,
+        "text": "mkdirSync(dirPath, { recursive: true });"
+      },
+      {
+        "file": "bin/graph-runner.mjs",
+        "line": 23,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/graph-runner.mjs",
+        "line": 74,
+        "text": "draft = JSON.parse(readFileSync(descriptorPath, 'utf8'))"
+      },
+      {
+        "file": "lib/commands.js",
+        "line": 5,
+        "text": "import { mkdir, writeFile, rm, readdir, stat } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/delegate.js",
+        "line": 128,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "const mcp = await import('@deepseek-ai/dsh-mcp-client')"
+      },
+      {
+        "file": "lib/memory.js",
+        "line": 127,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/memory.js",
+        "line": 137,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/memory.js",
+        "line": 149,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/graph/runner.js",
+        "line": 39,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/team.js",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "mcp-server/tools/codeintel.mjs",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "mcp-server/tools/codeintel.mjs",
+        "line": 89,
+        "text": "const child = spawn(entry.command, entry.args ?? [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "storage",
+    "subagents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

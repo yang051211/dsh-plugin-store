@@ -1,0 +1,95 @@
+{
+  "name": "@lone-wolf-akela/dsh-sandboxie-redirect",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-26T10:13:27.906Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boxes.mjs",
+        "line": 23,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/boxes.mjs",
+        "line": 212,
+        "text": "fs.rmSync(root, { recursive: true, force: true, maxRetries: 5, retryDelay: 200 });"
+      },
+      {
+        "file": "lib/cli.mjs",
+        "line": 8,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 15,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/dsh-locate.mjs",
+        "line": 35,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool.mjs",
+        "line": 189,
+        "text": "scope.tools.register("
+      },
+      {
+        "file": "lib/tool.mjs",
+        "line": 339,
+        "text": "export const inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boxes.mjs",
+        "line": 22,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/boxes.mjs",
+        "line": 202,
+        "text": "const result = spawnSync(exe, [`/box:${box}`, \"/silent\", \"/terminate\"], { windowsHide: true, timeout: 30000 });"
+      },
+      {
+        "file": "lib/dsh-locate.mjs",
+        "line": 34,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/dsh-locate.mjs",
+        "line": 223,
+        "text": "result = spawn(\"reg.exe\", [\"query\", key, \"/s\", \"/f\", DSH_DISPLAY_NAME, \"/d\"], {"
+      },
+      {
+        "file": "lib/inner.mjs",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

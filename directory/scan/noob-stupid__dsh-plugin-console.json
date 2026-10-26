@@ -1,0 +1,115 @@
+{
+  "name": "@noob-stupid/dsh-plugin-console",
+  "version": "0.5.92",
+  "scannedAt": "2026-10-26T10:13:55.636Z",
+  "icon": "noob-stupid__dsh-plugin-console.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1736,
+        "text": "const response = await fetch(path, body === undefined"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1756,
+        "text": "const response = await fetch(\"/plugin-console/run-suggested\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1803,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1826,
+        "text": "const res = await fetch(`https://gitee.com/${repo}/raw/${branch}/${file}`, { signal: AbortSignal.timeout(15000) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1831,
+        "text": "const attempts = RAW_CANDIDATES.map((build) => fetch(build(repo, branch, file), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync, existsSync, statSync, rmSync, readdirSync, mkdirSync, copyFileSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "      try { writeFileSync(join(dshHome(), 'plugin-console', 'fw-merge-error.log'), `${new Date().toISOString()} 清单对账：补 moduleName ${fixed.backfilled} 行，已启用转已适配 "
+      },
+      {
+        "file": "lib/server/domain/ai-run.js",
+        "line": 5,
+        "text": "import { writeFileSync, existsSync, statSync, rmSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/server/domain/ai-run.js",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/server/domain/ai-run.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/server/domain/ai-run.js",
+        "line": 443,
+        "text": "const child = spawn(file, args, { detached: true, stdio: 'ignore', windowsHide: true, cwd, shell: false })"
+      },
+      {
+        "file": "lib/server/domain/compat.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/server/domain/compat.js",
+        "line": 120,
+        "text": "child = spawn(process.execPath, ['--input-type=module', '-e', script, profileDir, moduleName], { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

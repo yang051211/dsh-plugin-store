@@ -1,0 +1,73 @@
+{
+  "name": "@openworkproof/dsh-plugin",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:13:59.731Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-version.js",
+        "line": 1,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host-version.js",
+        "line": 7,
+        "text": "const parsed = JSON.parse(readFileSync(packagePath, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'commands'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "disposers.push(ctx.tools.guard((exec) => policy.guard(exec)));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-client.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 56,
+        "text": "const child = spawn(config.bridgeCommand, [...config.bridgeArgs], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

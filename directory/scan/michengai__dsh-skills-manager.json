@@ -1,0 +1,113 @@
+{
+  "name": "@michengai/dsh-skills-manager",
+  "version": "1.2.20",
+  "scannedAt": "2026-10-26T10:13:43.869Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 25,
+        "text": "{let c=d===void 0?{}:{signal:d},p=await fetch(a,t===\"GET\"?{cache:\"no-store\",...c}:{method:\"POST\",headers:{\"content-type\":\"application/json\",[zo]:\"1\"},body:\"{}\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "return d.data})}function ka(a,t){return fetch(ya(\"/api/dsh-skills-manager\"+a),t).then(ro)}function Ga(a){return a.enabled!==void 0?a.enabled===!0:!!(a.invocatio"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 187,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${encodeURIComponent(packageName)}/latest`, { signal: AbortSignal.timeout(8e3) });"
+      },
+      {
+        "file": "lib/skills-sh-catalog.js",
+        "line": 23,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 12,
+        "text": "import { promises as fs, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 621,
+        "text": "raw = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 671,
+        "text": "await fs.mkdir(managerHomePath(), { recursive: true });"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 1305,
+        "text": "await fs.rm(path, { recursive: true, force: false });"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 1306,
+        "text": "else await fs.unlink(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "const inject = [\"webServer\", \"skills\", \"tools\", \"sessions\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 328,
+        "text": "if (ctx.tools && typeof ctx.tools.register === \"function\") {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 329,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 374,
+        "text": "    const child = spawn(process.execPath, [target.cliEntry, \"plugin\", \"--profile\", target.profileName, \"add\", \"--config.minimumReleaseAge=0\", packageSpec, \"--re"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 415,
+        "text": "const child = spawn(manager.command, [...manager.args, \"add\", \"--config.minimumReleaseAge=0\", packageSpec, \"--registry=https://registry.npmjs.org/\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

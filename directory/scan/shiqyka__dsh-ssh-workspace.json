@@ -1,0 +1,118 @@
+{
+  "name": "@shiqyka/dsh-ssh-workspace",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-26T10:14:16.506Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 38,
+        "text": "const res = await fetch(url, init)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1082,
+        "text": "const response = await fetch(`${API.upload}${query}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1129,
+        "text": "const response = await fetch(`${API.download}?alias=${encodeURIComponent(alias)}&path=${encodeURIComponent(remotePath)}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3106,
+        "text": "const response = await fetch(`${API.download}${query}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3155,
+        "text": "const response = await fetch(`${API.upload}${query}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 18,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 317,
+        "text": "config.privateKey = readFileSync(keyPath, 'utf8')"
+      },
+      {
+        "file": "lib/fs-shim.js",
+        "line": 48,
+        "text": "import fsPromises from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/fs-shim.js",
+        "line": 562,
+        "text": ": await fsPromises.readFile(source)"
+      },
+      {
+        "file": "lib/fs-shim.js",
+        "line": 577,
+        "text": "await fsPromises.writeFile(destination, bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "const installed = workspaceTools(ctx, engine, router, forwards, shells).map(tool => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/patch-subprocess.js",
+        "line": 451,
+        "text": "spawn (spec) {"
+      },
+      {
+        "file": "lib/patch-subprocess.js",
+        "line": 690,
+        "text": "* @throws {Error} when the mounted service has no `spawn()` to wrap."
+      },
+      {
+        "file": "lib/patch-subprocess.js",
+        "line": 699,
+        "text": "throw new Error('ssh-workspace: the mounted ctx.subprocess service has no spawn() to wrap')"
+      },
+      {
+        "file": "lib/patch-subprocess.js",
+        "line": 705,
+        "text": "return router.spawn(spec)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

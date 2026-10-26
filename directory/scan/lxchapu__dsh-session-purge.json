@@ -1,0 +1,70 @@
+{
+  "name": "@lxchapu/dsh-session-purge",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:13:34.388Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 180,
+        "text": "const response = await fetch(`${API}/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { readFile, readdir, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 310,
+        "text": "text = await readFile(absolute, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 323,
+        "text": "await writeFile(absolute, `${JSON.stringify(parsed, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 340,
+        "text": "await rm(absolute, { force: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 379,
+        "text": "const parsed = JSON.parse(await readFile(join(sidecar, 'sessions', `${sessionId}.json`), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionPersistence",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

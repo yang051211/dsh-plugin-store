@@ -1,0 +1,80 @@
+{
+  "name": "@stone100010/dsh-token-gauge",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:14:24.451Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "restart-and-verify.sh",
+        "line": 120,
+        "text": "boot=\"$(curl -s \"http://127.0.0.1:$PORT/?token=$TOKEN\" || true)\""
+      },
+      {
+        "file": "setup.sh",
+        "line": 119,
+        "text": "code=\"$(curl -s -o /dev/null -w '%{http_code}' \"http://127.0.0.1:$PORT/\" || true)\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "setup.sh",
+        "line": 49,
+        "text": "const fs = require(\"fs\");"
+      },
+      {
+        "file": "setup.sh",
+        "line": 51,
+        "text": "const p = JSON.parse(fs.readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "setup.sh",
+        "line": 63,
+        "text": "fs.writeFileSync(file, JSON.stringify(p, null, 2) + \"\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 43,
+      "text": "./setup.sh install      # symlink into ~/.dsh/profiles/web + register the bundle row"
+    },
+    {
+      "file": "README.md",
+      "line": 44,
+      "text": "./setup.sh verify       # compose the profile tree and confirm the plugin resolves"
+    },
+    {
+      "file": "README.md",
+      "line": 48,
+      "text": "Installed from npm instead? `setup.sh` ships in the tarball, but run it from a clone if you also want `restart-and-verify.sh` — npm installs only the runtime fi"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "text": "./setup.sh uninstall     # or: dsh plugin --profile web remove @stone100010/dsh-token-gauge"
+    }
+  ],
+  "skippedEntries": []
+}

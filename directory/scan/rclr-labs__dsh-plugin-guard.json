@@ -1,0 +1,75 @@
+{
+  "name": "@rclr-labs/dsh-plugin-guard",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:09.721Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 33,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 403,
+        "text": "fs.mkdirSync(path.dirname(arquivo), { recursive: true })"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 404,
+        "text": "fs.appendFileSync(arquivo, `${JSON.stringify(entrada)}\\n`)"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 413,
+        "text": "for (const linha of fs.readFileSync(arquivo, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 427,
+        "text": "if (fs.existsSync(arquivo)) fs.rmSync(arquivo)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "scope.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "execFile(process.execPath, [CLI, ...args], { maxBuffer: 16e6, timeout: 60_000 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,124 @@
+{
+  "name": "@lemoncat7/dsh-knowledge",
+  "version": "2.15.6",
+  "scannedAt": "2026-10-26T10:13:15.269Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "constructor(url, change, fetcher = (...args) => globalThis.fetch(...args)) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "const response = await fetch(`/knowledge-control/v1/writeback-changes?since=${encodeURIComponent(revision)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1878,
+        "text": "const response = await fetch(`${API_PREFIX}/${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 6658,
+        "text": "const response = await fetch(CONNECTION_CONTROL_PATH, {"
+      },
+      {
+        "file": "lib/knowledge-activity-api.js",
+        "line": 60,
+        "text": "const response = await fetch(`${API_PREFIX}/${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic-file.js",
+        "line": 2,
+        "text": "import { open, rename, rm, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 16,
+        "text": "await writeFile(temporary, content, {"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 29,
+        "text": "await rm(temporary, { force: true }).catch(() => { });"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 42,
+        "text": "await unlink(target);"
+      },
+      {
+        "file": "lib/atomic-file.js",
+        "line": 51,
+        "text": "await unlink(target).catch(unlinkError => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['llm', 'tools'];"
+      },
+      {
+        "file": "lib/note-confirmation.js",
+        "line": 52,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/note-confirmation.js",
+        "line": 80,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/note-reference-tools.js",
+        "line": 9,
+        "text": "ctx.tools.register(searchNotesTool(provider, noteCodec));"
+      },
+      {
+        "file": "lib/note-reference-tools.js",
+        "line": 10,
+        "text": "ctx.tools.register(manageNoteReferencesTool(provider, knowledgeCodec, noteCodec));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run clean && npm run build"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/notes/share-page-styles.js",
+    "lib/worklog/workspace.js",
+    "web/markdown-preview.js",
+    "web/note-editor.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

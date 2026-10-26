@@ -1,0 +1,120 @@
+{
+  "name": "@opfield/dsh-mcp-hub",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:13:59.946Z",
+  "icon": "opfield__dsh-mcp-hub.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 254,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "oauth.js",
+        "line": 14,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { existsSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "install.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "install.js",
+        "line": 35,
+        "text": "if (existsSync(manifest) && JSON.parse(readFileSync(manifest, 'utf8')).name === name) return dir"
+      },
+      {
+        "file": "launcher.js",
+        "line": 12,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "launcher.js",
+        "line": 44,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "catalog.js",
+        "line": 8,
+        "text": "// Same contract as @deepseek-ai/dsh-mcp-client so eager names do not change."
+      },
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['tools', 'webServer', 'connection']"
+      },
+      {
+        "file": "index.js",
+        "line": 459,
+        "text": "const dispose = this.ctx.tools.register(this.eagerDefinition(publicName, want.server, want.tool))"
+      },
+      {
+        "file": "index.js",
+        "line": 476,
+        "text": "this.meta.disposers.push(this.ctx.tools.register(this.callDefinition(description, names)))"
+      },
+      {
+        "file": "index.js",
+        "line": 477,
+        "text": "this.meta.disposers.push(this.ctx.tools.register(this.describeDefinition(names)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launcher.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "launcher.js",
+        "line": 130,
+        "text": "execFile(file, args, { cwd: tmpdir(), env, timeout: timeoutMs, maxBuffer: 1 << 20 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "oauth.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "oauth.js",
+        "line": 43,
+        "text": "execFile(cmd, args, { stdio: 'ignore' }, () => {})"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

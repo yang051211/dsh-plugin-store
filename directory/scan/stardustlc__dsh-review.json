@@ -1,0 +1,106 @@
+{
+  "name": "@stardustlc/dsh-review",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:14:24.049Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/check.js",
+        "line": 2,
+        "text": "import { realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 2,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 35,
+        "text": "const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')), pr = event.pull_request, repository = event.repository?.full_name;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 1,
+        "text": "{ appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, rmdirSync, unlinkSync, copyFileSync, constants, realpathSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools', 'subagents', 'permissionPresets', 'jobs'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "const tools = agent.ctx?.get?.('tools') ?? ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "ctx.effect(() => ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "ctx.tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exec.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/exec.js",
+        "line": 14,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "permissionPresets",
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 35,
+      "text": "Default state is `DSH_HOME/plugins/dsh-review/<repository hash>/`. A workspace child directory can be configured explicitly. Corrupt ledgers fail closed; v1 evi"
+    },
+    {
+      "file": "README.md",
+      "line": 101,
+      "text": "默认状态保存在 DSH_HOME/plugins/dsh-review/<仓库摘要>/，不写入被审项目。可指定仓库内子目录，例如 .dsh-review。账本版本为 2；旧账本会保留备份，旧版本的“通过”不会沿用。"
+    }
+  ],
+  "skippedEntries": []
+}

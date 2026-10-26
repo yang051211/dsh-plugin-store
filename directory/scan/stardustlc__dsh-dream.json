@@ -1,0 +1,103 @@
+{
+  "name": "@stardustlc/dsh-dream",
+  "version": "0.12.0",
+  "scannedAt": "2026-10-26T10:14:20.966Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 659,
+        "text": "const res = await fetch(routeUrl(params.join(\"&\")), init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 689,
+        "text": "const res = await fetch(routeUrlFor(KNOWLEDGE_ROUTE, \"\"), init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 718,
+        "text": "const res = await fetch(routeUrlFor(BRIDGE_ROUTE, \"\"), init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 744,
+        "text": "const res = await fetch(routeUrlFor(ACTION_ROUTE, \"\"), init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2016,
+        "text": "const response = await fetch(routeUrlFor('api/dsh-dream/automatic', ''), { credentials: 'same-origin', signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/automatic-state.js",
+        "line": 2,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/automatic-state.js",
+        "line": 15,
+        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/automatic-state.js",
+        "line": 45,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/automatic-state.js",
+        "line": 56,
+        "text": "const owner = JSON.parse(readFileSync(lock, 'utf8'));"
+      },
+      {
+        "file": "lib/automatic-state.js",
+        "line": 67,
+        "text": "unlinkSync(lock);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "/** cordis 服务注入：要用 ctx.tools 与 ctx.skills。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

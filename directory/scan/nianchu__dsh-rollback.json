@@ -1,0 +1,83 @@
+{
+  "name": "@nianchu/dsh-rollback",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-26T10:13:53.638Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 597,
+        "text": "const blob = await (await fetch(url)).blob();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 608,
+        "text": "const blob = await (await fetch(url)).blob();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { open, readFile, readdir, rename, rmdir, stat, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 917,
+        "text": "await handle.writeFile(content, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 932,
+        "text": "await unlink(tempPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 946,
+        "text": "const buffer = await readFile(hostPath, signal === void 0 ? {} : { signal });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "ctx.tools,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

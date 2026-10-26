@@ -1,0 +1,90 @@
+{
+  "name": "@moonquake2004/dsh-doctor",
+  "version": "0.8.9",
+  "scannedAt": "2026-10-26T10:13:48.473Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 84,
+        "text": "const res = await fetch('/dsh-doctor/run', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 57,
+        "text": "import { closeSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, realpathSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 138,
+        "text": "try { v = JSON.parse(readFileSync(join(dirname(dirname(lib)), 'package.json'), 'utf8')).version; } catch { /* 忽略 */ }"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 150,
+        "text": "const s = readFileSync(lib, 'utf8');"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 178,
+        "text": "const s = readFileSync(f, 'utf8');"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 414,
+        "text": "const e = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).engines?.node;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 56,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 436,
+        "text": "2' ? ['where'] : ['which']) { const r = spawnSync(w, [cmd]); if (r.status === 0) { const p = String(r.stdout).split(/\\r?\\n/)[0].trim(); if (p) return p; } } ret"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 446,
+        "text": "const nv = spawnSync('node', ['-e', 'console.log(process.version)']);"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 479,
+        "text": "    const found = (() => { const r = spawnSync(whichCmd, ['dsh'], { encoding: 'utf8' }); return r.status === 0 ? String(r.stdout).split(/\\r?\\n/)[0].trim() : nul"
+      },
+      {
+        "file": "dsh-doctor.mjs",
+        "line": 483,
+        "text": "const r = spawnSync(process.platform === 'win32' ? 'dsh.cmd' : 'dsh', ['--version'], { encoding: 'utf8', timeout: 15000, shell: process.platform === 'win32' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

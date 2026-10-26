@@ -1,0 +1,71 @@
+{
+  "name": "@snylonue/dsh-context-policy",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:14:19.743Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/builtin-tokenizers.js",
+        "line": 1,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/builtin-tokenizers.js",
+        "line": 7,
+        "text": "const data = JSON.parse(gunzipSync(readFileSync(new URL(`../assets/${asset}/tokenizer.json.gz`, import.meta.url))).toString(\"utf8\"));"
+      },
+      {
+        "file": "scripts/audit.ts",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/audit.ts",
+        "line": 25,
+        "text": "const compressed = await readFile(file);"
+      },
+      {
+        "file": "scripts/prepare-o200k.ts",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check.ts",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/check.ts",
+        "line": 18,
+        "text": "const result = spawnSync(process.execPath, args, { cwd, stdio: \"inherit\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

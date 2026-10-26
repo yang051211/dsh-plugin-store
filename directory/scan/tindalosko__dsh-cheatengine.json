@@ -1,0 +1,79 @@
+{
+  "name": "@tindalosko/dsh-cheatengine",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:14:30.726Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 45,
+        "text": "fetch(\"/ce-status/api\").then((r) => r.json()).then((d) => {"
+      },
+      {
+        "file": "lib/web.js",
+        "line": 92,
+        "text": "fetch('/ce-status/api').then(function(r){return r.json()}).then(render).catch(function(){});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools/script.js",
+        "line": 1,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/tools/script.js",
+        "line": 90,
+        "text": "await fs.mkdir(autorunDir, { recursive: true });"
+      },
+      {
+        "file": "lib/tools/script.js",
+        "line": 93,
+        "text": "await fs.writeFile(autorunPath, autorunScript, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'skills', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "schemas = ctx.tools.schemas(exec?.agent) || [];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "return createToolDefs(client).map((def) => ctx.tools.register(buildTool(ctx, client, def)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,79 @@
+{
+  "name": "@lynn123411/dsh-kimi-cu",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:13:33.445Z",
+  "icon": "lynn123411__dsh-kimi-cu.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 24,
+        "text": "import { existsSync, readFileSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 37,
+        "text": "const manifest = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 83,
+        "text": "const patchText = readFileSync(join(packageDir, manifest.dsh.bundle.patch), 'utf8');"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 95,
+        "text": "const locale = JSON.parse(readFileSync(join(packageDir, 'locale', `${lang}.json`), 'utf8'));"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 104,
+        "text": "const block = /^---\\r?\\n([\\s\\S]*?)\\r?\\n---/.exec(readFileSync(skillFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 13,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 114,
+        "text": "assert.match(patchText, /name: '@deepseek-ai\\/dsh-mcp-client'/, 'MCP 那行要挂内核的 mcp-client');"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 154,
+        "text": "* @param {string} name - 包名，例如 `@deepseek-ai/dsh-mcp-client`。"
+      },
+      {
+        "file": "scripts/check-bundle.mjs",
+        "line": 199,
+        "text": "client: kernelPackageDir(kernel, '@deepseek-ai/dsh-mcp-client'),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

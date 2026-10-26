@@ -1,0 +1,77 @@
+{
+  "name": "@lycheelink/dsh-workbench",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:13:32.162Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 7,
+        "text": "import { readFileSync, writeFileSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 30,
+        "text": "const raw = readFileSync(cjsOut, \"utf8\");"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 39,
+        "text": "writeFileSync(clientOut, wrapped, \"utf8\");"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 40,
+        "text": "rmSync(cjsOut, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/package-release.mjs",
+        "line": 4,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/package-release.mjs",
+        "line": 9,
+        "text": "execSync(\"npm run build\", { cwd: rootDir, stdio: \"inherit\" });"
+      },
+      {
+        "file": "scripts/package-release.mjs",
+        "line": 10,
+        "text": "execSync(\"npm pack\", { cwd: rootDir, stdio: \"inherit\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

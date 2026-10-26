@@ -1,0 +1,90 @@
+{
+  "name": "@tecfancy/dsh-dock-terminal",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:14:29.558Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7630,
+        "text": "const ws = new WebSocket(`/dock-terminal/ws?sessionId=${encodeURIComponent(sessionId)}&tab=${encodeURIComponent(tabId)}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/pty-bridge/pty.js",
+        "line": 1,
+        "text": "import { chmodSync, existsSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 37,
+        "text": "disposers.push(host.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 112,
+        "text": "disposers.push(host.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 166,
+        "text": "disposers.push(host.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 212,
+        "text": "disposers.push(host.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 277,
+        "text": "disposers.push(host.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/features/agent-terminal/tools.js",
+        "line": 79,
+        "text": "const created = await terminals.spawn(owner, {"
+      },
+      {
+        "file": "lib/features/pty-bridge/pty.js",
+        "line": 49,
+        "text": "const pty = this.nodePty.spawn(this.shell, this.shellArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node -e \"try { require.resolve('husky') } catch { process.exit(0) } require('node:child_process').execSync('husky', { stdio: 'inherit' })\""
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,87 @@
+{
+  "name": "@marlonlau/dsh-wallpaper-engine",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:13:37.490Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 310,
+        "text": "fetch('/we/list' + (refresh ? '?source=auto&refresh=1' : ''), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 328,
+        "text": "fetch('/we/status', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 341,
+        "text": "fetch('/we/config', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "const res = await fetch(base + '/api/wallpaper/list', { signal: AbortSignal.timeout(1500) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { readFile, readdir, stat, realpath, writeFile, rename, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { createReadStream } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "try { return JSON.parse(await readFile(storageFile(), 'utf8')) } catch { return {} }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "await mkdir(join(file, '..'), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "await writeFile(tmp, JSON.stringify(cfg, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

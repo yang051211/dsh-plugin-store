@@ -1,0 +1,98 @@
+{
+  "name": "@liu_zhao_feng_alex/dsh-plugin-openproject",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:13:20.330Z",
+  "icon": "liu_zhao_feng_alex__dsh-plugin-openproject.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.js",
+        "line": 11,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 12,
+        "text": "import https from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 216,
+        "text": "const text = (await readFile(config.tokenFile, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/tools/attachments.js",
+        "line": 10,
+        "text": "import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/tools/attachments.js",
+        "line": 81,
+        "text": "const data = await readFile(absolute);"
+      },
+      {
+        "file": "lib/tools/attachments.js",
+        "line": 142,
+        "text": "await mkdir(dirname(absolute), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "index.js",
+        "line": 174,
+        "text": "* 工具模块只用到 `ctx.tools.register`（共 35 处），因此用原型链转发其余属性即可，"
+      },
+      {
+        "file": "index.js",
+        "line": 185,
+        "text": "const tools = Object.create(ctx.tools, {"
+      },
+      {
+        "file": "index.js",
+        "line": 187,
+        "text": "value: (definition) => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 260,
+        "text": "toolCtx.tools.register(textTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

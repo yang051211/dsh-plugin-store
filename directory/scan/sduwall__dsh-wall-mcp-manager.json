@@ -1,0 +1,67 @@
+{
+  "name": "@sduwall/dsh-wall-mcp-manager",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:14.725Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 26,
+        "text": "const response = await fetch(`${BRIDGE_PREFIX}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 5,
+        "text": "# `@deepseek-ai/dsh-mcp-client` 实例，在运行时通过 loader 动态挂载。"
+      },
+      {
+        "file": "src/index.js",
+        "line": 16,
+        "text": "*   `@deepseek-ai/dsh-mcp-client` 实例」之上，没有 loader 就无从挂载；"
+      },
+      {
+        "file": "src/index.js",
+        "line": 17,
+        "text": "* - `tools`：工具清单与参数/返回 schema 都读自 `ctx.tools`，而且 mcp-client"
+      },
+      {
+        "file": "src/index.js",
+        "line": 18,
+        "text": "*   自身就 `inject: ['tools']`——宿主没有 tools 时实例根本起不来，"
+      },
+      {
+        "file": "src/index.js",
+        "line": 26,
+        "text": "export const inject = ['loader', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

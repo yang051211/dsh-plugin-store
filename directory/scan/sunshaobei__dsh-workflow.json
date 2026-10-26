@@ -1,0 +1,102 @@
+{
+  "name": "@sunshaobei/dsh-workflow",
+  "version": "3.0.6",
+  "scannedAt": "2026-10-26T10:14:26.931Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 13244,
+        "text": "const response = await fetch(BASE + path2, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 9,
+        "text": "import { promises as fsp } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 10,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 91,
+        "text": "return await fsp.readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 112,
+        "text": "await fsp.writeFile(tmp, JSON.stringify(value, null, 2) + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 119,
+        "text": "await fsp.writeFile(tmp, text, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = [\"tools\", \"subagents\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 255,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/world-driver.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/world-driver.js",
+        "line": 17,
+        "text": "const child = spawn(command.file, command.args ?? [], {"
+      },
+      {
+        "file": "vendor/dynamic-workflow-runtime/harness.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/dynamic-workflow-runtime/harness.js",
+        "line": 62,
+        "text": "child = spawn(process.execPath, options.childSpawn === undefined"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js",
+    "vendor/dynamic-workflow/compiler/libs.generated.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

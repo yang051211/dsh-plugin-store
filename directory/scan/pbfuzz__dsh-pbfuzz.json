@@ -1,0 +1,118 @@
+{
+  "name": "@pbfuzz/dsh-pbfuzz",
+  "version": "0.1.21",
+  "scannedAt": "2026-10-26T10:14:01.898Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/run-digest.js",
+        "line": 15,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/run-digest.js",
+        "line": 27,
+        "text": "for (const line of readFileSync(path, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "lib/engine-bridge.js",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/env-verify.js",
+        "line": 18,
+        "text": "import { chmodSync, existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/env-verify.js",
+        "line": 257,
+        "text": "mkdirSync(scratchParent, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "contracts/pbfuzz-settings.schema.json",
+        "line": 5,
+        "text": "hema. Enforcement runs in-process (a native `ctx.tools.guard()` inside the host plugin), so there is no settings snapshot file for a separate process to read.\","
+      },
+      {
+        "file": "contracts/pbfuzz-settings.schema.json",
+        "line": 12,
+        "text": " exercised for real by the startup self-check; a tool disabled here has its pbfuzz tools hidden by `ctx.tools.restrict()` and denied by the `phase_gate` hook.\","
+      },
+      {
+        "file": "contracts/pbfuzz-settings.schema.json",
+        "line": 136,
+        "text": "on\": \"In-process enforcement (a native `ctx.tools.guard()` in the host plugin) governing state writes, phase legality and shell commands that would tamper with "
+      },
+      {
+        "file": "contracts/state/state.schema.json",
+        "line": 5,
+        "text": "s. A direct agent `write`/`edit` under the campaign's state directory is denied by the host's `ctx.tools.guard()` and pointed at the tool that owns this file.\","
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 7,
+        "text": "# tamper detection are enforced natively (a single `ctx.tools.guard()`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine-bridge.js",
+        "line": 7,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/engine-bridge.js",
+        "line": 47,
+        "text": "const run = spawnSync(command, ['-c', 'import sys; print(sys.version_info >= (3, 11))'], { encoding: 'utf8', timeout: 1_500 });"
+      },
+      {
+        "file": "lib/engine-bridge.js",
+        "line": 88,
+        "text": "* @param env - the merged environment about to be handed to `spawn()`."
+      },
+      {
+        "file": "lib/engine-bridge.js",
+        "line": 198,
+        "text": "const child = spawn(python, [...ENGINE_ARGV], {"
+      },
+      {
+        "file": "lib/env-verify.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

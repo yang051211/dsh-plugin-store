@@ -1,0 +1,82 @@
+{
+  "name": "@qian-dsh/dsh-mcp-bridge",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:14:07.102Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/mcp-test.js",
+        "line": 17,
+        "text": "const res = await fetch(base, {"
+      },
+      {
+        "file": "dsh/mcp-test.js",
+        "line": 42,
+        "text": "const res = await fetch(base, {"
+      },
+      {
+        "file": "dsh/mcp.js",
+        "line": 22,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 19,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 43,
+        "text": "const saved = JSON.parse(readFileSync(STORE_PATH, 'utf8').replace(/^\\uFEFF/, ''))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 78,
+        "text": "const ensureInbox = () => mkdirSync(inboxRoot, { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 88,
+        "text": "writeFileSync(path, `${JSON.stringify({"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 114,
+        "text": "writeFileSync(join(inboxRoot, `${id}.json`), `${JSON.stringify(manifest, null, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

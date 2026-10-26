@@ -1,0 +1,113 @@
+{
+  "name": "@mrweicodes/dsh-permgate",
+  "version": "1.7.2",
+  "scannedAt": "2026-10-26T10:13:51.118Z",
+  "icon": "mrweicodes__dsh-permgate.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 490,
+        "text": "return fetch(path, opts).then((r) => {"
+      },
+      {
+        "file": "shell-parse.js",
+        "line": 6516,
+        "text": "//     curl -s http://example.com |&>& log & echo done   HEAD ask → 当前 **allow** ❌"
+      },
+      {
+        "file": "shell-parse.js",
+        "line": 6660,
+        "text": "//     curl -s http://example.com    → ask"
+      },
+      {
+        "file": "shell-parse.js",
+        "line": 6661,
+        "text": "//     curl -s http://example.com &  → **allow** ← 用户写的确认规则被规避"
+      },
+      {
+        "file": "shell-parse.js",
+        "line": 6662,
+        "text": "//     curl -s http://example.com ;  → ask（`;` 早已在豁免列表里，故这是不一致，不是设计）"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "dFileSync as fsReadFileSync, readdirSync as fsReaddirSync, unlinkSync as fsUnlinkSync, lstatSync as fsLstatSync, realpathSync as fsRealpathSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 234,
+        "text": "// 直接 `await import('node:fs')` —— 这条路径**不经任何工具调用**，因此也不经"
+      },
+      {
+        "file": "index.js",
+        "line": 863,
+        "text": "inject: ['fs', 'sandboxPolicy', 'tools', 'webServer', 'timer', 'approval', 'permissionPresets', 'sessions'],"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 389,
+        "text": "// 由调用方用 sreUndoWrites() 探测后传入 —— 探测要读 ctx.tools，而本函数有意保持为纯函数。"
+      },
+      {
+        "file": "index.js",
+        "line": 863,
+        "text": "inject: ['fs', 'sandboxPolicy', 'tools', 'webServer', 'timer', 'approval', 'permissionPresets', 'sessions'],"
+      },
+      {
+        "file": "index.js",
+        "line": 1995,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 7135,
+        "text": "onDispose(ctx.tools.register(defineTool(definition)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1677,
+        "text": "const handle = sub.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 1738,
+        "text": "const handle = sub.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 7069,
+        "text": "const handle = sub.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

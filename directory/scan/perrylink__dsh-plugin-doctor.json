@@ -1,0 +1,98 @@
+{
+  "name": "@perrylink/dsh-plugin-doctor",
+  "version": "0.7.4",
+  "scannedAt": "2026-10-26T10:14:05.062Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 14,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 42,
+        "text": "mkdirSync(reportDir, { recursive: true })"
+      },
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 63,
+        "text": "report = JSON.parse(readFileSync(reportPath, 'utf8'))"
+      },
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 94,
+        "text": "appendFileSync(out, ["
+      },
+      {
+        "file": "doctor.mjs",
+        "line": 8,
+        "text": "import { readFileSync, existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-surface.data.mjs",
+        "line": 1327,
+        "text": "\"@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "plugin.mjs",
+        "line": 28,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "plugin.mjs",
+        "line": 117,
+        "text": "ctx.effect(() => tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": ".github/actions/doctor/index.mjs",
+        "line": 58,
+        "text": "const run = spawnSync(process.execPath, args, { stdio: 'inherit', cwd: workspace })"
+      },
+      {
+        "file": "lib/util.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/util.mjs",
+        "line": 73,
+        "text": "const res = spawnSync(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

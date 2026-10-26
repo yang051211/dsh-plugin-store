@@ -1,0 +1,81 @@
+{
+  "name": "@rayfalling/dsh-tool-visibility",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:14:09.517Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 44,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 112,
+        "text": "const parsed = JSON.parse(await readFile(stateFile, 'utf8'));"
+      },
+      {
+        "file": "src/index.js",
+        "line": 129,
+        "text": "await mkdir(path.dirname(stateFile), { recursive: true });"
+      },
+      {
+        "file": "src/index.js",
+        "line": 134,
+        "text": "await writeFile(stateFile, JSON.stringify(state, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# the root composition. At root scope `ctx.tools.restrict` is unavailable, so"
+      },
+      {
+        "file": "src/index.js",
+        "line": 8,
+        "text": "*  1. `ctx.tools.restrict({ deny })` — the ToolRuntime's per-scope visibility"
+      },
+      {
+        "file": "src/index.js",
+        "line": 33,
+        "text": "* (`ctx.tools`, `ctx.systemPrompt`, `ctx.connection`), so the package loads in"
+      },
+      {
+        "file": "src/index.js",
+        "line": 50,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 182,
+        "text": "lift = ctx.tools.restrict({ deny });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

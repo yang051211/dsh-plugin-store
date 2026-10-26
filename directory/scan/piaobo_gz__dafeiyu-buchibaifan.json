@@ -1,0 +1,108 @@
+{
+  "name": "@piaobo_gz/dafeiyu-buchibaifan",
+  "version": "1.0.7",
+  "scannedAt": "2026-10-26T10:14:04.269Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "fetch(CONFIG_ENDPOINT, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "const response = await fetch(CONFIG_ENDPOINT, {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 247,
+        "text": "const response = await fetch(connection.authenticatedUrl(baseUrlOf()), { redirect: 'manual' })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 269,
+        "text": "const socket = new WebSocket(url)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 365,
+        "text": "return fetch(`${baseUrlOf()}/api/respond`, { method: 'POST', headers, body })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-packaged-helper.mjs",
+        "line": 2,
+        "text": "import { mkdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/test-packaged-helper.mjs",
+        "line": 19,
+        "text": "await mkdir(dirname(snapshot), { recursive: true })"
+      },
+      {
+        "file": "scripts/test-packaged-helper.mjs",
+        "line": 20,
+        "text": "await rm(snapshot, { force: true })"
+      },
+      {
+        "file": "src/helper-process.js",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-packaged-helper.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-packaged-helper.mjs",
+        "line": 22,
+        "text": "const child = spawn(executable, ['--snapshot', snapshot], {"
+      },
+      {
+        "file": "src/helper-process.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/helper-process.js",
+        "line": 59,
+        "text": "const child = spawn(command, [...args, ...extraArgs], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "runtime/bin/win32-x64/dsh-dafeiyu-helper.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 66,
+      "text": "# 閲嶆柊鎵撳寘 Windows Helper锛堥渶 Python + PySide6 + PyInstaller锛?python -m pip install -r requirements.txt pyinstaller"
+    }
+  ],
+  "skippedEntries": []
+}

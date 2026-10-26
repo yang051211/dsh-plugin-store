@@ -1,0 +1,77 @@
+{
+  "name": "@lyra_wang/dsh-image-ocr",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:13:34.760Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 104,
+        "text": "const response = await fetch('/plugins/image-ocr/ocr', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 66,
+        "text": "mkdirSync(CACHE_DIR, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 139,
+        "text": "writeFileSync(tempPath, buffer);"
+      },
+      {
+        "file": "index.js",
+        "line": 149,
+        "text": "try { unlinkSync(tempPath); } catch { /* 忽略清理失败 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 67,
+        "text": "execFile('/usr/bin/xcrun', ['swiftc', '-O', '-o', BINARY, SOURCE], {"
+      },
+      {
+        "file": "index.js",
+        "line": 93,
+        "text": "execFile(binary, imagePath ? [imagePath] : ['--clipboard'], { timeout: 120_000, maxBuffer: 8 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

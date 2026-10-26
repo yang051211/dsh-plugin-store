@@ -1,0 +1,111 @@
+{
+  "name": "@purea/dsh-mcp-manager",
+  "version": "0.0.2",
+  "scannedAt": "2026-10-26T10:14:06.211Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/probe.js",
+        "line": 382,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "dist/probe.js",
+        "line": 438,
+        "text": "fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/atomic.js",
+        "line": 4,
+        "text": "import { lstat, mkdir, open, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/atomic.js",
+        "line": 54,
+        "text": "await mkdir(dirname(filename), { recursive: true });"
+      },
+      {
+        "file": "dist/atomic.js",
+        "line": 59,
+        "text": "await handle.writeFile(content, \"utf8\");"
+      },
+      {
+        "file": "dist/atomic.js",
+        "line": 76,
+        "text": "await rm(temp, { force: true }).catch(() => void 0);"
+      },
+      {
+        "file": "dist/atomic.js",
+        "line": 104,
+        "text": "await mkdir(dirname(filename), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/contract.js",
+        "line": 15,
+        "text": "const MCP_CLIENT_PACKAGE = \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "dist/contract.js",
+        "line": 16,
+        "text": "/** Valid `serverName`, mirroring `@deepseek-ai/dsh-mcp-client`'s own pattern. */"
+      },
+      {
+        "file": "dist/entries.js",
+        "line": 86,
+        "text": "if (entry.options.name !== \"@deepseek-ai/dsh-mcp-client\") continue;"
+      },
+      {
+        "file": "dist/entries.js",
+        "line": 102,
+        "text": "for (const schema of ctx.tools.schemas()) if (typeof schema?.name === \"string\" && schema.name.startsWith(prefix)) count += 1;"
+      },
+      {
+        "file": "dist/validate.js",
+        "line": 27,
+        "text": "* Mirrors the INSTALLED `@deepseek-ai/dsh-mcp-client` schema, copied here as a"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/probe.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/probe.js",
+        "line": 42,
+        "text": "* `spawn(..., { shell: false })` cannot execute `npx` (a `.cmd` shim), so"
+      },
+      {
+        "file": "dist/probe.js",
+        "line": 153,
+        "text": "const child = spawn(target.command, target.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

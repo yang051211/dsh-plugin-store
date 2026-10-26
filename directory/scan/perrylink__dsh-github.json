@@ -1,0 +1,128 @@
+{
+  "name": "@perrylink/dsh-github",
+  "version": "0.7.27",
+  "scannedAt": "2026-10-26T10:14:02.534Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-endpoints.mjs",
+        "line": 4,
+        "text": "import { request } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ci/pipeline.js",
+        "line": 20,
+        "text": "import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/ci/pipeline.js",
+        "line": 104,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/ci/pipeline.js",
+        "line": 107,
+        "text": "writeFileSync(jsonPath, JSON.stringify({ schemaVersion: 1, ...result, files: { json: jsonPath, markdown: markdownPath } }, null, 2) + '\\n');"
+      },
+      {
+        "file": "lib/ci/pipeline.js",
+        "line": 108,
+        "text": "writeFileSync(markdownPath, formatMarkdownReport(result, { blocking: state.config.ci.blocking, checkName: state.config.ci.checkName }) + '\\n');"
+      },
+      {
+        "file": "lib/ci/pipeline.js",
+        "line": 111,
+        "text": "appendFileSync(outputFile, `verdict=${result.verdict}\\n`"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'commands', 'jobs', 'approval', 'credentials'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "// Service Provider — registers the GitHub tools on ctx.tools; the /pr"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "ctx.tools.register(prCreateTool(state));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "ctx.tools.register(prMergeTool(state));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "ctx.tools.register(prUpdateTool(state));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credential.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/credential.js",
+        "line": 19,
+        "text": "execFile('gh', args, { windowsHide: true, signal, maxBuffer: 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 14,
+        "text": "execFile('git', args, { cwd: options.cwd, windowsHide: true, signal: options.signal, maxBuffer: 8 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "scripts/local-test.mjs",
+        "line": 25,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "commands",
+    "credentials",
+    "jobs",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

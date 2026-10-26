@@ -1,0 +1,142 @@
+{
+  "name": "@sstreichan/oh-my-dsh-slim",
+  "version": "0.1.18",
+  "scannedAt": "2026-10-26T10:14:21.111Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1774,
+        "text": "const r = await fetch('/api/interviews');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1844,
+        "text": "const resp = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2907,
+        "text": "const llmsResp = await fetch(llmsUrl, { signal: exec.signal });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2930,
+        "text": "const resp = await fetch(args.url, { signal: exec.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { access, copyFile, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1343,
+        "text": "await mkdir(join(imagePath, \"..\"), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1344,
+        "text": "await writeFile(imagePath, Buffer.from(data, \"base64\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1678,
+        "text": "await mkdir(join(process.cwd(), outputFolder), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1814,
+        "text": "disposers.push(ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1815,
+        "text": "log.info(\"registered mcp %s as fallback search tool (mount @deepseek-ai/dsh-mcp-client for full MCP support)\", mcp.name);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1822,
+        "text": "description: `${mcp.description} (Fallback HTTP mode — no streaming, no notifications. Mount @deepseek-ai/dsh-mcp-client for full MCP support.)`,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1855,
+        "text": "if (!resp.ok) return `${mcp.name}: HTTP ${resp.status} ${resp.statusText}. Mount @deepseek-ai/dsh-mcp-client for full MCP support.`;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1859,
+        "text": "return `${mcp.name}: fetch failed: ${e.message}. Mount @deepseek-ai/dsh-mcp-client for full MCP support.`;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1922,
+        "text": "const proc = spawn(\"which\", [name], { stdio: ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1937,
+        "text": "const proc = spawn(bin, args, { stdio: ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2468,
+        "text": "childProcess = spawn(bin, [], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2599,
+        "text": "const proc = spawn(\"sg\", args, { stdio: ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 169,
+      "text": "npm i -g @sstreichan/oh-my-dsh-slim"
+    }
+  ],
+  "skippedEntries": []
+}

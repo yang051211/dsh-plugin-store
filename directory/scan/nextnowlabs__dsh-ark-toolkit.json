@@ -1,0 +1,140 @@
+{
+  "name": "@nextnowlabs/dsh-ark-toolkit",
+  "version": "0.2.0-rc.1",
+  "scannedAt": "2026-10-26T10:13:53.215Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 511,
+        "text": "const response = await fetch(ACTIONS_ROUTE, { credentials: 'same-origin', ...init });"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 160,
+        "text": "const response = await fetch(payload.healthUrl, { signal: AbortSignal.timeout(2000) })"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 295,
+        "text": "response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 343,
+        "text": "const imageResponse = await fetch(entry.url, { signal: operation.signal });"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 442,
+        "text": "response = await fetch(tts.baseUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifact-access.js",
+        "line": 8,
+        "text": "import { constants as fsConstants } from 'node:fs';"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 9,
+        "text": "import { chmod, lstat, mkdir, open, readFile, realpath, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 98,
+        "text": "const key = await readFile(path);"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 110,
+        "text": "await mkdir(root, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/artifact-access.js",
+        "line": 121,
+        "text": "await writeFile(path, candidate, { flag: 'wx', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exposure.js",
+        "line": 199,
+        "text": "toolDisposers.push(agent.ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/exposure.js",
+        "line": 231,
+        "text": "state.liftRestriction = agent.ctx.tools.restrict({ deny: [ARK_TOOLKIT_ACTIVATE] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'credentials', 'skills', 'subprocess', 'agents', 'sessions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "activationTool = ctx.tools.register(exposure.activationTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-update.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 45,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 127,
+        "text": "const child = spawn(payload.pnpmPath, args, {"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 148,
+        "text": "const launch = () => spawn(payload.execPath, payload.args, {"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 407,
+        "text": "helper = spawn(process.execPath, ['-e', PLUGIN_RESTART_HELPER_SOURCE, payload], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "sessions",
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

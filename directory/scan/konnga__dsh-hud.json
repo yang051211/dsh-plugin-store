@@ -1,0 +1,78 @@
+{
+  "name": "@konnga/dsh-hud",
+  "version": "0.9.2",
+  "scannedAt": "2026-10-26T10:13:10.529Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2753,
+        "text": "* 只收确定档不够用 —— 图几乎都是脚本/命令产出的（`python gen.py`、`cp`、`curl -o`），"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/git.js",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host/image.js",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host/image.js",
+        "line": 173,
+        "text": "return describeSide(await fs.promises.readFile(full));"
+      },
+      {
+        "file": "lib/host/readers.js",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/git.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 19,
+        "text": "execFile('git', args, { cwd, timeout: timeoutMs, maxBuffer: MAX_BUFFER_BYTES, windowsHide: true, encoding: 'utf8' }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/host/git.js",
+        "line": 173,
+        "text": "execFile('git', args, { cwd, timeout: GIT_TIMEOUT_MS, maxBuffer: maxBytes, windowsHide: true, encoding: 'buffer' }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

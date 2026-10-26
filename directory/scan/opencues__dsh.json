@@ -1,0 +1,115 @@
+{
+  "name": "@opencues/dsh",
+  "version": "0.2.21",
+  "scannedAt": "2026-10-26T10:13:58.979Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2733,
+        "text": "ync function doRequest(t){let e=await t.fetch(RESPONSES_URL,{method:\"POST\",headers:{...STATIC_HEADERS,Authorization:`Bearer ${t.access_token}`,\"ChatGPT-Account-"
+      },
+      {
+        "file": "client.js",
+        "line": 4275,
+        "text": "s{constructor(e={}){this.config=e;let n=require(\"https\");this.agent=new n.Agent({keepAlive:!0,maxSockets:e.maxSockets||2,timeout:e.timeout||Kd}),this.providerOv"
+      },
+      {
+        "file": "client.js",
+        "line": 4383,
+        "text": "ontent names an entity one of these can fetch (a stock ticker, a city's weather, \\u2026), emit the function CALL with that entity as the argument; the runtime f"
+      },
+      {
+        "file": "client.js",
+        "line": 4387,
+        "text": " gl=class{async post(e,n,a){let r=await fetch(e,{method:\"POST\",headers:{\"Content-Type\":\"application/json\",...a},body:n});if(!r.ok)throw new Error(`HTTP ${r.stat"
+      },
+      {
+        "file": "client.js",
+        "line": 4411,
+        "text": "ing\"?t:t?.url??String(t),a=await window.fetch(\"/opencues/llm/proxy\",{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify({url:n,method"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2733,
+        "text": "adAuth=async()=>{let fs=eval(\"require\")(\"fs/promises\"),os=eval(\"require\")(\"os\"),path=eval(\"require\")(\"path\"),authPath=path.join(os.homedir(),\".codex\",\"auth.json"
+      },
+      {
+        "file": "client.js",
+        "line": 2751,
+        "text": "ncues set-key`)}var vi=new Set;function rm(t,e){let n=`${t}|${e}`;vi.has(n)||(vi.add(n),qt(`[opencues] custom LLM endpoint in use: provider=${t} endpoint=${e} \\"
+      },
+      {
+        "file": "client.js",
+        "line": 4265,
+        "text": ".name+\"/\"+n,s=t+\"/\"+i.name,u=i.name,l=e.readFile(o);if(!l)continue;let c=(0,rd.parseSingleCueMd)(l,s,u);if(c.specError){e.log?.(\"warn\",`discover: ${o} refused \\"
+      },
+      {
+        "file": "client.js",
+        "line": 4268,
+        "text": "e,Te.CALENDAR_FEEDS_BASENAME),a;try{a=t.readFileSync(n,\"utf8\")}catch{return null}return a.split(/\\r?\\n/).map(r=>r.trim()).filter(r=>r&&!r.startsWith(\"#\"))}funct"
+      },
+      {
+        "file": "client.js",
+        "line": 4275,
+        "text": "bindings.registerEventHandler(e):()=>{}}readFile(e){return this.bindings.readFile?.(e)??Promise.resolve(null)}readDir(e){return this.bindings.readDir?.(e)??Prom"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2741,
+        "text": "ry{let nodeChildProcess=eval(\"require\")(\"child_process\"),cmd=process.platform===\"win32\"?\"where\":\"which\",res=nodeChildProcess.spawnSync(cmd,[\"claude\"],{stdio:\"ig"
+      },
+      {
+        "file": "client.js",
+        "line": 2751,
+        "text": "1;let a=!1;try{let{spawnSync:r}=require(\"node:child_process\");a=r(\"/bin/sh\",[\"-c\",`command -v ${n}`],{stdio:\"ignore\"}).status===0}catch{a=!1}return Oa.set(t,a),"
+      },
+      {
+        "file": "client.js",
+        "line": 4380,
+        "text": "turn;let n=require(\"node:fs\"),a=require(\"node:child_process\"),r=require(\"node:path\"),i=require(\"node:os\"),o=e.cuesDir||process.env.OPENCUES_HOME?.trim()||r.join"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 386,
+        "text": "const child = spawn(process.execPath,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,98 @@
+{
+  "name": "@sharework-ai/dsh-docwright",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:14:15.872Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doc-service.js",
+        "line": 1,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/doc-service.js",
+        "line": 95,
+        "text": "await writeFile(`${path}.tmp`, content, 'utf8');"
+      },
+      {
+        "file": "lib/doc-service.js",
+        "line": 176,
+        "text": "await mkdir(outDir, { recursive: true });"
+      },
+      {
+        "file": "lib/materials.js",
+        "line": 1,
+        "text": "import { readFile, realpath } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/materials.js",
+        "line": 44,
+        "text": "out.push(await readFile(real, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'llm'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "ctx.tools.register(defineDocPacksTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "ctx.tools.register(defineDocGenerateTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "ctx.tools.register(defineDocValidateTool(deps));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/paths.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 16,
+        "text": "available = spawnSync(bin, ['-u', 'C:\\\\'], { shell: false, timeout: 2000 }).status === 0;"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 21,
+        "text": "const result = spawnSync(bin, ['-u', ref], { shell: false, timeout: 2000, encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

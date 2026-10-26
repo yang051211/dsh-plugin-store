@@ -1,0 +1,80 @@
+{
+  "name": "@lixiangzhong/dsh-tunnel",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:13:23.073Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "deploy.mjs",
+        "line": 398,
+        "text": "+ `  4) 本机自测: curl -i -H 'Host: 你的域名' http://127.0.0.1:${options.port}/\\n`);"
+      },
+      {
+        "file": "lib/proxy.js",
+        "line": 25,
+        "text": "import { createServer, request as httpRequest } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "deploy.mjs",
+        "line": 23,
+        "text": "import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "deploy.mjs",
+        "line": 90,
+        "text": "writeFileSync(target, content, 'utf8');"
+      },
+      {
+        "file": "deploy.mjs",
+        "line": 129,
+        "text": "hash.update(readFileSync(full));"
+      },
+      {
+        "file": "deploy.mjs",
+        "line": 161,
+        "text": "rmSync(join(pluginsRoot, entry.name), { recursive: true, force: true });"
+      },
+      {
+        "file": "deploy.mjs",
+        "line": 213,
+        "text": "const original = readFileSync(patchFile, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "deploy.mjs",
+        "line": 27,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "deploy.mjs",
+        "line": 302,
+        "text": "const result = spawnSync('dsh', ['--profile', profile, '--dump-config'], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

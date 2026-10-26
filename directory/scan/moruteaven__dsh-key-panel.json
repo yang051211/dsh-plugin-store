@@ -1,0 +1,94 @@
+{
+  "name": "@moruteaven/dsh-key-panel",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:13:50.104Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "*     the model can write `curl -H \"Authorization: Bearer $DSH_CF_TOKEN\"` and"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 54,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync, unlinkSync, existsSync, openSync, fsyncSync, closeSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 220,
+        "text": "parsed = JSON.parse(readFileSync(this.filePath, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 260,
+        "text": "mkdirSync(this.dir, { recursive: true, mode: DIR_MODE });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 266,
+        "text": "writeFileSync(tmp, `${JSON.stringify(this.data, null, 2)}\\n`, { mode: FILE_MODE });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 279,
+        "text": "if (existsSync(tmp)) unlinkSync(tmp);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "export const inject = ['shellEnv', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 126,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 175,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 255,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 342,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shellEnv",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

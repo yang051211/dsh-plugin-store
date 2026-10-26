@@ -1,0 +1,82 @@
+{
+  "name": "@nu11dev/dsh-frugal-orchestrator",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:13:55.929Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "import { appendFileSync, mkdirSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 822,
+        "text": "mkdirSync(dirname(logPath), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 824,
+        "text": "if (statSync(logPath).size > LOG_MAX_BYTES) writeFileSync(logPath, '');"
+      },
+      {
+        "file": "index.js",
+        "line": 828,
+        "text": "appendFileSync(logPath, text);"
+      },
+      {
+        "file": "lib/images.js",
+        "line": 30,
+        "text": "import { mkdir, readFile as readFileDefault, rename, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 33,
+        "text": "# `agent.ctx.tools.register()` — the Agent Teams tools and the schedule tools in"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "*        registered through `agent.ctx.tools.register()`, i.e. into the agent's"
+      },
+      {
+        "file": "index.js",
+        "line": 140,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "index.js",
+        "line": 1226,
+        "text": "* (`dsh-schedule`) register through `agent.ctx.tools.register()` — the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "@starwish-ai/xingyuan-dsh",
+  "version": "0.6.7",
+  "scannedAt": "2026-10-26T10:14:22.833Z",
+  "icon": "starwish-ai__xingyuan-dsh.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1012,
+        "text": "return await fetch(path, {"
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 78,
+        "text": "return await fetch(path, { ...init, signal: controller.signal });"
+      },
+      {
+        "file": "lib/routes/pages-html.js",
+        "line": 71,
+        "text": " function post(path,body){const r=await fetch(path,{method:'POST',headers:{'content-type':'application/json','x-xingyuan-write':'1'},body:JSON.stringify(body||{"
+      },
+      {
+        "file": "lib/routes/pages-html.js",
+        "line": 80,
+        "text": "const r = await fetch(apiUrl('/overview')); if(!r.ok) throw new Error('HTTP '+r.status); const o = await r.json();"
+      },
+      {
+        "file": "lib/routes/pages-html.js",
+        "line": 116,
+        "text": "const r = await fetch(apiUrl('/calendar',{month:m}));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session-log-repair.js",
+        "line": 55,
+        "text": "import { mkdir, readdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/session-log-repair.js",
+        "line": 56,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/session-log-repair.js",
+        "line": 450,
+        "text": "const parsed = JSON.parse(await readFile(join(sessionDir, MARKER_NAME), 'utf8'));"
+      },
+      {
+        "file": "lib/session-log-repair.js",
+        "line": 468,
+        "text": "await writeFile(join(sessionDir, MARKER_NAME), JSON.stringify(marker), 'utf8');"
+      },
+      {
+        "file": "lib/session-log-repair.js",
+        "line": 476,
+        "text": "const raw = await readFile(artifact.path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/preset/side.js",
+        "line": 7,
+        "text": "export const inject = ['tools', 'systemPrompt', 'userQuestions', 'xingyuan'];"
+      },
+      {
+        "file": "lib/preset/tools.js",
+        "line": 14,
+        "text": "export const inject = ['tools', 'xingyuan', 'userQuestions'];"
+      },
+      {
+        "file": "lib/preset/tools.js",
+        "line": 289,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/preset/tools.js",
+        "line": 313,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/preset/tools.js",
+        "line": 387,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "sqlite",
+    "storage",
+    "storageDomain",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

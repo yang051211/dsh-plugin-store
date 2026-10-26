@@ -1,0 +1,102 @@
+{
+  "name": "@mcxcc303/dsh-clawd",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:13:41.315Z",
+  "icon": "mcxcc303__dsh-clawd.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 151,
+        "text": "const response = await fetch(`${BASE}state.json`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 213,
+        "text": "const response = await fetch(`${BASE}${route}`, {"
+      },
+      {
+        "file": "scripts/pack-variant.mjs",
+        "line": 41,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "scripts/pack-variant.mjs",
+        "line": 237,
+        "text": "const state = await (await fetch(`${base_}/dsh-clawd/state.json`)).json()"
+      },
+      {
+        "file": "scripts/verify-package.mjs",
+        "line": 16,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "const parsed = JSON.parse(fs.readFileSync(SETTINGS_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "fs.mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "fs.writeFileSync(staging, body, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 504,
+        "text": "bytes = fs.readFileSync(entry.abs)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/audit-local-art.mjs",
+        "line": 29,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/pack-variant.mjs",
+        "line": 45,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify-package.mjs",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

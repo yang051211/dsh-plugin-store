@@ -1,0 +1,98 @@
+{
+  "name": "@morehao/dsh-commands",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:13:48.395Z",
+  "icon": "morehao__dsh-commands.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/skill-cache.js",
+        "line": 17,
+        "text": "import { constants as FS_CONST } from \"node:fs\";"
+      },
+      {
+        "file": "lib/skill-cache.js",
+        "line": 18,
+        "text": "import { access, mkdir, readFile, readdir, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/skill-cache.js",
+        "line": 140,
+        "text": "const parsed = JSON.parse(await readFile(metaPath(cacheDir), \"utf8\"));"
+      },
+      {
+        "file": "lib/skill-cache.js",
+        "line": 148,
+        "text": "await mkdir(dirname(cacheDir), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 316,
+        "text": "tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proc.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/proc.js",
+        "line": 42,
+        "text": "child = spawn(command, args, { cwd, env, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      },
+      {
+        "file": "lib/skill-setup.js",
+        "line": 24,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/skill-setup.js",
+        "line": 158,
+        "text": "child = spawn(shell, [\"-ilc\", `command -v ${bin}`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 63,
+      "text": "- 命令与工具共用 `lib/skill-setup.js` 的 observe/plan/apply/verify；无 `tools`、无 `agent.followup` 或注入失败时，命令回退到 `runSkillInit` / `runSkillUpdate`，旧宿主仍可用。"
+    },
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "node scripts/smoke-skill-setup.mjs      # 技能自举 + 过程可见（stub，不联网）"
+    }
+  ],
+  "skippedEntries": []
+}

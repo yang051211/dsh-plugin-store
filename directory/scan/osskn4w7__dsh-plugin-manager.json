@@ -1,0 +1,91 @@
+{
+  "name": "@osskn4w7/dsh-plugin-manager",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:14:00.553Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 138,
+        "text": "fetch(\"/plugin-manager/api/state\", { cache: \"no-store\" }).then((response) => response.json()).then((payload) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 151,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-plugin-manager.mjs",
+        "line": 20,
+        "text": "import { cpSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/dsh-plugin-manager.mjs",
+        "line": 154,
+        "text": "rmSync(installedDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 26,
+        "text": "import { existsSync, readFileSync, readdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 151,
+        "text": "if (existsSync(file)) raw = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 159,
+        "text": "writeFileSync(file, next);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 25,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 245,
+        "text": "child = spawn(\"pnpm\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 54,
+      "text": "npm i -g @osskn4w7/dsh-plugin-manager"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 48,
+      "text": "npm i -g @osskn4w7/dsh-plugin-manager"
+    }
+  ],
+  "skippedEntries": []
+}

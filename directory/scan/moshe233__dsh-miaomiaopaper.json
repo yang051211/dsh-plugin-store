@@ -1,0 +1,121 @@
+{
+  "name": "@moshe233/dsh-miaomiaopaper",
+  "version": "1.2.2-miao",
+  "scannedAt": "2026-10-26T10:13:50.411Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6594,
+        "text": "// user edited settings during the fetch (their write wins)."
+      },
+      {
+        "file": "lib/client.js",
+        "line": 10855,
+        "text": "//   curl -s 127.0.0.1:<port>/wallpaper-engine/diag-log"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 13231,
+        "text": "* `src/client.js` 里曾有 **26 处**裸 `fetch(`，散落在设置、库存、上传、抓帧缓存、诊断、"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 13237,
+        "text": "* 不变量（由 test/verify-api-client.mjs 断言）：**业务代码零裸 `fetch(`** ——"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6163,
+        "text": "\t\t\t\t *    node -e \"const s=require('fs').readFileSync(process.argv[1],'utf8');for(const m of s.matchAll(/--dsw-font-([a-z0-9-]+?):([^;{}\\\\\"]+)/g))if(!/-font-|-l"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "} from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "webShimCache = readFileSync(join(WEBWALLGL_DIR, 'web-shim.js'), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 161,
+        "text": "const pj = JSON.parse(readFileSync(join(dirname(entryAbs), 'project.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "import { execFile, execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "// async execFile (5s timeout): execFileSync would block the event loop."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 211,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1443,
+        "text": "proc = spawn(a.file || ff, a.args || args,"
+      },
+      {
+        "file": "lib/media/legacy.js",
+        "line": 28,
+        "text": "import { spawn, execFile, spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/webwallgl/assets/renderer-DTLW1Gf0.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

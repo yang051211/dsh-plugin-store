@@ -1,0 +1,111 @@
+{
+  "name": "@stifer/dsh-agentflow",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:14:26.127Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skills/agentflow/hooks/version-check.js",
+        "line": 7,
+        "text": "const https = require(\"https\");"
+      },
+      {
+        "file": "lib/skills/agentflow/hooks/version-check.js",
+        "line": 170,
+        "text": "const req = https.get("
+      },
+      {
+        "file": "lib/skills/agentflow/hooks/version-check.js",
+        "line": 232,
+        "text": "unix: `curl -fsSL https://raw.githubusercontent.com/${REPO}/master/scripts/install.sh | VERSION=${target} bash -s -- --write-config --write-codex-config`,"
+      },
+      {
+        "file": "src/skills/agentflow/hooks/version-check.js",
+        "line": 7,
+        "text": "const https = require(\"https\");"
+      },
+      {
+        "file": "src/skills/agentflow/hooks/version-check.js",
+        "line": 170,
+        "text": "const req = https.get("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skill.js",
+        "line": 1,
+        "text": "import { cp, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/skill.js",
+        "line": 31,
+        "text": "const content = (await readFile(join(dir, 'VERSION'), 'utf8')).trim();"
+      },
+      {
+        "file": "lib/skills/agentflow/agents/agentflow-leader/agent.cordis.yml",
+        "line": 77,
+        "text": " `reason.error.message` 原文（无 zstd 用 `node -e \"console.log(require('zlib').zstdDecompressSync(require('fs').readFileSync(process.argv[1])).toString())\" <file>`）。"
+      },
+      {
+        "file": "lib/skills/agentflow/hooks/mode-inject.js",
+        "line": 16,
+        "text": "const fs = require(\"fs\");"
+      },
+      {
+        "file": "lib/skills/agentflow/hooks/mode-inject.js",
+        "line": 81,
+        "text": "fs.appendFileSync("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 8,
+        "text": "/** Valid `serverName`, matching dsh-mcp-client's public tool-name budget. */"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 43,
+        "text": "/** Build the config handed to dsh-mcp-client for one agentflow stdio server. */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { apply as mcpClientApply, Config as McpClientConfig, inject as mcpClientInject, name as mcpClientName, } from '@deepseek-ai/dsh-mcp-client';"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/skills/agentflow/hooks/version-check.js",
+        "line": 8,
+        "text": "const { execFileSync } = require(\"child_process\");"
+      },
+      {
+        "file": "src/skills/agentflow/hooks/version-check.js",
+        "line": 8,
+        "text": "const { execFileSync } = require(\"child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

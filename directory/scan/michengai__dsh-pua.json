@@ -1,0 +1,78 @@
+{
+  "name": "@michengai/dsh-pua",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:13:43.360Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/source.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/source.js",
+        "line": 9,
+        "text": "const manifest = JSON.parse(readFileSync(new URL('upstream.json', root), 'utf8'));"
+      },
+      {
+        "file": "lib/source.js",
+        "line": 14,
+        "text": "const bytes = readFileSync(new URL(entry.file, root));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 172,
+        "text": "child.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/review.js",
+        "line": 30,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 41,
+        "text": "// 脚本是 argv 的单个参数，由宿主 spawn(program, args) 传递，无外层 shell 字符串转义。"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 52,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "puaConfiguration",
+    "systemPrompt",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

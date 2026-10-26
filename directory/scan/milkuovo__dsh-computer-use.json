@@ -1,0 +1,97 @@
+{
+  "name": "@milkuovo/dsh-computer-use",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:13:46.155Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 4,
+        "text": "import { appendFile, mkdir, rename, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 46,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 52,
+        "text": "await rm(rotated, { force: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 56,
+        "text": "await appendFile(file, `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/update.js",
+        "line": 5,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "disposeTools = tools.map(tool => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cursor.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cursor.js",
+        "line": 16,
+        "text": "const proc = spawn('powershell.exe', ["
+      },
+      {
+        "file": "lib/ps1.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ps1.js",
+        "line": 56,
+        "text": "const proc = spawn('powershell.exe', ["
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

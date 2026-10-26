@@ -1,0 +1,110 @@
+{
+  "name": "@lynn123411/dsh-preset-plugin-upgrade-cordis",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:13:36.354Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "check-upstream.mjs",
+        "line": 211,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "skills/dsh-benchmark-case/assets/judge-utils.mjs",
+        "line": 172,
+        "text": "const r1 = await fetch(match[1], { redirect: \"manual\" });"
+      },
+      {
+        "file": "skills/dsh-benchmark-case/assets/judge-utils.mjs",
+        "line": 175,
+        "text": "const r2 = await fetch(\"http://127.0.0.1:3080/\", { headers: { cookie } });"
+      },
+      {
+        "file": "skills/dsh-upgrade-audit/scripts/materialize-npm.mjs",
+        "line": 177,
+        "text": "const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/compare/${range}`)"
+      },
+      {
+        "file": "skills/plugin-upgrade/examples/legacy-plugin/src/index.ts",
+        "line": 4,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "check-upstream.mjs",
+        "line": 15,
+        "text": "import { lstatSync, readFileSync, readlinkSync, readdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "check-upstream.mjs",
+        "line": 44,
+        "text": "return JSON.parse(readFileSync(LOCK_PATH, 'utf8'))"
+      },
+      {
+        "file": "check-upstream.mjs",
+        "line": 75,
+        "text": "hash.update(file.link === undefined ? readFileSync(file.path) : Buffer.from(`link:${file.link}`))"
+      },
+      {
+        "file": "check-upstream.mjs",
+        "line": 110,
+        "text": "text = readFileSync(join(skillsDir, name, 'SKILL.md'), 'utf8')"
+      },
+      {
+        "file": "check-upstream.mjs",
+        "line": 193,
+        "text": "writeFileSync(LOCK_PATH, `${JSON.stringify(next, null, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/dsh-benchmark-case/assets/judge-utils.mjs",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "skills/dsh-benchmark-case/assets/judge-utils.mjs",
+        "line": 56,
+        "text": "execFile('git', args, { cwd, timeout: 20000 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "skills/dsh-benchmark-case/assets/judge-utils.mjs",
+        "line": 77,
+        "text": "const child = execFile('sh', ['-c', script], { timeout }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "skills/dsh-upgrade-audit/scripts/gen-artifacts.check.mjs",
+        "line": 2,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "skills/dsh-upgrade-audit/scripts/gen-artifacts.check.mjs",
+        "line": 36,
+        "text": "return spawnSync(process.execPath, [script, from, to, output], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

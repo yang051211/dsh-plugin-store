@@ -1,0 +1,115 @@
+{
+  "name": "@louisultra/dsh-verymath",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:13:28.897Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/gates.js",
+        "line": 9,
+        "text": "import { readFile, readdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/gates.js",
+        "line": 21,
+        "text": "const raw = await readFile(join(projectDir, 'GOALS.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/core/gates.js",
+        "line": 66,
+        "text": "const raw = await readFile(join(workstream, 'status.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/core/gates.js",
+        "line": 84,
+        "text": "const data = JSON.parse(await readFile(join(workstream, 'reviews', file), 'utf8'));"
+      },
+      {
+        "file": "lib/core/gates.js",
+        "line": 114,
+        "text": "reportText = await readFile(join(workstream, 'report.md'), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools', 'verymath', 'fs'];"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 151,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 227,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 277,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 372,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/index.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/index.js",
+        "line": 162,
+        "text": "child = spawn(executable, [...args], { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 90,
+        "text": "child = spawn(executable, [...args], { stdio: ['ignore', 'pipe', 'ignore'] });"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 647,
+        "text": "const probe = spawn('sage', ['--version'], { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "skills",
+    "tools",
+    "verymath"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

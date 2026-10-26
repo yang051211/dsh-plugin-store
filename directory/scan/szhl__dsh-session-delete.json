@@ -1,0 +1,70 @@
+{
+  "name": "@szhl/dsh-session-delete",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:14:27.946Z",
+  "icon": "szhl__dsh-session-delete.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 450,
+        "text": "fetch(`${ROUTE_STATE}?sessionId=${encodeURIComponent(sessionId)}`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 485,
+        "text": "const response = await fetch(ROUTE_DELETE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 44,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 492,
+        "text": "await rm(join(dshHome, name), { force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 585,
+        "text": "await rm(directory, { recursive: true, force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 597,
+        "text": "await rm(cachePath, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionPersistence",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

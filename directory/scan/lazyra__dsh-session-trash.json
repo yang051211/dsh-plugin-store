@@ -1,0 +1,66 @@
+{
+  "name": "@lazyra/dsh-session-trash",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:13:14.365Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 201,
+        "text": "const res = await fetch(`${EP}/${action}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/trash-service.js",
+        "line": 15,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/trash-service.js",
+        "line": 164,
+        "text": "const raw = await fs.readFile(this.registryPath, 'utf8')"
+      },
+      {
+        "file": "lib/trash-service.js",
+        "line": 171,
+        "text": "await fs.writeFile(tmp, JSON.stringify(reg, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/trash-service.js",
+        "line": 291,
+        "text": "return JSON.parse(await fs.readFile(path.join(dir, 'meta.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/trash-service.js",
+        "line": 452,
+        "text": "await fs.rm(parked, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "@springbrand/dsh-plugin-marketplace",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:14:20.135Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 398,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 408,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${encodeURIComponent(packageName)}/latest`, {"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 139,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile.js",
+        "line": 1,
+        "text": "import { readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 23,
+        "text": "const raw = JSON.parse(await readFile(resolve(directory, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 41,
+        "text": "const value = JSON.parse(await readFile(resolve(directory, 'node_modules', packageName, 'package.json'), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 40,
+        "text": "const child = spawn(invocation.command, invocation.args, {"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 3,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 6,
+        "text": "const child = spawn(launch.command, launch.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

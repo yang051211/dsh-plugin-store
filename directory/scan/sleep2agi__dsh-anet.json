@@ -1,0 +1,101 @@
+{
+  "name": "@sleep2agi/dsh-anet",
+  "version": "0.1.0-preview.34",
+  "scannedAt": "2026-10-26T10:14:18.524Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/connect.mjs",
+        "line": 57,
+        "text": "const res = await fetch(`${hub}/api/auth/node-token`, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 256,
+        "text": "const res = await fetch(`${ENDPOINT}/nodes`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 271,
+        "text": "fetch(`${ENDPOINT}/account`, { cache: \"no-store\" })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 279,
+        "text": "fetch(`${ENDPOINT}/sessions`, { cache: \"no-store\" })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 283,
+        "text": "fetch(`${ENDPOINT}/projects`, { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/connect.mjs",
+        "line": 10,
+        "text": "import { chmodSync, mkdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "scripts/connect.mjs",
+        "line": 39,
+        "text": "const { readFileSync, statSync } = await import(\"node:fs\");"
+      },
+      {
+        "file": "scripts/connect.mjs",
+        "line": 42,
+        "text": "return readFileSync(args.userTokenFile, \"utf8\").trim();"
+      },
+      {
+        "file": "scripts/connect.mjs",
+        "line": 77,
+        "text": "mkdirSync(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "scripts/connect.mjs",
+        "line": 78,
+        "text": "writeFileSync(path, `${JSON.stringify(config, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.mjs",
+        "line": 23,
+        "text": "export const inject = [\"agents\", \"agentDefaultModel\", \"sessions\", \"tools\", \"attachments\"];"
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 368,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "attachments",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

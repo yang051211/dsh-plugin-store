@@ -1,0 +1,92 @@
+{
+  "name": "@sunshaobei/dsh-mcp-manager",
+  "version": "3.1.3",
+  "scannedAt": "2026-10-26T10:14:26.571Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 285,
+        "text": "const response = await fetch(path, merged);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "await mkdir(dir, mode === null ? { recursive: true } : { recursive: true, mode });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "await writeFile(temporary, data, mode === null ? { encoding: \"utf8\" } : { encoding: \"utf8\", mode });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "await rm(temporary, { force: true }).catch(() => void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "return await readFile(file, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 242,
+        "text": "register: (definition) => ctx.tools.register(definition),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 245,
+        "text": "schemas: (scope) => ctx.tools.schemas(scope)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "handler({ id: agent.id, tools: agent.ctx.tools });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 266,
+        "text": "return (agents?.list() ?? []).map((agent) => ({ id: agent.id, tools: agent.ctx.tools }));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 343,
+        "text": "OFFICIAL_MCP_CLIENT_SPECIFIER = \"@deepseek-ai/dsh-mcp-client\";"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

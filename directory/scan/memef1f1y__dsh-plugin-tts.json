@@ -1,0 +1,112 @@
+{
+  "name": "@memef1f1y/dsh-plugin-tts",
+  "version": "0.6.7",
+  "scannedAt": "2026-10-26T10:13:41.674Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1238,
+        "text": "fetch(\"/dsh-tts-api/rvc-config-save\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1247,
+        "text": "fetch(\"/dsh-tts-api/index-config-save\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1256,
+        "text": "fetch(\"/dsh-tts-api/cosy-config-save\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1268,
+        "text": "fetch(\"/dsh-tts-api/cloud-config-save\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1277,
+        "text": "fetch(\"/dsh-tts-api/cloud-config\")"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".github/workflows/publish.yml",
+        "line": 60,
+        "text": "          node -e \"const fs=require('fs');const v=require('./package.json').version;const tag=process.env.GITHUB_REF_NAME.replace(/^v/,'');if(v!==tag){console.e"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 30,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 115,
+        "text": "fs.writeFileSync(outPath, buf);"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 479,
+        "text": "const audioBytes = readFileSync(mp3Path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 230,
+        "text": "const child = spawn(process.execPath, argv, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 559,
+        "text": "const p = spawn(cfg.binary, ['--model', cfg.model, '--output_file', wavPath], {"
+      },
+      {
+        "file": "tests/package-runtime-patch.mjs",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/rvc-server-live.mjs",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

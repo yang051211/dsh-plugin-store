@@ -1,0 +1,116 @@
+{
+  "name": "@lutisure/cyrene-agent",
+  "version": "0.12.2",
+  "scannedAt": "2026-10-26T10:13:30.998Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/deploy-embedding.mjs",
+        "line": 63,
+        "text": "const res = await fetch(parsed);"
+      },
+      {
+        "file": "tools/fetch-hsr-data.mjs",
+        "line": 67,
+        "text": "* 安全扫描器对下面那行 `fetch(url)` 报过**三次**「地址来自外部输入」。"
+      },
+      {
+        "file": "tools/fetch-hsr-data.mjs",
+        "line": 88,
+        "text": "const res = await fetch(url, { redirect: 'error' });"
+      },
+      {
+        "file": "tools/fetch-story.mjs",
+        "line": 50,
+        "text": "const response = await fetch(url, { headers: HEADERS, signal: AbortSignal.timeout(120000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "corrections.mjs",
+        "line": 24,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "corrections.mjs",
+        "line": 83,
+        "text": "if (existsSync(file)) return readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "corrections.mjs",
+        "line": 87,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "corrections.mjs",
+        "line": 89,
+        "text": "return readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "corrections.mjs",
+        "line": 103,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "corrections.mjs",
+        "line": 145,
+        "text": "scope.tools.register({"
+      },
+      {
+        "file": "corrections.mjs",
+        "line": 173,
+        "text": "scope.tools.register({"
+      },
+      {
+        "file": "memory.mjs",
+        "line": 222,
+        "text": "scope.tools.register("
+      },
+      {
+        "file": "memory.mjs",
+        "line": 250,
+        "text": "scope.tools.register({"
+      },
+      {
+        "file": "memory.mjs",
+        "line": 296,
+        "text": "scope.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/fetch-hsr-data.mjs",
+        "line": 19,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "tools/verify-real-prompt.mjs",
+        "line": 29,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

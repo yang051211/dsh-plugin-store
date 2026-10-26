@@ -1,0 +1,128 @@
+{
+  "name": "@leisureyu/dsh-smart-dl",
+  "version": "1.6.0",
+  "scannedAt": "2026-10-26T10:13:15.373Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/downloader.js",
+        "line": 168,
+        "text": "* curl -C - 在服务器**不支持** Range 且本地已有半截文件时，会以退出码 33 直接失败"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 819,
+        "text": "// 仅凭「服务器支持 Range」就续传是不够的：curl -C - 与 aria2 -c 都只看"
+      },
+      {
+        "file": "dist/probe.js",
+        "line": 121,
+        "text": "head = await fetch(url, {"
+      },
+      {
+        "file": "dist/probe.js",
+        "line": 148,
+        "text": "get = await fetch(url, {"
+      },
+      {
+        "file": "dist/progress-parse.js",
+        "line": 46,
+        "text": "* 解析 curl --progress-bar 单行中的百分比。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cleanup.js",
+        "line": 24,
+        "text": "import * as fs from 'node:fs';"
+      },
+      {
+        "file": "dist/cleanup.js",
+        "line": 189,
+        "text": "fs.unlinkSync(candidate.file);"
+      },
+      {
+        "file": "dist/disk.js",
+        "line": 12,
+        "text": "import { statfs } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/downloader.js",
+        "line": 9,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/downloader.js",
+        "line": 10,
+        "text": "import { mkdir } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 140,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 363,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/downloader.js",
+        "line": 7,
+        "text": "import { spawn, spawnSync, } from 'node:child_process';"
+      },
+      {
+        "file": "dist/downloader.js",
+        "line": 89,
+        "text": "const check = spawnSync(candidate, ['--version'], {"
+      },
+      {
+        "file": "dist/downloader.js",
+        "line": 345,
+        "text": "child = spawn(command, args, options);"
+      },
+      {
+        "file": "dist/rpc.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/rpc.js",
+        "line": 372,
+        "text": "* 为什么不能用 `spawn(...).unref()` 加 try/catch：`spawn` 在命令不存在时"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

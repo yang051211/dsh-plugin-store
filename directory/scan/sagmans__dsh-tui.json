@@ -1,0 +1,122 @@
+{
+  "name": "@sagmans/dsh-tui",
+  "version": "0.16.0",
+  "scannedAt": "2026-10-26T10:14:14.040Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/moshi.js",
+        "line": 41,
+        "text": "const response = await fetch(WEBHOOK, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".agents/skills/dsh-tui-dogfood/scripts/clone-links.mjs",
+        "line": 14,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": ".agents/skills/dsh-tui-dogfood/scripts/clone-links.mjs",
+        "line": 104,
+        "text": "fs.rmSync(file)"
+      },
+      {
+        "file": ".agents/skills/dsh-tui-dogfood/scripts/clone-links.mjs",
+        "line": 110,
+        "text": "fs.rmSync(file, { recursive: true, force: true })"
+      },
+      {
+        "file": ".agents/skills/dsh-tui-dogfood/scripts/run-plugin-from-worktree.sh",
+        "line": 172,
+        "text": "const fs = require(\"node:fs\")"
+      },
+      {
+        "file": ".agents/skills/dsh-tui-dogfood/scripts/run-plugin-from-worktree.sh",
+        "line": 202,
+        "text": "ource_home=\"$(node -e \"const fs=require('node:fs'),p=require('node:path');let x=p.resolve(process.argv[1]),b=x;while(!fs.existsSync(b))b=p.dirname(b);console.lo"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent/present.js",
+        "line": 47,
+        "text": "return ctx.tools.get(name, scope());"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "export const inject = ['agents', 'tools', 'agentPresets', TUI_KEYMAP_SERVICE];"
+      },
+      {
+        "file": "lib/todo-guard.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/todo-guard.js",
+        "line": 232,
+        "text": "return ctx.tools.get(TODO_WRITE_TOOL, agent) !== undefined;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".agents/skills/dsh-tui-update-models/scripts/dump-model-catalog.mjs",
+        "line": 27,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/herdr/reporter.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/herdr/reporter.js",
+        "line": 306,
+        "text": "if (spawnSync(bin, argv, {"
+      },
+      {
+        "file": "lib/input/workspace-files.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/input/workspace-files.js",
+        "line": 152,
+        "text": "const child = spawn('git', [...args], { cwd, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 8,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "cmdlineArgs",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

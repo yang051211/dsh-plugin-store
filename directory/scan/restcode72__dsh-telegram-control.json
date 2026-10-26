@@ -1,0 +1,131 @@
+{
+  "name": "@restcode72/dsh-telegram-control",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:10.231Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/probe-card.mjs",
+        "line": 74,
+        "text": "try { ready = (await fetch('http://127.0.0.1:' + port + '/json/version')).ok } catch { /* aún no */ }"
+      },
+      {
+        "file": "scripts/set-token.mjs",
+        "line": 117,
+        "text": "const response = await fetch('https://api.telegram.org/bot' + hit.value + '/getUpdates?offset=-1&timeout=' + seconds + '&limit=1')"
+      },
+      {
+        "file": "scripts/set-token.mjs",
+        "line": 140,
+        "text": "const response = await fetch('https://api.telegram.org/bot' + hit.value + '/getMe')"
+      },
+      {
+        "file": "src/diagram/browser.js",
+        "line": 80,
+        "text": "const response = await fetch(url)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/probe-card.mjs",
+        "line": 32,
+        "text": "import { mkdtemp, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/probe-card.mjs",
+        "line": 279,
+        "text": "await rm(profileDir, { recursive: true, force: true }).catch(() => {})"
+      },
+      {
+        "file": "scripts/prune-sessions.mjs",
+        "line": 24,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/prune-sessions.mjs",
+        "line": 25,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/prune-sessions.mjs",
+        "line": 121,
+        "text": "await rm(join(folder, id), { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/diagram/index.js",
+        "line": 14,
+        "text": "*   - `ctx.tools.register(def): () => void`               — dsh-tools/lib/types/index.d.ts:601"
+      },
+      {
+        "file": "src/diagram/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "src/diagram/index.js",
+        "line": 130,
+        "text": "const unregister = ctx.tools.register("
+      },
+      {
+        "file": "src/index.js",
+        "line": 42,
+        "text": "* Regla no obvia de cordis: el acceso por propiedad (`ctx.tools`) exige que el"
+      },
+      {
+        "file": "src/index.js",
+        "line": 49,
+        "text": "export const inject = ['credentials', 'tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/probe-card.mjs",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/probe-card.mjs",
+        "line": 63,
+        "text": "const child = spawn(findBrowserPath(), ["
+      },
+      {
+        "file": "src/diagram/browser.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/diagram/browser.js",
+        "line": 155,
+        "text": "const child = spawn(executable, args, { stdio: 'ignore', detached: false, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

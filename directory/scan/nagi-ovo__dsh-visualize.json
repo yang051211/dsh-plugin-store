@@ -1,0 +1,110 @@
+{
+  "name": "@nagi-ovo/dsh-visualize",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-26T10:13:51.931Z",
+  "icon": "nagi-ovo__dsh-visualize.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 683,
+        "text": "* declaration values. Every rule queries those views, so a `fetch(` in a"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1800,
+        "text": "const NETWORK_CONSTRUCTORS = /(?<![\\w$])(?:XMLHttpRequest|WebSocket|EventSource)(?![\\w$])/gu;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1802,
+        "text": "const WATCHED_NAMES = /(?<![\\w$])(?:fetch|XMLHttpRequest|WebSocket|EventSource|navigator|sendBeacon|document|currentScript|window|self|globalThis)(?![\\w$])/gu;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1971,
+        "text": "if (!/fetch|XMLHttpRequest|WebSocket|EventSource|sendBeacon|currentScript/u.test(js)) return;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1991,
+        "text": "for (const m of js.matchAll(/(?<![\\w$])fetch(?![\\w$])/gu)) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { lstat, mkdir, readFile, realpath, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "read: async () => await readFile(path, \"utf8\"),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 172,
+        "text": "await mkdir(dirname(path), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 178,
+        "text": "await writeFile(temp, content, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "if (error.code !== \"EEXIST\") await rm(temp, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2532,
+        "text": "* @returns the tool definition to register on `ctx.tools`."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3055,
+        "text": "let disposeTool = ctx.tools.register(visualizeTool(ctx, config.maxFragmentBytes, style));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3060,
+        "text": "disposeTool = ctx.tools.register(visualizeTool(ctx, config.maxFragmentBytes, style));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 2,
+        "text": "* dsh-visualize, node half: registers the `visualize` tool on `ctx.tools` and"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 31,
+        "text": "export const inject = ['tools', 'skills', 'fs']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,126 @@
+{
+  "name": "@stifer/dsh-harvest",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:14:23.762Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backends.js",
+        "line": 393,
+        "text": "const res = await fetch(tavilyEndpoint, {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 3,
+        "text": "// Node fetch(undici) 优先；网络失败自动降级系统代理兜底："
+      },
+      {
+        "file": "lib/http.js",
+        "line": 4,
+        "text": "//   win32 → PowerShell Invoke-WebRequest（WinINET 读系统代理）；"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 25,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 48,
+        "text": "        const ps = `$r=Invoke-WebRequest -Uri '${psQuote(url)}' -UseBasicParsing -TimeoutSec ${Math.ceil(timeoutMs / 1000)} -Headers @{${hdrs}}; Write-Output $r"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backends.js",
+        "line": 98,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/backends.js",
+        "line": 107,
+        "text": "const sContent = fs.readFileSync(settingsPath, 'utf8')"
+      },
+      {
+        "file": "lib/backends.js",
+        "line": 115,
+        "text": "const cContent = fs.readFileSync(credPath, 'utf8')"
+      },
+      {
+        "file": "lib/backends.js",
+        "line": 229,
+        "text": "const content = fs.readFileSync(envFile, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "// 工具注册契约：ctx.tools.register({ name, description, parameters, output, execute })。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "for (const tool of tools) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backends.js",
+        "line": 8,
+        "text": "import { execFile, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/backends.js",
+        "line": 132,
+        "text": "const res = spawnSync(p, ['--version'], { stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 10,
+        "text": "import { execFile, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 22,
+        "text": "try { return spawnSync(cmd, ['--version'], { stdio: 'ignore' }).status === 0 } catch { return false }"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

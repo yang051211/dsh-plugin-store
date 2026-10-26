@@ -1,0 +1,83 @@
+{
+  "name": "@rclr-labs/dsh-plugin-qa",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:09.990Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 25,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 97,
+        "text": "return JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 154,
+        "text": "child = spawn(bin, ['--profile', nomePerfil], { env, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "execFile(process.execPath, [CLI, ...args], { maxBuffer: 32e6, timeout: 600_000 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 44,
+      "text": "npm i -g @rclr-labs/dsh-plugin-qa"
+    }
+  ],
+  "skippedEntries": []
+}

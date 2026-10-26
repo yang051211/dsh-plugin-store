@@ -1,0 +1,147 @@
+{
+  "name": "@logictan/dsh-config-manager",
+  "version": "0.1.84",
+  "scannedAt": "2026-10-26T10:13:25.186Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 519,
+        "text": "return readJson$1(await fetch(CONFIG_MANAGER_API.status), this.t);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5838,
+        "text": "return await readJson(await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5859,
+        "text": "return readJson(await fetch(SYNC_API.status), this.t);"
+      },
+      {
+        "file": "lib/utils/proxy.js",
+        "line": 4,
+        "text": "* 背景：Node 内置 `fetch()`（undici）**默认不读** `HTTP_PROXY` / `HTTPS_PROXY`，因此「必须经代理"
+      },
+      {
+        "file": "lib/utils/proxy.js",
+        "line": 22,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/agent-instructions.js",
+        "line": 25,
+        "text": "const data = await ctx.fs.readFile(AgentInstructionsAdapter.FILE);"
+      },
+      {
+        "file": "lib/adapters/credentials.js",
+        "line": 27,
+        "text": "const doc = yaml.load(Buffer.from(await ctx.fs.readFile(CREDENTIALS_FILE_REL)).toString('utf8'));"
+      },
+      {
+        "file": "lib/adapters/file-collection.js",
+        "line": 30,
+        "text": "const data = await ctx.fs.readFile(rel);"
+      },
+      {
+        "file": "lib/adapters/file-collection.js",
+        "line": 61,
+        "text": "current = await ctx.target.fs.readFile(path.join(this.baseDir, file.relativePath));"
+      },
+      {
+        "file": "lib/adapters/file-collection.js",
+        "line": 100,
+        "text": "await ctx.target.fs.writeFile(path.join(this.baseDir, ref), file.data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/mcp.js",
+        "line": 3,
+        "text": "* 数据源 = 组合 patch 中 dsh-mcp-client 行的 config（研究报告 §2.2：MCP 无 settings 面/无管理 API）。"
+      },
+      {
+        "file": "lib/adapters/mcp.js",
+        "line": 55,
+        "text": "/** 由导出条目构造写回 patch 行 raw（单行形态，与 dsh-mcp-client 组合 config 语义一致） */"
+      },
+      {
+        "file": "lib/adapters/mcp.js",
+        "line": 72,
+        "text": "return { id: lineId, name: 'dsh-mcp-client', config };"
+      },
+      {
+        "file": "lib/core/model-tools.js",
+        "line": 75,
+        "text": "/** 把 2 个模型工具注册进 ctx.tools；tools 服务未组合时静默跳过（不崩溃）。 */"
+      },
+      {
+        "file": "lib/core/model-tools.js",
+        "line": 84,
+        "text": "// 注意：必须经 ctx.get('tools') 的结果注册，绝不能用 ctx.tools 属性访问——"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/boot-gate.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/boot-gate.js",
+        "line": 128,
+        "text": "child = spawn(nodePath, [scriptPath], { stdio: ['pipe', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/core/local-plugin-host.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/local-plugin-host.js",
+        "line": 22,
+        "text": "* **刻意不用 `execFile(..., { shell: true })`**：该组合会触发 Node 的 DEP0190"
+      },
+      {
+        "file": "lib/core/local-plugin-host.js",
+        "line": 35,
+        "text": "const child = spawn(bin, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run clean && tsc -p tsconfig.build.json && tsdown"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

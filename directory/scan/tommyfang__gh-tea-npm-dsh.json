@@ -1,0 +1,78 @@
+{
+  "name": "@tommyfang/gh-tea-npm-dsh",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:35.376Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 103,
+        "text": "'curl -sS https://webi.sh/gh | sh',"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 119,
+        "text": "'curl -fsSL \"https://dl.gitea.com/tea/tea-$os-$arch\" -o \"$HOME/.local/bin/tea\"',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 12,
+        "text": "// in the real Cordis runtime, so it uses `ctx.tools.register` / `ctx.skills`"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 82,
+        "text": "ctx.tools.register({ ...def, output: stringOut })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 40,
+        "text": "child = spawn('/bin/sh', ['-c', cmd], {"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 188,
+        "text": "const child = spawn('/bin/sh', ['-c', loginCmd], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

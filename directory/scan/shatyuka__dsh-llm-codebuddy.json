@@ -1,0 +1,97 @@
+{
+  "name": "@shatyuka/dsh-llm-codebuddy",
+  "version": "0.9.5",
+  "scannedAt": "2026-10-26T10:14:16.161Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.js",
+        "line": 427,
+        "text": "response = await fetch(`${chatBase}/chat/completions`, {"
+      },
+      {
+        "file": "lib/codebuddy.js",
+        "line": 39,
+        "text": "const response = await fetch(`${endpointOf(site)}/v2/plugin/auth/state?platform=CLI`, {"
+      },
+      {
+        "file": "lib/codebuddy.js",
+        "line": 76,
+        "text": "response = await fetch(`${endpointOf(site)}/v2/plugin/auth/token?state=${encodeURIComponent(state)}`, {"
+      },
+      {
+        "file": "lib/codebuddy.js",
+        "line": 110,
+        "text": "const response = await fetch(`${endpointOf(site)}/v2/plugin/login/account?state=${encodeURIComponent(state)}`, {"
+      },
+      {
+        "file": "lib/codebuddy.js",
+        "line": 179,
+        "text": "response = await fetch(`${endpointOf(identity.site)}/v2/plugin/auth/token/refresh`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/storage.js",
+        "line": 13,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 76,
+        "text": "const raw = await fs.readFile(path, 'utf-8');"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 125,
+        "text": "await fs.mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 128,
+        "text": "await fs.writeFile(temp, JSON.stringify(storage, null, 2), { encoding: 'utf-8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 132,
+        "text": "await fs.unlink(temp).catch(() => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/login.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 61,
+        "text": "const child = spawn(command, args, { stdio: 'ignore', detached: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

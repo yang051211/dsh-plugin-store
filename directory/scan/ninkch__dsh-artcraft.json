@@ -1,0 +1,115 @@
+{
+  "name": "@ninkch/dsh-artcraft",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:13:54.496Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 43,
+        "text": "const res = await fetch(API + path, { ...(opts || {}), signal: ctrl ? ctrl.signal : undefined });"
+      },
+      {
+        "file": "index.js",
+        "line": 913,
+        "text": "const res = await fetch(`${reg}/${slug}/latest`, { signal: AbortSignal.timeout(12000) });"
+      },
+      {
+        "file": "index.js",
+        "line": 985,
+        "text": "res = await fetch(meta.tarball, { signal: AbortSignal.timeout(180000) });"
+      },
+      {
+        "file": "index.js",
+        "line": 991,
+        "text": "res = await fetch(mirrorUrl, { signal: AbortSignal.timeout(180000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 118,
+        "text": "const user = JSON.parse(await fs.readFile(candidate, 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 139,
+        "text": "await fs.mkdir(path.dirname(target), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 140,
+        "text": "await fs.writeFile(target, JSON.stringify({ bins: { ...cfg.bins, ...found }, control: { ...cfg.control } }, null, 2) + '\\n');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1046,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "index.js",
+        "line": 1064,
+        "text": "const d = ctx.tools.register(shape);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 231,
+        "text": "child = spawn(finder, [raw], { windowsHide: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 262,
+        "text": "child = spawn(String(exe), (args ?? []).map(String), { cwd, windowsHide: true, shell });"
+      },
+      {
+        "file": "index.js",
+        "line": 435,
+        "text": "const child = spawn(job.exe, job.args, { cwd: cwdAbs ?? undefined, windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

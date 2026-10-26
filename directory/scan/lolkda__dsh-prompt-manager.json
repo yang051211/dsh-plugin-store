@@ -1,0 +1,112 @@
+{
+  "name": "@lolkda/dsh-prompt-manager",
+  "version": "3.5.1",
+  "scannedAt": "2026-10-26T10:13:27.347Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 193,
+        "text": "const response = await fetch(ROUTE + path, init)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1172,
+        "text": "const response = await fetch(`${ROUTE}/pack/export?preset=${encodeURIComponent(preset.id)}`)"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 82,
+        "text": "const loaded = createRequire(import.meta.url)('undici');"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 146,
+        "text": "? await fetch(target, init)"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 147,
+        "text": ": await undici.fetch(target, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/entries.js",
+        "line": 22,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/entries.js",
+        "line": 82,
+        "text": "const text = readFileSync(fileURLToPath(prompt.file), 'utf8');"
+      },
+      {
+        "file": "lib/scripts.js",
+        "line": 23,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/scripts.js",
+        "line": 333,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/scripts.js",
+        "line": 380,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 249,
+        "text": "'const { execSync } = require(\"node:child_process\")',"
+      },
+      {
+        "file": "client/client.js",
+        "line": 253,
+        "text": "'    return execSync(command, { encoding: \"utf8\" }).trim().split(\"\\\\n\")[0]',"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 70,
+        "text": "const result = spawnSync(command, args, {"
+      },
+      {
+        "file": "lib/scripts.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

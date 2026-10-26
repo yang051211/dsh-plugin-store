@@ -1,0 +1,143 @@
+{
+  "name": "@tianbuyu-wwx/dsh-formatforge",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-26T10:14:30.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "http/upload.mjs",
+        "line": 7,
+        "text": "//              parsing entirely; fetch() in the client module sends them natively):"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 64,
+        "text": "const res = await fetch(FF_UPLOAD, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 736,
+        "text": "const res = await fetch(FF_API + path, {"
+      },
+      {
+        "file": "lib/client.source.js",
+        "line": 58,
+        "text": "const res = await fetch(FF_UPLOAD, {"
+      },
+      {
+        "file": "lib/panel.source.js",
+        "line": 123,
+        "text": "const res = await fetch(FF_API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "http/api.mjs",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, unlinkSync, writeFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "http/api.mjs",
+        "line": 27,
+        "text": "const existing = readFileSync(file, 'utf8').trim()"
+      },
+      {
+        "file": "http/api.mjs",
+        "line": 34,
+        "text": "mkdirSync(ffHomeDir(), { recursive: true })"
+      },
+      {
+        "file": "http/api.mjs",
+        "line": 35,
+        "text": "writeFileSync(file, token + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "http/api.mjs",
+        "line": 182,
+        "text": "if (existsSync(mdPath)) text = readFileSync(mdPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 38,
+        "text": "export const inject = ['skills', 'tools', 'sessions', 'agents', 'webServer']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 77,
+        "text": "if (ctx.tools && ctx.tools.register) {"
+      },
+      {
+        "file": "index.mjs",
+        "line": 78,
+        "text": "ctx.tools.register(createTranslateTool({ repoRoot, maxBytes: maxBytesFromEnv(), timeoutMs: timeoutFromEnv(), log }))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 79,
+        "text": "ctx.tools.register(createFormatsTool({ repoRoot, log }))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 80,
+        "text": "ctx.tools.register(createResultTool({ log, repoRoot }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "services/python-runner.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "services/python-runner.mjs",
+        "line": 42,
+        "text": "child = spawn(python, ['--version'], { windowsHide: true })"
+      },
+      {
+        "file": "services/python-runner.mjs",
+        "line": 103,
+        "text": "spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true })"
+      },
+      {
+        "file": "services/python-runner.mjs",
+        "line": 134,
+        "text": "child = spawn(python, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 28,
+      "text": "cd DSH-FormatForge && pip install -e ."
+    }
+  ],
+  "skippedEntries": []
+}

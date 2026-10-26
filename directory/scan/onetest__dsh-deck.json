@@ -1,0 +1,103 @@
+{
+  "name": "@onetest/dsh-deck",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:13:58.240Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1181,
+        "text": "fetch: (...args) => globalThis.fetch(...args),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1208,
+        "text": "const response = format === \"html\" ? await deps.fetch(endpoint) : await deps.fetch(endpoint, {"
+      },
+      {
+        "file": "runtime/entry.ts",
+        "line": 18,
+        "text": "// `deck.json` is fetched as a module import, not a plain `fetch()`: Vite's"
+      },
+      {
+        "file": "runtime/entry.ts",
+        "line": 25,
+        "text": "// package's `/@dsh-deck/` alias and 404s (a plain `fetch()` — the form this"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/export/fonts.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/export/fonts.js",
+        "line": 47,
+        "text": "return readFile(fileURLToPath(new URL(file, FONT_DIR))).catch(() => null);"
+      },
+      {
+        "file": "lib/export/html.js",
+        "line": 1,
+        "text": "import { mkdtemp, readFile, realpath, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/export/html.js",
+        "line": 63,
+        "text": "await writeFile(entry, ["
+      },
+      {
+        "file": "lib/export/html.js",
+        "line": 83,
+        "text": "await writeFile(page, ["
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 102,
+        "text": "ctx.tools.register(deckViewTool(options));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "* @returns the tool definition `ctx.tools.register` mounts."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

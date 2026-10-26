@@ -1,0 +1,80 @@
+{
+  "name": "@tr1v3r/dsh-proxy",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:14:35.794Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 300,
+        "text": "const response = await fetch('api/dsh-proxy/status', { credentials: 'same-origin', cache: 'no-store', signal: AbortSignal.timeout(5000) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { Agent, Dispatcher, EnvHttpProxyAgent, Socks5ProxyAgent, getGlobalDispatcher, setGlobalDispatcher } from 'undici';"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 12,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 41,
+        "text": "const upstream = http.request("
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 136,
+        "text": "const response = await fetch(originUrl);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/demo.mjs",
+        "line": 14,
+        "text": "import { writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 21,
+        "text": "mkdirSync(join(tmpdir(), 'dsh-proxy-demo'), { recursive: true });"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 122,
+        "text": "writeFileSync(SETTINGS, text);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

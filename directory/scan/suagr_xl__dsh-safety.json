@@ -1,0 +1,93 @@
+{
+  "name": "@suagr_xl/dsh-safety",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:14:25.915Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-safety.mjs",
+        "line": 42,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/audit.mjs",
+        "line": 14,
+        "text": "import { promises as fsp, existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/audit.mjs",
+        "line": 40,
+        "text": "const raw = readFileSync(auditFile(home) + '.thresholds', 'utf8')"
+      },
+      {
+        "file": "lib/audit.mjs",
+        "line": 51,
+        "text": "await fsp.mkdir(path.dirname(auditFile(home)), { recursive: true })"
+      },
+      {
+        "file": "lib/audit.mjs",
+        "line": 52,
+        "text": "await fsp.writeFile("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "*   - `ctx.tools.guard()` — monotonic pre-dispatch denial (covers write/edit/"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 209,
+        "text": "const register = (tool) => ctx.effect(() => ctx.tools.register(tool), `dsh-safety: ${tool.name}`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 448,
+        "text": "ctx.effect(() => ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/safety-core.mjs",
+        "line": 7,
+        "text": "* `index.js` only wires these functions to `ctx.tools` and `ctx.on`."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/policy.mjs",
+        "line": 31,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,91 @@
+{
+  "name": "@sligqoer/dsh-usage-stats",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:14:18.615Z",
+  "icon": "sligqoer__dsh-usage-stats.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 929,
+        "text": "return fetch('/api/dsh-usage-stats/stats' + (q ? '?' + q : ''), { headers: { accept: 'application/json' } }).then(readJson)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 936,
+        "text": "return fetch('/api/dsh-usage-stats/provider-quotas' + (q ? '?' + q : ''), { headers: { accept: 'application/json' } }).then(readJson)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 942,
+        "text": "return fetch('/api/dsh-usage-stats/account-quotas', { headers: { accept: 'application/json' }, credentials: 'same-origin' }).then(readJson)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 954,
+        "text": "return fetch('/api/dsh-usage-stats/account-quotas/refresh', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1000,
+        "text": "return fetch('/api/dsh-usage-stats/controls', patch === undefined ? { headers: { accept: 'application/json' } } : {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { mkdir, readFile, rename, stat, writeFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 393,
+        "text": "await mkdir(dirname(storePath), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 397,
+        "text": "await writeFile(tmp, JSON.stringify(state), { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 457,
+        "text": "const raw = await readFile(storePath, 'utf8')"
+      },
+      {
+        "file": "lib/lm-fingerprint-engine.js",
+        "line": 3,
+        "text": "import { readFile, writeFile, mkdir, rename, rm, stat } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "profileContext",
+    "sessionQuery",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

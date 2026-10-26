@@ -1,0 +1,103 @@
+{
+  "name": "@lovedolove/dsh-codebase-memory-mcp",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:13:28.767Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bridge.mjs",
+        "line": 4,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/skills.mjs",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/skills.mjs",
+        "line": 14,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/skills.mjs",
+        "line": 137,
+        "text": "const raw = await readFile(fileURLToPath(candidate.locator), 'utf8')"
+      },
+      {
+        "file": "src/skills.mjs",
+        "line": 173,
+        "text": "const raw = await readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bridge.mjs",
+        "line": 286,
+        "text": "* Register cbm_* tools onto ctx.tools using defineTool (if available) or pass-through."
+      },
+      {
+        "file": "src/bridge.mjs",
+        "line": 307,
+        "text": "ctx.effect(() => ctx.tools.register(toolObj), `codebase-memory.cbm.${spec.name}`);"
+      },
+      {
+        "file": "src/bridge.mjs",
+        "line": 466,
+        "text": "if (ctx?.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 13,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 111,
+        "text": "// 1. Tool registration & auto-start (ctx.tools is guaranteed by inject=['tools'])"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bridge.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/bridge.mjs",
+        "line": 47,
+        "text": "child = spawn(exePath, ['--ui=true'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 73,
+      "text": "npm install -g codebase-memory-mcp"
+    }
+  ],
+  "skippedEntries": []
+}

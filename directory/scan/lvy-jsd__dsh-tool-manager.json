@@ -1,0 +1,109 @@
+{
+  "name": "@lvy-jsd/dsh-tool-manager",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:13:31.603Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exempt.js",
+        "line": 23,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/exempt.js",
+        "line": 50,
+        "text": "text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/exempt.js",
+        "line": 71,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/exempt.js",
+        "line": 74,
+        "text": "writeFileSync(tmp, `${JSON.stringify({ providers: config.providers, sessions: config.sessions }, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/manifest.js",
+        "line": 17,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 203,
+        "text": "if (typeof ctx.tools.schemaOf === 'function')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "return ctx.tools.schemaOf(definition, false);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "const layers = ctx.tools.layers;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "const byName = new Map(ctx.tools.schemas().map((s) => [s.name, s]));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/router/sidecar.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/router/sidecar.js",
+        "line": 31,
+        "text": "this.child = spawn(this.bin, ['--socket', this.socket], { stdio: ['ignore', 'ignore', 'pipe'] });"
+      },
+      {
+        "file": "src/router/sidecar.ts",
+        "line": 6,
+        "text": "import { spawn, type ChildProcess } from 'node:child_process'"
+      },
+      {
+        "file": "src/router/sidecar.ts",
+        "line": 56,
+        "text": "this.child = spawn(this.bin, ['--socket', this.socket], { stdio: ['ignore', 'ignore', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "sidecar/bin/tool-router-sidecar"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

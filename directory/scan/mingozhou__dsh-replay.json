@@ -1,0 +1,93 @@
+{
+  "name": "@mingozhou/dsh-replay",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:13:44.303Z",
+  "icon": "mingozhou__dsh-replay.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6,
+        "text": "e=t}base;async fetchJson(t){let r=await fetch(`${this.base}${t}`);if(!r.ok)throw new Error(`replay api ${t}: HTTP ${r.status}`);return r.json()}async listSessio"
+      },
+      {
+        "file": "lib/viewer.js",
+        "line": 11,
+        "text": " unavailable in this mode\");let t=await fetch(this.viewerUrl);if(!t.ok)throw new Error(`viewer bundle: HTTP ${t.status}`);return t.text()}async listSessions(){r"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 64,
+        "text": "const response = await fetch(`${this.base}${path}`)"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 90,
+        "text": "const response = await fetch(`${this.base}/viewer.js`)"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 125,
+        "text": "const response = await fetch(this.viewerUrl)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1066,
+        "text": "source = await readFile(new URL(\"./viewer.js\", import.meta.url), \"utf8\");"
+      },
+      {
+        "file": "lib/viewer.js",
+        "line": 8,
+        "text": "e(Pa,Pa.current):ne(Pa,t.pool)}function rm(){var e=xc();return e===null?null:{parent:Te._currentValue,pool:e}}var sl=Error(k(460)),Sc=Error(k(474)),Ys=Error(k(5"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 11,
+        "text": "import { copyFile, mkdir, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 15,
+        "text": "await mkdir('lib', { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/viewer.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

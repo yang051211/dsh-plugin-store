@@ -1,0 +1,140 @@
+{
+  "name": "@noob-stupid/dsh-connection-card-host",
+  "version": "1.0.82",
+  "scannedAt": "2026-10-26T10:13:55.449Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 264,
+        "text": "*   · 下载   `curl -o file`（不经过内存）✓"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 856,
+        "text": "* ⚠️ **必须显式 `curl.exe`**：在 PowerShell 里 `curl` 是 `Invoke-WebRequest` 的别名，"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 1226,
+        "text": "const resp = await fetch(ch.url);"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 1374,
+        "text": "const metaResp = await fetch(metaUrl, {"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 1386,
+        "text": "const resp = await fetch(tarball);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cards/connection-etiquette/test.mjs",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "cards/connection-etiquette/test.mjs",
+        "line": 36,
+        "text": "const readNormalized = (p) => readFileSync(p, 'utf8').replace(/\\r\\n/g, '\\n')"
+      },
+      {
+        "file": "lib/adapter/flag-file.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/adapter/flag-file.js",
+        "line": 47,
+        "text": "text = readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "lib/adapter/mount.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter/mount.js",
+        "line": 8,
+        "text": "*   3. **申报对账**：插件 `export const inject = ['tools', …]` 要的服务，"
+      },
+      {
+        "file": "lib/adapter/shadow-ctx.js",
+        "line": 65,
+        "text": "/** `ctx.tools.register(definition)` —— 捕获定义，返回 disposer。 */"
+      },
+      {
+        "file": "lib/adapter/shadow-ctx.js",
+        "line": 69,
+        "text": "throw new Error('ctx.tools.register 收到的定义缺少 name 字段');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "* ctx.tools 就必须在这里声明，否则能力探测会误报\"不可用\"。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "export const inject = ['agents', 'sessions', 'tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 31,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 156,
+        "text": "execFile('tar', ['-tvf', tgzPath], { timeout: 60_000, killSignal: 'SIGKILL', maxBuffer: MAX_CHILD_BUFFER, encoding: 'utf8' }, (err, stdout) => {"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 178,
+        "text": "execFile('tar', ['-tzf', tgzPath], { timeout: 60_000, killSignal: 'SIGKILL', maxBuffer: MAX_CHILD_BUFFER, encoding: 'utf8' }, (err, stdout) => {"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 478,
+        "text": "execFile('tar', ['-xzf', tgzPath, '-C', destDir], {"
+      },
+      {
+        "file": "lib/card-host/installer.js",
+        "line": 789,
+        "text": "execFile(CURL_BIN, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

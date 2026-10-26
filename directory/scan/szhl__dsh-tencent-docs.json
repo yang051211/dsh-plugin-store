@@ -1,0 +1,94 @@
+{
+  "name": "@szhl/dsh-tencent-docs",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:14:28.842Z",
+  "icon": "szhl__dsh-tencent-docs.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 60,
+        "text": "void fetch(DIAG_PATH, {"
+      },
+      {
+        "file": "client.js",
+        "line": 455,
+        "text": "const response = await fetch(STATE_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 728,
+        "text": "fetch(DIAG_PATH, {"
+      },
+      {
+        "file": "client.js",
+        "line": 812,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1033,
+        "text": "const state = await fetch(STATE_URL, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 43,
+        "text": "zation: !!js (() => { try { return process.getBuiltinModule('node:fs').readFileSync(dshHomePath('tencent-docs-token'), 'utf8').trim() } catch { return '' } })()"
+      },
+      {
+        "file": "index.js",
+        "line": 43,
+        "text": "import { readFile, writeFile, chmod, appendFile, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 111,
+        "text": "appendFile(join(home, 'tencent-docs-connector.log'), `${new Date().toISOString()} ${line}\\n`)"
+      },
+      {
+        "file": "index.js",
+        "line": 131,
+        "text": "return (await readFile(tokenFile(), 'utf8')).trim()"
+      },
+      {
+        "file": "index.js",
+        "line": 138,
+        "text": "await writeFile(tokenFile(), token, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 25,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "@michengai/dsh-archive-manager",
+  "version": "1.1.14",
+  "scannedAt": "2026-10-26T10:13:42.680Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 14,
+        "text": "{let f=o===void 0?{}:{signal:o},a=await fetch(t,s===\"GET\"?{cache:\"no-store\",...f}:{method:\"POST\",headers:{\"content-type\":\"application/json\",[di]:\"1\"},body:\"{}\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "lugin-update\":\"1\"},S?.headers),Ee=await fetch(O,Object.assign({},S,{headers:te})),Q=await Ee.json();if(!Ee.ok||!Q||Q.ok===!1)throw new Error((Q&&typeof Q==\"obje"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 209,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${encodeURIComponent(packageName)}/latest`, { signal: AbortSignal.timeout(8e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-settings.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/plugin-settings.js",
+        "line": 3,
+        "text": "import { readFile, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/plugin-settings.js",
+        "line": 27,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/plugin-settings.js",
+        "line": 32,
+        "text": "await writeFile(tmp, next, \"utf8\");"
+      },
+      {
+        "file": "lib/plugin-settings.js",
+        "line": 39,
+        "text": "await unlink(tmp).catch(() => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 4,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 241,
+        "text": "    const child = spawn(process.execPath, [entry, \"plugin\", \"--profile\", target.profileName, \"add\", \"--config.minimumReleaseAge=0\", packageSpec, \"--registry=htt"
+      },
+      {
+        "file": "lib/plugin-updater.js",
+        "line": 273,
+        "text": "const child = spawn(manager.command, [...manager.args, \"add\", \"--config.minimumReleaseAge=0\", packageSpec, \"--registry=https://registry.npmjs.org/\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

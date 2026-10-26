@@ -1,0 +1,65 @@
+{
+  "name": "@pananfly/dsh-lan-access",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:14:03.963Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/webserver.js",
+        "line": 3,
+        "text": "import http, { createServer } from \"node:http\";"
+      },
+      {
+        "file": "dist/host/webserver.js",
+        "line": 4,
+        "text": "import { createServer as createServer$1 } from \"node:https\";"
+      },
+      {
+        "file": "dist/host/webserver.js",
+        "line": 237,
+        "text": "const request = http.request(options, (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/webserver.js",
+        "line": 5,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/host/webserver.js",
+        "line": 655,
+        "text": "[cert, key] = await Promise.all([readFile(certFile, \"utf8\"), readFile(keyFile, \"utf8\")]);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/webserver.js",
+        "line": 10,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,84 @@
+{
+  "name": "@maricgeer/dsh-websearch",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:13:37.302Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { request } from \"node:https\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 423,
+        "text": "fetch(request, signal) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 424,
+        "text": "return this.#core.run(request, signal, (provider, req, sig) => provider.fetch(req, sig));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 540,
+        "text": "* ON: `fetch()` rejects with a guidance error naming web_search as the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 545,
+        "text": "* OFF: `fetch()` delegates to a plain HTTP fetch — the plugin's own"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 459,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 461,
+        "text": "if (!existsSync(path)) writeFileSync(path, \"\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 469,
+        "text": "appendFileSync(path, `${(/* @__PURE__ */ new Date()).toISOString()} ${message}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 522,
+        "text": "if (!readFileSync(presetPath, \"utf8\").includes(`authored (v`)) continue;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

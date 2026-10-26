@@ -1,0 +1,87 @@
+{
+  "name": "@toddzheng024/vapor-vlm-modal",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:14:34.287Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "service.js",
+        "line": 4,
+        "text": "import {existsSync,mkdirSync,readFileSync,writeFileSync,realpathSync} from 'node:fs';"
+      },
+      {
+        "file": "service.js",
+        "line": 14,
+        "text": "const save=(path,value)=>writeFileSync(path,JSON.stringify(value,null,2),{flag:'wx',mode:0o600,flush:true});"
+      },
+      {
+        "file": "service.js",
+        "line": 43,
+        "text": "his.store.file(job.reportRevisionId),bytes=readFileSync(r.absolute);assert(digest(bytes)===r.sha256,'Report changed');job.report=JSON.parse(bytes);}return job;}"
+      },
+      {
+        "file": "service.js",
+        "line": 71,
+        "text": "const id='vlm-'+randomUUID(),dir=join(this.store.dir,'vlm',id);mkdirSync(dir,{recursive:true,mode:0o700});inside(this.store.root,dir);"
+      },
+      {
+        "file": "service.js",
+        "line": 89,
+        "text": "nc(ledgerPath)){const ledger=JSON.parse(readFileSync(inside(this.store.root,ledgerPath)));assert(ledger.budgetUSD===args.budgetUSD,'Existing production budget i"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools.js",
+        "line": 1,
+        "text": "export const inject=['tools','vaporRuntime'];"
+      },
+      {
+        "file": "tools.js",
+        "line": 4,
+        "text": "ctx.effect(()=>registerTools(ctx.tools,service));"
+      },
+      {
+        "file": "tools.js",
+        "line": 13,
+        "text": "  const disposers=definitions.map(d=>tools.register({...d,execute:async args=>d.execute(args),output:{schema:{type:'object'},render:(_args,value)=>[{type:'text'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "service.js",
+        "line": 2,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "service.js",
+        "line": 18,
+        "text": "const child=spawn(python,[join(root,script),...args],{cwd:root,env,stdio:['ignore','pipe','pipe']});"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "vaporRuntime"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

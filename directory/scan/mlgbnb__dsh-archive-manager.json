@@ -1,0 +1,67 @@
+{
+  "name": "@mlgbnb/dsh-archive-manager",
+  "version": "1.0.10",
+  "scannedAt": "2026-10-26T10:13:46.844Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 171,
+        "text": "return fetch(url, options).then(function (res) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, rmSync, statSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "return JSON.parse(readFileSync(filePath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "writeFileSync(tmp, JSON.stringify(data, null, 2) + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "rmSync(targetDir, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

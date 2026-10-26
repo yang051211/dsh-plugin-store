@@ -1,0 +1,80 @@
+{
+  "name": "@tobewin/dsh-plugin-market",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:14:31.682Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/public/app.js",
+        "line": 65,
+        "text": "const response = await fetch(path, { headers: { 'content-type': 'application/json' }, ...init });"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/operations.js",
+        "line": 2,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 22,
+        "text": "manifest: JSON.parse(readFileSync(manifestPath, 'utf8')),"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 31,
+        "text": "return JSON.parse(readFileSync(realpathSync(manifestPath), 'utf8'));"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 84,
+        "text": "writeFileSync(join(profileDir, 'package.json'), `${JSON.stringify(manifest, null, 2)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/operations.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/operations.js",
+        "line": 50,
+        "text": "const child = spawn(invocation.command, [...invocation.prefixArgs, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

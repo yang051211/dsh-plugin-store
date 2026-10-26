@@ -1,0 +1,131 @@
+{
+  "name": "@naivg/dsh-network",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:13:52.394Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.cjs",
+        "line": 26,
+        "text": "const undici = require(\"undici\");"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 400,
+        "text": "const response = await fetch(pinned.url, reqInit).catch((err) => {"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 1395,
+        "text": "const response = await fetch(u, reqInit).catch((err) => {"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 5077,
+        "text": "engine: \"undici\","
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 5092,
+        "text": "engine: \"undici\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.cjs",
+        "line": 28,
+        "text": "const node_fs = require(\"node:fs\");"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 1800,
+        "text": "await node_fs.promises.mkdir(root, { recursive: true });"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 1804,
+        "text": "await node_fs.promises.writeFile(partPath, bytes);"
+      },
+      {
+        "file": "dist/cli.cjs",
+        "line": 1807,
+        "text": "await node_fs.promises.rm(partPath, { force: true }).catch(() => {"
+      },
+      {
+        "file": "dsh/persist.js",
+        "line": 29,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 59,
+        "text": "export const inject = ['tools', 'web', 'systemPrompt']"
+      },
+      {
+        "file": "dsh/tools.js",
+        "line": 4,
+        "text": "* The `ctx.tools.register` blocks (web_search / web_fetch /"
+      },
+      {
+        "file": "dsh/tools.js",
+        "line": 42,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dsh/tools.js",
+        "line": 146,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dsh/tools.js",
+        "line": 307,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/spawnHidden.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/spawnHidden.js",
+        "line": 7,
+        "text": "return spawn(command, args, { ...options, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

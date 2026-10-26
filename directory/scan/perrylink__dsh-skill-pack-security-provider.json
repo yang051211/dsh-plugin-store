@@ -1,0 +1,109 @@
+{
+  "name": "@perrylink/dsh-skill-pack-security-provider",
+  "version": "2.2.24",
+  "scannedAt": "2026-10-26T10:14:02.951Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vet/checks.js",
+        "line": 384,
+        "text": "const DOWNLOAD = /(curl|wget|iwr\\b|Invoke-WebRequest|Invoke-RestMethod|bitsadmin|certutil|Start-BitsTransfer)\\b/i;"
+      },
+      {
+        "file": "lib/vet/checks.js",
+        "line": 385,
+        "text": "curl|wget|\\bfetch\\s*\\(|https?\\.(?:get|request)\\s*\\(|Invoke-WebRequest|Invoke-RestMethod|axios|\\bgot\\s*\\(|undici|prebuild-install|node-pre-gyp|node-gyp-build)/i;"
+      },
+      {
+        "file": "lib/vet/fetch.js",
+        "line": 45,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "lib/vet/fetch.js",
+        "line": 88,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/vet/engine.js",
+        "line": 9,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/vet/engine.js",
+        "line": 43,
+        "text": "const head = (await readFile(join(root, '.git', 'HEAD'), 'utf8')).trim();"
+      },
+      {
+        "file": "lib/vet/engine.js",
+        "line": 50,
+        "text": "const ref = (await readFile(join(root, '.git', refMatch[1]), 'utf8')).trim();"
+      },
+      {
+        "file": "lib/vet/scanners.js",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "*  2. the `plugin_vet` supply-chain gate tool on `ctx.tools`: an automated"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['skills', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "yield ctx.tools.register(buildVetTool(vet, config.language ?? 'zh'));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vet/scanners.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/vet/scanners.js",
+        "line": 22,
+        "text": "child = spawn(bin, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

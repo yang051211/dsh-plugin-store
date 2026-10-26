@@ -1,0 +1,82 @@
+{
+  "name": "@stonehao/dsh-account-pool",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:14:26.974Z",
+  "icon": "stonehao__dsh-account-pool.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 311,
+        "text": "const response = await fetch(STATUS_ROUTE, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 34,
+        "text": "const response = await fetch(STATUS_ROUTE, {"
+      },
+      {
+        "file": "src/quota.js",
+        "line": 72,
+        "text": "const fetcher = options.fetcher ?? ((url, init) => fetch(url, init))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 29,
+        "text": "import { appendFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 61,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 70,
+        "text": "await writeFile(staging, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 138,
+        "text": "return appendFile(path, `${new Date().toISOString()} [${level}] ${text}\\n`, 'utf8').catch(() => undefined)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 251,
+        "text": "document = JSON.parse(await readFile(join(dataDir, 'providers.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

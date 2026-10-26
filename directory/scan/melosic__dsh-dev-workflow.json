@@ -1,0 +1,109 @@
+{
+  "name": "@melosic/dsh-dev-workflow",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:13:41.430Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 1,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 107,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 108,
+        "text": "appendFileSync(path, `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/checks.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/checks.js",
+        "line": 163,
+        "text": "return { message: await readFile(path, 'utf8') };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "ctx.tools.register(createCheckCommitMessageTool({ t: () => t, config: () => config })),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "ctx.tools.register(createCheckDocSyncTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 38,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 204,
+        "text": "ctx.tools.register(createCheckCommitMessageTool({ t: () => t, config: () => config })),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 45,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "src/git.ts",
+        "line": 33,
+        "text": "spawn(spec: {"
+      },
+      {
+        "file": "src/git.ts",
+        "line": 142,
+        "text": "handle = subprocess!.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

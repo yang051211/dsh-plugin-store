@@ -1,0 +1,106 @@
+{
+  "name": "@mkaliezz/dsh-plugin-firewall",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:13:45.995Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tests/core.test.js",
+        "line": 14,
+        "text": "const receipt = inspectText('demo', { 'index.ts': 'ctx.tools.register({}); fetch(\"https://example.com\")' });"
+      },
+      {
+        "file": "lib/tests/core.test.js",
+        "line": 22,
+        "text": "const a = inspectText('demo', { 'b.ts': 'process.env.X', 'a.ts': 'fetch(\"x\")' });"
+      },
+      {
+        "file": "lib/tests/core.test.js",
+        "line": 23,
+        "text": "const b = inspectText('demo', { 'a.ts': 'fetch(\"x\")', 'b.ts': 'process.env.X' });"
+      },
+      {
+        "file": "tests/core.test.ts",
+        "line": 16,
+        "text": "const receipt = inspectText('demo', { 'index.ts': 'ctx.tools.register({}); fetch(\"https://example.com\")' })"
+      },
+      {
+        "file": "tests/core.test.ts",
+        "line": 26,
+        "text": "const a = inspectText('demo', { 'b.ts': 'process.env.X', 'a.ts': 'fetch(\"x\")' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/index.js",
+        "line": 2,
+        "text": "import { readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/src/index.js",
+        "line": 40,
+        "text": "const pkgText = await readFile(packagePath, 'utf8');"
+      },
+      {
+        "file": "lib/src/index.js",
+        "line": 47,
+        "text": "files[name] = await readFile(join(root, name), 'utf8');"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 2,
+        "text": "import { readFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 42,
+        "text": "const pkgText = await readFile(packagePath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tests/core.test.js",
+        "line": 14,
+        "text": "const receipt = inspectText('demo', { 'index.ts': 'ctx.tools.register({}); fetch(\"https://example.com\")' });"
+      },
+      {
+        "file": "tests/core.test.ts",
+        "line": 16,
+        "text": "const receipt = inspectText('demo', { 'index.ts': 'ctx.tools.register({}); fetch(\"https://example.com\")' })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tests/core.test.js",
+        "line": 7,
+        "text": "'index.ts': \"import { exec } from 'node:child_process'\","
+      },
+      {
+        "file": "tests/core.test.ts",
+        "line": 8,
+        "text": "'index.ts': \"import { exec } from 'node:child_process'\","
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

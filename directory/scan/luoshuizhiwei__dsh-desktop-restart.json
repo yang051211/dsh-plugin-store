@@ -1,0 +1,107 @@
+{
+  "name": "@luoshuizhiwei/dsh-desktop-restart",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:13:30.343Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 727,
+        "text": "const response = await fetch(STATUS_ROUTE, { method: \"GET\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 763,
+        "text": "response = await fetch(RESTART_ROUTE + query, { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1516,
+        "text": "fetch(SWEEP_ROUTE + query, { method: \"POST\" })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 304,
+        "text": "* 桌面版的页面是以 `dsh-app://` 协议装载的，页面里的 `fetch('/…')` 由壳层"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/helper.cjs",
+        "line": 33,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 580,
+        "text": "handoff = JSON.parse(fs.readFileSync(handoffPath, 'utf8'))"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 592,
+        "text": "fs.appendFileSync(logPath, `[${new Date().toISOString()}] ${line}\\n`)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/helper.cjs",
+        "line": 32,
+        "text": "const { execFileSync, spawn } = require('node:child_process')"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 246,
+        "text": "const child = spawn(shell, ['-NoProfile', '-NonInteractive', '-EncodedCommand', encoded], {"
+      },
+      {
+        "file": "lib/helper.cjs",
+        "line": 492,
+        "text": "const child = spawn(exe, relaunchArgs ?? [], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 668,
+        "text": "const helper = spawn(process.execPath, [HELPER_PATH, handoffPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

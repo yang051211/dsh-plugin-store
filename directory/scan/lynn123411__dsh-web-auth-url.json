@@ -1,0 +1,99 @@
+{
+  "name": "@lynn123411/dsh-web-auth-url",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:13:33.848Z",
+  "icon": "lynn123411__dsh-web-auth-url.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "+ `Exchange it once for the session cookie: curl -s -c \"$JAR\" -o /dev/null \"${value.url}\"\\n`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "+ 'Then use the jar instead of the token: curl -s -b \"$JAR\" \"$DSH_WEB_URL/\"',"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 155,
+        "text": "assert.ok(rendered.includes('curl -s -c \"$JAR\"'), '要给出换 cookie 的命令');"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 156,
+        "text": "assert.ok(rendered.includes('curl -s -b \"$JAR\" \"$DSH_WEB_URL/\"'), '后续请求要挂到干净地址上');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 23,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 35,
+        "text": "const manifest = JSON.parse(readFileSync(join(packageDir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 60,
+        "text": "const found = JSON.parse(readFileSync(candidate, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'connection', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "* @returns 交给 `ctx.tools.register` 的工具定义。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "ctx.tools.register(loginTool(ctx))"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 5,
+        "text": "* 1. 「登录地址」工具真的注册进真 `ctx.tools`（@deepseek-ai/dsh-tools 的 ToolRuntime），"
+      },
+      {
+        "file": "scripts/smoke-host.mjs",
+        "line": 135,
+        "text": "const tool = ctx.tools.get(TOOL_NAME);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

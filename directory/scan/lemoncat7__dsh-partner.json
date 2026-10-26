@@ -1,0 +1,160 @@
+{
+  "name": "@lemoncat7/dsh-partner",
+  "version": "2.8.7",
+  "scannedAt": "2026-10-26T10:13:15.597Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/autonomy.js",
+        "line": 47,
+        "text": "过已授权 bash 使用 node，先检查 process.version 和 require(\"node:http\")、require(\"node:https\")；这些是内置模块，不需要 npm 安装。Node 内置 fetch 不要求安装独立 undici，但不能假定 fetch 自动使用代理。使用当前环境实测能力"
+      },
+      {
+        "file": "lib/channels/direct/avatar.js",
+        "line": 6,
+        "text": "const response = await fetch(config.baseUrl + path, {"
+      },
+      {
+        "file": "lib/channels/direct/login.js",
+        "line": 26,
+        "text": "const response = await fetch(config.baseUrl + path, {"
+      },
+      {
+        "file": "lib/channels/direct/login.js",
+        "line": 44,
+        "text": "const response = await fetch(config.baseUrl + (matrix ? '/_matrix/client/v3/login' : '/api/v4/users/login'), {"
+      },
+      {
+        "file": "lib/channels/direct/media.js",
+        "line": 18,
+        "text": "const response = await fetch(this.config.baseUrl + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 8,
+        "text": "import { mkdir, realpath, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 872,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 880,
+        "text": "await writeFile(path, attachment.data, { flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 936,
+        "text": "await mkdir(cwd, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/api/features/pendant-api.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 355,
+        "text": "disposers.push(agent.ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/agent-runtime.js",
+        "line": 405,
+        "text": "noteDisposers.push(agent.ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/collaboration/composition.js",
+        "line": 48,
+        "text": "disposers.push(ctx.tools.register({ ...tool, execute: async (args, execution) => {"
+      },
+      {
+        "file": "lib/collaboration/composition.js",
+        "line": 59,
+        "text": "disposers.push(ctx.tools.register(this.attachmentToolFactory(companion.id)));"
+      },
+      {
+        "file": "lib/collaboration/composition.js",
+        "line": 61,
+        "text": "disposers.push(ctx.tools.register(this.avatarToolFactory(companion.id)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/heartbeat-command.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/heartbeat-command.js",
+        "line": 159,
+        "text": "execFile(command.file, command.args, {"
+      },
+      {
+        "file": "resources/skills/story-creation/upstream/skills/story-long-scan/scripts/cdp-utils.js",
+        "line": 11,
+        "text": "const { execFileSync } = require(\"child_process\");"
+      },
+      {
+        "file": "resources/skills/story-creation/upstream/skills/story-short-scan/scripts/cdp-utils.js",
+        "line": 11,
+        "text": "const { execFileSync } = require(\"child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run clean && npm run build"
+      }
+    ]
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client.pendant.js",
+    "lib/pendant-renderer.js",
+    "lib/pendant/settings-panel.js",
+    "lib/ui/attachment-storage.js",
+    "lib/ui/channels-panel.js",
+    "lib/ui/memory/automation-settings.js",
+    "lib/ui/memory/memory-library.js",
+    "lib/ui/push-editor.js",
+    "lib/ui/requirement-tasks-panel.js",
+    "lib/ui/skills-panel.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "attachments",
+    "credentials",
+    "llm",
+    "settings",
+    "systemPrompt",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

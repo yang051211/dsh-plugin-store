@@ -1,0 +1,92 @@
+{
+  "name": "@starpivot/dsh-plugin-marketplace",
+  "version": "0.1.15",
+  "scannedAt": "2026-10-26T10:14:22.166Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 1197,
+        "text": "const response = await fetch(url, { signal: controller.signal, redirect: \"follow\" });"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 25,
+        "text": "await fetch(url, { signal: AbortSignal.timeout(500) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 489,
+        "text": "import { chmodSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 537,
+        "text": "writeFileSync(path, `${JSON.stringify(spec)}"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 3,
+        "text": "import { readFileSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 34,
+        "text": "const spec = JSON.parse(readFileSync(specPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 55,
+        "text": "unlinkSync(specPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 488,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 559,
+        "text": "const child = spawn(process.execPath, [watchdogPath, specPath], {"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/reboot-watchdog.js",
+        "line": 40,
+        "text": "const child = spawn(spec.execPath, [...spec.execArgv, ...spec.argv], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "@niumingqing/reflex-guard",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:13:54.767Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 6,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 15,
+        "text": "return JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8')).version;"
+      },
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 50,
+        "text": "const manifest = JSON.parse(fs.readFileSync(path.join(directory, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "demo/demo.js",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "demo/demo.js",
+        "line": 139,
+        "text": "fs.mkdirSync(path.dirname(target.targetKey), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "// 把「拦截」接到 DSH 的 tools/pre-execute 与 ctx.tools.guard："
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "//   - ctx.tools.guard 返回 reason 字符串即拒绝"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "tc.tools.register(rgWriteDefinition(tc, config));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 75,
+        "text": "result = spawnSync(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', quoted], { stdio: 'inherit', windowsHide: true, windowsVerbatimArguments: true });"
+      },
+      {
+        "file": "bin/reflex-guard.mjs",
+        "line": 77,
+        "text": "result = spawnSync(command, args, { stdio: 'inherit', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

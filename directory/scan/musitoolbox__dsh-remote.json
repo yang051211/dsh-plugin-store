@@ -1,0 +1,97 @@
+{
+  "name": "@musitoolbox/dsh-remote",
+  "version": "0.4.0-beta.2",
+  "scannedAt": "2026-10-26T10:13:51.426Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service-client.js",
+        "line": 17,
+        "text": "const response = await fetch(url, { ...options, signal: controller.signal });"
+      },
+      {
+        "file": "scripts/fetch-frpc.mjs",
+        "line": 42,
+        "text": "const response = await fetch(`https://github.com/fatedier/frp/releases/download/v${FRPC_VERSION}/${target.asset}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/frpc.js",
+        "line": 1,
+        "text": "import { access, chmod, mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/frpc.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/frpc.js",
+        "line": 55,
+        "text": "await mkdir(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/frpc.js",
+        "line": 56,
+        "text": "await writeFile(filePath, createFrpcConfig(installation, localPort), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/installation.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager.js",
+        "line": 1,
+        "text": "import { spawn as defaultSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 101,
+        "text": "const child = this.spawn(frpcPath, ['-c', this.frpcConfigPath], {"
+      },
+      {
+        "file": "scripts/fetch-frpc.mjs",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/fetch-frpc.mjs",
+        "line": 24,
+        "text": "const child = spawn(command, args, { stdio: 'inherit', windowsHide: true, shell: false });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/darwin-arm64/frpc",
+    "bin/darwin-x64/frpc"
+  ],
+  "requiredServices": [
+    "connection",
+    "skills",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

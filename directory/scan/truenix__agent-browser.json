@@ -1,0 +1,125 @@
+{
+  "name": "@truenix/agent-browser",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-26T10:14:36.972Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser.mjs",
+        "line": 35,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "src/ws.mjs",
+        "line": 14,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "src/ws.mjs",
+        "line": 15,
+        "text": "import https from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser.mjs",
+        "line": 32,
+        "text": "import { mkdtempSync, existsSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/browser.mjs",
+        "line": 207,
+        "text": "try { owner = JSON.parse(readFileSync(join(dir, OWNER_FILE), 'utf8')); }"
+      },
+      {
+        "file": "src/browser.mjs",
+        "line": 230,
+        "text": "try { rmSync(dir, { recursive: true, force: true }); profiles += 1; } catch { /* best effort */ }"
+      },
+      {
+        "file": "src/browser.mjs",
+        "line": 243,
+        "text": "const raw = readFileSync(file, 'utf8').split('\\n');"
+      },
+      {
+        "file": "src/browser.mjs",
+        "line": 408,
+        "text": "writeFileSync(join(profileDir, OWNER_FILE),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis/plugin.mjs",
+        "line": 37,
+        "text": "export const inject = ['shell', 'tools'];"
+      },
+      {
+        "file": "cordis/plugin.mjs",
+        "line": 62,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "cordis/plugin.mjs",
+        "line": 73,
+        "text": "ctx.effect(() => tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/browser.mjs",
+        "line": 31,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/browser.mjs",
+        "line": 400,
+        "text": "const child = spawn(binary, [...flags, 'about:blank'], {"
+      },
+      {
+        "file": "src/daemon.mjs",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/daemon.mjs",
+        "line": 104,
+        "text": "const child = spawn(process.execPath, [cli, 'daemon'], { detached: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "src/install.mjs",
+        "line": 9,
+        "text": "import { execSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 187,
+      "text": "npm i -g @truenix/agent-browser"
+    }
+  ],
+  "skippedEntries": []
+}

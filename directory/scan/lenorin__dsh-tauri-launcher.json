@@ -1,0 +1,86 @@
+{
+  "name": "@lenorin/dsh-tauri-launcher",
+  "version": "1.1.5",
+  "scannedAt": "2026-10-26T10:13:16.312Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 106,
+        "text": "const response = await fetch(API_BASE + '/state', { headers: CSRF_HEADERS })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const response = await fetch(API_BASE + '/set-desktop', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 118,
+        "text": "const response = await fetch(API_BASE + '/set-shortcut', { method: 'POST', headers: CSRF_HEADERS })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 122,
+        "text": "const response = await fetch(API_BASE + '/diagnose', { headers: CSRF_HEADERS })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['webServer', 'fs', 'subprocess']"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 194,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 396,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 439,
+        "text": "subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 574,
+        "text": "const handle = subprocess.spawn({ argv: [exe], cwd: dir, stdio: APP_STDIO, graceMs: 3000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "launcher/bin/dsh-launcher.exe"
+  ],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

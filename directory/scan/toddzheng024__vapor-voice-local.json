@@ -1,0 +1,66 @@
+{
+  "name": "@toddzheng024/vapor-voice-local",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:14:34.652Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "import {readFileSync,existsSync} from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 33,
+        "text": "const reportData=JSON.parse(readFileSync(join(out,'preprocessing.json'),'utf8'));"
+      },
+      {
+        "file": "register-tools.js",
+        "line": 1,
+        "text": "import {readFileSync,existsSync} from 'node:fs';"
+      },
+      {
+        "file": "register-tools.js",
+        "line": 6,
+        "text": "const catalog=JSON.parse(readFileSync(new URL('./catalog.json',import.meta.url),'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "      const child=spawn('/usr/bin/sandbox-exec',['-p','(version 1) (allow default) (deny network*)',python,join(root,'tools/voice/voice.py'),'separate','--sourc"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "vaporRuntime"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

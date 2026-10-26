@@ -1,0 +1,107 @@
+{
+  "name": "@lolkda/dsh-file-manager",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:13:28.408Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 318,
+        "text": "const request = runtime.fetch ?? ((...args) => fetch(...args));"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 27589,
+        "text": "const request = options.fetch ?? ((...args) => fetch(...args));"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 28420,
+        "text": "const response = await fetch(api.uploadUrl(taskId, item.id), {"
+      },
+      {
+        "file": "tests/api.test.mjs",
+        "line": 106,
+        "text": "assert.equal((await routes[0].fetch(request({ op: 'bootstrap' }))).status, 200);"
+      },
+      {
+        "file": "tests/client-harness.mjs",
+        "line": 36,
+        "text": "// The plugin uses the global fetch (the browser provides it); route it through"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/delete-tree.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "dist/host/delete-tree.js",
+        "line": 2,
+        "text": "import * as fs from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/host/delete-tree.js",
+        "line": 74,
+        "text": "await fs.unlink(address);"
+      },
+      {
+        "file": "dist/host/io.js",
+        "line": 1,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "dist/host/io.js",
+        "line": 2,
+        "text": "import * as fs from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/host/atomic-rename.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/host/atomic-rename.js",
+        "line": 22,
+        "text": "const child = spawn(executable, [sourceName, destinationName], {"
+      },
+      {
+        "file": "tests/rename-compatibility-host.test.mjs",
+        "line": 32,
+        "text": "import cp from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [
+    "host/native/rename-no-replace"
+  ],
+  "requiredServices": [
+    "connection",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,121 @@
+{
+  "name": "@restregular/dsh-memory",
+  "version": "0.26.0",
+  "scannedAt": "2026-10-26T10:14:10.447Z",
+  "icon": "restregular__dsh-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 642,
+        "text": "const res = await fetch(`${API}/${method}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3101,
+        "text": "const res = await fetch(`${API}/audit/export?${queryParams('')}&format=${format}`)"
+      },
+      {
+        "file": "lib/provider/embed-server.js",
+        "line": 79,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/provider/embed.js",
+        "line": 64,
+        "text": "const res = await fetch(this.opts.endpoint, {"
+      },
+      {
+        "file": "lib/provider/models.js",
+        "line": 6,
+        "text": "* 想加模型:先 `curl -I`(或 HEAD)确认 URL 与 content-length,再往这里加一条。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/inject/session-state-store.js",
+        "line": 24,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/inject/session-state-store.js",
+        "line": 142,
+        "text": "const text = readFileSync(this.file, 'utf8')"
+      },
+      {
+        "file": "lib/inject/session-state-store.js",
+        "line": 218,
+        "text": "appendFileSync(this.file, text, 'utf8')"
+      },
+      {
+        "file": "lib/inject/session-state-store.js",
+        "line": 238,
+        "text": "rmSync(this.file, { force: true })"
+      },
+      {
+        "file": "lib/inject/session-state-store.js",
+        "line": 239,
+        "text": "rmSync(`${this.file}.tmp`, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools/apply.js",
+        "line": 5,
+        "text": "* inject: ['tools', 'memory'] is REQUIRED:"
+      },
+      {
+        "file": "lib/tools/apply.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'memory']"
+      },
+      {
+        "file": "lib/tools/apply.js",
+        "line": 127,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provider/embed-server.js",
+        "line": 19,
+        "text": "import { spawn as nodeSpawn,                   } from 'node:child_process'"
+      },
+      {
+        "file": "lib/provider/embed-server.js",
+        "line": 243,
+        "text": "const child = this.deps.spawn(this.cfg.exe          , args, {"
+      },
+      {
+        "file": "lib/provider/hardware.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/provider/hardware.js",
+        "line": 71,
+        "text": "execFile(command, args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 1 << 20 }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

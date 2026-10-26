@@ -1,0 +1,60 @@
+{
+  "name": "@logictan/dsh-desktop-agent",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:13:25.792Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 95,
+        "text": "return fetch(VISION_MODELS_API, { method: \"GET\", headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/driver.js",
+        "line": 20,
+        "text": "import { createMcpToolDefinition } from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/driver.js",
+        "line": 140,
+        "text": "tools.register(createMcpToolDefinition(ctx, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "ctx.effect(() => tools.register(definition), 'desktop-agent: desktop_agent tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "@perrylink/dsh-ticktick",
+  "version": "0.1.22",
+  "scannedAt": "2026-10-26T10:14:03.191Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "probes/lib.mjs",
+        "line": 24,
+        "text": "const response = await fetch(URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1321,
+        "text": "const token = readFileSync(file, \"utf8\").trim();"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 22,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 87,
+        "text": "const token = readFileSync(file, 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1290,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1350,
+        "text": "for (const tool of buildTicktickTools(mounted)) toolDisposers.push(ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 38,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 135,
+        "text": "toolDisposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

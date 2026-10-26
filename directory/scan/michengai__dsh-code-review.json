@@ -1,0 +1,93 @@
+{
+  "name": "@michengai/dsh-code-review",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:13:42.900Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/journal.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, writeFile, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 14,
+        "text": "raw = await readFile(this.path(session), 'utf8');"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 29,
+        "text": "await mkdir(this.directory, { recursive: true });"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 32,
+        "text": "await writeFile(temp, JSON.stringify(record) + '\\n', { encoding: 'utf8', flag: 'wx', flush: true });"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 37,
+        "text": "await unlink(temp);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "export const inject = ['commands', 'subagents', 'agents', 'tools', 'systemPrompt', 'sessions', 'userQuestions'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 52,
+        "text": "const deny = delegatedTools.filter(name => ctx.tools.get(name, parent) !== undefined);"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 66,
+        "text": "agent.ctx.tools.restrict({ deny });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/request.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "sessions",
+    "subagents",
+    "systemPrompt",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

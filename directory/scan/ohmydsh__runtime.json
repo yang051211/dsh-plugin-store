@@ -1,0 +1,79 @@
+{
+  "name": "@ohmydsh/runtime",
+  "version": "0.1.0-preview.1",
+  "scannedAt": "2026-10-26T10:13:56.909Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/adapters/official-v1.mjs",
+        "line": 1,
+        "text": "import { readFile, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "dist/adapters/official-v1.mjs",
+        "line": 153,
+        "text": "manifest = await readFile(join(resolvedRoot, 'package.json'), 'utf8').then(JSON.parse).catch(() => null)"
+      },
+      {
+        "file": "dist/adapters/official-v1.mjs",
+        "line": 160,
+        "text": "const lock = JSON.parse(await readFile(resolve(resolvedRoot, '..', '..', '.package-lock.json'), 'utf8'))"
+      },
+      {
+        "file": "dist/adapters/repository-config-v1.mjs",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "dist/adapters/repository-config-v1.mjs",
+        "line": 113,
+        "text": "const content = await readFile(patchFilename(home, profile), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/launcher.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dist/launcher.mjs",
+        "line": 13,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "dist/manager.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dist/manager.mjs",
+        "line": 20,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,67 @@
+{
+  "name": "@skylerfee/dsh-llm-opencode-go-live",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:14:18.194Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 325,
+        "text": "const response = await fetch(BALANCE_ROUTE, { signal, headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 212,
+        "text": "resolveImageAccess: (attachments, ref) => resolveImageAttachmentAccess(attachments, hostPath => ctx.get('fs')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 26,
+        "text": "const value = JSON.parse(await readFile(this.path, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 58,
+        "text": "await mkdir(dirname(this.path), { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 60,
+        "text": "await writeFile(temporary, `${JSON.stringify(snapshot)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
