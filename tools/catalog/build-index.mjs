@@ -4,7 +4,7 @@
  * which official readers drop. Only approved plugins appear, and each lists only its reviewed version.
  */
 import semver from 'semver'
-import { slugOf } from './slug.mjs'
+import { slugOf } from '../directory/slug.mjs'
 
 /** Where the index is published; relative icon paths resolve against it. */
 export const INDEX_PUBLIC_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json'

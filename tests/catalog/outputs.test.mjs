@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles } from '../../tools/catalog/outputs.mjs'
+import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles } from '../../tools/directory/outputs.mjs'
 
 const index = {
   plugins: [

@@ -1,6 +1,6 @@
 /**
- * Permission evidence for a reviewer: pattern matches over a package's files. It only reads text — nothing is
- * imported, evaluated or executed. Results are candidates; the reviewer records the verdict in catalog.yaml.
+ * Automatic detection: pattern matches over a package's files. It only reads text — nothing is
+ * imported, evaluated or executed. Matches are hints, not a security review.
  */
 import { parse } from 'yaml'
 

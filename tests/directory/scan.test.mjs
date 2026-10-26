@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { scanPackage } from '../../tools/catalog/scan.mjs'
+import { scanPackage } from '../../tools/directory/scan.mjs'
 
 const pkg = (files) => new Map(Object.entries({ 'package.json': JSON.stringify({ name: 'x' }), ...files }).map(([k, v]) => [k, Buffer.from(v)]))
 

@@ -18,12 +18,12 @@ import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
 import { buildIndex, INDEX_PUBLIC_URL } from './build-index.mjs'
 import { CURATED_ICON_DIR, loadCuration } from './curation.mjs'
 import { downloadTarball, fetchUpstream } from './fetch-upstream.mjs'
-import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
+import { appendStatsHistory, mergeStats, plannedMarketFiles, staleMarketFiles, toJson } from '../directory/outputs.mjs'
 import { preflightIssues, servicesProvidedBy } from './preflight.mjs'
-import { scanPackage } from './scan.mjs'
+import { scanPackage } from '../directory/scan.mjs'
 import { compareFiles, compareScans, selfUpdateLines, updatesReport } from './updates.mjs'
 import semver from 'semver'
-import { slugOf } from './slug.mjs'
+import { slugOf } from '../directory/slug.mjs'
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url))
 export const CURATION_FILE = join(ROOT, 'catalog', 'catalog.yaml')

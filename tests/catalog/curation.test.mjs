@@ -4,7 +4,7 @@ import { readFileSync, readdirSync, writeFileSync, mkdtempSync, mkdirSync } from
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { parse, stringify } from 'yaml'
-import { slugOf } from '../../tools/catalog/slug.mjs'
+import { slugOf } from '../../tools/directory/slug.mjs'
 import { loadCuration, CurationError } from '../../tools/catalog/curation.mjs'
 
 const VALID = new URL('../fixtures/catalog/valid.yaml', import.meta.url)
