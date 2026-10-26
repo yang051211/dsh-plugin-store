@@ -21,7 +21,7 @@ function fakeRegistry(pages) {
 test('searchPackages pages through each keyword until a short page', async () => {
   const many = Array.from({ length: 5 }, (_, i) => hit(`p${i}`))
   const { io, calls } = fakeRegistry({ 'keywords:dsh-plugin': many })
-  const found = await searchPackages(io, ['dsh-plugin'], { pageSize: 2 })
+  const { found } = await searchPackages(io, ['dsh-plugin'], { pageSize: 2 })
   assert.deepEqual([...found.keys()], ['p0', 'p1', 'p2', 'p3', 'p4'])
   assert.equal(calls.length, 3, 'pages of 2, 2 and 1')
   assert.ok(calls[0].startsWith('https://registry.example/-/v1/search?'))
@@ -29,14 +29,17 @@ test('searchPackages pages through each keyword until a short page', async () =>
 
 test('results from several keywords are merged, keeping the newest version seen', async () => {
   const { io } = fakeRegistry({ 'keywords:a': [hit('x', '1.0.0'), hit('y')], 'keywords:b': [hit('x', '1.2.0')] })
-  const found = await searchPackages(io, ['a', 'b'], { pageSize: 10 })
+  const { found } = await searchPackages(io, ['a', 'b'], { pageSize: 10 })
   assert.deepEqual([...found.keys()].sort(), ['x', 'y'])
   assert.equal(found.get('x').version, '1.2.0')
 })
 
-test('a failed search fails the whole discovery instead of returning a partial list', async () => {
+test('a failed keyword is reported and the other keywords still count', async () => {
   const { io } = fakeRegistry({ 'keywords:a': [hit('x')], 'keywords:b': 'fail' })
-  await assert.rejects(searchPackages(io, ['a', 'b'], { pageSize: 10 }), /503/)
+  const { found, failures } = await searchPackages(io, ['a', 'b'], { pageSize: 10 })
+  assert.deepEqual([...found.keys()], ['x'])
+  assert.equal(failures.length, 1)
+  assert.match(failures[0], /"b".*503/)
 })
 
 test('a rate-limited page is retried after the server-given delay', async () => {
@@ -47,14 +50,16 @@ test('a rate-limited page is retried after the server-given delay', async () => 
     if (calls <= 2) return new Response('slow down', { status: 429, headers: { 'retry-after': '3' } })
     return new Response(JSON.stringify({ objects: [hit('x')] }))
   }
-  const found = await searchPackages({ fetch, registry: 'https://r/' }, ['a'], { pageSize: 10, sleep: async ms => { waits.push(ms) } })
+  const { found } = await searchPackages({ fetch, registry: 'https://r/' }, ['a'], { pageSize: 10, sleep: async ms => { waits.push(ms) } })
   assert.deepEqual([...found.keys()], ['x'])
   assert.deepEqual(waits, [3000, 3000])
 })
 
-test('a page still rate-limited after the retries fails discovery', async () => {
+test('a page still rate-limited after the retries is reported as that keyword failing', async () => {
   const fetch = async () => new Response('slow down', { status: 429 })
-  await assert.rejects(searchPackages({ fetch, registry: 'https://r/' }, ['a'], { pageSize: 10, sleep: async () => {} }), /429/)
+  const { found, failures } = await searchPackages({ fetch, registry: 'https://r/' }, ['a'], { pageSize: 10, sleep: async () => {} })
+  assert.equal(found.size, 0)
+  assert.match(failures[0], /429/)
 })
 
 test('another format-1 index only proposes names, and a failure proposes none', async () => {

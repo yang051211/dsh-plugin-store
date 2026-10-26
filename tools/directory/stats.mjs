@@ -38,9 +38,9 @@ export async function weeklyDownloads(io, names, { concurrency = 8 } = {}) {
   return result
 }
 
-/** Names whose stars to refresh this run: never fetched first, then the oldest fetch, at most `limit`. */
+/** Names whose stars to refresh this run: never tried first, then the oldest attempt (failed or not), at most `limit`. */
 export function pickStarRefresh(names, stats, limit) {
-  const at = name => stats[name]?.starsAt ?? ''
+  const at = name => stats[name]?.starsTriedAt ?? stats[name]?.starsAt ?? ''
   return [...names].sort((a, b) => (at(a) < at(b) ? -1 : at(a) > at(b) ? 1 : a < b ? -1 : 1)).slice(0, Math.max(0, limit))
 }
 

@@ -35,6 +35,10 @@ export interface StorePlugin {
   stats: { stars: number | null; weeklyDownloads: number | null }
   /** Null until the listed version has been scanned. */
   permissions: Permissions | null
+  /** The package ships binaries or minified code, which detection cannot look into. */
+  opaque: boolean
+  /** Detection could not read this version (too large, unreadable); it is tried again for the next version. */
+  scanFailed: boolean
   compatibility: Compatibility
   repository: { url: string; directory?: string } | null
   homepage: string | null
@@ -48,8 +52,6 @@ export interface Catalog {
   categories: Grouping[]
   /** The store release the directory was published with; null when it does not say. */
   storeVersion: string | null
-  /** When the directory was built; null when it does not say. */
-  generatedAt: string | null
   stale: boolean
   dshVersion: string | null
 }
@@ -100,6 +102,8 @@ function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
     enginesDsh: listed.engines?.dsh ?? null,
     stats: { stars: count(store.stats?.stars), weeklyDownloads: count(store.stats?.weeklyDownloads) },
     permissions: permissionsOf(store.permissions),
+    opaque: store.opaque === true,
+    scanFailed: store.scanFailed === true,
     compatibility: snapshot.compatibility[entry.name] ?? 'unknown',
     repository: entry.repository ?? null,
     homepage: entry.homepage ?? null,
@@ -120,7 +124,6 @@ export function buildCatalog(snapshot: CatalogSnapshot): Catalog {
     byName: new Map(plugins.map(p => [p.name, p])),
     categories,
     storeVersion: typeof doc.store?.self?.version === 'string' ? doc.store.self.version : null,
-    generatedAt: typeof doc.store?.generatedAt === 'string' ? doc.store.generatedAt : null,
     stale: snapshot.stale,
     dshVersion: snapshot.dshVersion,
   }

@@ -10,13 +10,15 @@ export const README_ROUTE = '/api/plugin-store/readme'
 /** Largest README accepted. */
 export const MAX_README_BYTES = 1024 * 1024
 const NPM_CDN = 'https://cdn.jsdelivr.net/npm/'
+/** READMEs kept in memory; the oldest goes first. */
+export const MAX_README_ENTRIES = 50
 /** Tried in order; jsDelivr paths are case-sensitive. */
 const README_NAMES = ['README.md', 'readme.md', 'Readme.md']
 
 const message = (error: unknown) => (error instanceof Error ? error.message : String(error))
 
 /** GET /api/plugin-store/readme?name=<package> → `{ ok, markdown, base }`; `markdown` is '' when the package has none. */
-export function createReadmeFetch(cache: CatalogCache, fetchImpl: typeof fetch, now: () => number = Date.now): (request: Request) => Promise<Response> {
+export function createReadmeFetch(cache: CatalogCache, fetchImpl: typeof fetch, now: () => number = Date.now, maxEntries: number = MAX_README_ENTRIES): (request: Request) => Promise<Response> {
   const cached = new Map<string, { at: number; markdown: string }>()
   return async (request) => {
     const name = new URL(request.url).searchParams.get('name') ?? ''
@@ -37,7 +39,9 @@ export function createReadmeFetch(cache: CatalogCache, fetchImpl: typeof fetch, 
         markdown = await readCapped(response, MAX_README_BYTES, `README of ${name}`)
         break
       }
+      cached.delete(key)
       cached.set(key, { at: now(), markdown })
+      while (cached.size > maxEntries) cached.delete(cached.keys().next().value!)
       return json(200, { ok: true, markdown, base })
     } catch (error) {
       return json(502, { ok: false, error: message(error) })

@@ -47,6 +47,8 @@ const scans = new Map([
   ['dsh-chat-toc', scan('1.0.0', [])],
   ['dsh-context', scan('1.0.0', ['network', 'fileSystem'])],
   ['dsh-ssh-ops', scan('0.9.0', ['childProcess'])],
+  ['dsh-pet', { ...scan('1.0.0', ['childProcess']), binaryFiles: ['runtime/helper.node'] }],
+  ['dsh-cost-meter', { name: 'dsh-cost-meter', version: '1.0.0', scannedAt: '2026-10-25T00:00:00Z', error: 'tarball too large', attempts: 3 }],
 ])
 const icons = new Map([['dsh-context', 'dsh-context.svg']])
 

@@ -4,7 +4,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 
 /** Write calls whose target is not tool-owned state or the published market/ (config.json is edited by hand only). */
 const WRITE_CALL = /\b(writeFileSync|writeFile|appendFile\w*|createWriteStream|rmSync|unlinkSync|renameSync|copyFileSync|writeJson)\(\s*/g
-const OWNED_TARGET = /^(?:join\(\s*)?(NAMES_FILE|CLOCK_FILE|STATS_FILE|PACKAGES_DIR|SCAN_DIR|MARKET_DIR|ICONS_DIR)\b/
+const OWNED_TARGET = /^(?:join\(\s*)?(NAMES_FILE|CLOCK_FILE|STATS_FILE|CHECKED_FILE|PACKAGES_DIR|SCAN_DIR|MARKET_DIR|ICONS_DIR)\b/
 
 /** The writeJson helper writes whatever path it is given; its call sites are what the guard checks. */
 const HELPER = /function writeJson\([^)]*\) \{[\s\S]*?\n\}/

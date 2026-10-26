@@ -56,6 +56,15 @@ test('names the catalog does not list are refused without any outside request', 
   }
 })
 
+test('the cache keeps a bounded number of READMEs, dropping the oldest', async () => {
+  const { fetchImpl, readmeCalls } = upstream({ 'https://cdn.jsdelivr.net/npm/dsh-a@1.2.0/README.md': 'a', 'https://cdn.jsdelivr.net/npm/@s/dsh-b@0.3.0/README.md': 'b' })
+  const route = createReadmeFetch(createCatalogCache({ fetch: fetchImpl, sources: [{ url: INDEX_URL }] }), fetchImpl, Date.now, 1)
+  await get(route, 'dsh-a')
+  await get(route, '@s/dsh-b')
+  await get(route, 'dsh-a')
+  assert.equal(readmeCalls.length, 3, 'dsh-a was dropped when dsh-b came in')
+})
+
 test('the answer is cached and capped', async () => {
   const { route, readmeCalls } = routeWith({ 'https://cdn.jsdelivr.net/npm/dsh-a@1.2.0/README.md': 'x'.repeat(10) })
   await get(route, 'dsh-a')

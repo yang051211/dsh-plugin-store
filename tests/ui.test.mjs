@@ -130,6 +130,18 @@ test('detail: a plugin whose latest version is not scanned yet says so', () => {
   assert.equal(out.includes('ps-perm-yes'), false)
 })
 
+test('detail: binaries or minified code hidden from detection are called out, so "no" is not read as "none"', () => {
+  const out = detail('dsh-pet')
+  assert.ok(out.includes(zh.detectionOpaque))
+  assert.equal(detail('dsh-context').includes(zh.detectionOpaque), false)
+})
+
+test('detail: a scan that failed says detection could not run, not that it is coming', () => {
+  const out = detail('dsh-cost-meter')
+  assert.ok(out.includes(zh.scanFailed))
+  assert.equal(out.includes(zh.notScanned), false)
+})
+
 test('detail: the README shows its loading, failure, empty and ready states', () => {
   const states = {
     loading: { status: 'loading' },

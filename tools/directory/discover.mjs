@@ -26,28 +26,33 @@ async function page(io, url, sleep) {
 }
 
 /**
- * Search every keyword and page through its results until a short page.
- * @returns `Map<name, { version, date }>` with the newest version seen per name.
- * @throws when any search request fails, so a partial result never looks like a complete one.
+ * Search every keyword and page through its results until a short page. A keyword whose search fails keeps what its
+ * earlier pages found and is reported; since known names only grow, a partial search never delists anything.
+ * @returns `{ found: Map<name, { version, date }>, failures: string[] }`, the newest version seen per name.
  */
 export async function searchPackages(io, keywords, { pageSize = MAX_PAGE_SIZE, sleep = wait } = {}) {
   const registry = io.registry.endsWith('/') ? io.registry : `${io.registry}/`
   const found = new Map()
+  const failures = []
   for (const keyword of keywords) {
-    for (let at = 0; at < MAX_PAGES; at++) {
-      const query = new URLSearchParams({ text: `keywords:${keyword}`, size: String(pageSize), from: String(at * pageSize) })
-      const response = await page(io, `${registry}-/v1/search?${query}`, sleep)
-      if (!response.ok) throw new Error(`search "${keyword}" page ${at} answered HTTP ${response.status}`)
-      const objects = (await response.json()).objects ?? []
-      for (const { package: pkg } of objects) {
-        if (typeof pkg?.name !== 'string') continue
-        const seen = found.get(pkg.name)
-        if (!seen || newer(String(pkg.version), seen.version)) found.set(pkg.name, { version: String(pkg.version), date: pkg.date ?? null })
+    try {
+      for (let at = 0; at < MAX_PAGES; at++) {
+        const query = new URLSearchParams({ text: `keywords:${keyword}`, size: String(pageSize), from: String(at * pageSize) })
+        const response = await page(io, `${registry}-/v1/search?${query}`, sleep)
+        if (!response.ok) throw new Error(`search "${keyword}" page ${at} answered HTTP ${response.status}`)
+        const objects = (await response.json()).objects ?? []
+        for (const { package: pkg } of objects) {
+          if (typeof pkg?.name !== 'string') continue
+          const seen = found.get(pkg.name)
+          if (!seen || newer(String(pkg.version), seen.version)) found.set(pkg.name, { version: String(pkg.version), date: pkg.date ?? null })
+        }
+        if (objects.length < pageSize) break
       }
-      if (objects.length < pageSize) break
+    } catch (error) {
+      failures.push(error instanceof Error ? error.message : String(error))
     }
   }
-  return found
+  return { found, failures }
 }
 
 /**

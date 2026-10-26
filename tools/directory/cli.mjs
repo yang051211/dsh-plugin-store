@@ -15,11 +15,12 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parseMarketIndex } from '@deepseek-ai/dsh-plugin-market-index'
-import { buildDirectory, INDEX_PUBLIC_URL } from './build.mjs'
+import { buildDirectory, INDEX_PUBLIC_URL, SCAN_ATTEMPTS } from './build.mjs'
 import { mergeNames, namesFromIndex, searchPackages } from './discover.mjs'
 import { downloadTarball, get, pickIcon } from './npm.mjs'
 import { plannedMarketFiles, staleMarketFiles, toJson } from './outputs.mjs'
 import { factsOf, qualifies } from './packages.mjs'
+import { pickRefresh } from './refresh.mjs'
 import { runPool } from './pool.mjs'
 import { scanPackage } from './scan.mjs'
 import { slugOf } from './slug.mjs'
@@ -31,6 +32,12 @@ export const CONFIG_FILE = join(STATE, 'config.json')
 export const NAMES_FILE = join(STATE, 'names.json')
 export const CLOCK_FILE = join(STATE, 'clock.json')
 export const STATS_FILE = join(STATE, 'stats.json')
+/** When each package's packument was last read successfully (or found gone): drives the recheck rotation. */
+export const CHECKED_FILE = join(STATE, 'checked.json')
+/** Largest packument accepted; a package with thousands of versions can be big, but not unbounded. */
+const MAX_PACKUMENT_BYTES = 48 * 1024 * 1024
+/** The Host refuses a catalog over 16 MB; keep a margin. */
+const MAX_INDEX_FILE_BYTES = 15 * 1024 * 1024
 export const PACKAGES_DIR = join(STATE, 'packages')
 export const SCAN_DIR = join(STATE, 'scan')
 export const MARKET_DIR = join(ROOT, 'market')
@@ -65,34 +72,58 @@ const listedFacts = () => { const c = config(), now = clock(); return allFacts()
 
 async function discover(args) {
   const context = io(args)
-  const found = await searchPackages(context, config().keywords)
+  const { found, failures } = await searchPackages(context, config().keywords)
   const seeded = (await Promise.all((config().seedIndexes ?? []).map(url => namesFromIndex(context, url)))).flat()
   const known = readJson(NAMES_FILE, {})
   const names = mergeNames(Object.keys(known), [...found.keys(), ...seeded])
   // Each name keeps the newest version a search reported; refresh uses it to skip unchanged packuments.
   writeJson(NAMES_FILE, Object.fromEntries(names.map(name => [name, found.get(name)?.version ?? known[name] ?? null])))
   console.log(`discover: ${found.size} from search, ${seeded.length} from other indexes, ${names.length} known`)
+  for (const failure of failures) console.log(`  search failed (kept the names already known): ${failure}`)
+}
+
+/** A packument answer that will not get better by retrying: the package is gone, or what npm serves is unusable. */
+class Gone extends Error {}
+
+async function readPackument(context, name, now) {
+  const response = await get(context, `${context.registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
+  if (response.status === 404) { await response.body?.cancel(); throw new Gone('not found on npm') }
+  if (!response.ok) { await response.body?.cancel(); throw new Error(`HTTP ${response.status}`) }
+  const length = Number(response.headers.get('content-length'))
+  if (Number.isFinite(length) && length > MAX_PACKUMENT_BYTES) { await response.body?.cancel(); throw new Gone(`packument too large (${length} bytes)`) }
+  const text = await response.text()
+  if (text.length > MAX_PACKUMENT_BYTES) throw new Gone(`packument too large (${text.length} characters)`)
+  let doc
+  try { doc = JSON.parse(text) } catch { throw new Error('packument is not JSON') }
+  const facts = factsOf(doc, now)
+  if (facts.error) throw new Gone(facts.error)
+  return facts
 }
 
 async function refresh(args) {
   const context = io(args)
+  const c = config()
   const names = readJson(NAMES_FILE, {})
-  const limit = Number(option(args, '--limit') ?? Infinity)
-  const stale = Object.entries(names)
-    .filter(([name, version]) => readJson(join(PACKAGES_DIR, `${slugOf(name)}.json`))?.latest !== version || version === null)
-    .map(([name]) => name)
-    .slice(0, limit)
+  const checked = readJson(CHECKED_FILE, {})
   const now = Date.now()
-  const results = await runPool(stale, config().concurrency, async name => {
-    const response = await get(context, `${context.registry}${name.replace('/', '%2f')}`, { headers: { accept: 'application/json' } })
-    if (!response.ok) throw new Error(`HTTP ${response.status}`)
-    const facts = factsOf(await response.json(), now)
-    if (facts.error) throw new Error(facts.error)
-    writeJson(join(PACKAGES_DIR, `${slugOf(name)}.json`), facts)
+  const latest = new Map(allFacts().map(f => [f.name, f.latest]))
+  const todo = pickRefresh({ hints: names, latest, checked, now, recheckDays: c.recheckDays ?? 7, recheckLimit: c.recheckLimit ?? 1500 })
+    .slice(0, Number(option(args, '--limit') ?? Infinity))
+  const stamp = new Date(now).toISOString()
+  const results = await runPool(todo, c.concurrency, async name => {
+    try {
+      writeJson(join(PACKAGES_DIR, `${slugOf(name)}.json`), await readPackument(context, name, now))
+    } catch (error) {
+      if (!(error instanceof Gone)) throw error
+      // Gone for good (unpublished, or unusable): record it so build delists it and the rotation moves on.
+      writeJson(join(PACKAGES_DIR, `${slugOf(name)}.json`), { name, error: error.message })
+    }
+    checked[name] = stamp
   })
   const failed = results.filter(r => !r.ok)
-  writeJson(CLOCK_FILE, { refreshedAt: new Date(now).toISOString() })
-  console.log(`refresh: ${stale.length - failed.length} updated, ${failed.length} failed (kept their previous facts)`)
+  writeJson(CHECKED_FILE, Object.fromEntries(Object.keys(checked).sort().map(name => [name, checked[name]])))
+  writeJson(CLOCK_FILE, { refreshedAt: stamp })
+  console.log(`refresh: ${todo.length - failed.length} read, ${failed.length} failed and will be retried (kept their previous facts)`)
   for (const r of failed.slice(0, 20)) console.log(`  ${r.item}: ${r.error.message}`)
 }
 
@@ -113,8 +144,8 @@ async function stats(args) {
   const today = new Date(clock()).toISOString().slice(0, 10)
   await runPool(picked, 4, async name => {
     const stars = await fetchStars(context, repositories.get(name))
-    // A failed lookup (rate limit, missing repository) keeps its old date, so it is picked again next run.
-    next[name] = stars === null ? { ...next[name], stars: next[name].stars ?? null } : { ...next[name], stars, starsAt: today }
+    // Every attempt is dated, so a repository that never answers goes to the back of the queue instead of the front.
+    next[name] = { ...next[name], stars: stars ?? next[name].stars ?? null, starsTriedAt: today, ...(stars !== null ? { starsAt: today } : {}) }
   })
   writeJson(STATS_FILE, Object.fromEntries(Object.keys(next).sort().map(name => [name, next[name]])))
   console.log(`stats: ${listed.length} downloads, ${picked.length} star refreshes`)
@@ -125,16 +156,30 @@ async function scan(args) {
   const limit = Number(option(args, '--limit') ?? config().scanLimit)
   const counts = readJson(STATS_FILE, {})
   const todo = listedFacts()
-    .filter(f => readJson(join(SCAN_DIR, `${slugOf(f.name)}.json`))?.version !== f.latest)
+    .filter(f => {
+      const done = readJson(join(SCAN_DIR, `${slugOf(f.name)}.json`))
+      // A failed attempt is retried a few times (a dropped download is not the package's fault), then left alone.
+      return done?.version !== f.latest || (done.error && (done.attempts ?? 1) < SCAN_ATTEMPTS)
+    })
     .sort((a, b) => (counts[b.name]?.weeklyDownloads ?? -1) - (counts[a.name]?.weeklyDownloads ?? -1) || (a.name < b.name ? -1 : 1))
     .slice(0, limit)
   const results = await runPool(todo, 4, async f => {
-    const response = await get(context, `${context.registry}${f.name.replace('/', '%2f')}/${f.latest}`, { headers: { accept: 'application/json' } })
-    if (!response.ok) throw new Error(`HTTP ${response.status}`)
-    const manifest = await response.json()
-    const { files, skipped } = await downloadTarball(manifest, context)
-    const icon = pickIcon(manifest, files)
     const slug = slugOf(f.name)
+    let manifest, files, skipped
+    try {
+      const response = await get(context, `${context.registry}${f.name.replace('/', '%2f')}/${f.latest}`, { headers: { accept: 'application/json' } })
+      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      manifest = await response.json()
+      ;({ files, skipped } = await downloadTarball(manifest, context))
+    } catch (error) {
+      // Counted against this version, so a package that never downloads stops taking a slot after a few rounds;
+      // a new version starts over.
+      const before = readJson(join(SCAN_DIR, `${slug}.json`))
+      const attempts = before?.version === f.latest && before.error ? (before.attempts ?? 1) + 1 : 1
+      writeJson(join(SCAN_DIR, `${slug}.json`), { name: f.name, version: f.latest, scannedAt: new Date().toISOString(), error: error instanceof Error ? error.message : String(error), attempts })
+      throw error
+    }
+    const icon = pickIcon(manifest, files)
     for (const old of existsSync(ICONS_DIR) ? readdirSync(ICONS_DIR).filter(file => file.startsWith(`${slug}.`)) : []) rmSync(join(ICONS_DIR, old))
     if (icon) {
       mkdirSync(ICONS_DIR, { recursive: true })
@@ -152,9 +197,12 @@ function planned() {
   const scans = new Map(listJson(SCAN_DIR).map(s => [s.name, s]))
   const icons = new Map([...scans].filter(([, s]) => s.icon && existsSync(join(ICONS_DIR, s.icon))).map(([name, s]) => [name, s.icon]))
   const storeVersion = readJson(join(ROOT, 'package.json')).version
-  const { index, details } = buildDirectory({ facts: allFacts(), stats: readJson(STATS_FILE, {}), scans, icons, config: config(), storeVersion, now: clock() })
+  const { index, details, rejected } = buildDirectory({ facts: allFacts(), stats: readJson(STATS_FILE, {}), scans, icons, config: config(), storeVersion, now: clock() })
   parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
-  return { index, files: plannedMarketFiles(index, details, file => (existsSync(join(ICONS_DIR, file)) ? readFileSync(join(ICONS_DIR, file)) : null)) }
+  const files = plannedMarketFiles(index, details, file => (existsSync(join(ICONS_DIR, file)) ? readFileSync(join(ICONS_DIR, file)) : null))
+  const size = Buffer.byteLength(files.get('index.json'))
+  if (size > MAX_INDEX_FILE_BYTES) throw new Error(`market/index.json would be ${size} bytes, over the ${MAX_INDEX_FILE_BYTES}-byte limit the store can read`)
+  return { index, files, rejected }
 }
 
 function existingMarketFiles() {
@@ -164,7 +212,7 @@ function existingMarketFiles() {
 }
 
 function build() {
-  const { index, files } = planned()
+  const { index, files, rejected } = planned()
   for (const [path, content] of files) {
     const file = join(MARKET_DIR, path)
     if (existsSync(file) && readFileSync(file).equals(Buffer.from(content))) continue
@@ -173,7 +221,8 @@ function build() {
   }
   const stale = staleMarketFiles(existingMarketFiles(), files)
   for (const path of stale) rmSync(join(MARKET_DIR, path))
-  console.log(`build: ${index.plugins.length} listed, ${stale.length} stale file(s) removed`)
+  console.log(`build: ${index.plugins.length} listed, ${rejected.length} left out by the official reader, ${stale.length} stale file(s) removed`)
+  for (const r of rejected.slice(0, 20)) console.log(`  left out ${r.name}: ${r.error}`)
 }
 
 function check() {

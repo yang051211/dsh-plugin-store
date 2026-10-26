@@ -50,6 +50,11 @@ test('star refresh picks never-fetched names first, then the oldest, up to the l
   assert.deepEqual(pickStarRefresh(['a'], stats, 0), [])
 })
 
+test('a recent failed attempt counts like a recent fetch, so dead repositories do not hold the front of the queue', () => {
+  const stats = { dead: { starsTriedAt: '2026-10-25' }, old: { starsAt: '2026-10-01', starsTriedAt: '2026-10-01' }, never: {} }
+  assert.deepEqual(pickStarRefresh(['dead', 'old', 'never'], stats, 2), ['never', 'old'])
+})
+
 test('fetchStars reads GitHub repositories only, and null on failure', async () => {
   const io = { fetch: async url => (url.endsWith('/ann/x') ? new Response(JSON.stringify({ stargazers_count: 7 })) : new Response('', { status: 404 })) }
   assert.equal(await fetchStars(io, 'https://github.com/ann/x'), 7)

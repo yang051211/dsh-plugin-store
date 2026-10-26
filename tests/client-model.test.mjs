@@ -30,7 +30,9 @@ test('plugins carry the directory facts', () => {
   assert.equal(catalog.byName.get('dsh-ssh-ops').permissions, null, 'detection of an older version is not shown')
   assert.equal(catalog.byName.get('dsh-qq-bridge').compatibility, 'incompatible')
   assert.ok(catalog.byName.get('dsh-pet').created > 0)
-  assert.equal(catalog.generatedAt, '2026-10-26T00:00:00.000Z')
+  assert.equal(catalog.byName.get('dsh-pet').opaque, true)
+  assert.equal(catalog.byName.get('dsh-cost-meter').scanFailed, true)
+  assert.equal(context.opaque, false)
 })
 
 test('categories follow the published order, keep "other", and drop empty ones', () => {

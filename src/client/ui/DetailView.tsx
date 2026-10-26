@@ -173,7 +173,8 @@ export function DetailView(props: DetailViewProps): ReactNode {
                   })}
                 </tbody>
               </table>
-            ) : <p className="ps-muted">{t('notScanned')}</p>}
+            ) : <p className="ps-muted">{t(plugin.scanFailed ? 'scanFailed' : 'notScanned')}</p>}
+            {plugin.permissions && plugin.opaque && <p className="ps-notice ps-detect-opaque">{t('detectionOpaque')}</p>}
             <p className="ps-fine">{t('detectionNote')}</p>
           </section>
 

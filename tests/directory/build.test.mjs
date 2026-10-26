@@ -72,6 +72,43 @@ test('the index passes the official reader and makes no review claims', () => {
   for (const word of ['审', 'review']) assert.equal(text.includes(word), false, word)
 })
 
+test('a package without a description or with a blank display name still passes the official reader', () => {
+  const { index } = build([fact('dsh-a', { description: '' }), fact('dsh-b', { displayName: '  ' }), fact('dsh-c')])
+  assert.deepEqual(index.plugins.map(p => p.name).sort(), ['dsh-a', 'dsh-b', 'dsh-c'])
+  assert.equal('description' in index.plugins.find(p => p.name === 'dsh-a'), false)
+  assert.equal(index.plugins.find(p => p.name === 'dsh-b').title, 'B')
+  parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
+})
+
+test('an entry the official reader rejects is left out and reported, the rest are published', () => {
+  const { index, rejected } = build([fact('dsh-a', { homepage: 'https://ok.example', repository: { url: 'not a url at all' } }), fact('dsh-b')])
+  assert.deepEqual(index.plugins.map(p => p.name), ['dsh-b'])
+  assert.equal(rejected.length, 1)
+  assert.equal(rejected[0].name, 'dsh-a')
+  parseMarketIndex(structuredClone(index), INDEX_PUBLIC_URL)
+})
+
+test('long text fields are trimmed so one package cannot bloat the index', () => {
+  const { index } = build([fact('dsh-a', { description: 'x'.repeat(5000), keywords: Array.from({ length: 50 }, (_, i) => `k${i}`.padEnd(80, 'k')) })])
+  const [entry] = index.plugins
+  assert.ok(entry.description.length <= 300)
+  assert.ok(entry.metadata.keywords.length <= 12)
+  assert.ok(entry.metadata.keywords.every(k => k.length <= 40))
+})
+
+test('scan state reaches the entry: failed scans and files detection cannot read are flagged', () => {
+  const failed = build([fact('dsh-a')], { scans: new Map([['dsh-a', { version: '1.0.0', error: 'tarball too large', attempts: 3 }]]) })
+  assert.equal(failed.index.plugins[0].store.permissions, null)
+  assert.equal(failed.index.plugins[0].store.scanFailed, true)
+  const retrying = build([fact('dsh-a')], { scans: new Map([['dsh-a', { version: '1.0.0', error: 'terminated', attempts: 1 }]]) })
+  assert.equal(retrying.index.plugins[0].store.scanFailed, undefined, 'a failure that will be retried is not shown as final')
+  const opaque = build([fact('dsh-a')], { scans: new Map([['dsh-a', { ...scan('1.0.0'), binaryFiles: ['bin/x.node'] }]]) })
+  assert.equal(opaque.index.plugins[0].store.opaque, true)
+  const plain = build([fact('dsh-a')], { scans: new Map([['dsh-a', scan('1.0.0')]]) })
+  assert.equal(plain.index.plugins[0].store.opaque, false)
+  assert.equal(plain.index.plugins[0].store.scanFailed, undefined)
+})
+
 test('titles come from displayName, else a readable package name', () => {
   assert.equal(titleOf(fact('x', { displayName: '对话目录' })), '对话目录')
   assert.equal(titleOf(fact('dsh-chat-toc')), 'Chat Toc')
