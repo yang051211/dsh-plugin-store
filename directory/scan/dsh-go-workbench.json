@@ -1,0 +1,95 @@
+{
+  "name": "dsh-go-workbench",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:49.735Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/engine-remote.test.mjs",
+        "line": 101,
+        "text": "async fetch(url, options) {"
+      },
+      {
+        "file": "test/session.test.mjs",
+        "line": 176,
+        "text": "async fetch(url, options) {"
+      },
+      {
+        "file": "tools/katago-http.mjs",
+        "line": 32,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/go/local-engine.mjs",
+        "line": 20,
+        "text": "import { closeSync, existsSync, openSync, readFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "src/go/local-engine.mjs",
+        "line": 260,
+        "text": "const text = readFileSync(logFile, 'utf8').slice(from);"
+      },
+      {
+        "file": "src/go/rating-store.mjs",
+        "line": 15,
+        "text": "import { mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/go/rating-store.mjs",
+        "line": 40,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "src/go/rating-store.mjs",
+        "line": 52,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/go/local-engine.mjs",
+        "line": 21,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/go/local-engine.mjs",
+        "line": 223,
+        "text": "spawnSync('taskkill', ['/PID', String(pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "tools/katago-http.mjs",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "tools/katago-http.mjs",
+        "line": 241,
+        "text": "child = spawn(katagoPath, childArgs, { stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,113 @@
+{
+  "name": "dsh-bots",
+  "version": "0.2.70",
+  "scannedAt": "2026-10-26T10:08:44.283Z",
+  "icon": "dsh-bots.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gateway.js",
+        "line": 116,
+        "text": "const res = await fetch(`http://${host}:${port}/health`, { signal: AbortSignal.timeout(5000) });"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 280,
+        "text": "const res = await fetch(`${baseUrl}/api/${method}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1345,
+        "text": "const res = await fetch(`${FREEROUTE_BASE_URL}/models`, { signal: AbortSignal.timeout(2500) });"
+      },
+      {
+        "file": "lib/sse.js",
+        "line": 202,
+        "text": "const res = await fetch(endpoint, { headers, signal: this.ac.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-settings.js",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/agent-settings.js",
+        "line": 32,
+        "text": "const parsed = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/agent-settings.js",
+        "line": 58,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/agent-settings.js",
+        "line": 60,
+        "text": "writeFileSync(temp, JSON.stringify(raw, null, 2) + '\\n', { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 12,
+        "text": "import { readFileSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 761,
+        "text": "spawn('open', ['-R', resolved], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 763,
+        "text": "spawn('xdg-open', [dirname(resolved)], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/launchd.js",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/launchd.js",
+        "line": 33,
+        "text": "const r = spawnSync('launchctl', args, { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

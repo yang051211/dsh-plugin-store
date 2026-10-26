@@ -1,0 +1,85 @@
+{
+  "name": "dsh-mv-session",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:42.717Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 34,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 271,
+        "text": "function readJson(p) { return JSON.parse(fs.readFileSync(p, 'utf8')); }"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 274,
+        "text": "fs.writeFileSync(p, JSON.stringify(value, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 286,
+        "text": "const buf = fs.readFileSync(logPath);"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 293,
+        "text": "const buf = fs.readFileSync(logPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "const inject = ['shell', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "ctx.effect(() => ctx.tools.register(createTool(ctx)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 37,
+        "text": "const { spawnSync } = require('node:child_process');"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 491,
+        "text": "const r = spawnSync('lsof', ['-nP', '-tiTCP:3080', '-sTCP:LISTEN'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/migrate_session.cjs",
+        "line": 497,
+        "text": "const r = spawnSync('pgrep', ['-f', 'dsh web'], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

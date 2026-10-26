@@ -1,0 +1,125 @@
+{
+  "name": "dsh-agents-playbook",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:09:00.947Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 18356,
+        "text": "const res = await fetch(`${apiBase}/api/health`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client.js",
+        "line": 18368,
+        "text": "const res = await fetch(`${apiBase}/api/graph${q}`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client.js",
+        "line": 18478,
+        "text": "const res = await fetch(`${apiBase}${route}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 18494,
+        "text": "const res = await fetch(`${apiBase}/api/state${q}`, { headers: { accept: \"application/json\" }, cache: \"no-store\" });"
+      },
+      {
+        "file": "client.js",
+        "line": 18503,
+        "text": "const res = await fetch(`${apiBase}/api/history`, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 12707,
+        "text": " check of the form node -e \\\"...require('fs')...\\\" reached node as require(fs) and died with ERR_INVALID_ARG_TYPE - a gate that could never go green. New rule: "
+      },
+      {
+        "file": "core.mjs",
+        "line": 19,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "core.mjs",
+        "line": 47,
+        "text": "const pkg = JSON.parse(readFileSync(join(pbPath, '..', '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "core.mjs",
+        "line": 91,
+        "text": "const text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "core.mjs",
+        "line": 380,
+        "text": "try { text = readFile(join(root, entry.file)); } catch { continue; } // a listed skill with no file is not exposable"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 349,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core.mjs",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "engine/scripts/build-app.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "engine/scripts/build-dsh-client.mjs",
+        "line": 26,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "engine/scripts/lib-room-browser.mjs",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "engine/scripts/lib-room-browser.mjs",
+        "line": 32,
+        "text": "const child = spawn(process.execPath, [SERVER, '--root', playbookRoot, '--port', String(port), '--no-open'], { stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

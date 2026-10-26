@@ -1,0 +1,110 @@
+{
+  "name": "dsh-wechat-clawbot",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:52.949Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-client-wechat-ui/client.js",
+        "line": 113,
+        "text": "return fetch(GATEWAY + pathname, options).then(function (res) {"
+      },
+      {
+        "file": "dsh-client-wechat-ui/client.js",
+        "line": 373,
+        "text": "return fetch(MODEL_API + pathname, options).then(function (res) {"
+      },
+      {
+        "file": "dsh-client-wechat-ui/client.js",
+        "line": 525,
+        "text": "fetch(GATEWAY + \"/events\", { signal: sseController.signal })"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 22,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 300,
+        "text": "const res = await fetch(`${gatewayUrl}${pathname}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 23,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 39,
+        "text": "fs.readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8'),"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 249,
+        "text": "const stored = JSON.parse(fs.readFileSync(modelStateFile, 'utf8'))"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 257,
+        "text": "fs.mkdirSync(dirname(modelStateFile), { recursive: true })"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 259,
+        "text": "try { fs.unlinkSync(modelStateFile) } catch { /* absent */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 21,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "dsh-wechat-bot/index.js",
+        "line": 403,
+        "text": "child = spawn(nodeBin, [entry], {"
+      },
+      {
+        "file": "scripts/link-peer-shims.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-peer-shims.mjs",
+        "line": 40,
+        "text": "spawnSync('cmd.exe', ['/c', 'rmdir', link], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "scripts/link-peer-shims.mjs",
+        "line": 54,
+        "text": "const result = spawnSync('cmd.exe', ['/c', 'mklink', '/J', link, target], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

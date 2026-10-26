@@ -1,0 +1,71 @@
+{
+  "name": "dsh-llm-kilo-gateway",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:01.424Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1405,
+        "text": "const probe = await fetch(notifyUrl, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1412,
+        "text": "const response = await fetch(stateUrl, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1437,
+        "text": "const response = await fetch(activeUrl, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 22,
+        "text": "const response = await fetch(catalogUrl, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 610,
+        "text": "response = await fetch(endpoint, { method: 'POST', headers, body: payload, signal: fused });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state.js",
+        "line": 14,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 73,
+        "text": "const state = JSON.parse(readFileSync(statePath(), 'utf-8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

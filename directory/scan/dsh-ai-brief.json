@@ -1,0 +1,122 @@
+{
+  "name": "dsh-ai-brief",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:08:50.532Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 59,
+        "text": "const res = await fetch(`/news/api/latest?kind=${k}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "await fetch(\"/news/api/refresh\", { method: \"POST\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "await fetch(`/news/api/generate?kind=${kind}`, { method: \"POST\" });"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 50,
+        "text": "const res = await fetch(`/news/api/latest?kind=${k}`)"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 67,
+        "text": "await fetch('/news/api/refresh', { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/prompts.js",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/prompts.js",
+        "line": 19,
+        "text": "return await readFile(file, 'utf-8')"
+      },
+      {
+        "file": "src/store.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/store.js",
+        "line": 21,
+        "text": "for (const k of KINDS) await mkdir(path.join(outDir, 'reports', k), { recursive: true })"
+      },
+      {
+        "file": "src/store.js",
+        "line": 22,
+        "text": "await mkdir(path.join(outDir, 'items'), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'timer', 'llm', 'agentDefaultModel', 'web']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 20,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 36,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 57,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 71,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "timer",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

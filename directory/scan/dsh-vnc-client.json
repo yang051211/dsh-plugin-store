@@ -1,0 +1,63 @@
+{
+  "name": "dsh-vnc-client",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:11.143Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2800,
+        "text": "var socket = new WebSocket(bridgeUrl(target.id));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/targets.js",
+        "line": 13,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/targets.js",
+        "line": 108,
+        "text": "text = await readFile(this.#path, \"utf8\");"
+      },
+      {
+        "file": "lib/targets.js",
+        "line": 130,
+        "text": "await mkdir(dirname(this.#path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/targets.js",
+        "line": 135,
+        "text": "await writeFile(temporary, `${JSON.stringify({ targets }, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "vncBridge",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

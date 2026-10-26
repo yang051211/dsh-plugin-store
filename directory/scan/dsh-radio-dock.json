@@ -1,0 +1,92 @@
+{
+  "name": "dsh-radio-dock",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:40.105Z",
+  "icon": "dsh-radio-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 32,
+        "text": "# 音频流转发的**总时限**（curl --max-time）。写小了就是\"播一会儿自己停\"："
+      },
+      {
+        "file": "lib/client.js",
+        "line": 770,
+        "text": "const response = await fetch(`${ROUTES.stations}?${query.toString()}`)"
+      },
+      {
+        "file": "vendor/three.module.js",
+        "line": 44426,
+        "text": "fetch( req )"
+      },
+      {
+        "file": "vendor/three.module.js",
+        "line": 47788,
+        "text": "console.warn( 'THREE.ImageBitmapLoader: fetch() not supported.' );"
+      },
+      {
+        "file": "vendor/three.module.js",
+        "line": 47855,
+        "text": "const promise = fetch( url, fetchOptions ).then( function ( res ) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { mkdtempSync, readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "const bytes = readFileSync(THREE_FILE)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "execFile(curl, args, { timeout: timeoutMs + 5000, windowsHide: true, encoding: 'buffer', maxBuffer: 16 * 1024 * 1024 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "child = spawn(opts.curl || 'curl.exe', args, { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/three.module.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

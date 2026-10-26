@@ -1,0 +1,59 @@
+{
+  "name": "dsh-plugin-open-in-browser",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:40.081Z",
+  "icon": "dsh-plugin-open-in-browser.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/browser.js",
+        "line": 29,
+        "text": "import { stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 31,
+        "text": "import { realpath } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/browser.js",
+        "line": 28,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/browser.js",
+        "line": 184,
+        "text": "const child = spawn(plan.command, [...plan.args], {"
+      },
+      {
+        "file": "dist/browser.js",
+        "line": 243,
+        "text": "execFile(command, [...args], { timeout: timeoutMs, windowsHide: true, maxBuffer: 1024 * 1024 }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

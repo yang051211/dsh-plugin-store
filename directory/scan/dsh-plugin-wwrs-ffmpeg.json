@@ -1,0 +1,101 @@
+{
+  "name": "dsh-plugin-wwrs-ffmpeg",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:22.774Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/carrier.ts",
+        "line": 13,
+        "text": "import { accessSync, constants, existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/lib/media.ts",
+        "line": 13,
+        "text": "import { existsSync, mkdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/lib/media.ts",
+        "line": 81,
+        "text": "mkdirSync(dirname(out.abs), { recursive: true });"
+      },
+      {
+        "file": "src/lib/media.ts",
+        "line": 346,
+        "text": "writeFileSync(listFile, buildConcatListContent(clips.map((c) => c.abs)));"
+      },
+      {
+        "file": "src/lib/media.ts",
+        "line": 353,
+        "text": "rmSync(listFile, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cordis.ts",
+        "line": 4,
+        "text": "* media_burn_subtitles / media_extract_audio → ctx.tools.register（真源见 ./tools.ts）；"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 5,
+        "text": "* 写保护守卫 → ctx.tools.guard（谓词真源见 lib/guard-predicate.ts）。"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 14,
+        "text": "export const inject: string[] = [\"tools\"];"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 30,
+        "text": "ctx.tools?.register(tool);"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 3,
+        "text": "* 真源在 ./lib/guard-predicate.ts（独立零依赖，见其头注）；本文件只做 ctx.tools.guard 挂载。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/exec.ts",
+        "line": 8,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "src/lib/exec.ts",
+        "line": 32,
+        "text": "execFile(bin, [...args], { timeout: opts.timeoutMs, signal: opts.signal }, (err: ExecFileError | null, stdout: string, stderr: string) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

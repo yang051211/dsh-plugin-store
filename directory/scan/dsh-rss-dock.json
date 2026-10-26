@@ -1,0 +1,96 @@
+{
+  "name": "dsh-rss-dock",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:51.832Z",
+  "icon": "dsh-rss-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 65,
+        "text": "fetch(ROUTES.state, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 79,
+        "text": "const response = await fetch(url)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 96,
+        "text": "fetch(ROUTES.feeds)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 114,
+        "text": "fetch(ROUTES.state)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 21,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 42,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 209,
+        "text": "toolScoped.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

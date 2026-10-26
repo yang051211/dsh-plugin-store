@@ -1,0 +1,90 @@
+{
+  "name": "dsh-plugin-dependency-graph",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:40.873Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1543,
+        "text": "pendingDescriptions ??= fetch(DESCRIPTIONS_PATH, { cache: \"no-store\" }).then(async (response) => response.ok ? await response.json() : {}).catch(() => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1609,
+        "text": "\" && clientGraph !== void 0 ? applyDescriptions(clientGraph(), await descriptions()) : await fetch(GRAPH_PATH, { cache: \"no-store\" }).then(async (response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1630,
+        "text": "fetch(CLIENT_GRAPH_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1847,
+        "text": "const response = await fetch(`${CONFIG_PATH}?${query.toString()}`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/viewer.js",
+        "line": 8783,
+        "text": "pendingDescriptions ??= fetch(DESCRIPTIONS_PATH, { cache: \"no-store\" }).then(async (response) => response.ok ? await response.json() : {}).catch(() => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFileSync, readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 423,
+        "text": "for (const name of emittedIn(readFileSync(path, \"utf8\"))) if (!names.includes(name)) names.push(name);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1260,
+        "text": "const manifest = JSON.parse(readFileSync(join(dir, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1445,
+        "text": "script = readFileSync(VIEWER_SCRIPT, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1461,
+        "text": "res.end(readFileSync(THEME_CSS, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

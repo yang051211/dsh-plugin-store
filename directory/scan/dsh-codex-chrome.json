@@ -1,0 +1,105 @@
+{
+  "name": "dsh-codex-chrome",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:57.570Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/paths.mjs",
+        "line": 12,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/skill.mjs",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/skill.mjs",
+        "line": 85,
+        "text": "const { frontmatter, content } = parseSkillDocument(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/tools.mjs",
+        "line": 12,
+        "text": "import { mkdtemp, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/tools.mjs",
+        "line": 397,
+        "text": "await writeFile(file, Buffer.from(image.data, 'base64'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/chrome-mcp.mjs",
+        "line": 5,
+        "text": "* DSH starts this process through `@deepseek-ai/dsh-mcp-client` (serverName"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 27,
+        "text": "# metadata: session_id, turn_id\" without it. `@deepseek-ai/dsh-mcp-client` has no"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 50,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* `@deepseek-ai/dsh-mcp-client`, which is what actually publishes the"
+      },
+      {
+        "file": "scripts/check-package.mjs",
+        "line": 55,
+        "text": "check(patch.includes(\"'@deepseek-ai/dsh-mcp-client'\"), 'the patch must mount @deepseek-ai/dsh-mcp-client');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/node-repl.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/node-repl.mjs",
+        "line": 69,
+        "text": "const child = spawn(this.options.command, this.options.args ?? [], {"
+      },
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 27,
+        "text": "const child = spawn(process.execPath, [launcher], { env: { ...process.env, ELECTRON_RUN_AS_NODE: '1' }, stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

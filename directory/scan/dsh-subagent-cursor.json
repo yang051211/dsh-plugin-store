@@ -1,0 +1,76 @@
+{
+  "name": "dsh-subagent-cursor",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:55.952Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-driver.js",
+        "line": 10,
+        "text": "import { accessSync, constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli-permissions.js",
+        "line": 12,
+        "text": "import { existsSync, readFileSync, writeFileSync, copyFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli-permissions.js",
+        "line": 111,
+        "text": "mkdirSync(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/cli-permissions.js",
+        "line": 112,
+        "text": "writeFileSync(filePath, `${JSON.stringify(config, null, 2)}\\n`, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/cli-permissions.js",
+        "line": 125,
+        "text": "const config = JSON.parse(readFileSync(filePath, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-driver.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli-driver.js",
+        "line": 88,
+        "text": "child = spawn(resolvedPath, ['status'], {"
+      },
+      {
+        "file": "lib/cli-driver.js",
+        "line": 152,
+        "text": "const child = spawn(resolvedPath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

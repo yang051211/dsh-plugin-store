@@ -1,0 +1,102 @@
+{
+  "name": "dsh-jev-prune",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:57.783Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "demo/run.mjs",
+        "line": 2,
+        "text": "import {mkdirSync, writeFileSync} from 'node:fs';"
+      },
+      {
+        "file": "demo/run.mjs",
+        "line": 80,
+        "text": "mkdirSync(assets,{recursive:true});"
+      },
+      {
+        "file": "demo/run.mjs",
+        "line": 81,
+        "text": "writeFileSync(assets+'demo.json',JSON.stringify({format:1,host:'simulated',judge:'fixed probabilities',liveApiCalls:0,stages,assertionsPassed:true},null,2)+'\\n'"
+      },
+      {
+        "file": "demo/run.mjs",
+        "line": 85,
+        "text": "writeFileSync(assets+'demo.cast',cast.join('\\n')+'\\n');"
+      },
+      {
+        "file": "index.js",
+        "line": 33,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 147,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1908,
+        "text": "// 工具注册要容错：`inject: ['tools']` 在真实 DSH 里保证 ctx.tools 存在，"
+      },
+      {
+        "file": "index.js",
+        "line": 1911,
+        "text": "const toolsService = ctx.tools ?? ctx.get?.('tools')"
+      },
+      {
+        "file": "index.js",
+        "line": 2084,
+        "text": "log('info', 'ctx.tools 不可用 —— 跳过状态/探针工具注册（判定与裁剪不受影响）')"
+      },
+      {
+        "file": "test/smoke_apply.mjs",
+        "line": 5,
+        "text": "* ctx.on / ctx.effect / ctx.tools.register 的调用形状、Config schema 能否被 schemastery 接受、"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify_current_host.mjs",
+        "line": 7,
+        "text": "import {spawn,spawnSync} from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify_current_host.mjs",
+        "line": 16,
+        "text": "const result=spawnSync(program,args,{cwd,env,encoding:'utf8',timeout:600000,maxBuffer:4*1024*1024,windowsHide:true})"
+      },
+      {
+        "file": "scripts/verify_current_host.mjs",
+        "line": 61,
+        "text": "const child=spawn(process.execPath,[bin,'--profile','web','--no-open','--port',String(port)],{cwd:repo,env,windowsHide:true,stdio:['ignore','pipe','pipe']})"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "talon-ui",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:47.016Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app/controller.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/app/controller.js",
+        "line": 47,
+        "text": "const head = readFileSync(join(cwd, '.git', 'HEAD'), 'utf8').trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const manifest = JSON.parse(readFileSync(manifestUrl, 'utf8'));"
+      },
+      {
+        "file": "lib/ui/composer/paste.js",
+        "line": 20,
+        "text": "import { mkdtemp, readFile, rm } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boot.js",
+        "line": 14,
+        "text": "// `static inject = ['agents', 'sessions', 'llm', 'tools', 'systemPrompt']` —"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ui/composer/paste.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ui/composer/paste.js",
+        "line": 71,
+        "text": "execFile(recipe.command, recipe.args, (error) => (error ? reject(error) : resolve()));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentLoop",
+    "agents",
+    "approval",
+    "commands",
+    "llm",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

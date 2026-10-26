@@ -1,0 +1,67 @@
+{
+  "name": "dsh-chat-sync",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-26T10:09:16.949Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 37,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auto-import.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/auto-import.js",
+        "line": 71,
+        "text": "const data = JSON.parse(readFileSync(this.importStateFile, \"utf8\"));"
+      },
+      {
+        "file": "lib/auto-import.js",
+        "line": 89,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/auto-import.js",
+        "line": 92,
+        "text": "writeFileSync(this.importStateFile, JSON.stringify(data, null, 2));"
+      },
+      {
+        "file": "lib/auto-import.js",
+        "line": 193,
+        "text": "mkdirSync(cwd, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "apiProxy",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

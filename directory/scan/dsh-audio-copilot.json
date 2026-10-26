@@ -1,0 +1,115 @@
+{
+  "name": "dsh-audio-copilot",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:47.757Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 68,
+        "text": "* 动态 import('undici') 的 dispatcher 与运行时 fetch 存在兼容问题(实测"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 210,
+        "text": "const res = await fetch(joinUrl(config.asrBaseUrl, '/audio/transcriptions'), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 259,
+        "text": "fetch(TRANSCRIBE_URL, { method: 'POST', body: form })"
+      },
+      {
+        "file": "src/client.ts",
+        "line": 264,
+        "text": "const res = await fetch(TRANSCRIBE_URL, { method: 'POST', body: form })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 115,
+        "text": "* 动态 import('undici') 的 dispatcher 与运行时 fetch 存在兼容问题(实测"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 4,
+        "text": "import { access, constants, readFile, writeFile, stat, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 79,
+        "text": "const bytes = await readFile(path);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 90,
+        "text": "await writeFile(tmpJson, body, 'utf8');"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 133,
+        "text": "await rm(tmpJson).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 29,
+        "text": "export const inject = ['tools', 'webServer']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 13,
+        "text": "import { execFile, execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 136,
+      "text": "pip install faster-whisper"
+    }
+  ],
+  "skippedEntries": []
+}

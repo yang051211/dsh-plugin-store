@@ -1,0 +1,90 @@
+{
+  "name": "dsh-price-peak",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:09:22.980Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 189,
+        "text": "const response = await fetch(STATE_PATH, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "preview.mjs",
+        "line": 43,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "src/client.template.js",
+        "line": 181,
+        "text": "const response = await fetch(STATE_PATH, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 22,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "build.mjs",
+        "line": 27,
+        "text": "const manifest = JSON.parse(readFileSync(join(here, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "build.mjs",
+        "line": 28,
+        "text": "const template = readFileSync(join(here, \"src\", \"client.template.js\"), \"utf8\");"
+      },
+      {
+        "file": "build.mjs",
+        "line": 29,
+        "text": "const styles = readFileSync(join(here, \"src\", \"client-styles.js\"), \"utf8\");"
+      },
+      {
+        "file": "build.mjs",
+        "line": 99,
+        "text": "if (readFileSync(target, \"utf8\") !== generated) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preview-ui.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "preview-ui.mjs",
+        "line": 407,
+        "text": "const launched = spawnSync(opener, [target], { stdio: \"ignore\", shell: process.platform === \"win32\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

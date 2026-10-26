@@ -1,0 +1,63 @@
+{
+  "name": "dsh-subagent-antigravity",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:45.721Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/resolve.js",
+        "line": 18,
+        "text": "export const INSTALL_HINT = 'curl -fsSL https://antigravity.google/cli/install.sh | bash'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/resolve.js",
+        "line": 13,
+        "text": "import { accessSync, constants, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/run.js",
+        "line": 21,
+        "text": "import { accessSync, constants, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "spawn: spec => this.ctx.subprocess.spawn(spec),"
+      },
+      {
+        "file": "lib/run.js",
+        "line": 174,
+        "text": "child = spec.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

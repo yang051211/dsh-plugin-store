@@ -1,0 +1,110 @@
+{
+  "name": "dsh-mcp-skill-manager",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:49.950Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp.js",
+        "line": 93,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 133,
+        "text": "const res = await fetch(server.url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 4,
+        "text": "import { copyFileSync, existsSync, readFileSync, appendFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "install.mjs",
+        "line": 27,
+        "text": "const manifest = JSON.parse(readFileSync(join(profileDir, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "install.mjs",
+        "line": 40,
+        "text": "const patchText = existsSync(patchPath) ? readFileSync(patchPath, \"utf8\") : \"\";"
+      },
+      {
+        "file": "install.mjs",
+        "line": 50,
+        "text": "appendFileSync(patchPath, block);"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/patch.js",
+        "line": 140,
+        "text": "name: kv.name ?? \"@deepseek-ai/dsh-mcp-client\","
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 174,
+        "text": "byId.set(id, { id, enabled: !disabled, name: kv.name ?? \"@deepseek-ai/dsh-mcp-client\", serverName: \"\", transport: \"stdio\", block });"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 218,
+        "text": "const lines = [\"- insert:\", \"    - id: \" + yamlScalar(server.id), \"      name: \\\"@deepseek-ai/dsh-mcp-client\\\"\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 3,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 45,
+        "text": "      child = spawn(server.command, Array.isArray(server.args) ? server.args : [], { shell: false, stdio: [\"pipe\", \"pipe\", \"pipe\"], env: { ...process.env, ...(s"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node client/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

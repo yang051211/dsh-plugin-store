@@ -1,0 +1,148 @@
+{
+  "name": "dsh-memory-fortress",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:08:50.952Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 166,
+        "text": "const res = await fetch(`/memory-evolve${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1032,
+        "text": "const res = await fetch(`/memory-evolve${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1703,
+        "text": "res = await fetch(input, init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2896,
+        "text": "    void fetch(\"/memory-evolve/api/badge\").then((res) => res.ok ? res.json() : Promise.reject(new Error(`HTTP ${res.status}`))).then((data) => setSkillsCount(da"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2976,
+        "text": "const res = await fetch(`/memory-evolve${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/memory-evolve/lib/advisor/index.js",
+        "line": 26,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/memory-evolve/lib/advisor/index.js",
+        "line": 27,
+        "text": "import { appendFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/memory-evolve/lib/advisor/index.js",
+        "line": 112,
+        "text": "writeFileSync(tmp, data)"
+      },
+      {
+        "file": "lib/memory-evolve/lib/advisor/index.js",
+        "line": 126,
+        "text": "const text = readFileSync(conversationFileOf(dataDir, sessionId), 'utf8')"
+      },
+      {
+        "file": "lib/memory-evolve/lib/advisor/index.js",
+        "line": 136,
+        "text": "writeFileSync(tmp, JSON.stringify({ epoch, messages, ...(scopeText !== '' ? { scopeText } : {}) }))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/graph-memory/host.js",
+        "line": 20,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/graph-memory/host.js",
+        "line": 50,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/graph-memory/host.js",
+        "line": 63,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/graph-memory/host.js",
+        "line": 80,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/graph-memory/host.js",
+        "line": 103,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/memory-evolve/lib/canvas.js",
+        "line": 31,
+        "text": "import { spawn as spawnProcess } from 'node:child_process'"
+      },
+      {
+        "file": "lib/memory-evolve/lib/coi/api.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/memory-evolve/lib/coi/api.js",
+        "line": 290,
+        "text": "const child = spawn(adapter.binary, [...cmd, body.sessionId], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/memory-evolve/lib/coi/commands.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/memory-evolve/lib/coi/commands.js",
+        "line": 234,
+        "text": "const child = spawn(adapter.binary, [...cmd, sessionId], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/memory-evolve/lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessionPersistence",
+    "sessionTitle",
+    "settings",
+    "systemPrompt",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

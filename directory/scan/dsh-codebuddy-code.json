@@ -1,0 +1,92 @@
+{
+  "name": "dsh-codebuddy-code",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:08:48.050Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 9,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 30,
+        "text": "const upstream = await fetch(UPSTREAM, {"
+      },
+      {
+        "file": "scripts/vision-probe.mjs",
+        "line": 175,
+        "text": "const response = await fetch(ENDPOINT, {"
+      },
+      {
+        "file": "src/adapter.js",
+        "line": 577,
+        "text": "response = await fetch(connection.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 10,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 16,
+        "text": "mkdirSync(LOG.replace(/[\\\\/][^\\\\/]+$/, ''), { recursive: true })"
+      },
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 28,
+        "text": "appendFileSync(LOG, `\\n\\n### REQUEST ${entry.at}\\n${JSON.stringify(entry, null, 2)}\\n`)"
+      },
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 43,
+        "text": "appendFileSync(LOG, `### RESPONSE ${upstream.status} ${new Date().toISOString()}\\n${text.slice(0, 30_000)}\\n`)"
+      },
+      {
+        "file": "scripts/cb-proxy.mjs",
+        "line": 47,
+        "text": "appendFileSync(LOG, `### PROXY ERROR ${String(e)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth-document.js",
+        "line": 40,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/auth-document.js",
+        "line": 347,
+        "text": "child = spawn(executable, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

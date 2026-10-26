@@ -1,0 +1,87 @@
+{
+  "name": "dsh-superpowers-zh",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:54.838Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/helper.js",
+        "line": 80,
+        "text": "ws = new WebSocket(websocketUrl());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 2,
+        "text": "const http = require('http');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "const raw = readFileSync(join(directory, 'SKILL.md'), 'utf8')"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 3,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 93,
+        "text": "const p = Number(fs.readFileSync(PORT_FILE, 'utf-8').trim());"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 138,
+        "text": "const t = fs.readFileSync(TOKEN_FILE, 'utf-8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 537,
+        "text": "const cp = require('child_process');"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 543,
+        "text": "// Platform launchers: pass the URL as an argv element via execFile (no shell),"
+      },
+      {
+        "file": "skills/brainstorming/scripts/server.cjs",
+        "line": 547,
+        "text": "try { cp.execFile(launcher.bin, launcher.args, () => {}); } catch (e) { /* best effort */ }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

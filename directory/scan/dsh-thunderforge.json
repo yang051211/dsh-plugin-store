@@ -1,0 +1,140 @@
+{
+  "name": "dsh-thunderforge",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:19.485Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/pitfalls/scripts/archive-discussions.ps1",
+        "line": 11,
+        "text": "#   传输用 Invoke-WebRequest(而非 curl.exe 数组参数): PS 5.1 下 curl 数组参数"
+      },
+      {
+        "file": "skills/pitfalls/scripts/archive-discussions.ps1",
+        "line": 31,
+        "text": "$resp = Invoke-WebRequest -Uri $url -Headers $headers -TimeoutSec 60 -UseBasicParsing"
+      },
+      {
+        "file": "skills/pitfalls/scripts/download-community-repos.ps1",
+        "line": 184,
+        "text": "$hdr2 = & $curl -sI --connect-timeout 10 --max-time 30 \"https://codeload.github.com/$r/tar.gz/HEAD\" 2>&1 | Out-String"
+      },
+      {
+        "file": "skills/pitfalls/scripts/download-community-repos.ps1",
+        "line": 194,
+        "text": "$hdr = & $curl -sI --connect-timeout 10 --max-time 40 \"https://codeload.github.com/$r/tar.gz/$cand\" 2>&1 | Out-String"
+      },
+      {
+        "file": "skills/pitfalls/scripts/download-community-repos.ps1",
+        "line": 211,
+        "text": "  $code = & $curl -sS -L --retry 1 --retry-delay 2 --connect-timeout 10 --max-time 120 -o $tgz -w '%{http_code}' \"https://codeload.github.com/$r/tar.gz/$branch\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/pitfalls/index.js",
+        "line": 13,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "skills/pitfalls/index.js",
+        "line": 46,
+        "text": "const { description, body } = splitFrontmatter(readFileSync(skillPath, 'utf8'))"
+      },
+      {
+        "file": "src/capture/core.js",
+        "line": 5,
+        "text": "import { appendFile, mkdir, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/capture/core.js",
+        "line": 165,
+        "text": "this.dirReady ??= mkdir(this.config.dir, { recursive: true }).catch((err) => {"
+      },
+      {
+        "file": "src/capture/core.js",
+        "line": 201,
+        "text": "await writeFile(join(this.config.dir, file), body, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/arch-standard/examples/greet-tool/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "skills/arch-standard/examples/greet-tool/index.js",
+        "line": 9,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/contract/index.js",
+        "line": 1,
+        "text": "// ThunderForge 契约自检库：把 dsh ctx.tools.register 的真机校验规则固化为可复用的纯函数。"
+      },
+      {
+        "file": "src/contract/index.js",
+        "line": 29,
+        "text": "* 校验一个 raw 工具定义是否符合 ctx.tools.register 的真机契约。"
+      },
+      {
+        "file": "src/contract/index.js",
+        "line": 30,
+        "text": "* @param tool - 传给 ctx.tools.register 的工具定义对象"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/profile/index.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/profile/index.js",
+        "line": 35,
+        "text": "? spawn('cmd.exe', ['/d', '/s', '/c', command, ...args], { cwd, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "src/profile/index.js",
+        "line": 36,
+        "text": ": spawn(command, args, { cwd, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "src/scaffold/index.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/scaffold/index.js",
+        "line": 42,
+        "text": "const child = spawn(process.execPath, ['--test'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

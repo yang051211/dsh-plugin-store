@@ -1,0 +1,92 @@
+{
+  "name": "dsh-subscription-auth",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:43.046Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.js",
+        "line": 360,
+        "text": "response = await fetch(o.apiBaseURL, {"
+      },
+      {
+        "file": "lib/adapters/anthropic.js",
+        "line": 331,
+        "text": "response = await fetch(o.apiBaseURL, {"
+      },
+      {
+        "file": "lib/channels/claude.js",
+        "line": 58,
+        "text": "const res = await fetch(TOKEN_ENDPOINT, {"
+      },
+      {
+        "file": "lib/channels/claude.js",
+        "line": 77,
+        "text": "const res = await fetch(TOKEN_ENDPOINT, {"
+      },
+      {
+        "file": "lib/channels/claude.js",
+        "line": 95,
+        "text": "const res = await fetch(MODELS_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "appendFileSync(join(dir, \"subscription-auth.log\"), line + `"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/oauth.js",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/oauth.js",
+        "line": 60,
+        "text": "const child = spawn(\"rundll32.exe\", [\"url.dll,FileProtocolHandler\", url], { stdio: \"ignore\", detached: true });"
+      },
+      {
+        "file": "lib/oauth.js",
+        "line": 66,
+        "text": "const child = spawn(cmd, [url], { stdio: \"ignore\", detached: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

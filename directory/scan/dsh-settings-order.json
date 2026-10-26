@@ -1,0 +1,71 @@
+{
+  "name": "dsh-settings-order",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:09:25.197Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/restart-and-verify.ps1",
+        "line": 74,
+        "text": "$response = Invoke-WebRequest -Uri $url -WebSession $session -UseBasicParsing -TimeoutSec 10"
+      },
+      {
+        "file": "scripts/restart-and-verify.ps1",
+        "line": 99,
+        "text": "$bundle = Invoke-WebRequest -Uri $abs -WebSession $session -UseBasicParsing -TimeoutSec 30"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "e2e/preinstall-dom-check.mjs",
+        "line": 33,
+        "text": "import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "e2e/preinstall-dom-check.mjs",
+        "line": 42,
+        "text": "mkdirSync(shotDir, { recursive: true })"
+      },
+      {
+        "file": "e2e/preinstall-dom-check.mjs",
+        "line": 43,
+        "text": "mkdirSync(docsDir, { recursive: true })"
+      },
+      {
+        "file": "e2e/preinstall-dom-check.mjs",
+        "line": 45,
+        "text": "const clientSource = readFileSync(join(root, 'lib', 'client.js'), 'utf8')"
+      },
+      {
+        "file": "e2e/preinstall-dom-check.mjs",
+        "line": 55,
+        "text": "const log = readFileSync(join(home, '.dsh', 'dsh-web.log'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

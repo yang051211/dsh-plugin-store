@@ -1,0 +1,133 @@
+{
+  "name": "dsh-trinity",
+  "version": "2.4.2",
+  "scannedAt": "2026-10-26T10:08:59.460Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/generic-html.js",
+        "line": 60,
+        "text": "export async function fetch(_request, _signal, ctx) {"
+      },
+      {
+        "file": "lib/adapters/github.js",
+        "line": 60,
+        "text": "export async function fetch(request, signal, ctx) {"
+      },
+      {
+        "file": "lib/adapters/index.js",
+        "line": 11,
+        "text": "//   sniffed === 'pdf'  → pdfAdapter.fetch()"
+      },
+      {
+        "file": "lib/adapters/index.js",
+        "line": 12,
+        "text": "//   sniffed === 'html' → genericHtmlAdapter.fetch()"
+      },
+      {
+        "file": "lib/adapters/pdf.js",
+        "line": 48,
+        "text": "// `fetch()`), not a capability. The helper no longer fabricates an"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools/pdf-extract.js",
+        "line": 104,
+        "text": "const fs = await import('node:fs')"
+      },
+      {
+        "file": "lib/tools/pdf-extract.js",
+        "line": 105,
+        "text": "bytes = await fs.promises.readFile(fp)"
+      },
+      {
+        "file": "lib/tools/video-extract.js",
+        "line": 151,
+        "text": "const fileBytes = (await import('node:fs')).readFileSync(fp)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 14,
+        "text": "#     ctx.web.registerFetchProvider + ctx.tools.register."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "export const inject = ['web', 'tools', 'systemPrompt', 'settings', 'credentials', 'agents']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 227,
+        "text": "safeRegister(ctx, logger, 'tools.web_search_ex', () => tools.register(createWebSearchEx(toolsCtx)))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "safeRegister(ctx, logger, 'tools.search_content', () => tools.register(createSearchContent(toolsCtx)))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "safeRegister(ctx, logger, 'tools.source_check', () => tools.register(createSourceCheck(toolsCtx)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers/mmx.js",
+        "line": 5,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/providers/mmx.js",
+        "line": 26,
+        "text": "proc = spawn('mmx', ["
+      },
+      {
+        "file": "lib/util/subprocess.js",
+        "line": 107,
+        "text": "const handle = sub.spawn({"
+      },
+      {
+        "file": "lib/util/subprocess.js",
+        "line": 119,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/util/subprocess.js",
+        "line": 120,
+        "text": "const child = spawn(spec.argv[0], spec.argv.slice(1), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 10,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "settings",
+    "systemPrompt",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

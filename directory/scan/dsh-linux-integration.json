@@ -1,0 +1,87 @@
+{
+  "name": "dsh-linux-integration",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:09:21.982Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 11,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/config.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/config.js",
+        "line": 231,
+        "text": "text = fs.readFileSync(paths.configFile, 'utf8')"
+      },
+      {
+        "file": "src/config.js",
+        "line": 259,
+        "text": "fs.mkdirSync(paths.configDir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/config.js",
+        "line": 261,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify(config, null, 2)}\\n`, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 447,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 448,
+        "text": "const child = spawn(paths.launcherFile, [], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "src/gnome.js",
+        "line": 36,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/hyprland.js",
+        "line": 27,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/installer.js",
+        "line": 15,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "dsh-codespace-workspace",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:16.942Z",
+  "icon": "dsh-codespace-workspace.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/github.js",
+        "line": 17,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      },
+      {
+        "file": "lib/host/github.js",
+        "line": 271,
+        "text": "response = await fetch(url, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/codespaces.js",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/codespaces.js",
+        "line": 274,
+        "text": "mkdirSync(this.root, { recursive: true })"
+      },
+      {
+        "file": "lib/host/codespaces.js",
+        "line": 282,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/host/codespaces.js",
+        "line": 305,
+        "text": "mkdirSync(this.root, { recursive: true })"
+      },
+      {
+        "file": "lib/host/codespaces.js",
+        "line": 308,
+        "text": "writeFileSync(temporary, JSON.stringify({ version: 1, workspaces: [...this.records.values()] }, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/remote-tools.js",
+        "line": 451,
+        "text": "* `agent.ctx.tools` at `agent/created` time is `undefined`, and it fails"
+      },
+      {
+        "file": "lib/host/remote-tools.js",
+        "line": 526,
+        "text": "disposers.push(tools.register(definition))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/gh.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host/gh.js",
+        "line": 44,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/host/transport.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host/transport.js",
+        "line": 159,
+        "text": "child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

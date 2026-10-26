@@ -1,0 +1,100 @@
+{
+  "name": "dsh-contract-check",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:07.389Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 228,
+        "text": "const res = await fetch(STATUS_URL, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 237,
+        "text": "const res = await fetch(AUDIT_URL, { method: \"POST\" });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 77,
+        "text": "const res = await fetch(STATUS_URL, { cache: 'no-store' })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 88,
+        "text": "const res = await fetch(AUDIT_URL, { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-contract-check.js",
+        "line": 11,
+        "text": "import { readFile, readdir, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/dsh-contract-check.js",
+        "line": 128,
+        "text": "text = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "src/package-check.js",
+        "line": 26,
+        "text": "import { readFileSync, existsSync, statSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/package-check.js",
+        "line": 195,
+        "text": "pj = JSON.parse(readFileSync(pjPath, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.js",
+        "line": 4,
+        "text": "//   1) 枚举 ctx.tools.view() 里可见的工具定义，检查 render 契约（静态 + 实测兜底）"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 27,
+        "text": "* 注意：未注入时 `ctx.tools` 会**抛异常**（\"cannot get property without inject\"），"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 42,
+        "text": "let source = tools ? \"ctx.tools\" : \"none\";"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 91,
+        "text": "ctx.logger?.warn?.(`${TAG} 无法枚举工具注册表（ctx.tools 不可用）——本插件无法体检，未做任何改动`);"
+      },
+      {
+        "file": "src/plugin.js",
+        "line": 139,
+        "text": "// 实机踩到：不声明注入时 `ctx.tools` 是 undefined（且访问会抛异常）→ 体检报\"检查 0 个工具\"，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

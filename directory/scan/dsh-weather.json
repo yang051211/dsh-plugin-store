@@ -1,0 +1,56 @@
+{
+  "name": "dsh-weather",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:55.122Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/weather.js",
+        "line": 51,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "lib/weather.js",
+        "line": 69,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(config.timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

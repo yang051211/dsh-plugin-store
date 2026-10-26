@@ -1,0 +1,112 @@
+{
+  "name": "dsh-upgrade",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:09:03.077Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 770,
+        "text": "const res = await fetch(\"/api/dsh-upgrade/info\" + (forceRefresh ? \"?refresh=true\" : \"\"), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 811,
+        "text": "fetch(\"/api/dsh-upgrade/status\")"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 844,
+        "text": "fetch(`/api/dsh-upgrade/compatibility?target=${encodeURIComponent(target)}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 866,
+        "text": "await fetch(\"/api/dsh-upgrade/restart\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 891,
+        "text": "const res = await fetch(\"/api/dsh-upgrade/ping?t=\" + Date.now(), { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "const pkg = JSON.parse(fs.readFileSync(p, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "existing = fs.readFileSync(notesPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawn, execFile, execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "const whichOut = execSync('which dsh', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "const prefixOut = execSync('npm prefix -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "const verOut = execSync('dsh --version', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "const rChild = spawn('launchctl', ['kickstart', '-k', `gui/${uid}/com.deepseek.dsh.web`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

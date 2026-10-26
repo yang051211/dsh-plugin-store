@@ -1,0 +1,142 @@
+{
+  "name": "git-for-dsh",
+  "version": "0.0.9",
+  "scannedAt": "2026-10-26T10:09:21.426Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 550,
+        "text": ".then(() => fetch(CATALOG.routes.sshCheck, { headers: { accept: 'application/json' } }))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 572,
+        "text": ".then(() => fetch(CATALOG.routes.log + query, { headers: { accept: 'application/json' } }))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 593,
+        "text": ".then(() => fetch(CATALOG.routes.proxyCheck + '?port=' + String(Number.isInteger(parsed) ? parsed : 0), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 672,
+        "text": "fetch(CATALOG.routes.configCheck, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 703,
+        "text": "fetch(CATALOG.routes.configCheck, { method: 'POST', headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "import { accessSync, constants, readdirSync, realpathSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1615,
+        "text": "await writeFile(path, '')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1635,
+        "text": "text = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/log.js",
+        "line": 20,
+        "text": "import { appendFileSync, renameSync, statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "export const inject = ['tools', 'shell', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1850,
+        "text": "* service method `ctx.tools.guard` is not exposed to a plugin's curated view. The"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2165,
+        "text": "ctx.tools.register(definition)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 98,
+        "text": "export const inject = ['tools', 'shell', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1850,
+        "text": "* service method `ctx.tools.guard` is not exposed to a plugin's curated view. The"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 887,
+        "text": "result = spawnSync(command, ['ssh'], { encoding: 'utf8', timeout: 5000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 975,
+        "text": "const probe = spawnSync(path, ['-V'], { encoding: 'utf8', timeout: 3000 })"
+      },
+      {
+        "file": "scripts/verify-artifacts.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify-artifacts.mjs",
+        "line": 39,
+        "text": "const build = spawnSync(process.execPath, [`${root}scripts/build.mjs`, '--out', scratch], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

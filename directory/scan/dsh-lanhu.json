@@ -1,0 +1,111 @@
+{
+  "name": "dsh-lanhu",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:09:01.581Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lanhu.mjs",
+        "line": 255,
+        "text": "for (const m of text.matchAll(/(?:^|\\s)(?:-b|--cookie)[=\\s]+(['\"])([\\s\\S]*?)\\1/g)) push(m[2], 'curl -b（带引号）');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 257,
+        "text": "for (const m of text.matchAll(/(?:^|\\s)(?:-b|--cookie)[=\\s]+([^\\s'\"]+)/g)) push(m[1], 'curl -b（不带引号）');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 259,
+        "text": "for (const m of text.matchAll(/(?:^|\\s)-H[=\\s]+(['\"])[\\s]*cookie[\\s]*:[\\s]*([\\s\\S]*?)\\1/gi)) push(m[2], 'curl -H cookie（带引号）');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 261,
+        "text": "for (const m of text.matchAll(/(?:^|\\s)-H[=\\s]+cookie[\\s]*:[\\s]*([^\\s'\"]+)/gi)) push(m[1], 'curl -H cookie（不带引号）');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 966,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lanhu.mjs",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 398,
+        "text": "const doc = JSON.parse(fs.readFileSync(accountsPath(), 'utf8'));"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 408,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 411,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(doc, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 433,
+        "text": "fs.mkdirSync(cookiesDir(), { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1930,
+        "text": "const disposers = TOOLS.map((tool) => tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lanhu.mjs",
+        "line": 8439,
+        "text": "const { execFileSync } = nodeRequire('node:child_process');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 8515,
+        "text": "const { execFileSync } = await import('node:child_process');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 10050,
+        "text": "const { execFileSync } = await import('node:child_process');"
+      },
+      {
+        "file": "lanhu.mjs",
+        "line": 10142,
+        "text": "const { execFileSync } = await import('node:child_process');"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

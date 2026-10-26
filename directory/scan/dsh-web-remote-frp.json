@@ -1,0 +1,114 @@
+{
+  "name": "dsh-web-remote-frp",
+  "version": "1.10.3",
+  "scannedAt": "2026-10-26T10:08:59.626Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 52,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 53,
+        "text": "import { createServer as createHttpsServer } from 'node:https';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 55,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 56,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 307,
+        "text": "    const proxy = http.request({ host: TARGET_HOST, port: TARGET_PORT, path: req.url, method: req.method, headers: forwardHeaders(req, true), agent: proxyAgent "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 59,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 366,
+        "text": "tlsOptions = { pfx: fs.readFileSync(pfxPath), passphrase: pfxPass || undefined };"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 831,
+        "text": "try { fs.rmSync(archive, { force: true }); } catch (e2) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 836,
+        "text": "fs.mkdirSync(tmpDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 847,
+        "text": "try { fs.rmSync(archive, { force: true }); } catch (e) { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 61,
+        "text": "import { execFileSync, execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2411,
+        "text": "tunnelHandle = subprocess.spawn(spec([frpcPath, '-c', tomlPath]));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2926,
+        "text": "if (process.platform === 'darwin') execFile('open', ['-R', target], () => {});"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2927,
+        "text": "else if (process.platform === 'win32') execFile('explorer', ['/select,' + target], () => {});"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 2928,
+        "text": "else execFile('xdg-open', [path.dirname(target)], () => {});"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/index.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

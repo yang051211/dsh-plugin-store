@@ -1,0 +1,109 @@
+{
+  "name": "dsh-plugin-prompt-optimizer",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:18.486Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "return fetch(ENHANCE_PATH, {"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 82,
+        "text": "return fetch(ENHANCE_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/build-client.mjs",
+        "line": 17,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "tools/build-client.mjs",
+        "line": 54,
+        "text": "text = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "tools/build-client.mjs",
+        "line": 213,
+        "text": "mkdirSync(dirname(paths.out), { recursive: true })"
+      },
+      {
+        "file": "tools/build-client.mjs",
+        "line": 214,
+        "text": "writeFileSync(paths.out, out, 'utf8')"
+      },
+      {
+        "file": "tools/build-host.mjs",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "disposers.push(ctx.tools.register(createAnalyzeTool(options)))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "disposers.push(ctx.tools.register(createOptimizeTool(ctx, options)))"
+      },
+      {
+        "file": "src/host.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "src/host.js",
+        "line": 52,
+        "text": "disposers.push(ctx.tools.register(createAnalyzeTool(options)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/release-check.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/release-check.mjs",
+        "line": 46,
+        "text": "const result = spawnSync(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

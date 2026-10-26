@@ -1,0 +1,90 @@
+{
+  "name": "dsh-daily-zone",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:55.407Z",
+  "icon": "dsh-daily-zone.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 25,
+        "text": "fetch('/daily-zone/diag?step=' + encodeURIComponent(step), { method: 'GET' }).catch(() => {}),"
+      },
+      {
+        "file": "client.js",
+        "line": 159,
+        "text": "fetch(url, { method: 'GET', headers: { accept: 'application/json' } }).catch(() => {}),"
+      },
+      {
+        "file": "client.js",
+        "line": 441,
+        "text": "const response = await fetch(`${CACHE_BASE}/status`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 458,
+        "text": "const response = await fetch(`${CACHE_BASE}/clean?mode=${mode}`, { method: 'POST', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 630,
+        "text": "const response = await fetch(`${CACHE_BASE}/status`, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, realpathSync, rmSync, statSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 101,
+        "text": "if (!existsSync(path)) mkdirSync(path, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 227,
+        "text": "unlinkSync(file.path)"
+      },
+      {
+        "file": "index.js",
+        "line": 248,
+        "text": "rmSync(full, { recursive: true, force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 406,
+        "text": "appendFileSync(diagFile, `${JSON.stringify(entry)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 594,
+        "text": "ctx.effect(() => tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

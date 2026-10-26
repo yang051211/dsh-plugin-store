@@ -1,0 +1,96 @@
+{
+  "name": "dsh-postgres-expert",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:08:46.745Z",
+  "icon": "dsh-postgres-expert.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/sync-upstream.mjs",
+        "line": 311,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-patch.mjs",
+        "line": 18,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/check-patch.mjs",
+        "line": 59,
+        "text": "const patch = readFileSync(join(ROOT, 'cordis.patch.yml'), 'utf8')"
+      },
+      {
+        "file": "scripts/check-patch.mjs",
+        "line": 60,
+        "text": "const manifest = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/check-patch.mjs",
+        "line": 156,
+        "text": "const source = readFileSync(target, 'utf8')"
+      },
+      {
+        "file": "scripts/check-patch.mjs",
+        "line": 176,
+        "text": "const head = readFileSync(target).subarray(0, 12)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 38,
+        "text": "# `@deepseek-ai/dsh-mcp-client` entry per server, with the transport fields"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 53,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/prepublish.mjs",
+        "line": 22,
+        "text": "import { execFile as execFileCallback } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/prepublish.mjs",
+        "line": 78,
+        "text": "const { stdout } = await execFile(command, args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })"
+      },
+      {
+        "file": "scripts/sync-upstream.mjs",
+        "line": 27,
+        "text": "import { execFile as execFileCallback } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/sync-upstream.mjs",
+        "line": 336,
+        "text": "const { stdout } = await execFile('git', ['ls-remote', `https://github.com/${UPSTREAM_REPO}.git`, ref], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

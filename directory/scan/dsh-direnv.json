@@ -1,0 +1,91 @@
+{
+  "name": "dsh-direnv",
+  "version": "0.1.0-alpha.2",
+  "scannedAt": "2026-10-26T10:09:24.111Z",
+  "icon": "dsh-direnv.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 463,
+        "text": "() => fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evaluator/deps.js",
+        "line": 19,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/evaluator/deps.js",
+        "line": 49,
+        "text": ": (target, encoding) => fs.promises.readFile(target, encoding),"
+      },
+      {
+        "file": "lib/evaluator/envrc.js",
+        "line": 11,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/evaluator/envrc.js",
+        "line": 21,
+        "text": "const content = await deps.readFile(target, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evaluator/spawn.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/evaluator/spawn.js",
+        "line": 72,
+        "text": "child = spawn(file, [...args], {"
+      },
+      {
+        "file": "lib/evaluator/store.js",
+        "line": 91,
+        "text": "// nothing to inject\" — stops `spawn()` from prewarming on every subprocess."
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 177,
+        "text": "spawn(spec) {"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 199,
+        "text": "return super.spawn(merged);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

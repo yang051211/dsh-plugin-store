@@ -1,0 +1,108 @@
+{
+  "name": "dsh-icey",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:09:20.040Z",
+  "icon": "dsh-icey.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 79,
+        "text": "const jget = async (path) => asJson(await fetch(API + path, { credentials: 'same-origin' }))"
+      },
+      {
+        "file": "client.js",
+        "line": 80,
+        "text": "const jpost = async (path, payload) => asJson(await fetch(API + path, {"
+      },
+      {
+        "file": "client.js",
+        "line": 160,
+        "text": "const res = await fetch(`${API}/stream`, { credentials: 'same-origin', signal: abort.signal })"
+      },
+      {
+        "file": "client.js",
+        "line": 393,
+        "text": "const res = await fetch(`${API}/config`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/game.mjs",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/hostdeps.mjs",
+        "line": 19,
+        "text": "import { existsSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/hostdeps.mjs",
+        "line": 69,
+        "text": "const pkg = JSON.parse(readFileSync(pkgFile, 'utf8'))"
+      },
+      {
+        "file": "lib/run-history.mjs",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/run-history.mjs",
+        "line": 35,
+        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "agent.js",
+        "line": 121,
+        "text": "const tool = (spec) => ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 464,
+        "text": "// agent.js 的 apply 是同步的（只调 ctx.tools.register）"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 122,
+        "text": "const child = spawn(spec.command, spec.args || [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

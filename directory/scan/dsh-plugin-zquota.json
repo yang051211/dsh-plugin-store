@@ -1,0 +1,74 @@
+{
+  "name": "dsh-plugin-zquota",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:49.636Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 375,
+        "text": "const res = await fetch(\"/zquota-api/\" + op, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 324,
+        "text": "const res = await fetch('/zquota-api/' + op, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 318,
+        "text": "const res = await fetch(base + '/api/monitor/usage/quota/limit', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 25,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host.js",
+        "line": 220,
+        "text": "const text = await readFile(STATE_PATH, 'utf8')"
+      },
+      {
+        "file": "src/host.js",
+        "line": 229,
+        "text": "await mkdir(dirname(STATE_PATH), { recursive: true })"
+      },
+      {
+        "file": "src/host.js",
+        "line": 231,
+        "text": "await writeFile(tmp, JSON.stringify(state), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "configEditor",
+    "credentials",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

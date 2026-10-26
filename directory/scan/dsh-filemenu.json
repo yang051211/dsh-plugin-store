@@ -1,0 +1,72 @@
+{
+  "name": "dsh-filemenu",
+  "version": "1.1.8",
+  "scannedAt": "2026-10-26T10:09:21.671Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 11,
+        "text": "*   - Host RPC uses `fetch(\"/dsh-filemenu/rpc\")` (see `lib/index.js`) instead"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 244,
+        "text": "fetch('/dsh-filemenu/rpc', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "* the `webServer` service that the browser client half calls with `fetch()`."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "const fsService = () => ctx.get('fs')"
+      },
+      {
+        "file": "plugin/host.js",
+        "line": 122,
+        "text": "const fsService = () => ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "plugin/host.js",
+        "line": 130,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

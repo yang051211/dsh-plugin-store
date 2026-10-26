@@ -1,0 +1,90 @@
+{
+  "name": "dsh-wechat-article-fetcher",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:53.657Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 142,
+        "text": "const resp = await fetch(url, { headers, redirect: 'follow', signal: AbortSignal.timeout(30000) });"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 489,
+        "text": "const resp = await fetch(api, {"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 565,
+        "text": "const resp2 = await fetch(api, {"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 829,
+        "text": "const resp = await fetch(img.url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 19,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 613,
+        "text": "fs.mkdirSync(imagesDir, { recursive: true });"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 628,
+        "text": "fs.writeFileSync(path.join(base, 'meta.json'), JSON.stringify(metaCopy, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 642,
+        "text": "fs.writeFileSync(path.join(base, 'article.md'), mdLines.join('\\n'), 'utf8');"
+      },
+      {
+        "file": "lib/fetch_wechat_article.cjs",
+        "line": 838,
+        "text": "fs.writeFileSync(filePath, buf);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "const inject = ['shell', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "ctx.effect(() => ctx.tools.register(createTool(ctx)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

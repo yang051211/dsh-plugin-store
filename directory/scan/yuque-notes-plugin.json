@@ -1,0 +1,88 @@
+{
+  "name": "yuque-notes-plugin",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:47.640Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hosting.js",
+        "line": 29,
+        "text": "const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {"
+      },
+      {
+        "file": "lib/yuque.js",
+        "line": 107,
+        "text": "const response = await fetch(`${this.#baseUrl}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doc.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/doc.js",
+        "line": 62,
+        "text": "const data = new Uint8Array(await readFile(resolved, { signal }));"
+      },
+      {
+        "file": "lib/images.js",
+        "line": 41,
+        "text": ": await deps.readFile(ref.id, signal);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 36,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 69,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.build.json"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

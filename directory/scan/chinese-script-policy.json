@@ -1,0 +1,112 @@
+{
+  "name": "chinese-script-policy",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:09:21.315Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 40,
+        "text": "import { request } from 'node:http'"
+      },
+      {
+        "file": "examples/llm-proxy/llm-guard-proxy.mjs",
+        "line": 56,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "examples/llm-proxy/llm-guard-proxy.mjs",
+        "line": 57,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "examples/web-app/server.mjs",
+        "line": 9,
+        "text": "//   curl -s localhost:8787/api/check   -d '{\"text\":\"<simplified text>\"}'"
+      },
+      {
+        "file": "examples/web-app/server.mjs",
+        "line": 10,
+        "text": "//   curl -s localhost:8787/api/convert -d '{\"text\":\"<text>\",\"to\":\"traditional\"}'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 39,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 61,
+        "text": "const PACKAGE_NAME = JSON.parse(readFileSync(join(repo, 'package.json'), 'utf8')).name"
+      },
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 86,
+        "text": "mkdirSync(join(profile, 'node_modules'), { recursive: true })"
+      },
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 87,
+        "text": "writeFileSync(join(profile, 'cordis.yml'), '# scratch profile root, written by dev/dsh-boot-check.mjs\\n[]\\n')"
+      },
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 88,
+        "text": "writeFileSync(join(profile, 'cordis.patch.yml'), '# scratch profile patch layer\\n[]\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dev/dsh-boot-check.mjs",
+        "line": 425,
+        "text": "child = spawn(process.execPath, [bin, '--profile', 'web', '--port', String(PORT), '--no-open'], {"
+      },
+      {
+        "file": "scripts/cli-selftest.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/cli-selftest.mjs",
+        "line": 25,
+        "text": "const r = spawnSync(process.execPath, [cli, ...c.args], { input: '', encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/hook-selftest.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

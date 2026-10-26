@@ -1,0 +1,69 @@
+{
+  "name": "dsh-prompt-assembler",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:08:53.446Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 1721,
+        "text": "function createAssemblerFetch({ fetcher = (...args) => globalThis.fetch(...args), protocol = () => globalThis.location?.protocol } = {}) {"
+      },
+      {
+        "file": "src/client-fetch.js",
+        "line": 5,
+        "text": "export function createAssemblerFetch({ fetcher = (...args) => globalThis.fetch(...args), protocol = () => globalThis.location?.protocol } = {}) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 11,
+        "text": "await mkdir(new URL('../dist/', import.meta.url), { recursive: true })"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 12,
+        "text": "await writeFile(new URL('../dist/client.js', import.meta.url), `window.__ModuleLoader__.load({"
+      },
+      {
+        "file": "src/history/store.js",
+        "line": 1,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, renameSync } from 'node:fs'"
+      },
+      {
+        "file": "src/history/store.js",
+        "line": 9,
+        "text": "try { this.data = JSON.parse(readFileSync(this.path, 'utf8')) }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

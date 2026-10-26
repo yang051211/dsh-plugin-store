@@ -1,0 +1,102 @@
+{
+  "name": "dsh-cook-pet",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:08:51.479Z",
+  "icon": "dsh-cook-pet.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 524,
+        "text": "const res = await fetch(STATE_URL, { cache: 'no-store' });"
+      },
+      {
+        "file": "runtime/electron-helper/renderer.js",
+        "line": 193,
+        "text": "fetch(STATE_URL, { cache: 'no-store' })"
+      },
+      {
+        "file": "scripts/ensure-electron.mjs",
+        "line": 185,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop.js",
+        "line": 20,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { createReadStream, existsSync, fstatSync } from 'node:fs';"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 44,
+        "text": "const { existsSync, mkdirSync, readFileSync, writeFileSync } = require('node:fs');"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 195,
+        "text": "const raw = JSON.parse(readFileSync(posFile(), 'utf8'));"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 205,
+        "text": "mkdirSync(path.dirname(posFile()), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 86,
+        "text": "/** @type {import('node:child_process').ChildProcess|null} */"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 133,
+        "text": "child = this.spawn(this.electron, [HELPER_DIR], {"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 198,
+        "text": "child = this.spawn(process.execPath, [script, '--quiet'], {"
+      },
+      {
+        "file": "scripts/ensure-electron.mjs",
+        "line": 42,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

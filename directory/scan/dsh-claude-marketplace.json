@@ -1,0 +1,105 @@
+{
+  "name": "dsh-claude-marketplace",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:40.475Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/marketplace.js",
+        "line": 217,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(120_000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/marketplace.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rm, cp } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/marketplace.js",
+        "line": 54,
+        "text": "raw = await readFile(manifestPath, 'utf8');"
+      },
+      {
+        "file": "lib/marketplace.js",
+        "line": 86,
+        "text": "manifest = JSON.parse(await readFile(absolute, 'utf8'));"
+      },
+      {
+        "file": "lib/marketplace.js",
+        "line": 89,
+        "text": "await rm(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/marketplace.js",
+        "line": 90,
+        "text": "await mkdir(join(target, '.claude-plugin'), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 162,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/marketplace.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

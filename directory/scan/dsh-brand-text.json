@@ -1,0 +1,110 @@
+{
+  "name": "dsh-brand-text",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:43.246Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/index.js",
+        "line": 262,
+        "text": "fetch(API_SAVE, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 268,
+        "text": "return fetch(API_WM, {"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 54,
+        "text": "var r = await fetch(ROUTE + '/api/config'); var d = await r.json();"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 83,
+        "text": "var r = await fetch(ROUTE + '/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 122,
+        "text": "var r = await fetch(ROUTE + '/api/watermark', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 12,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 39,
+        "text": "text = await readFile(pkgPath, 'utf8')"
+      },
+      {
+        "file": "install.mjs",
+        "line": 57,
+        "text": "await writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 6,
+        "text": "import { readFile, writeFile, rename, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 117,
+        "text": "raw = JSON.parse(await readFile(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 329,
+        "text": "execFile('explorer', [path], { windowsHide: true }, () => {})"
+      },
+      {
+        "file": "lib/watermark.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/watermark.js",
+        "line": 179,
+        "text": "execFile('attrib', args, { windowsHide: true }, (err) => resolve(err ? String(err.message) : ''))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

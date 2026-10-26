@@ -1,0 +1,69 @@
+{
+  "name": "dsh-mcp-security",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:56.396Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/probe.js",
+        "line": 183,
+        "text": "response = await fetch(target.url, {"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 222,
+        "text": "void fetch(target.url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'settings', 'timer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "cachedSnapshot = snapshot(ctx.tools.schemas())"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/probe.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 122,
+        "text": "const child = spawn(target.command, target.args ?? [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

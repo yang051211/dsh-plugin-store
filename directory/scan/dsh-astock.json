@@ -1,0 +1,81 @@
+{
+  "name": "dsh-astock",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:08:54.263Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 10,
+        "text": "*   host.call(...)          -> fetch('/astock/api/...')"
+      },
+      {
+        "file": "client/client.js",
+        "line": 131,
+        "text": "return fetch('/astock/api/' + path + query, { headers: { accept: 'application/json' } }).then(unwrap)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 135,
+        "text": "return fetch('/astock/api/' + path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "const response = await fetch(url, { redirect: 'follow', headers })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1017,
+        "text": "const result = await web.fetch({ url })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1127,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1128,
+        "text": "writeFileSync(path, JSON.stringify(value, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1139,
+        "text": "return JSON.parse(readFileSync(join(stateDir(), filename), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

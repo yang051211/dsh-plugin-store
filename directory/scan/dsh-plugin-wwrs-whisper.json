@@ -1,0 +1,112 @@
+{
+  "name": "dsh-plugin-wwrs-whisper",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:05.536Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/backend.ts",
+        "line": 18,
+        "text": "import { existsSync, readFileSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/lib/backend.ts",
+        "line": 19,
+        "text": "import { mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "src/lib/backend.ts",
+        "line": 116,
+        "text": "const revision = readFileSync(refFile, \"utf8\").trim();"
+      },
+      {
+        "file": "src/lib/backend.ts",
+        "line": 250,
+        "text": "const raw: unknown = JSON.parse(readFileSync(join(out, `${stem}.units.json`), \"utf8\"));"
+      },
+      {
+        "file": "src/lib/backend.ts",
+        "line": 263,
+        "text": "await mkdir(artifactDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cordis.ts",
+        "line": 4,
+        "text": "* subtitles_merge_timed_tokens / episodes_plan → ctx.tools.register；写保护守卫 → ctx.tools.guard"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 18,
+        "text": "export const inject: string[] = [\"tools\"];"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 29,
+        "text": "ctx.tools?.register(tool as { name: string; [key: string]: unknown });"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 3,
+        "text": "* 真源在 ./lib/guard-predicate.ts（独立零协议依赖，见其头注）；本文件只做 ctx.tools.guard 挂载。"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 10,
+        "text": "const rawGuard = ctx.tools?.guard;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/backend.ts",
+        "line": 17,
+        "text": "import { spawn, type ChildProcess } from \"node:child_process\";"
+      },
+      {
+        "file": "src/lib/backend.ts",
+        "line": 195,
+        "text": "const child = spawn(python, [script, model, this.defaultLanguage], { stdio: [\"pipe\", \"pipe\", \"inherit\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 65,
+      "text": "~/.cache/wwrs-whisper/.venv/bin/pip install mlx-whisper"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 65,
+      "text": "~/.cache/wwrs-whisper/.venv/bin/pip install mlx-whisper"
+    }
+  ],
+  "skippedEntries": []
+}

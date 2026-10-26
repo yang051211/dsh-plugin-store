@@ -1,0 +1,112 @@
+{
+  "name": "dsh-agentic-proxy",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:06.027Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 42,
+        "text": "return fetch(RPC, {"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 41,
+        "text": "const res = await fetch(`${this.base}${path}`, init)"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 63,
+        "text": "const response = await fetch(mirror.wrap(VERSION_URL), { signal: signalFor(mirror, signal), redirect: 'follow' })"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 99,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 122,
+        "text": "async function download(url, target, { expectedBytes, signal, onProgress, mirror, expectZip = false } = {}) {  const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download.js",
+        "line": 17,
+        "text": "import { createWriteStream } from 'node:fs'"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 18,
+        "text": "import { mkdir, readFile, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 89,
+        "text": "const head = await readFile(file)"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 131,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 144,
+        "text": "await rm(temp, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 55,
+        "text": "const { spawnSync } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 58,
+        "text": "const r = spawnSync('tasklist', ['/FI', `PID eq ${pid}`, '/FO', 'CSV', '/NH'], {"
+      },
+      {
+        "file": "lib/kernel.js",
+        "line": 67,
+        "text": "const r = spawnSync('ps', ['-p', String(pid), '-o', 'comm='], { encoding: 'utf8', timeout: 5000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

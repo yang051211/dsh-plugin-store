@@ -1,0 +1,65 @@
+{
+  "name": "dsh-kun-pet",
+  "version": "1.0.7",
+  "scannedAt": "2026-10-26T10:09:03.858Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 88,
+        "text": "fetch(\"/kun-pet/state\", { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "spriteBytes = readFileSync(SPRITE_URL)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "voiceBytes = readFileSync(VOICE_URL)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "execFile('powershell', ['-NoProfile', '-Command', cmd], { windowsHide: true }, () => {})"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

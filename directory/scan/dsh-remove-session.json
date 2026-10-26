@@ -1,0 +1,66 @@
+{
+  "name": "dsh-remove-session",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:13.007Z",
+  "icon": "dsh-remove-session.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 153,
+        "text": "const response = await fetch(DELETE_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/session-files.js",
+        "line": 13,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "host/session-files.js",
+        "line": 99,
+        "text": "await rm(directory, { recursive: true, force: true, maxRetries: 5, retryDelay: 120 })"
+      },
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import {readFileSync} from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "const manifest = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "scripts/sync-icon.mjs",
+        "line": 14,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

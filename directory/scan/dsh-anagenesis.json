@@ -1,0 +1,108 @@
+{
+  "name": "dsh-anagenesis",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:09:19.683Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "window/client.js",
+        "line": 3861,
+        "text": "const response = await fetch(API_PATH + '?' + query.toString(), {"
+      },
+      {
+        "file": "window/src/client/parts/50-window.js",
+        "line": 38,
+        "text": "const response = await fetch(API_PATH + '?' + query.toString(), {"
+      },
+      {
+        "file": "window/tools/live-probe.mjs",
+        "line": 22,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "window/tools/live-probe.mjs",
+        "line": 199,
+        "text": "const response = await fetch(`${base}?${query}`, { headers: headers })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bench/run.mjs",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "bench/run.mjs",
+        "line": 141,
+        "text": "const baseline = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')) : null"
+      },
+      {
+        "file": "bench/run.mjs",
+        "line": 151,
+        "text": "writeFileSync(BASELINE, `${JSON.stringify(payload, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 25,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/paths.js",
+        "line": 13,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 12,
+        "text": "#   anagenesis-guard    the monotonic safety guardrail (ctx.tools.guard) plus the"
+      },
+      {
+        "file": "src/guard/index.js",
+        "line": 8,
+        "text": "*   1. a monotonic tool guard via `ctx.tools.guard()`. Guards run AFTER the"
+      },
+      {
+        "file": "src/guard/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools', 'anagenesis']"
+      },
+      {
+        "file": "src/guard/index.js",
+        "line": 52,
+        "text": "const guardDisposer = /** @type {any} */ (ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "src/guard/index.js",
+        "line": 86,
+        "text": "const permissionDisposer = /** @type {any} */ (ctx.tools.guard(createPermissionGuard({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "anagenesis",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

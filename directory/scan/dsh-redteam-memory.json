@@ -1,0 +1,132 @@
+{
+  "name": "dsh-redteam-memory",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:08:46.774Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 434,
+        "text": "const parts = ['curl -sS -m ' + Math.ceil(t / 1000), '-X ' + (o.method || 'POST')]"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 733,
+        "text": "const parts = ['curl -sS -m ' + Math.ceil(t / 1000), '-X ' + method]"
+      },
+      {
+        "file": "lib/parts/client.shim.js",
+        "line": 17,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 354,
+        "text": "const parts = ['curl -sS -m ' + Math.ceil(t / 1000), '-X ' + (o.method || 'POST')]"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 296,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 830,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1855,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'webServer', 'tools']"
+      },
+      {
+        "file": "lib/parts/host.tail.js",
+        "line": 36,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'webServer', 'tools']"
+      },
+      {
+        "file": "src/host.js",
+        "line": 216,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 7,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 77,
+        "text": "registerTool(c, tool) { return c.tools.register(tool) },"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 114,
+        "text": "//     （静态包的 host.head.js 提供垫片把它们映射到 defineTool / ctx.tools.register / HTTP 路由）"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1855,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'webServer', 'tools']"
+      },
+      {
+        "file": "lib/parts/host.head.js",
+        "line": 7,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 72,
+        "text": "const build = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs')], {"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 82,
+        "text": "const verify = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs'), '--check'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

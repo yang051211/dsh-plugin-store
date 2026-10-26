@@ -1,0 +1,84 @@
+{
+  "name": "dsh-global-prompt-and-compress",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:04.644Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 32,
+        "text": "const globalRes = await fetch('/api/desktop-global-prompt');"
+      },
+      {
+        "file": "client.js",
+        "line": 50,
+        "text": "tatus(t('saving')); try { const r=await fetch('/api/desktop-global-prompt',{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(state)}"
+      },
+      {
+        "file": "client.js",
+        "line": 53,
+        "text": "oad = async () => { try { const r=await fetch('/api/desktop-project-instructions',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify"
+      },
+      {
+        "file": "client.js",
+        "line": 54,
+        "text": "ave = async () => { try { const r=await fetch('/api/desktop-project-instructions',{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify("
+      },
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "==false)continue;try{const config=await fetch('/api/desktop-global-prompt').then(r=>r.json());if(!config.enabled||!config.notifyResult||Notification.permission!"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 3,
+        "text": "import { watch } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 4,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "icWrite = async (path, text) => { await mkdir(dirname(path), { recursive: true }); const tmp=`${path}.${process.pid}.${Date.now()}.tmp`; await writeFile(tmp, te"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "try { if (await readFile(agentsPath, 'utf8') === next) return; }"
+      },
+      {
+        "file": "index.js",
+        "line": 62,
+        "text": "try { disk = await readFile(agentsPath, 'utf8'); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

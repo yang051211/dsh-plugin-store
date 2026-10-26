@@ -1,0 +1,140 @@
+{
+  "name": "dsh-harness-jarvis",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:08:46.346Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1352,
+        "text": "const sr = await fetch(`${origin}/voice-mini/state`, { headers, signal: sc.signal });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1364,
+        "text": "fetch(`${origin}/voice-mini/test`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1396,
+        "text": "const r = await fetch(origin + '/voice-mini/pet/state', {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1433,
+        "text": "const r = await fetch(origin + path, { method: 'POST', headers, body: '{}', signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 115,
+        "text": "const response = await fetch(new URL(path, runtime.origin), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/approval-presets.js",
+        "line": 1,
+        "text": "import { lstat, mkdir, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/approval-presets.js",
+        "line": 26,
+        "text": "await mkdir(path, { recursive: i === 0, mode: 0o700 }).catch(error => { if (error.code !== 'EEXIST')"
+      },
+      {
+        "file": "lib/approval-presets.js",
+        "line": 44,
+        "text": "const raw = JSON.parse(await readFile(file, 'utf8'));"
+      },
+      {
+        "file": "lib/approval-risk.js",
+        "line": 1,
+        "text": "import { lstatSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/approval-store.js",
+        "line": 2,
+        "text": "import { mkdir, writeFile, link, unlink } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "export const inject = ['tools', 'userQuestions', 'jobs'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1537,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1543,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1551,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1563,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "const p = spawn('afplay', [file], { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 239,
+        "text": "const p = spawn(cmd, args, { stdio: ['ignore', 'pipe', 'pipe'], env });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 326,
+        "text": "debug(entry, 'panel binary not found (' + bin + ') — skipping spawn (build macos/ first)');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 330,
+        "text": "const child = spawn(bin, [], { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "jobs",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

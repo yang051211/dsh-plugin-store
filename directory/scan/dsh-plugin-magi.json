@@ -1,0 +1,106 @@
+{
+  "name": "dsh-plugin-magi",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:40.423Z",
+  "icon": "dsh-plugin-magi.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 347,
+        "text": "const response = await fetch(path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ledger.js",
+        "line": 14,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 43,
+        "text": "await mkdir(this.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 64,
+        "text": "const text = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 76,
+        "text": "await writeFile(join(this.dir, COUNTER_FILE), JSON.stringify(this.counter), 'utf8')"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 85,
+        "text": "await appendFile(this.ledgerPath, `${JSON.stringify(result)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'llm', 'webServer', 'agentDefaultModel']"
+      },
+      {
+        "file": "index.js",
+        "line": 63,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 84,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 105,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/script-runner.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/script-runner.js",
+        "line": 217,
+        "text": "spawn('taskkill', ['/T', '/F', '/PID', String(child.pid)], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/script-runner.js",
+        "line": 320,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "dsh-anthropic-oauth",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:11.987Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 144,
+        "text": "fetch('/api/anthropic-oauth/quota' + (force ? '?force=1' : ''), { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "const res = await fetch(MODELS_URL, { method: 'GET', headers, signal: AbortSignal.timeout(15000) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "const res = await fetch(MESSAGES_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "const inject = ['credentials', 'settings', 'fs', 'timer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "const fs = await import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 122,
+        "text": "const raw = fs.readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "const fs = await import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "fs.writeFileSync(file, JSON.stringify(json, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 75,
+        "text": "const cp = await import('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

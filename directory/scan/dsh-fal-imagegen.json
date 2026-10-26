@@ -1,0 +1,89 @@
+{
+  "name": "dsh-fal-imagegen",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:52.089Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fal.js",
+        "line": 269,
+        "text": "response = await fetch(url, { ...init, signal: combined })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "bytes = await readFile(wanted)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 300,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 308,
+        "text": "await writeFile(path, item.bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['tools', 'attachments', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 499,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 630,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 700,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

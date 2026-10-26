@@ -1,0 +1,92 @@
+{
+  "name": "dsh-plain-plugin-menu",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:51.623Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 367,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 161,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 79,
+        "text": "return JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 18,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "data/registry-snapshot.json",
+        "line": 1,
+        "text": "ai/mcp) through the in-box @deepseek-ai/dsh-mcp-client bridge: web_search_exa and web_fetch_exa tools, anonymous on the free tier or with your own EXA_API_KEY.\""
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/profile.js",
+        "line": 90,
+        "text": "const child = spawn(launch.file, [...launch.args, 'plugin', '--profile', profile, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

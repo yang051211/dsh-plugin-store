@@ -1,0 +1,140 @@
+{
+  "name": "dsh-plug-manager",
+  "version": "0.6.7",
+  "scannedAt": "2026-10-26T10:08:46.525Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 95,
+        "text": "return fetch(url, { headers: { accept: \"application/json\" } }).then((res) => {"
+      },
+      {
+        "file": "client.js",
+        "line": 491,
+        "text": "fetch(window.location.href, { method: \"HEAD\", cache: \"no-store\" })"
+      },
+      {
+        "file": "index.js",
+        "line": 284,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "index.js",
+        "line": 390,
+        "text": "* 经 HTTPS 把远端文件下载到本地（代理走 curl -o，直连用 fetch）。"
+      },
+      {
+        "file": "index.js",
+        "line": 447,
+        "text": "const res = await fetch(url, { signal: controller.signal, redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 73,
+        "text": "const persisted = JSON.parse(readFileSync(join(dshHomeDir(), SETTINGS_FILE), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 84,
+        "text": "const parsed = JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 89,
+        "text": "await writeFile(path, JSON.stringify(data, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 1232,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 1284,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 1315,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 111,
+        "text": "curlOk = spawnSync('curl', ['--version'], { timeout: 5000 }).status === 0"
+      },
+      {
+        "file": "index.js",
+        "line": 131,
+        "text": "child = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 413,
+        "text": "child = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 487,
+        "text": "const child = spawn('npm', args, { cwd: dir, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

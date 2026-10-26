@@ -1,0 +1,101 @@
+{
+  "name": "dsh-image-video",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:46.385Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 424,
+        "text": "const res = await fetch(opts.url, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 568,
+        "text": "const res = await fetch(url, { signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { createReadStream } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 639,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 643,
+        "text": "await writeFile(localPath, data);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 697,
+        "text": "const data = await readFile(ref);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3460,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3467,
+        "text": "* `ctx.tools.register` 的 disposer 自动注销工具。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3469,
+        "text": "* `generate_video` 不依赖 attachments，始终注册。工具注册的 disposer 由 `ctx.tools.register`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3484,
+        "text": "imageCtx.tools.register(createGenerateImageTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3493,
+        "text": "ctx.tools.register(createGenerateVideoTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

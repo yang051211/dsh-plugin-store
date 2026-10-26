@@ -1,0 +1,113 @@
+{
+  "name": "dsh-better-overleaf",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:19.901Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 43,
+        "text": "response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 556,
+        "text": "const envelope = await (await fetch(\"/sidebar/api/fs.tree\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "const ws = new WebSocket(url);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 255,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: AbortSignal.timeout(2e3) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 278,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/list`, { signal: AbortSignal.timeout(2e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { appendFile, cp, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 353,
+        "text": "await mkdir(profileDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 381,
+        "text": "await rm(tempProfileDir, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 455,
+        "text": "parsed = JSON.parse(await readFile(join(mirrorPath, BINDING_FILENAME), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "const encoded = spawnSync(\"powershell.exe\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 333,
+        "text": "if (process.platform === \"win32\") spawnSync(\"taskkill\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "const child = spawn(executablePath, ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 406,
+        "text": "const child = spawn(command.file, command.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

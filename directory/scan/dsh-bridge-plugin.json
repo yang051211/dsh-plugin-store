@@ -1,0 +1,97 @@
+{
+  "name": "dsh-bridge-plugin",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:16.717Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "mkdirSync(dirname(DIAG_LOG), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "appendFileSync(DIAG_LOG, `${stamp} [${stage}]${extra}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "/** 需要工具注册表就绪（Cordis 会等 `ctx.tools` 可用后再调 `apply`）。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 254,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp-client.js",
+        "line": 31,
+        "text": "/** @type {import('node:child_process').ChildProcess | null} */"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 119,
+        "text": "this.#spawn()"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 130,
+        "text": "#spawn() {"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 259,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 268,
+        "text": "return spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

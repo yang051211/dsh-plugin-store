@@ -1,0 +1,74 @@
+{
+  "name": "dsh-villager-hmm",
+  "version": "1.0.9",
+  "scannedAt": "2026-10-26T10:09:02.220Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 396,
+        "text": "const response = await fetch(PREFIX + '/state?cursor=' + cursor, { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 447,
+        "text": "const response = await fetch(PREFIX + '/config?' + params.toString(), { cache: 'no-store' })"
+      },
+      {
+        "file": "scripts/fetch-assets.mjs",
+        "line": 107,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(30000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "return readFileSync(path)"
+      },
+      {
+        "file": "scripts/fetch-assets.mjs",
+        "line": 25,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/fetch-assets.mjs",
+        "line": 125,
+        "text": "mkdirSync(targetDir, { recursive: true })"
+      },
+      {
+        "file": "scripts/fetch-assets.mjs",
+        "line": 148,
+        "text": "? readFileSync(origin)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

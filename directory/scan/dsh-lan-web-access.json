@@ -1,0 +1,112 @@
+{
+  "name": "dsh-lan-web-access",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:08:43.565Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 421,
+        "text": "const res = await fetch(`${API}/${path}`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 432,
+        "text": "res = await fetch(`${API}/${path}`, {"
+      },
+      {
+        "file": "lib/client/ui.js",
+        "line": 18,
+        "text": "const res = await fetch(`${API}/${path}`, { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client/ui.js",
+        "line": 31,
+        "text": "res = await fetch(`${API}/${path}`, {"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 7,
+        "text": "import { createServer, request as httpRequest, } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/settings-store.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, renameSync, chmodSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/settings-store.js",
+        "line": 35,
+        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/settings-store.js",
+        "line": 54,
+        "text": "onDisk = normalizeSettings(JSON.parse(readFileSync(settingsFile(), 'utf8')));"
+      },
+      {
+        "file": "lib/settings-store.js",
+        "line": 73,
+        "text": "mkdirSync(dshHome(), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/settings-store.js",
+        "line": 75,
+        "text": "writeFileSync(tmp, JSON.stringify(next, null, 2), { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/machine-name.js",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 114,
+        "text": "spawn('taskkill', ['/T', '/F', '/PID', String(pid)]).on('error', () => undefined);"
+      },
+      {
+        "file": "lib/updater.js",
+        "line": 138,
+        "text": "const child = spawn(cmd, args, {"
+      },
+      {
+        "file": "src/machine-name.ts",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

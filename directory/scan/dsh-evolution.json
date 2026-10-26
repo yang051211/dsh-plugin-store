@@ -1,0 +1,75 @@
+{
+  "name": "dsh-evolution",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:08:39.577Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/dist/index.js",
+        "line": 360,
+        "text": "const res = await fetch(`${ROUTE}/${method}`, {"
+      },
+      {
+        "file": "lib/storage-remote.js",
+        "line": 57,
+        "text": "const res = await fetch(`${client.baseUrl}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config-store.js",
+        "line": 17,
+        "text": "import { stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 91,
+        "text": "const raw = readFileSync(probe, 'utf8')"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 150,
+        "text": "raw = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 192,
+        "text": "writeFileSync(dest, raw, 'utf8')"
+      },
+      {
+        "file": "lib/config-store.js",
+        "line": 270,
+        "text": "cachedFsSync = globalThis.process?.getBuiltinModule?.('node:fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/repo.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

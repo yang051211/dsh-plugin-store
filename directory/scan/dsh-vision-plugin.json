@@ -1,0 +1,70 @@
+{
+  "name": "dsh-vision-plugin",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:08:44.079Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 30,
+        "text": "const response = await fetch('/vision/api/state', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 46,
+        "text": "const response = await fetch('/vision/api/model', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['fs', 'llm', 'attachments', 'tools']"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "*  - tool registration via ctx.tools.register (engine's makeTool);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['fs', 'llm', 'attachments', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "ctx.effect(() => ctx.tools.register(makeTool(ctx)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "fs",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

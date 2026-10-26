@@ -1,0 +1,90 @@
+{
+  "name": "seminar-copilot-dsh-plugin",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:59.823Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 62,
+        "text": "return fetch(url, { mode: \"no-cors\", cache: \"no-store\" }).then(function () { return true }, function () { return false })"
+      },
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "fetch(CONTROL_URL + \"/config\").then(function (r) { return r.json() }).then(function (data) {"
+      },
+      {
+        "file": "client.js",
+        "line": 119,
+        "text": "fetch(CONTROL_URL + \"/config\", {"
+      },
+      {
+        "file": "client.js",
+        "line": 131,
+        "text": "fetch(CONTROL_URL + \"/restart\", { method: \"POST\" }).then(function (r) {"
+      },
+      {
+        "file": "client.js",
+        "line": 238,
+        "text": "fetch(CONTROL_URL + \"/start\", { method: \"POST\" }).then(function () {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { chmodSync, existsSync, mkdirSync, openSync, readFileSync, writeFileSync } from \"node:fs\""
+      },
+      {
+        "file": "index.js",
+        "line": 74,
+        "text": "return sanitizeConfig(JSON.parse(readFileSync(CONFIG_FILE, \"utf8\")), DEFAULT_CONFIG)"
+      },
+      {
+        "file": "index.js",
+        "line": 81,
+        "text": "mkdirSync(CONFIG_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 82,
+        "text": "writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2) + \"\\n\", { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { spawn } from \"node:child_process\""
+      },
+      {
+        "file": "index.js",
+        "line": 130,
+        "text": "child = spawn(\"bash\", [\"scripts/dev.sh\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

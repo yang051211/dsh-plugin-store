@@ -1,0 +1,114 @@
+{
+  "name": "dsh-musage-card",
+  "version": "1.6.6",
+  "scannedAt": "2026-10-26T10:08:44.793Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 117,
+        "text": "const res = await fetch(\"/musage/quota?provider=\" + encodeURIComponent(provider), {"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 131,
+        "text": "const res = await fetch(\"/musage/login/status\", {"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 145,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 159,
+        "text": "const res = await fetch(\"/musage/login?action=logout&provider=\" + encodeURIComponent(provider), {"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1170,
+        "text": "// 依赖运行时的全局 WebSocket 与 fetch (Electron 44 / Node >= 22 内置);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 35,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1183,
+        "text": "const text = readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1870,
+        "text": "try { appendFileSync(join(sess.profileDir, \"musage-window-fix.log\"), new Date().toISOString() + \" \" + msg + \"\\n\"); } catch (e) {}"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1940,
+        "text": "try { writeFileSync(scriptPath, WINDOW_SHOW_PS, \"utf8\"); } catch (e) { return null; }"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 2039,
+        "text": "try { unlinkSync(join(sess.profileDir, \"DevToolsActivePort\")); } catch (e) { /* 不存在即成功 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 1116,
+        "text": "const mod = await import(\"node:child_process\");"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1459,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1719,
+        "text": "const child = mod.spawn(program, args, {"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1755,
+        "text": "const child = mod.spawn(sess.exe, argv, {"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 1781,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "subprocess",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

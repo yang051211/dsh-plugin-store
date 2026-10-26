@@ -1,0 +1,74 @@
+{
+  "name": "dsh-recycle-bin",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-26T10:09:18.630Z",
+  "icon": "dsh-recycle-bin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 253,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 110,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 272,
+        "text": "await rm(from, { recursive: true, force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 283,
+        "text": "await writeFile(to, await readFile(from))"
+      },
+      {
+        "file": "index.js",
+        "line": 284,
+        "text": "await rm(from, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1402,
+        "text": "toolsCtx.effect(() => toolsCtx.tools.register(deleteSessionTool(bin)), 'session-recycle-bin: delete_session tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "sessions",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

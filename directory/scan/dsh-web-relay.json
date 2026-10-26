@@ -1,0 +1,99 @@
+{
+  "name": "dsh-web-relay",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:41.930Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap.js",
+        "line": 610,
+        "text": "\"  curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg\","
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 611,
+        "text": "\"  curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' > /etc/apt/sources.list.d/caddy-stable.list\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 409,
+        "text": "const response = await fetch(RECORD_PATH, {"
+      },
+      {
+        "file": "lib/entry.js",
+        "line": 23,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/trust.js",
+        "line": 11,
+        "text": "import { request as httpRequest } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap.js",
+        "line": 12,
+        "text": "import { access, constants, chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 195,
+        "text": "await writeFile(publicKey, `${derived.stdout.trim()} dsh-web-relay\\n`, { mode: 0o644 });"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 201,
+        "text": "await mkdir(dirname(privateKey), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 216,
+        "text": "await mkdir(dirname(knownHosts), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/bootstrap.js",
+        "line": 218,
+        "text": "if (await exists(knownHosts) && (await readFile(knownHosts, 'utf8')).trim() !== '') {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ssh.js",
+        "line": 179,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/tunnel.js",
+        "line": 168,
+        "text": "const handle = this.deps.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

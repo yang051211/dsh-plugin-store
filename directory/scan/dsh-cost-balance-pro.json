@@ -1,0 +1,86 @@
+{
+  "name": "dsh-cost-balance-pro",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:14.087Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 62,
+        "text": "const res = await fetch('/api/dsh-cost-balance-pro/config', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 107,
+        "text": "const res = await fetch('/api/dsh-cost-balance-pro/readout?' + q.toString(), { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 197,
+        "text": "const res = await fetch('/api/dsh-cost-balance-pro/config', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 212,
+        "text": "const res = await fetch('/api/dsh-cost-balance-pro/reset', { method: 'POST' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "const raw = JSON.parse(await readFile(pricesCachePath(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "await mkdir(join(pricesCachePath(), '..'), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "await writeFile(pricesCachePath(), JSON.stringify(data, null, 2) + '\\n', { mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 248,
+        "text": "current = sanitize(JSON.parse(await readFile(configPath(), 'utf8')))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

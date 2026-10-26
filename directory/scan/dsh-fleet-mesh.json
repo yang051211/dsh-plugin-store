@@ -1,0 +1,88 @@
+{
+  "name": "dsh-fleet-mesh",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:09:14.420Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/crypto.mjs",
+        "line": 24,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/crypto.mjs",
+        "line": 28,
+        "text": "return createPrivateKey(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "const text = await readFile(join(settings.fleetRoot, from, 'identity.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/peers.mjs",
+        "line": 14,
+        "text": "import { readdir, readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'agents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 460,
+        "text": "// tried `ctx.get('tools') ?? ctx.tools` to stay loadable without the service — but Cordis's"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 468,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/tools.mjs",
+        "line": 350,
+        "text": "disposers.push(tools.register(defineTool(descriptor)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,69 @@
+{
+  "name": "dsh-math-modeling-agent",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:08:53.305Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/math-modeling-agent/scripts/capability-probe.mjs",
+        "line": 1,
+        "text": "import { accessSync, constants, existsSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "skills/math-modeling-agent/scripts/correction-lineage.mjs",
+        "line": 3,
+        "text": "import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "skills/math-modeling-agent/scripts/correction-lineage.mjs",
+        "line": 10,
+        "text": "async function readRun(root) { return JSON.parse(await readFile(join(root, 'run.json'), 'utf8')) }"
+      },
+      {
+        "file": "skills/math-modeling-agent/scripts/correction-lineage.mjs",
+        "line": 11,
+        "text": "async function readLedger(root) { return JSON.parse(await readFile(join(root, 'ledger.json'), 'utf8')) }"
+      },
+      {
+        "file": "skills/math-modeling-agent/scripts/correction-lineage.mjs",
+        "line": 36,
+        "text": "await writeFile(ledgerPath, JSON.stringify(ledger, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/math-modeling-agent/scripts/python-environment.mjs",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "skills/math-modeling-agent/scripts/python-environment.mjs",
+        "line": 51,
+        "text": "const result = spawnSync(command, args, defaultSpawnOptions({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

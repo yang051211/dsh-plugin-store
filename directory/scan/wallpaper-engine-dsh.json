@@ -1,0 +1,88 @@
+{
+  "name": "wallpaper-engine-dsh",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:09:19.247Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 393,
+        "text": "const res = await fetch(forceRefresh ? INVENTORY_URL + \"?refresh=1\" : INVENTORY_URL, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "*     That opaque origin also makes the wallpaper's own fetch()/XHR for its"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 263,
+        "text": "// own fetch()/XHR for sub-assets is CROSS-origin from the browser's"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 18,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "} from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "readFileSync: (p, encoding) => fsp.readFile(p, encoding),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "vdfLibraries.push(...core.librariesFromVdfText(await asyncIo.readFileSync(vdf, 'utf8')));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 75,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

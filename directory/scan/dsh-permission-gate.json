@@ -1,0 +1,93 @@
+{
+  "name": "dsh-permission-gate",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:09:22.387Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 102,
+        "text": "fetch(\"/gate/status\", { credentials: \"same-origin\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 131,
+        "text": "fetch(\"/gate/mode\", {"
+      },
+      {
+        "file": "lib/ui.js",
+        "line": 184,
+        "text": "return fetch(path, options).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "const raw = readFileSync(STATE_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "mkdirSync(dirname(STATE_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "writeFileSync(STATE_FILE, JSON.stringify(persisted, null, 2), { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 369,
+        "text": "const script = readFileSync(UI_PATH, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "* 3. 全进程工具拦截：ctx.tools.guard() —— 锁定时拒绝一切工具调用。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 301,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 325,
+        "text": "ctx.tools.guard((execution) => {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

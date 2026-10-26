@@ -1,0 +1,70 @@
+{
+  "name": "dsh-zsxq",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:21.247Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "const resp = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 211,
+        "text": "const raw = await readFile(configPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "await mkdir(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "await writeFile(file, JSON.stringify(credentials, null, 2), { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1268,
+        "text": "const disposers = buildTools(context).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,67 @@
+{
+  "name": "dsh-restart-button",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:51.830Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "window.fetch(\"/\", { method: \"GET\", cache: \"no-store\" }).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 114,
+        "text": "window.fetch(\"/dsh-restart\", { method: \"POST\" }).then((res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 10,
+        "text": "import { writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 116,
+        "text": "writeFileSync(scriptPath, script, { mode: 0o755 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 117,
+        "text": "const child = spawn(\"/bin/bash\", [scriptPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

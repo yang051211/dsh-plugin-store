@@ -1,0 +1,109 @@
+{
+  "name": "dsh-process-board",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:09:24.933Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client/index.js",
+        "line": 226,
+        "text": "const res = await fetch(`${API}/state`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 330,
+        "text": "const res = await fetch(`${API}/kill`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ pid: e.pid }) })"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 338,
+        "text": "const res = await fetch(`${API}/start`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name }) })"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 387,
+        "text": "const res = await fetch(`${API}/log`, {"
+      },
+      {
+        "file": "src/host/probe.js",
+        "line": 36,
+        "text": "const r = await fetch(`${base}:${port}${probePath}`, { redirect: 'manual', signal: AbortSignal.timeout(3000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.js",
+        "line": 14,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 184,
+        "text": "const { readFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 185,
+        "text": "const content = await readFile(logPath, 'utf8').catch(() => null)"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 210,
+        "text": "fs.mkdirSync(path.dirname(logFile), { recursive: true })"
+      },
+      {
+        "file": "src/host/registry.js",
+        "line": 8,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 214,
+        "text": "child = spawn(entry.argv[0], entry.argv.slice(1), {"
+      },
+      {
+        "file": "src/host/probe.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/scanner.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionTitle",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

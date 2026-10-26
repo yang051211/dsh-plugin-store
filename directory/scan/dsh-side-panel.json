@@ -1,0 +1,64 @@
+{
+  "name": "dsh-side-panel",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:15.828Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "return fetch(\"/dev-panel/\" + name + qs).then((r) => r.json());"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "export const inject = ['webServer', 'fs', 'subprocess']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "async function readFile(ctx, path) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "send(res, await readFile(ctx, q.get('path')))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

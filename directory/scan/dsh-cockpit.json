@@ -1,0 +1,85 @@
+{
+  "name": "dsh-cockpit",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-26T10:09:09.535Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "embedded/ui/client.js",
+        "line": 121,
+        "text": "const response = await fetch(url, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "embedded/ui/index.js",
+        "line": 2,
+        "text": "import { promises as fs, createReadStream, createWriteStream, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 27,
+        "text": "const CLIENT_REV = createHash(\"sha1\").update(readFileSync(CLIENT_PATH)).digest(\"hex\").slice(0, 12);"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 163,
+        "text": "return { content: await fs.readFile(target, \"utf8\"), size: stat.size, mtimeMs: stat.mtimeMs };"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 194,
+        "text": "await fs.writeFile(target, content, \"utf8\");"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 270,
+        "text": "await fs.unlink(temporaryTarget).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "embedded/ui/index.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 176,
+        "text": "const child = spawn(\"open\", [\"-R\", target], { stdio: \"ignore\" });"
+      },
+      {
+        "file": "embedded/ui/index.js",
+        "line": 305,
+        "text": "const child = spawn(shell, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "embedded/ui/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "clientModules",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

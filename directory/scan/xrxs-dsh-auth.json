@@ -1,0 +1,87 @@
+{
+  "name": "xrxs-dsh-auth",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-26T10:09:09.051Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "const response = await fetch(`${ROUTE_PREFIX}${path}`, init ?? { method: 'GET' });"
+      },
+      {
+        "file": "lib/logo.js",
+        "line": 37,
+        "text": "const response = await globalThis.fetch(url, init);"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 98,
+        "text": "const defaultFetch = (url, init) => globalThis.fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/logo.js",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/logo.js",
+        "line": 190,
+        "text": "return readFileSync(this.pathOf(name));"
+      },
+      {
+        "file": "lib/logo.js",
+        "line": 233,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/logo.js",
+        "line": 235,
+        "text": "writeFileSync(join(directory, name), bytes, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/logo.js",
+        "line": 264,
+        "text": "rmSync(this.pathOf(entry), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 77,
+        "text": "const child = spawn(target.command, target.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

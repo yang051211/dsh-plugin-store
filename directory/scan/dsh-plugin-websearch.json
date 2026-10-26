@@ -1,0 +1,74 @@
+{
+  "name": "dsh-plugin-websearch",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:09:22.705Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/http.js",
+        "line": 59,
+        "text": "const res = await fetch(url, { method, headers, body, signal: combined })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/backends/bailian.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/backends/bailian.js",
+        "line": 13,
+        "text": "const raw = JSON.parse(readFileSync(join(process.env.HOME ?? '/root', '.bailian', 'config.json'), 'utf8'))"
+      },
+      {
+        "file": "src/backends/gh.js",
+        "line": 6,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/backends/gh.js",
+        "line": 13,
+        "text": "const text = readFileSync(join(process.env.HOME ?? '/root', '.config', 'gh', 'hosts.yml'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "export const inject = ['web', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 284,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

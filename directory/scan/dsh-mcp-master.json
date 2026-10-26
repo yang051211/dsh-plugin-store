@@ -1,0 +1,116 @@
+{
+  "name": "dsh-mcp-master",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:08.176Z",
+  "icon": "dsh-mcp-master.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 218,
+        "text": "const resp = await fetch(`${API_BASE}/state?${params}`, { credentials: \"same-origin\", cache: \"no-store\", signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 222,
+        "text": "const resp = await fetch(`${API_BASE}${path}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 671,
+        "text": "resp = await fetch(url, { ...init, headers });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 847,
+        "text": "const resp = await fetch(spec.url, { method: \"DELETE\", headers: { ...baseHeaders(), ...await auth.headers() }, signal: AbortSignal.timeout(3e3) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1039,
+        "text": "const resp = await fetch(url, { headers: { accept: \"application/json\", \"mcp-protocol-version\": \"2025-06-18\" }, signal: AbortSignal.timeout(timeoutMs) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { realpathSync as realpathSync2 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { statSync as statSync2 } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { existsSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "const text = readFileSync(path, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3176,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3205,
+        "text": "if (agent.ctx.tools) return agent.ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 341,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "const child = execFile(shell, [\"-ilc\", `printf '%s' '${MARK}'; /usr/bin/env -0; printf '%s' '${MARK}'`], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1340,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1352,
+        "text": "const child = spawn(isWin ? quoteWindows(spec.command) : spec.command, isWin ? spec.args.map(quoteWindows) : spec.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

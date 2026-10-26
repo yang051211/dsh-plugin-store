@@ -1,0 +1,113 @@
+{
+  "name": "dsh-anywhere",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:09.100Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bootstrap-nix.js",
+        "line": 42,
+        "text": "RESP=\"$(curl -fsSL -X POST \"\\${BASE_URL}/api/fleet/request\" -H 'content-type: application/json' -d \"\\${REQ}\")\""
+      },
+      {
+        "file": "lib/bootstrap-nix.js",
+        "line": 56,
+        "text": "S=\"$(curl -fsSL \"\\${BASE_URL}/api/fleet/request-status?id=\\${POLL_ID}\" 2>/dev/null || echo '{}')\""
+      },
+      {
+        "file": "lib/bootstrap-nix.js",
+        "line": 115,
+        "text": "curl -fsSL -X POST \"\\${BASE_URL}/api/fleet/heartbeat\" -H 'content-type: application/json' -d \"$(printf '{\"id\":\"%s\"}' \"\\${ID}\")\" >/dev/null || true"
+      },
+      {
+        "file": "lib/bootstrap-win.js",
+        "line": 58,
+        "text": "$reg = Invoke-RestMethod -Method Post -Uri ($BaseUrl + '/api/fleet/request') -ContentType 'application/json' -Body $reqBody"
+      },
+      {
+        "file": "lib/bootstrap-win.js",
+        "line": 68,
+        "text": "try { $s = Invoke-RestMethod -Uri ($BaseUrl + '/api/fleet/request-status?id=' + $PollId) } catch { $s = $null }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fleet-store.js",
+        "line": 5,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/fleet-store.js",
+        "line": 37,
+        "text": "const parsed = JSON.parse(readFileSync(this.path, 'utf8'))"
+      },
+      {
+        "file": "lib/fleet-store.js",
+        "line": 53,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/fleet-store.js",
+        "line": 55,
+        "text": "writeFileSync(tmp, JSON.stringify(file, null, 2) + '\\n', { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provisioner-ssh.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/ssh-conn.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/ssh-conn.js",
+        "line": 83,
+        "text": "const child = spawn('ssh', [...ttyArgs, ...this._mux(opts.fresh ?? true), this.login, `${envCmd}${cwdCmd}exec ${parts}`],"
+      },
+      {
+        "file": "lib/ssh-conn.js",
+        "line": 90,
+        "text": "const child = spawn('ssh', args, { stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/ssh-conn.js",
+        "line": 104,
+        "text": "try { spawn('ssh', ['-o', `ControlPath=${this.controlPath}`, '-O', 'exit', this.login], { stdio: 'ignore' }) } catch { /* best effort */ }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,61 @@
+{
+  "name": "dsh-plugin-lion-skills",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:12.796Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/error-handling/evals/evals.json",
+        "line": 6,
+        "text": "\"prompt\": \"这段代码 try { const r = await fetch(url); return r.json(); } catch(e) { console.log(e); } 太糙了，怎么改进？\","
+      },
+      {
+        "file": "skills/verify-and-fix/evals/evals.json",
+        "line": 26,
+        "text": "prompt\": \"我把这段同步代码重构成了 async/await:async function loadUsers(){ const res = await fetch('/users'); return res.json(); } 原来是同步返回数组,现在返回 Promise。测试我跑过了能通过,应该没问题。\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { readdir, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 65,
+        "text": "const raw = await readFile(join(directory, 'SKILL.md'), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 103,
+        "text": "raw = await readFile(locator.path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

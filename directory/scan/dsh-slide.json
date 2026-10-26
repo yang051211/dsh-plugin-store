@@ -1,0 +1,82 @@
+{
+  "name": "dsh-slide",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:02.402Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 109,
+        "text": "const response = await fetch(\"/slide-editor/api\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 157,
+        "text": "const response = await fetch(\"/slide-editor/annotation-stream\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 600,
+        "text": "const response = await fetch(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, readdir, realpath, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "case \"read-text\": return { content: await readFile(target, \"utf8\") };"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "await writeFile(target, request.content ?? \"\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "tdd-enforcer",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-26T10:09:04.443Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/enforcement.test.ts",
+        "line": 7,
+        "text": "} from \"node:fs\";"
+      },
+      {
+        "file": "adapters/dsh/enforcement.test.ts",
+        "line": 63,
+        "text": "mkdirSync(join(root, \".tdd\"), { recursive: true });"
+      },
+      {
+        "file": "adapters/dsh/enforcement.test.ts",
+        "line": 64,
+        "text": "mkdirSync(join(root, \"src\"), { recursive: true });"
+      },
+      {
+        "file": "adapters/dsh/enforcement.test.ts",
+        "line": 65,
+        "text": "writeFileSync(join(root, \".tdd\", \"rules.json\"), JSON.stringify(RULES));"
+      },
+      {
+        "file": "adapters/dsh/enforcement.test.ts",
+        "line": 66,
+        "text": "writeFileSync(join(root, \"src\", \"app.ts\"), \"original\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/dsh/enforcement.ts",
+        "line": 7,
+        "text": "*    `ctx.tools.guard` denies locked paths *before* the tool body runs."
+      },
+      {
+        "file": "adapters/dsh/index.ts",
+        "line": 24,
+        "text": "export const inject = [\"tools\", \"sessions\"];"
+      },
+      {
+        "file": "adapters/dsh/index.ts",
+        "line": 30,
+        "text": "ctx.tools.guard((exec: Readonly<ToolExecution>) =>"
+      },
+      {
+        "file": "adapters/dsh/registry.integration.test.ts",
+        "line": 54,
+        "text": "ctx.tools.execute({"
+      },
+      {
+        "file": "adapters/dsh/registry.integration.test.ts",
+        "line": 112,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "adapters/shared/actions.ts",
+        "line": 8,
+        "text": "import { exec } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/dsh/bundle.js",
+        "line": 1885,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/dsh/bundle.js",
+        "line": 1929,
+        "text": "return deps.execSync(`git ${args}`, {"
+      },
+      {
+        "file": "dist/dsh/bundle.js",
+        "line": 3083,
+        "text": "import { exec } from \"node:child_process\";"
+      },
+      {
+        "file": "engine/git-identity.test.ts",
+        "line": 12,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-experience-recall",
+  "version": "0.8.2",
+  "scannedAt": "2026-10-26T10:09:17.440Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/check-install.mjs",
+        "line": 114,
+        "text": "return fetch(`${argOf('--endpoint', resolved.localEndpoint).replace(/\\/+$/, '')}/api/tags`, { signal: AbortSignal.timeout(5000) })"
+      },
+      {
+        "file": "tools/check-relevance.mjs",
+        "line": 91,
+        "text": "const response = await fetch(`${requestEndpoint.replace(/\\/+$/, '')}/api/generate`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cards.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, rename, writeFile, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cards.js",
+        "line": 184,
+        "text": "const parsed = JSON.parse(await readFile(cachePath, 'utf8'))"
+      },
+      {
+        "file": "lib/cards.js",
+        "line": 223,
+        "text": "await mkdir(dirname(cachePath), { recursive: true })"
+      },
+      {
+        "file": "lib/cards.js",
+        "line": 227,
+        "text": "await writeFile(temporary, payload, 'utf8')"
+      },
+      {
+        "file": "lib/cards.js",
+        "line": 234,
+        "text": "await unlink(temporary).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/recall.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/verify.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

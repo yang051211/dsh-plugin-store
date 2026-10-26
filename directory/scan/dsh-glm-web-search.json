@@ -1,0 +1,90 @@
+{
+  "name": "dsh-glm-web-search",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:49.408Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 60,
+        "text": "const result = await fetchProvider.fetch({ url: 'https://example.com' });"
+      },
+      {
+        "file": "src/capabilities/web-providers.js",
+        "line": 81,
+        "text": "async fetch(request, signal) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 2,
+        "text": "import { readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 75,
+        "text": "const bytes = readFileSync(path);"
+      },
+      {
+        "file": "scripts/verify-commands.mjs",
+        "line": 1,
+        "text": "import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/verify-commands.mjs",
+        "line": 27,
+        "text": "if (seed) writeFileSync(path, JSON.stringify(seed), 'utf8');"
+      },
+      {
+        "file": "scripts/verify-commands.mjs",
+        "line": 28,
+        "text": "return { store: new TokenStore({ path }), path, cleanup: () => rmSync(dir, { recursive: true, force: true }) };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/capabilities/vision-tool.js",
+        "line": 58,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 27,
+        "text": "export const inject = ['web', 'tools', 'commands'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/auth/browser-launcher.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,101 @@
+{
+  "name": "dsh-ntfy-remote",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:08:48.439Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const response = await fetch(path, body === undefined ? {} : {"
+      },
+      {
+        "file": "ntfy.js",
+        "line": 149,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "ntfy.js",
+        "line": 192,
+        "text": "const response = await fetch(url, { method: 'DELETE', headers: headersFor(server, false) })"
+      },
+      {
+        "file": "ntfy.js",
+        "line": 262,
+        "text": "const response = await fetch(url, { headers: headersFor(getServer(), false), signal })"
+      },
+      {
+        "file": "probe/ntfy-probe.mjs",
+        "line": 25,
+        "text": "const sub = await fetch(`${server}/${topic}/json`, { signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "boot3.js",
+        "line": 21,
+        "text": "import { watch } from 'node:fs'"
+      },
+      {
+        "file": "config.js",
+        "line": 16,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "config.js",
+        "line": 78,
+        "text": "return JSON.parse(readFileSync(file, 'utf-8'))"
+      },
+      {
+        "file": "config.js",
+        "line": 93,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "config.js",
+        "line": 95,
+        "text": "writeFileSync(tmp, JSON.stringify(value, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "boot3.js",
+        "line": 28,
+        "text": "export const inject = ['commands', 'agents', 'tools', 'approval', 'webServer']"
+      },
+      {
+        "file": "main.js",
+        "line": 23,
+        "text": "export const inject = ['commands', 'agents', 'tools', 'approval']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "commands",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

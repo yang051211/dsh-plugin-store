@@ -1,0 +1,90 @@
+{
+  "name": "dsh-plugin-wwrs-voice",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:09.785Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/workspace.ts",
+        "line": 10,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/lib/workspace.ts",
+        "line": 51,
+        "text": "const parsed: unknown = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 212,
+        "text": "mkdirSync(dirname(checked.abs), { recursive: true });"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 213,
+        "text": "writeFileSync(checked.abs, out.audio);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cordis.ts",
+        "line": 5,
+        "text": "* → ctx.tools.register；写保护守卫 → ctx.tools.guard（谓词真源见 lib/guard-predicate.ts，"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 15,
+        "text": "export const inject: string[] = [\"tools\"];"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 24,
+        "text": "ctx.tools?.register(tool as ToolRecord);"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 3,
+        "text": "* 真源在 ./lib/guard-predicate.ts（独立零依赖，见其头注）；本文件只做 ctx.tools.guard 挂载。"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 10,
+        "text": "const rawGuard = ctx.tools?.guard;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

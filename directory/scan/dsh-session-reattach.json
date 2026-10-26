@@ -1,0 +1,66 @@
+{
+  "name": "dsh-session-reattach",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:25.083Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 215,
+        "text": "const response = await fetch(ROUTE_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 241,
+        "text": "const response = await fetch(STATE_PATH, { headers: { accept: 'application/json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/paths.js",
+        "line": 9,
+        "text": "import { realpath, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "connection",
+    "sessionQuery",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 268,
+      "text": ".5.1**, while Node 22 ships npm 10.x; with an older npm the publish fails with a **misleading 404**. The publish job therefore pins `npm install -g npm@11.5.1`."
+    },
+    {
+      "file": "README.md",
+      "line": 267,
+      "text": "- **Trusted Publishing 要求 npm ≥ 11.5.1**，而 Node 22 自带 npm 10.x；版本不够时 `npm publish` 会返回**误导性的 404**。发布 job 因此固定 `npm install -g npm@11.5.1`。"
+    }
+  ],
+  "skippedEntries": []
+}

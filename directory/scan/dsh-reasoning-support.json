@@ -1,0 +1,84 @@
+{
+  "name": "dsh-reasoning-support",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:01.776Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "runtime/audit.mjs",
+        "line": 1,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "runtime/audit.mjs",
+        "line": 26,
+        "text": "mkdirSync(directory, { recursive: true });"
+      },
+      {
+        "file": "runtime/audit.mjs",
+        "line": 27,
+        "text": "appendFileSync(auditPath(directory, agent.id), JSON.stringify(record) + '\\n', { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "runtime/audit.mjs",
+        "line": 47,
+        "text": "return readFileSync(file, 'utf8').split(/\\r?\\n/).filter(Boolean).map(JSON.parse);"
+      },
+      {
+        "file": "runtime/completion-controller.mjs",
+        "line": 2,
+        "text": "import { lstat, realpath, readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "runtime/adaptive-context.mjs",
+        "line": 6,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "runtime/adaptive-context.mjs",
+        "line": 122,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "runtime/adaptive-context.mjs",
+        "line": 129,
+        "text": "s = searchEntries(state.catalog.filter(tool => ![TOOL_SEARCH.name, SKILL_SEARCH.name].includes(tool.name) && ctx.tools.get(tool.name, exec.agent)), args.query);"
+      },
+      {
+        "file": "runtime/adaptive-context.mjs",
+        "line": 139,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "runtime/adaptive-context.mjs",
+        "line": 173,
+        "text": "const canLoadSkills = visible?.has(SKILL_SEARCH.name) && visible.has('skill') && ctx.tools.get(SKILL_SEARCH.name, agent) && ctx.tools.get('skill', agent);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

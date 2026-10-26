@@ -1,0 +1,97 @@
+{
+  "name": "dsh-plugin-context-trim",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:05.413Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 224,
+        "text": "return fetch(url, options).then(function (res) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 13,
+        "text": "import { mkdir, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 35,
+        "text": "const raw = readFileSync(this.filePath, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 101,
+        "text": "await mkdir(dirname(this.filePath), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 102,
+        "text": "await writeFile(tmp, payload, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/applier.js",
+        "line": 203,
+        "text": "for (const schema of this.ctx.tools.schemas()) knownTools.add(schema.name)"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 6,
+        "text": "*   - tools：ctx.tools.schemas()（全局视图；核心 preset 工具不在此面，天然不可门控）"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 97,
+        "text": "// MCP 工具经 dsh-mcp-client 注册为 mcp__<serverName>__<rawName>（publicToolName）。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "export const inject = ['agents', 'skills', 'tools', 'systemPrompt', 'sessionQuery', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "const toolSchemas = ctx.tools.schemas()"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionQuery",
+    "skills",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

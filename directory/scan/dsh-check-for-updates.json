@@ -1,0 +1,98 @@
+{
+  "name": "dsh-check-for-updates",
+  "version": "1.14.0",
+  "scannedAt": "2026-10-26T10:08:52.929Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 63,
+        "text": "const res = await fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ method }) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 248,
+        "text": "const res = await fetch('https://registry.npmjs.org/@deepseek-ai/dsh', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "import { existsSync, mkdtempSync, readFileSync, readdirSync, realpathSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 59,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 355,
+        "text": "const buf = readFileSync(p.bin)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 381,
+        "text": "const data = JSON.parse(readFileSync(updaterStatusFile(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 401,
+        "text": "const template = readFileSync(templatePath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.cjs",
+        "line": 7,
+        "text": "const cp = require('child_process')"
+      },
+      {
+        "file": "lib/launcher.cjs",
+        "line": 10,
+        "text": "return cp.spawn(file, args, opts)"
+      },
+      {
+        "file": "lib/updater.cjs",
+        "line": 32,
+        "text": "const cp = require('child_process')"
+      },
+      {
+        "file": "lib/updater.cjs",
+        "line": 47,
+        "text": "return cp.spawnSync(file, args, opts)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 294,
+      "text": "`npm install -g --prefix <真实全局根> @deepseek-ai/dsh@<精确版本>`。"
+    }
+  ],
+  "skippedEntries": []
+}

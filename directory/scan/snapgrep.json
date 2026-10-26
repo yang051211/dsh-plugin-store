@@ -1,0 +1,129 @@
+{
+  "name": "snapgrep",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:48.801Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 735,
+        "text": "const response = await fetch(`${this.baseUrl}/api/search`, {"
+      },
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 775,
+        "text": "const response = await fetch(`${this.baseUrl}/api/search`, {"
+      },
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 865,
+        "text": "const response = await fetch(`${baseUrl}/healthz`, { signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/addon-path.js",
+        "line": 10,
+        "text": "import { stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/src/dirty-tracker.js",
+        "line": 1,
+        "text": "import { watch } from \"node:fs\";"
+      },
+      {
+        "file": "dist/src/dirty-tracker.js",
+        "line": 2,
+        "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/src/engine.js",
+        "line": 1,
+        "text": "import { lstat, open, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 2,
+        "text": "import { constants as fsConstants } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/dsh-plugin.js",
+        "line": 31,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/src/dsh-plugin.js",
+        "line": 311,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "dist/src/dsh-plugin.js",
+        "line": 312,
+        "text": "ctx.tools.register(globTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/dsh-plugin.js",
+        "line": 6,
+        "text": "* packaged ripgrep binary through `ctx.subprocess.spawn()` for every call. That"
+      },
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/src/index-manager.js",
+        "line": 834,
+        "text": "const child = spawn(binary, [\"-listen\", `127.0.0.1:${port}`, \"-index\", this.indexDir, \"-rpc\", \"-html=false\"], {"
+      },
+      {
+        "file": "dist/src/process.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/src/process.js",
+        "line": 21,
+        "text": "const child = spawn(command, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 120,
+      "text": "npm install -g snapgrep"
+    },
+    {
+      "file": "README.md",
+      "line": 250,
+      "text": "./scripts/bootstrap.sh      # pins dependencies, builds, runs the test suite"
+    }
+  ],
+  "skippedEntries": []
+}

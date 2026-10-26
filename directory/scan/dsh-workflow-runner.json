@@ -1,0 +1,100 @@
+{
+  "name": "dsh-workflow-runner",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:08:44.124Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 13,
+        "text": "// 实时数据通过 fetch('/workflow/api/state') 拉一次（不开轮询；过时的\"看 monitor\"链接即可）。"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 24,
+        "text": "const r = await fetch(DSH_PATH + 'api/list');"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 31,
+        "text": "const det = await fetch(DSH_PATH + 'api/state?runId=' + encodeURIComponent(run.runId));"
+      },
+      {
+        "file": "lib/llm.js",
+        "line": 99,
+        "text": "res = await fetch(endpoint.baseUrl + COMPLETIONS_PATH, {"
+      },
+      {
+        "file": "lib/standalone.js",
+        "line": 6,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/llm.js",
+        "line": 10,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/llm.js",
+        "line": 32,
+        "text": "const t = fs.readFileSync(path.join(d, '.credentials.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 17,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 274,
+        "text": "const content = await readFile(target, 'utf8');"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 300,
+        "text": "const body = await readFile(target);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 62,
+        "text": "const child = spawn(this.nodeBin, [bootstrapAbs, absScript], {"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 362,
+        "text": "child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

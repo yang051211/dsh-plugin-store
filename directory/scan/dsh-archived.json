@@ -1,0 +1,80 @@
+{
+  "name": "dsh-archived",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:09:02.521Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 115,
+        "text": "return fetch(path, init).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/deferred.js",
+        "line": 23,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/deferred.js",
+        "line": 41,
+        "text": "const parsed = JSON.parse(await readFile(deferredFile(), \"utf8\"));"
+      },
+      {
+        "file": "lib/host/deferred.js",
+        "line": 54,
+        "text": "await mkdir(dirname(deferredFile()), { recursive: true });"
+      },
+      {
+        "file": "lib/host/deferred.js",
+        "line": 57,
+        "text": "await writeFile(deferredFile(), JSON.stringify({ version: 1, items }, null, 2) + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/host/metadata.js",
+        "line": 10,
+        "text": "import { readFile, stat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 666,
+        "text": "const child = spawn(command, [path], { detached: true, stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

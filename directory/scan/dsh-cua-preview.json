@@ -1,0 +1,93 @@
+{
+  "name": "dsh-cua-preview",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:02.845Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client/browser.js",
+        "line": 576,
+        "text": "response = await fetch(`${FRAME_FETCH_ROUTE}?${FRAME_CALL_ID}=${encodeURIComponent(callId)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/approval-broker.js",
+        "line": 35,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/approval-broker.js",
+        "line": 294,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "src/approval-broker.js",
+        "line": 295,
+        "text": "await writeFile(path, data)"
+      },
+      {
+        "file": "src/browser.js",
+        "line": 18,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/browser.js",
+        "line": 109,
+        "text": "const { access, constants } = await import('node:fs/promises')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'approval']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 257,
+        "text": "* @param {object} ctx - plugin context carrying `ctx.tools`."
+      },
+      {
+        "file": "src/tools.js",
+        "line": 266,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 397,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 422,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

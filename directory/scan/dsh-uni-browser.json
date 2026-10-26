@@ -1,0 +1,99 @@
+{
+  "name": "dsh-uni-browser",
+  "version": "0.1.0-rc.7",
+  "scannedAt": "2026-10-26T10:09:04.253Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 118,
+        "text": "{}, signal) => { const response = await fetch(SETTINGS_PATH, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, credentials: \"same-origin\", body"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { chmod, mkdir, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "const parsed = JSON.parse(await readFile(this.path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "await mkdir(this.root, { recursive: true, mode: 0o700 }); await chmod(this.root, 0o700);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 118,
+        "text": "await mkdir(this.root, { recursive: true, mode: 0o700 }); await chmod(this.root, 0o700);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "await mkdir(parent, { recursive: true, mode: 0o700 }); await chmod(parent, 0o700);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = [\"connection\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "  ctx.tools.register(defineTool({ name: \"uni_browser_profiles\", description: \"List registered persistent uni-browser profiles. Use a profile id explicitly befor"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "  ctx.tools.register(defineTool({ name: \"uni_browser_profile_create\", description: \"Register a named persistent browser profile. The user logs in manually after"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "  ctx.tools.register(defineTool({ name: \"uni_browser_open\", description: \"Start a registered browser profile and restore its local login state. Use a headed pro"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "  ctx.tools.register(defineTool({ name: \"uni_browser_close\", description: \"Stop a browser profile without deleting its cookies or other persistent login state.\""
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

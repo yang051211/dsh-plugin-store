@@ -1,0 +1,90 @@
+{
+  "name": "dsh-mcp-skills",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:09:12.550Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4,
+        "text": "// settings.section slot, and talks to the host through plain fetch() against"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 121,
+        "text": "const response = await fetch('/dsh-mcp-skills/' + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { access, copyFile, mkdir, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "await writeFile(tmp, data, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "await rm(tmp, { force: true }).catch(() => undefined)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 155,
+        "text": "raw = await readFile(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "/** Default per-call timeout, matching @deepseek-ai/dsh-mcp-client. */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "/** Same grammar as @deepseek-ai/dsh-mcp-client's SERVER_NAME_PATTERN. */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 416,
+        "text": "* MCP servers are spawned by `@deepseek-ai/dsh-mcp-client` from the harness"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 443,
+        "text": "name: '@deepseek-ai/dsh-mcp-client',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

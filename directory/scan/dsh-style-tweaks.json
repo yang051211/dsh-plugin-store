@@ -1,0 +1,77 @@
+{
+  "name": "dsh-style-tweaks",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:09:18.884Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 897,
+        "text": "const response = await fetch(SETTINGS_ROUTE, { credentials: 'same-origin', ...init });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1012,
+        "text": "const response = await fetch(SETTINGS_ROUTE, { credentials: 'same-origin' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 27,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 83,
+        "text": "text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 109,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 111,
+        "text": "await writeFile(tmp, `${JSON.stringify(doc, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 116,
+        "text": "await rm(tmp, { force: true }).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

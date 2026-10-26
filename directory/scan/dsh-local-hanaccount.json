@@ -1,0 +1,89 @@
+{
+  "name": "dsh-local-hanaccount",
+  "version": "2.5.0",
+  "scannedAt": "2026-10-26T10:09:20.127Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/api.js",
+        "line": 468,
+        "text": "const pairRes = await fetch(`${remoteBaseUrl}${API_PREFIX}/peers/pair`, {"
+      },
+      {
+        "file": "src/client.entry.js",
+        "line": 26,
+        "text": "const api = createAuthRequest({ fetchImpl: (...args) => fetch(...args), base: API, origin: window.location?.origin })"
+      },
+      {
+        "file": "src/client.entry.js",
+        "line": 269,
+        "text": "fetch(API + '/nginx/snippet', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "src/client.entry.js",
+        "line": 820,
+        "text": "jsx('pre', { className: 'dsh-lha-pre', children: 'curl -H \"Authorization: Bearer <密钥>\" https://your-dsh.example.com/api/...' }),"
+      },
+      {
+        "file": "src/client.js",
+        "line": 314,
+        "text": "const api = createAuthRequest({ fetchImpl: (...args) => fetch(...args), base: API, origin: window.location?.origin })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/migrate-legacy-sessions.mjs",
+        "line": 2,
+        "text": "import { readFileSync, statSync, openSync, writeFileSync, fsyncSync, closeSync, renameSync, fchmodSync, fchownSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/migrate-legacy-sessions.mjs",
+        "line": 9,
+        "text": "ts } = migrateLegacySessions(JSON.parse(readFileSync(statePath, 'utf8')), JSON.parse(readFileSync(configPath, 'utf8')), { configMtimeMs: statSync(configPath).mt"
+      },
+      {
+        "file": "scripts/migrate-legacy-sessions.mjs",
+        "line": 13,
+        "text": "wnSync(fd, original.uid, original.gid); fchmodSync(fd, 0o600); writeFileSync(fd, JSON.stringify(state, null, 2)+'\\n'); fsyncSync(fd) } finally { closeSync(fd) }"
+      },
+      {
+        "file": "src/lib/initial-password.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/lib/initial-password.js",
+        "line": 13,
+        "text": "export function readInitialPassword(env = process.env, readFile = (path) => readFileSync(path, 'utf8')) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "src/lib/auth-bootstrap.generated.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

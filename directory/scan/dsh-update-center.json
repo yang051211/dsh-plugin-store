@@ -1,0 +1,124 @@
+{
+  "name": "dsh-update-center",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:09:15.312Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "const response = await fetch(API + path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "const response = await fetch(REGISTRY_URL, { signal: controller.signal, headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 577,
+        "text": "const response = await fetch(url, { signal: controller.signal, headers: { accept: 'application/vnd.github+json' } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 620,
+        "text": "const response = await fetch(url, { signal: controller.signal, headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "scripts/refresh-snapshot.mjs",
+        "line": 27,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "writeFileSync(temporary, text, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "unlinkSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1257,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 257,
+        "text": "const child = spawn(process.execPath, ['--', workerTarget, specPath], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1235,
+        "text": "const child = spawn(process.execPath, ['--', restartTarget, restartSpecPath], {"
+      },
+      {
+        "file": "lib/run-command.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/run-command.mjs",
+        "line": 30,
+        "text": "? spawn('cmd.exe', ['/d', '/s', '/c', candidate, ...args], { cwd, timeout: timeoutMs, env, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

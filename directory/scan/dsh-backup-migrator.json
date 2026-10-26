@@ -1,0 +1,84 @@
+{
+  "name": "dsh-backup-migrator",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:09:19.753Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/aux.js",
+        "line": 35,
+        "text": "import { readFile, writeFile, mkdir, chmod, copyFile, stat, readdir, rename } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/aux.js",
+        "line": 36,
+        "text": "import { statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/aux.js",
+        "line": 361,
+        "text": "await mkdir(dest, { recursive: true })"
+      },
+      {
+        "file": "lib/aux.js",
+        "line": 394,
+        "text": "await mkdir(dest, { recursive: true })"
+      },
+      {
+        "file": "lib/aux.js",
+        "line": 409,
+        "text": "const buf = await readFile(s)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 838,
+        "text": "].map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 70,
+        "text": "child = spawn(resolveExecutable(cmd), args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

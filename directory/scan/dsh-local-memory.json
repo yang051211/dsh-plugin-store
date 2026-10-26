@@ -1,0 +1,85 @@
+{
+  "name": "dsh-local-memory",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:52.256Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 74,
+        "text": "raw = readFileSync(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 231,
+        "text": "mkdirSync(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 235,
+        "text": "writeFileSync(tmp, this.entries.map((e) => JSON.stringify(e)).join('\\n') + (this.entries.length ? '\\n' : ''), 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 251,
+        "text": "writeFileSync(this.lockFile, String(process.pid), { flag: 'wx' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'settings'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "ctx.effect(() => ctx.tools.register(makeSearchTool(store, cfgRef)), 'local-memory: search tool');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "ctx.effect(() => ctx.tools.register(makeRememberTool(store, cfgRef)), 'local-memory: remember tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

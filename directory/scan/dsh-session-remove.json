@@ -1,0 +1,73 @@
+{
+  "name": "dsh-session-remove",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:08:42.918Z",
+  "icon": "dsh-session-remove.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 293,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "index.js",
+        "line": 1010,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "import { appendFile, lstat, readdir, realpath, rm, rmdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 605,
+        "text": "await rm(directory, { recursive: true, force: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 774,
+        "text": "await rm(file.path, { force: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 918,
+        "text": "await rm(path, { force: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 1200,
+        "text": "void appendFile(state.logPath, `${entry.time} ${line}\\n`, \"utf8\").catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionPersistence",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

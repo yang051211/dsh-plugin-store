@@ -1,0 +1,140 @@
+{
+  "name": "dsh-duck-fleet",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:42.123Z",
+  "icon": "dsh-duck-fleet.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 405,
+        "text": "response = await fetch(`${API}/${operation}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1592,
+        "text": "            }, `curl -s -X POST ${String(pairing.reportUrl)} -H 'X-Fleet-Token: <提示词里那个令牌>' -H 'Content-Type: application/json' -d '{\"stage\":\"done\",\"state\":\"pen"
+      },
+      {
+        "file": "lib/progress.js",
+        "line": 28,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/prompt-sections.js",
+        "line": 82,
+        "text": "curl -s -H 'X-Fleet-Token: {CALLBACK_TOKEN}' {CALLBACK_URL}"
+      },
+      {
+        "file": "lib/prompt-sections.js",
+        "line": 126,
+        "text": "curl -s -X POST {CALLBACK_URL} -H 'X-Fleet-Token: {CALLBACK_TOKEN}' -H 'Content-Type: application/json' -d '<下面的 JSON>'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "import { cpSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 136,
+        "text": "const source = readFileSync(join(directory, 'index.js'), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 159,
+        "text": "hash.update(readFileSync(file));"
+      },
+      {
+        "file": "index.js",
+        "line": 188,
+        "text": "if (readFileSync(entry, 'utf8').includes(sentinel(digest))) {"
+      },
+      {
+        "file": "index.js",
+        "line": 199,
+        "text": "mkdirSync(directory, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 256,
+        "text": "export const inject = ['subagents', 'tools', 'webServer'];"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 512,
+        "text": "* @returns a `ctx.tools.register` definition."
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 38,
+        "text": "export const inject = ['subagents', 'tools', 'webServer'];"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 242,
+        "text": "releases.push(ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 109,
+        "text": "const tools = this.ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acp.js",
+        "line": 157,
+        "text": "const child = spawn({"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 208,
+        "text": "* the process directory and `spawn({ cwd })` repoints it, so a missing directory makes even the bare name `ssh`"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 228,
+        "text": "* The driver is asynchronous because a rejected spawn (a missing ssh executable, an unusable cwd) must surface as"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 253,
+        "text": "spawn: (spec) => deps.subprocess.spawn(spec),"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 439,
+        "text": "const local = async (argv) => await runCommandCollect((spec) => deps.subprocess.spawn(spec), argv);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

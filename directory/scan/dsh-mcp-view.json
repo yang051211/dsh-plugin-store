@@ -1,0 +1,100 @@
+{
+  "name": "dsh-mcp-view",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:06.747Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 143,
+        "text": "const response = await fetch(url, { method: \"GET\", headers: { \"accept\": \"application/json\" } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 249,
+        "text": "await fetch(record.endpoint, { method: \"HEAD\", signal: controller.signal });"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 335,
+        "text": "await fetch(record.endpoint, { method: \"HEAD\", signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { readdirSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "const raw = readFileSync(path);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 22,
+        "text": "import { readdirSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 135,
+        "text": "const raw = readFileSync(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# (MCP servers from loader entries + live tool schemas from ctx.tools); the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "*  - `ctx.loader` entries with `name === '@deepseek-ai/dsh-mcp-client'` —"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "*  - `ctx.tools.schemas(scope)` — every tool currently registered in the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "const MCP_CLIENT_PACKAGE = \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 316,
+        "text": "schemas = ctx.tools.schemas(scope);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

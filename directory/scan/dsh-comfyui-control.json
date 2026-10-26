@@ -1,0 +1,126 @@
+{
+  "name": "dsh-comfyui-control",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:08:51.505Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comfyui.js",
+        "line": 685,
+        "text": "const response = await fetch(`${VIEW_BASE}/`, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/danbooru.js",
+        "line": 126,
+        "text": "await fetch(`${CAMOFOX_URL}/tabs/${tabId}?userId=${encodeURIComponent(DANBOORU_CAMOFOX_USER)}`, {"
+      },
+      {
+        "file": "lib/danbooru.js",
+        "line": 181,
+        "text": "const expression = \"fetch('https://danbooru.donmai.us/autocomplete.json?search%5Bquery%5D=\" +"
+      },
+      {
+        "file": "lib/danbooru.js",
+        "line": 328,
+        "text": "const expression = \"fetch('https://danbooru.donmai.us/posts.json?tags=\" + encodeURIComponent(tags) +"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 46,
+        "text": "const response = await fetch(target, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comfyui.js",
+        "line": 9,
+        "text": "import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/comfyui.js",
+        "line": 66,
+        "text": "const graph = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/comfyui.js",
+        "line": 667,
+        "text": "writeFileSync(page, compareHtml(basename(reference), basename(generated)), 'utf8')"
+      },
+      {
+        "file": "lib/danbooru.js",
+        "line": 10,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/env.js",
+        "line": 9,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/plugin.js",
+        "line": 24,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 35,
+        "text": "for (const tool of toolList()) disposers.push(ctx.tools.register(tool))"
+      },
+      {
+        "file": "preset/dsh-comfyui-control/lib/index.js",
+        "line": 4323,
+        "text": "const inject = exports.inject = ['tools']"
+      },
+      {
+        "file": "preset/dsh-comfyui-control/lib/index.js",
+        "line": 4334,
+        "text": "for (const tool of toolList()) disposers.push(ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/danbooru.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/danbooru.js",
+        "line": 91,
+        "text": "const child = spawn(process.execPath, [entry], {"
+      },
+      {
+        "file": "preset/dsh-comfyui-control/lib/index.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "preset/dsh-comfyui-control/lib/index.js",
+        "line": 3276,
+        "text": "const child = spawn(process.execPath, [entry], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

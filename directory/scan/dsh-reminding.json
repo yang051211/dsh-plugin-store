@@ -1,0 +1,67 @@
+{
+  "name": "dsh-reminding",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:03.986Z",
+  "icon": "dsh-reminding.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 189,
+        "text": "void fetch('reminding/focus', { method: 'POST', cache: 'no-store' }).catch(() => {})"
+      },
+      {
+        "file": "client.js",
+        "line": 400,
+        "text": "const response = await fetch(`${ROUTE_POLL}?since=${since}&wait=1${diag}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "appendFileSync(DEBUG_LOG, `${new Date().toISOString()} ${parts.join(' ')}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 159,
+        "text": "const child = spawn(process.execPath, [], { env, detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

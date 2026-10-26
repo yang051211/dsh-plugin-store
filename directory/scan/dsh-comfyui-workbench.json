@@ -1,0 +1,124 @@
+{
+  "name": "dsh-comfyui-workbench",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:08:46.588Z",
+  "icon": "dsh-comfyui-workbench.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comfy/client.js",
+        "line": 44,
+        "text": "const response = await fetch(target, { ...init, signal: linked.signal });"
+      },
+      {
+        "file": "lib/huggingface.js",
+        "line": 198,
+        "text": "const response = await fetch(current, {"
+      },
+      {
+        "file": "src/comfy/client.ts",
+        "line": 141,
+        "text": "const response = await fetch(target, { ...init, signal: linked.signal })"
+      },
+      {
+        "file": "src/huggingface.ts",
+        "line": 270,
+        "text": "const response = await fetch(current, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comfy-tools.js",
+        "line": 12,
+        "text": "import { existsSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/comfy-tools.js",
+        "line": 977,
+        "text": "writeFileSync(target, response.bytes);"
+      },
+      {
+        "file": "lib/comfy/workflow-runner.js",
+        "line": 9,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/comfy/workflow-runner.js",
+        "line": 267,
+        "text": "parsed = JSON.parse(fs.readFileSync(resolved, 'utf8').replace(/^\\uFEFF/, ''));"
+      },
+      {
+        "file": "lib/comfy/workflow-runner.js",
+        "line": 453,
+        "text": "fs.writeFileSync(target, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* `inject = ['tools']` guarantees `ctx.reflect.get('tools')` can obtain the tool registry."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "* throws ERR_MODULE_NOT_FOUND. `tools.register()` accepts a plain object, so no type imports are"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "tools.register(createGenerateImageTool(config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "tools.register(createGenerateAudioTool(config));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/run-tests.mjs",
+        "line": 33,
+        "text": "const result = spawnSync(process.execPath, ['--test', ...files], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 129,
+      "text": "mfyUI-BRIA_AI-RMBG`, `ComfyUI-LayerStyle` and `WAS Node Suite`. The `rembg` Python dependency must have an ONNX runtime, for example `pip install \"rembg[cpu]\"`."
+    }
+  ],
+  "skippedEntries": []
+}

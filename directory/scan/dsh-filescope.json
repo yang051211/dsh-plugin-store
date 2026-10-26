@@ -1,0 +1,56 @@
+{
+  "name": "dsh-filescope",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:24.378Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 103,
+        "text": "const response = await fetch(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "async function readFile(fs, path) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 150,
+        "text": "send(res, 200, await readFile(fs(), url.searchParams.get(\"path\") ?? \"\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "const fs = () => ctx.get(\"fs\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

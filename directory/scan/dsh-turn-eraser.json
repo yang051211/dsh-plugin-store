@@ -1,0 +1,91 @@
+{
+  "name": "dsh-turn-eraser",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:05.931Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 119,
+        "text": "const response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/05-real-log-regression.mjs",
+        "line": 15,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "tests/06-client-load.mjs",
+        "line": 2,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "tests/06-client-load.mjs",
+        "line": 8,
+        "text": "const src = fs.readFileSync(path.join(here, '..', 'client.js'), 'utf8');"
+      },
+      {
+        "file": "tests/09-trace-tool.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "tests/09-trace-tool.mjs",
+        "line": 59,
+        "text": "fs.mkdirSync(sessionDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 813,
+        "text": "// \tctx.effect(() => tools.register(makeToolDefinition(ctx)), \"session-tools: agent tool\");"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/05-real-log-regression.mjs",
+        "line": 14,
+        "text": "import { execSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/05-real-log-regression.mjs",
+        "line": 60,
+        "text": "raw = execSync(`zstd -dc \"${log}\"`, { maxBuffer: 1 << 30, encoding: 'utf8' });"
+      },
+      {
+        "file": "tests/09-trace-tool.mjs",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "tests/run-all.mjs",
+        "line": 11,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

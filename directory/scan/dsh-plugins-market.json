@@ -1,0 +1,61 @@
+{
+  "name": "dsh-plugins-market",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:24.856Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 11,
+        "text": "*   - host.call      ->  window.fetch('/market-api/...')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "return window.fetch(path, options).then(function (res) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "const res = await fetch(url, { signal: controller.signal, redirect: 'follow', headers })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "const child = spawn(cmd, cmdArgs, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

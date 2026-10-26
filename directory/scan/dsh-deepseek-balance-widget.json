@@ -1,0 +1,100 @@
+{
+  "name": "dsh-deepseek-balance-widget",
+  "version": "2.4.3",
+  "scannedAt": "2026-10-26T10:08:42.116Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 213,
+        "text": "const res = await fetch(LOCALE_ENDPOINT, { method: \"GET\", headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 555,
+        "text": "const res = await fetch(ENDPOINT, { method: \"GET\", headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 597,
+        "text": "const res = await fetch(UPDATE_ENDPOINT, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 610,
+        "text": "const res = await fetch(USAGE_ENDPOINT, { method: \"GET\", headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 620,
+        "text": "const res = await fetch(VERSION_ENDPOINT, { method: \"GET\", headers: { Accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFile, writeFile, stat, mkdir, copyFile, readdir, realpath } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "const pkg = JSON.parse(await readFile(resolve(base, \"../package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "const arr = JSON.parse(await readFile(STORE_PATH, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "await writeFile(STORE_PATH, JSON.stringify(arr, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "readFile(DSH_SETTINGS_PATH, \"utf8\").catch(() => \"\"),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 640,
+        "text": "child = spawn(\"cmd.exe\", [\"/d\", \"/s\", \"/c\", `${cmd} ${quotedArgs}`], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 646,
+        "text": "child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

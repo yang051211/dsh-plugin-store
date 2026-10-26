@@ -1,0 +1,118 @@
+{
+  "name": "dsh-wechat-workbench",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:48.631Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 181,
+        "text": "await fetch('/api/wechat-workbench/status', {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 200,
+        "text": "const r = await fetch('/api/wechat-workbench/status')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/clean-pycache.mjs",
+        "line": 2,
+        "text": "import { readdirSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/clean-pycache.mjs",
+        "line": 13,
+        "text": "rmSync(full, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/clean-pycache.mjs",
+        "line": 18,
+        "text": "rmSync(full, { force: true })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 20,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 101,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 86,
+        "text": "export const inject = ['sessionController', 'workspaceController', 'userQuestions', 'sessionQuery', 'tools', 'connection']"
+      },
+      {
+        "file": "src/notify-tool.js",
+        "line": 23,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/notify-tool.js",
+        "line": 71,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/atdesk.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/atdesk.js",
+        "line": 18,
+        "text": "execFile(cmd, args, { timeout: 5_000 }, (error, stdout) => {"
+      },
+      {
+        "file": "src/python-setup.js",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/transport.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/transport.js",
+        "line": 35,
+        "text": "/** @type {import('node:child_process').ChildProcess | null} */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionController",
+    "sessionQuery",
+    "tools",
+    "userQuestions",
+    "workspaceController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

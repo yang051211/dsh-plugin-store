@@ -1,0 +1,111 @@
+{
+  "name": "dsh-envkit",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:14.274Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 52,
+        "text": "fetch('/envkit/probe', { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 109,
+        "text": "            fetch('/envkit/inspect', { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ scope"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 35,
+        "text": "const r = await fetch(url, { headers: { 'User-Agent': 'dsh-envkit' }, signal: AbortSignal.timeout(timeout) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 11,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 54,
+        "text": "fs.mkdirSync(p, { recursive: true })"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 56,
+        "text": "fs.writeFileSync(probe, 'x')"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 57,
+        "text": "fs.unlinkSync(probe)"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 112,
+        "text": "const buf = fs.readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "*   tools.register() 抛"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "const toolsService = (typeof ctx.get === 'function' ? ctx.get('tools') : undefined) || ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.mjs",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 64,
+        "text": "/* 命名管道受限的探针：Node 在受限环境下 spawn(stdio:'pipe') 会 EPERM */"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 68,
+        "text": "const r = spawnSync(process.execPath, ['-e', 'process.stdout.write(\"ok\")'], {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 263,
+        "text": "const r = isWin ? spawnSync('cmd.exe', ['/c', cmd], { encoding: 'utf8', timeout: 120000 })"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 264,
+        "text": ": spawnSync('sh', ['-c', cmd], { encoding: 'utf8', timeout: 120000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

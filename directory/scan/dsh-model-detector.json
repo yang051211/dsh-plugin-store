@@ -1,0 +1,89 @@
+{
+  "name": "dsh-model-detector",
+  "version": "0.0.12",
+  "scannedAt": "2026-10-26T10:08:49.414Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 553,
+        "text": "res = await fetch(url, { headers, signal: ctrl.signal });"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 595,
+        "text": "const res = await fetch(MODELS_DEV_URL, { headers: { accept: 'application/json' }, signal: ctrl.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 245,
+        "text": "const j = await (await fetch(`${API_PREFIX}/providers`, { headers: { accept: \"application/json\" } })).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 325,
+        "text": "const j = await (await fetch(`${API_PREFIX}/discover`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 414,
+        "text": "const j = await (await fetch(`${API_PREFIX}/current`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 1341,
+        "text": "const fs = await import('node:fs');"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 1354,
+        "text": "const json = JSON.parse(fs.readFileSync(`${dir}/${f}`, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "export const inject = ['webServer', 'settings', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 261,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

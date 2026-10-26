@@ -1,0 +1,113 @@
+{
+  "name": "dsh-versions",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:09:00.710Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 153,
+        "text": "const response = await fetch(path, body === undefined"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 20,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 256,
+        "text": "\t\t\"  try { $r = Invoke-WebRequest -Uri ('http://127.0.0.1:' + $port) -UseBasicParsing -TimeoutSec 3 -ErrorAction Stop; if ($r.StatusCode -ge 200 -and $r.StatusC"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 399,
+        "text": "\t\t\"  try { $r = Invoke-WebRequest -Uri ('http://127.0.0.1:' + $port) -UseBasicParsing -TimeoutSec 3 -ErrorAction Stop; if ($r.StatusCode -ge 200 -and $r.StatusC"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/compat.js",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 162,
+        "text": "source = readFileSync(join(dirname(pkgPath), 'lib', 'index.js'), 'utf8')"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 164,
+        "text": "try { source = readFileSync(pkgPath.replace('package.json', 'index.js'), 'utf8') } catch {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync, copyFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 435,
+        "text": "execFile('schtasks.exe', ['/create', '/f', '/tn', taskName, '/tr', tr, '/sc', 'once', '/st', '00:00'], { windowsHide: true }, (error) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 437,
+        "text": "\t\t\t\ttry { execFile('powershell.exe', ['-NoProfile', '-WindowStyle', 'Hidden', '-ExecutionPolicy', 'Bypass', '-File', ps1], { windowsHide: true, detached: true, "
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "execFile('schtasks.exe', ['/run', '/tn', taskName], { windowsHide: true }, (runError) => {"
+      },
+      {
+        "file": "lib/shim.js",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,62 @@
+{
+  "name": "dsh-cc-agents",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:08:47.812Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 20,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 244,
+        "text": "const raw = await readFile(skill.locator.path, { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'subagents']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 122,
+        "text": "ctx.tools.register(defineCcAgentTool(ctx, config, catalogFor, toolName))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 197,
+        "text": "// Raw ctx.tools.register() skips defineTool's arg validation, so enforce"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

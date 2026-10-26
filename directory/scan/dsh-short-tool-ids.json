@@ -1,0 +1,78 @@
+{
+  "name": "dsh-short-tool-ids",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:09:07.999Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/plugin.test.mjs",
+        "line": 3,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 2,
+        "text": "import { readFileSync, realpathSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "index.mjs",
+        "line": 71,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "index.mjs",
+        "line": 128,
+        "text": "const adapterPackage = JSON.parse(readFileSync(adapterRequire.resolve('@deepseek-ai/dsh-llm-pi-ai/package.json'), 'utf8'));"
+      },
+      {
+        "file": "index.mjs",
+        "line": 136,
+        "text": ": JSON.parse(readFileSync(resolve(piRoot, 'package.json'), 'utf8')).version;"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 10,
+        "text": "const result = spawnSync(process.execPath, ['--test', 'test/plugin.test.mjs'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

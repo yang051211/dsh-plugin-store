@@ -1,0 +1,80 @@
+{
+  "name": "dsh-plugin-background-image",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:09:05.309Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 99,
+        "text": "resp = await fetch(fileUrl(path))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const resp = await fetch(fileUrl(store.image.trim()), { method: 'HEAD' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 281,
+        "text": "persistQueue = persistQueue.then(() => fetch(CONFIG_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 335,
+        "text": "const resp = await fetch(CONFIG_URL)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 477,
+        "text": "const resp = await fetch('/plugins/background-image/pick')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "res.end(req.method === 'HEAD' ? undefined : await readFile(authorized))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 74,
+        "text": "execFile(command, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

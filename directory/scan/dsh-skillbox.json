@@ -1,0 +1,101 @@
+{
+  "name": "dsh-skillbox",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-26T10:08:50.374Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 732,
+        "text": "fetch(ROUTE, { cache: 'no-store', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 782,
+        "text": "const response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1810,
+        "text": "const response = await fetch(ROUTE, {"
+      },
+      {
+        "file": "lib/upstream.js",
+        "line": 295,
+        "text": "const response = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 24,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 25,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 421,
+        "text": "const text = await readFile(bundle, 'utf8');"
+      },
+      {
+        "file": "lib/flows.js",
+        "line": 20,
+        "text": "import { mkdir, rename } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/flows.js",
+        "line": 66,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 299,
+        "text": "child = spawn(file, argv, { windowsHide: true, env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 51,
+      "text": "npm i -g skills"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 51,
+      "text": "npm i -g skills"
+    }
+  ],
+  "skippedEntries": []
+}

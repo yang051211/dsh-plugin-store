@@ -1,0 +1,90 @@
+{
+  "name": "dsh-plugin-wwrs-image",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:08:57.778Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/workspace.ts",
+        "line": 8,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 12,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 13,
+        "text": "import { mkdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 114,
+        "text": "await mkdir(dirname(abs), { recursive: true });"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 115,
+        "text": "await writeFile(abs, bytes);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cordis.ts",
+        "line": 4,
+        "text": "* （工厂见 ./tools.ts）；写保护守卫 → ctx.tools.guard（谓词真源见 lib/guard-predicate.ts，"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 15,
+        "text": "export const inject: string[] = [\"tools\"];"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 28,
+        "text": "ctx.tools?.register(rec);"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 3,
+        "text": "* 真源在 ./lib/guard-predicate.ts（独立零依赖，见其头注）；本文件只做 ctx.tools.guard 挂载。"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 10,
+        "text": "const rawGuard = ctx.tools?.guard;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

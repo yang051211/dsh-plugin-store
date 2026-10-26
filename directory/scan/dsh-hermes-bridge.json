@@ -1,0 +1,93 @@
+{
+  "name": "dsh-hermes-bridge",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:09:00.049Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hd-events.js",
+        "line": 101,
+        "text": "const post = (url, body, sig, event, tries) => fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hd-events.js",
+        "line": 16,
+        "text": "import { watch, readFileSync, writeFileSync, existsSync, unlinkSync, statSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "hd-events.js",
+        "line": 31,
+        "text": "const pid = Number(readFileSync(LOCK, 'utf8'));"
+      },
+      {
+        "file": "hd-events.js",
+        "line": 40,
+        "text": "writeFileSync(LOCK, String(process.pid));"
+      },
+      {
+        "file": "hd-events.js",
+        "line": 51,
+        "text": "const j = JSON.parse(readFileSync(process.env.HERMES_HOME || homedir() + '/.hermes/webhook_subscriptions.json', 'utf8'));"
+      },
+      {
+        "file": "hd-events.js",
+        "line": 163,
+        "text": "unlinkSync(LOCK);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hermes-bridge.js",
+        "line": 33,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "hermes-bridge.js",
+        "line": 100,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "hermes-bridge.js",
+        "line": 29,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "hermes-bridge.js",
+        "line": 73,
+        "text": "execFile(hermesBinPath(), ['sessions', 'list', '--limit', '500'], { timeout: 30000, maxBuffer: 8 * 1024 * 1024 }, (_err, stdout) => {"
+      },
+      {
+        "file": "hermes-bridge.js",
+        "line": 97,
+        "text": "            execFile(hermesBinPath(), args, { timeout: timeoutMs, maxBuffer: 16 * 1024 * 1024, env: { ...process.env } }, (err, stdout, stderr) => (err ? reject"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

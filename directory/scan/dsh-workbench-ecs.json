@@ -1,0 +1,126 @@
+{
+  "name": "dsh-workbench-ecs",
+  "version": "0.9.1",
+  "scannedAt": "2026-10-26T10:08:46.154Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 69,
+        "text": "return fetch('/dsh-workbench-ecs/rpc', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 169,
+        "text": "ystemctl restart nginx', health_check: 'curl -fsS http://127.0.0.1/ || true' }, { name: '重启奶龙容器', local_file: '', remote_path: '', command: 'cd /root/nailonghub"
+      },
+      {
+        "file": "lib/common.js",
+        "line": 58,
+        "text": "{ source: '下载落盘(curl -o / wget -O)', test: /\\b(curl|wget)\\b[^;&|]*(\\s-o\\s|\\s--output\\s|\\s-O\\b|\\s--output-document\\s)/ },"
+      },
+      {
+        "file": "lib/common.js",
+        "line": 118,
+        "text": "// 同时含 mkdir / > / cp / curl -o 时只能看到其中一条, 排障全靠猜。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "//   Linux/macOS: curl -fsSL https://workbench-cli.oss-cn-hangzhou.aliyuncs.com/install.sh | bash"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/anchors.js",
+        "line": 53,
+        "text": "const fs = ctx !== undefined && typeof ctx.get === 'function' ? ctx.get('fs') : undefined"
+      },
+      {
+        "file": "lib/common.js",
+        "line": 856,
+        "text": "const fs = ctx !== undefined && typeof ctx.get === 'function' ? ctx.get('fs') : undefined"
+      },
+      {
+        "file": "lib/runbooks.js",
+        "line": 297,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/snapshots.js",
+        "line": 315,
+        "text": "const fs = ctx !== undefined && typeof ctx.get === 'function' ? ctx.get('fs') : undefined"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "export const inject = ['tools', 'webServer', 'subprocess']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "ctx.tools.register(defineTool(toLossless(withSessionRoot(factory(ctx)))))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/common.js",
+        "line": 260,
+        "text": "return Promise.resolve(subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 210,
+      "text": "cript (Windows):** the repo ships [`scripts/workbench-setup.ps1`](./scripts/workbench-setup.ps1) supporting all 5 modes and non-interactive multi-profile setup:"
+    },
+    {
+      "file": "README.md",
+      "line": 214,
+      "text": "./scripts/workbench-setup.ps1 -AccessKeyId LTAIxxx -AccessKeySecret xxx"
+    },
+    {
+      "file": "README.md",
+      "line": 216,
+      "text": "./scripts/workbench-setup.ps1 -Mode RamRoleArn -Profile prod -AccessKeyId LTAIxxx -AccessKeySecret xxx -RamRoleArn acs:ram::123456789:role/WorkbenchRole -AutoSw"
+    },
+    {
+      "file": "README.md",
+      "line": 1019,
+      "text": "- One-shot setup script: [`scripts/workbench-setup.ps1`](./scripts/workbench-setup.ps1)"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 210,
+      "text": "**一键配置脚本(Windows):** 仓库提供 [`scripts/workbench-setup.ps1`](./scripts/workbench-setup.ps1), 支持全部 5 种模式与非交互式多 profile:"
+    }
+  ],
+  "skippedEntries": []
+}

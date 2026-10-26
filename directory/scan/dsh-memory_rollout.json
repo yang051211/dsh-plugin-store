@@ -1,0 +1,95 @@
+{
+  "name": "dsh-memory_rollout",
+  "version": "0.1.29",
+  "scannedAt": "2026-10-26T10:09:00.207Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "const res = await fetch(path, opts)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1470,
+        "text": "file = fs.readFileSync(resolved, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1561,
+        "text": "const text = fs.readFileSync(persistPath, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1569,
+        "text": "fs.mkdirSync(path.dirname(persistPath), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1570,
+        "text": "fs.writeFileSync(persistPath, JSON.stringify(state, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "// Required services this plugin uses via direct props (ctx.tools / ctx.systemPrompt)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "export const inject = ['storageDomain', 'tools', 'systemPrompt', 'sessionQuery']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8556,
+        "text": "ctx.tools.register(rememberTool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8557,
+        "text": "ctx.tools.register(recallTool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8558,
+        "text": "ctx.tools.register(forgetTool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionQuery",
+    "storageDomain",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

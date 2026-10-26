@@ -1,0 +1,66 @@
+{
+  "name": "dsh-extra-context",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:12.061Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 478,
+        "text": "const response = await fetch(STATUS_PATH, { headers: { [CLIENT_HEADER]: '1' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "const manifest = JSON.parse(await readFile(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 148,
+        "text": "const { realpath } = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "const manifest = JSON.parse(readFileSync(join(directory, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,112 @@
+{
+  "name": "dsh-restart-autostart",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:08:56.757Z",
+  "icon": "dsh-restart-autostart.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 278,
+        "text": "const probe = await fetch(\"/dsh-restart-autostart/health\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 292,
+        "text": "const root = await fetch(\"/\", { cache: \"no-store\", redirect: \"manual\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 313,
+        "text": "const response = await fetch(\"/dsh-restart-autostart/restart\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 570,
+        "text": "const response = await fetch(\"/dsh-restart-autostart/autostart/status\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 597,
+        "text": "const response = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guard/guard.js",
+        "line": 46,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/guard/guard.js",
+        "line": 161,
+        "text": "raw = fs.readFileSync(file, 'utf8').trim();"
+      },
+      {
+        "file": "lib/guard/guard.js",
+        "line": 177,
+        "text": "fs.rmSync(file, { force: true });"
+      },
+      {
+        "file": "lib/guard/guard.js",
+        "line": 202,
+        "text": "fs.mkdirSync(LOG_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/guard/guard.js",
+        "line": 203,
+        "text": "fs.writeFileSync(startingLockFile(targetPort), String(pid), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guard/guard.js",
+        "line": 45,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/guard/guard.js",
+        "line": 628,
+        "text": "const child = spawn(node, [dsh, 'web', '--port', String(port), '--no-open'], {"
+      },
+      {
+        "file": "lib/guard/index.js",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/guard/index.js",
+        "line": 114,
+        "text": "const out = spawnSync(command, args, { encoding: 'utf8', windowsHide: true });"
+      },
+      {
+        "file": "lib/manual/restart.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

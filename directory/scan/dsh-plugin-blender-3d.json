@@ -1,0 +1,146 @@
+{
+  "name": "dsh-plugin-blender-3d",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:40.776Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-client.js",
+        "line": 12,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 48,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 123,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "lib/runtime/blender_driver.js",
+        "line": 29,
+        "text": "const http = require('http');"
+      },
+      {
+        "file": "lib/runtime/blender_driver.js",
+        "line": 44,
+        "text": "const req = http.request("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-client.js",
+        "line": 15,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 31,
+        "text": "const cfg = JSON.parse(fs.readFileSync(_CONFIG_PATH, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "fs.mkdirSync(destDir, { recursive: true });"
+      },
+      {
+        "file": "lib/runtime/blender_driver.js",
+        "line": 21,
+        "text": "*   const bytes = await b.readFile(stl.file_path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = [\"tools\", \"effect\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 113,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-client.js",
+        "line": 11,
+        "text": "import { spawn, execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 39,
+        "text": "execFile(python, [\"-c\", \"import trimesh\"], { timeout: 8000 }, (err) => resolve(!err));"
+      },
+      {
+        "file": "lib/bridge-client.js",
+        "line": 72,
+        "text": "_child = spawn(python, [BRIDGE_PATH, \"--host\", host, \"--port\", String(port)], {"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 15,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 42,
+        "text": "execFile(cmd, args, { timeout, maxBuffer: 4 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: sh scripts/miner.sh"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "effect",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 42,
+      "text": "pip install numpy trimesh manifold3d"
+    }
+  ],
+  "skippedEntries": []
+}

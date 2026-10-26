@@ -1,0 +1,95 @@
+{
+  "name": "dsh-restart-desktop",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:00.423Z",
+  "icon": "dsh-restart-desktop.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 79,
+        "text": "fetch(STATUS_PATH, { headers: { accept: 'application/json' }, cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 96,
+        "text": "fetch(RESTART_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper.mjs",
+        "line": 18,
+        "text": "import { appendFileSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "helper.mjs",
+        "line": 25,
+        "text": "const request = JSON.parse(readFileSync(REQUEST_FILE, 'utf8'))"
+      },
+      {
+        "file": "helper.mjs",
+        "line": 42,
+        "text": "if (size > LOG_LIMIT_BYTES) writeFileSync(logPath, '')"
+      },
+      {
+        "file": "helper.mjs",
+        "line": 43,
+        "text": "appendFileSync(logPath, `${new Date().toISOString()} [helper ${process.pid}] ${line}\\n`)"
+      },
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { existsSync, mkdirSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "helper.mjs",
+        "line": 61,
+        "text": "child = spawn(powershellPath(), ["
+      },
+      {
+        "file": "helper.mjs",
+        "line": 172,
+        "text": "const child = spawn(exe, [], {"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 149,
+        "text": "const child = spawn(process.execPath, [HELPER_FILE, requestPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

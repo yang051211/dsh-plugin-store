@@ -1,0 +1,124 @@
+{
+  "name": "dsh-codex-continue",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:09.585Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "const res = await fetch(\"/codex-continue/api/\" + method, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 71,
+        "text": "const res = await fetch('/codex-continue/api/' + method, {"
+      },
+      {
+        "file": "src/client/index.tsx",
+        "line": 118,
+        "text": "const res = await fetch('/codex-continue/api/' + method, {"
+      },
+      {
+        "file": "src/routes.ts",
+        "line": 1,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/codex-index.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/codex-index.js",
+        "line": 2,
+        "text": "import fsp from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/codex-index.js",
+        "line": 12,
+        "text": "const raw = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/codex-index.js",
+        "line": 88,
+        "text": "cached = JSON.parse(fs.readFileSync(cachePath, 'utf8'));"
+      },
+      {
+        "file": "lib/codex-index.js",
+        "line": 165,
+        "text": "await fsp.mkdir(cacheDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "ctx.tools.register(createCodexTool(service));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 17,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 31,
+        "text": "ctx.tools.register(createCodexTool(service))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/resume-builder.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/resume-builder.js",
+        "line": 127,
+        "text": "const child = execFile('git', args, { cwd, timeout: 8000, maxBuffer: 2 * 1024 * 1024 }, (err, stdout) => {"
+      },
+      {
+        "file": "src/resume-builder.ts",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/resume-builder.ts",
+        "line": 156,
+        "text": "const child = execFile('git', args, { cwd, timeout: 8000, maxBuffer: 2 * 1024 * 1024 }, (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,113 @@
+{
+  "name": "dsh-team-chat",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:08:54.094Z",
+  "icon": "dsh-team-chat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "const xhr = new XMLHttpRequest();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2357,
+        "text": "const response = await fetch(\"/__teamchat/members\", { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2371,
+        "text": "const response = await fetch(\"/__teamchat/members\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2402,
+        "text": "const response = await fetch(\"/__teamchat/members\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2434,
+        "text": "const response = await fetch(\"/__teamchat/succession\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 361,
+        "text": "const text = await fs.readFile(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 384,
+        "text": "await fs.mkdir(path.dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 385,
+        "text": "await fs.writeFile(tmp, JSON.stringify({ names: this.all() }, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 389,
+        "text": "await fs.rm(tmp, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1876,
+        "text": "// `ctx.tools.register`。工具定义与文案在 `lib/room-tools.js`，这里只负责"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2030,
+        "text": "//   不能写 `ctx.tools.register(...)`：本插件没有把 `tools` 声明进 `inject`"
+      },
+      {
+        "file": "lib/room-tools.js",
+        "line": 13,
+        "text": "* 所以这里补上两个**真正的工具**（走官方 `ctx.tools.register`，"
+      },
+      {
+        "file": "lib/room-tools.js",
+        "line": 23,
+        "text": "* 1. **不 import 官方包。** `ctx.tools.register` 只校验"
+      },
+      {
+        "file": "lib/room-tools.js",
+        "line": 187,
+        "text": "* 造出两个模型面工具的**定义**（形状与官方 `ctx.tools.register` 要求的完全一致）。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

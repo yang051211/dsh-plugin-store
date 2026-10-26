@@ -1,0 +1,136 @@
+{
+  "name": "dsh-version-autoupdate",
+  "version": "0.3.61",
+  "scannedAt": "2026-10-26T10:08:45.884Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 21,
+        "text": "),1);async function xe(e,t){let n=await fetch(e,{method:t===void 0?\"GET\":\"POST\",headers:{\"Content-Type\":\"application/json\"},credentials:\"same-origin\",body:t===v"
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 2,
+        "text": "const res = await fetch(pathname, {"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 284,
+        "text": "`    $r = Invoke-WebRequest -Uri $u -TimeoutSec 10 -UseBasicParsing -ErrorAction Stop`,"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 552,
+        "text": "`    if curl -fsS -o /dev/null -w '%{http_code}' ${shellQuote(healthUrl)} | grep -Eq '^[2-4][0-9][0-9]$'; then`,"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 561,
+        "text": "        `        if ! curl -fsS -o /dev/null -w '%{http_code}' ${shellQuote(healthUrl)} | grep -Eq '^[2-4][0-9][0-9]$'; then log stability_lost_http; stable=0; "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifact-cache.js",
+        "line": 2,
+        "text": "import { createWriteStream } from 'node:fs';"
+      },
+      {
+        "file": "lib/artifact-cache.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/artifact-cache.js",
+        "line": 22,
+        "text": "await mkdir(paths.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/artifact-cache.js",
+        "line": 24,
+        "text": "const prev = JSON.parse(await readFile(paths.partialMeta, 'utf8'));"
+      },
+      {
+        "file": "lib/artifact-cache.js",
+        "line": 26,
+        "text": "await rm(paths.partial, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['webServer', 'subprocess', 'fs', 'sandboxPolicy', 'timer', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/update-tools.js",
+        "line": 56,
+        "text": "disposers.push(ctxTools.effect(() => tools.register(definition), label));"
+      },
+      {
+        "file": "lib/update-tools.js",
+        "line": 59,
+        "text": "disposers.push(tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 13,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 504,
+        "text": "const child = spawn(powershell, ["
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 584,
+        "text": "const child = spawn('bash', [scriptPath], {"
+      },
+      {
+        "file": "lib/dsh-restart.mjs",
+        "line": 652,
+        "text": "const child = spawn(process.execPath, [helper, jobPath], {"
+      },
+      {
+        "file": "lib/github-archive.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "sandboxPolicy",
+    "subprocess",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "ollama-monitor",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:08:41.970Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "const call = (extra) => fetch(base + \"/api/generate\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 184,
+        "text": "const t = await (await fetch(base + \"/api/tags\")).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 185,
+        "text": "const p = await (await fetch(base + \"/api/ps\")).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 218,
+        "text": "const res = await fetch(base + \"/api/pull\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 286,
+        "text": "const r = await fetch(window.location.origin + \"/ollama-monitor/catalog\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { createReadStream, createWriteStream, readFileSync, readdirSync, statSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "await mkdir(dirname(config.historyPath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "await writeFile(config.historyPath, JSON.stringify(entry) + \"\\n\", { flag: \"a\", encoding: \"utf8\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 476,
+        "text": "await mkdir(dirname(config.historyPath), { recursive: true }).catch(() => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "var inject = [\"tools\", \"webServer\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 341,
+        "text": "ctx.tools.register(defineToolSafe({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 403,
+        "text": "ctx.tools.register(defineToolSafe({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 487,
+        "text": "ctx.tools.register(defineToolSafe({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1071,
+        "text": "ctx.tools.register(defineToolSafe({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

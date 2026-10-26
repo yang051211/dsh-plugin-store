@@ -1,0 +1,99 @@
+{
+  "name": "dsh-plugin-vault-memory",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:08:47.292Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 63,
+        "text": "return fetch(path, opt).then(function (r) {"
+      },
+      {
+        "file": "src/core/embed.mjs",
+        "line": 25,
+        "text": "res = await fetch(`${baseUrl}/api/embed`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/index.mjs",
+        "line": 5,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "src/core/index.mjs",
+        "line": 86,
+        "text": "const text = fs.readFileSync(abs, \"utf8\");"
+      },
+      {
+        "file": "src/core/index.mjs",
+        "line": 126,
+        "text": "const text = fs.readFileSync(abs, \"utf8\");"
+      },
+      {
+        "file": "src/core/index.mjs",
+        "line": 317,
+        "text": "text = fs.readFileSync(abs, \"utf8\");"
+      },
+      {
+        "file": "src/core/index.mjs",
+        "line": 418,
+        "text": "fs.mkdirSync(path.dirname(abs), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 22,
+        "text": "export const inject = [\"tools\", \"settings\", \"systemPrompt\"];"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 152,
+        "text": "if (ctx.tools) {"
+      },
+      {
+        "file": "src/tools/vault-capture.mjs",
+        "line": 11,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/tools/vault-health.mjs",
+        "line": 13,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/tools/vault-query.mjs",
+        "line": 11,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

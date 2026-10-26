@@ -1,0 +1,71 @@
+{
+  "name": "dsh-local-telemetry",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:17.861Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/server.mjs",
+        "line": 10,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "web/app.js",
+        "line": 17,
+        "text": "const res = await fetch(path, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/telemetry.mjs",
+        "line": 17,
+        "text": "import { writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "bin/telemetry.mjs",
+        "line": 285,
+        "text": "await writeFile(target, body, \"utf8\");"
+      },
+      {
+        "file": "src/config.mjs",
+        "line": 11,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/config.mjs",
+        "line": 109,
+        "text": "fileConfig = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "src/config.mjs",
+        "line": 189,
+        "text": "raw = readFileSync(path, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

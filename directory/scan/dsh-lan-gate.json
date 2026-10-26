@@ -1,0 +1,73 @@
+{
+  "name": "dsh-lan-gate",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:04.712Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 61,
+        "text": "const res = await fetch('/dsh-lan-full/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 73,
+        "text": "const res = await fetch('/dsh-lan-full/state', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 123,
+        "text": "const parsed = JSON.parse(readFileSync(this.persistPath, 'utf8'))"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 143,
+        "text": "mkdirSync(dirname(this.persistPath), { recursive: true })"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 144,
+        "text": "writeFileSync(this.persistPath, `${JSON.stringify({ sessions }, null, 2)}\\n`, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/policy.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webRuntime",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

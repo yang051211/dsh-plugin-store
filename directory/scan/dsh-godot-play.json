@@ -1,0 +1,90 @@
+{
+  "name": "dsh-godot-play",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:09:09.870Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 60,
+        "text": "return fetch(url, options).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 90,
+        "text": "return fetch(API_BASE + \"/build\", { method: \"POST\", cache: \"no-store\" }).then(function (r) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 101,
+        "text": "return fetch(API_BASE + \"/meta\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 108,
+        "text": "return fetch(API_BASE + \"/probe?path=\" + encodeURIComponent(p), { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import * as fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 133,
+        "text": "try { text = fs.readFileSync(file, \"utf8\"); } catch { return []; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "const raw = fs.readFileSync(STATE_FILE, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 203,
+        "text": "fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 2));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 333,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "webRuntime",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

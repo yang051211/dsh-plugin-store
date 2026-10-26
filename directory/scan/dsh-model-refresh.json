@@ -1,0 +1,84 @@
+{
+  "name": "dsh-model-refresh",
+  "version": "0.7.2",
+  "scannedAt": "2026-10-26T10:09:12.754Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 406,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 411,
+        "text": "const res = await fetch(url, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(body) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 412,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 417,
+        "text": "const res = await fetch(url, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(body) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "const { ProxyAgent } = await import('undici');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog-store.mjs",
+        "line": 2,
+        "text": "import { readFile, writeFile, mkdir, rename, unlink, open } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/catalog-store.mjs",
+        "line": 16,
+        "text": "await mkdir(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/catalog-store.mjs",
+        "line": 21,
+        "text": "await handle.writeFile(JSON.stringify(value, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/catalog-store.mjs",
+        "line": 25,
+        "text": "} finally { await handle?.close(); await unlink(tmp).catch(e => { if (e.code !== 'ENOENT') throw e; }); }"
+      },
+      {
+        "file": "lib/catalog-store.mjs",
+        "line": 36,
+        "text": "async function readCatalog(file) { return validateCatalog(JSON.parse(await readFile(file, 'utf8'))); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

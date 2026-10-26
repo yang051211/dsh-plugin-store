@@ -1,0 +1,98 @@
+{
+  "name": "dsh-plugin-catgod-call",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:24.876Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 681,
+        "text": "const undici = await import('undici')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 693,
+        "text": "const res = await fetch(cfg.apiUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { mkdir, writeFile, readFile, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "await mkdir(AUDIO_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 405,
+        "text": "await writeFile("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 568,
+        "text": "await unlink(STATE_FILE).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "* 2. 工具注册用 ctx.tools.register()，与官方工具同一注册表。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 933,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 270,
+        "text": "const child = spawn('powershell.exe', args, { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

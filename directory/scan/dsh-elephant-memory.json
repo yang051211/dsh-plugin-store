@@ -1,0 +1,90 @@
+{
+  "name": "dsh-elephant-memory",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:17.730Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-routes.js",
+        "line": 75,
+        "text": "* @property {{ register(route: { path: string, methods: string[], requestBody: 'buffered', fetch(request: Request): Promise<Response> }): unknown }} fetch"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog.js",
+        "line": 13,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 29,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 31,
+        "text": "fs.writeFileSync(next, `${JSON.stringify(value)}\\n`);"
+      },
+      {
+        "file": "lib/catalog.js",
+        "line": 38,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/lock.js",
+        "line": 13,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 34,
+        "text": "static inject = ['llm', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 18,
+        "text": "* @param {any} ctx the plugin's context (`ctx.tools`)"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 26,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 40,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 52,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

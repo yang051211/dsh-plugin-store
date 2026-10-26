@@ -1,0 +1,66 @@
+{
+  "name": "dsh-unarchive",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:08:41.818Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 40,
+        "text": "const res = await fetch(API + path, options);"
+      },
+      {
+        "file": "src/client.js",
+        "line": 30,
+        "text": "const res = await fetch(API + path, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 19,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 44,
+        "text": "const raw = await readFile(SETTINGS_FILE, 'utf8');"
+      },
+      {
+        "file": "src/index.js",
+        "line": 57,
+        "text": "await mkdir(SETTINGS_DIR, { recursive: true });"
+      },
+      {
+        "file": "src/index.js",
+        "line": 58,
+        "text": "await writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

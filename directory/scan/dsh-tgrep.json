@@ -1,0 +1,87 @@
+{
+  "name": "dsh-tgrep",
+  "version": "0.1.13",
+  "scannedAt": "2026-10-26T10:09:06.035Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 78,
+        "text": "const parsed = JSON.parse(readFileSync(join(indexDir, 'serve.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 220,
+        "text": "return JSON.parse(readFileSync(join(root, INDEX_DIR_NAME, 'meta.json'), 'utf8'))?.complete === true"
+      },
+      {
+        "file": "index.js",
+        "line": 308,
+        "text": "mkdirSync(indexDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 482,
+        "text": "const disposeTool = tools.register(tool)"
+      },
+      {
+        "file": "index.js",
+        "line": 516,
+        "text": "const hostTools = ctx.tools ?? ctx.get?.('tools')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 315,
+        "text": "const child = spawn('tgrep', buildServeArgs(root, options.daemonArgs), {"
+      },
+      {
+        "file": "index.js",
+        "line": 954,
+        "text": "const child = spawn('tgrep', cliArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

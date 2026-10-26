@@ -1,0 +1,90 @@
+{
+  "name": "dsh-webgate",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-26T10:08:47.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/portal.js",
+        "line": 13,
+        "text": "import { createServer, request } from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/portal.js",
+        "line": 12,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/portal.js",
+        "line": 76,
+        "text": "for (const [token, exp] of Object.entries(JSON.parse(readFileSync(sessionFile, \"utf8\")))) {"
+      },
+      {
+        "file": "lib/portal.js",
+        "line": 82,
+        "text": "try { writeFileSync(sessionFile, JSON.stringify(Object.fromEntries(sessions))); } catch { /* best effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "child = spawn(binary, [\"tunnel\", \"--url\", `http://127.0.0.1:${port}`, \"--no-autoupdate\"], { stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 277,
+        "text": "child = spawn(binary, [\"-c\", configPath], { stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "webRuntime",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 170,
+      "text": "scp deploy/frp-server-setup.sh root@<服务器IP>:/root/"
+    },
+    {
+      "file": "README.md",
+      "line": 171,
+      "text": "ssh root@<服务器IP> 'FRP_TOKEN=<随机token> FRP_DOMAIN=dsh.example.com   FRP_AUTH_USER=admin FRP_AUTH_PASS=<强密码> bash /root/frp-server-setup.sh'"
+    },
+    {
+      "file": "README.md",
+      "line": 295,
+      "text": "│   └── frp-server-setup.sh # 服务器端一键部署（frps + Caddy，非破坏式）"
+    }
+  ],
+  "skippedEntries": []
+}

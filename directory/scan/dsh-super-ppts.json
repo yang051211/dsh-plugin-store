@@ -1,0 +1,133 @@
+{
+  "name": "dsh-super-ppts",
+  "version": "1.5.1",
+  "scannedAt": "2026-10-26T10:09:02.571Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 525,
+        "text": "return fetch(API + \"/\" + method, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 550,
+        "text": "return fetch(\"/super-ppts/tasks/upload\" + query, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3762,
+        "text": "fetch(UPLOAD + query, { method: \"POST\", headers: { \"content-type\": \"application/octet-stream\" }, body: file })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "rmSync(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 399,
+        "text": "const body = readFileSync(file);"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 446,
+        "text": "const body = readFileSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "export const inject = ['systemPrompt', 'tools', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "disposers.push(ctx.tools.register(pptsCheckTool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "disposers.push(ctx.tools.register(pptsRenderTool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "disposers.push(ctx.tools.register(pptsTemplatesTool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "disposers.push(ctx.tools.register(pptsTaskTool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/templates.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/templates.js",
+        "line": 332,
+        "text": "execFile('soffice', ['--headless', '--convert-to', 'pdf', '--outdir', workDir, pptxPath], { timeout: 60_000, maxBuffer: 8 * 1024 * 1024 }, sofficeError => {"
+      },
+      {
+        "file": "lib/templates.js",
+        "line": 344,
+        "text": "            execFile('pdftoppm', ['-jpeg', '-f', '1', '-l', '1', '-scale-to', '480', pdfPath, join(workDir, 'thumb')], { timeout: 30_000, maxBuffer: 8 * 1024 * "
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 36,
+        "text": "execFile(cmd, [...args], { timeout: timeoutMs, cwd: packageRoot, maxBuffer: 10 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "skills/ppts-html/forms/arch-diagram/assets/gif.js",
+    "skills/ppts-html/forms/arch-diagram/assets/gif.worker.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

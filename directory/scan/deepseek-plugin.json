@@ -1,0 +1,114 @@
+{
+  "name": "deepseek-plugin",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:08:57.241Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 223,
+        "text": "const res = await fetch(`/deepseek-plugin/search?${search.toString()}`);"
+      },
+      {
+        "file": "lib/site.js",
+        "line": 98,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/site.js",
+        "line": 115,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 58,
+        "text": "const res = await fetch(`/deepseek-plugin/search?${search.toString()}`)"
+      },
+      {
+        "file": "src/host-routes.ts",
+        "line": 8,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "* [POS]: deepseek-plugin 的插件主入口（bundle 位置与官方插件完全相同），apply 时创建 HubClient 并向 ctx.tools 注册工具；工具执行只读 + 打开浏览器，永不写用户环境"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/open.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/open.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/open.js",
+        "line": 42,
+        "text": "const child = spawn(command.file, command.args, {"
+      },
+      {
+        "file": "src/open.ts",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/open.ts",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,70 @@
+{
+  "name": "dsh-unsandboxed-winbash",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:08:57.965Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool/exec.js",
+        "line": 31,
+        "text": "import { closeSync, existsSync, lstatSync, mkdtempSync, openSync, writeSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool/index.js",
+        "line": 144,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tool/kit.js",
+        "line": 131,
+        "text": "// (`{ command: { type, required, description } }`). `ctx.tools.register` wants"
+      },
+      {
+        "file": "lib/tool/kit.js",
+        "line": 216,
+        "text": "* Build a tool definition accepted by `ctx.tools.register`, with the same shape"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool/exec.js",
+        "line": 10,
+        "text": "* through a plain `child_process.spawn()` call that does NOT pass"
+      },
+      {
+        "file": "lib/tool/exec.js",
+        "line": 30,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/tool/index.js",
+        "line": 54,
+        "text": "* runner is created by a `child_process.spawn()` without `windowsHide`, so a"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

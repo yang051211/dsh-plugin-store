@@ -1,0 +1,123 @@
+{
+  "name": "deskpet-guard",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:09:03.364Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 116,
+        "text": "return fetch(API + path, opts).then((res) =>"
+      },
+      {
+        "file": "lib/sampler.js",
+        "line": 19,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/events.js",
+        "line": 10,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, existsSync, writeFileSync, statSync, openSync, readSync, closeSync, renameSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/events.js",
+        "line": 40,
+        "text": "mkdirSync(dataDir, { recursive: true })"
+      },
+      {
+        "file": "lib/events.js",
+        "line": 41,
+        "text": "writeFileSync(endpointPath(dataDir), JSON.stringify({ ...info, atMs: Date.now() }, null, 2))"
+      },
+      {
+        "file": "lib/events.js",
+        "line": 52,
+        "text": "return JSON.parse(readFileSync(f, 'utf8'))"
+      },
+      {
+        "file": "lib/events.js",
+        "line": 66,
+        "text": "const j = JSON.parse(readFileSync(f, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 591,
+        "text": "// 兼容老会话：不声明 inject=['tools'] 的宿主里，上面会全部失败 → 明确说清"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 5,
+        "text": "* host 内的 ctx.tools 只对同一个 DSH 实例可见；跨 agent / 跨工具要靠 MCP。"
+      },
+      {
+        "file": "lib/toolkit.js",
+        "line": 6,
+        "text": "*   ctx.effect(() => ctx.tools.register(defineTool({ ... })), 'label')"
+      },
+      {
+        "file": "lib/toolkit.js",
+        "line": 139,
+        "text": "return ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/pet.js",
+        "line": 17,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 12,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 40,
+        "text": "spawnSync(ps, ['-NoProfile', '-NonInteractive', '-Command', wrapped], {"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 92,
+        "text": "const r = spawnSync(c, ['-NoProfile', '-Command', 'exit 0'], { stdio: 'ignore', timeout: 8000, windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/webview2/Microsoft.Web.WebView2.Core.dll",
+    "vendor/webview2/Microsoft.Web.WebView2.WinForms.dll",
+    "vendor/webview2/WebView2Loader.dll",
+    "vendor/webview2/x86/WebView2Loader.dll"
+  ],
+  "requiredServices": [
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "dsh-progress-narrator",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:08:55.790Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 208,
+        "text": "runtime.fetch(endpoint, { credentials: 'same-origin', cache: 'no-store', signal: controller.signal }).then(async res => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 222,
+        "text": "        const res = await runtime.fetch(endpoint, { method: 'PATCH', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.str"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 319,
+        "text": "const res = await runtime.fetch(API + '?session=' + encodeURIComponent(sid), { cache: 'no-store', credentials: 'same-origin', signal: controller.signal })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 55,
+        "text": "const res = await runtime.fetch(API + '?session=' + encodeURIComponent(sid), { cache: 'no-store', credentials: 'same-origin', signal: controller.signal })"
+      },
+      {
+        "file": "src/settings-ui.js",
+        "line": 14,
+        "text": "runtime.fetch(endpoint, { credentials: 'same-origin', cache: 'no-store', signal: controller.signal }).then(async res => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 3,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('package.json', root), 'utf8'))"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 4,
+        "text": "const protocol = readFileSync(new URL('lib/protocol.js', root), 'utf8').replace(/^export /gm, '')"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 5,
+        "text": "const client = readFileSync(new URL('src/client.js', root), 'utf8').replace(/^export /gm, '').replace(/^import .*$/gm, '')"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 6,
+        "text": "const tools = readFileSync(new URL('src/tool-fold.js', root), 'utf8').replace(/^export /gm, '')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

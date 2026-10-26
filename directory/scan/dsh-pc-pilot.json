@@ -1,0 +1,132 @@
+{
+  "name": "dsh-pc-pilot",
+  "version": "0.4.10",
+  "scannedAt": "2026-10-26T10:09:00.498Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-session.js",
+        "line": 132,
+        "text": "const ws = new WebSocket(url)"
+      },
+      {
+        "file": "lib/browser-session.js",
+        "line": 683,
+        "text": "=decodeURIComponent(m[1])}const r=await fetch(f,{method,credentials:'include',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:method==='GET'?u"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser-session.js",
+        "line": 2,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/browser-session.js",
+        "line": 259,
+        "text": "fs.mkdirSync(downloadDir, { recursive: true })"
+      },
+      {
+        "file": "lib/browser-session.js",
+        "line": 418,
+        "text": "fs.mkdirSync(SCREENSHOT_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/browser-session.js",
+        "line": 420,
+        "text": "fs.writeFileSync(file, Buffer.from(shot.data, 'base64'), { flag: 'wx', mode: 0o600 })"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "// cordis: apply(ctx) touches ctx.tools — declare the dependency so apply runs"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "export const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1136,
+        "text": "  diag('apply called; ctx.tools=' + (ctx.tools ? 'present' : 'MISSING') + ' register=' + typeof ctx.tools?.register + ' ctx.skills=' + (ctx.skills ? 'present' :"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1137,
+        "text": "if (typeof ctx.tools?.register !== 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1138,
+        "text": "console.error(LOG_TAG + ' ctx.tools.register unavailable on host ctx; computer tool NOT registered')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "statusbarProcess = spawn(PS_EXE, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', STATUSBAR_TARGET], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 212,
+        "text": "child = spawn(PS_EXE, ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "child = spawn(PS_EXE, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/wgc/dsh-pc-pilot-wgc.exe"
+  ],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 83,
+      "text": "npm install -g dsh-pc-pilot"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 96,
+      "text": "npm install -g dsh-pc-pilot"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,98 @@
+{
+  "name": "dsh-astrbot-gateway",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:09:02.585Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 354,
+        "text": "const res = await fetch(access.pingUrl, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 383,
+        "text": "const res = await fetch(access.sendUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { readFile, writeFile, mkdir, readdir, rename, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "const text = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 221,
+        "text": "await writeFile(tmp, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "await mkdir(paths.outbox, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 272,
+        "text": "await mkdir(paths.outbox, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1156,
+        "text": "export const inject = ['tools', 'timer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1281,
+        "text": "// 严格注入下 ctx.tools 一定有（inject 声明过）；这里只探测定时器形态，"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1284,
+        "text": "runtime.capabilities.tools = typeof ctx.tools?.register === 'function'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1324,
+        "text": "//   然后把**编译结果**交给 ctx.tools.register()。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1347,
+        "text": "ctx.logger?.warn?.('[dsh-gateway] ctx.tools.register 不可用，工具不会注册。')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

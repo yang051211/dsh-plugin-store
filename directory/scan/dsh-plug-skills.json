@@ -1,0 +1,107 @@
+{
+  "name": "dsh-plug-skills",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:08:50.848Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 94,
+        "text": "return fetch(url, { headers: { accept: \"application/json\" } }).then((res) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 215,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "index.js",
+        "line": 281,
+        "text": "* 经 HTTPS 把远端文件下载到本地（代理走 curl -o，直连用 fetch）。"
+      },
+      {
+        "file": "index.js",
+        "line": 338,
+        "text": "const res = await fetch(url, { signal: controller.signal, redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { cp, mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 84,
+        "text": "const parsed = JSON.parse(readFileSync(settingsPath(), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "await writeFile(settingsPath(), JSON.stringify(data, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "await writeFile(settingsPath(), JSON.stringify(data, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 135,
+        "text": "curlOk = spawnSync('curl', ['--version'], { timeout: 5000 }).status === 0"
+      },
+      {
+        "file": "index.js",
+        "line": 161,
+        "text": "child = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 304,
+        "text": "child = spawn('curl', args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 500,
+        "text": "const tar = spawnSync('tar', ['-xzf', tarball, '-C', dir, '--strip-components=1'], { timeout: 120000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

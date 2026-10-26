@@ -1,0 +1,101 @@
+{
+  "name": "dsh-plugin-doubao-image",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:53.438Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cdp.mjs",
+        "line": 52,
+        "text": "const res = await fetch(endpoint(port), { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/cdp.mjs",
+        "line": 63,
+        "text": "const res = await fetch(endpoint(port, '/json/list'), { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/cdp.mjs",
+        "line": 115,
+        "text": "const ws = new WebSocket(webSocketDebuggerUrl, { perMessageDeflate: false })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cdp.mjs",
+        "line": 14,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/doubao.mjs",
+        "line": 33,
+        "text": "import { mkdir, readdir, rename, rm, stat, copyFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/doubao.mjs",
+        "line": 35,
+        "text": "import { readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/doubao.mjs",
+        "line": 680,
+        "text": "buffer = readFileSync(source)"
+      },
+      {
+        "file": "lib/doubao.mjs",
+        "line": 705,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 186,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doubao.mjs",
+        "line": 31,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/doubao.mjs",
+        "line": 130,
+        "text": "const child = spawn(binary, [`--remote-debugging-port=${port}`, '--remote-allow-origins=*'], {"
+      },
+      {
+        "file": "lib/dsh-install.mjs",
+        "line": 32,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

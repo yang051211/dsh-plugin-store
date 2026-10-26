@@ -1,0 +1,70 @@
+{
+  "name": "dsh-squeeze-command",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:06.949Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 667,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 788,
+        "text": "fs.writeFileSync(file, html)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 672,
+        "text": "export const inject = ['commands', 'tokenMeter', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 708,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 664,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 790,
+        "text": "try { spawn('xdg-open', [file], { detached: true, stdio: 'ignore' }).unref() } catch { /* viewer optional */ }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "tokenMeter",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

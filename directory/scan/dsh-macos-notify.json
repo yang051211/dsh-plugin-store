@@ -1,0 +1,77 @@
+{
+  "name": "dsh-macos-notify",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:09:04.847Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { constants as fsConstants } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 3,
+        "text": "import { chmod, copyFile, mkdir, mkdtemp, readFile, readdir, rm, stat, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 102,
+        "text": "const parsed = JSON.parse(await readFile(soundRegistryPath(), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 112,
+        "text": "await mkdir(resolve(path, '..'), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "await writeFile(path, `${JSON.stringify(entries, null, 2)}\\n`, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 330,
+        "text": "execFile('osascript', ['-e', buildNotificationScript(title, body, sound)], (err) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 371,
+        "text": "execFile('ioreg', ['-c', 'IOHIDSystem', '-d', '1'], (err, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

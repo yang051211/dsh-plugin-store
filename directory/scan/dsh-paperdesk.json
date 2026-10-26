@@ -1,0 +1,127 @@
+{
+  "name": "dsh-paperdesk",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:02.737Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 8,
+        "text": "*   - 数据只用 `fetch('/paperdesk/api/*')`，不碰宿主的任何内部对象。"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 160,
+        "text": "const response = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/pdf.js",
+        "line": 20,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 72,
+        "text": "pathlib.Path(dest).parent.mkdir(parents=True, exist_ok=True)"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 251,
+        "text": "await mkdir(dirname(dest), { recursive: true })"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 252,
+        "text": "await writeFile(dest, buffer)"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 285,
+        "text": "await mkdir(dirname(deps.scriptPath), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/compat.js",
+        "line": 12,
+        "text": "*  3. **只用最稳的接口面**：`ctx.tools.register` / `ctx.webServer.register` / `ctx.get`。"
+      },
+      {
+        "file": "lib/core/compat.js",
+        "line": 143,
+        "text": "errors.push('ctx.tools 不可用：无法注册论文工具，请确认组合配置里包含工具注册表（dsh-base 已提供）。')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "*          ├─ ctx.tools.register    ← tools.js（7 个模型工具）"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 148,
+        "text": "ctx.effect(() => tools.register(definition))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "if (options.registerTools && typeof tools?.register !== 'function') missing.push('ctx.tools')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/pdf.js",
+        "line": 15,
+        "text": "*  - 所有子进程都用 `spawn(command, args)` 数组形式调用，不经过 shell：路径里的空格、"
+      },
+      {
+        "file": "lib/core/pdf.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/service.js",
+        "line": 423,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/core/service.js",
+        "line": 427,
+        "text": "? spawn('explorer', ['/select,', target], { detached: true, stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/core/service.js",
+        "line": 429,
+        "text": "? spawn('open', ['-R', target], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 151,
+      "text": "2. `python` / `python3` / `py` + **PyMuPDF**（`pip install pymupdf`）或 **pypdf**"
+    }
+  ],
+  "skippedEntries": []
+}

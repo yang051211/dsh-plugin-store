@@ -1,0 +1,96 @@
+{
+  "name": "dsh-1bot",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:08:46.360Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 66,
+        "text": "description: \"Max messages to fetch (default 20, max 100)\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 1,
+        "text": "import { mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 90,
+        "text": "await mkdir(cwd, { recursive: true });"
+      },
+      {
+        "file": "lib/profile-setup.js",
+        "line": 4,
+        "text": "import { readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/profile-setup.js",
+        "line": 69,
+        "text": "content = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/profile-setup.js",
+        "line": 76,
+        "text": "await writeFile(file, content.replace(/\\s*$/, \"\\n\") + buildPatchTemplate(config), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = [\"tools\", \"agents\", \"sessions\", \"sessionPersistence\", \"agentDefaultModel\"];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 10,
+        "text": "* 在 `ctx.tools` 上注册全部 OneBot 工具。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 16,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 55,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 106,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "sessionPersistence",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

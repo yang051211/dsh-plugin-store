@@ -1,0 +1,99 @@
+{
+  "name": "dsh-auto-approval-llm",
+  "version": "0.0.2",
+  "scannedAt": "2026-10-26T10:09:16.524Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 856,
+        "text": "const feedback = globalThis.fetch(FEEDBACK_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 887,
+        "text": "const feedback = globalThis.fetch(FEEDBACK_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 974,
+        "text": "const data = await (await globalThis.fetch(`${REVIEW_STATUS_ROUTE}?callId=${encodeURIComponent(callId)}`, { credentials: \"same-origin\" })).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1519,
+        "text": "globalThis.fetch(SETTINGS_ROUTE, { credentials: \"same-origin\" }).then((r) => r.json()).then((data) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1534,
+        "text": "globalThis.fetch(HISTORY_ROUTE, { credentials: \"same-origin\" }).then((r) => r.json()).then((data) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auto/artifacts.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auto/audit.js",
+        "line": 10,
+        "text": "import { appendFileSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/auto/audit.js",
+        "line": 26,
+        "text": "appendFileSync(AUDIT_FILE, `${line}\\n`);"
+      },
+      {
+        "file": "lib/auto/audit.js",
+        "line": 28,
+        "text": "writeFileSync(AUDIT_FILE, trimAuditTail(readFileSync(AUDIT_FILE, 'utf8')));"
+      },
+      {
+        "file": "lib/auto/review-mode.js",
+        "line": 11,
+        "text": "import { readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['approval', 'permissionPresets', 'tools', 'llm', 'agents', 'webServer', 'settings', 'commands'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "commands",
+    "llm",
+    "permissionPresets",
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

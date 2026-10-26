@@ -1,0 +1,97 @@
+{
+  "name": "dsh-plugin-88api-image",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:18.285Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/http.js",
+        "line": 40,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "src/http.js",
+        "line": 67,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "src/http.js",
+        "line": 121,
+        "text": "const response = await fetch(current, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.js",
+        "line": 1,
+        "text": "import { chmod, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/config.js",
+        "line": 37,
+        "text": "const raw = await readFile(configPath, 'utf8')"
+      },
+      {
+        "file": "src/config.js",
+        "line": 48,
+        "text": "await mkdir(parent, { recursive: true })"
+      },
+      {
+        "file": "src/config.js",
+        "line": 51,
+        "text": "await writeFile(temporary, `${JSON.stringify(normalized, null, 2)}\\n`, { encoding: 'utf8', mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "src/config.js",
+        "line": 55,
+        "text": "await rm(temporary, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 116,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 149,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 201,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
