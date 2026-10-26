@@ -4,6 +4,7 @@ import type { CatalogSnapshot } from './catalog.ts'
 /** Same-origin paths served by the Host half (src/host/index-route.ts); literals because the browser never imports Host code. */
 const INDEX_ROUTE = '/api/plugin-store/index'
 const DETAIL_ROUTE = '/api/plugin-store/detail'
+const README_ROUTE = '/api/plugin-store/readme'
 
 async function call<T>(url: string): Promise<T> {
   const response = await fetch(url, { headers: { accept: 'application/json' } })
@@ -25,4 +26,9 @@ export function loadCatalog(refresh = false): Promise<CatalogSnapshot> {
 /** One plugin's detail document. */
 export async function loadDetail(name: string): Promise<any> {
   return (await call<{ detail: unknown }>(`${DETAIL_ROUTE}?name=${encodeURIComponent(name)}`)).detail
+}
+
+/** A listed plugin's README (markdown, '' when it has none) and the base its relative links resolve against. */
+export function loadReadme(name: string): Promise<{ markdown: string; base: string }> {
+  return call<{ markdown: string; base: string }>(`${README_ROUTE}?name=${encodeURIComponent(name)}`)
 }

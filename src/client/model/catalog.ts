@@ -1,4 +1,4 @@
-/** The store's view of the catalog: plugins with their store facts, categories, sections and the featured banner. */
+/** The store's view of the directory: plugins with their stats and automatic detection, categories, sorting and pages. */
 import type { LocalizedText } from './localize.ts'
 import { localize } from './localize.ts'
 
@@ -13,63 +13,50 @@ export interface CatalogSnapshot {
   compatibility: Record<string, Compatibility>
 }
 
+export const PERMISSION_KEYS = ['network', 'fileSystem', 'childProcess', 'agentTools', 'installScripts'] as const
+/** What automatic detection found in the listed version's files; a hint, not a review. */
+export type Permissions = Record<(typeof PERMISSION_KEYS)[number], boolean>
+
 export interface StorePlugin {
   name: string
   title: LocalizedText
-  tagline: LocalizedText
+  description: LocalizedText
   /** Absolute icon URL, or null. */
   icon: string | null
   author: string | null
   category: string
   keywords: string[]
   version: string
+  /** Unix seconds the listed version was published. */
   publishTimestamp: number
+  /** Unix seconds the package first appeared on npm. */
+  created: number
   enginesDsh: string | null
-  stats: { stars: number | null; weeklyDownloads: number | null; fetchedAt: string | null }
-  review: { version: string; date: string }
-  upstreamLatest: string | null
+  stats: { stars: number | null; weeklyDownloads: number | null }
+  /** Null until the listed version has been scanned. */
+  permissions: Permissions | null
   compatibility: Compatibility
   repository: { url: string; directory?: string } | null
   homepage: string | null
-  /** After installing: where to find it, what to try, and a step it still needs; null when the catalog has none. */
-  usage: PluginUsage | null
-  /** The reviewer's verdict on what the plugin may do; null when the index has none. */
-  permissions: Permissions | null
 }
 
-export const PERMISSION_KEYS = ['network', 'fileSystem', 'childProcess', 'agentTools', 'installScripts'] as const
-export type Permissions = Record<(typeof PERMISSION_KEYS)[number], boolean>
-
-function permissionsOf(raw: any): Permissions | null {
-  if (!raw || typeof raw !== 'object') return null
-  const out = {} as Permissions
-  for (const key of PERMISSION_KEYS) {
-    if (typeof raw[key] !== 'boolean') return null
-    out[key] = raw[key]
-  }
-  return out
-}
-
-export interface PluginUsage { where: LocalizedText; try: LocalizedText; setup?: LocalizedText }
-
-export interface Grouping { id: string; title: LocalizedText; plugins: StorePlugin[]; description?: LocalizedText }
+export interface Grouping { id: string; title: LocalizedText; plugins: StorePlugin[] }
 
 export interface Catalog {
-  title: LocalizedText
   plugins: StorePlugin[]
   byName: Map<string, StorePlugin>
   categories: Grouping[]
-  sections: Grouping[]
-  featured: { plugin: StorePlugin; title: LocalizedText; subtitle: LocalizedText; gradient: [string, string] } | null
-  /** The store release the catalog was published with; null when the catalog does not say. */
+  /** The store release the directory was published with; null when it does not say. */
   storeVersion: string | null
+  /** When the directory was built; null when it does not say. */
+  generatedAt: string | null
   stale: boolean
   dshVersion: string | null
 }
 
-/** Banner colors used when the catalog gives none or invalid ones. */
-export const DEFAULT_GRADIENT: [string, string] = ['#4338ca', '#db2777']
-const HEX_COLOR = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i
+export type SortKey = 'popular' | 'updated' | 'new' | 'stars'
+export const SORT_KEYS: SortKey[] = ['popular', 'updated', 'new', 'stars']
+export const PAGE_SIZE = 30
 
 const absolute = (ref: unknown, base: string): string | null => {
   if (typeof ref !== 'string' || ref === '') return null
@@ -81,92 +68,94 @@ const absolute = (ref: unknown, base: string): string | null => {
   }
 }
 
-function usageOf(raw: any): PluginUsage | null {
-  if (!raw || typeof raw !== 'object' || !raw.where || !raw.try) return null
-  return { where: raw.where, try: raw.try, ...(raw.setup ? { setup: raw.setup } : {}) }
+function permissionsOf(raw: any): Permissions | null {
+  if (!raw || typeof raw !== 'object') return null
+  const out = {} as Permissions
+  for (const key of PERMISSION_KEYS) {
+    if (typeof raw[key] !== 'boolean') return null
+    out[key] = raw[key]
+  }
+  return out
 }
+
+const count = (value: unknown): number | null => (typeof value === 'number' && Number.isFinite(value) ? value : null)
 
 function toPlugin(entry: any, snapshot: CatalogSnapshot): StorePlugin {
   const latest = entry['dist-tags']?.latest
   const listed = entry.versions.find((v: any) => v.version === latest) ?? entry.versions[0]
   const store = entry.store ?? {}
+  const published = listed.publishTimestamp ?? 0
   return {
     name: entry.name,
     title: entry.title ?? entry.name,
-    tagline: store.tagline ?? entry.description ?? '',
+    // Indexes from before the directory kept the pitch in store.tagline.
+    description: store.tagline ?? entry.description ?? '',
     icon: absolute(entry.icon, snapshot.indexUrl),
     author: typeof entry.author === 'string' ? entry.author : null,
-    category: entry.metadata?.category ?? '',
+    category: entry.metadata?.category ?? 'other',
     keywords: Array.isArray(entry.metadata?.keywords) ? entry.metadata.keywords : [],
     version: listed.version,
-    publishTimestamp: listed.publishTimestamp ?? 0,
+    publishTimestamp: published,
+    created: count(store.created) ?? published,
     enginesDsh: listed.engines?.dsh ?? null,
-    stats: {
-      stars: store.stats?.stars ?? null,
-      weeklyDownloads: store.stats?.weeklyDownloads ?? null,
-      fetchedAt: store.stats?.fetchedAt ?? null,
-    },
-    review: { version: store.review?.version ?? listed.version, date: store.review?.date ?? '' },
-    upstreamLatest: store.upstreamLatest ?? null,
+    stats: { stars: count(store.stats?.stars), weeklyDownloads: count(store.stats?.weeklyDownloads) },
+    permissions: permissionsOf(store.permissions),
     compatibility: snapshot.compatibility[entry.name] ?? 'unknown',
     repository: entry.repository ?? null,
     homepage: entry.homepage ?? null,
-    usage: usageOf(store.usage),
-    permissions: permissionsOf(store.permissions),
   }
 }
 
-const DAY_MS = 86_400_000
-/** Monday 1970-01-05, the first day of week 0. */
-const FIRST_MONDAY = Date.UTC(1970, 0, 5)
-
-/** Whole weeks since Monday 1970-01-05 on the local calendar, so the banner turns over at local Monday midnight. */
-function weekNumber(now: Date): number {
-  return Math.floor((Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) - FIRST_MONDAY) / DAY_MS / 7)
-}
-
-/** Build the store's catalog from the Host snapshot; `now` picks this week's featured banner. */
-export function buildCatalog(snapshot: CatalogSnapshot, now: Date = new Date()): Catalog {
+/** Build the store's catalog from the Host snapshot. */
+export function buildCatalog(snapshot: CatalogSnapshot): Catalog {
   const doc = snapshot.index
   const plugins: StorePlugin[] = doc.plugins.map((entry: any) => toPlugin(entry, snapshot))
-  const byName = new Map(plugins.map(p => [p.name, p]))
   const declared: Record<string, { title: LocalizedText }> = doc.metadata?.categories ?? {}
   const order: string[] = Array.isArray(doc.store?.categoryOrder) ? doc.store.categoryOrder : Object.keys(declared)
-  const ids = [...new Set([...order, ...Object.keys(declared)])]
-  const categories = ids
+  const categories = [...new Set([...order, ...Object.keys(declared)])]
     .map(id => ({ id, title: declared[id]?.title ?? id, plugins: plugins.filter(p => p.category === id) }))
     .filter(c => c.plugins.length > 0)
-  const sections = (Array.isArray(doc.store?.sections) ? doc.store.sections : [])
-    .map((s: any) => ({ id: s.id, title: s.title ?? s.id, description: s.description ?? '', plugins: (s.plugins ?? []).map((n: string) => byName.get(n)).filter(Boolean) }))
-    .filter((s: Grouping) => s.plugins.length > 0)
-  const banner = (raw: any): Catalog['featured'] => {
-    const plugin = raw ? byName.get(raw.plugin) : undefined
-    if (!plugin) return null
-    const gradient: [string, string] = Array.isArray(raw.gradient) && raw.gradient.length === 2 && raw.gradient.every((c: unknown) => typeof c === 'string' && HEX_COLOR.test(c))
-      ? [raw.gradient[0], raw.gradient[1]]
-      : DEFAULT_GRADIENT
-    return { plugin, title: raw.title ?? '', subtitle: raw.subtitle ?? '', gradient }
-  }
-  const rotation = (Array.isArray(doc.store?.featuredRotation) ? doc.store.featuredRotation : []).map(banner).filter(Boolean)
   return {
-    title: doc.title,
     plugins,
-    byName,
+    byName: new Map(plugins.map(p => [p.name, p])),
     categories,
-    sections,
-    featured: rotation.length > 0 ? rotation[weekNumber(now) % rotation.length] : banner(doc.store?.featured),
     storeVersion: typeof doc.store?.self?.version === 'string' ? doc.store.self.version : null,
+    generatedAt: typeof doc.store?.generatedAt === 'string' ? doc.store.generatedAt : null,
     stale: snapshot.stale,
     dshVersion: snapshot.dshVersion,
   }
 }
 
-/** Plugins whose name, title, pitch (any language) or keywords contain the query, case-insensitively. */
+const KEY_OF: Record<SortKey, (p: StorePlugin) => number | null> = {
+  popular: p => p.stats.weeklyDownloads,
+  updated: p => p.publishTimestamp || null,
+  new: p => p.created || null,
+  stars: p => p.stats.stars,
+}
+
+/** A sorted copy: largest first, unknown values last, package name breaking ties. */
+export function sortPlugins(plugins: StorePlugin[], key: SortKey): StorePlugin[] {
+  const of = KEY_OF[key]
+  return [...plugins].sort((a, b) => {
+    const x = of(a), y = of(b)
+    if (x !== y) return x === null ? 1 : y === null ? -1 : y - x
+    return a.name < b.name ? -1 : a.name > b.name ? 1 : 0
+  })
+}
+
+/** One page of a list; the page number is clamped to the pages there are. */
+export function pageOf<T>(list: T[], page: number, size: number = PAGE_SIZE): { items: T[]; page: number; pages: number } {
+  const pages = Math.max(1, Math.ceil(list.length / size))
+  const at = Math.min(Math.max(1, Math.floor(page) || 1), pages)
+  return { items: list.slice((at - 1) * size, at * size), page: at, pages }
+}
+
+/** Plugins whose name, title, description (any language), keywords or author contain the query, case-insensitively. */
 export function searchPlugins(catalog: Catalog, query: string): StorePlugin[] {
   const needle = query.trim().toLowerCase()
   if (needle === '') return catalog.plugins
   const texts = (text: LocalizedText) => (typeof text === 'string' ? [text] : Object.values(text))
-  return catalog.plugins.filter(p => [p.name, ...texts(p.title), ...texts(p.tagline), ...p.keywords]
+  return catalog.plugins.filter(p => [p.name, ...texts(p.title), ...texts(p.description), ...p.keywords, p.author ?? '']
     .some(value => typeof value === 'string' && value.toLowerCase().includes(needle)))
 }
 
