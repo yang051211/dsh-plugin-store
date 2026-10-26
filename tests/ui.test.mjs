@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { buildCatalog } from '../lib/test/model.js'
-import { Home, ListView, DetailView, InstallButton, ErrorBoundary, makeTranslate } from '../lib/test/ui.js'
+import { Home, ListView, DetailView, InstallButton, ErrorBoundary, makeTranslate, PluginCard, keywordsOf, initialsOf, ScenesView, SceneView, scenesOf, AboutView } from '../lib/test/ui.js'
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), 'utf8'))
 const zh = read('locale/zh.json').ui
@@ -23,79 +23,120 @@ test('translate interpolates parameters', () => {
   assert.equal(t('reviewed', { date: '2026-10-19' }), '已审核 · 2026-10-19')
 })
 
-test('home shows the intro, the weekly pick, categories and sections', () => {
-  // The pick rotates weekly, so check whichever entry this week chose.
+test('home shows the directory header, the search and the trending and first two scene sections as cards', () => {
   const catalog = catalogWith()
-  const { plugin, subtitle } = catalog.featured
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  for (const text of ['生态家园', '本周推荐', plugin.title.zh, subtitle.zh, '新装必备', '长对话不迷路', '界面与体验', '工具与能力', '对话目录', '上下文洞察']) {
+  for (const text of [zh.homeTitle, zh.searchButton, zh.linkBrowseAll, zh.linkScenes, zh.linkRecommend, '本周热门', '新装必备', '长对话不迷路', '对话目录']) {
     assert.ok(out.includes(text), `missing ${text}`)
   }
-  assert.equal(out.includes('gradient'), false, 'no gradient banner')
-  assert.equal(out.includes('ps-card'), false, 'rows, not cards')
+  assert.ok(out.includes(t('homeIntro', { count: String(catalog.plugins.length) })))
+  assert.ok(out.includes('class="ps-card"'))
   assert.equal(out.includes('精选插件商城'), false, 'renamed')
+  assert.equal(out.includes('本周推荐'), false, 'no weekly pick any more')
 })
 
-test('the weekly pick stays short: one line, its permissions, install and details', () => {
+test('home shows two scenes, at most four cards each, and no install buttons', () => {
   const catalog = catalogWith()
   const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  const pick = out.slice(out.indexOf('class="ps-pick"'), out.indexOf('class="ps-section"'))
-  assert.ok(pick.includes(t('reviewedVersion', { version: catalog.featured.plugin.review.version })))
-  assert.ok(pick.includes(zh.viewDetails))
-  assert.ok(pick.includes('ps-btn-primary'), 'the one filled button on the page')
-  for (const extra of [zh.usageWhere, zh.usageTry]) assert.equal(pick.includes(extra), false, `no ${extra} on the home page`)
+  const scenes = catalog.sections.filter(s => s.id !== 'hot')
+  assert.equal(out.includes(scenes[2].title.zh + '</h2>'), false, 'the third scene waits on the scenes page')
+  assert.equal(out.split('class="ps-section"').length - 1, 3)
+  for (const block of out.split('class="ps-section"').slice(1)) assert.ok(block.split('class="ps-card"').length - 1 <= 4)
+  assert.equal(out.includes(`>${zh.install}<`), false, 'installing happens on the plugin page')
 })
 
-test('categories sit under the pick, above the theme sections', () => {
-  const out = html(createElement(Home, { catalog: catalogWith(), installed: new Map(), lang: 'zh', t, ...handlers }))
-  const cats = out.indexOf('class="ps-cats"')
-  assert.ok(cats > 0)
-  assert.ok(cats < out.indexOf('class="ps-pick"'), 'categories come first, under the title')
-  assert.ok(cats < out.indexOf('新装必备'), 'before the theme sections')
-})
-
-test('home hides the pick without a featured plugin', () => {
-  const catalog = catalogWith(doc => { doc.store.featured = null; delete doc.store.featuredRotation; return doc })
-  const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  assert.equal(out.includes('本周推荐'), false)
-  assert.ok(out.includes('新装必备'))
-})
-
-test('a row lists what the plugin may do, the reviewed version, and an outlined install button', () => {
+test('a card shows the category and reviewed version, its chips, the pitch, stars and downloads', () => {
   const catalog = catalogWith()
-  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-context')], installed: new Map(), lang: 'zh', t, ...handlers }))
-  const perms = catalog.byName.get('dsh-context').permissions
-  for (const [key, label] of [['network', zh.permNetwork], ['fileSystem', zh.permFileSystem]]) assert.equal(out.includes(label), Boolean(perms[key]), key)
-  assert.ok(out.includes(t('reviewedVersion', { version: catalog.byName.get('dsh-context').review.version })))
-  assert.ok(out.includes('class="ps-row"'))
-  assert.equal(out.includes('ps-btn-primary'), false, 'list buttons are outlined')
+  const plugin = catalog.byName.get('dsh-context')
+  const card = html(createElement(PluginCard, { plugin, categoryTitle: '工具与能力', installed: new Map(), dshVersion: null, lang: 'zh', t, ...handlers }))
+  for (const text of [`#${plugin.category}`, `v${plugin.review.version}`, '工具与能力', plugin.tagline.zh, '☆', '↓', zh.cardView]) assert.ok(card.includes(text), `missing ${text}`)
+  for (const word of keywordsOf(plugin)) assert.ok(card.includes(`>${word}<`))
 })
 
-test('a plugin that touches nothing says so', () => {
-  const catalog = catalogWith(doc => { doc.plugins.find(p => p.name === 'dsh-chat-toc').store.permissions = { network: false, fileSystem: false, agentTools: false, childProcess: false, installScripts: false }; return doc })
-  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-chat-toc')], installed: new Map(), lang: 'zh', t, ...handlers }))
-  assert.ok(out.includes(zh.touchesNothing))
-})
-
-test('weekly downloads show in the hot section only', () => {
+test('a card says when its plugin is installed', () => {
   const catalog = catalogWith()
-  const out = html(createElement(Home, { catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
-  const hot = out.slice(out.indexOf('本周热门'), out.indexOf('新装必备'))
-  const rest = out.slice(out.indexOf('新装必备'))
-  assert.ok(hot.includes(zh.weeklyDownloadsShort.split('{')[0]))
-  assert.equal(rest.includes(zh.weeklyDownloadsShort.split('{')[0]), false)
+  const plugin = catalog.byName.get('dsh-context')
+  const card = html(createElement(PluginCard, { plugin, categoryTitle: 'x', installed: new Map([['dsh-context', { version: plugin.version }]]), dshVersion: null, lang: 'zh', t, ...handlers }))
+  assert.ok(card.includes('ps-card-done'))
+  assert.ok(card.includes(zh.installed))
 })
 
-test('a plugin without an icon gets a plain letter tile, not a gradient', () => {
+test('card keywords leave out generic ecosystem words and keep three at most', () => {
+  const plugin = { keywords: ['dsh', 'plugin', 'deepseek-harness', 'agent', 'chat', 'toc', 'outline', 'conversation'] }
+  assert.deepEqual(keywordsOf(plugin), ['chat', 'toc', 'outline'])
+})
+
+test('a plugin without an icon gets its initials on a soft tile', () => {
+  assert.equal(initialsOf('dsh-chat-toc'), 'CT')
+  assert.equal(initialsOf('@tencent-connect/dsh-qqbot'), 'QQ')
+  assert.equal(initialsOf('dsh-plugin-memory'), 'ME')
   const catalog = catalogWith(doc => { delete doc.plugins.find(p => p.name === 'dsh-chat-toc').icon; return doc })
-  const out = html(createElement(ListView, { title: 't', plugins: [catalog.byName.get('dsh-chat-toc')], installed: new Map(), lang: 'zh', t, ...handlers }))
-  assert.ok(out.includes('ps-icon-letter'))
-  assert.equal(out.includes('gradient'), false)
+  const card = html(createElement(PluginCard, { plugin: catalog.byName.get('dsh-chat-toc'), categoryTitle: 'x', installed: new Map(), dshVersion: null, lang: 'zh', t, ...handlers }))
+  assert.ok(card.includes('ps-icon-letters'))
+  assert.ok(card.includes('>CT<'))
+})
+
+test('the list has a category sidebar with counts and marks the open category', () => {
+  const catalog = catalogWith()
+  const category = catalog.categories[0]
+  const out = html(createElement(ListView, { title: category.title.zh, plugins: category.plugins, catalog, filter: { kind: 'category', id: category.id }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  for (const c of catalog.categories) assert.ok(out.includes(`${c.title.zh}<i>${c.plugins.length}</i>`), c.id)
+  assert.ok(out.includes(`${zh.allPlugins}<i>${catalog.plugins.length}</i>`))
+  assert.equal(out.split('ps-side-on').length - 1, 1)
+  assert.ok(out.includes(`${category.plugins.length} / ${catalog.plugins.length}`))
+  assert.equal(out.split('class="ps-card"').length - 1, category.plugins.length)
 })
 
 test('list shows an empty state', () => {
-  const out = html(createElement(ListView, { title: '搜索：zzz', plugins: [], installed: new Map(), lang: 'zh', t, ...handlers }))
+  const catalog = catalogWith()
+  const out = html(createElement(ListView, { title: '搜索：zzz', plugins: [], catalog, filter: { kind: 'search', query: 'zzz' }, installed: new Map(), lang: 'zh', t, ...handlers }))
   assert.ok(out.includes('没有找到插件'))
+  assert.ok(out.includes('value="zzz"'), 'the search field keeps the query')
+  assert.equal(out.includes('ps-side-on'), false, 'no category is open on a search')
+})
+
+test('the scenes page lists every curated scene with its note and count, not trending', () => {
+  const catalog = catalogWith()
+  const out = html(createElement(ScenesView, { catalog, lang: 'zh', t, onOpenScene: noop }))
+  const scenes = scenesOf(catalog)
+  assert.equal(scenes.some(s => s.id === 'hot'), false)
+  assert.equal(out.split('class="ps-scene"').length - 1, scenes.length)
+  for (const scene of scenes) {
+    assert.ok(out.includes(scene.title.zh), scene.id)
+    assert.ok(out.includes(t('scenePlugins', { count: String(scene.plugins.length) })), scene.id)
+    if (scene.description) assert.ok(out.includes(scene.description.zh), scene.id)
+  }
+})
+
+test('a scene page shows its description and every plugin in it', () => {
+  const catalog = catalogWith()
+  const scene = scenesOf(catalog)[0]
+  const out = html(createElement(SceneView, { scene, catalog, installed: new Map(), lang: 'zh', t, ...handlers }))
+  assert.ok(out.includes(scene.title.zh))
+  assert.ok(out.includes(scene.description.zh))
+  assert.ok(out.includes(t('sceneCount', { count: String(scene.plugins.length) })))
+  assert.equal(out.split('class="ps-card"').length - 1, scene.plugins.length)
+})
+
+test('the about page answers every question and links to recommending a plugin', () => {
+  const out = html(createElement(AboutView, { t }))
+  for (const q of ['faqWhat', 'faqVsDiscover', 'faqHowInstall', 'faqWhereIsIt', 'faqWhyOld', 'faqReviewWhat', 'faqNetwork']) {
+    assert.ok(out.includes(zh[q]), q)
+    assert.ok(out.includes(zh[`${q}A`].slice(0, 20)), `${q}A`)
+  }
+  assert.ok(out.includes('https://github.com/yang051211/dsh-plugin-store/issues'))
+})
+
+test('the detail install panel has the primary install button, the package spec to copy and the GitHub link', () => {
+  const catalog = catalogWith()
+  const plugin = catalog.byName.get('dsh-chat-toc')
+  const out = html(createElement(DetailView, { plugin, catalog, detail: { status: 'ready', data: detailOf('dsh-chat-toc') }, installed: new Map(), lang: 'zh', t, ...handlers }))
+  const panel = out.slice(out.indexOf('class="ps-detail-side"'))
+  assert.ok(panel.includes('ps-btn-primary'))
+  assert.ok(panel.includes(`<code>dsh-chat-toc@${plugin.version}</code>`))
+  assert.ok(panel.includes(zh.copy))
+  assert.ok(panel.includes('href="https://github.com/a792883583/dsh-chat-toc"'))
+  assert.ok(panel.includes(t('reviewedVersionDot', { version: plugin.review.version })))
 })
 
 test('detail shows all eight modules', () => {

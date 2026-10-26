@@ -137,7 +137,7 @@ export function buildIndex(curation, upstream, scans, now, storeVersion) {
       .slice(0, HOT_SECTION_SIZE),
   }
   const sections = [hot, ...curation.sections
-    .map(section => ({ id: section.id, title: localized(section.title), plugins: section.plugins.filter(name => names.has(name)) }))]
+    .map(section => ({ id: section.id, title: localized(section.title), ...(section.description ? { description: localized(section.description) } : {}), plugins: section.plugins.filter(name => names.has(name)) }))]
     .filter(section => section.plugins.length > 0)
   // The store picks one entry per week; `featured` keeps the first for clients that predate the rotation.
   const featuredRotation = curation.featured

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { createElement } from 'react'
 import TestRenderer from 'react-test-renderer'
-import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf } from '../lib/test/ui.js'
+import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf, tabOf } from '../lib/test/ui.js'
 
 const { act } = TestRenderer
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
@@ -46,29 +46,75 @@ test('a handed-over plugin opens the confirmation only when it is not installed'
   assert.equal(installs, 0)
 })
 
-test('install buttons wait for the installed list', async () => {
+const cards = root => root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-card')
+const installButtons = root => root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && [zh.install, zh.installed].includes(n.children.join('')))
+async function openFirstCard(root) {
+  await act(async () => { cards(root)[0].props.onClick() })
+  await flush()
+}
+
+test('cards have no install buttons; the plugin page has one, disabled until the installed list arrives', async () => {
   const gate = deferred()
   let root
   await act(async () => {
     root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: () => gate.promise }), onInstall: () => {}, onOpenInstalled: () => {} }))
   })
   await flush()
-  const buttons = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && n.props.disabled === true)
-  assert.ok(buttons.length >= 2, 'install buttons are disabled while the installed list loads')
+  assert.ok(cards(root).length >= 4)
+  assert.equal(installButtons(root).length, 0, 'installing happens on the plugin page')
+  await openFirstCard(root)
+  const waiting = installButtons(root)
+  assert.equal(waiting.length, 1)
+  assert.equal(waiting[0].props.disabled, true, 'disabled while the installed list loads')
   await act(async () => { gate.resolve(new Map()) })
   await flush()
-  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && n.children.join('') === zh.install && !n.props.disabled)
-  assert.ok(enabled.length >= 2)
+  assert.equal(installButtons(root)[0].props.disabled, false)
 })
 
-test('install buttons recover when the installed list cannot be read', async () => {
+test('the install button recovers when the installed list cannot be read', async () => {
   let root
   await act(async () => {
     root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services({ loadInstalled: async () => { throw new Error('no profile') } }), onInstall: () => {}, onOpenInstalled: () => {} }))
   })
   await flush()
-  const enabled = root.root.findAll(n => n.type === 'button' && n.props.className?.includes('ps-btn') && n.children.join('') === zh.install && !n.props.disabled)
-  assert.ok(enabled.length >= 2, 'a failed read must not leave every install button disabled forever')
+  await openFirstCard(root)
+  const [button] = installButtons(root)
+  assert.equal(button.children.join(''), zh.install)
+  assert.equal(button.props.disabled, false, 'a failed read must not leave the install button disabled forever')
+})
+
+test('the nav tabs open their pages, and a scene opens its own page under the scenes tab', async () => {
+  let root
+  await act(async () => {
+    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services(), onInstall: () => {}, onOpenInstalled: () => {} }))
+  })
+  await flush()
+  const tab = label => root.root.find(n => n.type === 'button' && n.parent?.type === 'nav' && n.parent.props.className === 'ps-nav' && n.children.join('') === label)
+  const current = () => root.root.find(n => n.type === 'button' && n.props['aria-current'] === 'page').children.join('')
+  assert.equal(current(), zh.navHome)
+
+  await act(async () => { tab(zh.navScenes).props.onClick() })
+  assert.ok(textOf(root).includes(zh.scenesTitle))
+  await act(async () => { root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-scene')[0].props.onClick() })
+  assert.ok(textOf(root).includes('ps-scene-page'))
+  assert.equal(current(), zh.navScenes)
+
+  await act(async () => { tab(zh.navAll).props.onClick() })
+  assert.ok(textOf(root).includes('ps-side'))
+
+  await act(async () => { tab(zh.navAbout).props.onClick() })
+  assert.ok(textOf(root).includes(zh.faqWhat))
+})
+
+test('tabOf files every view under its tab', () => {
+  assert.equal(tabOf({ view: 'home' }), 'home')
+  assert.equal(tabOf({ view: 'about' }), 'about')
+  assert.equal(tabOf({ view: 'scenes' }), 'scenes')
+  assert.equal(tabOf({ view: 'list', filter: { kind: 'section', id: 'starter' } }), 'scenes')
+  assert.equal(tabOf({ view: 'list', filter: { kind: 'section', id: 'hot' } }), 'all')
+  assert.equal(tabOf({ view: 'list', filter: { kind: 'category', id: 'ui' } }), 'all')
+  assert.equal(tabOf({ view: 'list', filter: { kind: 'search', query: 'x' } }), 'all')
+  assert.equal(tabOf({ view: 'detail', name: 'x' }), 'all')
 })
 
 test('a failed installed-list read is shown, not silently treated as nothing installed', async () => {
@@ -93,7 +139,7 @@ test('retry after a failed load shows the new catalog', async () => {
   await act(async () => { first.resolve(Promise.reject(new Error('first failed'))) })
   await flush()
   const retry = root.root.find(n => n.type === 'button' && n.children.includes('重试'))
-  const newer = snapshot(); newer.index.title = { zh: '新目录' }
+  const newer = snapshot(); for (const plugin of newer.index.plugins) plugin.title.zh = '新目录'
   await act(async () => { retry.props.onClick() })
   await act(async () => { second.resolve(newer) })
   await flush()

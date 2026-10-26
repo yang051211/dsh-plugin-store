@@ -163,3 +163,12 @@ test('the reviewer\'s permission verdict reaches the index, for the list rows', 
   const alpha = index.plugins.find(p => p.name === 'alpha')
   assert.deepEqual(alpha.store.permissions, curation().plugins.find(p => p.name === 'alpha').review.permissions)
 })
+
+test('a section description reaches the index; sections without one have none', () => {
+  const c = curation()
+  c.sections[0].description = { zh: '刚装好先装这几个' }
+  const { index } = buildIndex(c, upstream(), scans, NOW)
+  const curated = index.store.sections.find(s => s.id === c.sections[0].id)
+  assert.deepEqual(curated.description, { zh: '刚装好先装这几个' })
+  assert.equal('description' in index.store.sections.find(s => s.id === 'hot'), false)
+})

@@ -127,6 +127,7 @@ export function loadCuration(path) {
     need(!sectionIds.has(section.id), `sections[${i}].id`, `duplicates "${section.id}"`)
     sectionIds.add(section.id)
     need(Array.isArray(section.plugins), `sections[${i}].plugins`, 'must be a list')
+    if (section.description !== undefined) need(isObject(section.description) && isText(section.description.zh), `sections[${i}].description`, 'must be localized text with zh')
     section.plugins.forEach((name, j) => need(names.has(name), `sections[${i}].plugins[${j}]`, `"${name}" is not a curated plugin`))
   }
   return doc

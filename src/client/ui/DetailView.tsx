@@ -1,15 +1,15 @@
 /**
- * One plugin's page: header with badges, stats and install button; screenshots; what it does; permissions
- * (reviewer verdict beside the scan result); the review; overview / changelog / versions / source tabs; related
- * plugins. Everything from the detail document is third-party text and goes through safe rendering.
+ * One plugin's page, in the directory layout: a hero card with a stats bar; the main column with how to use it, what
+ * it does, screenshots and the readme / changelog / versions / source tabs; a side column with the install panel, the
+ * review verdict (permissions beside the scan result) and related plugins. Everything from the detail document is third-party text and goes through safe rendering.
  */
 import { useEffect, useState, type ReactNode } from 'react'
-import type { Catalog, StorePlugin } from '../model/catalog.ts'
+import type { Catalog, Permissions, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import type { InstallState, Installed } from '../model/install-state.ts'
 import { Markdown } from '../safe/markdown.tsx'
 import { npmFileBase, safeUrl } from '../safe/urls.ts'
-import { formatCount, formatDate, incompatibleReason, InstallButton, PluginIcon, PluginRows, UsageGuide, type Translate } from './common.tsx'
+import { formatCount, formatDate, incompatibleReason, InstallButton, PluginGrid, PluginIcon, UsageGuide, type Translate } from './common.tsx'
 
 export type Load<T> = { status: 'loading' } | { status: 'ready'; data: T } | { status: 'error'; error: string }
 
@@ -74,53 +74,70 @@ export function DetailView(props: DetailViewProps): ReactNode {
   const related = (data?.related ?? []).map(name => catalog.byName.get(name)).filter((p): p is StorePlugin => Boolean(p))
   const docsBase = npmFileBase(plugin.name, plugin.version)
 
+  const review = data?.review
+  const notes = localize(review?.notes, lang)
+  const spec = `${plugin.name}@${plugin.version}`
+  const repoUrl = plugin.repository?.url ?? plugin.homepage ?? null
+  const repoHref = repoUrl ? safeUrl(repoUrl, null) : null
+  const [copied, setCopied] = useState(false)
+  const copySpec = () => {
+    navigator.clipboard?.writeText(spec).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500) }, () => {})
+  }
+
   return (
     <div className="ps-detail">
-      <button type="button" className="ps-link-btn ps-back" onClick={onBack}>{t('back')}</button>
+      <button type="button" className="ps-back" onClick={onBack}>{t('back')}</button>
 
-      <header className="ps-detail-head">
-        <PluginIcon plugin={plugin} lang={lang} size={72} />
-        <div className="ps-detail-title">
-          <h2>{localize(plugin.title, lang)} <span className="ps-muted ps-detail-name">{plugin.name}</span></h2>
-          <p className="ps-detail-pitch">{localize(plugin.tagline, lang)}</p>
-          <div className="ps-badges">
-            <span className="ps-badge ps-badge-ok">{plugin.review.date ? t('reviewed', { date: plugin.review.date }) : t('reviewedPlain')}</span>
-            <span className={`ps-badge ${plugin.compatibility === 'incompatible' ? 'ps-badge-warn' : plugin.compatibility === 'compatible' ? 'ps-badge-ok' : ''}`}>{t(compat)}</span>
+      <header className="ps-hero">
+        <div className="ps-hero-top">
+          <PluginIcon plugin={plugin} size={64} />
+          <div className="ps-hero-text">
+            <div className="ps-crumb">#{plugin.category}{plugin.author ? ` · ${plugin.author}` : ''}</div>
+            <h1 className="ps-hero-title">{localize(plugin.title, lang)}</h1>
+            <p className="ps-hero-pitch">{localize(plugin.tagline, lang)}</p>
+            <div className="ps-badges">
+              <span className="ps-badge ps-badge-ok">{plugin.review.date ? t('reviewed', { date: plugin.review.date }) : t('reviewedPlain')}</span>
+              <span className={`ps-badge ${plugin.compatibility === 'incompatible' ? 'ps-badge-warn' : plugin.compatibility === 'compatible' ? 'ps-badge-ok' : ''}`}>{t(compat)}</span>
+            </div>
           </div>
         </div>
-        <div className="ps-detail-action">
-          <InstallButton plugin={plugin} installed={installed} dshVersion={catalog.dshVersion} t={t} onClick={onInstallClick} large primary />
-          <div className="ps-muted">v{plugin.version}</div>
+        <div className="ps-stats">
+          <span>☆ {t('stars')} <b>{formatCount(plugin.stats.stars)}</b></span>
+          <span>↓ {t('weeklyDownloads')} <b>{formatCount(plugin.stats.weeklyDownloads)}</b></span>
+          <span>{t('reviewedVersion')} <b>v{plugin.review.version}</b></span>
+          <span>{t('published')} <b>{formatDate(plugin.publishTimestamp) || '—'}</b></span>
+          <span>{t('npmPackage')} <b>{plugin.name}</b></span>
+          {plugin.stats.fetchedAt && <span className="ps-stats-asof">{t('statsAsOf', { date: formatDate(plugin.stats.fetchedAt) })}</span>}
         </div>
       </header>
-      {plugin.compatibility === 'incompatible' && <p className="ps-reason">{incompatibleReason(plugin, catalog.dshVersion, t)}</p>}
 
-      <div className="ps-stats">
-        <div><b>{formatCount(plugin.stats.stars)}</b><span>{t('stars')}</span></div>
-        <div><b>{formatCount(plugin.stats.weeklyDownloads)}</b><span>{t('weeklyDownloads')}</span></div>
-        <div><b>{formatDate(plugin.publishTimestamp) || '—'}</b><span>{t('published')}</span></div>
-        {plugin.stats.fetchedAt && <div className="ps-stats-asof ps-muted">{t('statsAsOf', { date: formatDate(plugin.stats.fetchedAt) })}</div>}
-      </div>
+      <div className="ps-detail-grid">
+        <div className="ps-detail-main">
+          {plugin.upstreamLatest && <div className="ps-notice">{t('upstreamPending', { version: plugin.upstreamLatest })}</div>}
+          {plugin.compatibility === 'incompatible' && <p className="ps-reason">{incompatibleReason(plugin, catalog.dshVersion, t)}</p>}
 
-      {plugin.upstreamLatest && <div className="ps-notice">{t('upstreamPending', { version: plugin.upstreamLatest })}</div>}
+          {plugin.usage && (
+            <section className="ps-block ps-usage-block">
+              <h3>{t('usageTitle')}</h3>
+              <UsageGuide usage={plugin.usage} lang={lang} t={t} />
+            </section>
+          )}
 
-      {plugin.usage && (
-        <section className="ps-block ps-usage-block">
-          <h3>{t('usageTitle')}</h3>
-          <UsageGuide usage={plugin.usage} lang={lang} t={t} />
-        </section>
-      )}
+          {detail.status === 'loading' && <div className="ps-muted ps-pad">{t('loading')}</div>}
+          {detail.status === 'error' && (
+            <div className="ps-error">
+              <span>{t('detailFailed')}：{detail.error}</span>
+              <button type="button" className="ps-btn" onClick={onRetryDetail}>{t('retry')}</button>
+            </div>
+          )}
 
-      {detail.status === 'loading' && <div className="ps-muted ps-pad">{t('loading')}</div>}
-      {detail.status === 'error' && (
-        <div className="ps-error">
-          <span>{t('detailFailed')}：{detail.error}</span>
-          <button type="button" className="ps-btn" onClick={onRetryDetail}>{t('retry')}</button>
-        </div>
-      )}
+          {data && features.length > 0 && (
+            <section className="ps-block">
+              <h3>{t('whatItDoes')}</h3>
+              <ul className="ps-features">{features.map(item => <li key={item}>{item}</li>)}</ul>
+            </section>
+          )}
 
-      {data && (
-        <>
           {screenshots.length > 0 && (
             <section className="ps-block">
               <h3>{t('screenshots')}</h3>
@@ -137,86 +154,91 @@ export function DetailView(props: DetailViewProps): ReactNode {
             </section>
           )}
 
-          <div className="ps-columns">
-            {features.length > 0 && (
-              <section className="ps-block">
-                <h3>{t('whatItDoes')}</h3>
-                <ul className="ps-features">{features.map(item => <li key={item}>{item}</li>)}</ul>
-              </section>
-            )}
-
+          {data && (
             <section className="ps-block">
-              <h3>{t('permissions')}</h3>
-              <table className="ps-perms">
-                <thead><tr><th /><th>{t('verdict')}</th><th>{t('scanResult')}</th></tr></thead>
-                <tbody>
-                  {PERMISSIONS.map(([key, label]) => {
-                    const verdict = data.permissions?.[key]
-                    const scanned = data.scanSummary ? Boolean(data.scanSummary[key]) : undefined
-                    return (
-                      <tr key={key}>
-                        <td>{t(label)}</td>
-                        <td className={verdict ? 'ps-perm-yes' : 'ps-perm-no'}>{verdict === undefined ? '—' : t(verdict ? 'yes' : 'no')}</td>
-                        <td className="ps-muted">
-                          {scanned === undefined ? '—' : t(scanned ? 'yes' : 'no')}
-                          {scanned && verdict === false && <div className="ps-perm-note">{t('scanDisagrees', { verdict: t('no') })}</div>}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-              <p className="ps-fine">{t('scanNote')}</p>
+              <div className="ps-tabs" role="tablist">
+                {(['readme', 'changelog', 'versions', 'source'] as Tab[]).map(id => (
+                  <button key={id} type="button" role="tab" aria-selected={tab === id} className={`ps-tab ${tab === id ? 'ps-tab-on' : ''}`} onClick={() => setTab(id)}>
+                    {t({ readme: 'tabReadme', changelog: 'tabChangelog', versions: 'tabVersions', source: 'tabSource' }[id])}
+                  </button>
+                ))}
+              </div>
+              <div className="ps-tab-body">
+                {tab === 'readme' && (data.readme ? <Markdown source={data.readme} base={docsBase} /> : <p className="ps-muted">{t('noReadme')}</p>)}
+                {tab === 'changelog' && (data.changelog ? <Markdown source={data.changelog} base={docsBase} /> : <p className="ps-muted">{t('noChangelog')}</p>)}
+                {tab === 'versions' && (
+                  <dl className="ps-facts">
+                    <dt>{t('confirmVersion')}</dt><dd>v{plugin.version} · {formatDate(plugin.publishTimestamp)}</dd>
+                    <dt>{t('enginesDsh')}</dt><dd>{plugin.enginesDsh ?? t('anyVersion')}</dd>
+                    {plugin.upstreamLatest && <><dt /><dd>{t('upstreamPending', { version: plugin.upstreamLatest })}</dd></>}
+                  </dl>
+                )}
+                {tab === 'source' && (
+                  <dl className="ps-facts">
+                    <dt>{t('author')}</dt><dd>{plugin.author ?? '—'}</dd>
+                    <dt>{t('homepage')}</dt><dd>{plugin.homepage ? <ExternalLink href={plugin.homepage}>{plugin.homepage}</ExternalLink> : '—'}</dd>
+                    <dt>{t('repository')}</dt><dd>{plugin.repository ? <ExternalLink href={plugin.repository.url}>{plugin.repository.url}{plugin.repository.directory ? ` / ${plugin.repository.directory}` : ''}</ExternalLink> : '—'}</dd>
+                    <dt>{t('npmPackage')}</dt><dd><ExternalLink href={`https://www.npmjs.com/package/${plugin.name}/v/${plugin.version}`}>{spec}</ExternalLink></dd>
+                  </dl>
+                )}
+              </div>
             </section>
+          )}
+        </div>
 
-            <section className="ps-block">
-              <h3>{t('review')}</h3>
-              <dl className="ps-facts">
-                <dt>{t('reviewer')}</dt><dd>{data.review?.reviewer ?? '—'}</dd>
-                <dt>{t('reviewDate')}</dt><dd>{data.review?.date || plugin.review.date || '—'}</dd>
-                <dt>{t('reviewedVersion')}</dt><dd>{data.review?.version ?? plugin.review.version}</dd>
-              </dl>
-              {localize(data.review?.notes, lang) && <p className="ps-review-notes">{localize(data.review?.notes, lang)}</p>}
-            </section>
-          </div>
-
-          <section className="ps-block">
-            <div className="ps-tabs" role="tablist">
-              {(['readme', 'changelog', 'versions', 'source'] as Tab[]).map(id => (
-                <button key={id} type="button" role="tab" aria-selected={tab === id} className={`ps-tab ${tab === id ? 'ps-tab-on' : ''}`} onClick={() => setTab(id)}>
-                  {t({ readme: 'tabReadme', changelog: 'tabChangelog', versions: 'tabVersions', source: 'tabSource' }[id])}
-                </button>
-              ))}
+        <aside className="ps-detail-side">
+          <section className="ps-panel">
+            <div className="ps-panel-label">{t('panelInstall')}</div>
+            <InstallButton plugin={plugin} installed={installed} dshVersion={catalog.dshVersion} t={t} onClick={onInstallClick} large primary />
+            <p className="ps-fine">{t('installHint')}</p>
+            <div className="ps-cmd">
+              <div className="ps-cmd-head"><span>{t('orAddPlugin')}</span><button type="button" onClick={copySpec}>{t(copied ? 'copied' : 'copy')}</button></div>
+              <code>{spec}</code>
             </div>
-            <div className="ps-tab-body">
-              {tab === 'readme' && (data.readme ? <Markdown source={data.readme} base={docsBase} /> : <p className="ps-muted">{t('noReadme')}</p>)}
-              {tab === 'changelog' && (data.changelog ? <Markdown source={data.changelog} base={docsBase} /> : <p className="ps-muted">{t('noChangelog')}</p>)}
-              {tab === 'versions' && (
-                <dl className="ps-facts">
-                  <dt>{t('confirmVersion')}</dt><dd>v{plugin.version} · {formatDate(plugin.publishTimestamp)}</dd>
-                  <dt>{t('enginesDsh')}</dt><dd>{plugin.enginesDsh ?? t('anyVersion')}</dd>
-                  {plugin.upstreamLatest && <><dt /><dd>{t('upstreamPending', { version: plugin.upstreamLatest })}</dd></>}
-                </dl>
-              )}
-              {tab === 'source' && (
-                <dl className="ps-facts">
-                  <dt>{t('author')}</dt><dd>{plugin.author ?? '—'}</dd>
-                  <dt>{t('homepage')}</dt><dd>{plugin.homepage ? <ExternalLink href={plugin.homepage}>{plugin.homepage}</ExternalLink> : '—'}</dd>
-                  <dt>{t('repository')}</dt><dd>{plugin.repository ? <ExternalLink href={plugin.repository.url}>{plugin.repository.url}{plugin.repository.directory ? ` / ${plugin.repository.directory}` : ''}</ExternalLink> : '—'}</dd>
-                  <dt>{t('npmPackage')}</dt><dd><ExternalLink href={`https://www.npmjs.com/package/${plugin.name}/v/${plugin.version}`}>{plugin.name}@{plugin.version}</ExternalLink></dd>
-                </dl>
-              )}
-            </div>
+            {repoHref && <a className="ps-btn ps-btn-block" href={repoHref} target="_blank" rel="noopener noreferrer">{t('viewOnGitHub')}</a>}
           </section>
-        </>
-      )}
 
-      {related.length > 0 && (
-        <section className="ps-block">
-          <h3>{t('related')}</h3>
-          <PluginRows plugins={related.slice(0, 6)} installed={installed} dshVersion={catalog.dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />
-        </section>
-      )}
+          <section className="ps-panel">
+            <h3>{t('review')}</h3>
+            <div className="ps-verdict"><i aria-hidden="true" />{t('reviewedVersionDot', { version: review?.version ?? plugin.review.version })}</div>
+            <h4 className="ps-panel-sub">{t('permissions')}</h4>
+            <table className="ps-perms">
+              <thead><tr><th /><th>{t('verdict')}</th><th>{t('scanResult')}</th></tr></thead>
+              <tbody>
+                {PERMISSIONS.map(([key, label]) => {
+                  const verdict = data?.permissions?.[key] ?? plugin.permissions?.[key as keyof Permissions]
+                  const scanned = data?.scanSummary ? Boolean(data.scanSummary[key]) : undefined
+                  return (
+                    <tr key={key}>
+                      <td>{t(label)}</td>
+                      <td className={verdict ? 'ps-perm-yes' : 'ps-perm-no'}>{verdict === undefined ? '—' : t(verdict ? 'yes' : 'no')}</td>
+                      <td className="ps-muted">
+                        {scanned === undefined ? '—' : t(scanned ? 'yes' : 'no')}
+                        {scanned && verdict === false && <div className="ps-perm-note">{t('scanDisagrees', { verdict: t('no') })}</div>}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            <p className="ps-fine">{t('scanNote')}</p>
+            {data && (
+              <dl className="ps-facts">
+                <dt>{t('reviewer')}</dt><dd>{review?.reviewer ?? '—'}</dd>
+                <dt>{t('reviewDate')}</dt><dd>{review?.date || plugin.review.date || '—'}</dd>
+              </dl>
+            )}
+            {notes && <p className="ps-review-notes">{notes}</p>}
+          </section>
+
+          {related.length > 0 && (
+            <section className="ps-related">
+              <div className="ps-panel-label">{t('related')}</div>
+              <PluginGrid plugins={related.slice(0, 3)} columns={3} catalog={catalog} installed={installed} dshVersion={catalog.dshVersion} lang={lang} t={t} onOpenPlugin={onOpenPlugin} onInstallClick={onInstallClick} />
+            </section>
+          )}
+        </aside>
+      </div>
 
       {zoom && (
         <div className="ps-zoom" role="dialog" aria-modal="true" onClick={() => setZoom(null)}>

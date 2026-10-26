@@ -197,3 +197,10 @@ test('a plugin carries the reviewed permissions, or null when the index has none
   assert.deepEqual(catalog.byName.get('alpha').permissions, { network: true, fileSystem: false, agentTools: false, childProcess: false, installScripts: false })
   assert.equal(catalog.byName.get('beta').permissions, null)
 })
+
+test('a section keeps its description, or an empty one', () => {
+  const doc = snapshot()
+  doc.index.store.sections[0].description = { zh: '场景说明' }
+  assert.deepEqual(buildCatalog(doc).sections[0].description, { zh: '场景说明' })
+  assert.equal(buildCatalog(snapshot()).sections[0].description, '')
+})

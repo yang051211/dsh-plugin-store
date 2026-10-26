@@ -1,6 +1,6 @@
 /** Small shared pieces of the store UI: translation, formatting, plugin icons, install buttons and cards. */
-import type { ReactNode } from 'react'
-import type { Permissions, PluginUsage, StorePlugin } from '../model/catalog.ts'
+import { useState, type ReactNode } from 'react'
+import type { PluginUsage, StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
 import { installStateOf, type InstallState, type Installed } from '../model/install-state.ts'
 
@@ -27,36 +27,27 @@ export function formatCount(value: number | null): string {
   return value >= 10_000 ? `${(value / 1000).toFixed(0)}k` : value >= 1000 ? `${(value / 1000).toFixed(1)}k` : String(value)
 }
 
-/** The plugin's icon, or a plain tile with its first letter in DSH's own neutral colors. Icons only ever go through <img>. */
-export function PluginIcon({ plugin, lang, size = 40 }: { plugin: StorePlugin; lang: string; size?: number }): ReactNode {
-  const style = { width: size, height: size, borderRadius: Math.round(size / 4.5) }
+const AVATAR_TONES: Array<[string, string, string]> = [['#c9f2d8', '#8fd6ae', '#1f5c3a'], ['#f6c9d6', '#e79ab3', '#7a2445'], ['#c9e8f6', '#8fc7e6', '#1c5371'], ['#e3d4f6', '#b9a0e8', '#4b2f7f'], ['#f6dfc4', '#e7b47f', '#7a4a17'], ['#d5dae3', '#a9b2c3', '#323a49']]
+
+/** Two letters for a plugin without an icon: the first letters of its package name's words, without scope and dsh- prefix. */
+export function initialsOf(name: string): string {
+  const words = name.replace(/^@[^/]+\//, '').replace(/^dsh-(?:plugin-)?/, '').split(/[-_.]/).filter(Boolean)
+  const letters = words.length > 1 ? words[0]![0]! + words[1]![0]! : (words[0] ?? '?').slice(0, 2)
+  return letters.toUpperCase()
+}
+
+/** The plugin's icon, or its initials on a soft tile picked by name. Icons only ever go through <img>. */
+export function PluginIcon({ plugin, size = 38 }: { plugin: StorePlugin; lang?: string; size?: number }): ReactNode {
+  const style = { width: size, height: size, borderRadius: Math.round(size / 4.2) }
   if (plugin.icon) return <img className="ps-icon" src={plugin.icon} alt="" style={style} referrerPolicy="no-referrer" loading="lazy" />
-  const letter = Array.from(localize(plugin.title, lang) || plugin.name)[0] ?? '?'
+  let hash = 0
+  for (const ch of plugin.name) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0
+  const [from, to, ink] = AVATAR_TONES[hash % AVATAR_TONES.length]!
   return (
-    <span className="ps-icon ps-icon-letter" style={{ ...style, fontSize: Math.round(size * 0.44) }} aria-hidden="true">
-      {letter}
+    <span className="ps-icon ps-icon-letters" style={{ ...style, background: `linear-gradient(145deg, ${from}, ${to})`, color: ink, fontSize: Math.round(size * 0.37) }} aria-hidden="true">
+      {initialsOf(plugin.name)}
     </span>
   )
-}
-
-const PERMISSION_LABELS: Array<[keyof Permissions, string]> = [['network', 'permNetwork'], ['fileSystem', 'permFileSystem'], ['childProcess', 'permChildProcess'], ['agentTools', 'permAgentTools']]
-
-/** What the reviewer found the plugin may do, in a few words; nothing at all is worth saying too. */
-export function PermissionLine({ permissions, t }: { permissions: Permissions | null; t: Translate }): ReactNode {
-  if (!permissions) return null
-  const on = PERMISSION_LABELS.filter(([key]) => permissions[key]).map(([, label]) => t(label))
-  return on.length > 0
-    ? <span className="ps-perm-line">{on.join(t('listSeparator'))}</span>
-    : <span className="ps-perm-line ps-perm-none">{t('touchesNothing')}</span>
-}
-
-/** Permissions, the reviewed version and (where it is the point) weekly downloads, on one quiet line. */
-export function PluginMeta({ plugin, t, downloads }: { plugin: StorePlugin; t: Translate; downloads?: boolean }): ReactNode {
-  const parts: ReactNode[] = []
-  if (plugin.permissions) parts.push(<PermissionLine key="perm" permissions={plugin.permissions} t={t} />)
-  parts.push(<span key="rev">{t('reviewedVersion', { version: plugin.review.version })}</span>)
-  if (downloads && plugin.stats.weeklyDownloads !== null) parts.push(<span key="dl">{t('weeklyDownloadsShort', { count: formatCount(plugin.stats.weeklyDownloads) })}</span>)
-  return <div className="ps-meta">{parts.flatMap((part, i) => (i === 0 ? [part] : [<span key={`dot${i}`} className="ps-dot" aria-hidden="true">·</span>, part]))}</div>
 }
 
 export interface InstallButtonProps {
@@ -108,24 +99,70 @@ export interface CardProps {
   onInstallClick: (plugin: StorePlugin, state: InstallState) => void
 }
 
-/** One plugin in a list: icon, name and package, one line on what it does, what it may do, and its install button. */
-export function PluginRow({ plugin, installed, dshVersion, lang, t, onOpenPlugin, onInstallClick, downloads }: CardProps & { downloads?: boolean }): ReactNode {
+/** Keywords worth showing: the package's own, minus generic ecosystem words. */
+export function keywordsOf(plugin: StorePlugin): string[] {
+  return plugin.keywords.filter(word => !/dsh|deepseek|harness|cordis|plugin|^agent$|^ai$/i.test(word)).slice(0, 3)
+}
+
+/**
+ * One plugin as a card, in the directory layout: icon, name and package; category and reviewed version; the category
+ * and a few keywords; three lines on what it does; stars, weekly downloads, and whether it is installed. The whole
+ * card opens the plugin; installing happens on its page.
+ */
+export function PluginCard({ plugin, installed, lang, t, onOpenPlugin, categoryTitle }: CardProps & { categoryTitle: string }): ReactNode {
+  const isInstalled = installed?.has(plugin.name) ?? false
   return (
-    <li className="ps-row" role="button" tabIndex={0} onClick={() => onOpenPlugin(plugin.name)} onKeyDown={e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); onOpenPlugin(plugin.name) } }}>
-      <PluginIcon plugin={plugin} lang={lang} />
-      <div className="ps-row-main">
-        <div className="ps-row-head"><span className="ps-row-title">{localize(plugin.title, lang)}</span><span className="ps-row-name">{plugin.name}</span></div>
-        <p className="ps-row-pitch">{localize(plugin.tagline, lang)}</p>
-        <PluginMeta plugin={plugin} t={t} downloads={downloads} />
-      </div>
-      <InstallButton plugin={plugin} installed={installed} dshVersion={dshVersion} t={t} onClick={onInstallClick} />
-    </li>
+    <button type="button" className="ps-card" onClick={() => onOpenPlugin(plugin.name)}>
+      <span className="ps-card-hd">
+        <PluginIcon plugin={plugin} />
+        <span className="ps-card-id"><b>{localize(plugin.title, lang)}</b><span>{plugin.name}</span></span>
+      </span>
+      <span className="ps-card-bd">
+        <span className="ps-card-tags"><span>#{plugin.category}</span><span>v{plugin.review.version}</span></span>
+        <span className="ps-chips"><span className="ps-chip ps-chip-main">{categoryTitle}</span>{keywordsOf(plugin).map(word => <span key={word} className="ps-chip">{word}</span>)}</span>
+        <span className="ps-card-pitch">{localize(plugin.tagline, lang)}</span>
+      </span>
+      <span className="ps-card-ft">
+        <span title={t('stars')}>☆ {formatCount(plugin.stats.stars)}</span>
+        <span title={t('weeklyDownloads')}>↓ {formatCount(plugin.stats.weeklyDownloads)}</span>
+        <span className={`ps-card-open ${isInstalled ? 'ps-card-done' : ''}`}>{t(isInstalled ? 'installed' : 'cardView')} ↗</span>
+      </span>
+    </button>
   )
 }
 
-/** A list of plugin rows; two columns where there is room. */
-export function PluginRows({ plugins, downloads, ...card }: Omit<CardProps, 'plugin'> & { plugins: StorePlugin[]; downloads?: boolean }): ReactNode {
-  return <ul className="ps-rows">{plugins.map(plugin => <PluginRow key={plugin.name} plugin={plugin} downloads={downloads} {...card} />)}</ul>
+/** A grid of plugin cards; `columns` is the most it uses on a wide page. */
+export function PluginGrid({ plugins, columns = 4, catalog, ...card }: Omit<CardProps, 'plugin'> & { plugins: StorePlugin[]; columns?: 3 | 4; catalog: { categories: Array<{ id: string; title: unknown }> } }): ReactNode {
+  const titleOf = (id: string) => localize(catalog.categories.find(c => c.id === id)?.title as never, card.lang) || id
+  return <div className={`ps-grid ps-grid-${columns}`}>{plugins.map(plugin => <PluginCard key={plugin.name} plugin={plugin} categoryTitle={titleOf(plugin.category)} {...card} />)}</div>
+}
+
+/** The page header every view shares: a path-like breadcrumb, a title, one line, and an optional right side. */
+export function PageHeader({ crumb, title, intro, children }: { crumb: string; title: string; intro?: string; children?: ReactNode }): ReactNode {
+  return (
+    <section className={`ps-ph ${children ? 'ps-ph-split' : ''}`}>
+      <div>
+        <div className="ps-crumb">{crumb}</div>
+        <h1 className="ps-ph-title">{title}</h1>
+        {intro && <p className="ps-ph-intro">{intro}</p>}
+      </div>
+      {children}
+    </section>
+  )
+}
+
+const SEARCH_ICON = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>
+
+/** The big search field with its button. */
+export function SearchField({ t, onSearch, initial = '' }: { t: Translate; onSearch: (query: string) => void; initial?: string }): ReactNode {
+  const [query, setQuery] = useState(initial)
+  return (
+    <form className="ps-search" role="search" onSubmit={e => { e.preventDefault(); if (query.trim()) onSearch(query.trim()) }}>
+      {SEARCH_ICON}
+      <input value={query} placeholder={t('searchPlaceholder')} aria-label={t('search')} onChange={e => setQuery(e.target.value)} />
+      <button type="submit" className="ps-btn ps-btn-primary">{t('searchButton')}</button>
+    </form>
+  )
 }
 
 /** Where to find an installed plugin and what to try, with any step it still needs called out. */

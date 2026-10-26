@@ -52,7 +52,7 @@ function permissionsOf(raw: any): Permissions | null {
 
 export interface PluginUsage { where: LocalizedText; try: LocalizedText; setup?: LocalizedText }
 
-export interface Grouping { id: string; title: LocalizedText; plugins: StorePlugin[] }
+export interface Grouping { id: string; title: LocalizedText; plugins: StorePlugin[]; description?: LocalizedText }
 
 export interface Catalog {
   title: LocalizedText
@@ -137,7 +137,7 @@ export function buildCatalog(snapshot: CatalogSnapshot, now: Date = new Date()):
     .map(id => ({ id, title: declared[id]?.title ?? id, plugins: plugins.filter(p => p.category === id) }))
     .filter(c => c.plugins.length > 0)
   const sections = (Array.isArray(doc.store?.sections) ? doc.store.sections : [])
-    .map((s: any) => ({ id: s.id, title: s.title ?? s.id, plugins: (s.plugins ?? []).map((n: string) => byName.get(n)).filter(Boolean) }))
+    .map((s: any) => ({ id: s.id, title: s.title ?? s.id, description: s.description ?? '', plugins: (s.plugins ?? []).map((n: string) => byName.get(n)).filter(Boolean) }))
     .filter((s: Grouping) => s.plugins.length > 0)
   const banner = (raw: any): Catalog['featured'] => {
     const plugin = raw ? byName.get(raw.plugin) : undefined

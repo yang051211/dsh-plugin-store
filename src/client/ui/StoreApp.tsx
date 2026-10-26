@@ -12,6 +12,8 @@ import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail } from './DetailView.tsx'
 import { Home, type ListFilter } from './Home.tsx'
 import { ListView } from './ListView.tsx'
+import { AboutView } from './About.tsx'
+import { SceneView, ScenesView } from './Scenes.tsx'
 
 export interface StoreServices {
   loadCatalog: (refresh?: boolean) => Promise<CatalogSnapshot>
@@ -35,7 +37,18 @@ export interface StoreAppProps {
   takePending?: () => string | null
 }
 
-export type View = { view: 'home' } | { view: 'list'; filter: ListFilter } | { view: 'detail'; name: string }
+export type View = { view: 'home' } | { view: 'list'; filter: ListFilter } | { view: 'detail'; name: string } | { view: 'scenes' } | { view: 'about' }
+
+/** The store's own tabs; each opens its page as a new root, so back never walks across tabs. */
+export type NavTab = 'home' | 'all' | 'scenes' | 'about'
+
+/** Which tab a view belongs to. */
+export function tabOf(view: View): NavTab {
+  if (view.view === 'home') return 'home'
+  if (view.view === 'about') return 'about'
+  if (view.view === 'scenes' || (view.view === 'list' && view.filter.kind === 'section' && view.filter.id !== 'hot')) return 'scenes'
+  return 'all'
+}
 export type Stack = Array<{ view: View; scroll: number }>
 
 /** Push `view`, remembering where the current view was scrolled. */
@@ -142,6 +155,13 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     if (view.view === 'detail' && !details[view.name]) loadDetail(view.name)
   }, [details, loadDetail, scroller])
 
+  /** A tab click starts over at that tab's page. */
+  const openTab = useCallback((tab: NavTab) => {
+    const view: View = tab === 'all' ? { view: 'list', filter: { kind: 'all' } } : { view: tab }
+    setStack([{ view, scroll: 0 }])
+    pendingScroll.current = 0
+  }, [])
+
   const back = useCallback(() => {
     setStack(prev => {
       const { stack: next, restore } = goBack(prev)
@@ -191,6 +211,8 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     onOpenPlugin: (name: string) => go({ view: 'detail', name }),
     onOpenList: (filter: ListFilter) => go({ view: 'list', filter }),
     onSearch: (query: string) => go({ view: 'list', filter: { kind: 'search', query } }),
+    onOpenScenes: () => go({ view: 'scenes' }),
+    onOpenScene: (id: string) => go({ view: 'list', filter: { kind: 'section', id } }),
     onInstallClick,
     onBack: back,
   }), [go, onInstallClick, back])
@@ -211,7 +233,11 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
       const plugin = data.byName.get(current.name)
       body = plugin
         ? <DetailView key={plugin.name} plugin={plugin} catalog={data} detail={details[plugin.name] ?? { status: 'loading' }} installed={installed} lang={lang} t={t} onRetryDetail={() => loadDetail(plugin.name)} {...handlers} />
-        : <ListView title={t('empty')} plugins={[]} installed={installed} lang={lang} t={t} {...handlers} />
+        : <ListView title={t('empty')} plugins={[]} catalog={data} filter={{ kind: 'all' }} installed={installed} lang={lang} t={t} {...handlers} />
+    } else if (current.view === 'list' && current.filter.kind === 'section' && current.filter.id !== 'hot' && data.sections.some(s => s.id === (current.filter as { id: string }).id)) {
+      // A curated scene has its own page; trending (generated, no description) stays a plain list.
+      const scene = data.sections.find(s => s.id === (current.filter as { id: string }).id)!
+      body = <SceneView scene={scene} catalog={data} installed={installed} lang={lang} t={t} {...handlers} />
     } else if (current.view === 'list') {
       const filter = current.filter
       let title = ''
@@ -223,7 +249,11 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
         title = group ? localize(group.title, lang) : ''
         plugins = group?.plugins ?? []
       }
-      body = <ListView title={title} plugins={plugins} installed={installed} dshVersion={data.dshVersion} lang={lang} t={t} {...handlers} />
+      body = <ListView title={title} plugins={plugins} catalog={data} filter={filter} installed={installed} lang={lang} t={t} {...handlers} />
+    } else if (current.view === 'scenes') {
+      body = <ScenesView catalog={data} lang={lang} t={t} onOpenScene={handlers.onOpenScene} />
+    } else if (current.view === 'about') {
+      body = <AboutView t={t} />
     } else {
       body = <Home catalog={data} installed={installed} lang={lang} t={t} {...handlers} />
     }
@@ -234,6 +264,14 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
 
   return (
     <div className={`ps-root ps-mode-${mode}`} ref={root}>
+      <nav className="ps-nav" aria-label={t('tab')}>
+        <span className="ps-nav-brand"><i aria-hidden="true" />{t('tab')}</span>
+        {(['home', 'all', 'scenes', 'about'] as NavTab[]).map(tab => (
+          <button key={tab} type="button" className={tabOf(current) === tab ? 'ps-nav-on' : ''} aria-current={tabOf(current) === tab ? 'page' : undefined} onClick={() => openTab(tab)}>
+            {t({ home: 'navHome', all: 'navAll', scenes: 'navScenes', about: 'navAbout' }[tab])}
+          </button>
+        ))}
+      </nav>
       {catalog.status === 'ready' && catalog.data.stale && (
         <div className="ps-notice ps-notice-bar">
           <span>{t('staleNotice')}</span>

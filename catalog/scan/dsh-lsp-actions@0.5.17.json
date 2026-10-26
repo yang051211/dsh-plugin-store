@@ -1,0 +1,125 @@
+{
+  "name": "dsh-lsp-actions",
+  "version": "0.5.17",
+  "scannedAt": "2026-10-26T06:37:21.972Z",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/vscode/backend/bin.mjs",
+        "line": 11,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'fs', 'subprocess'];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/vscode/backend/cordis.yml",
+        "line": 19,
+        "text": "# The official tool registry (provides ctx.tools; lsp-actions injects it)."
+      },
+      {
+        "file": "lib/extra-tools.js",
+        "line": 30,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/extra-tools.js",
+        "line": 165,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/extra-tools.js",
+        "line": 256,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/extra-tools.js",
+        "line": 342,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/vscode/extension/src/client.js",
+        "line": 10,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "examples/vscode/extension/src/client.js",
+        "line": 26,
+        "text": "const child = spawn(options.node, args, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "spawner = spec => this.subprocess.spawn(spec);"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 39,
+        "text": "* @param spawner - the subprocess seam's spawn (the client passes `ctx.subprocess.spawn`)."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc --noEmitOnError && node scripts/fix-dts.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 2,
+      "text": "# help, inlay hints, and rename over language servers."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 3,
+      "text": "# Default config activates no servers (empty table); add one entry per language server."
+    },
+    {
+      "file": "README.md",
+      "line": 9,
+      "text": "**The LSP action surface for DeepSeek Harness — real language servers, real feedback, and the IDE integration backend for editors.**"
+    },
+    {
+      "file": "README.md",
+      "line": 53,
+      "text": "The LSP action surface for DeepSeek Harness — real language servers, real feedback, and the IDE integration backend for editors."
+    },
+    {
+      "file": "README.md",
+      "line": 76,
+      "text": "** — diagnostics, formatting, completion, code actions, symbols, signature help, inlay hints, and rename, all served by the same language servers your IDE uses."
+    }
+  ],
+  "skippedEntries": []
+}

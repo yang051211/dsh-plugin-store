@@ -167,3 +167,8 @@ test('review.preflight notes must be non-empty text per issue id', () => {
   rejects(variant(d => { d.plugins[0].review.preflight = { services: '' } }), /^plugins\[0\]\.review\.preflight\.services: must be non-empty text/)
   assert.equal(loadCuration(variant(d => { d.plugins[0].review.preflight = { setup: '只是可选的加速组件' } })).plugins[0].review.preflight.setup, '只是可选的加速组件')
 })
+
+test('a section description must be localized text with Chinese', () => {
+  assert.throws(() => loadCuration(variant(d => { d.sections[0].description = 'plain' })), /sections\[0\]\.description/)
+  assert.doesNotThrow(() => loadCuration(variant(d => { d.sections[0].description = { zh: '说明' } })))
+})
