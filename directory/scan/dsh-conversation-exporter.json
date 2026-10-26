@@ -1,0 +1,70 @@
+{
+  "name": "dsh-conversation-exporter",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:19.377Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 60,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 11,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 27,
+        "text": "return readFileSync(0, 'utf8');"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 43,
+        "text": "return readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 68,
+        "text": "writeFileSync(output, result.markdown, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli.js",
+        "line": 12,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/cli.js",
+        "line": 33,
+        "text": "const result = spawnSync('zstd', ['-d', '-c', '--', path], { encoding: 'buffer', maxBuffer: 512 * 1024 * 1024 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

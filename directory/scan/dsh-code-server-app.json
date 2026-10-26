@@ -1,0 +1,130 @@
+{
+  "name": "dsh-code-server-app",
+  "version": "0.3.73",
+  "scannedAt": "2026-10-26T10:07:16.969Z",
+  "icon": "dsh-code-server-app.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 17,
+        "text": "// 请求走 `http.request({ socketPath })`。不走 HTTP 的三个原因(都实测过):desktop 没有 HTTP 面"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 25,
+        "text": "const http = require('http');"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 148,
+        "text": "* 用 `http.request({socketPath})` 是 Node 里唯一干净的写法 —— 与 host 侧"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 158,
+        "text": "const req = http.request({"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 190,
+        "text": "*        `requestImpl` / `now` 可注入,便于单测(默认走 `http.request({socketPath})`)。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/extension.js",
+        "line": 387,
+        "text": "const bytes = await vscode.workspace.fs.readFile(uri);"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 23,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 97,
+        "text": "const raw = JSON.parse(fs.readFileSync(bridgeFile(extensionsDir), 'utf8'));"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 110,
+        "text": "const raw = JSON.parse(fs.readFileSync(stateFile(extensionsDir), 'utf8'));"
+      },
+      {
+        "file": "assets/extensions/dshcs-editor-bridge/lib/bridge-client.js",
+        "line": 124,
+        "text": "fs.mkdirSync(path.dirname(stateFile(extensionsDir)), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge-tools.mjs",
+        "line": 81,
+        "text": "*   - `ctx.tools` 这类属性访问 → 走代理的 get trap,服务\"存在但对该 fiber 不可达\"时"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn, execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1558,
+        "text": "execFile('taskkill.exe', ['/PID', String(pid), '/T', '/F'], (err) => resolve(!err));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1846,
+        "text": "proc = spawn(isCmd ? `\"${command}\"` : command, spawnArgs, {"
+      },
+      {
+        "file": "scripts/vendor-code-server.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/vendor-code-server.mjs",
+        "line": 60,
+        "text": "const res = spawnSync(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 49,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "settings"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 1110,
+      "text": "- **node-gyp 13.x** (9.x does not recognize VS 2026): `npm install -g node-gyp@latest`."
+    },
+    {
+      "file": "README.md",
+      "line": 1049,
+      "text": "- **node-gyp 13.x**(旧版 9.x 不识别 VS 2026):`npm install -g node-gyp@latest`。"
+    }
+  ],
+  "skippedEntries": []
+}

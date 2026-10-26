@@ -1,0 +1,96 @@
+{
+  "name": "dsh-ximalaya",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:07:40.666Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "const jsonGet = (url) => fetch(url, { cache: 'no-store' }).then((r) => r.json());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 45,
+        "text": "const jsonPost = (url, body) => fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "const fetchUpstream = async (url) => fetch(url, {"
+      },
+      {
+        "file": "lib/xmly.js",
+        "line": 43,
+        "text": "return await fetch(url, { ...opts, signal: ctrl.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['webServer', 'fs', 'shell', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "writeFileSync(file, JSON.stringify(state, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "export const inject = ['webServer', 'fs', 'shell', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 646,
+        "text": "ctx.effect(() => ctx.tools.register(tool), 'ximalaya: ximalaya_play tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

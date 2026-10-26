@@ -1,0 +1,135 @@
+{
+  "name": "dsh-openwolf",
+  "version": "0.10.2",
+  "scannedAt": "2026-10-26T10:07:40.281Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dashboard.js",
+        "line": 10,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/dashboard.js",
+        "line": 68,
+        "text": "const r = await fetch('/api' + path, { headers: H });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/wolf.mjs",
+        "line": 16,
+        "text": "import { stat, readFile, writeFile, rm, mkdir, chmod, readdir, realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 201,
+        "text": "token = (await readFile(tokenFile, 'utf8')).trim()"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 207,
+        "text": "await mkdir(dirname(tokenFile), { recursive: true })"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 208,
+        "text": "await writeFile(tokenFile, token, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 17,
+        "text": "# module itself declares `inject = ['tools']`. To override an option, set it in"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 533,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 577,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 640,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/wolf.mjs",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 260,
+        "text": "? spawn('cmd.exe', ['/c', 'pnpm', 'install', '--registry=https://registry.npmjs.org', '--no-frozen-lockfile'], { cwd: profileDir, stdio: 'ignore' })"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 261,
+        "text": ": spawn('pnpm', ['install', '--registry=https://registry.npmjs.org', '--no-frozen-lockfile'], { cwd: profileDir, stdio: 'ignore' })"
+      },
+      {
+        "file": "bin/wolf.mjs",
+        "line": 688,
+        "text": "const child = spawn(process.execPath, childArgs, { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/digest.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 94,
+      "text": "npm install -g dsh-openwolf    # 或项目内：npm install --save-dev dsh-openwolf"
+    }
+  ],
+  "skippedEntries": []
+}

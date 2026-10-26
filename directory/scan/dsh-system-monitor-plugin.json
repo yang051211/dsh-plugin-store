@@ -1,0 +1,97 @@
+{
+  "name": "dsh-system-monitor-plugin",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:20.895Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 1633,
+        "text": "const response = await fetch(MONITOR_DATA_PATH, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 3,
+        "text": "import { mkdirSync, readFileSync, readdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 314,
+        "text": "environ: readFileSync(`/proc/${pid}/environ`, \"utf8\")"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 362,
+        "text": "return readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 409,
+        "text": "const parsed = JSON.parse(readFileSync(clockTicksCacheFile(), \"utf8\"));"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 424,
+        "text": "mkdirSync(join(file, \"..\"), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 1292,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 1843,
+        "text": "const inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 4,
+        "text": "import { ChildProcess, execFile, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 510,
+        "text": "const child = execFile(\"powershell.exe\", ["
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 776,
+        "text": "const child = execFile(\"ps\", [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

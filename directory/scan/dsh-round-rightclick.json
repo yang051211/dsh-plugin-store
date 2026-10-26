@@ -1,0 +1,65 @@
+{
+  "name": "dsh-round-rightclick",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:30.250Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 99,
+        "text": "const response = await deps.fetch(url, { method: \"HEAD\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 692,
+        "text": "const response = await fetch(new URL(OPEN_DIR_ROUTE, hostBase()), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 742,
+        "text": "fetch: (input, init) => fetch(input, init),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { stat as fsStat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "const child = spawn(command, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

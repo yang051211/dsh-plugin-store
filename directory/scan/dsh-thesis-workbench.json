@@ -1,0 +1,98 @@
+{
+  "name": "dsh-thesis-workbench",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:21.638Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/spss-core.js",
+        "line": 2,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/spss-core.js",
+        "line": 50,
+        "text": "if (!fs.existsSync(workDir)) fs.mkdirSync(workDir, { recursive: true });"
+      },
+      {
+        "file": "lib/spss-core.js",
+        "line": 115,
+        "text": "fs.writeFileSync(pyPath, content, { encoding: \"utf8\" });"
+      },
+      {
+        "file": "lib/spss-core.js",
+        "line": 305,
+        "text": "try { fs.unlinkSync(pyPath); } catch {}"
+      },
+      {
+        "file": "lib/spss-core.js",
+        "line": 322,
+        "text": "try { fs.unlinkSync(pyPath); } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 2,
+        "text": "# 插件内置独立 SPSS MCP server（mcp/server.js，零依赖 stdio），经 dsh-mcp-client 自动连接。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 79,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/spss-core.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/spss-core.js",
+        "line": 62,
+        "text": "const proc = spawn(`\"${pythonBat}\" \"${scriptPath}\"`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,83 @@
+{
+  "name": "dsh-glm-quota-dock",
+  "version": "1.3.2",
+  "scannedAt": "2026-10-26T10:07:22.427Z",
+  "icon": "dsh-glm-quota-dock.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 289,
+        "text": "const res = await fetch('/api/glm-quota' + (force ? '?force=1' : ''), { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "client.js",
+        "line": 438,
+        "text": "fetch('https://registry.npmjs.org/' + NPM_PACKAGE + '/latest', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 484,
+        "text": "fetch('/api/glm-quota/update', { method: 'POST' })"
+      },
+      {
+        "file": "index.js",
+        "line": 123,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import fsSync from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 263,
+        "text": "if (JSON.parse(fsSync.readFileSync(manifest, \"utf8\"))?.dsh?.profile) return dir;"
+      },
+      {
+        "file": "index.js",
+        "line": 297,
+        "text": "const version = JSON.parse(await fs.readFile(pkgFile, \"utf8\")).version;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { execFile as execFileCb } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,131 @@
+{
+  "name": "dsh-glass-weather",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:41.542Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "const response = await fetch(url, { signal: guard.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "const response = await fetch(url, { signal: guard.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 250,
+        "text": "const response = await fetch(\"https://ipapi.co/json/\", { signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 345,
+        "text": "const response = await fetch(url, { signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 400,
+        "text": "const response = await fetch(url, { signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 31,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmdirSync, rmSync, statSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 171,
+        "text": "const repoPkg = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 177,
+        "text": "rmSync(PACKAGE_DIR, { recursive: true, force: true });"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 178,
+        "text": "mkdirSync(PACKAGE_DIR, { recursive: true });"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 182,
+        "text": "const raw = gunzipSync(readFileSync(tarball));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 347,
+        "text": "* `ctx.tools.register` returns the disposer that unregisters the tool, and the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 352,
+        "text": "return ctx.tools.register(weatherTool(readConfig));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 360,
+        "text": "*   1. register the `get_weather` tool (`ctx.tools`), and"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 379,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 1510,
+        "text": "// (`layers.effect(this.ctx, ...)`, where `ctx.tools` is a caller-scoped proxy)."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1441,
+        "text": "* from just outside, exactly as the design's `spawn(L, false)` does. The"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 30,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/verify-release.mjs",
+        "line": 78,
+        "text": "const result = spawnSync(cmd, args, {"
+      },
+      {
+        "file": "src/client/widget/fx.ts",
+        "line": 359,
+        "text": "* from just outside, exactly as the design's `spawn(L, false)` does. The"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

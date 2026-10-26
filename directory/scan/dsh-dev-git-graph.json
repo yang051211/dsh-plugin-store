@@ -1,0 +1,102 @@
+{
+  "name": "dsh-dev-git-graph",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:07:07.524Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/git-graph/routes.js",
+        "line": 293,
+        "text": "await respondError('fetch', () => ds.fetch(repo, strOrNull('name'), bool('prune'), bool('pruneTags')));"
+      },
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 558,
+        "text": "return fetch ? this.fetch(repo, name, false, false) : null;"
+      },
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 670,
+        "text": "fetch(repo, remote, prune, pruneTags) {"
+      },
+      {
+        "file": "media/gitgraph.js",
+        "line": 22,
+        "text": "const res = await fetch(DSH_GG_API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/git-graph/routes.js",
+        "line": 7,
+        "text": "import { readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/src/git-graph/routes.js",
+        "line": 57,
+        "text": "const template = readFileSync(join(mediaDir, 'index.html'), 'utf8');"
+      },
+      {
+        "file": "lib/src/git-graph/routes.js",
+        "line": 86,
+        "text": "const raw = readFileSync(file);"
+      },
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 2,
+        "text": "import * as fs from 'fs';"
+      },
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 475,
+        "text": "fs.readFile(path.join(repo, '.gitmodules'), { encoding: 'utf8' }, async (err, data) => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 1,
+        "text": "import * as cp from 'child_process';"
+      },
+      {
+        "file": "lib/vendor/git-graph/dataSource.js",
+        "line": 1698,
+        "text": "resolveSpawnOutput(cp.spawn(this.gitExecutable.path, args, {"
+      },
+      {
+        "file": "lib/vendor/git-graph/gg-shims/utilsShim.js",
+        "line": 2,
+        "text": "import * as cp from 'child_process';"
+      },
+      {
+        "file": "lib/vendor/git-graph/gg-shims/utilsShim.js",
+        "line": 108,
+        "text": "const cmd = cp.spawn('git', ['--version']);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

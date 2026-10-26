@@ -1,0 +1,86 @@
+{
+  "name": "dsh-opendesign-go",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-26T10:07:10.676Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 658,
+        "text": "return await fetch(`${baseURL}/chat/completions`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1905,
+        "text": "const response = await fetch(url, { method: \"GET\", headers, signal: AbortSignal.timeout(15e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1054,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1083,
+        "text": "mkdirSync(dirname(this.#path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1084,
+        "text": "appendFileSync(this.#path, `${JSON.stringify(entry)}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1103,
+        "text": "raw = readFileSync(this.#path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1144,
+        "text": "writeFileSync(temp, kept.map((entry) => `${JSON.stringify(entry)}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1285,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1313,
+        "text": "execFile(binary, [...args], { timeout: CALL_TIMEOUT_MS, windowsHide: true }, (error, stdout) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 104,
+      "text": "npm install -g dsh-opendesign-go@latest"
+    }
+  ],
+  "skippedEntries": []
+}

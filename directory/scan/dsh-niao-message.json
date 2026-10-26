@@ -1,0 +1,87 @@
+{
+  "name": "dsh-niao-message",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:07:38.467Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 72,
+        "text": "const res = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { existsSync, readFileSync, writeFileSync, unlinkSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 241,
+        "text": "writeFileSync(file, JSON.stringify(persist, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 305,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 316,
+        "text": "writeFileSync(file, JSON.stringify({"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 362,
+        "text": "execFile(cfg.tool, args, (error) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 409,
+        "text": "execFile('plutil', ['-convert', 'json', '-o', '-', join(appPath, 'Contents', 'Info.plist')], { timeout: 5000 }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 583,
+        "text": "const remove = spawn(cfg.tool, ['-remove', NOTIFICATION_GROUP], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/vendor/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

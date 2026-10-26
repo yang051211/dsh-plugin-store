@@ -1,0 +1,82 @@
+{
+  "name": "dsh-composition-doctor",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:09.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/core/preflight/npm-artifact.js",
+        "line": 96,
+        "text": "const response = await fetch(url, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "dist/core/preflight/npm-artifact.js",
+        "line": 124,
+        "text": "const response = await fetch(tarballUrl, { headers: { accept: 'application/octet-stream' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli/main.js",
+        "line": 3,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/cli/main.js",
+        "line": 4,
+        "text": "import { lstat, mkdir, readFile, realpath, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/cli/main.js",
+        "line": 43,
+        "text": "const text = await readFile(path, 'utf8');"
+      },
+      {
+        "file": "dist/cli/main.js",
+        "line": 122,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "dist/cli/main.js",
+        "line": 131,
+        "text": "await writeFile(resolve(directory, 'report.json'), renderJson(report), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/core/dsh-dump-provider.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/core/preflight/artifact-resolver.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,102 @@
+{
+  "name": "dsh-rss-daily",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-26T10:07:15.665Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 199,
+        "text": "get: (p) => fetch(\"/rss-daily/api/\" + p, fetchOpt()).then((r) => r.json()),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 200,
+        "text": "send: (p, body, method = \"POST\") => fetch(\"/rss-daily/api/\" + p, {"
+      },
+      {
+        "file": "lib/deliver.js",
+        "line": 13,
+        "text": "const resp = await fetch(url, { ...init, signal: AbortSignal.timeout(TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 9,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 145,
+        "text": "return JSON.parse(fs.readFileSync(path.join(getLive().stateDir, \"rss-outbox.json\"), \"utf-8\"));"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 150,
+        "text": "return JSON.parse(fs.readFileSync(path.join(getLive().stateDir, \"rss-sent.json\"), \"utf-8\"));"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 155,
+        "text": "return JSON.parse(fs.readFileSync(path.join(getLive().stateDir, \"delivery-last.json\"), \"utf-8\"));"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 160,
+        "text": "return JSON.parse(fs.readFileSync(path.join(getLive().stateDir, \"llm-last.json\"), \"utf-8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 361,
+        "text": "agent.ctx.effect(() => agent.ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pipeline.js",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/pipeline.js",
+        "line": 48,
+        "text": "const child = spawn(cmd, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 112,
+      "text": "- Python 3.9+ with `feedparser` (`pip install feedparser`); add `pip install mcp` for the MCP server (both mcp 1.x and 2.x work)"
+    },
+    {
+      "file": "README.md",
+      "line": 130,
+      "text": "- Python 3.9+ 且装了 `feedparser`：`pip install feedparser`（走 MCP 再加 `pip install mcp`，1.x 与 2.x 均可）"
+    }
+  ],
+  "skippedEntries": []
+}

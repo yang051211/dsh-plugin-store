@@ -1,0 +1,75 @@
+{
+  "name": "dsh-plugin-rollout-scout",
+  "version": "1.6.0",
+  "scannedAt": "2026-10-26T10:07:07.682Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 60,
+        "text": "const res = await g.fetch(ROUTE, method === 'GET' ? { cache: 'no-store' } : {"
+      },
+      {
+        "file": "plugin.client.js",
+        "line": 40,
+        "text": "const res = await g.fetch(ROUTE, method === 'GET' ? { cache: 'no-store' } : {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "_wrap-client.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "_wrap-client.mjs",
+        "line": 3,
+        "text": "const body = fs.readFileSync(new URL('./plugin.client.js', import.meta.url), 'utf8');"
+      },
+      {
+        "file": "_wrap-client.mjs",
+        "line": 31,
+        "text": "fs.writeFileSync(new URL('./lib/client.js', import.meta.url), out);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 451,
+        "text": "return parseManifest(await fs.readFile(stateFilePath(folder), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node _wrap-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

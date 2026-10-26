@@ -1,0 +1,132 @@
+{
+  "name": "dsh-genbox-plugin",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:14.832Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "if ((await fetch(candidate + \"/api/setup/status\", { signal: this.signal(signal, LOCATE_TIMEOUT_MS) })).ok) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "response = await fetch(attempted + path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "response = await fetch(relocated + path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "response = await fetch(url, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1867,
+        "text": "return (await fetch(\"http://127.0.0.1:\" + port + \"/api/setup/status\", { signal: AbortSignal.timeout(timeoutMs) })).ok;"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { access, mkdir, mkdtemp, readFile, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { constants } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 233,
+        "text": "await mkdir(dirname(targetPath), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "await writeFile(targetPath, Buffer.from(await response.arrayBuffer()));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 287,
+        "text": "const bytes = await readFile(isAbsolute(trimmed) ? trimmed : resolve(process.cwd(), trimmed));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 328,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 904,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1014,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1239,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1360,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2056,
+        "text": "const child = spawn(home.python, [\"main.py\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2913,
+        "text": "spawn(command, commandArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown src/index.ts --format esm --dts --clean --out-dir lib"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

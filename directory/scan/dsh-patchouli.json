@@ -1,0 +1,79 @@
+{
+  "name": "dsh-patchouli",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:07:17.326Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fleet/policy-store.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/fleet/policy-store.js",
+        "line": 36,
+        "text": "return decodePolicyOverride(JSON.parse(await readFile(this.path(logicalId), 'utf8')));"
+      },
+      {
+        "file": "lib/fleet/policy-store.js",
+        "line": 47,
+        "text": "await rm(path, { force: true });"
+      },
+      {
+        "file": "lib/fleet/policy-store.js",
+        "line": 51,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/fleet/policy-store.js",
+        "line": 54,
+        "text": "await writeFile(temporary, `${JSON.stringify(override)}\\n`, { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 414,
+        "text": "const child = spawn(command, ["
+      },
+      {
+        "file": "lib/service.js",
+        "line": 438,
+        "text": "const child = spawn(command, ['init', '--root', root], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 9,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "patchouli",
+    "storageDomain"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

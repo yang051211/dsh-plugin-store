@@ -1,0 +1,110 @@
+{
+  "name": "dsh-kernel-mesh",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:07:24.369Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "if (!wsl) { try { wsl = /microsoft/i.test(fs.readFileSync('/proc/version', 'utf8')) } catch {} }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "try { return fs.readFileSync(p, 'utf8') } catch { return '' }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "fs.mkdirSync(KIMI_CRED_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "fs.writeFileSync(KIMI_CRED_FILE, JSON.stringify(t), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1648,
+        "text": "const inject = ['llm', 'tools', 'subagents']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1944,
+        "text": "tools.register(toolDef({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1958,
+        "text": "tools.register(toolDef({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2083,
+        "text": "tools.register(toolDef({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2116,
+        "text": "try { tools.register(t) } catch (e) {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 203,
+        "text": "const child = spawn(argv[0], argv.slice(1), { stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 375,
+        "text": "const child = spawn(argv[0], argv.slice(1), { stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1523,
+        "text": "const child = spawn(argv[0], argv.slice(1), { stdio: ['pipe', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/search-backends.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,76 @@
+{
+  "name": "dsh-memory-porter",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:30.556Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 12,
+        "text": "const response = await fetch(`/memory-porter/api/${path}`, body === void 0 ? void 0 : {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir, readFile, readdir, rename, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 791,
+        "text": "const lines = (await readFile(filePath, \"utf8\")).split(\"\\n\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1103,
+        "text": "merge(out, parseJsonPayload(await readFile(full, \"utf8\"), full));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1117,
+        "text": "if (path.toLowerCase().endsWith(\".zip\")) return importZip(new Uint8Array(await readFile(path)), path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1118,
+        "text": "return parseJsonPayload(await readFile(path, \"utf8\"), path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2743,
+        "text": "toolCtx.effect(() => tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,87 @@
+{
+  "name": "ccs-balance",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:07:27.604Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 37,
+        "text": "fetch(\"/ccs-balance/api/settings\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 144,
+        "text": "return fetch(\"/ccs-balance/api/\" + method + qs, { headers: { \"x-ccs-balance\": \"1\" } }).then((r) => r.json());"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 217,
+        "text": "fetch(\"/ccs-balance/api/settings\", { headers: { \"x-ccs-balance\": \"1\" } }).then((r) => r.json()).then((d) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "const HELPER = readFileSync(join(__dirname, \"ccs_host_helper.py\"), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "try { settings = JSON.parse(readFileSync(SETTINGS_FILE, \"utf8\")); }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "catch { try { settings = JSON.parse(readFileSync(SETTINGS_FILE_FALLBACK, \"utf8\")); } catch { settings = {}; } }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "try { writeFileSync(SETTINGS_FILE, JSON.stringify(settings), \"utf8\"); }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "const child = spawn(cmd, [\"-\", JSON.stringify(args)], { stdio: [\"pipe\", \"pipe\", \"pipe\"], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

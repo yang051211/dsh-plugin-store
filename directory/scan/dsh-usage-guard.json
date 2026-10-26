@@ -1,0 +1,79 @@
+{
+  "name": "dsh-usage-guard",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:16.837Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 151,
+        "text": "const r = await fetch(path);"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 159,
+        "text": "const r = await fetch(\"/usage-stats/config\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/collector.test.js",
+        "line": 2,
+        "text": "import { mkdtempSync, rmSync, mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "host/collector.test.js",
+        "line": 14,
+        "text": "mkdirSync(sessionsDir, { recursive: true });"
+      },
+      {
+        "file": "host/collector.test.js",
+        "line": 16,
+        "text": "afterEach(() => { rmSync(dir, { recursive: true, force: true }); });"
+      },
+      {
+        "file": "host/collector.test.js",
+        "line": 30,
+        "text": "mkdirSync(d, { recursive: true });"
+      },
+      {
+        "file": "host/collector.test.js",
+        "line": 31,
+        "text": "writeFileSync(join(d, 'session.jsonl.zstd'), frame(events));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

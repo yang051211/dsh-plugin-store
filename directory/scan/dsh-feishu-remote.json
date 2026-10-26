@@ -1,0 +1,122 @@
+{
+  "name": "dsh-feishu-remote",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:33.195Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "feishu-resident.mjs",
+        "line": 186,
+        "text": "const res = await fetch('https://api.siliconflow.cn/v1/chat/completions', {"
+      },
+      {
+        "file": "index.js",
+        "line": 226,
+        "text": "command: `mkdir -p ${q(dir)} && curl -sL --max-time 60 ${q(String(args.url))} -o ${q(outPath)}`,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "apply-patch.mjs",
+        "line": 10,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "apply-patch.mjs",
+        "line": 27,
+        "text": "const src = readFileSync(target, 'utf8')"
+      },
+      {
+        "file": "apply-patch.mjs",
+        "line": 41,
+        "text": "writeFileSync(target, src.replace(OLD, NEW))"
+      },
+      {
+        "file": "feishu-resident.mjs",
+        "line": 17,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "feishu-resident.mjs",
+        "line": 26,
+        "text": "try { appendFileSync(LOG, line + '\\n') } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'shell', 'agents', 'timer']"
+      },
+      {
+        "file": "index.js",
+        "line": 170,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 188,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 209,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "feishu-resident.mjs",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "feishu-resident.mjs",
+        "line": 40,
+        "text": "const child = spawn('bash', ['-c',"
+      },
+      {
+        "file": "feishu-resident.mjs",
+        "line": 203,
+        "text": "const c = spawn('bash', ['-c', command], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "feishu-resident.mjs",
+        "line": 241,
+        "text": "const child = spawn('bash', ['-c',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "shell",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 31,
+      "text": "npm i -g @larksuite/cli"
+    }
+  ],
+  "skippedEntries": []
+}

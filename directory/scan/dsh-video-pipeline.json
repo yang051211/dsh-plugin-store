@@ -1,0 +1,95 @@
+{
+  "name": "dsh-video-pipeline",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:16.111Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/bilibili-upload/scripts/heji/bili_api.mjs",
+        "line": 53,
+        "text": "const r = await fetch(u, opts);"
+      },
+      {
+        "file": "skills/douyin-publish/scripts/heji/dy_api.mjs",
+        "line": 36,
+        "text": "const r = await fetch(u, { credentials: 'include' });"
+      },
+      {
+        "file": "skills/douyin-publish/scripts/heji/dy_api.mjs",
+        "line": 75,
+        "text": "const r = await fetch(u, { credentials: 'include' });"
+      },
+      {
+        "file": "skills/douyin-publish/scripts/heji/dy_verify.mjs",
+        "line": 31,
+        "text": "const r = await fetch(`/web/api/mix/list/?status=0,1,2,3,6&count=20&cursor=${cursor}&cookie_enabled=true`, { credentials: 'include' });"
+      },
+      {
+        "file": "skills/douyin-publish/scripts/heji/dy_verify.mjs",
+        "line": 44,
+        "text": "const r = await fetch(`/web/api/mix/item/list/?mix_id=${id}&count=50&cursor=0&cookie_enabled=true`, { credentials: 'include' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provider.js",
+        "line": 20,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 89,
+        "text": "parsed = parseFrontmatter(readFileSync(entry.file, 'utf8'));"
+      },
+      {
+        "file": "lib/provider.js",
+        "line": 195,
+        "text": "parsed = parseFrontmatter(readFileSync(candidate.locator, 'utf8'));"
+      },
+      {
+        "file": "skills/bilibili-upload/scripts/heji/bili_api.mjs",
+        "line": 7,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "skills/bilibili-upload/scripts/heji/bili_api.mjs",
+        "line": 14,
+        "text": "const ck = JSON.parse(fs.readFileSync('{{USER_HOME}}/.bilibili/cookies.json', 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/quad-platform-publish/references/tencent-login-save.js",
+        "line": 4,
+        "text": "const { execSync } = require(\"child_process\");"
+      },
+      {
+        "file": "skills/quad-platform-publish/references/tencent-login-save.js",
+        "line": 11,
+        "text": "const out = execSync('node \"' + path.join(base, \"dist/cli.js\") + '\" tencent check --account default', { encoding: \"utf8\", timeout: 30000 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,59 @@
+{
+  "name": "dsh-sticky-notes",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:07:31.710Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 12,
+        "text": "const api = (endpoint, payload) => fetch('/api/paopaocat-notes', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "const text = readFileSync(NOTES_PATH, 'utf-8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "if (!existsSync(dirname(NOTES_PATH))) mkdirSync(dirname(NOTES_PATH), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "writeFileSync(NOTES_PATH, JSON.stringify({ notes, savedPos }, null, 2))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

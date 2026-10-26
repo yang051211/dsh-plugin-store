@@ -1,0 +1,90 @@
+{
+  "name": "dsh-gateway",
+  "version": "1.7.0",
+  "scannedAt": "2026-10-26T10:07:11.202Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 140,
+        "text": "return fetch('/gateway/panel', {"
+      },
+      {
+        "file": "client.js",
+        "line": 204,
+        "text": "return fetch('/gateway/panel')"
+      },
+      {
+        "file": "client.js",
+        "line": 241,
+        "text": "fetch('/gateway/panel')"
+      },
+      {
+        "file": "client.js",
+        "line": 537,
+        "text": "fetch('/gateway/panel')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 15,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 11,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 44,
+        "text": "const version = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 56,
+        "text": "const state = JSON.parse(readFileSync(statePath, 'utf8'))"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 63,
+        "text": "mkdirSync(dataDir, { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 64,
+        "text": "writeFileSync(statePath, JSON.stringify({ hmacSecret: secret }, null, 2), { encoding: 'utf8', mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/postpublish-smoke.mjs",
+        "line": 4,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

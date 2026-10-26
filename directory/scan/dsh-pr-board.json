@@ -1,0 +1,77 @@
+{
+  "name": "dsh-pr-board",
+  "version": "0.11.14",
+  "scannedAt": "2026-10-26T10:07:17.294Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 481,
+        "text": "function api(path, opts) { return fetch(path, opts).then(function (r) { return r.json(); }); }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 623,
+        "text": "readFile(SNAP_FILE, \"utf8\")"
+      },
+      {
+        "file": "index.js",
+        "line": 657,
+        "text": "writeFile(SNAP_FILE, JSON.stringify({ savedAt: Date.now(), entries: entries.filter((e) => e.at >= cutoff) }) + \"\\n\", \"utf8\").catch(() => {});"
+      },
+      {
+        "file": "index.js",
+        "line": 875,
+        "text": "return sanitizeCfg(JSON.parse(await readFile(HOST_CFG_FILE, \"utf8\")));"
+      },
+      {
+        "file": "index.js",
+        "line": 882,
+        "text": "await writeFile(HOST_CFG_FILE, JSON.stringify(cfg, null, 2) + \"\\n\", \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 78,
+        "text": "execFile(GH_BIN, args, { timeout: timeoutMs || 45000, maxBuffer: 8 * 1024 * 1024 }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

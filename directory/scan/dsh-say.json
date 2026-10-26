@@ -1,0 +1,119 @@
+{
+  "name": "dsh-say",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:32.834Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engines/gptsovits.js",
+        "line": 332,
+        "text": "const response = await fetch(url, { signal: controller.signal })"
+      },
+      {
+        "file": "lib/engines/gptsovits.js",
+        "line": 526,
+        "text": "const response = await fetch(`${serverUrl}/tts`, {"
+      },
+      {
+        "file": "scripts/fetch-voice.mjs",
+        "line": 189,
+        "text": "const response = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(120000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 50,
+        "text": "const { readdirSync } = await import('node:fs')"
+      },
+      {
+        "file": "lib/engines/builtin.js",
+        "line": 17,
+        "text": "import { copyFileSync, existsSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engines/builtin.js",
+        "line": 116,
+        "text": "writeFileSync(path, source, 'utf8')"
+      },
+      {
+        "file": "lib/engines/builtin.js",
+        "line": 223,
+        "text": "writeFileSync(textPath, request.text, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'shell']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "// Registered through `ctx.tools.register` with plain JSON Schema parameters."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 62,
+        "text": "const result = spawnSync('dsh', command, { stdio: 'inherit', shell: process.platform === 'win32' })"
+      },
+      {
+        "file": "lib/engines/genie.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engines/genie.js",
+        "line": 151,
+        "text": "child = spawn(python, [PROBE_PATH], { windowsHide: true, env: workerEnv(config), cwd: config.root })"
+      },
+      {
+        "file": "lib/engines/genie.js",
+        "line": 205,
+        "text": "const child = spawn(config.python, [WORKER_PATH], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "shell",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

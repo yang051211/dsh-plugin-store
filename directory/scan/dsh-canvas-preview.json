@@ -1,0 +1,81 @@
+{
+  "name": "dsh-canvas-preview",
+  "version": "0.4.9",
+  "scannedAt": "2026-10-26T10:07:13.089Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 244,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 11,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 47,
+        "text": "writeFileSync(patchFile, PATCH_SNIPPET, 'utf8')"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 50,
+        "text": "const cur = readFileSync(patchFile, 'utf8')"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 55,
+        "text": "writeFileSync(patchFile, cur + sep + '\\n' + PATCH_SNIPPET, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 29,
+        "text": "const r = spawnSync(cmd, args, { stdio: 'inherit', ...opts })"
+      },
+      {
+        "file": "lib/install-cli.js",
+        "line": 63,
+        "text": "const r = spawnSync('launchctl', ['kickstart', '-k', 'gui/' + uid + '/com.deepseek.dsh.web'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

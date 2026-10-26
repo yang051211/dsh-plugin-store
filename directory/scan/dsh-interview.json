@@ -1,0 +1,93 @@
+{
+  "name": "dsh-interview",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-26T10:07:19.017Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 70,
+        "text": "const response = await fetch(url, options);"
+      },
+      {
+        "file": "src/client/shared/api.js",
+        "line": 30,
+        "text": "const response = await fetch(url, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters/http/api-routes.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/adapters/http/api-routes.js",
+        "line": 123,
+        "text": "response.end(readFileSync(download.filePath))"
+      },
+      {
+        "file": "src/infrastructure/markdown-practice-exporter.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/infrastructure/markdown-practice-exporter.js",
+        "line": 149,
+        "text": "mkdirSync(this.outputDirectory, { recursive: true })"
+      },
+      {
+        "file": "src/infrastructure/markdown-practice-exporter.js",
+        "line": 162,
+        "text": "writeFileSync(temporaryPath, rendered.markdown, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters/dsh/mode-tool-catalog.js",
+        "line": 56,
+        "text": "return denied.length === 0 ? null : agent.ctx.tools.restrict({ deny: denied })"
+      },
+      {
+        "file": "src/adapters/dsh/plugin.js",
+        "line": 12,
+        "text": "export const inject = ['tools', 'agents']"
+      },
+      {
+        "file": "src/adapters/dsh/plugin.js",
+        "line": 41,
+        "text": "})) ctx.tools.register(tool)"
+      },
+      {
+        "file": "src/adapters/dsh/plugin.js",
+        "line": 42,
+        "text": "for (const tool of createPresentationToolDefinitions(runtime.application)) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js",
+    "src/client/shared/styles.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

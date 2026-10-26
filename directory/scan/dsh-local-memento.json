@@ -1,0 +1,112 @@
+{
+  "name": "dsh-local-memento",
+  "version": "1.0.4",
+  "scannedAt": "2026-10-26T10:07:22.603Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 159,
+        "text": "const response = await fetch(url, { cache: \"no-store\", ...init });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/compliance.js",
+        "line": 2,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/compliance.js",
+        "line": 136,
+        "text": "raw = readFileSync(complianceLogPath(dshHome), \"utf8\");"
+      },
+      {
+        "file": "lib/compliance.js",
+        "line": 161,
+        "text": "lines = readFileSync(path, \"utf8\").split(\"\\n\").filter((line) => line.length > 0);"
+      },
+      {
+        "file": "lib/compliance.js",
+        "line": 167,
+        "text": "writeFileSync(path, lines.join(\"\\n\") + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/enabled.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 937,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 963,
+        "text": "const dispose = tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1014,
+        "text": "const dispose = tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1117,
+        "text": "var inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/history.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 146,
+        "text": "child = spawn(zstdBin, [\"-dc\", entry.file], { stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 617,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 747,
+        "text": "child = spawn(zstdBin, [\"-dc\", entry.file], { stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

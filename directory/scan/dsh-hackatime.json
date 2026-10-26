@@ -1,0 +1,102 @@
+{
+  "name": "dsh-hackatime",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:07:31.055Z",
+  "icon": "dsh-hackatime.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 523,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1000,
+        "text": "const res = await fetch(\"https://registry.npmjs.org/dsh-hackatime/latest\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1249,
+        "text": "const res = await fetch(\"https://registry.npmjs.org/dsh-hackatime/latest\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1425,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import fs from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 473,
+        "text": "const text = await fs.readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 658,
+        "text": "const text = await fs.readFile(marker, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 734,
+        "text": "before = await fs.readFile(profileContext.patchPath, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 787,
+        "text": "await handle.writeFile(String(document));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { spawn as nodeSpawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "* `spawn(\"dsh\")` resolves to the extensionless POSIX shim (ENOENT), and Node"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "* 22+ rejects a direct `.cmd` spawn (CVE-2024-27980) — the same reason"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "const child = spawn(\"dsh\", [\"plugin\", \"--profile\", profile, \"update\", \"dsh-hackatime\", \"--latest\", \"-w\"], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

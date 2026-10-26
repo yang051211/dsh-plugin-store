@@ -1,0 +1,116 @@
+{
+  "name": "dsh-living-memory",
+  "version": "0.2.10",
+  "scannedAt": "2026-10-26T10:07:07.863Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 102,
+        "text": "fetch(\"/living-memory/memory-snapshot\")"
+      },
+      {
+        "file": "client.js",
+        "line": 149,
+        "text": "fetch(\"/living-memory/token-snapshot\")"
+      },
+      {
+        "file": "client.js",
+        "line": 310,
+        "text": "fetch(\"/living-memory/sentry-snapshot\")"
+      },
+      {
+        "file": "index.cjs",
+        "line": 1780,
+        "text": "const resp = await fetch(EXTRACT_API, {"
+      },
+      {
+        "file": "index.cjs",
+        "line": 1946,
+        "text": "const resp = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.cjs",
+        "line": 17,
+        "text": "const fs2 = require(\"node:fs\"); // nightly patrol读 session_projcache（handover note检测）；快照通道已退役不再写文件"
+      },
+      {
+        "file": "index.cjs",
+        "line": 39,
+        "text": "fs2.mkdirSync(path.dirname(DB_PATH), { recursive: true });"
+      },
+      {
+        "file": "index.cjs",
+        "line": 213,
+        "text": "const d = JSON.parse(fs2.readFileSync(GUARD_DEFAULTS_PATH, \"utf8\"));"
+      },
+      {
+        "file": "index.cjs",
+        "line": 238,
+        "text": "const parsed = JSON.parse(fs2.readFileSync(p, \"utf8\"));"
+      },
+      {
+        "file": "index.cjs",
+        "line": 411,
+        "text": "const j = JSON.parse(fs2.readFileSync(p, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.cjs",
+        "line": 3333,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.cjs",
+        "line": 3470,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.cjs",
+        "line": 3567,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.cjs",
+        "line": 4619,
+        "text": "inject: [\"tools\", \"credentials\", \"systemPrompt\"],"
+      },
+      {
+        "file": "index.cjs",
+        "line": 4625,
+        "text": "const tools = ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.cjs",
+        "line": 18,
+        "text": "const { execFileSync } = require(\"node:child_process\"); // nightly patrol在线备份（sqlite3 .backup）"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,84 @@
+{
+  "name": "dsh-kylin-images",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:06.431Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 352,
+        "text": "return fetch(API + '/' + action, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/comic/assemble.js",
+        "line": 8,
+        "text": "import { writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/comic/assemble.js",
+        "line": 87,
+        "text": "writeFileSync(path, html, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/comic/project.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/comic/project.js",
+        "line": 86,
+        "text": "mkdirSync(join(dir, 'prompts'), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/comic/project.js",
+        "line": 87,
+        "text": "mkdirSync(join(dir, 'images'), { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "export const inject = ['tools', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "const dispose = ctx.tools?.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

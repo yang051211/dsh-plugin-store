@@ -1,0 +1,75 @@
+{
+  "name": "dsh-lead-panel",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:07:06.166Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 270,
+        "text": "const response = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 464,
+        "text": "try { return readFileSync(path, 'utf8') } catch { return null }"
+      },
+      {
+        "file": "index.js",
+        "line": 536,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 670,
+        "text": "try { writeFileSync(`${configPath}.lead-panel.bak`, raw, 'utf8') } catch { /* 备份失败也照写，别把人卡住 */ }"
+      },
+      {
+        "file": "index.js",
+        "line": 671,
+        "text": "writeFileSync(configPath, next, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 702,
+        "text": "const child = spawn('cmd.exe', ['/c', 'start', '', plan.program, ...plan.args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

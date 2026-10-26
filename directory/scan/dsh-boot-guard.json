@@ -1,0 +1,67 @@
+{
+  "name": "dsh-boot-guard",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:07:33.576Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 228,
+        "text": "return fetch(\"/boot-guard\" + path, Object.assign({ credentials: \"same-origin\" }, options || {}))"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { readFile, writeFile, rename, unlink, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 194,
+        "text": "const text = await readFile(filename, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "await writeFile(temporary, content, { encoding: \"utf8\", flag: \"wx\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "await unlink(temporary);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

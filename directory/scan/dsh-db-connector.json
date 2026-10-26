@@ -1,0 +1,88 @@
+{
+  "name": "dsh-db-connector",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:38.954Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/audit.js",
+        "line": 10,
+        "text": "import { appendFile, mkdir, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/audit.js",
+        "line": 61,
+        "text": "const write = () => mkdir(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "dist/audit.js",
+        "line": 62,
+        "text": ".then(() => appendFile(this.path, line, { encoding: 'utf8', mode: FILE_MODE }))"
+      },
+      {
+        "file": "dist/audit.js",
+        "line": 82,
+        "text": "text = await readFile(this.path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 5,
+        "text": "* `ctx.tools`, the `/db` command on `ctx.commands` when present, and teardown"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 78,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/drivers/sqlite.js",
+        "line": 20,
+        "text": "import { fork } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 67,
+      "text": "npm install -g dsh-db-connector   # global CLI-style usage of the engine"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 58,
+      "text": "npm install -g dsh-db-connector   # 全局安装，CLI 方式使用引擎"
+    }
+  ],
+  "skippedEntries": []
+}

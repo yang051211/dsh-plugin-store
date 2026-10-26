@@ -1,0 +1,128 @@
+{
+  "name": "dsh-winrm",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:07.022Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 57,
+        "text": "return (await readJson(await fetch(WINRM_API.hosts + query({ query: queryText })))).hosts;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 60,
+        "text": "return (await readJson(await fetch(WINRM_API.hosts, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "return (await readJson(await fetch(WINRM_API.hosts + query({ alias }), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "await readJson(await fetch(WINRM_API.hosts + query({ alias }), { method: \"DELETE\" }));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 77,
+        "text": "return (await readJson(await fetch(WINRM_API.test, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { copyFile, readFile, stat, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { closeSync, createReadStream, createWriteStream, existsSync, mkdirSync, openSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1710,
+        "text": "return createHash(\"sha256\").update(await readFile(localPath)).digest(\"hex\").toUpperCase();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1801,
+        "text": "const { mkdir } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1803,
+        "text": "await mkdir(dirname(unc), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4303,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 46,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 116,
+        "text": "const disposers = tools.map(tool => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1659,
+        "text": "const child = spawn(\"cmd.exe\", [\"/c\", ...args], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1714,
+        "text": "const { execFile } = await import(\"node:child_process\");"
+      },
+      {
+        "file": "src/smb.ts",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/smb.ts",
+        "line": 44,
+        "text": "const child = spawn('cmd.exe', ['/c', ...args], { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

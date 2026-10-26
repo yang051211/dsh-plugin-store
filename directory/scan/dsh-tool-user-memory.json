@@ -1,0 +1,98 @@
+{
+  "name": "dsh-tool-user-memory",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:13.916Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/manager-ui.js",
+        "line": 31,
+        "text": " let r,j;try{r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','X-User-Memory-Token':TOKEN},body:JSON.stringify({action,...values})});"
+      },
+      {
+        "file": "lib/manager-web.js",
+        "line": 2,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/consolidate.js",
+        "line": 18,
+        "text": "import { promises as fsp } from 'node:fs';"
+      },
+      {
+        "file": "lib/consolidate.js",
+        "line": 317,
+        "text": "await fsp.appendFile(logPath, `${header}${lines.join('\\n')}`, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 3,
+        "text": "import { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 20,
+        "text": "return await fs.readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 29,
+        "text": "await fs.mkdir(dir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "ctx.tools.register(defineTool({ name: 'memory_status',"
+      },
+      {
+        "file": "lib/migration-tools.js",
+        "line": 8,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/migration-tools.js",
+        "line": 25,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 69,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

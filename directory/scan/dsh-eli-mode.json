@@ -1,0 +1,105 @@
+{
+  "name": "dsh-eli-mode",
+  "version": "0.1.11",
+  "scannedAt": "2026-10-26T10:07:37.800Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 385,
+        "text": "fetch('/eli-kb/api/art', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ side, data }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 616,
+        "text": "fetch('/eli-kb/api/balance').then((r) => r.json()).then((d) => { if (alive && d && d.ok) setBal(d); }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 667,
+        "text": "const scope = createCompatScope({ primary, namespace: 'eli-mode', fetchFn: ((input, init) => fetch(input, init)) });"
+      },
+      {
+        "file": "lib/kb.js",
+        "line": 325,
+        "text": "const resp = await fetch(base + '/user/balance', { headers: { authorization: 'Bearer ' + key } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/eli-settings.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/eli-settings.js",
+        "line": 21,
+        "text": "const doc = yaml.load(readFileSync(settingsPath(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "return readFileSync(a).equals(readFileSync(b))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "mkdirSync(targetDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/kb-tools.js",
+        "line": 6,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/kb-tools.js",
+        "line": 13,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/kb-tools.js",
+        "line": 40,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/kb-tools.js",
+        "line": 58,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/kb-tools.js",
+        "line": 79,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

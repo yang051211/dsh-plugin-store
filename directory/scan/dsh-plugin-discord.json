@@ -1,0 +1,90 @@
+{
+  "name": "dsh-plugin-discord",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:40.433Z",
+  "icon": "dsh-plugin-discord.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/discord.js",
+        "line": 101,
+        "text": "await message.fetch();"
+      },
+      {
+        "file": "lib/discord.js",
+        "line": 199,
+        "text": "const response = await fetch(attachment.url);"
+      },
+      {
+        "file": "lib/discord.js",
+        "line": 358,
+        "text": "const channel = this.client.channels.cache.get(channelId) ?? await this.client.channels.fetch(channelId);"
+      },
+      {
+        "file": "lib/discord.js",
+        "line": 373,
+        "text": "const existing = await channel.messages.fetch(messageId);"
+      },
+      {
+        "file": "lib/discord.js",
+        "line": 383,
+        "text": "const channel = this.client.channels.cache.get(channelId) ?? await this.client.channels.fetch(channelId);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 26,
+        "text": "raw = await readFile(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 98,
+        "text": "await mkdir(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 100,
+        "text": "await writeFile(temp, body, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.build.json"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "credentials",
+    "sessionController",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

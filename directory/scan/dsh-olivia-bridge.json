@@ -1,0 +1,90 @@
+{
+  "name": "dsh-olivia-bridge",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:35.636Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "// 命令行 curl / Invoke-WebRequest 不走 CORS，反而会一路绿灯，把这个问题掩盖掉。"
+      },
+      {
+        "file": "tools/diagnose.mjs",
+        "line": 8,
+        "text": "const res = await fetch(base + path, {"
+      },
+      {
+        "file": "tools/inject.js",
+        "line": 67,
+        "text": "fetch(LOCAL + '/toy/letter/delete', {"
+      },
+      {
+        "file": "tools/inject.js",
+        "line": 117,
+        "text": "var open = XMLHttpRequest.prototype.open;"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "appendFileSync(join(dir, \"bridge.log\"), `${new Date().toISOString()} ${message}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 115,
+        "text": "* 调方法（`i.data.list.map(...)`、`s.data.list.map(...)`、`(await rm()).items.filter(...)`）。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 394,
+        "text": "// 消费点：const A = (await rm()).items.filter(U => U.count > 0)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/midi.js",
+        "line": 22,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

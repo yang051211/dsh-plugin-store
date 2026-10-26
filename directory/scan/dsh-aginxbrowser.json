@@ -1,0 +1,67 @@
+{
+  "name": "dsh-aginxbrowser",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:10.442Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 488,
+        "text": "await mkdir(cfg.screenshotDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 489,
+        "text": "await writeFile(file, Buffer.from(v.image_base64, 'base64'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 534,
+        "text": "for (const def of toolDefs) ctx.tools.register(makeTool(cfg, def))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

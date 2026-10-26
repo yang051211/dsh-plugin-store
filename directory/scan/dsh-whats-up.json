@@ -1,0 +1,76 @@
+{
+  "name": "dsh-whats-up",
+  "version": "1.2.3",
+  "scannedAt": "2026-10-26T10:07:41.944Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 114,
+        "text": "return fetch(path).then(function (r) { return r.json(); });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 202,
+        "text": "fetch(\"/api/whats-up/done\", {"
+      },
+      {
+        "file": "index.js",
+        "line": 332,
+        "text": "const r = await fetch(c.baseUrl.replace(/\\/$/, \"\") + \"/chat/completions\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { readdir, stat, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { readFileSync, existsSync, readdirSync, realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 65,
+        "text": "const raw = JSON.parse(await readFile(SUMMARY_FILE, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 85,
+        "text": "const { writeFile: wf } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "index.js",
+        "line": 184,
+        "text": "raw = readFileSync(f, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

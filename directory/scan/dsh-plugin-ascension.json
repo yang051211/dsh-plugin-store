@@ -1,0 +1,77 @@
+{
+  "name": "dsh-plugin-ascension",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:32.252Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 86,
+        "text": "return fetch(path, body === undefined"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 4,
+        "text": "import { mkdir, readFile, writeFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 46,
+        "text": "await mkdir(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "await writeFile(STATE_PATH, JSON.stringify(cultivation, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "await mkdir(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "await writeFile(SETTINGS_PATH, JSON.stringify(settings, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 343,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

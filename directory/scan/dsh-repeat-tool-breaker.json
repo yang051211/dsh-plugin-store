@@ -1,0 +1,128 @@
+{
+  "name": "dsh-repeat-tool-breaker",
+  "version": "0.11.7",
+  "scannedAt": "2026-10-26T10:07:28.843Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 376,
+        "text": "* text (`curl --config …`). A purely local call carries neither, which is what"
+      },
+      {
+        "file": "lib/block-policy.js",
+        "line": 105,
+        "text": "//   * invocation spellings (`fetch(`, `urlopen(`) are tested with literal content BLANKED, so"
+      },
+      {
+        "file": "lib/block-policy.js",
+        "line": 106,
+        "text": "//     a keyword list containing `'fetch('` is a mention, not a call;"
+      },
+      {
+        "file": "lib/block-policy.js",
+        "line": 107,
+        "text": "//   * module names (`require('axios').get(...)`) exist ONLY as a string literal, so blanking"
+      },
+      {
+        "file": "lib/block-policy.js",
+        "line": 111,
+        "text": "// newlines and COMMAS, and it splits inside quotes too: `python3 -c \"print('uses fetch(')\"`"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fetch-file.js",
+        "line": 70,
+        "text": "import { chmod, mkdir, rename, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 398,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 418,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 419,
+        "text": "await writeFile(target, clipped, 'utf8')"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 436,
+        "text": "if (jar !== undefined) await mkdir(dirname(jar), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "* `ctx.tools.guard` API, which runs after every `tools/pre-execute` listener and"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "* `tools/pre-execute` can ask but cannot deny; `ctx.tools.guard` can deny but"
+      },
+      {
+        "file": "index.js",
+        "line": 228,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 576,
+        "text": "const disposeGuard = ctx.tools.guard(guard)"
+      },
+      {
+        "file": "lib/fetch-file-component.js",
+        "line": 7,
+        "text": "* When enabled, registers `web_fetch_file` into `ctx.tools` and announces"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fetch-file.js",
+        "line": 40,
+        "text": "* - **argv, never a shell.** `spawn(curlPath, [...])` with `--` before the URL, so a URL cannot"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 69,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/fetch-file.js",
+        "line": 317,
+        "text": "child = spawn(settings.curlPath, args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

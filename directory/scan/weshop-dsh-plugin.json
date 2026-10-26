@@ -1,0 +1,111 @@
+{
+  "name": "weshop-dsh-plugin",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:07:33.117Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 8202,
+        "text": "const timer = setTimeout(() => fetch(\"/api/weshop/state\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8211,
+        "text": "const response = await fetch(\"/api/weshop/config\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8221,
+        "text": "const response = await fetch(\"/api/weshop/config\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8243,
+        "text": "\t\t\t\t\t\tconst actions = [...(await (await fetch(`/api/weshop/actions?after=${actionCursor.current}`)).json()).actions || []].sort((a, b) => (a.sequence || 0) - (b"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8314,
+        "text": "const response = await fetch(\"/api/weshop/progress\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/setup.js",
+        "line": 31,
+        "text": "JSON.parse(readFileSync(manifestPath, \"utf8\"));"
+      },
+      {
+        "file": "bin/setup.js",
+        "line": 46,
+        "text": "manifest = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
+      },
+      {
+        "file": "bin/setup.js",
+        "line": 58,
+        "text": "writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 799,
+        "text": "* The tools register directly on ctx.tools. No MCP process or JSON-RPC bridge"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1358,
+        "text": "for (const schema of toolSchemas) ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup.js",
+        "line": 6,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/setup.js",
+        "line": 38,
+        "text": "const install = spawnSync(pnpm, [\"add\", `${packageName}@latest`], { cwd: profileDirectory, stdio: \"inherit\" });"
+      },
+      {
+        "file": "bin/setup.js",
+        "line": 62,
+        "text": "spawnSync(pnpm, [\"remove\", ...installedLegacy], { cwd: profileDirectory, stdio: \"inherit\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,112 @@
+{
+  "name": "kkj-luna-dsh-image-bridge",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:07:14.582Z",
+  "icon": "kkj-luna-dsh-image-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 39,
+        "text": "void fetch('/dsh-image-bridge/log', {"
+      },
+      {
+        "file": "client.js",
+        "line": 866,
+        "text": "const response = await fetch(`${RPC_CHANNEL}/${endpoint}`, {"
+      },
+      {
+        "file": "index.js",
+        "line": 1276,
+        "text": "return await fetch(url, init)"
+      },
+      {
+        "file": "index.js",
+        "line": 1311,
+        "text": "return await fetch(url, signal === undefined || signal === null ? init : { ...init, signal })"
+      },
+      {
+        "file": "index.js",
+        "line": 1321,
+        "text": "return await fetch(url, retryInit)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { appendFile, mkdir, realpath, rename, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 1163,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 1190,
+        "text": "await writeFile(target, bytes)"
+      },
+      {
+        "file": "index.js",
+        "line": 1937,
+        "text": "await mkdir(base, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 1939,
+        "text": "await writeFile(file, `${JSON.stringify(detail, null, 2)}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 75,
+        "text": "* parameters 不是合法 JSON Schema，而 `ctx.tools.register` **照样接受、不抛错**，于是表现为"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 2023,
+        "text": "* 注册到刚查到的那个服务对象上，而不是再读一次 `ctx.tools`：两者在真实 Cordis 里是"
+      },
+      {
+        "file": "index.js",
+        "line": 2030,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 2082,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

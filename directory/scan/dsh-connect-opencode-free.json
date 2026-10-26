@@ -1,0 +1,92 @@
+{
+  "name": "dsh-connect-opencode-free",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:07.381Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 701,
+        "text": "const response = await fetch(`http://127.0.0.1:${firstPort + offset}/catalog`, {"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 728,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 36,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/keycheck.js",
+        "line": 112,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/availability.js",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/availability.js",
+        "line": 69,
+        "text": "const parsed = JSON.parse(readFileSync(this.file, 'utf8'))"
+      },
+      {
+        "file": "lib/availability.js",
+        "line": 78,
+        "text": "mkdirSync(dirname(this.file), { recursive: true })"
+      },
+      {
+        "file": "lib/availability.js",
+        "line": 79,
+        "text": "writeFileSync(this.file, `${JSON.stringify({ savedAt: Date.now(), entries: this.entries })}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/gate-tools.js",
+        "line": 21,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gate-tools.js",
+        "line": 20,
+        "text": "import { exec } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

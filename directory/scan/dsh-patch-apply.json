@@ -1,0 +1,86 @@
+{
+  "name": "dsh-patch-apply",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:07:35.713Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/src/cli.js",
+        "line": 23,
+        "text": "import { promises as fsp } from 'node:fs';"
+      },
+      {
+        "file": "build/src/cli.js",
+        "line": 158,
+        "text": "const patchText = await readFile(file, 'patch', cwd);"
+      },
+      {
+        "file": "build/src/cli.js",
+        "line": 170,
+        "text": "const patchText = await readFile(file, 'patch', cwd);"
+      },
+      {
+        "file": "build/src/cli.js",
+        "line": 187,
+        "text": "await fsp.mkdir(path.dirname(path.resolve(opts.outFile)), { recursive: true });"
+      },
+      {
+        "file": "build/src/cli.js",
+        "line": 188,
+        "text": "await fsp.writeFile(opts.outFile, text, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build/src/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "build/src/index.js",
+        "line": 21,
+        "text": "* Mount the four patch tools on `ctx.tools`."
+      },
+      {
+        "file": "build/src/index.js",
+        "line": 38,
+        "text": "ctx.tools.register(applyTool(ctx, cfg)),"
+      },
+      {
+        "file": "build/src/index.js",
+        "line": 39,
+        "text": "ctx.tools.register(dryRunTool(ctx, cfg)),"
+      },
+      {
+        "file": "build/src/index.js",
+        "line": 40,
+        "text": "ctx.tools.register(reverseTool(ctx, cfg)),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

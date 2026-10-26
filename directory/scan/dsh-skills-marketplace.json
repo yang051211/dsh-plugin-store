@@ -1,0 +1,105 @@
+{
+  "name": "dsh-skills-marketplace",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:07:13.799Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 88,
+        "text": "const r = await fetch(path, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 92,
+        "text": "const r = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 100,
+        "text": "const r = await fetch(path, { method: \"DELETE\", headers: { \"x-dsh-skills-marketplace\": \"1\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 104,
+        "text": "const r = await fetch(path, { method: \"PUT\", headers: WRITE_HEADERS, body: JSON.stringify(body) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdirSync, existsSync, readFileSync, writeFileSync, rmSync, copyFileSync, readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "const raw = JSON.parse(readFileSync(f, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "mkdirSync(this.dshHome, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "writeFileSync(this.stateFile(), JSON.stringify(this.state, null, 2));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "rmSync(dest, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 317,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 322,
+        "text": "const r = spawnSync(\"git\", args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 343,
+        "text": "const r = spawnSync(\"git\", [\"ls-remote\", \"--symref\", url, \"HEAD\"], { encoding: \"utf8\", timeout: 3e4, env: { ...process.env, GIT_TERMINAL_PROMPT: \"0\" } });"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 6,
+        "text": "const r = spawnSync(\"git\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

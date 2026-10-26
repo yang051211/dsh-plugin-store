@@ -1,0 +1,76 @@
+{
+  "name": "dsh-open-code-review",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:09.033Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "const content = readFileSync(skillPath, 'utf8').replace(/^---\\r?\\n[\\s\\S]*?\\r?\\n---\\r?\\n/, '');"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 4,
+        "text": "import { access } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 5,
+        "text": "import { constants } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'skills', 'subprocess', 'sandboxPolicy', 'sandbox'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 68,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sandbox",
+    "sandboxPolicy",
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

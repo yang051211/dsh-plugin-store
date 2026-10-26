@@ -1,0 +1,80 @@
+{
+  "name": "dsh-session-remover",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:07:29.320Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 352,
+        "text": "var response = await fetch(\"/api/session.delete\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 383,
+        "text": "var response = await fetch(BATCH_ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { closeSync, existsSync, mkdtempSync, openSync, readFileSync, readdirSync, readSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 328,
+        "text": "try { buf = readFileSync(file); } catch { return \"\"; }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 403,
+        "text": "writeFileSync(script, \"\\uFEFF\" + recycleScript(dirs, resultFile), \"utf16le\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 413,
+        "text": "try { text = readFileSync(resultFile, \"utf8\"); } catch {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 447,
+        "text": "try { rmSync(work, { recursive: true, force: true }); } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 404,
+        "text": "const r = spawnSync(exe, [\"//nologo\", \"//E:JScript\", script], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

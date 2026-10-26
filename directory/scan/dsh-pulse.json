@@ -1,0 +1,88 @@
+{
+  "name": "dsh-pulse",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:07:11.948Z",
+  "icon": "dsh-pulse.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2698,
+        "text": "const res = await fetch(\"/pulse/settings\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2773,
+        "text": "fetch(`/pulse/stats?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2813,
+        "text": "fetch(`${path}${refresh === true ? \"?refresh=1\" : \"\"}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2866,
+        "text": "settingsCache.inflight = fetch(\"/pulse/settings\", { credentials: \"same-origin\", headers: { accept: \"application/json\" } }).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3623,
+        "text": "fetch(`/pulse/session?id=${encodeURIComponent(sessionId)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 33,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/index.js",
+        "line": 345,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
+      },
+      {
+        "file": "src/tui/scene.js",
+        "line": 8,
+        "text": "import { writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/tui/scene.js",
+        "line": 284,
+        "text": "writeFileSync(file, \"\\uFEFF\" + rows.map((r) => r.join(\",\")).join(\"\\n\") + \"\\n\", \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js",
+    "src/client/css.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjectionCache",
+    "sessionProjections",
+    "sessionQuery",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

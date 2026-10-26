@@ -1,0 +1,96 @@
+{
+  "name": "dsh-cloudq",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:23.238Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2611,
+        "text": "fetch(downloadUrl).then((res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3275,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { get, request } from \"node:https\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "const declaredPatch = JSON.parse(readFileSync(join(packageDir, \"package.json\"), \"utf8\"))?.dsh?.bundle?.patch;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "\tfor (const block of parsePatchList(readFileSync(bundlePatchPath, \"utf8\"))) if (block && typeof block === \"object\" && Array.isArray(block.insert)) rows.push(..."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 196,
+        "text": "const bundles = JSON.parse(readFileSync(join(profileDir, \"package.json\"), \"utf8\"))?.dsh?.profile?.bundles;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "writeFileSync(temporary, content, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 538,
+        "text": "const child = spawn(\"pnpm\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 578,
+        "text": "spawn(\"/bin/sh\", [\"-c\", command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build && pnpm run check:client"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

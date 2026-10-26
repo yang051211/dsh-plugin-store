@@ -1,0 +1,99 @@
+{
+  "name": "dsh-browser-computer",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:07:07.941Z",
+  "icon": "dsh-browser-computer.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 58,
+        "text": "const response = await fetch(`/${LEGACY_ID}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/doctor.mjs",
+        "line": 11,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/doctor.mjs",
+        "line": 12,
+        "text": "import { readFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/probes.mjs",
+        "line": 9,
+        "text": "import { readFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/probes.mjs",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/probes.mjs",
+        "line": 289,
+        "text": "text = await deps.readFile(patchPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 30,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 52,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 19,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "src/tools.mjs",
+        "line": 53,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/proc.mjs",
+        "line": 35,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "src/proc.mjs",
+        "line": 56,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

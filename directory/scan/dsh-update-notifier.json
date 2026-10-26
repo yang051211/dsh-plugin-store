@@ -1,0 +1,61 @@
+{
+  "name": "dsh-update-notifier",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:36.361Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "const res = await fetch(url, { signal: ac.signal, headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "import { readFileSync, writeFileSync, renameSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "return JSON.parse(readFileSync(join(nodeModules, pkg, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 163,
+        "text": "const parsed = JSON.parse(readFileSync(stateFile, \"utf8\"))?.declines;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "writeFileSync(tmp, JSON.stringify({ declines }, null, 2));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

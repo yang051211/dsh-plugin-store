@@ -1,0 +1,108 @@
+{
+  "name": "dsh-web-fetch-fakeip",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:23.723Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 61,
+        "text": "* The provider keeps the stock id (`http`) so `ctx.web.fetch()` selects it by"
+      },
+      {
+        "file": "src/index.js",
+        "line": 78,
+        "text": "fetch: (request, signal) => inner.fetch(request, signal),"
+      },
+      {
+        "file": "test/transport.live.js",
+        "line": 45,
+        "text": "fetch: (request, signal) => inner.fetch(request, signal),"
+      },
+      {
+        "file": "test/transport.live.js",
+        "line": 71,
+        "text": "const result = await provider.fetch({ url: 'https://example.com/' }, AbortSignal.timeout(30_000))"
+      },
+      {
+        "file": "test/transport.live.js",
+        "line": 78,
+        "text": "const result = await provider.fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-package.mjs",
+        "line": 20,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/check-package.mjs",
+        "line": 53,
+        "text": "const manifest = JSON.parse(await readFile('package.json', 'utf8'))"
+      },
+      {
+        "file": "scripts/release-control.mjs",
+        "line": 25,
+        "text": "import { appendFile, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/release-control.mjs",
+        "line": 157,
+        "text": "const manifest = JSON.parse(await readFile('package.json', 'utf8'))"
+      },
+      {
+        "file": "scripts/release-control.mjs",
+        "line": 178,
+        "text": "if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `published=${published}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-package.mjs",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/release-control.mjs",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 105,
+      "text": "cp -r dsh-web-fetch-fakeip \"$DSH_HOME/profiles/web/plugins/\""
+    },
+    {
+      "file": "README.zh.md",
+      "line": 94,
+      "text": "cp -r dsh-web-fetch-fakeip \"$DSH_HOME/profiles/web/plugins/\""
+    }
+  ],
+  "skippedEntries": []
+}

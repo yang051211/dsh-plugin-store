@@ -1,0 +1,89 @@
+{
+  "name": "dsh-side-chat-plus-plus",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:07:28.883Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 2,
+        "text": "import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 112,
+        "text": "const body = readFileSync(clientBundle, 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 124,
+        "text": "writeFileSync(resolve(project, 'src/client.js'), output, 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 126,
+        "text": "rmSync(temp, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/test-close-loop.mjs",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 1,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 59,
+        "text": "execSync(args, { cwd: project, stdio: 'inherit', shell: true })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 110,
+        "text": "execSync(clientArgs, { cwd: project, stdio: 'inherit', shell: true })"
+      },
+      {
+        "file": "scripts/test-close-loop.mjs",
+        "line": 14,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test-close-loop.mjs",
+        "line": 33,
+        "text": "execSync(args, { cwd: project, stdio: 'pipe', shell: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessionPersistence",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

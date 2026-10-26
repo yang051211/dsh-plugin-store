@@ -1,0 +1,92 @@
+{
+  "name": "dsh-wechat-mp",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:21.250Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mp-client/client.js",
+        "line": 9,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/mp-client/client.js",
+        "line": 162,
+        "text": "bytes = await readFile(path);"
+      },
+      {
+        "file": "lib/mp-client/token.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/mp-client/token.js",
+        "line": 65,
+        "text": "raw = await readFile(this.cacheFile, 'utf-8');"
+      },
+      {
+        "file": "lib/mp-client/token.js",
+        "line": 84,
+        "text": "await mkdir(dirname(this.cacheFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools/api.js",
+        "line": 74,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/api.js",
+        "line": 106,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/api.js",
+        "line": 211,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/render.js",
+        "line": 26,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

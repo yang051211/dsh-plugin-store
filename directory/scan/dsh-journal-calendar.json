@@ -1,0 +1,84 @@
+{
+  "name": "dsh-journal-calendar",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:20.927Z",
+  "icon": "dsh-journal-calendar.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, readdir, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 308,
+        "text": "raw = readFileSync(this.dutyPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 327,
+        "text": "raw = await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 419,
+        "text": "if (text.trim() === \"\") await rm(this.dutyPath(), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 616,
+        "text": "text: ({ scope }) => ctx.tools.get(\"journal_record\", scope) === void 0 ? \"\" : requiredService(ctx).dutyNow().text"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 636,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/types/tool.js",
+        "line": 57,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

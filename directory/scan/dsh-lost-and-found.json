@@ -1,0 +1,103 @@
+{
+  "name": "dsh-lost-and-found",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:07:36.232Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "config.mjs",
+        "line": 10,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "config.mjs",
+        "line": 113,
+        "text": "mkdirSync(dataDir(), { recursive: true });"
+      },
+      {
+        "file": "config.mjs",
+        "line": 170,
+        "text": "writeFileSync(p, JSON.stringify(payload, null, 2), \"utf8\");"
+      },
+      {
+        "file": "config.mjs",
+        "line": 178,
+        "text": "return JSON.parse(readFileSync(p, \"utf8\"));"
+      },
+      {
+        "file": "core/run-scan.mjs",
+        "line": 11,
+        "text": "import { existsSync, readFileSync, rmSync, writeFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 39,
+        "text": "export const inject = [\"tools\", \"commands\"];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 259,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 345,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 385,
+        "text": "ctx.tools.register(textTool({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 446,
+        "text": "ctx.tools.register(textTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "index.mjs",
+        "line": 206,
+        "text": "const child = spawn(process.execPath, [runner, `--trigger=${trigger}`], {"
+      },
+      {
+        "file": "index.mjs",
+        "line": 454,
+        "text": "const child = spawn(\"explorer.exe\", [`/select,${p}`], { detached: true, stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

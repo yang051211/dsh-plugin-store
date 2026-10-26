@@ -1,0 +1,131 @@
+{
+  "name": "dsh-acp-server",
+  "version": "0.14.2",
+  "scannedAt": "2026-10-26T10:07:22.273Z",
+  "icon": "dsh-acp-server.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/acp-chat.mjs",
+        "line": 143,
+        "text": "const response = await fetch(`${url.replace(/\\/$/, '')}/acp`, {"
+      },
+      {
+        "file": "bin/acp-chat.mjs",
+        "line": 172,
+        "text": "const response = await fetch(`${url.replace(/\\/$/, '')}/acp/stream`, {"
+      },
+      {
+        "file": "bin/acp-chat.mjs",
+        "line": 211,
+        "text": "await fetch(`${url.replace(/\\/$/, '')}/acp`, {"
+      },
+      {
+        "file": "lib/cli/http-client.js",
+        "line": 30,
+        "text": "const response = await fetch(`${endpoint}/stream`, {"
+      },
+      {
+        "file": "lib/cli/http-client.js",
+        "line": 61,
+        "text": "const response = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/setup-webacp.mjs",
+        "line": 22,
+        "text": "import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/setup-webacp.mjs",
+        "line": 46,
+        "text": "mkdirSync(join(home, 'profiles'), { recursive: true })"
+      },
+      {
+        "file": "bin/setup-webacp.mjs",
+        "line": 58,
+        "text": "(JSON.parse(readFileSync(manifestPath, 'utf8'))?.dsh?.profile?.bundles ?? []).includes('dsh-acp-server')"
+      },
+      {
+        "file": "bin/setup-webacp.mjs",
+        "line": 79,
+        "text": "let previous = existsSync(patchPath) ? readFileSync(patchPath, 'utf8') : ''"
+      },
+      {
+        "file": "bin/setup-webacp.mjs",
+        "line": 82,
+        "text": "writeFileSync(patchPath, previous)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/acp-chat.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/acp-chat.mjs",
+        "line": 115,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "bin/dsh-acp.mjs",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-acp.mjs",
+        "line": 47,
+        "text": "const child = spawn(dsh, ['--profile', 'acp', ...process.argv.slice(2)], {"
+      },
+      {
+        "file": "bin/setup-profile.mjs",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 23,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "cmdlineArgs"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 49,
+      "text": "After `npm i -g dsh-acp-server` (or via `npx`). The bin boots `dsh --profile acp` with the current stdio and passes every launcher flag through (`serve --port 7"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 49,
+      "text": "`npm i -g dsh-acp-server` 后全局可用（或 npx 直接跑）。该命令以当前 stdio 启动 `dsh --profile acp`，所有 launcher 参数透传（`serve --port 7800`、`--patch extra.yml`）。DSH home 里还没有 `acp` pro"
+    }
+  ],
+  "skippedEntries": []
+}

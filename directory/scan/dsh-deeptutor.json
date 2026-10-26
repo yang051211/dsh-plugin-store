@@ -1,0 +1,133 @@
+{
+  "name": "dsh-deeptutor",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:07:33.865Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http-api.js",
+        "line": 19,
+        "text": "const res = await fetch(`${API_BASE}/api/v1/system/status`, {"
+      },
+      {
+        "file": "lib/http-api.js",
+        "line": 84,
+        "text": "const res = await fetch(`${API_BASE}${path}`, { ...init, signal: controller.signal });"
+      },
+      {
+        "file": "src/http-api.ts",
+        "line": 21,
+        "text": "const res = await fetch(`${API_BASE}/api/v1/system/status`, {"
+      },
+      {
+        "file": "src/http-api.ts",
+        "line": 90,
+        "text": "const res = await fetch(`${API_BASE}${path}`, { ...init, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": ".agents/skills/html-doc/scripts/md-to-html.js",
+        "line": 16,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": ".agents/skills/html-doc/scripts/md-to-html.js",
+        "line": 336,
+        "text": "md = fs.readFileSync(inputFile, \"utf8\");"
+      },
+      {
+        "file": ".agents/skills/html-doc/scripts/md-to-html.js",
+        "line": 339,
+        "text": "md = fs.readFileSync(0, \"utf8\"); // stdin"
+      },
+      {
+        "file": ".agents/skills/html-doc/scripts/md-to-html.js",
+        "line": 362,
+        "text": "let template = fs.readFileSync(templatePath, \"utf8\");"
+      },
+      {
+        "file": ".agents/skills/html-doc/scripts/md-to-html.js",
+        "line": 372,
+        "text": "fs.writeFileSync(opts.out, template, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 298,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 30,
+        "text": "export const inject = [\"tools\"] as const;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-exec.js",
+        "line": 5,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli-exec.js",
+        "line": 53,
+        "text": "const child = execFile(file, args, {"
+      },
+      {
+        "file": "lib/cli-exec.js",
+        "line": 70,
+        "text": "spawn(\"taskkill\", [\"/pid\", String(child.pid), \"/T\", \"/F\"], { stdio: \"ignore\", windowsHide: true });"
+      },
+      {
+        "file": "lib/html-render.js",
+        "line": 6,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/html-render.js",
+        "line": 34,
+        "text": "            execFile(process.execPath, [HTML_DOC_SCRIPT, mdPath, \"--out\", htmlPath, \"--title\", title, \"--toc\"], { windowsHide: true, timeout: 60_000 }, (err, _s"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

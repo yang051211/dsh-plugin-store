@@ -1,0 +1,59 @@
+{
+  "name": "dsh-plugin-git-workflow",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:39.112Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 391,
+        "text": "ctx.effect(() => ctx.tools.register(definition), `git-workflow: ${definition.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 7,
+        "text": "* and runs `git` via child_process.execFile (no shell, no injection)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "* Every `git` invocation goes through `child_process.execFile(\"git\", args)`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

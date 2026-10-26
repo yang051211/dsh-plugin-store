@@ -1,0 +1,104 @@
+{
+  "name": "dsh-preset-workshop",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:41.531Z",
+  "icon": "dsh-preset-workshop.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 51,
+        "text": "const response = await fetch('/preset-workshop/' + file, { signal });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 56,
+        "text": "        const response = await fetch('/preset-workshop/api', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...input,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/catalog.js",
+        "line": 2,
+        "text": "import { readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/core.js",
+        "line": 5,
+        "text": "bash: 'bash', pwsh: 'pwsh', read: 'fs', edit: 'fs', write: 'fs',"
+      },
+      {
+        "file": "src/index.js",
+        "line": 4,
+        "text": "import { readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 48,
+        "text": "      try { const body = await readFile(new URL((file.startsWith('assets/') ? '../' : './') + file, import.meta.url)); res.writeHead(200, { 'content-type': type"
+      },
+      {
+        "file": "src/index.js",
+        "line": 337,
+        "text": "const raw = await readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/catalog.js",
+        "line": 117,
+        "text": "for (const schema of this.ctx.tools.schemas()) {"
+      },
+      {
+        "file": "src/catalog.js",
+        "line": 189,
+        "text": "for (const schema of this.ctx.tools.schemas(key)) {"
+      },
+      {
+        "file": "src/catalog.js",
+        "line": 190,
+        "text": "if (schema.name === 'run_code' || this.ctx.tools.get(schema.name, key) === this.ctx.tools.get(schema.name)) continue;"
+      },
+      {
+        "file": "src/core.js",
+        "line": 15,
+        "text": "export const MCP_CLIENT_MODULE = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 15,
+        "text": "export const inject = ['loader', 'agentPresets', 'tools', 'systemPrompt', 'skills', 'agents', 'sessions', 'sessionProjections'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "loader",
+    "sessionProjections",
+    "sessions",
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

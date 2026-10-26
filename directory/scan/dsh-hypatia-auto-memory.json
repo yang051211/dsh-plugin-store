@@ -1,0 +1,113 @@
+{
+  "name": "dsh-hypatia-auto-memory",
+  "version": "2.4.4",
+  "scannedAt": "2026-10-26T10:07:42.748Z",
+  "icon": "dsh-hypatia-auto-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1393,
+        "text": "const response = await fetch(memoryUrl(sessionId, content), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1425,
+        "text": "const response = await fetch(summarizeUrl(sessionId), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1469,
+        "text": "const response = await fetch(`${MEMORY_API_PREFIX}/shelves`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1838,
+        "text": "const next = await fetch(sessionId, { content });"
+      },
+      {
+        "file": "src/client/memory-client.ts",
+        "line": 140,
+        "text": "const response = await fetch(memoryUrl(sessionId, content), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/skills.js",
+        "line": 22,
+        "text": "import { existsSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "src/skills.js",
+        "line": 116,
+        "text": "const { attributes, body } = parseFrontmatter(readFileSync(skillFile, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/hypatia-mcp.js",
+        "line": 6,
+        "text": "* `dsh-mcp-client`, so the model never sees these tools and the plugin's calls"
+      },
+      {
+        "file": "src/index.js",
+        "line": 637,
+        "text": "inject: ['approval', 'tools'],"
+      },
+      {
+        "file": "src/on-demand.js",
+        "line": 247,
+        "text": "ctx.effect(() => ctx.tools.register(definition), 'dsh-hypatia-auto-memory: hypatia_summarize tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/collector.js",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/hypatia-cli.js",
+        "line": 89,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "src/hypatia-mcp.js",
+        "line": 166,
+        "text": "function spawn() {"
+      },
+      {
+        "file": "src/hypatia-mcp.js",
+        "line": 173,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "src/hypatia-mcp.js",
+        "line": 275,
+        "text": "const conn = spawn()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "dsh-file-claim",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:19.987Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "claim.mjs",
+        "line": 43,
+        "text": "import { open, readFile, rename, stat, unlink, writeFile, mkdir, copyFile, readdir, appendFile, rmdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 49,
+        "text": "import { rmSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 126,
+        "text": "raw = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 145,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 147,
+        "text": "await writeFile(tmp, JSON.stringify(data, null, 2) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 266,
+        "text": "ctx.effect(() => ctx.tools.register(makeClaimTool(ctx, config, def)))"
+      },
+      {
+        "file": "index.mjs",
+        "line": 533,
+        "text": "inject: ['tools'],"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "claim.mjs",
+        "line": 44,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 948,
+        "text": "const r = spawnSync('git', ['merge-file', '-p', cur, base, other], { encoding: 'utf8' })"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 964,
+        "text": "const sha = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: repoRoot, encoding: 'utf8' })"
+      },
+      {
+        "file": "claim.mjs",
+        "line": 966,
+        "text": "const show = spawnSync('git', ['show', 'HEAD:' + rel], { cwd: repoRoot, encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

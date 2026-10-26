@@ -1,0 +1,99 @@
+{
+  "name": "dsh-plugin-security",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:07:30.075Z",
+  "icon": "dsh-plugin-security.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collect.js",
+        "line": 13,
+        "text": "import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/collect.js",
+        "line": 30,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/collect.js",
+        "line": 41,
+        "text": "return readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "lib/disposition.js",
+        "line": 30,
+        "text": "import { existsSync, readFileSync, readdirSync, renameSync, writeFileSync, copyFileSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/disposition.js",
+        "line": 105,
+        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/behavior.js",
+        "line": 169,
+        "text": "* key — the `tools.register()` / `defineTool()` shape. The call gate uses it"
+      },
+      {
+        "file": "lib/gate.js",
+        "line": 474,
+        "text": "* Wire the gate into a host context: attribution on `ctx.tools`, the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "export const inject = ['tools', 'pluginManager', 'typert'];"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 74,
+        "text": "disposers.push(tools.register({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 104,
+        "text": "disposers.push(tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/remote.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 31,
+        "text": "const child = spawn('pnpm', args, { cwd, env: process.env });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "pluginManager",
+    "tools",
+    "typert"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

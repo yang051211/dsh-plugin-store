@@ -1,0 +1,93 @@
+{
+  "name": "dsh-tree-task-flow",
+  "version": "0.3.14",
+  "scannedAt": "2026-10-26T10:07:32.394Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 130,
+        "text": "const response = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 28,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 48,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 56,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 58,
+        "text": "writeFileSync(tmp, `${JSON.stringify(value, null, 2)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 116,
+        "text": "rmSync(heldFile(sessionId), { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "* 反过来，也只有 inject 了才拿得到 `ctx.tools`。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "export const inject = [\"systemPrompt\", \"tools\"];"
+      },
+      {
+        "file": "lib/prompt.js",
+        "line": 41,
+        "text": "ctx.tools.get(\"tree_task_status\", scope) === undefined ? \"\" : SECTION_TEXT,"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 77,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 102,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

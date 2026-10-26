@@ -1,0 +1,71 @@
+{
+  "name": "dsh-context7",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:19.941Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 12,
+        "text": "* provider is mounted, falling back to the in-process global fetch (Node >= 22)."
+      },
+      {
+        "file": "src/index.js",
+        "line": 50,
+        "text": "const res = await web.fetch({ url }, exec.signal)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 57,
+        "text": "const res = await fetch(url, { headers, signal: AbortSignal.any(signals) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 11,
+        "text": "* ctx.tools.register, and network uses the configured `web` seam when a fetch"
+      },
+      {
+        "file": "src/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 289,
+        "text": "ctx.effect(() => ctx.tools.register(makeSearchTool(ctx, resolved)), 'dsh-context7: context7_search')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 290,
+        "text": "ctx.effect(() => ctx.tools.register(makeDocsTool(ctx, resolved)), 'dsh-context7: context7_get_docs')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,58 @@
+{
+  "name": "dsh-whale-post-gate",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-26T10:07:31.819Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, renameSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 109,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 111,
+        "text": "writeFileSync(tmp, text, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 122,
+        "text": "writeFileSync(file, text, 'utf8')       // 兜底：宁可少一次原子性，也不要记账失败"
+      },
+      {
+        "file": "index.js",
+        "line": 123,
+        "text": "try { unlinkSync(tmp) } catch { /* 临时文件清不掉不是错 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

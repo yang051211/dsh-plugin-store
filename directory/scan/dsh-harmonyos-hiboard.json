@@ -1,0 +1,110 @@
+{
+  "name": "dsh-harmonyos-hiboard",
+  "version": "0.10.1",
+  "scannedAt": "2026-10-26T10:07:24.354Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/client.js",
+        "line": 252,
+        "text": "return fetch(ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/lib/client.js",
+        "line": 265,
+        "text": "fetch(ROUTE, { method: 'GET' })"
+      },
+      {
+        "file": "src/lib/client.js",
+        "line": 279,
+        "text": "return fetch(ROUTE, {"
+      },
+      {
+        "file": "src/lib/client.js",
+        "line": 703,
+        "text": "fetch(ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/lib/index.js",
+        "line": 246,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/agents-rule.js",
+        "line": 21,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/lib/agents-rule.js",
+        "line": 57,
+        "text": "return readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "src/lib/agents-rule.js",
+        "line": 73,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "src/lib/agents-rule.js",
+        "line": 82,
+        "text": "writeFileSync(tmp, text, \"utf8\");"
+      },
+      {
+        "file": "src/lib/config-store.js",
+        "line": 14,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/index.js",
+        "line": 44,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "src/lib/index.js",
+        "line": 759,
+        "text": "ctx.tools.register(hiboardPushTool({ resolveAuthCode, settings }));"
+      },
+      {
+        "file": "src/lib/index.js",
+        "line": 760,
+        "text": "ctx.tools.register(hiboardVerifyTool({ resolveAuthCode, settings }));"
+      },
+      {
+        "file": "src/lib/index.js",
+        "line": 800,
+        "text": "registered: Boolean(ctx.tools?.get?.(\"hiboard_push_selfcheck\")),"
+      },
+      {
+        "file": "src/lib/index.js",
+        "line": 807,
+        "text": "* 为什么需要它：`ctx.tools.register()` **只校验 `output.schema`**，`parameters` 会被"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

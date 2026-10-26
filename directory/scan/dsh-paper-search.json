@@ -1,0 +1,109 @@
+{
+  "name": "dsh-paper-search",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:07:18.403Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fulltext.js",
+        "line": 319,
+        "text": "res = await fetch(sekarang, {"
+      },
+      {
+        "file": "lib/fulltext.js",
+        "line": 431,
+        "text": "const r = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/sources.js",
+        "line": 28,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache.js",
+        "line": 24,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 62,
+        "text": "const j = JSON.parse(readFileSync(berkas, 'utf8'));"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 74,
+        "text": "mkdirSync(dirname(berkas), { recursive: true });"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 76,
+        "text": "writeFileSync(sementara, JSON.stringify(isi));"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 128,
+        "text": "if (existsSync(berkas)) unlinkSync(berkas);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1190,
+        "text": "ctx.effect(() => ctx.tools.register(pintu));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1194,
+        "text": "ctx.effect(() => ctx.tools.register(t));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fulltext.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/fulltext.js",
+        "line": 119,
+        "text": "anak = spawn(cmd, argv, { stdio: ['ignore', fdOut, fdErr], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 210,
+      "text": "npm i -g @firecrawl/anydoc     # recommended: Rust binary, no Python"
+    }
+  ],
+  "skippedEntries": []
+}

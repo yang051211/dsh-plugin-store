@@ -1,0 +1,85 @@
+{
+  "name": "dsh-ding",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:07:14.326Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 351,
+        "text": "fetch(path, options).then((res) => res.json()).catch(() => null), []);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1117,
+        "text": "fetch(\"/dsh-ding/presence\", {"
+      },
+      {
+        "file": "toast-activate.ps1",
+        "line": 103,
+        "text": "Invoke-RestMethod -Uri $activateUrl -Method Post -ContentType 'application/json' -Body $payload -TimeoutSec 5 | Out-Null"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 48,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, watch, appendFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "applyPersisted(JSON.parse(readFileSync(settingsFile, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 581,
+        "text": "mkdirSync(dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 583,
+        "text": "writeFileSync(settingsFile, JSON.stringify({"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 45,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "const child = spawn(\"powershell.exe\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

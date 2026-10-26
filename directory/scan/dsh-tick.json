@@ -1,0 +1,93 @@
+{
+  "name": "dsh-tick",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:07:32.889Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rpc.js",
+        "line": 240,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 222,
+        "text": "const { rename } = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/rpc.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/rpc.js",
+        "line": 65,
+        "text": "const raw = readFileSync(join(PACKAGE_ROOT, 'package.json'), 'utf8')"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 28,
+        "text": "import { mkdir, readFile, rename, writeFile, readdir, stat, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/storage.js",
+        "line": 74,
+        "text": "for (const dir of REQUIRED_DIRS) await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "export const inject = ['sessions', 'tools']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 10,
+        "text": "*   3. **无 agent 的调用直接拒绝**（程序化 `ctx.tools.execute()` 没有会话，"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 166,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 204,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 249,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

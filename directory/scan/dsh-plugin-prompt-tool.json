@@ -1,0 +1,134 @@
+{
+  "name": "dsh-plugin-prompt-tool",
+  "version": "3.0.2",
+  "scannedAt": "2026-10-26T10:07:12.757Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/tool-config-engine.mjs",
+        "line": 272,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 342,
+        "text": "return await readBridgeResponse(await fetch(SETTINGS_BRIDGE_PREFIX + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 360,
+        "text": "return await readBridgeResponse(await fetch(SETTINGS_BRIDGE_PREFIX + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/compositions/source/local/persistent-shell-posix.yml",
+        "line": 22,
+        "text": "shellPath: !!js \"process.getBuiltinModule?.('node:fs')?.existsSync('/bin/bash') ? '/bin/bash' : 'bash'\""
+      },
+      {
+        "file": "engine/host-package.mjs",
+        "line": 9,
+        "text": "import { realpathSync } from 'node:fs'"
+      },
+      {
+        "file": "engine/instruction-hint.mjs",
+        "line": 23,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "engine/instruction-hint.mjs",
+        "line": 109,
+        "text": "return readFileSync(real, 'utf8').trim()"
+      },
+      {
+        "file": "engine/instruction-hint.mjs",
+        "line": 148,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/compositions/source/local/present-as.yml",
+        "line": 3,
+        "text": "# 让本模块覆盖的 Agent 以 `config.mode` 指定的形态呈现工具（官方 `ctx.tools.presentAs`）："
+      },
+      {
+        "file": "engine/present-as.mjs",
+        "line": 2,
+        "text": "* present-as — 声明**本模块覆盖的 Agent** 以哪种形态呈现工具（官方 `ctx.tools.presentAs`）。"
+      },
+      {
+        "file": "engine/present-as.mjs",
+        "line": 32,
+        "text": "* 呈现声明走 `ctx.tools`。"
+      },
+      {
+        "file": "engine/present-as.mjs",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "engine/present-as.mjs",
+        "line": 62,
+        "text": "ctx.tools.presentAs('native')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/tool-config-engine.mjs",
+        "line": 49,
+        "text": "import { execFile, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "engine/tool-config-engine.mjs",
+        "line": 244,
+        "text": "const child = execFile(shell, argv, { cwd, env, windowsHide: true, maxBuffer: SHELL_MAX_OUTPUT_BYTES }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "engine/tool-git-bash.mjs",
+        "line": 237,
+        "text": "const spawnOnce = (cwd) => ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 12,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 17350,
+        "text": "spawn(command, [dir], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,86 @@
+{
+  "name": "dsh-origin-bridge",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-26T10:07:12.584Z",
+  "icon": "dsh-origin-bridge.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/origin-bridge.mjs",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# loader that ships inside the dsh app package (@deepseek-ai/dsh-mcp-client)."
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 29,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 46,
+        "text": "# row the only entry name is @deepseek-ai/dsh-mcp-client, so the market shows"
+      },
+      {
+        "file": "index.js",
+        "line": 4,
+        "text": "// cordis.patch.yml registers through @deepseek-ai/dsh-mcp-client. This module"
+      },
+      {
+        "file": "install_dsh.ps1",
+        "line": 69,
+        "text": "$block += \"      name: '@deepseek-ai/dsh-mcp-client'`r`n\""
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/origin-bridge.mjs",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "bin/origin-bridge.mjs",
+        "line": 31,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 88,
+      "text": "pip install originpro numpy        # 国内网络慢就加 -i https://pypi.tuna.tsinghua.edu.cn/simple"
+    },
+    {
+      "file": "README.md",
+      "line": 124,
+      "text": "pip install -r requirements.txt      # 国内网络慢就加 -i https://pypi.tuna.tsinghua.edu.cn/simple"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "dsh-side-branch",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:07:17.741Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3469,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3482,
+        "text": "const response = await fetch(path, { method: 'GET' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3562,
+        "text": "const response = await fetch(ROUTE + '/settings', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2576,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2577,
+        "text": "await writeFile("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2606,
+        "text": "record = JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2665,
+        "text": "await rm(entry.path, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "* 前缀缓存全部失效。改用 `ctx.tools.guard()`（`dsh-tools` 公开契约）：**只在执行时拒绝，不动提示词**。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "*     对 SDK 的每次派发也走同一条 `prepareExecution`）；MCP 工具经 `ctx.tools.register` 落在同一个"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

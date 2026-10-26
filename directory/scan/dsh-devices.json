@@ -1,0 +1,112 @@
+{
+  "name": "dsh-devices",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:10.863Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/mdns/identity.js",
+        "line": 5,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/mdns/identity.js",
+        "line": 44,
+        "text": "raw = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "dist/mdns/identity.js",
+        "line": 91,
+        "text": "mkdirSync(join(file, '..'), { recursive: true });"
+      },
+      {
+        "file": "dist/mdns/identity.js",
+        "line": 92,
+        "text": "writeFileSync(file, JSON.stringify(id, null, 2) + '\\n', { mode: 0o600 });"
+      },
+      {
+        "file": "dist/mdns/pair.js",
+        "line": 4,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, renameSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/mdns/plugin.js",
+        "line": 15,
+        "text": "* @param ctx - 携带 ctx.tools 的插件上下文。"
+      },
+      {
+        "file": "dist/mdns/plugin.js",
+        "line": 19,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/mdns/plugin.js",
+        "line": 41,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/plugin.js",
+        "line": 16,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/plugin.js",
+        "line": 21,
+        "text": "* @param ctx - 携带 ctx.tools 的插件上下文。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/ssh/keys.js",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/ssh/keys.js",
+        "line": 16,
+        "text": "const r = spawnSync('ssh-keygen', ['-t', 'ed25519', '-N', '', '-f', keyPath, '-C', comment], {"
+      },
+      {
+        "file": "dist/ssh/sftp.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/ssh/sftp.js",
+        "line": 41,
+        "text": "const child = spawn('scp', args, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "dist/ssh/ssh.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "dsh-web-icon-indicator",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:07:21.217Z",
+  "icon": "dsh-web-icon-indicator.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "if (typeof AbortController === \"undefined\") return fetch(url, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "return fetch(url, opts).then("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 783,
+        "text": "inject: [\"webServer\", \"timer\", \"agents\", \"fs\"],"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 24,
+        "text": "import { readFileSync, statSync, writeFileSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 30,
+        "text": "const SRC = readFileSync(new URL(\"lib/index.js\", REPO), \"utf8\");"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 31,
+        "text": "const BASE_SVG = readFileSync(new URL(\"icons/base.svg\", REPO), \"utf8\");"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 218,
+        "text": "eq(\"H1b inject list\", plugin.inject, [\"webServer\", \"timer\", \"agents\", \"fs\"]);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/verify.js",
+        "line": 23,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 1419,
+        "text": "const out = spawnSync(process.execPath, [\"--check\", tmp], { encoding: \"utf8\" });"
+      },
+      {
+        "file": "test/verify.js",
+        "line": 1445,
+        "text": "const out = spawnSync(process.execPath, [\"--check\", tmp], { encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-auto-approval",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:16.250Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 463,
+        "text": "const response = await deps.fetch(`${config.baseUrl.replace(/\\/+$/, \"\")}/v1/systemone`, {"
+      },
+      {
+        "file": "lib/types/jev.js",
+        "line": 145,
+        "text": "const response = await deps.fetch(`${config.baseUrl.replace(/\\/+$/, '')}/v1/systemone`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { appendFile, mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 669,
+        "text": "logReady ??= mkdir(join(DSH_HOME, \"logs\"), { recursive: true }).then(() => void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 678,
+        "text": "await appendFile(DECISION_LOG_PATH, `${JSON.stringify(line)}\\n`, \"utf8\");"
+      },
+      {
+        "file": "lib/types/audit.js",
+        "line": 9,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/types/audit.js",
+        "line": 25,
+        "text": "logReady ??= mkdir(join(DSH_HOME, 'logs'), { recursive: true }).then(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 631,
+        "text": "* @returns 可直接传给 `ctx.tools.guard()` 的同步 guard。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1116,
+        "text": "* - L0 deny 同时走 `ctx.tools.guard()` 单调注册（M3），prepend 旁路不掉"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1220,
+        "text": "else logger.warn(\"ctx.tools is not available; L0 deny guard NOT registered (pre-execute listener still active)\");"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 13,
+        "text": "* - L0 deny 同时走 `ctx.tools.guard()` 单调注册（M3），prepend 旁路不掉"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 154,
+        "text": "// thunk，settings 热更新即时生效。ctx.tools 缺席（罕见：core 未加载"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

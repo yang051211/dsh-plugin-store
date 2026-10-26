@@ -1,0 +1,112 @@
+{
+  "name": "dsh-cursor-acp",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:38.218Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 533,
+        "text": "const response = await fetch(STATUS_PATH, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 539,
+        "text": "const response = await fetch(STATUS_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 549,
+        "text": "const response = await fetch(PROBE_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/clash-direct.js",
+        "line": 5,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/clash-direct.js",
+        "line": 61,
+        "text": "text = readFileSync(path, { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/import-host.js",
+        "line": 6,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 6,
+        "text": "import { mkdtempSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/resolve-agent.js",
+        "line": 7,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['subagents', 'subprocess', 'tools', 'systemPrompt', 'settings'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/list-models.js",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/list-models.js",
+        "line": 23,
+        "text": "const result = spawnSync(command, [...argsForModelsCommand(args), 'models'], {"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 60,
+        "text": "const child = spawn(command, argv, {"
+      },
+      {
+        "file": "lib/readiness.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "subagents",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

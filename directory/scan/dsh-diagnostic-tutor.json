@@ -1,0 +1,72 @@
+{
+  "name": "dsh-diagnostic-tutor",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:06.986Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 758,
+        "text": "const response = await fetch(`${BASE}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 831,
+        "text": "const response = await fetch(`${BASE}/export`, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "export const inject = ['tools', 'storageDomain'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1068,
+        "text": "host.tools.register(udtStatusTool(state));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1069,
+        "text": "host.tools.register(udtGoalCreateTool(state));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1070,
+        "text": "host.tools.register(udtMapGetTool(state));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1071,
+        "text": "host.tools.register(udtMapUpdateTool(state));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "storageDomain",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

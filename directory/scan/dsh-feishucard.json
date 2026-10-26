@@ -1,0 +1,123 @@
+{
+  "name": "dsh-feishucard",
+  "version": "0.8.23",
+  "scannedAt": "2026-10-26T10:07:29.766Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 907,
+        "text": "return await fetch(url, { ...options, signal })"
+      },
+      {
+        "file": "scripts/collect_bot_roster.mjs",
+        "line": 94,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper.cjs",
+        "line": 20,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "helper.cjs",
+        "line": 50,
+        "text": "credFile = JSON.parse(fs.readFileSync(credPath, 'utf8'))"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 27,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 381,
+        "text": "return fs.readFileSync(p, 'utf8').replace(/^\\uFEFF/, '')"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 604,
+        "text": "fs.writeFileSync(mapF, JSON.stringify({ v: 1, people: ["
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 62,
+        "text": "export const inject = ['shell', 'fs', 'agents', 'timer', 'webServer', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 11040,
+        "text": "// exit_plan_mode 是 **工具**（dsh-plan-mode/lib/index.js:231 的 ctx.tools.register），"
+      },
+      {
+        "file": "index.js",
+        "line": 11634,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      },
+      {
+        "file": "index.js",
+        "line": 11826,
+        "text": "const disposer = ctx.tools.register(approvalFormTool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "g3-inbox-report.mjs",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "g3-inbox-report.mjs",
+        "line": 163,
+        "text": "const child = execFile(pythonBin, args, { env: childEnv, timeout: 15000 }, (err, stdout) => {"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 401,
+        "text": "const r = spawnSync(c, ['-c', 'print(1)'], { encoding: 'utf8', timeout: 5000 })"
+      },
+      {
+        "file": "identity-inject.mjs",
+        "line": 515,
+        "text": "const r = spawnSync(currentPython(), ['-c', code, path.dirname(rp), mp, openId, localMapPath(), currentJobGrantsPath()],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "fs",
+    "shell",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

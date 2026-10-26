@@ -1,0 +1,103 @@
+{
+  "name": "dsh-zcode-browser-use",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-26T10:07:27.751Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "return fetch(STATUS_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 307,
+        "text": "return fetch(STATUS_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 525,
+        "text": "await fetch(RESULT_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 536,
+        "text": "const res = await fetch(COMMAND_URL, { method: \"GET\", cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/live.js",
+        "line": 25,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 71,
+        "text": "content: skillBody(readFileSync(new URL('SKILL.md', base), 'utf8')),"
+      },
+      {
+        "file": "index.js",
+        "line": 79,
+        "text": "const fs = ctx.get ? ctx.get('fs') : ctx.fs"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 17,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 286,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 87,
+        "text": "for (const tool of createBrowserTools(resolveOutput)) ctx.tools.register(tool)"
+      },
+      {
+        "file": "index.js",
+        "line": 94,
+        "text": "for (const tool of createOwnBrowserTools(resolveOutput)) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

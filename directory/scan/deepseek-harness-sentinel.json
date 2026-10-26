@@ -1,0 +1,133 @@
+{
+  "name": "deepseek-harness-sentinel",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:07:19.800Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/package/acquire.js",
+        "line": 27,
+        "text": "/** 沙箱内获取 URL 文本:curl -o 落盘再读(规避管道/重定向限制)。 */"
+      },
+      {
+        "file": "engine/rules.js",
+        "line": 262,
+        "text": "        re: /(?:fetch|axios|XMLHttpRequest|sendBeacon|http\\.request|https\\.request)\\s*\\([^)]{0,200}?(?:webhook\\.site|requestbin|pastebin|discord|api\\.telegram|n"
+      },
+      {
+        "file": "engine/rules.js",
+        "line": 278,
+        "text": "re: /(?:fetch|axios|XMLHttpRequest|sendBeacon|http\\.request|https\\.request)[^;]{0,300}process\\s*\\.\\s*env[^;]{0,200}/is,"
+      },
+      {
+        "file": "engine/rules.js",
+        "line": 281,
+        "text": "        re: /(?:fetch|axios|XMLHttpRequest|sendBeacon|https?\\.request)\\s*\\([^)]{0,120}?[\"'`][^\"'`]{0,120}?=[^\"'`]{0,60}(?:api[_-]?key|token|secret|password|auth"
+      },
+      {
+        "file": "engine/rules.js",
+        "line": 458,
+        "text": "description: '插件存在出网能力。相对路径的同源调用(fetch(\\'/plugin-api/...\\'))是客户端插件与自家宿主的本地通道,不算外发;只有绝对 URL(http/https/ws)、协议相对(//host)或变量目标的调用才命中。',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/sentinel.mjs",
+        "line": 275,
+        "text": "const { readFileSync } = await import('node:fs')"
+      },
+      {
+        "file": "bin/sentinel.mjs",
+        "line": 278,
+        "text": "baseline = JSON.parse(readFileSync(opts.baseline, 'utf8'))"
+      },
+      {
+        "file": "bin/sentinel.mjs",
+        "line": 327,
+        "text": "const { writeFileSync } = await import('node:fs')"
+      },
+      {
+        "file": "bin/sentinel.mjs",
+        "line": 328,
+        "text": "writeFileSync(opts.out, JSON.stringify(opts.format === 'json' ? { ...report, audit } : report, null, 2) + '\\n')"
+      },
+      {
+        "file": "bin/sentinel.mjs",
+        "line": 347,
+        "text": "const { writeFileSync } = await import('node:fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 76,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 108,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 135,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/package/acquire.js",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "engine/package/acquire.js",
+        "line": 32,
+        "text": "const r = spawnSync('curl.exe', ['-s', '--noproxy', '*', '--max-time', '30', '--max-filesize', String(maxBytes), '-o', out, url], { stdio: 'ignore' })"
+      },
+      {
+        "file": "engine/package/tarball.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "engine/package/tarball.js",
+        "line": 54,
+        "text": "  const r = spawnSync('curl.exe', ['-sL', '--noproxy', '*', '--max-time', '120', '--max-filesize', String(maxBytes), '-o', tarballPath, tarballUrl], { stdio: 'i"
+      },
+      {
+        "file": "engine/rules.js",
+        "line": 111,
+        "text": "// 裸 spawn(/exec( 只在文件确实引入 child_process 时才告警——否则可能是"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

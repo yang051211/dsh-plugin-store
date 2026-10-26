@@ -1,0 +1,113 @@
+{
+  "name": "dsh-pixmart",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:19.177Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 791,
+        "text": "const response = await fetch(url, { cache: 'no-store' })"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 819,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/vendor/openai-compat.js",
+        "line": 68,
+        "text": "const response = await fetch(url, { signal });"
+      },
+      {
+        "file": "lib/vendor/openai-compat.js",
+        "line": 427,
+        "text": "response = await fetch(prepared.url, prepared.init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/log/usage.js",
+        "line": 10,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/log/usage.js",
+        "line": 24,
+        "text": "mkdirSync(dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/log/usage.js",
+        "line": 25,
+        "text": "appendFileSync(this.file, `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/log/usage.js",
+        "line": 40,
+        "text": "text = readFileSync(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 17,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/smoke-marker.js",
+        "line": 7,
+        "text": "*   - `ctx.tools.register()` 没有抛异常；"
+      },
+      {
+        "file": "lib/smoke-marker.js",
+        "line": 50,
+        "text": "const projected = ctx.tools.schemas?.() ?? [];"
+      },
+      {
+        "file": "lib/tools/ping.js",
+        "line": 5,
+        "text": "*   1. host 半被 Loader 装载，且 `ctx.tools.register` 生效（模型能看到并调用）；"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json && node tools/strip-test-hooks.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

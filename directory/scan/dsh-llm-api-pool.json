@@ -1,0 +1,65 @@
+{
+  "name": "dsh-llm-api-pool",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:07:22.509Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 33,
+        "text": "return fetch(\"/llm-pool/api/\" + method, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 306,
+        "text": "const command = 'curl -sS -m 120 -w \"\\\\n%{http_code}\" -X ' + method +"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "const command = 'curl -sS -m 30 -w \"\\n%{http_code}\" \"$LLM_POOL_URL\" -H \"Authorization: Bearer $LLM_POOL_KEY\" -H \"Content-Type: application/json\"';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "const fs = ctx.get('fs');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "const inject = ['webServer', 'tools', 'shell'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "registerTool: (_ctx, def) => ctx.effect(() => ctx.tools.register(def), 'dsh-llm-api-pool: register tool ' + def.name),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

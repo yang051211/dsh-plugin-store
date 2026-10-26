@@ -1,0 +1,97 @@
+{
+  "name": "dsh-skill-trace",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-26T10:07:11.443Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 824,
+        "text": ")}async function ye(n,t={}){let a=await fetch(`${kc}${n}`,{...t,headers:{\"content-type\":\"application/json\",...t.headers||{}}}),i=await a.json().catch(()=>({ok:!"
+      },
+      {
+        "file": "src/dsh/client/client.js",
+        "line": 1027,
+        "text": "const response = await fetch(`${API_ROOT}${path}`, { ...options, headers: { 'content-type': 'application/json', ...(options.headers || {}) } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/repository-resolver.mjs",
+        "line": 32,
+        "text": "import { readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/core/repository-resolver.mjs",
+        "line": 103,
+        "text": "text = await readFile(configPath, 'utf8')"
+      },
+      {
+        "file": "src/core/repository-resolver.mjs",
+        "line": 134,
+        "text": "const pointer = (await readFile(gitPath, 'utf8')).trim()"
+      },
+      {
+        "file": "src/core/session-log.mjs",
+        "line": 20,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "src/core/session-log.mjs",
+        "line": 289,
+        "text": "const raw = readFileSync(file.path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/core/skill-review.mjs",
+        "line": 120,
+        "text": "* `agent.ctx.tools.get(SKILL_REVIEW_TOOL_NAME, agent)` 取不到工具时返回空串，于是"
+      },
+      {
+        "file": "src/core/skill-review.mjs",
+        "line": 121,
+        "text": "* `ctx.tools.restrict()` / 子 agent 的 `toolFilter` 把工具挡掉时，这段文字随之消失。"
+      },
+      {
+        "file": "src/core/skill-review.mjs",
+        "line": 130,
+        "text": "/** 工具入参的原生 JSON Schema（原生 `ctx.tools.register()` 收的就是 JSON Schema，不是自研 DSL）。 */"
+      },
+      {
+        "file": "src/dsh/host/index.js",
+        "line": 834,
+        "text": "toolCtx.tools.register(skillReviewTool)"
+      },
+      {
+        "file": "src/dsh/host/index.js",
+        "line": 845,
+        "text": "// 节。它**只在工具可见时渲染** —— `agent.ctx.tools.get(SKILL_REVIEW_TOOL_NAME, agent)` 取不到"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

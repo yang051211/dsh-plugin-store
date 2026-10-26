@@ -1,0 +1,121 @@
+{
+  "name": "dsh-graphmemory",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:41.707Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dashboard/server.ts",
+        "line": 18,
+        "text": "import type { IncomingMessage, ServerResponse } from \"node:http\";"
+      },
+      {
+        "file": "dashboard/ui/api.ts",
+        "line": 25,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 39,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "dist/src/engine/embed.js",
+        "line": 14,
+        "text": "const res = await fetch(url, { ...init, signal: ctrl.signal });"
+      },
+      {
+        "file": "dist/src/engine/llm.js",
+        "line": 23,
+        "text": "const res = await fetch(url, { ...init, signal: ctrl.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dashboard/status.ts",
+        "line": 9,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/dashboard/status.js",
+        "line": 9,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 9,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 778,
+        "text": "readAsset: (name) => readFile(new URL(`./${name}`, import.meta.url), \"utf8\"),"
+      },
+      {
+        "file": "dist/src/store/db.js",
+        "line": 9,
+        "text": "import { mkdirSync } from \"fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh.js",
+        "line": 28,
+        "text": "export const inject = [\"tools\", \"llm\", \"systemPrompt\", \"agentLoop\", \"agents\", \"sessions\", \"credentials\", \"webServer\"];"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 726,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 794,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 811,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 839,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "dist/standalone.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentLoop",
+    "agents",
+    "credentials",
+    "llm",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

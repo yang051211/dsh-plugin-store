@@ -1,0 +1,66 @@
+{
+  "name": "dsh-plugin-skill-autoroute",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:07:38.667Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/route.mjs",
+        "line": 17,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/route.mjs",
+        "line": 72,
+        "text": "const lines = readFileSync(options.batch, 'utf8').split(/\\r?\\n/u).map((value) => value.trim()).filter((value) => value !== '' && !value.startsWith('#'))"
+      },
+      {
+        "file": "scripts/route.mjs",
+        "line": 129,
+        "text": "return readFileSync(`${item.path}/SKILL.md`, 'utf8')"
+      },
+      {
+        "file": "scripts/skills-fs.mjs",
+        "line": 13,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/skills-fs.mjs",
+        "line": 78,
+        "text": "text = readFileSync(join(dir, 'SKILL.md'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-bundle.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

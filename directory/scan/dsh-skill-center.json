@@ -1,0 +1,76 @@
+{
+  "name": "dsh-skill-center",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:07:19.785Z",
+  "icon": "dsh-skill-center.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1010,
+        "text": "const response = await fetch(api(`/dsh-skill-center/api${route}`), { cache: 'no-store' })"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1018,
+        "text": "const response = await fetch(api(`/dsh-skill-center/api${route}`), {"
+      },
+      {
+        "file": "lib/net.js",
+        "line": 51,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agents.js",
+        "line": 16,
+        "text": "import { readFile, readdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/agents.js",
+        "line": 140,
+        "text": "const [text, stats] = await Promise.all([readFile(candidate.skillFile, 'utf8'), stat(candidate.skillFile)])"
+      },
+      {
+        "file": "lib/agents.js",
+        "line": 255,
+        "text": "const content = await readFile(source.skillFile, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": "const { readFile } = await import('node:fs/promises')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "const raw = await readFile(candidate, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

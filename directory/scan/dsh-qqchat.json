@@ -1,0 +1,146 @@
+{
+  "name": "dsh-qqchat",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-26T10:07:35.923Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gateway/api.js",
+        "line": 20,
+        "text": "const response = await fetch(TOKEN_URL, {"
+      },
+      {
+        "file": "lib/gateway/api.js",
+        "line": 35,
+        "text": "const response = await fetch(`${base}/gateway`, {"
+      },
+      {
+        "file": "lib/gateway/api.js",
+        "line": 65,
+        "text": "const response = await fetch(`${base}${path}`, {"
+      },
+      {
+        "file": "lib/gateway/auth.js",
+        "line": 17,
+        "text": "const response = await fetch(CREATE_URL, {"
+      },
+      {
+        "file": "lib/gateway/auth.js",
+        "line": 40,
+        "text": "const response = await fetch(POLL_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "mkdirSync(config.dataDir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 1,
+        "text": "import { readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 23,
+        "text": "return await readFile(attachment.localPath, { encoding: 'utf8', signal: exec.signal });"
+      },
+      {
+        "file": "lib/media/store.js",
+        "line": 2,
+        "text": "import { access, mkdir, rm, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['connection', 'agents', 'agentDefaultModel', 'commands', 'llm', 'tools', 'webServer', 'workspaceRegistry'];"
+      },
+      {
+        "file": "lib/media/image-tool.js",
+        "line": 61,
+        "text": "return ctx.tools.register(definition);"
+      },
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 65,
+        "text": "const disposeRead = ctx.tools.register(readFileTool);"
+      },
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 66,
+        "text": "const disposeInfo = ctx.tools.register(mediaInfoTool);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 23,
+        "text": "export const inject = ['connection', 'agents', 'agentDefaultModel', 'commands', 'llm', 'tools', 'webServer', 'workspaceRegistry'] as const"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 2,
+        "text": "import { execFile as execFileCallback } from 'node:child_process';"
+      },
+      {
+        "file": "lib/media/media-tools.js",
+        "line": 54,
+        "text": "                   const result = await execFile('ffprobe', ['-v', 'quiet', '-print_format', 'json', '-show_format', '-show_streams', attachment.localPath], { t"
+      },
+      {
+        "file": "src/media/media-tools.ts",
+        "line": 2,
+        "text": "import { execFile as execFileCallback } from 'node:child_process'"
+      },
+      {
+        "file": "src/media/media-tools.ts",
+        "line": 55,
+        "text": "            const result = await execFile('ffprobe', ['-v', 'quiet', '-print_format', 'json', '-show_format', '-show_streams', attachment.localPath], { timeout:"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents",
+    "commands",
+    "connection",
+    "llm",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 250,
+      "text": "$DSH_HOME/plugins/dsh-qqchat/qqchat.sqlite"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,116 @@
+{
+  "name": "dsh-auto-classifier",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-26T10:07:24.347Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 83,
+        "text": "fetch(BASE + '/status').then(function (r) { return r.json() }),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 84,
+        "text": "fetch(BASE + '/denials').then(function (r) { return r.json() })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 95,
+        "text": "fetch(BASE + '/model').then(function (r) { return r.json() }).then(function (m) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 134,
+        "text": "fetch(BASE + '/model/test', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 155,
+        "text": "fetch(BASE + '/model', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 506,
+        "text": "fs.mkdirSync(DENIAL_LOG_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "fs.appendFileSync(DENIAL_LOG_FILE, JSON.stringify({ at: new Date().toISOString(), sessionId: session?.id ?? null, ...entry }) + \"\\n\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 526,
+        "text": "const parsed = JSON.parse(fs.readFileSync(OVERRIDE_FILE, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 535,
+        "text": "fs.mkdirSync(DENIAL_LOG_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"approval\", \"permissionPresets\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 286,
+        "text": "* `ctx.tools.register()` stores `parameters` verbatim and the model-facing"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1231,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1268,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "permissionPresets",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

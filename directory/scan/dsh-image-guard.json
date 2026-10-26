@@ -1,0 +1,84 @@
+{
+  "name": "dsh-image-guard",
+  "version": "0.8.17",
+  "scannedAt": "2026-10-26T10:07:35.144Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 428,
+        "text": "fetch(API)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 443,
+        "text": "fetch(API).then(function (r) { return r.json(); }).then(function (j) { if (j && j.ok && j.status) setStatus(j.status); }).catch(function () {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 450,
+        "text": "fetch(API, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 469,
+        "text": "fetch(API + \"?reset=1\", { method: \"POST\", headers: HDR })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 475,
+        "text": "fetch(API + \"?rewrap=1\", { method: \"POST\", headers: HDR })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 6,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 126,
+        "text": "const lines = fs.readFileSync(file, \"utf8\").split(/\\r?\\n/);"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 163,
+        "text": "let raw = fs.readFileSync(file, \"utf8\");"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 176,
+        "text": "if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 178,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(normalized, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

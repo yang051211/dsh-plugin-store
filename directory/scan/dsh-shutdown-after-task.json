@@ -1,0 +1,60 @@
+{
+  "name": "dsh-shutdown-after-task",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:34.305Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "function post(p) { return fetch(BASE + p, { method: 'POST' }).then(function (r) { return r.json() }).catch(function () { return null }) }"
+      },
+      {
+        "file": "index.js",
+        "line": 305,
+        "text": "fetch(BASE + '/state', { cache: 'no-store' }).then(function (r) { return r.json() }).then(applyState).catch(function () {})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "index.js",
+        "line": 54,
+        "text": "try { fs.appendFileSync(LOG_PATH, line + '\\n', 'utf8') } catch { /* best-effort */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 357,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

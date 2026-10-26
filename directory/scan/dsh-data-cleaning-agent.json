@@ -1,0 +1,106 @@
+{
+  "name": "dsh-data-cleaning-agent",
+  "version": "0.9.17",
+  "scannedAt": "2026-10-26T10:07:18.687Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2319,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5205,
+        "text": "const response = await fetch(`/data-cleaning/api/workflow/tasks/${encodeURIComponent(latest.id)}/artifacts/${encodeURIComponent(artifact.id)}`, {"
+      },
+      {
+        "file": "lib/web.js",
+        "line": 239,
+        "text": "const res = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image-intake.js",
+        "line": 11,
+        "text": "import { mkdir, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/image-intake.js",
+        "line": 397,
+        "text": "try { await unlink(path); } catch (error) {"
+      },
+      {
+        "file": "lib/image-intake.js",
+        "line": 408,
+        "text": "await mkdir(IMAGE_ROOT, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/image-intake.js",
+        "line": 410,
+        "text": "await writeFile(path, decoded.bytes, { mode: 0o600, flag: 'wx' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "ctx.inject(['webServer', 'webRuntime', 'tools', 'skills', 'jobs', 'storageDomain', 'fs'], (wctx) => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image-intake.js",
+        "line": 292,
+        "text": "throw new TypeError('ImageIntakeStore requires ctx.tools get/execute');"
+      },
+      {
+        "file": "lib/image-intake.js",
+        "line": 571,
+        "text": "return tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "*  1. ctx.tools  —— 注册 data_clean_rows / data_complete_rows / data_profile"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "*  5. ctx.tools.execute —— G5 QCC Host Bridge（程序化批量补全，web 组合内可用）"
+      },
+      {
+        "file": "lib/qcc-command.js",
+        "line": 283,
+        "text": "return tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install-preflight.js",
+        "line": 6,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,81 @@
+{
+  "name": "dsh-conflict-doctor",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:42.626Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.js",
+        "line": 24,
+        "text": "t { closeSync, copyFileSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, renameSync, rmSync, statSync, writeFileSync, writeSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 111,
+        "text": "rmSync(tempPath, { force: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 135,
+        "text": "const text = readFileSync(backupPath, 'utf8');"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 155,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 182,
+        "text": "writeFileSync(target, `${header}${fix.snippet}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/live.js",
+        "line": 72,
+        "text": "* @param ctx - the live context (`ctx.tools` is the only hard requirement)."
+      },
+      {
+        "file": "lib/live.js",
+        "line": 148,
+        "text": "tools = ctx.tools.schemas().map((schema) => schema.name);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

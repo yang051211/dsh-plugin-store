@@ -1,0 +1,157 @@
+{
+  "name": "dsh-travel-planner",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:07:38.070Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 24,
+        "text": "import net from 'node:net'; import http from 'node:http';"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 56,
+        "text": " getJSON = u => new Promise((res, rej) => http.get(u, r => { let d = ''; r.on('data', c => d += c); r.on('end', () => res(JSON.parse(d))); }).on('error', rej));"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 144,
+        "text": "const ws = new WebSocket(page.webSocketDebuggerUrl); await new Promise(r => ws.onopen = r);"
+      },
+      {
+        "file": "assets/check-layout.mjs",
+        "line": 19,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "assets/check-layout.mjs",
+        "line": 60,
+        "text": "http.get(u, r => { let d = ''; r.on('data', c => d += c); r.on('end', () => res(JSON.parse(d))); }).on('error', rej);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 25,
+        "text": "import fs from 'node:fs'; import path from 'node:path'; import os from 'node:os';"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 34,
+        "text": "if (opt('legs')) legs = JSON.parse(fs.readFileSync(opt('legs'), 'utf8'));"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 55,
+        "text": "setTimeout(() => { console.error('❌ 超时（90s）'); chrome.kill(); try { fs.rmSync(profile, { recursive: true, force: true }); } catch {} process.exit(3); }, 90000);"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 160,
+        "text": "if (opt('out')) fs.writeFileSync(opt('out'), out);"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 173,
+        "text": "try { fs.rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 }); } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugins/travel-env.mjs",
+        "line": 40,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugins/travel-env.mjs",
+        "line": 250,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "plugins/travel-env.mjs",
+        "line": 268,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "plugins/travel-finance.mjs",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugins/travel-finance.mjs",
+        "line": 75,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "assets/amap-route.mjs",
+        "line": 53,
+        "text": "const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-first-run', '--no-proxy-server',"
+      },
+      {
+        "file": "assets/check-layout.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "assets/check-layout.mjs",
+        "line": 43,
+        "text": "const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-first-run',"
+      },
+      {
+        "file": "assets/click-test.mjs",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 78,
+      "text": "npm install -g @fly-ai/flyai-cli @amap-lbs/amap-gui tuniu-cli"
+    },
+    {
+      "file": "README.en.md",
+      "line": 79,
+      "text": "python -m pip install pillow"
+    },
+    {
+      "file": "README.md",
+      "line": 107,
+      "text": "npm install -g @fly-ai/flyai-cli @amap-lbs/amap-gui tuniu-cli   # 飞猪 / 高德 / 途牛 CLI"
+    },
+    {
+      "file": "README.md",
+      "line": 108,
+      "text": "python -m pip install pillow"
+    }
+  ],
+  "skippedEntries": []
+}

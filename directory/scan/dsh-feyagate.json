@@ -1,0 +1,136 @@
+{
+  "name": "dsh-feyagate",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-26T10:07:11.013Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/child-api.js",
+        "line": 68,
+        "text": "const response = await fetch(`${base}${path}`, {"
+      },
+      {
+        "file": "lib/child-api.js",
+        "line": 162,
+        "text": "const response = await fetch(`${base}/api/v1/gateway/license`, {"
+      },
+      {
+        "file": "lib/child-api.js",
+        "line": 185,
+        "text": "const response = await fetch(`${base}/api/v1/gateway/license`, {"
+      },
+      {
+        "file": "lib/child-api.js",
+        "line": 220,
+        "text": "const response = await fetch(`${base}/mcp/http`, {"
+      },
+      {
+        "file": "lib/child-api.js",
+        "line": 262,
+        "text": "const response = await fetch(`${base}/mcp/http`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 67,
+        "text": "const fs = process.getBuiltinModule('node:fs');"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 74,
+        "text": "const state = JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 24,
+        "text": "import { createWriteStream, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 359,
+        "text": "mkdirSync(cacheDir(runtime.root), { recursive: true });"
+      },
+      {
+        "file": "lib/config-gen.js",
+        "line": 23,
+        "text": "import { chmodSync, existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 57,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/mcp/facade.js",
+        "line": 4,
+        "text": "* This exists because of one measured constraint: `@deepseek-ai/dsh-mcp-client`"
+      },
+      {
+        "file": "lib/mcp/facade.js",
+        "line": 31,
+        "text": "* register one (`@deepseek-ai/dsh-mcp-client` `lib/index.js:602`, `onChanged →"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download/extract.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/download/extract.js",
+        "line": 427,
+        "text": "execFile(command, args, { timeout: EXEC_TIMEOUT_MS, maxBuffer: 4 * 1024 * 1024 }, (error, _stdout, stderr) => {"
+      },
+      {
+        "file": "lib/download/mach-deps.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/supervise/process.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/supervise/process.js",
+        "line": 292,
+        "text": "const child = spawn(binary, ['--config', configPath(this.root)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

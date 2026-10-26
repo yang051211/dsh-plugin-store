@@ -1,0 +1,73 @@
+{
+  "name": "dsh-jev-decide",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:31.059Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "const raw = await readFile(join(dshHome(), '.credentials.yaml'), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "const raw = await readFile(join(dshHome(), 'plugins', name, 'config.json'), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 42,
+      "text": "数据目录 `$DSH_HOME/plugins/dsh-jev-decide/config.json`（或 cordis patch 的 `config:`）："
+    }
+  ],
+  "skippedEntries": []
+}

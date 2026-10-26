@@ -1,0 +1,98 @@
+{
+  "name": "dsh-claude-delegate",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-26T10:07:18.857Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/live-shell.js",
+        "line": 20,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/output-file.js",
+        "line": 17,
+        "text": "import { open, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/session-store.js",
+        "line": 29,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/session-store.js",
+        "line": 93,
+        "text": "const parsed = JSON.parse(readFileSync(this.file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1024,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "const result = spawnSync(probe, ['claude'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/live-shell.js",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/live-shell.js",
+        "line": 111,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/live-shell.js",
+        "line": 177,
+        "text": "child = spawn(bash, ['-lc', command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

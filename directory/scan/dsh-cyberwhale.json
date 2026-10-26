@@ -1,0 +1,103 @@
+{
+  "name": "dsh-cyberwhale",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:07:26.691Z",
+  "icon": "dsh-cyberwhale.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 698,
+        "text": "const response = await fetch(`deskpet/appearance/wallpaper/${nextImage}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8044,
+        "text": "const response = await fetch(`deskpet/appearance/wallpaper/${id}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helper/main.js",
+        "line": 36,
+        "text": "const fs = require('node:fs/promises');"
+      },
+      {
+        "file": "helper/main.js",
+        "line": 501,
+        "text": "const manifestRaw = await fs.readFile(path.join(assetsDir, 'pet.json'), 'utf8');"
+      },
+      {
+        "file": "helper/main.js",
+        "line": 505,
+        "text": "const bytes = await fs.readFile(file);"
+      },
+      {
+        "file": "helper/main.js",
+        "line": 635,
+        "text": ".then((image) => fs.writeFile(file, image.toPNG()))"
+      },
+      {
+        "file": "lib/appearance.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile, rename, rm, readdir, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 90,
+        "text": "handle = this.#ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/electron-runtime.js",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/orphans.js",
+        "line": 23,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "tools/build-native-glass.mjs",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "tools/test-host.mjs",
+        "line": 138,
+        "text": "spawn(spec) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "helper/native/prebuilds/darwin-arm64.node",
+    "helper/native/prebuilds/darwin-x64.node"
+  ],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

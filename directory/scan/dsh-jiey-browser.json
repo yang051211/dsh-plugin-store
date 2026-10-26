@@ -1,0 +1,99 @@
+{
+  "name": "dsh-jiey-browser",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:07:20.415Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/resolve-server.js",
+        "line": 115,
+        "text": "const res = await fetch(healthUrl, { signal: AbortSignal.timeout(2500) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 313,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 316,
+        "text": "await writeFile(path, Buffer.from(image.data, 'base64'));"
+      },
+      {
+        "file": "lib/resolve-server.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/resolve-server.js",
+        "line": 29,
+        "text": "const raw = await readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "pluginCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "pluginCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 183,
+        "text": "pluginCtx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "pluginCtx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

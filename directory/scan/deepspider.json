@@ -1,0 +1,118 @@
+{
+  "name": "deepspider",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:07:06.419Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli/commands/update.js",
+        "line": 19,
+        "text": "const resp = await fetch('https://registry.npmjs.org/deepspider/latest');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli/commands/update.js",
+        "line": 6,
+        "text": "import { existsSync } from 'fs';"
+      },
+      {
+        "file": "src/cli/commands/version.js",
+        "line": 5,
+        "text": "import { readFileSync } from 'fs'"
+      },
+      {
+        "file": "src/cli/commands/version.js",
+        "line": 13,
+        "text": "return JSON.parse(readFileSync(PKG_PATH, 'utf-8')).version"
+      },
+      {
+        "file": "src/config/paths.js",
+        "line": 1,
+        "text": "import { mkdirSync, chmodSync, existsSync } from 'fs';"
+      },
+      {
+        "file": "src/config/paths.js",
+        "line": 8,
+        "text": "mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters/dsh-tools.js",
+        "line": 7,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/dsh/agent-plugin.js",
+        "line": 5,
+        "text": "export const inject = ['tools', 'systemPrompt', 'deepSpiderRuntimeManager']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli/commands/update.js",
+        "line": 7,
+        "text": "import { execSync } from 'child_process';"
+      },
+      {
+        "file": "src/cli/commands/update.js",
+        "line": 45,
+        "text": "execSync('npm install -g deepspider@latest --legacy-peer-deps', { stdio: 'inherit' });"
+      },
+      {
+        "file": "src/cli/commands/update.js",
+        "line": 72,
+        "text": "const globalDir = execSync('npm root -g', { encoding: 'utf-8' }).trim();"
+      },
+      {
+        "file": "src/dsh/launcher.js",
+        "line": 4,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/recovery/runtime/sdenv-adapter.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: patchright install chromium"
+      },
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 28,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 17,
+      "text": "npm install -g deepspider --legacy-peer-deps"
+    }
+  ],
+  "skippedEntries": []
+}

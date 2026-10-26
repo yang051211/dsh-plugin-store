@@ -1,0 +1,102 @@
+{
+  "name": "dsh-plugin-precheck",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:17.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 65,
+        "text": "const res = await fetch(pathname, body"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 163,
+        "text": "const text = await (await fetch(\"/precheck/api/report?id=\" + job.id)).text();"
+      },
+      {
+        "file": "lib/market.js",
+        "line": 23,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}${pathname}`, {"
+      },
+      {
+        "file": "lib/pipeline.js",
+        "line": 419,
+        "text": "const probe = await fetch(url.origin + '/', { redirect: 'manual', signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "lib/pipeline.js",
+        "line": 430,
+        "text": "const page = await fetch(boot.match[1], { redirect: 'manual', signal: AbortSignal.timeout(10000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/env.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 46,
+        "text": "fs.mkdirSync(backupDir, { recursive: true })"
+      },
+      {
+        "file": "lib/pipeline.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/pipeline.js",
+        "line": 69,
+        "text": "const doc = yaml.load(fs.readFileSync(patchFile, 'utf8'), { schema: DSH_SCHEMA })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/util.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 13,
+        "text": "child = spawn(cmd, args, { cwd, env, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 46,
+        "text": "const child = spawn(cmd, args, { cwd, env, stdio: ['ignore', 'pipe', 'pipe'], detached: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

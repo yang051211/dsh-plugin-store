@@ -1,0 +1,88 @@
+{
+  "name": "dsh-plannotator",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:40.255Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launch.js",
+        "line": 16,
+        "text": "const INSTALL_HINT = 'Install it with: curl -fsSL https://plannotator.ai/install.sh | bash'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "content: readFileSync(SKILL_FILE, 'utf8'),"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 6,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 167,
+        "text": "const pkg = JSON.parse(readFileSync(packageJsonPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launch.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 109,
+        "text": "/** @type {import('node:child_process').ChildProcess | undefined} */"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 143,
+        "text": "child = spawn(options.command, options.args, {"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 214,
+        "text": "* @param {import('node:child_process').ChildProcess} child"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

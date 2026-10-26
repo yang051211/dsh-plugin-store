@@ -1,0 +1,71 @@
+{
+  "name": "dsh-multi-root-explorer",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-26T10:07:24.545Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 409,
+        "text": "response = await fetch(url, { credentials: 'same-origin', ...options })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 455,
+        "text": "response = await fetch('open-in-app/open', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/listing.js",
+        "line": 2,
+        "text": "import { readdir, realpath, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/native-bridge.js",
+        "line": 2,
+        "text": "import { mkdir, open, readFile, realpath, rename, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host/native-bridge.js",
+        "line": 58,
+        "text": "const data = JSON.parse(await readFile(this.file, 'utf8'))"
+      },
+      {
+        "file": "lib/host/native-bridge.js",
+        "line": 67,
+        "text": "await mkdir(dirname(this.file), { recursive: true })"
+      },
+      {
+        "file": "lib/host/native-bridge.js",
+        "line": 70,
+        "text": "try { await handle.writeFile(`${JSON.stringify(ledger, null, 2)}\\n`); await handle.sync() } finally { await handle.close() }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

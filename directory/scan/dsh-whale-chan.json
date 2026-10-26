@@ -1,0 +1,97 @@
+{
+  "name": "dsh-whale-chan",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:11.381Z",
+  "icon": "dsh-whale-chan.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/dashboard.mjs",
+        "line": 169,
+        "text": "const res = await fetch('/api/whale-pet/usage', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client/main.mjs",
+        "line": 298,
+        "text": "const res = await fetch(SETTINGS_PATH, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client/main.mjs",
+        "line": 417,
+        "text": "const res = await fetch(WEATHER_PATH, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client/main.mjs",
+        "line": 442,
+        "text": "const res = await fetch(BALANCE_PATH, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client/main.mjs",
+        "line": 657,
+        "text": "const res = await fetch(STATE_PATH, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 10,
+        "text": "import { createReadStream, existsSync, mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 11,
+        "text": "import { stat, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 101,
+        "text": "return normalizeState(JSON.parse(readFileSync(STATE_FILE, 'utf8')))"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 198,
+        "text": "mkdirSync(join(STATE_FILE, '..'), { recursive: true })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 200,
+        "text": "writeFileSync(tmp, serializeState(petState))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 309,
+        "text": "soundChild = spawn('powershell', ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

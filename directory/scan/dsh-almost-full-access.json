@@ -1,0 +1,104 @@
+{
+  "name": "dsh-almost-full-access",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:07:09.294Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/analyze.js",
+        "line": 93,
+        "text": "/\\b(Invoke-WebRequest|Invoke-RestMethod|curl|wget|Start-BitsTransfer)\\b|\\b(DownloadString|DownloadFile)\\b/i,"
+      },
+      {
+        "file": "lib/analyze.js",
+        "line": 226,
+        "text": "// v1.1.1：下载落地参数提取目标路径（curl -o、certutil -urlcache/-decode 等）"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 101,
+        "text": "const res = await fetch(\"/api/afaccess/queue\", { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 138,
+        "text": "const res = await fetch(\"/api/afaccess/decide\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 135,
+        "text": "mkdir(auditDir, { recursive: true }).catch(() => { })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 157,
+        "text": "appendFile(join(auditDir, 'afaccess.log'), '[' + new Date().toISOString() + '] ' + redact(line) + '\\n', 'utf8').catch(() => { })"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 31,
+        "text": "import { cp, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 32,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'subagents', 'userQuestions', 'permissionPresets', 'sandboxPolicy', 'webServer', 'sessions']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 451,
+        "text": "ctx.effect(() => ctx.tools.register(diagTool), 'afaccess: diagnostic tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "permissionPresets",
+    "sandboxPolicy",
+    "sessions",
+    "subagents",
+    "tools",
+    "userQuestions",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 47,
+      "text": "npm install -g dsh-almost-full-access"
+    }
+  ],
+  "skippedEntries": []
+}

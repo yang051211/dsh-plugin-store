@@ -1,0 +1,110 @@
+{
+  "name": "dsh-notch",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-26T10:07:41.720Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "await fetch(\"/dsh-notch/sidebar\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 67,
+        "text": "const response = await fetch(\"/dsh-notch/pending-focus\", {"
+      },
+      {
+        "file": "src/client/index.ts",
+        "line": 62,
+        "text": "        await fetch('/dsh-notch/sidebar', { signal: controller.signal, method: 'POST', headers: { 'content-type': 'application/json', 'x-dsh-notch-client': '1' "
+      },
+      {
+        "file": "src/client/index.ts",
+        "line": 65,
+        "text": "const response = await fetch('/dsh-notch/pending-focus', { cache: 'no-store', signal: controller.signal })"
+      },
+      {
+        "file": "src/http.ts",
+        "line": 2,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 2,
+        "text": "import { readFileSync, mkdirSync, writeFileSync, renameSync, unlinkSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 34,
+        "text": "try { return Number(readFileSync(pidPath, 'utf8').trim()) } catch { return 0 }"
+      },
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 84,
+        "text": "mkdirSync(dirname(pidPath), { recursive: true })"
+      },
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 86,
+        "text": "writeFileSync(stage, `${child.pid}\\n`)"
+      },
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 114,
+        "text": "if (storedPID() === item.pid) { try { unlinkSync(pidPath) } catch {} }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/notch-lifecycle.mjs",
+        "line": 1,
+        "text": "import { spawn, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "desktop/restart-probe.mjs",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "desktop/restart-probe.mjs",
+        "line": 17,
+        "text": "const child = spawn('/bin/sleep', ['60']); await once(child, 'spawn'); return child"
+      },
+      {
+        "file": "desktop/restart-probe.mjs",
+        "line": 32,
+        "text": "const child = spawn(file, args, { ...options, env: { ...process.env, DSH_NOTCH_RUNTIME_FILE: runtime } })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 4,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

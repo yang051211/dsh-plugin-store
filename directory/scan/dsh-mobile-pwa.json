@@ -1,0 +1,94 @@
+{
+  "name": "dsh-mobile-pwa",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:34.679Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-push.mjs",
+        "line": 24,
+        "text": "return fetch('http://127.0.0.1:' + GATEWAY_PORT + '/pwa/push/send', {"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 20,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 142,
+        "text": "    const req = http.request(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Encoding': 'identity', 'TTL': 3600, 'Urgency': "
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 173,
+        "text": "gKinds={};function post(action,ip,kind){fetch(\"/lan-gate/action\",{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify({action:action,i"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 231,
+        "text": "var upstream = http.request({ host: TARGET_HOST, port: TARGET_PORT, method: req.method, path: req.url, headers: headers }, function (upRes) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 22,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 40,
+        "text": "sions() { try { var raw = JSON.parse(fs.readFileSync(stateFile(), 'utf8')); if (raw && typeof raw === 'object' && raw.decisions && typeof raw.decisions === 'obj"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 41,
+        "text": "ion saveDecisions(decisions) { try { fs.mkdirSync(dshHome(), { recursive: true }); var tmp = stateFile() + '.tmp'; fs.writeFileSync(tmp, JSON.stringify({ decisi"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 86,
+        "text": "try { body = fs.readFileSync(abs) } catch (e) { return false }"
+      },
+      {
+        "file": "lib/lan-gate-server.cjs",
+        "line": 102,
+        "text": "function readPwaText(name) { try { return fs.readFileSync(path.join(PWA_DIR, name), 'utf8') } catch (e) { return '' } }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lan-gate.mjs",
+        "line": 24,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/lan-gate-server.cjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

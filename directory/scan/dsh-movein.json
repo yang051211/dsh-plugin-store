@@ -1,0 +1,139 @@
+{
+  "name": "dsh-movein",
+  "version": "0.13.8",
+  "scannedAt": "2026-10-26T10:07:13.126Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "const response = await fetch(\"/dsh-movein/run\", {"
+      },
+      {
+        "file": "lib/doctor-live.mjs",
+        "line": 2,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/doctor-live.mjs",
+        "line": 156,
+        "text": "const req = http.get(url, { headers: { accept: 'text/html', ...(cookie ? { cookie } : {}) } }, (response) => {"
+      },
+      {
+        "file": "lib/doctor-live.mjs",
+        "line": 204,
+        "text": "const req = http.get(url, { headers: { accept: 'text/javascript, application/javascript', ...(cookie ? { cookie } : {}) } }, (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 22,
+        "text": "try { return JSON.parse(fs.readFileSync(file, 'utf8')).version || null; } catch { /* try the next location */ }"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 91,
+        "text": "&& fs.readFileSync(left).equals(fs.readFileSync(right));"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 210,
+        "text": "const cur = fs.readFileSync(patchPath, 'utf8');"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 221,
+        "text": "fs.mkdirSync(path.dirname(patchPath), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.mjs",
+        "line": 12,
+        "text": "export const MCP_PKGS = ['@deepseek-ai/dsh-mcp-client'];"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 116,
+        "text": "`      name: '@deepseek-ai/dsh-mcp-client'`,"
+      },
+      {
+        "file": "lib/doctor.mjs",
+        "line": 93,
+        "text": "onst [needle, pkgs] of [[\"'@deepseek-ai/dsh-mcp-client'\", MCP_PKGS], [\"'@deepseek-ai/dsh-hooks-claude-code'\", HOOKS_PKGS], [\"'dsh-movein-permissions'\", PERMS_PK"
+      },
+      {
+        "file": "shell/index.mjs",
+        "line": 13,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "shell/index.mjs",
+        "line": 47,
+        "text": "ctx.tools.register(definition("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/apply.mjs",
+        "line": 68,
+        "text": "const result = spawnSync(command.file, command.args, {"
+      },
+      {
+        "file": "lib/doctor-live.mjs",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/opencode-hook-plugin.mjs",
+        "line": 45,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/opencode-hook-plugin.mjs",
+        "line": 146,
+        "text": "const child = spawn(handler.command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

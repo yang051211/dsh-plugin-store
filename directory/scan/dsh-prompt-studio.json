@@ -1,0 +1,67 @@
+{
+  "name": "dsh-prompt-studio",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:39.219Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 324,
+        "text": "const response = await fetch(API + path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 16,
+        "text": "import { mkdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 91,
+        "text": "const parsed = JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 125,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "ctx.tools.register(createPromptOptimizeTool({ ctx, config }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

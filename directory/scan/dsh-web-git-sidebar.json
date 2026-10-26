@@ -1,0 +1,120 @@
+{
+  "name": "dsh-web-git-sidebar",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:07:23.766Z",
+  "icon": "dsh-web-git-sidebar.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 6,
+        "text": "t request timed out\"))},Mt);try{n=await fetch(t,{method:\"POST\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify(e),signal:o.signal})}catch{return"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 71,
+        "text": "f(!re){se(!0),h(null);try{let g=await _.fetch(a);if(!g.ok){h(g.error.message),ne(g.error.message,\"error\");return}let P=await w(a);if(P.kind===\"failed\"){ne(e(\"pa"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "ssage(pulled,\"git pull failed\")}}}async fetch(path){let resolved=await this.resolveRoot(path);if(!resolved.ok)return resolved;let{root}=resolved,read={deadlineM"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "idebar/fetch\":{let result=await service.fetch(path);result.ok?okPayload(res,{output:result.output}):writeJson(res,200,failEnvelope(result.error));return}case\"/g"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 28,
+        "text": "response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import{realpath as realpath3}from\"node:fs/promises\";import z from\"@deepseek-ai/schemastery\";var Config=z.object({autoIsolate:z.boolean().default(!1).volatile(),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "a git operation is in progress\"}};await mkdir(repoWorktreesDir(root),{recursive:!0});let added=await this.runner.run(worktreeAddArgv(target,branch,base),root,mu"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "ear()}}import{realpath as realpath2}from\"node:fs/promises\";import{randomUUID}from\"node:crypto\";var GIT_WORKTREE_TOOL=\"git_worktree\";function toolFailure(error){"
+      },
+      {
+        "file": "src/host/agent-tool.ts",
+        "line": 3,
+        "text": "import { realpath } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host/git-service.ts",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "un()})}}),fn(...args)};return mount}var inject=[\"webServer\",\"subprocess\",\"workspaceRegistry\"];function createWorkspaceGate(ctx){return async path=>{let canonica"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 59,
+        "text": "toolCtx.effect(() => toolCtx.tools.register(buildWorktreeTool(ctx, service)), 'dsh-web-git-sidebar: git_worktree tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "tListener;try{let handle=ctx.subprocess.spawn({argv:spawnArgv(argv),cwd,stdio:{stdin:\"ignore\",stdout:{maxBytes:1048576},stderr:{maxBytes:1048576}},graceMs:1e4,s"
+      },
+      {
+        "file": "src/host/git-runner.ts",
+        "line": 39,
+        "text": "spawn(spec: {"
+      },
+      {
+        "file": "src/host/git-runner.ts",
+        "line": 90,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/build.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

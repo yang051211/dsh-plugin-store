@@ -1,0 +1,110 @@
+{
+  "name": "dsh-notion-connector",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:20.758Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const response = await fetch(API + path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "const response = await fetch(NOTION_API + path, {"
+      },
+      {
+        "file": "src/client/NotionSettings.tsx",
+        "line": 36,
+        "text": "const response = await fetch(API + path, {"
+      },
+      {
+        "file": "src/notion.ts",
+        "line": 72,
+        "text": "const response = await fetch(NOTION_API + path, {"
+      },
+      {
+        "file": "src/routes.ts",
+        "line": 9,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { chmodSync, mkdirSync, readFileSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "const parsed = JSON.parse(readFileSync(CONFIG_PATH, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "mkdirSync(join(homedir(), \".dsh\"), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), { mode: 384 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "rmSync(CONFIG_PATH, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 533,
+        "text": "var inject = [\"webServer\", \"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 539,
+        "text": "const disposers = notionTools().map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 20,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 33,
+        "text": "const disposers = notionTools().map(tool => ctx.tools.register(tool))"
+      },
+      {
+        "file": "src/tools.ts",
+        "line": 171,
+        "text": "/** All six tools, ready for ctx.tools.register. */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

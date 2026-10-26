@@ -1,0 +1,69 @@
+{
+  "name": "dsh-llm-balance",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-26T10:07:34.011Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 198,
+        "text": "const response = await fetch(stateUrl(), {"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 28,
+        "text": "const fetchImpl = input.fetchImpl ?? ((url, init) => fetch(url, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/providers-5LfVvpJJ.js",
+        "line": 4,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/providers-5LfVvpJJ.js",
+        "line": 207,
+        "text": "if ((await readFile(candidate, \"utf8\")).trim().length > 0) return candidate;"
+      },
+      {
+        "file": "lib/providers-5LfVvpJJ.js",
+        "line": 260,
+        "text": "current = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/providers-5LfVvpJJ.js",
+        "line": 286,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/providers-5LfVvpJJ.js",
+        "line": 287,
+        "text": "await writeFile(temporary, `${JSON.stringify(merged, null, 2)}\\n`, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

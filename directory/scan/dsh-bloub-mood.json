@@ -1,0 +1,109 @@
+{
+  "name": "dsh-bloub-mood",
+  "version": "2.4.4",
+  "scannedAt": "2026-10-26T10:07:12.500Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client-template.js",
+        "line": 1144,
+        "text": "fetch(\"/desktop-entry/api/state\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "client-template.js",
+        "line": 1164,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1346,
+        "text": "fetch(\"/desktop-entry/api/state\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1366,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "lib/desktop-entry.mjs",
+        "line": 256,
+        "text": "\"probe() { curl -sf -o /dev/null --max-time 2 \\\"$URL\\\" 2>/dev/null; }\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 6,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "build.mjs",
+        "line": 16,
+        "text": "const template = readFileSync(templatePath, 'utf-8');"
+      },
+      {
+        "file": "build.mjs",
+        "line": 30,
+        "text": "let text = readFileSync(p, 'utf-8').trim();"
+      },
+      {
+        "file": "build.mjs",
+        "line": 51,
+        "text": "const b64 = readFileSync(p).toString('base64');"
+      },
+      {
+        "file": "build.mjs",
+        "line": 62,
+        "text": "writeFileSync(outPath, out);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop-entry.mjs",
+        "line": 24,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/desktop-entry.mjs",
+        "line": 190,
+        "text": "execFile(\"xcrun\", [\"-f\", \"swiftc\"], { timeout: 15_000 }, (error) => resolve(!error));"
+      },
+      {
+        "file": "lib/desktop-entry.mjs",
+        "line": 211,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/desktop-entry.mjs",
+        "line": 385,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

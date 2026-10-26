@@ -1,0 +1,70 @@
+{
+  "name": "dsh-form-fill-agent",
+  "version": "0.2.32",
+  "scannedAt": "2026-10-26T10:07:32.021Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.js",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 63,
+        "text": "if (request.method === 'GET' && path === '/') return send(200, await readFile(new URL('./ui.html', import.meta.url)), 'text/html; charset=utf-8');"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 64,
+        "text": "if (request.method === 'GET' && path === '/brand.css') return send(200, await readFile(new URL('./brand.css', import.meta.url)), 'text/css; charset=utf-8');"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 83,
+        "text": "return send(200, await readFile(new URL('./fixtures/' + name + '.xlsx', import.meta.url)), XLSX_TYPE);"
+      },
+      {
+        "file": "lib/preflight.js",
+        "line": 3,
+        "text": "import {readFile, realpath, mkdtemp, rm, stat} from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "const disposeTool = tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/preflight.js",
+        "line": 7,
+        "text": "import {execFileSync} from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

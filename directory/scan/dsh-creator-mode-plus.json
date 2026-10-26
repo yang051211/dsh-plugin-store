@@ -1,0 +1,114 @@
+{
+  "name": "dsh-creator-mode-plus",
+  "version": "0.3.13",
+  "scannedAt": "2026-10-26T10:07:20.287Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 50,
+        "text": "const response = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 13,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 144,
+        "text": "mkdirSync(profileDir, { recursive: true })"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 146,
+        "text": "const existing = existsSync(patchPath) ? readFileSync(patchPath, 'utf8') : ''"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 155,
+        "text": "if (next !== existing) writeFileSync(patchPath, next)"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 160,
+        "text": "writeFileSync(patchPath, `${prefix}${PROFILE_INCLUDE}`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/development-execution.js",
+        "line": 51,
+        "text": "|| typeof ctx.fiber?.assertActive !== 'function' || typeof ctx.tools?.get !== 'function'"
+      },
+      {
+        "file": "src/development-execution.js",
+        "line": 97,
+        "text": "else if (ctx.tools.get(record.name, agent) !== definition || definition.name !== record.name"
+      },
+      {
+        "file": "src/development-execution.js",
+        "line": 197,
+        "text": "&& ctx.tools.get(exec.name, exec.agent) === selected.definition"
+      },
+      {
+        "file": "src/development-execution.js",
+        "line": 222,
+        "text": "if (ctx.tools.get(record.name, record.agent) !== record.definition"
+      },
+      {
+        "file": "src/index.js",
+        "line": 31,
+        "text": "export const inject = ['tools', 'webServer', 'connection', 'agents', 'sessions', 'userQuestions', 'profileContext']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify-dshx.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify-dshx.mjs",
+        "line": 36,
+        "text": "const version = spawnSync(process.execPath, ['--import', runtime.loader, runtime.cli, 'version'], {"
+      },
+      {
+        "file": "src/runner.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "profileContext",
+    "sessions",
+    "tools",
+    "userQuestions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

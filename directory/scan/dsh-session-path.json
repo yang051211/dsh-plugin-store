@@ -1,0 +1,79 @@
+{
+  "name": "dsh-session-path",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:24.537Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 100,
+        "text": "const response = await fetch(ROUTE + \"?\" + params.toString(), { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/handoff.js",
+        "line": 14,
+        "text": "import { mkdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 193,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 217,
+        "text": "await writeFile(file, text, \"utf8\");"
+      },
+      {
+        "file": "lib/paths.js",
+        "line": 16,
+        "text": "import { readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/zstd.js",
+        "line": 15,
+        "text": "import { open } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = [\"tools\", \"systemPrompt\", \"webServer\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

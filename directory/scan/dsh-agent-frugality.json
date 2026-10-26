@@ -1,0 +1,84 @@
+{
+  "name": "dsh-agent-frugality",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:07:12.199Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/experiments/exp3-manifest.json",
+        "line": 128,
+        "text": "\"before\": \"readFileSync(file,'utf8').trim().slice(0, 8192) // 可能截断在 surrogate pair 中间\","
+      },
+      {
+        "file": "docs/experiments/exp3-strong.json",
+        "line": 15,
+        "text": ", \"verdict\": \"needs_revision\", \"findings\": [{\"severity\": \"low\", \"problem\": \"readFileSync(...).slice(0,8192) 可能把多字节字符/emoji 的 surrogate pair 从中间截断，尾部出现损坏字符。\"}]},"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { appendFileSync, readFileSync, existsSync, statSync, mkdirSync, openSync, readSync, closeSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "appendFileSync(cfg.logFile, JSON.stringify({ t: new Date().toISOString(), ...entry }) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "appendFileSync(cfg.ledgerFile, JSON.stringify(entry) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/experiments/exp3-manifest.json",
+        "line": 18,
+        "text": "rToolSafe(ctx, tool) { ctx.effect(() => ctx.tools.register({ ...tool, parameters: tool.parameters })) }  // parameters = { claim: { type:'string', required:true"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 459,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { exec as execCb } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

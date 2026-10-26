@@ -1,0 +1,77 @@
+{
+  "name": "dsh-page-refresh",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:07:12.612Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 147,
+        "text": "fetch('/api/power/close', { method: 'POST' }).catch(() => {});"
+      },
+      {
+        "file": "client.js",
+        "line": 161,
+        "text": "fetch('/api/power/restart', { method: 'POST' }).catch(() => {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync, appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 90,
+        "text": "const raw = readFileSync(newest, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "appendFileSync(newest, lead + JSON.stringify(record) + '\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "//   3. 都用 spawn(..., { detached: true, stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "const child = spawn(exe, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

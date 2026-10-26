@@ -1,0 +1,138 @@
+{
+  "name": "dsh-harness-switch",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:07:33.908Z",
+  "icon": "dsh-harness-switch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/engine/build-manifest.json",
+        "line": 30,
+        "text": "\"undici\","
+      },
+      {
+        "file": "vendor/engine/build-manifest.json",
+        "line": 224,
+        "text": "\"undici\","
+      },
+      {
+        "file": "vendor/engine/index.mjs",
+        "line": 5108,
+        "text": "response = await fetch(url, {"
+      },
+      {
+        "file": "vendor/engine/index.mjs",
+        "line": 5854,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "vendor/engine/index.mjs",
+        "line": 6535,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 2,
+        "text": "import { copyFile, link, mkdir, readFile, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 3,
+        "text": "import { constants, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 15,
+        "text": "const bytes = await readFile(archive);"
+      },
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 19,
+        "text": "await mkdir(dirname(destination), { recursive: true });"
+      },
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 23,
+        "text": "await writeFile(staging, bytes, { flag: 'wx' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "export const inject = ['webServer', 'connection', 'llm', 'systemPrompt', 'agents', 'tools', 'approval', 'userQuestions', 'attachments'];"
+      },
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "const releaseMode = agent.ctx.tools.presentAs('native');"
+      },
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "try { releaseTool = agent.ctx.tools.register(manager.definition()); } catch (e) { releaseMode(); throw e; }"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/install-profile.mjs",
+        "line": 34,
+        "text": "const child = spawnSync(command, args, { ...options, encoding: 'utf8', windowsHide: true });"
+      },
+      {
+        "file": "src/kimi.js",
+        "line": 84,
+        "text": "this.child = this.spawn({ argv: [this.settings.command, '-m', this.binding.model, 'acp'], cwd: this.cwd,"
+      },
+      {
+        "file": "vendor/engine/index.mjs",
+        "line": 9588,
+        "text": "const process2 = lease.track(await lease.runtime.process.spawn("
+      },
+      {
+        "file": "vendor/engine/index.mjs",
+        "line": 10191,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 32,
+  "minifiedFiles": [
+    "vendor/engine/index.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "attachments",
+    "connection",
+    "llm",
+    "systemPrompt",
+    "tools",
+    "userQuestions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,108 @@
+{
+  "name": "dsh-service-control",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-26T10:07:42.319Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/control.sh",
+        "line": 749,
+        "text": "curl -sS --max-time \"$timeout\" \"http://127.0.0.1:$port/dsh-health\" >/dev/null 2>&1 && return 0"
+      },
+      {
+        "file": "scripts/control.sh",
+        "line": 750,
+        "text": "curl -sS --max-time \"$timeout\" \"http://127.0.0.1:$port/\" >/dev/null 2>&1"
+      },
+      {
+        "file": "scripts/control.sh",
+        "line": 831,
+        "text": "body=\"$(curl -sS --max-time 3 \"http://127.0.0.1:$port/dsh-health\" 2>/dev/null)\""
+      },
+      {
+        "file": "scripts/control.sh",
+        "line": 840,
+        "text": "code=\"$(curl -sS --max-time 3 -o /dev/null -w '%{http_code}' \"http://127.0.0.1:$port/\" 2>/dev/null)\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-versions.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/host-versions.js",
+        "line": 21,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const PKG = JSON.parse(fs.readFileSync(path.join(here, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "text = fs.readFileSync(logs[0], 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { execFile, spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "const child = spawn(CONTROL, ['--profile', profile, ...args], { stdio: 'inherit' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "execFile(CONTROL, ['--profile', profile, ...args], { encoding: 'utf8' }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "const child = spawnSync('pgrep', ['-f', `[d]sh --profile ${escaped}( |$)`], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 297,
+        "text": "execFile('git', args, { cwd: realPath, encoding: 'utf8' }, (err, stdout) => resolve({ err, stdout: stdout.trim() }))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "cliCommand",
+    "cmdlineArgs"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

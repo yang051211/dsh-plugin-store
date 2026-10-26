@@ -1,0 +1,127 @@
+{
+  "name": "dsh-search-boost",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:07:41.231Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 221,
+        "text": "async fetch(request, signal) {"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 14,
+        "text": "import * as https from 'node:https'"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 71,
+        "text": "return fetch(url, { ...init, agent: ipv4Agent })"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 337,
+        "text": "const res = await fetch('https://api.tavily.com/search', {"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 362,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engines.js",
+        "line": 11,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 29,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/layer.js",
+        "line": 14,
+        "text": "import * as fs from 'node:fs'"
+      },
+      {
+        "file": "lib/layer.js",
+        "line": 31,
+        "text": "const raw = JSON.parse(fs.readFileSync(LAYER_STATE_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/layer.js",
+        "line": 47,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "export const inject = ['web', 'tools', 'systemPrompt', 'timer', 'commands']"
+      },
+      {
+        "file": "index.js",
+        "line": 313,
+        "text": "return ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 448,
+        "text": "return ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 515,
+        "text": "return ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 837,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engines.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engines.js",
+        "line": 135,
+        "text": "execFile('agy', args, { timeout: timeoutMs, signal, maxBuffer: 8 * 1024 * 1024, windowsHide: true }, (err, stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

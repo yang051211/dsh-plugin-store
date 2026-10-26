@@ -1,0 +1,112 @@
+{
+  "name": "dsh-mcp-lazy",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:07:32.739Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 30,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/connection.js",
+        "line": 45,
+        "text": "const parsed = JSON.parse(readFileSync(manifest, 'utf8'));"
+      },
+      {
+        "file": "lib/metadata-cache.js",
+        "line": 16,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/metadata-cache.js",
+        "line": 114,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 6,
+        "text": "# Migration from @deepseek-ai/dsh-mcp-client: move each mcp-client row's config"
+      },
+      {
+        "file": "lib/adopt-compose.js",
+        "line": 23,
+        "text": "export const NATIVE_MCP_PLUGIN = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/adopt-patch.js",
+        "line": 274,
+        "text": "*   name: '@deepseek-ai/dsh-mcp-client'  # the server fields under config"
+      },
+      {
+        "file": "lib/adopt-patch.js",
+        "line": 278,
+        "text": "*       name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/adopt-patch.js",
+        "line": 315,
+        "text": "//     name: '@…/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/command.js",
+        "line": 29,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/command.js",
+        "line": 171,
+        "text": "const child = spawn(process.execPath, [script, ...args], {"
+      },
+      {
+        "file": "lib/env-from.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/env-from.js",
+        "line": 124,
+        "text": "child = spawn('/bin/sh', ['-c', command], {"
+      },
+      {
+        "file": "scripts/adopt.mjs",
+        "line": 48,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

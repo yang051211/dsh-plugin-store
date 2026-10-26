@@ -1,0 +1,88 @@
+{
+  "name": "dsh-cd",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:07:23.346Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 24,
+        "text": "import { realpath, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/relocate.js",
+        "line": 24,
+        "text": "import { mkdir, readFile, readdir, realpath, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/relocate.js",
+        "line": 60,
+        "text": "await mkdir(newDir, { recursive: true });"
+      },
+      {
+        "file": "dist/relocate.js",
+        "line": 64,
+        "text": "const source = await readFile(join(oldDir, name));"
+      },
+      {
+        "file": "dist/relocate.js",
+        "line": 66,
+        "text": "await writeFile(destination, rewriteHeaderFrame(source, target, compressed));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 30,
+        "text": "export const inject = [\"tools\", \"agents\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 217,
+        "text": "const original = agent.ctx.tools.get(name, agent);"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 221,
+        "text": "disposers.push(agent.ctx.tools.register({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 322,
+        "text": "const disposers = [ctx.tools.register(cdToolDefinition(state, services))];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

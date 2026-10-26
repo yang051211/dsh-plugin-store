@@ -1,0 +1,94 @@
+{
+  "name": "dsh-tap",
+  "version": "0.20.0",
+  "scannedAt": "2026-10-26T10:07:35.328Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 101,
+        "text": "X-Requested-With: XMLHttpRequest"
+      },
+      {
+        "file": "core/bridge.js",
+        "line": 43,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "core/bridge.js",
+        "line": 522,
+        "text": "return fetch(`${s.baseURL}${req.url}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 105,
+        "text": "return fetch(url, o).then(function (r) {"
+      },
+      {
+        "file": "providers/codebuddy/agenttool.js",
+        "line": 22,
+        "text": "const { res, err } = await withKeyRotation(settings, (cred) => fetch(`${settings().baseURL}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/bridge.js",
+        "line": 45,
+        "text": "import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "core/bridge.js",
+        "line": 298,
+        "text": "appendFileSync(path, JSON.stringify(record) + '\\n')"
+      },
+      {
+        "file": "core/bridge.js",
+        "line": 310,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "core/bridge.js",
+        "line": 311,
+        "text": "writeFileSync(join(dir, `req-${String(++dumpSeq).padStart(4, '0')}-${Date.now()}.json`), rawBody)"
+      },
+      {
+        "file": "core/json-store.js",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync, renameSync, unlinkSync, mkdirSync, existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2121,
+        "text": "disposeImageTool = toolsCtx.tools.register(provider.makeImageGenTool(resolveNow))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "providers/qoder/qoder_auth.wasm"
+  ],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

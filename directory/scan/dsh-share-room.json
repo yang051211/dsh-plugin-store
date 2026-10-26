@@ -1,0 +1,88 @@
+{
+  "name": "dsh-share-room",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:20.750Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "const res = await fetch(`/api/share-room.${path}`, body === undefined"
+      },
+      {
+        "file": "lib/guest/app.js",
+        "line": 26,
+        "text": "    const res = await fetch(base + path, { method: 'POST', credentials: 'same-origin', cache: 'no-store', headers: { 'content-type': 'application/json' }, body:"
+      },
+      {
+        "file": "lib/guest/app.js",
+        "line": 63,
+        "text": "const state = await fetch(base + 'state', { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/guest/app.js",
+        "line": 253,
+        "text": "const res = await fetch(base + 'state', { credentials: 'same-origin', cache: 'no-store' }).catch(() => null)"
+      },
+      {
+        "file": "lib/guest/app.js",
+        "line": 279,
+        "text": "const res = await fetch(base + 'state', { credentials: 'same-origin', cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 665,
+        "text": "return res.end(req.method === 'HEAD' ? undefined : readFileSync(file))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 6,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync, chmodSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 33,
+        "text": "writeFileSync(tmp, text, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 54,
+        "text": "mkdirSync(join(dir, 'discussions'), { recursive: true, mode: 0o700 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "typertGateway",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

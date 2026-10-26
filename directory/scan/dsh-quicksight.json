@@ -1,0 +1,94 @@
+{
+  "name": "dsh-quicksight",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:38.775Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 191,
+        "text": "const res = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(30_000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 20,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 159,
+        "text": "const text = readFileSync(out, 'utf8')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 164,
+        "text": "try { rmSync(out, { force: true }) } catch {}"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 197,
+        "text": "writeFileSync(file, buf)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 145,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 207,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 65,
+      "text": "~/.dsh/tools/ocr-venv/Scripts/pip install rapidocr_onnxruntime   # Windows"
+    },
+    {
+      "file": "README.md",
+      "line": 66,
+      "text": "~/.dsh/tools/ocr-venv/bin/pip install rapidocr_onnxruntime       # macOS/Linux"
+    }
+  ],
+  "skippedEntries": []
+}

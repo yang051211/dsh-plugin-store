@@ -1,0 +1,98 @@
+{
+  "name": "dsh-tool-ast-grep",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:17.659Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 4,
+        "text": "import fs from \"fs\";"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 34,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 95,
+        "text": "text = (deps.fs ?? fs).readFileSync(shimPath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# index.js (`export const inject = [\"tools\"]`) and every config key has a schema"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 40,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 116,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 31,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 35,
+      "text": "npm install -g @ast-grep/cli"
+    },
+    {
+      "file": "README.md",
+      "line": 39,
+      "text": "pip install ast-grep-cli"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 37,
+      "text": "npm install -g @ast-grep/cli"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 41,
+      "text": "pip install ast-grep-cli"
+    }
+  ],
+  "skippedEntries": []
+}

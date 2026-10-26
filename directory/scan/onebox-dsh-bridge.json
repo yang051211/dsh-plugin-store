@@ -1,0 +1,86 @@
+{
+  "name": "onebox-dsh-bridge",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:07:39.396Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 96,
+        "text": "const resp = await fetch(`${gateway}/dsh/pair-sessions`, {"
+      },
+      {
+        "file": "index.js",
+        "line": 110,
+        "text": "const resp = await fetch("
+      },
+      {
+        "file": "lib/page.js",
+        "line": 190,
+        "text": "const r = await fetch('/onebox-bridge/api/status')"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 196,
+        "text": "try { await fetch(path, { method: 'POST' }) } catch { /* 同上 */ }"
+      },
+      {
+        "file": "lib/session-cookie.js",
+        "line": 58,
+        "text": "const res = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(10_000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 77,
+        "text": "const cred = JSON.parse(fs.readFileSync(tokenPath, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 85,
+        "text": "fs.mkdirSync(dataDir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "index.js",
+        "line": 86,
+        "text": "fs.writeFileSync(tokenPath, JSON.stringify(cred, null, 2), { mode: 0o600 })"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "try { fs.unlinkSync(tokenPath) } catch { /* 本来就不存在 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

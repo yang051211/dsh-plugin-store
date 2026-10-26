@@ -1,0 +1,67 @@
+{
+  "name": "dsh-bottom-cost",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:07:40.822Z",
+  "icon": "dsh-bottom-cost.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 287,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/pricebook-store.js",
+        "line": 83,
+        "text": "const response = await fetch(OFFICIAL_PRICING_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pricebook-store.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/pricebook-store.js",
+        "line": 57,
+        "text": "const checked = validatePriceBook(JSON.parse(readFileSync(file, 'utf8')))"
+      },
+      {
+        "file": "lib/pricebook-store.js",
+        "line": 114,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/pricebook-store.js",
+        "line": 117,
+        "text": "writeFileSync(tmp, JSON.stringify(candidate, null, 2) + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

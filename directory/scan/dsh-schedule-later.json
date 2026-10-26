@@ -1,0 +1,88 @@
+{
+  "name": "dsh-schedule-later",
+  "version": "0.7.6",
+  "scannedAt": "2026-10-26T10:07:12.840Z",
+  "icon": "dsh-schedule-later.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2127,
+        "text": "const doFetch = fetchImpl || ((...a) => fetch(...a));"
+      },
+      {
+        "file": "src/client-view.js",
+        "line": 1818,
+        "text": "const doFetch = fetchImpl || ((...a) => fetch(...a));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/deps.js",
+        "line": 2,
+        "text": "export { promises as fs } from 'node:fs';"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 26,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 32,
+        "text": "const parsed = JSON.parse(await fs.readFile(path, 'utf8'));"
+      },
+      {
+        "file": "src/scheduler.js",
+        "line": 42,
+        "text": "await fs.writeFile(path, JSON.stringify({ items: queue }, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "src/skill.js",
+        "line": 10,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 21,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 75,
+        "text": "if (ctx.tools?.register) {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 79,
+        "text": "const dispose = ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

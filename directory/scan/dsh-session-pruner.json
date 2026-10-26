@@ -1,0 +1,78 @@
+{
+  "name": "dsh-session-pruner",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-26T10:07:15.111Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 74,
+        "text": "fetch('/plugins/dsh-session-pruner/status', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 394,
+        "text": "fetch('/plugins/dsh-session-pruner/archived?since=' + lastSeq, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { mkdir, readdir, readFile, rename, rm, stat, utimes } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
+        "text": "const buf = await readFile(logPath)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 368,
+        "text": "await rm(entry.dir, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 371,
+        "text": "await mkdir(destWs, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 373,
+        "text": "await rm(dest, { recursive: true, force: true }) // 幂等：目标已存在则先清"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "storageDomain",
+    "timer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

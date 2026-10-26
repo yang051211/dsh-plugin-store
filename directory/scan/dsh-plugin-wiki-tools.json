@@ -1,0 +1,87 @@
+{
+  "name": "dsh-plugin-wiki-tools",
+  "version": "0.14.2",
+  "scannedAt": "2026-10-26T10:07:24.991Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/lint.js",
+        "line": 9,
+        "text": "import { mkdir, readFile, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/lint.js",
+        "line": 89,
+        "text": "const raw = await readFile(join(root, 'wiki', 'index.md'), 'utf8').catch(() => undefined)"
+      },
+      {
+        "file": "lib/lint.js",
+        "line": 267,
+        "text": "const raw = await readFile(join(root, 'wiki', 'hot.md'), 'utf8').catch(() => undefined)"
+      },
+      {
+        "file": "lib/lint.js",
+        "line": 323,
+        "text": "await mkdir(join(root, 'wiki', 'meta'), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 4,
+        "text": "* Registers `wiki_query`, `wiki_write`, and `wiki_lint` on `ctx.tools`,"
+      },
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 422,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vault.js",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/vault.js",
+        "line": 275,
+        "text": "const run = args => spawnSync('git', ['-C', this.root, ...args], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

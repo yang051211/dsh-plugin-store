@@ -1,0 +1,102 @@
+{
+  "name": "dsh-recall",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:07:34.859Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vendor/ort/ort-wasm-simd-threaded.mjs",
+        "line": 3,
+        "text": "xitCode=a;throw b;}}else if(aa||k){try{fa=(new URL(\".\",ea)).href}catch{}m||(k&&(ia=a=>{var b=new XMLHttpRequest;b.open(\"GET\",a,!1);b.responseType=\"arraybuffer\";"
+      },
+      {
+        "file": "lib/vendor/ort/ort-wasm-simd-threaded.mjs",
+        "line": 4,
+        "text": "a))return new Promise((d,c)=>{var e=new XMLHttpRequest;e.open(\"GET\",a,!0);e.responseType=\"arraybuffer\";e.onload=()=>{200==e.status||0==e.status&&e.response?d(e."
+      },
+      {
+        "file": "lib/vendor/ort/ort-wasm-simd-threaded.mjs",
+        "line": 10,
+        "text": "a){var b=Ja;if(!q&&!ja(b)&&!m)try{var d=fetch(b,{credentials:\"same-origin\"});return await WebAssembly.instantiateStreaming(d,a)}catch(c){p(`wasm streaming compi"
+      },
+      {
+        "file": "lib/vendor/ort/ort.all.min.mjs",
+        "line": 1802,
+        "text": "i=e.endsWith(\".ort\");{let s=await(await fetch(e)).arrayBuffer();this.initialize(new Uint8Array(s),i)}}else if(ArrayBuffer.isView(e))this.initialize(e);else{let "
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/embed-worker.js",
+        "line": 10,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/embed-worker.js",
+        "line": 22,
+        "text": "ort.env.wasm.wasmBinary = readFileSync(join(vendorDir, 'ort-wasm-simd-threaded.wasm'))"
+      },
+      {
+        "file": "lib/embed-worker.js",
+        "line": 28,
+        "text": "session = await ort.InferenceSession.create(readFileSync(modelPath))"
+      },
+      {
+        "file": "lib/fuzzy-index.js",
+        "line": 21,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/fuzzy-index.js",
+        "line": 148,
+        "text": "if (this.path !== ':memory:') mkdirSync(dirname(this.path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "// dsh-recall host entry: registers the `recall` tool on ctx.tools."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = ['tools', 'sessions']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 849,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/vendor/ort/ort.all.min.mjs"
+  ],
+  "binaryFiles": [
+    "lib/vendor/ort/ort-wasm-simd-threaded.wasm"
+  ],
+  "requiredServices": [
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

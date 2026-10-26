@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-nlbi",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:29.264Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dashboard.js",
+        "line": 18,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/dashboard.js",
+        "line": 39,
+        "text": "const text = await fsp.readFile(dashboardsFile(), 'utf8')"
+      },
+      {
+        "file": "lib/dashboard.js",
+        "line": 65,
+        "text": "await fsp.mkdir(storageDir(), { recursive: true })"
+      },
+      {
+        "file": "lib/dashboard.js",
+        "line": 68,
+        "text": "await fsp.writeFile(tmp, JSON.stringify(data, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { promises as fsp, appendFileSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1137,
+        "text": "ctx.tools.register(mysqlQueryTool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1138,
+        "text": "ctx.tools.register(mysqlTablesTool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1139,
+        "text": "ctx.tools.register(mysqlExecuteTool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1179,
+        "text": "ctx.tools.register(nlQueryToolWithCtx)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

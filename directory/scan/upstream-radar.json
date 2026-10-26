@@ -1,0 +1,122 @@
+{
+  "name": "upstream-radar",
+  "version": "0.45.0",
+  "scannedAt": "2026-10-26T10:07:11.587Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/dsh-surface-observation.js",
+        "line": 456,
+        "text": "const response = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(2_000) });"
+      },
+      {
+        "file": "dist/src/dsh-surface-observation.js",
+        "line": 587,
+        "text": "evidence.pluginBundleStatus = (await fetch(evidence.pluginBundleUrl, { signal: AbortSignal.timeout(10_000) })).status;"
+      },
+      {
+        "file": "dist/src/scan.js",
+        "line": 191,
+        "text": "const invokesRemoteDownload = /\\b(?:curl|wget|Invoke-WebRequest|Start-BitsTransfer)\\b|https?:\\/\\//i.test(script.command);"
+      },
+      {
+        "file": "dist/src/upstream-observer.js",
+        "line": 1549,
+        "text": "const response = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/cli.js",
+        "line": 4,
+        "text": "import { access, mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 721,
+        "text": "await writeFile(resolve(output), `${JSON.stringify(index, null, 2)}\\n`);"
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 843,
+        "text": "await writeFile(resolve(reportPath), reportPath.endsWith('.json') ? jsonText : summary ? renderDshProfileCheckSummary(report) : renderDshProfileCheck(report));"
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 1178,
+        "text": "const contents = await readFile(resolve(path), 'utf8');"
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 1385,
+        "text": "await mkdir(dirname(absoluteReportPath), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/cli.js",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 2253,
+        "text": "const result = spawnSync(dshCommand, ["
+      },
+      {
+        "file": "dist/src/cli.js",
+        "line": 2302,
+        "text": "const result = spawnSync(dshCommand, dshArgs, { env: dshEnvironment, stdio: 'inherit' });"
+      },
+      {
+        "file": "dist/src/dsh-install-observation.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/src/dsh-install-observation.js",
+        "line": 414,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": [
+    "examples/cases/dsh-web-ui-issue-71/before/node_modules/@linxin666/dsh-client-ui-skin-center/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/before/node_modules/@linxin666/dsh-web-ui-all/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/fixed/node_modules/@linxin666/dsh-client-ui-skin-center/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/fixed/node_modules/@linxin666/dsh-web-ui-all/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-client-ui-skin-center/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-client-ui-skin-qq98/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-web-ui-all/package.json (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/before/node_modules/@linxin666/dsh-client-ui-skin-center/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/before/node_modules/@linxin666/dsh-web-ui-all/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/fixed/node_modules/@linxin666/dsh-client-ui-skin-center/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/fixed/node_modules/@linxin666/dsh-web-ui-all/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-client-ui-skin-center/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-client-ui-skin-qq98/cordis.patch.yml (outside the package)",
+    "examples/cases/dsh-web-ui-issue-71/manual-add/node_modules/@linxin666/dsh-web-ui-all/cordis.patch.yml (outside the package)"
+  ]
+}

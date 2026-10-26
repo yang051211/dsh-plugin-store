@@ -1,0 +1,95 @@
+{
+  "name": "dsh-chat-tree",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:07:05.026Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 151,
+        "text": "* 【为什么单独一份】以前三处各写一遍 `fetch(...).then(r => r.ok ? r.json() : reject)`，"
+      },
+      {
+        "file": "client.js",
+        "line": 247,
+        "text": "fetch(`${prefix}${API}${path}`, {"
+      },
+      {
+        "file": "src/client/net.js",
+        "line": 4,
+        "text": "* 【为什么单独一份】以前三处各写一遍 `fetch(...).then(r => r.ok ? r.json() : reject)`，"
+      },
+      {
+        "file": "src/client/net.js",
+        "line": 100,
+        "text": "fetch(`${prefix}${API}${path}`, {"
+      },
+      {
+        "file": "src/host/http.js",
+        "line": 107,
+        "text": "* 那等于把对面发多少就吃多少，一条 `curl -T /dev/zero` 就能把 dsh 喂死。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 25,
+        "text": "import { readFileSync, writeFileSync, readdirSync, watch } from 'node:fs'"
+      },
+      {
+        "file": "build.mjs",
+        "line": 175,
+        "text": "const source = readFileSync(join(SRC, name), 'utf8')"
+      },
+      {
+        "file": "build.mjs",
+        "line": 284,
+        "text": "const now = readFileSync(OUT, 'utf8')"
+      },
+      {
+        "file": "build.mjs",
+        "line": 291,
+        "text": "writeFileSync(OUT, built)"
+      },
+      {
+        "file": "build.mjs",
+        "line": 300,
+        "text": "writeFileSync(OUT, bundle())"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/split-shared-claude.mjs",
+        "line": 14,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessionPersistence",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

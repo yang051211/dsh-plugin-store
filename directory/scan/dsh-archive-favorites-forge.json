@@ -1,0 +1,87 @@
+{
+  "name": "dsh-archive-favorites-forge",
+  "version": "0.24.4",
+  "scannedAt": "2026-10-26T10:07:19.237Z",
+  "icon": "dsh-archive-favorites-forge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 73,
+        "text": "return fetch(ROUTE + route, init).then(function (res) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, renameSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { readFile, readdir, stat, lstat, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 69,
+        "text": "const pkg = JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 102,
+        "text": "const parsed = JSON.parse(readFileSync(statePath(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1069,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1074,
+        "text": "const child = spawn('explorer.exe', [target], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1078,
+        "text": "const child = spawn('open', args, { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1081,
+        "text": "const child = spawn('xdg-open', [existsSync(requested) ? dirname(requested) : dir], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

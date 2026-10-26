@@ -1,0 +1,92 @@
+{
+  "name": "dsh-codex-oauth",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:07:42.009Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.jsx",
+        "line": 6,
+        "text": "const response = await fetch(`${BASE}/${path}`, { method, credentials: \"same-origin\", headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 2,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 42,
+        "text": "const response = await fetch(`${BASE}/${path}`, { method, credentials: \"same-origin\", headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/quota-lookup.js",
+        "line": 98,
+        "text": "const response = await this.fetch(USAGE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/companion-auth.js",
+        "line": 2,
+        "text": "import { lstat, readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/companion-auth.js",
+        "line": 43,
+        "text": "return validateDocument(JSON.parse(await readFile(this.filename, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "mapHostPath: (path) => ctx.get?.(\"fs\")?.processPathFromHostPath(path),"
+      },
+      {
+        "file": "lib/quota-ui.js",
+        "line": 1,
+        "text": "import { watch } from \"node:fs\";"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { chmod, lstat, mkdir, readFile } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-openai-codex.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/dsh-openai-codex.js",
+        "line": 13,
+        "text": "const child = spawn(command[0], command.slice(1), { detached: true, stdio: \"ignore\", windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

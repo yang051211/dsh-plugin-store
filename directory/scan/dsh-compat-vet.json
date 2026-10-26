@@ -1,0 +1,110 @@
+{
+  "name": "dsh-compat-vet",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:07:08.522Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 303,
+        "text": "return window.fetch(API + '/status' + (force === true ? '?force=1' : ''), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 330,
+        "text": "window.fetch(API + '/repair', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 353,
+        "text": "window.fetch(API + '/repair?id=' + encodeURIComponent(jobId), { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "scripts/helpers/dsh-harness.mjs",
+        "line": 79,
+        "text": "const response = await fetch(`${base}${apiPrefix}/status`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "scripts/helpers/dsh-harness.mjs",
+        "line": 104,
+        "text": "const response = await fetch(appUrl, { redirect: 'manual' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapt.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/adapt.js",
+        "line": 70,
+        "text": "return { ok: true, value: JSON.parse(fs.readFileSync(file, 'utf8')) }"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 25,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 82,
+        "text": "return { ok: true, value: JSON.parse(fs.readFileSync(file, 'utf8')) }"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 18,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/repair.js",
+        "line": 28,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/repair.js",
+        "line": 223,
+        "text": "child = spawn(process.execPath, args, { env: childEnv, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "scripts/helpers/dsh-harness.mjs",
+        "line": 14,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/helpers/dsh-harness.mjs",
+        "line": 63,
+        "text": "const child = spawn(process.execPath, ["
+      },
+      {
+        "file": "scripts/verify-real-boot.mjs",
+        "line": 24,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

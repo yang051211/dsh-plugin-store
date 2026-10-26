@@ -1,0 +1,84 @@
+{
+  "name": "dsh-llm-codex",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:07:34.119Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.js",
+        "line": 59,
+        "text": "* @param fetchImpl - 可注入的 fetch(测试用),覆盖 transport。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 116,
+        "text": "fetch: (url, init) => getTransport().then((transport) => transport.fetch(url, init)),"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 91,
+        "text": "const response = await transport.fetch(url, { method: 'GET', headers, signal });"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 4,
+        "text": "* 背景:Node 的原生 fetch(undici)不读取系统代理/代理环境变量,而 ChatGPT"
+      },
+      {
+        "file": "lib/transport.js",
+        "line": 68,
+        "text": "return fetch(url, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 18,
+        "text": "import { readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 55,
+        "text": "raw = await readFile(authFile, 'utf8');"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 171,
+        "text": "await writeFile(tmp, `${JSON.stringify(next, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/models.js",
+        "line": 41,
+        "text": "raw = await readFile(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

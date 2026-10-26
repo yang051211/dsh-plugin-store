@@ -1,0 +1,59 @@
+{
+  "name": "dsh-plugin-busy-workspace",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-26T10:07:11.610Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1059,
+        "text": "const response = await fetch(SETTINGS_PATH, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const text = await readFile(settingsPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "await writeFile(temp, `${JSON.stringify(settings, null, 2)}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

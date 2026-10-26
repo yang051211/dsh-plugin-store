@@ -1,0 +1,108 @@
+{
+  "name": "dsh-pubmed",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:07:22.710Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "* Lazy + dynamic import keeps the plugin loadable even if 'undici' isn't"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "const undici = await import('undici')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "_proxyFetch = (u, o) => undici.fetch(u, Object.assign({}, o, { dispatcher: agent }))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/pubmed-core.js",
+        "line": 263,
+        "text": "// Shared MEDLINE fetch (efetch db=pubmed) — used by pubmed_fetch_articles and"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dynamic-wrapper.js",
+        "line": 12,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync, renameSync, mkdirSync, existsSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "writeFileSync(savedPath, buf)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 196,
+        "text": "const raw = readFileSync(p, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 284,
+        "text": "register: (def) => tools.register(def),"
+      },
+      {
+        "file": "lib/pubmed-core.js",
+        "line": 6,
+        "text": "//     and `ctx.tools.register`;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dynamic-wrapper.js",
+        "line": 22,
+        "text": "const h = sub.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

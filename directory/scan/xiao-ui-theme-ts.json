@@ -1,0 +1,95 @@
+{
+  "name": "xiao-ui-theme-ts",
+  "version": "0.13.2",
+  "scannedAt": "2026-10-26T10:07:08.259Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 62,
+        "text": "* 设置经 fetch('/xiao-theme/settings') 读写（Host 半自管配置，绕过 settings 白名单）。"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 383,
+        "text": "const response = await fetch('/xiao-theme/settings', { cache: 'no-store', headers: xiaoLangHeader() });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 405,
+        "text": "response = await fetch('/xiao-theme/settings', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 480,
+        "text": "const response = await fetch('/xiao-theme/settings', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 517,
+        "text": "const response = await fetch('/xiao-theme/upload?ext=.' + encodeURIComponent(ext), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { readFile, writeFile, mkdir, unlink, rmdir, stat, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { createWriteStream, createReadStream, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 294,
+        "text": "const text = await readFile(CONFIG_PATH, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 326,
+        "text": "await mkdir(dirname(CONFIG_PATH), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 327,
+        "text": "await writeFile(CONFIG_PATH, JSON.stringify({ ...store, schemaVersion: SCHEMA_VERSION }, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1180,
+        "text": "const child = spawn(cmd, [dir], { stdio: 'ignore', detached: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

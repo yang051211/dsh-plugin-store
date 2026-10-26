@@ -1,0 +1,89 @@
+{
+  "name": "dsh-laya",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:07:20.739Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 188,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "sidecar.js",
+        "line": 24,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 502,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 504,
+        "text": "ctx.effect(() => tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "sidecar.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "sidecar.js",
+        "line": 124,
+        "text": "const child = spawn(plan.file, plan.argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 24,
+      "text": "pip install \"laya-mcp[mcp]\""
+    },
+    {
+      "file": "README.md",
+      "line": 39,
+      "text": "A plugin that shelled out to `pip install` and then downloaded a 650 MB"
+    },
+    {
+      "file": "README.md",
+      "line": 112,
+      "text": "nothing and downloads nothing — a tool that ran `pip install` and then fetched a"
+    }
+  ],
+  "skippedEntries": []
+}

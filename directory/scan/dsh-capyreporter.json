@@ -1,0 +1,92 @@
+{
+  "name": "dsh-capyreporter",
+  "version": "0.6.19",
+  "scannedAt": "2026-10-26T10:07:33.210Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 364,
+        "text": "const response = await fetch(ROUTE + path, { method: body === undefined ? 'GET' : 'POST',"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 35,
+        "text": "const response = await fetch(base + '/dsh-capyreporter' + route, { method, redirect: 'error', signal: controller.signal,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "const config = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "mkdirSync(home, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "writeFileSync(temporary, JSON.stringify(next, null, 2) + '\\n', { encoding: 'utf8', mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "try { unlinkSync(temporary) } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 133,
+        "text": "const current = spawn(exe, [HELPER], { cwd: join(ROOT, 'runtime', 'electron-helper'), env, stdio: ['ignore', 'ignore', 'pipe', 'ipc'], windowsHide: true })"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 24,
+        "text": "const result = spawnSync(process.execPath, ['--check', join(root, f)], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

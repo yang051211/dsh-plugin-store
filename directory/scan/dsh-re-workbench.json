@@ -1,0 +1,114 @@
+{
+  "name": "dsh-re-workbench",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:23.125Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "fs.mkdirSync(path.dirname(targetFile), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 199,
+        "text": "fs.writeFileSync(targetFile, abs, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 253,
+        "text": "target = fs.readFileSync(targetFile, \"utf8\").trim();"
+      },
+      {
+        "file": "mcp/server.js",
+        "line": 23,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# 通过 @deepseek-ai/dsh-mcp-client 把 IDA MCP 桥（mcp/server.js）接进 DSH 工具集。"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 20,
+        "text": "name: \"@deepseek-ai/dsh-mcp-client\""
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "mcp/server.js",
+        "line": 22,
+        "text": "import { spawn, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "mcp/server.js",
+        "line": 146,
+        "text": "const child = spawn(env.python, args, {"
+      },
+      {
+        "file": "mcp/server.js",
+        "line": 202,
+        "text": "const child = spawn(env.python, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 37,
+      "text": "- `pip install ida-pro-mcp`（idalib 模式还需要本机装有 IDA Pro 9.x，`idapro` 模块由 IDA 提供）"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,92 @@
+{
+  "name": "dsh-openai-oauth",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:07:32.014Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 37,
+        "text": "const response = await fetch(`${ENDPOINT}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app-server.js",
+        "line": 2,
+        "text": "import { mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/app-server.js",
+        "line": 53,
+        "text": "await mkdir(home, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/global.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync, readdirSync, rmSync, rmdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/global.js",
+        "line": 12,
+        "text": "const packageVersion = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf8')).version;"
+      },
+      {
+        "file": "lib/global.js",
+        "line": 21,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app-server.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/app-server.js",
+        "line": 56,
+        "text": "this.child = spawn(process.execPath, ["
+      },
+      {
+        "file": "lib/global.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/global.js",
+        "line": 37,
+        "text": "const result = spawnSync(executable, ["
+      },
+      {
+        "file": "lib/global.js",
+        "line": 59,
+        "text": "const logout = spawnSync(process.execPath, [codex, 'logout'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

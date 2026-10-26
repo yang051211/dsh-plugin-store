@@ -1,0 +1,106 @@
+{
+  "name": "dsh-wps-plugin",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:07:36.531Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/auth/browser-auth.js",
+        "line": 5,
+        "text": "import { createServer } from 'http';"
+      },
+      {
+        "file": "dist/auth/browser-auth.js",
+        "line": 178,
+        "text": "const response = await fetch(this.config.exchangeUrl, {"
+      },
+      {
+        "file": "dist/tools/api-client.js",
+        "line": 59,
+        "text": "const response = await fetch(this.config.mcpEndpoint, {"
+      },
+      {
+        "file": "dist/tools/api-client.js",
+        "line": 123,
+        "text": "const response = await fetch(this.config.mcpEndpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/auth/token-store.js",
+        "line": 6,
+        "text": "import { promises as fs } from 'fs';"
+      },
+      {
+        "file": "dist/auth/token-store.js",
+        "line": 40,
+        "text": "await fs.mkdir(TOKEN_DIR, { recursive: true });"
+      },
+      {
+        "file": "dist/auth/token-store.js",
+        "line": 52,
+        "text": "await fs.writeFile(TOKEN_FILE, JSON.stringify(tokenInfo, null, 2), 'utf-8');"
+      },
+      {
+        "file": "dist/auth/token-store.js",
+        "line": 66,
+        "text": "const data = await fs.readFile(TOKEN_FILE, 'utf-8');"
+      },
+      {
+        "file": "dist/auth/token-store.js",
+        "line": 81,
+        "text": "await fs.unlink(TOKEN_FILE);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/plugin.js",
+        "line": 7,
+        "text": "* 使用 DSH 工具契约：`ctx.tools.register` 要求声明 `output`（规范输出），"
+      },
+      {
+        "file": "dist/plugin.js",
+        "line": 104,
+        "text": "const inject = ['tools'];"
+      },
+      {
+        "file": "dist/plugin.js",
+        "line": 120,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/auth/browser-auth.js",
+        "line": 165,
+        "text": "const { execSync } = await import('child_process');"
+      },
+      {
+        "file": "dist/auth/browser-auth.js",
+        "line": 166,
+        "text": "execSync(`${command} ${args.join(' ')}`, { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,81 @@
+{
+  "name": "dsh-plugin-addir",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:07:31.289Z",
+  "icon": "dsh-plugin-addir.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 90,
+        "text": "const response = await fetch(new URL(`api/addir/${action}`, document.baseURI), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, realpathSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const raw = readFileSync(this.storageFilePath, \"utf-8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "writeFileSync(this.storageFilePath, `${JSON.stringify(data, null, 2)}\\n`, \"utf-8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 972,
+        "text": "toolsCtx.effect(() => toolsCtx.tools.register(createListTool(this, \"addir_list\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 973,
+        "text": "toolsCtx.effect(() => toolsCtx.tools.register(createAddTool(this, \"addir_add\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 974,
+        "text": "toolsCtx.effect(() => toolsCtx.tools.register(createRemoveTool(this, \"addir_remove\")));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,59 @@
+{
+  "name": "dsh-nl-model-switch",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:07:38.594Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 5,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 10,
+        "text": "const read = (p) => readFileSync(join(root, p), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'systemPrompt', 'llm', 'apiProxy'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "const disposeTool = ctx.tools.register(switchModelTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "apiProxy",
+    "llm",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

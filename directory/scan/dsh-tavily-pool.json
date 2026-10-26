@@ -1,0 +1,97 @@
+{
+  "name": "dsh-tavily-pool",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:07:21.545Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 206,
+        "text": "fetchImpl: (...args) => globalThis.fetch(...args),"
+      },
+      {
+        "file": "index.js",
+        "line": 634,
+        "text": "return officialFetchProvider().fetch(request, signal);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 256,
+        "text": "fetchToggle: 'Take over fetch (web_fetch)',"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 524,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/dsh/fetch-provider.js",
+        "line": 32,
+        "text": "* 池中是否有可用密钥——都必须发生在 `fetch()` 内部。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/history.js",
+        "line": 42,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 306,
+        "text": "raw = await this.#fs.readFile(this.#filePath, 'utf8');"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 383,
+        "text": "await this.#fs.mkdir(dirname(this.#filePath), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 392,
+        "text": "await this.#fs.writeFile(this.#lockPath, `${JSON.stringify({ pid: process.pid, at: new Date().toISOString() })}\\n`, {"
+      },
+      {
+        "file": "lib/history.js",
+        "line": 398,
+        "text": "await this.#fs.unlink(this.#lockPath).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh/host-budget.js",
+        "line": 9,
+        "text": "* （`ctx.tools.get(exec.name, exec.agent)?.timeoutMs`）。"
+      },
+      {
+        "file": "lib/dsh/host-budget.js",
+        "line": 21,
+        "text": "* `ctx.tools.get(name, scope)` 的 `scope` 是**发起调用的 agent**（`@deepseek-ai/dsh-tools`："
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
