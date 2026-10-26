@@ -1,0 +1,92 @@
+{
+  "name": "dsh-aivn",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:57.322Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 269,
+        "text": "y=>{let I=l.get(y);return I!==void 0?I:(fetch(`/aivn/play?session=${encodeURIComponent(y)}`).then(w=>w.ok?w.json():null).then(w=>{let z=w?.config?.opening?.trim"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 273,
+        "text": "(e)?.buffer??null;if(!l)try{let s=await fetch(t);s.ok&&(l=await r.decodeAudioData(await s.arrayBuffer()))}catch{}return o!==this.replayToken||!this.enabled||!l?"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5494,
+        "text": ":a})})}async function gs(a){let e=await fetch(a);if(!e.ok)throw new Error(`${e.status} ${await e.text()}`);return e.json()}async function Qt(a,e){let t=await fe"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2949,
+        "text": "var defaultFetch = (url, init) => globalThis.fetch(url, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7989,
+        "text": "const res = await fetch(`${this.opts.baseUrl}/v1/tts`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { mkdir, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1063,
+        "text": "raw = await readFile(join(dir, PLAY_FILE), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1074,
+        "text": "raw = readFileSync(join(dir, PLAY_FILE), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6827,
+        "text": "offs.push(agent.ctx.effect(() => agent.ctx.tools.register(tool), `dsh-aivn:${tool.name}`));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

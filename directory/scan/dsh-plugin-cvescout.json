@@ -1,0 +1,92 @@
+{
+  "name": "dsh-plugin-cvescout",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:10:00.890Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/http.js",
+        "line": 77,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/cache.js",
+        "line": 8,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/cache.js",
+        "line": 94,
+        "text": "const raw = await readFile(this.filePath, 'utf8');"
+      },
+      {
+        "file": "lib/core/cache.js",
+        "line": 106,
+        "text": "await mkdir(dirname(this.filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/core/cache.js",
+        "line": 108,
+        "text": "await writeFile(tmp, JSON.stringify(data, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/core/retest.js",
+        "line": 12,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "/** 依赖工具注册表：Cordis 会等 ctx.tools 就绪后再调用 apply。 */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools/atomic.js",
+        "line": 47,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/atomic.js",
+        "line": 63,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools/atomic.js",
+        "line": 80,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

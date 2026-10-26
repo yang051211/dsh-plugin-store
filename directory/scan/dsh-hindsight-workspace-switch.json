@@ -1,0 +1,78 @@
+{
+  "name": "dsh-hindsight-workspace-switch",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:00.685Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.cjs",
+        "line": 116,
+        "text": "return fetch(ROUTE + '?sessionId=' + encodeURIComponent(sessionId), init).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/setup.mjs",
+        "line": 22,
+        "text": "import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 112,
+        "text": "const original = existsSync(path) ? readFileSync(path, 'utf8') : ''"
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 144,
+        "text": "if (!dryRun) writeFileSync(path, next)"
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 160,
+        "text": "const original = readFileSync(homePatch, 'utf8')"
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 172,
+        "text": "target = findTargetInText(readFileSync(profilePatch, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions"
+  ],
+  "setupHints": [
+    {
+      "file": "README.CN.md",
+      "line": 121,
+      "text": "node node_modules/dsh-hindsight-workspace-switch/scripts/setup.mjs --profile web"
+    },
+    {
+      "file": "README.md",
+      "line": 174,
+      "text": "node node_modules/dsh-hindsight-workspace-switch/scripts/setup.mjs --profile web"
+    }
+  ],
+  "skippedEntries": []
+}

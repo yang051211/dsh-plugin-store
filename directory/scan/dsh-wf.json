@@ -1,0 +1,69 @@
+{
+  "name": "dsh-wf",
+  "version": "2.4.5",
+  "scannedAt": "2026-10-26T10:10:10.028Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2293,
+        "text": "return await (await fetch(raw)).blob();"
+      },
+      {
+        "file": "src/core/storage/adapters/localStorage.js",
+        "line": 103,
+        "text": "try { return await (await fetch(raw)).blob() } catch (e) { return null }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "appendFileSync(join(dataRoot, '.activate.log'),"
+      },
+      {
+        "file": "lib/migrate-legacy.js",
+        "line": 5,
+        "text": "import { readFile, readdir, rename, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/migrate-legacy.js",
+        "line": 12,
+        "text": "const raw = JSON.parse(await readFile(join(legacyRoot, 'index.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/migrate-legacy.js",
+        "line": 48,
+        "text": "await mkdir(dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

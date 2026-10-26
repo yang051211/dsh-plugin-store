@@ -1,0 +1,71 @@
+{
+  "name": "dsh-usage-center",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:09:56.138Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accounts.js",
+        "line": 94,
+        "text": "const response = await fetch(url, { headers: { authorization: apiKey, accept: 'application/json' }, signal: controller.signal, redirect: 'error' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 19,
+        "text": "data!==null,error:\"\"}));try{let o=await fetch(`/api/usage-center/overview${d?\"?refresh=1\":\"\"}`,{cache:\"no-store\"});if(!o.ok)throw new Error(`HTTP ${o.status}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "const value = JSON.parse(await readFile(snapshotPath(), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "await writeFile(temp, JSON.stringify({ version: SNAPSHOT_VERSION, snapshot: value }), { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "sessionPersistence",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

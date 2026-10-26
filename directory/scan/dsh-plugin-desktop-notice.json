@@ -1,0 +1,129 @@
+{
+  "name": "dsh-plugin-desktop-notice",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:10:12.933Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/notify-check.mjs",
+        "line": 29,
+        "text": "res = await fetch(url);"
+      },
+      {
+        "file": "src/client.js",
+        "line": 53,
+        "text": "return fetch(path, { cache: \"no-store\" }).then(function (r) { return r.json(); });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 174,
+        "text": "fetch(TEST_PATH + \"?kind=\" + [\"done\", \"waiting\", \"error\"][i]).catch(function () {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapters/darwin.mjs",
+        "line": 6,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "src/adapters/linux.mjs",
+        "line": 7,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "src/adapters/probe.mjs",
+        "line": 4,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "src/adapters/win32.mjs",
+        "line": 6,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "src/adapters/win32.mjs",
+        "line": 118,
+        "text": "fs.writeFileSync(payloadPath, JSON.stringify({ title, body, scenario, aumid }), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 24,
+        "text": "// cordis 语义：ctx.tools 属性访问要求服务在 inject 中声明（否则抛 \"without inject\"）；"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 26,
+        "text": "export const inject = [\"settings\", \"tools\"];"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 152,
+        "text": "toolsApi = ctx.tools ?? null; // 已声明 inject；防御性再包一层"
+      },
+      {
+        "file": "src/tools/notify-send.mjs",
+        "line": 4,
+        "text": "// 工具形状对齐 vault-memory 真机实现：ctx.tools.register({ name, description, parameters, timeoutMs, output, execute })。"
+      },
+      {
+        "file": "src/tools/notify-send.mjs",
+        "line": 7,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== \"function\") return () => {};"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/notify-diagnose.mjs",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "scripts/notify-diagnose.mjs",
+        "line": 19,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "src/adapters/darwin.mjs",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "src/adapters/darwin.mjs",
+        "line": 18,
+        "text": "child = spawn(cmd, args, { stdio: \"ignore\" });"
+      },
+      {
+        "file": "src/adapters/darwin.mjs",
+        "line": 70,
+        "text": "          child = spawn(OSASCRIPT, [\"-e\", 'tell application \"System Events\" to name of first application process whose frontmost is true'], { stdio: [\"ignore\", "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

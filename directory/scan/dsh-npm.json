@@ -1,0 +1,91 @@
+{
+  "name": "dsh-npm",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:34.077Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, mkdtemp, readFile, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { existsSync, readdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "const raw = await readFile(this.file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "await mkdir(path.dirname(this.file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "await writeFile(this.file, JSON.stringify(next, null, 2) + \"\\n\", { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1226,
+        "text": "const disposers = buildTools(toolContext).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 325,
+        "text": "const result = spawnSync(npmBin(), [\"--version\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 374,
+        "text": "const child = spawn(npmBin(), finalArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

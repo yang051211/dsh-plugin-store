@@ -1,0 +1,119 @@
+{
+  "name": "dsh-stock-desk",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:01.742Z",
+  "icon": "dsh-stock-desk.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2254,
+        "text": "res = await fetch(API + path, body === undefined ? { signal: ctl.signal } : {"
+      },
+      {
+        "file": "lib/boards.js",
+        "line": 89,
+        "text": "res = await fetch(url, { headers: HEADERS, signal: ctl.signal });"
+      },
+      {
+        "file": "lib/boards.js",
+        "line": 278,
+        "text": "res = await fetch(url, { headers: { ...HEADERS, Referer: 'https://data.10jqka.com.cn/', Accept: 'application/json, text/plain, */*' }, signal: ctl.signal });"
+      },
+      {
+        "file": "lib/eastmoney.js",
+        "line": 65,
+        "text": "res = await fetch(url, { headers: HEADERS, signal: ctl.signal });"
+      },
+      {
+        "file": "lib/investoday.js",
+        "line": 337,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/investoday.js",
+        "line": 26,
+        "text": "import { readFile, writeFile, rename, mkdir, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/investoday.js",
+        "line": 183,
+        "text": "const obj = JSON.parse(await readFile(ivCacheFilePath(), 'utf8'));"
+      },
+      {
+        "file": "lib/investoday.js",
+        "line": 222,
+        "text": "await mkdir(resolveDataDir().dir, { recursive: true });"
+      },
+      {
+        "file": "lib/investoday.js",
+        "line": 224,
+        "text": "await writeFile(tmp, body, 'utf8');"
+      },
+      {
+        "file": "lib/investoday.js",
+        "line": 1096,
+        "text": "disk.chain = disk.chain.then(() => unlink(ivCacheFilePath()).catch(() => {}));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "export const inject = ['webServer', 'tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 582,
+        "text": "const disposers = buildToolDefs(market, store).map((d) => ctx.tools.register(defineTool(d)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ocr.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ocr.js",
+        "line": 162,
+        "text": "child = spawn(powershellExe(), ["
+      },
+      {
+        "file": "lib/quant.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/quant.js",
+        "line": 97,
+        "text": "child = spawn(python, ['-X', 'utf8', bridgePath, skillPath, plain, String(days)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

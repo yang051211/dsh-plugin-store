@@ -1,0 +1,66 @@
+{
+  "name": "cqai-dsh-plugin-xiaobao",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:54.524Z",
+  "icon": "cqai-dsh-plugin-xiaobao.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 115,
+        "text": "const response = await fetch(`${ROUTE_PREFIX}/${action}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/store.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 67,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 70,
+        "text": "await writeFile(temporary, text, \"utf8\");"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 73,
+        "text": "await rm(temporary, { force: true }).catch(() => undefined);"
+      },
+      {
+        "file": "lib/host/store.js",
+        "line": 81,
+        "text": "const text = await readFile(path, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

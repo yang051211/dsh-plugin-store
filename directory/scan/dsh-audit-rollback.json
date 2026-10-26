@@ -1,0 +1,77 @@
+{
+  "name": "dsh-audit-rollback",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:09:31.898Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/boundary-exec.js",
+        "line": 22,
+        "text": "import { constants, copyFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/boundary-exec.js",
+        "line": 99,
+        "text": "unlinkSync(action.path)"
+      },
+      {
+        "file": "lib/boundary-exec.js",
+        "line": 111,
+        "text": "writeFileSync(action.path, buffer, { flag: 'wx', mode })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 267,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/snapshot.js",
+        "line": 24,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/snapshot.js",
+        "line": 371,
+        "text": "child = spawn(gitPath, [...prefix, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

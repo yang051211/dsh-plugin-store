@@ -1,0 +1,64 @@
+{
+  "name": "dsh-web-allowlist-fetch",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:10:05.769Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 15,
+        "text": "*   in `config.allowlist` are fetched directly with plain `fetch()`, bypassing"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 191,
+        "text": "fetch(request, signal) {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 255,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 13,
+        "text": "*   in `config.allowlist` are fetched directly with plain `fetch()`, bypassing"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 282,
+        "text": "fetch(request: WebFetchRequest, signal?: AbortSignal): Promise<WebFetchResult> {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

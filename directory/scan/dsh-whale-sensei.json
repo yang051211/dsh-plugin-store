@@ -1,0 +1,131 @@
+{
+  "name": "dsh-whale-sensei",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:09:49.970Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cdp.js",
+        "line": 49,
+        "text": "const r = await fetch(`http://127.0.0.1:${port}/json/version`)"
+      },
+      {
+        "file": "lib/cdp.js",
+        "line": 59,
+        "text": "const ws = new WebSocket(wsUrl)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 366,
+        "text": "fetch('/api/whale/status', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 425,
+        "text": "fetch('/api/whale/pack/choose', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 632,
+        "text": "fetch(\"/api/whale/catalog\", { headers: { accept: \"application/json\" } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adjust-io.js",
+        "line": 19,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/adjust-io.js",
+        "line": 42,
+        "text": "text = fs.readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/ask-io.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/ask-io.js",
+        "line": 59,
+        "text": "return fs.readFileSync(seqFile, 'utf8').replace(/^\\uFEFF/, '').trim()"
+      },
+      {
+        "file": "lib/ask-io.js",
+        "line": 76,
+        "text": "n = Number(fs.readFileSync(seqFile, 'utf8').replace(/^\\uFEFF/, '').trim()) || 0"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "registerTool: (def) => track(ctx.tools.register(def)),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/exec.js",
+        "line": 25,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/exec.js",
+        "line": 65,
+        "text": "const r = spawnSync(cmd, args, { encoding: 'utf8', ...opts })"
+      },
+      {
+        "file": "lib/exec.js",
+        "line": 81,
+        "text": "const child = spawn(cmd, args, opts)"
+      },
+      {
+        "file": "lib/pack-template/tools/build-lessons.js",
+        "line": 29,
+        "text": "const { spawnSync } = require('node:child_process');"
+      },
+      {
+        "file": "lib/pack-template/tools/build-lessons.js",
+        "line": 866,
+        "text": "const r = spawnSync(process.execPath, [path.join(__dirname, 'build-starmap.js'), ...(checkOnly ? ['--check'] : [])], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/pack-template/starmap/vendor/three/three.core.js",
+    "lib/pack-template/starmap/vendor/three/three.module.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,118 @@
+{
+  "name": "dsh-foldercast",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:32.023Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/scripts/voice/providers/mimo.js",
+        "line": 102,
+        "text": "const response = await fetch(ENDPOINT, {"
+      },
+      {
+        "file": "scripts/voice/providers/mimo.ts",
+        "line": 116,
+        "text": "const response = await fetch(ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/scripts/assets/media.js",
+        "line": 8,
+        "text": "import { mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/scripts/assets/media.js",
+        "line": 16,
+        "text": "mkdirSync(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/scripts/assets/office.js",
+        "line": 11,
+        "text": "import { mkdirSync, readdirSync, renameSync, rmSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/scripts/assets/office.js",
+        "line": 128,
+        "text": "mkdirSync(dirname(outputDir), { recursive: true });"
+      },
+      {
+        "file": "lib/scripts/assets/office.js",
+        "line": 149,
+        "text": "mkdirSync(dirname(target), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/src/index.js",
+        "line": 9,
+        "text": "* 2. **不 import 任何 `@deepseek-ai/dsh-*` 包**。工具的注册用 `ctx.tools.register()` 直传"
+      },
+      {
+        "file": "lib/src/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/src/index.js",
+        "line": 196,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/src/index.js",
+        "line": 197,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/scripts/assets/run.js",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/scripts/assets/run.js",
+        "line": 50,
+        "text": "const result = spawnSync(command, ['-version'], { encoding: 'utf8', timeout: 10_000 });"
+      },
+      {
+        "file": "lib/scripts/assets/run.js",
+        "line": 58,
+        "text": "const result = spawnSync(nodeCli ? process.execPath : resolved, nodeCli ? [resolved, ...args] : [...args], {"
+      },
+      {
+        "file": "lib/scripts/renderer/embed-node.js",
+        "line": 21,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/scripts/voice/audio.js",
+        "line": 10,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 15,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,125 @@
+{
+  "name": "dsh-plugin-library-search",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:09.416Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 203,
+        "text": "const res = await fetch(\"/dsh-plugin-library-search/api/installed\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 220,
+        "text": "const res = await fetch(`/dsh-plugin-library-search/api/search?q=${encodeURIComponent(q)}&page=1`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 241,
+        "text": "const res = await fetch(`/dsh-plugin-library-search/api/search?q=${encodeURIComponent(s.submitted)}&page=${s.page}`, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 292,
+        "text": "const res = await fetch(\"/dsh-plugin-library-search/api/install\", {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { request as httpsRequest, Agent as HttpsAgent } from \"node:https\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 490,
+        "text": "return JSON.parse(readFileSync(join(profileDir(), \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 498,
+        "text": "writeFileSync(join(profileDir(), \"package.json\"), `${JSON.stringify(manifest, undefined, 2)}\\n`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 518,
+        "text": "const manifest = JSON.parse(readFileSync(join(profileDir(), \"node_modules\", packageName, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "content = readFileSync(file, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = [\"webServer\", \"loader\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 793,
+        "text": "disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 855,
+        "text": "disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 915,
+        "text": "disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 984,
+        "text": "const disposeTools = ctx.tools?.register !== undefined ? registerLibraryTools(ctx) : [];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { spawnSync, execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 673,
+        "text": "const result = spawnSync(\"pnpm\", args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

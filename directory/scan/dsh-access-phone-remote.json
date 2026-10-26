@@ -1,0 +1,82 @@
+{
+  "name": "dsh-access-phone-remote",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:57.317Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 62,
+        "text": "const res = await fetch(PREFIX + path, options)"
+      },
+      {
+        "file": "src/index.js",
+        "line": 26,
+        "text": "import { request as httpRequest } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 23,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 68,
+        "text": "return JSON.parse(readFileSync(configFile(), 'utf8'))"
+      },
+      {
+        "file": "src/index.js",
+        "line": 84,
+        "text": "mkdirSync(configDir(), { recursive: true })"
+      },
+      {
+        "file": "src/index.js",
+        "line": 85,
+        "text": "writeFileSync(configFile(), JSON.stringify(next, null, 2), 'utf8')"
+      },
+      {
+        "file": "src/index.js",
+        "line": 199,
+        "text": "return readFileSync(join(projectDir, '.hub-token'), 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 131,
+        "text": "child = spawn(process.execPath, [entry], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

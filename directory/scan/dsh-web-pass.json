@@ -1,0 +1,84 @@
+{
+  "name": "dsh-web-pass",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-26T10:09:32.782Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 182,
+        "text": "fetch(\"/gate/logout\", { method: \"POST\" }).then(function () {"
+      },
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 3,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/dsh-auth.mjs",
+        "line": 53,
+        "text": "const res = await fetch(tokenUrl, {"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 4,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 5,
+        "text": "import { request as httpRequest } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 4,
+        "text": "import { appendFile, readFile, mkdir, stat, rename, readdir, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 111,
+        "text": "const existing = (await readFile(hmacKeyPath, 'utf8')).trim();"
+      },
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 114,
+        "text": "try { await mkdir(dir, { recursive: true }); } catch {}"
+      },
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 116,
+        "text": "await appendFile(hmacKeyPath, key + '\\n', { mode: 0o600 }).catch(() => {});"
+      },
+      {
+        "file": "lib/accesslog.mjs",
+        "line": 121,
+        "text": "const ensure = async () => { if (ok) return; try { await mkdir(dir, { recursive: true }); ok = true; } catch { /* 忽略 */ } };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

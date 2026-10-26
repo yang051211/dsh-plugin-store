@@ -1,0 +1,71 @@
+{
+  "name": "dsh-session-cost-cny",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:10:01.209Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "fetch(DATA_URL + '?sessionId=' + encodeURIComponent(sessionId), { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 386,
+        "text": "fetch(REFRESH_URL, { method: 'POST', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 603,
+        "text": "const res = await web.fetch({ url: urls[i] })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 496,
+        "text": "const raw = JSON.parse(await readFile(cachePath(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 522,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 523,
+        "text": "await writeFile(file, JSON.stringify({ version: CACHE_VERSION, ...snapshot }), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,96 @@
+{
+  "name": "dsh-mmx",
+  "version": "1.5.0",
+  "scannedAt": "2026-10-26T10:09:55.207Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 180,
+        "text": "fetch('/dsh-mmx/status', { method: 'GET', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 193,
+        "text": "fetch('/dsh-mmx/install', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mmx.js",
+        "line": 12,
+        "text": "import { accessSync, constants, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/mmx.js",
+        "line": 52,
+        "text": "const cfg = JSON.parse(readFileSync(join(homedir(), '.mmx', 'config.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 25,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 111,
+        "text": "await writeFile(file, data, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 143,
+        "text": "await rm(dir, { recursive: true, force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installer.js",
+        "line": 13,
+        "text": "* spawn (no shell) with a timeout and cancellation."
+      },
+      {
+        "file": "lib/mmx.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mmx.js",
+        "line": 135,
+        "text": "child = spawn(bin, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 11,
+      "text": "ck install** (paste the API key → auto `npm install -g mmx-cli` + `mmx auth login` → refresh status) plus OS-aware manual guidance (Windows PowerShell / macOS /"
+    },
+    {
+      "file": "README.md",
+      "line": 11,
+      "text": "能力自动停用；设置页卡片提供**一键安装**（填入 API Key → 自动 `npm install -g mmx-cli` + `mmx auth login` → 完成后刷新状态），并附按操作系统区分的**手动安装**指引（Windows PowerShell / macOS / Linux Terminal）。"
+    }
+  ],
+  "skippedEntries": []
+}

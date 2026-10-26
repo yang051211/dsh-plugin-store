@@ -1,0 +1,74 @@
+{
+  "name": "dsh-custom-logo",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-26T10:09:43.413Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 144,
+        "text": "const res = await fetch(\"/custom-logo/upload?slot=\" + encodeURIComponent(slot), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 220,
+        "text": "const res = await fetch(\"/custom-logo/state\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 248,
+        "text": "const res = await fetch(\"/custom-logo/reset\", { method: \"POST\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "const bytes = await readFile(join(BRANDING_DIR, file));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "await mkdir(BRANDING_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 160,
+        "text": "await writeFile(temp, body);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

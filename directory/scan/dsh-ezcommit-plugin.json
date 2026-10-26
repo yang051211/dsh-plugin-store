@@ -1,0 +1,80 @@
+{
+  "name": "dsh-ezcommit-plugin",
+  "version": "0.0.4",
+  "scannedAt": "2026-10-26T10:09:57.729Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 71,
+        "text": "fetch('/ezcommit/api/commit.cancel', {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 115,
+        "text": "return fetch(`/ezcommit/api/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/stage-fixture.mjs",
+        "line": 7,
+        "text": "import { existsSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/stage-fixture.mjs",
+        "line": 26,
+        "text": "mkdirSync(dirname(abs), { recursive: true })"
+      },
+      {
+        "file": "scripts/stage-fixture.mjs",
+        "line": 27,
+        "text": "writeFileSync(abs, content)"
+      },
+      {
+        "file": "scripts/stage-fixture.mjs",
+        "line": 31,
+        "text": "if (existsSync(abs)) rmSync(abs, { force: true })"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 11,
+        "text": "import { readFileSync, mkdtempSync, writeFileSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/verify.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/verify.mjs",
+        "line": 73,
+        "text": "const child = spawn(tokens[0], tokens.slice(1))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

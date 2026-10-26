@@ -1,0 +1,120 @@
+{
+  "name": "dsh-redteam-report",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:09:49.072Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "lib/parts/client.shim.js",
+        "line": 17,
+        "text": "return fetch(RPC_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 82,
+        "text": "solveTarget() {\\n    const fs = ctx.get('fs')\\n    if (fs === undefined || fs === null) return null\\n    const target = await fs.resolve(store.settings.storePat"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 118,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'tools', 'workspaceRegistry', 'webServer']"
+      },
+      {
+        "file": "lib/parts/host.tail.js",
+        "line": 36,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'tools', 'workspaceRegistry', 'webServer']"
+      },
+      {
+        "file": "src/host.js",
+        "line": 155,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "src/host.js",
+        "line": 403,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 6,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 77,
+        "text": "registerTool(c, tool) { return c.tools.register(tool) },"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 118,
+        "text": "export const inject = ['fs', 'shell', 'timer', 'tools', 'workspaceRegistry', 'webServer']"
+      },
+      {
+        "file": "lib/parts/host.head.js",
+        "line": 6,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      },
+      {
+        "file": "lib/parts/host.head.js",
+        "line": 77,
+        "text": "registerTool(c, tool) { return c.tools.register(tool) },"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 72,
+        "text": "const build = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs')], {"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 82,
+        "text": "const verify = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs'), '--check'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/host.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "timer",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

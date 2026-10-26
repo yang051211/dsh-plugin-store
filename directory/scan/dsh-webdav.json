@@ -1,0 +1,95 @@
+{
+  "name": "dsh-webdav",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:09:34.705Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 24,
+        "text": "import { readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 43,
+        "text": "uiCache = { mtimeMs: info.mtimeMs, html: readFileSync(UI_FILE, 'utf8') };"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 165,
+        "text": "return sendJson(res, 200, await ops.mkdir(config(), { path: body.path, remote: body.remote ?? remoteId }));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "writeFileSync("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'skills', 'webServer'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 6,
+        "text": "* 这里自带参数编译（和 dsh-email 的做法一致），把工具定义直接交给 ctx.tools.register。"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 363,
+        "text": "const disposers = buildTools(getConfig).map((def) => ctx.tools.register(def));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/remotes.js",
+        "line": 13,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 12,
+      "text": "npm i -g dsh-webdav        # 或装进 DSH profile（见下文「安装」）"
+    },
+    {
+      "file": "README.md",
+      "line": 165,
+      "text": "npm i -g dsh-webdav"
+    }
+  ],
+  "skippedEntries": []
+}

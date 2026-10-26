@@ -1,0 +1,95 @@
+{
+  "name": "dsh-patent-invalidation-pptx",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:09:55.572Z",
+  "icon": "dsh-patent-invalidation-pptx.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 670,
+        "text": "mkdirSync(outDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 923,
+        "text": "plan = JSON.parse(readFileSync(planJsonPath, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 1096,
+        "text": "const buffer = readFileSync(pptxPath)"
+      },
+      {
+        "file": "index.js",
+        "line": 1150,
+        "text": "description: parseSkill(readFileSync(locator, 'utf8')).description,"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 43,
+        "text": "const inject = ['tools', 'skills']"
+      },
+      {
+        "file": "index.js",
+        "line": 1177,
+        "text": "for (const tool of createTools(ctx, config)) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/deck.js",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/deck.js",
+        "line": 418,
+        "text": "const result = spawnSync(node, args, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })"
+      },
+      {
+        "file": "lib/figures.js",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/figures.js",
+        "line": 551,
+        "text": "const probe = spawnSync('tesseract', ['--version'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/figures.js",
+        "line": 595,
+        "text": "out = spawnSync(tesseract, [tmp, 'stdout', '-l', ocrLang, '--psm', '11', 'tsv'], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

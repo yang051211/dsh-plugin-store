@@ -1,0 +1,87 @@
+{
+  "name": "dsh-gac-runtime",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:10:03.613Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/claim-store.js",
+        "line": 32,
+        "text": "import { mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/claim-store.js",
+        "line": 141,
+        "text": "parsed = JSON.parse(readFileSync(toNativePath(path), 'utf8'))"
+      },
+      {
+        "file": "lib/claim-store.js",
+        "line": 210,
+        "text": "return validateClaim(JSON.parse(readFileSync(toNativePath(path), 'utf8')), path)"
+      },
+      {
+        "file": "lib/claim-store.js",
+        "line": 254,
+        "text": "mkdirSync(toNativePath(this.directory), { recursive: true })"
+      },
+      {
+        "file": "lib/claim-store.js",
+        "line": 257,
+        "text": "writeFileSync(toNativePath(join(this.directory, claimFileName(sessionId))), `${JSON.stringify(claim, null, 2)}\\n`, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/child-surface.js",
+        "line": 75,
+        "text": "*   取子会话的工具容器。默认走 `agent.ctx.tools`——**不要**退到派遣方的容器：那不是这个子会话的"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "*     `ctx.tools.guard()` 是另一个候选接缝，已被否决：守卫只收到执行本身，因此无法"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "export const inject = ['tools', 'sessions']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "ctx.tools.register(createProjectTool({ state, defineTool }))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 216,
+        "text": "ctx.tools.register(createScopeTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

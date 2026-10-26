@@ -1,0 +1,80 @@
+{
+  "name": "dsh-self-upgrade",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:42.295Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 25,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "const response = await fetch(REGISTRY_LATEST_URL, { signal: AbortSignal.timeout(REGISTRY_TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, openSync, readFileSync, readSync, closeSync, realpathSync, statSync, watch } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 264,
+        "text": "running = JSON.parse(await readFile(RUNNING_PATH, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 298,
+        "text": "await mkdir(STATE_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 303,
+        "text": "const child = spawn(\"/usr/bin/env\", [\"bash\", SCRIPT_PATH], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

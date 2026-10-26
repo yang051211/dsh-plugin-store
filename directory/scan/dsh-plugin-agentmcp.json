@@ -1,0 +1,70 @@
+{
+  "name": "dsh-plugin-agentmcp",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:51.440Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/launch-agentmcp.mjs",
+        "line": 18,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 10,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 31,
+        "text": "# reconnect 走 dsh-mcp-client 默认（enabled: true、退避 500ms→30s、单次断线最多 10 次）"
+      },
+      {
+        "file": "scripts/launch-agentmcp.mjs",
+        "line": 3,
+        "text": "* agent-mcp MCP stdio 启动器（供 DSH @deepseek-ai/dsh-mcp-client 调用）。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/launch-agentmcp.mjs",
+        "line": 17,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/launch-agentmcp.mjs",
+        "line": 33,
+        "text": "const probe = spawnSync(cmd, ['-c', 'import sys; print(sys.version_info[0])'], {"
+      },
+      {
+        "file": "scripts/launch-agentmcp.mjs",
+        "line": 96,
+        "text": "const child = spawn(python, [server], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

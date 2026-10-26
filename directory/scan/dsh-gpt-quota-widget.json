@@ -1,0 +1,79 @@
+{
+  "name": "dsh-gpt-quota-widget",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:08.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "const response = await fetch(TOKEN_URL, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 336,
+        "text": "const response = await fetch(USAGE_URL, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 500,
+        "text": "const response = await fetch('/gpt-quota/usage.json?ts=' + Date.now(), { signal: controller.signal, cache: 'no-store' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 596,
+        "text": "const response = await fetch('/gpt-quota/activity.json?ts=' + Date.now(), { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 636,
+        "text": "bytes = await readFile(IMAGE_PATHS[state])"
+      },
+      {
+        "file": "scripts/verify-package.mjs",
+        "line": 2,
+        "text": "import { readFile, access } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/verify-package.mjs",
+        "line": 8,
+        "text": "const read = (path) => readFile(resolve(root, path), 'utf8')"
+      },
+      {
+        "file": "tests/client.test.mjs",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

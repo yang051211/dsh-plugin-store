@@ -1,0 +1,79 @@
+{
+  "name": "dsh-workspace-prompts",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:46.054Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { appendFile, mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "await mkdir(LOG_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "await appendFile(LOG_FILE, \"[\" + new Date().toISOString() + \"] \" + line + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 133,
+        "text": "raw = await readFile(filePath, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 152,
+        "text": "await writeFile(filePath, JSON.stringify(state, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "export const inject = [\"workspaceRegistry\", \"sessions\", \"connection\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 374,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 389,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessions",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-vscode-shell",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:49.537Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 442,
+        "text": "const r = await fetch('/vscode-fs/reveal?path=' + encodeURIComponent(path));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 556,
+        "text": "const r = await fetch('/vscode-fs/list?path=' + encodeURIComponent(path));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 562,
+        "text": "const r = await fetch('/vscode-fs/read?path=' + encodeURIComponent(path));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 585,
+        "text": "const r = await fetch('/vscode-git/status?path=' + encodeURIComponent(path));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 591,
+        "text": "const r = await fetch('/vscode-git/diff?path=' + encodeURIComponent(repo) + '&file=' + encodeURIComponent(file) + (staged ? '&staged=1' : ''));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFile, readdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "const content = await readFile(join(repo, relpath), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "try { content = await readFile(ignorePath, 'utf8'); } catch (e) { /* no .gitignore yet */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 141,
+        "text": "await writeFile(ignorePath, content + add + line + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "const content = await readFile(p, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "spawn(\"explorer.exe\", [\"/select,\" + native], { detached: true, stdio: \"ignore\" }).unref();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,59 @@
+{
+  "name": "dsh-tool-headroom",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:54.122Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readdir, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "await mkdir(this.cacheDir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "await writeFile(filePath, rawContent, \"utf-8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "if (fileStat && now - fileStat.mtimeMs > ttl) await unlink(filePath).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 494,
+        "text": "const inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

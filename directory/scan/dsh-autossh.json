@@ -1,0 +1,78 @@
+{
+  "name": "dsh-autossh",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:11.913Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 202,
+        "text": "const r = await fetch(cfg.localProbeUrl, { signal: c.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 247,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "index.js",
+        "line": 254,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "execFile('ssh', ["
+      },
+      {
+        "file": "index.js",
+        "line": 158,
+        "text": "try { proc = spawn('ssh', args, { stdio: ['ignore', 'ignore', 'pipe'] }) } catch (e) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

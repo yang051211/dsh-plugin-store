@@ -1,0 +1,72 @@
+{
+  "name": "dsh-npm-runner",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:53.059Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 194,
+        "text": "const response = await fetch(ROUTE + path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { readFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "return await readFile(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 18,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 75,
+        "text": "const killer = spawn('taskkill', ['/pid', String(pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 217,
+        "text": "child = spawn(program, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

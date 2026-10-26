@@ -1,0 +1,105 @@
+{
+  "name": "dsh-ssh-bridge",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:09:45.710Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "page.js",
+        "line": 181,
+        "text": "const r = await fetch('/api/disconnect', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: TOKEN }) });"
+      },
+      {
+        "file": "page.js",
+        "line": 199,
+        "text": "const r = await fetch('/api/auth', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: p, target: t }) });"
+      },
+      {
+        "file": "page.js",
+        "line": 221,
+        "text": "    fetch('/api/input', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, token: TOKEN }) }).catch(() => log('命令发送"
+      },
+      {
+        "file": "server.cjs",
+        "line": 6,
+        "text": "const http = require('http');"
+      },
+      {
+        "file": "test-e2e.cjs",
+        "line": 24,
+        "text": "const r = await fetch('http://127.0.0.1:' + port + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "server.cjs",
+        "line": 8,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "server.cjs",
+        "line": 12,
+        "text": "const CLIENT_JS = fs.readFileSync(path.join(__dirname, 'page.js'), 'utf8');"
+      },
+      {
+        "file": "test-parser.cjs",
+        "line": 3,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "test-parser.cjs",
+        "line": 6,
+        "text": "const src = fs.readFileSync(__dirname + '/page.js', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.cjs",
+        "line": 13,
+        "text": "//   - 以属性方式访问 ctx.tools 必须在插件对象上声明 `inject`;"
+      },
+      {
+        "file": "plugin/index.cjs",
+        "line": 14,
+        "text": "//   - `tools.register(definition)` 强制要求 definition.output = { schema, render },"
+      },
+      {
+        "file": "plugin/index.cjs",
+        "line": 33,
+        "text": "const inject = ['tools'];"
+      },
+      {
+        "file": "plugin/index.cjs",
+        "line": 149,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "plugin/index.cjs",
+        "line": 152,
+        "text": "disposeExecs.push(ctx.tools.register(def) || (() => {}));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

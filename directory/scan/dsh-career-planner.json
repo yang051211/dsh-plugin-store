@@ -1,0 +1,95 @@
+{
+  "name": "dsh-career-planner",
+  "version": "1.7.4",
+  "scannedAt": "2026-10-26T10:09:57.517Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 79,
+        "text": "res = await fetch(API_PATH, {"
+      },
+      {
+        "file": "index.js",
+        "line": 461,
+        "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "index.js",
+        "line": 470,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 138,
+        "text": "const { existsSync } = await import('node:fs');"
+      },
+      {
+        "file": "preset-sync.mjs",
+        "line": 27,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, utimesSync } from 'node:fs';"
+      },
+      {
+        "file": "preset-sync.mjs",
+        "line": 94,
+        "text": "try { mkdirSync(dir, { recursive: true }); return dir; } catch { /* 无权限或盘不存在，试下一个 */ }"
+      },
+      {
+        "file": "preset-sync.mjs",
+        "line": 100,
+        "text": "try { mkdirSync(fallback, { recursive: true }); } catch { /* 交给下游报错 */ }"
+      },
+      {
+        "file": "preset-sync.mjs",
+        "line": 146,
+        "text": "return readFileSync(a).equals(readFileSync(b));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/career-planner/tools/career-data-tools.js",
+        "line": 32,
+        "text": "* 之前直接读 `ctx.tools` 就是这个报错，导致整个预设无法切换。"
+      },
+      {
+        "file": "presets/career-planner/tools/career-data-tools.js",
+        "line": 36,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "presets/career-planner/tools/career-data-tools.js",
+        "line": 45,
+        "text": "// 不写 `: ctx.tools` 兜底：在 Cordis 里未声明 inject 时访问 ctx.tools 会直接抛错，"
+      },
+      {
+        "file": "presets/career-planner/tools/career-data-tools.js",
+        "line": 57,
+        "text": "disposers.push(tools.register(def));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

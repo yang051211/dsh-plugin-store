@@ -1,0 +1,90 @@
+{
+  "name": "dsh-okf-memory",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:04.064Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 80,
+        "text": "fetch(\"/okf-graph\").then((r) => r.json()).then((g) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dedupe.js",
+        "line": 3,
+        "text": "import { promises } from \"node:fs\";"
+      },
+      {
+        "file": "lib/dedupe.js",
+        "line": 36,
+        "text": "text = await promises.readFile(c.filePath, \"utf8\");"
+      },
+      {
+        "file": "lib/dedupe.js",
+        "line": 92,
+        "text": "text = await promises.readFile(c.filePath, \"utf8\");"
+      },
+      {
+        "file": "lib/graph.js",
+        "line": 4,
+        "text": "import { promises } from \"node:fs\";"
+      },
+      {
+        "file": "lib/graph.js",
+        "line": 92,
+        "text": "return promises.readFile(filePath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 273,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

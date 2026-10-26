@@ -1,0 +1,108 @@
+{
+  "name": "dsh-smart-profile",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:55.969Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/web.js",
+        "line": 1,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/compat.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 6,
+        "text": "return JSON.parse(await readFile(MATRIX_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/scan.js",
+        "line": 1,
+        "text": "import { access, readFile, readdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/scan.js",
+        "line": 12,
+        "text": "ytes = 300_000) { try { const info = await stat(file); return info.isFile() && info.size <= maxBytes ? await readFile(file, 'utf8') : '' } catch { return '' } }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "  ctx.tools.register(toolDefinition('smart_profile_scan', 'Inspect the current session workspace and identify its stack without reading secret files.', async (_"
+      },
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "  ctx.tools.register(toolDefinition('smart_profile_recommend', 'Return a minimal, explainable set of capability categories useful for the current project.', asy"
+      },
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "  ctx.tools.register(toolDefinition('smart_profile_discover', 'Search public npm for Harness plugin candidates. Discovery only; nothing is installed.', async (_"
+      },
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "  ctx.tools.register(toolDefinition('smart_profile_install_plan', 'Build a non-executing install/verify/rollback command plan for the highest-scoring candidate."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/cli.js",
+        "line": 17,
+        "text": "se((resolve, reject) => { const child = spawn(command, args, { stdio: 'inherit', shell: false }); child.on('error', reject); child.on('exit', (code, signal) => "
+      },
+      {
+        "file": "lib/install.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/install.js",
+        "line": 11,
+        "text": "se((resolve, reject) => { const child = spawn(command, args, { shell: false, stdio: ['ignore', 'pipe', 'pipe'] }); let stdout = '', stderr = ''; child.stdout.on"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,88 @@
+{
+  "name": "dsh-mp-automator",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:09:34.060Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "import { mkdir, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 571,
+        "text": "await mkdir(resolve(cwd, cfg.screenshotDir), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 612,
+        "text": "const data = await readFile(output);"
+      },
+      {
+        "file": "scripts/link-host.mjs",
+        "line": 10,
+        "text": "import { existsSync, symlinkSync, mkdirSync, lstatSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/link-host.mjs",
+        "line": 19,
+        "text": "if (st.isSymbolicLink() && !existsSync(target)) unlinkSync(target);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 309,
+        "text": "const register = (tool) => ctx.tools.register(defineTool({ isConcurrencySafe: () => false, ...tool }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 50,
+      "text": "npm i -g vince-mp-cli"
+    }
+  ],
+  "skippedEntries": []
+}

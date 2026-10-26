@@ -1,0 +1,93 @@
+{
+  "name": "dsh-dbq",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:09:55.417Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 302,
+        "text": "fetch(\"/dbq-api/status\").then((r) => r.json()).then((v) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 541,
+        "text": "\t\t\t\t\t\tfetch(\"/dbq-api/tables?connection=\" + encodeURIComponent(c.id) + (pattern === \"\" ? \"\" : \"&pattern=\" + encodeURIComponent(pattern)), { signal: req ? req.si"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 297,
+        "text": "tools.register(makeTool("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 332,
+        "text": "tools.register(makeTool("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 351,
+        "text": "tools.register(makeTool("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 369,
+        "text": "tools.register(makeTool("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 388,
+        "text": "tools.register(makeTool("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "child = spawn(exePath, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "child = spawn(exePath, [], { cwd: dirname(exePath), stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/dbq.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

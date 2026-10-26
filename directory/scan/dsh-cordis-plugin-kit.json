@@ -1,0 +1,80 @@
+{
+  "name": "dsh-cordis-plugin-kit",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:50.705Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/automation.js",
+        "line": 1,
+        "text": "import { access, chmod, lstat, mkdir, readFile, realpath, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/automation.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "lib/automation.js",
+        "line": 63,
+        "text": "const manifest = JSON.parse(await readFile(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "lib/automation.js",
+        "line": 76,
+        "text": "await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/automation.js",
+        "line": 82,
+        "text": "const config = hasConfig ? JSON.parse(await readFile(configPath, 'utf8')) : {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/standards.js",
+        "line": 26,
+        "text": "['TOOL001', 'error', 'dsh-tool', '使用 ctx.tools 或 defineTool 的插件必须 inject tools，并声明 parameters、output.schema、output.render 与 execute。'],"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/process.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 50,
+        "text": "const child = spawn(invocation.command, invocation.args, {"
+      },
+      {
+        "file": "lib/process.js",
+        "line": 74,
+        "text": "const killer = spawn('taskkill.exe', ['/pid', String(child.pid), '/t', '/f'], { windowsHide: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

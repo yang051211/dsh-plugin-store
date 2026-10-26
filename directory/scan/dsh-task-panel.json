@@ -1,0 +1,102 @@
+{
+  "name": "dsh-task-panel",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:32.615Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 40,
+        "text": "const host = { call: (method, args) => fetch(\"/plugins/dsh-task-panel/rpc\", {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 17,
+        "text": "call: (method, args) => fetch('/plugins/dsh-task-panel/rpc', {"
+      },
+      {
+        "file": "src/client/index.ts",
+        "line": 21,
+        "text": "fetch('/plugins/dsh-task-panel/rpc', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 84,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 84,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "test/simulate-host.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "test/simulate-host.js",
+        "line": 145,
+        "text": "if (name === 'fs') return {"
+      },
+      {
+        "file": "test/simulate-host.js",
+        "line": 459,
+        "text": "const clientSrc = fs.readFileSync(path.join(repoRoot, 'lib', 'client.js'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "registerTool: (ctx, def) => ctx.tools.register(def),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2034,
+        "text": "export const inject = [...plugin.inject, 'tools'];"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 28,
+        "text": "registerTool: (ctx, def) => ctx.tools.register(def),"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 1885,
+        "text": "export const inject = [...plugin.inject, 'tools']"
+      },
+      {
+        "file": "test/simulate-host.js",
+        "line": 27,
+        "text": "const registeredTools = [] // 记录 ctx.tools.register 收到的工具定义"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

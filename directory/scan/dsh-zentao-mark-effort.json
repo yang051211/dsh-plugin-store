@@ -1,0 +1,118 @@
+{
+  "name": "dsh-zentao-mark-effort",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-26T10:10:15.509Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/extra.js",
+        "line": 12,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "mcp/extra.js",
+        "line": 13,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "mcp/extra.js",
+        "line": 327,
+        "text": "'X-Requested-With': 'XMLHttpRequest',"
+      },
+      {
+        "file": "mcp/wrapper.js",
+        "line": 10,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "mcp/wrapper.js",
+        "line": 11,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "const source = await readFile(SKILL_BODY_URL, 'utf8')"
+      },
+      {
+        "file": "mcp/extra.js",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "mcp/extra.js",
+        "line": 547,
+        "text": "const { version } = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 26,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "* first-party @deepseek-ai/dsh-mcp-client. This module contributes the"
+      },
+      {
+        "file": "mcp/wrapper.js",
+        "line": 5,
+        "text": "* DSH starts this process through @deepseek-ai/dsh-mcp-client. We refresh the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "mcp/environment.js",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "mcp/wrapper.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "mcp/wrapper.js",
+        "line": 37,
+        "text": "const child = spawn(command, ['-y', PACKAGE], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

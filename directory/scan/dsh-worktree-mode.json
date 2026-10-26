@@ -1,0 +1,98 @@
+{
+  "name": "dsh-worktree-mode",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:56.529Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 52,
+        "text": "var response = await fetch(API + '/' + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 21,
+        "text": "import { statSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 42,
+        "text": "uiCache = { mtimeMs: info.mtimeMs, html: readFileSync(UI_FILE, 'utf8') };"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "import('node:fs')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "mkdirSync(pluginHomePath(), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "appendFileSync(pluginHomePath('boot.log'), `${new Date().toISOString()} ${message}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 518,
+        "text": "const disposers = buildTools(service, getConfig).map((definition) => ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 117,
+        "text": "import('node:child_process')"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 119,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/service.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 75,
+        "text": "child = spawn(command, { cwd, shell: true, windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

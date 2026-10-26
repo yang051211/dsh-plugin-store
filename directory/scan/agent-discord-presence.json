@@ -1,0 +1,96 @@
+{
+  "name": "agent-discord-presence",
+  "version": "0.0.3",
+  "scannedAt": "2026-10-26T10:09:40.720Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/generation.js",
+        "line": 167,
+        "text": "const result = await fetch(settings.baseUrl.replace(/\\/$/, '') + '/chat/completions', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/background.js",
+        "line": 2,
+        "text": "import { mkdir, open } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/background.js",
+        "line": 10,
+        "text": "await mkdir(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "dist/daemon.js",
+        "line": 2,
+        "text": "import { mkdir, chmod, lstat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/daemon.js",
+        "line": 21,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "dist/daemon.js",
+        "line": 35,
+        "text": "await unlink(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/background.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/background.js",
+        "line": 14,
+        "text": "const child = spawn(process.execPath, [cli, 'start', ...args], {"
+      },
+      {
+        "file": "dist/generation.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/generation.js",
+        "line": 31,
+        "text": "const child = spawn(process.env.ADP_CODEX_COMMAND ?? 'codex', args, {"
+      },
+      {
+        "file": "dist/generation.js",
+        "line": 231,
+        "text": "const child = spawn(command, args, { cwd: directory, env, signal, killSignal: 'SIGKILL', stdio: ['pipe', 'pipe', 'ignore'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 36,
+      "text": "npm install --global agent-discord-presence"
+    }
+  ],
+  "skippedEntries": []
+}

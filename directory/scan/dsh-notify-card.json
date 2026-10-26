@@ -1,0 +1,69 @@
+{
+  "name": "dsh-notify-card",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:55.351Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import {readFileSync,writeFileSync,renameSync,mkdirSync,appendFileSync,existsSync} from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "const _dbg=(m)=>{if(!_dbgOn)return;try{appendFileSync(_dbgPath,new Date().toISOString()+' '+m+String.fromCharCode(10));}catch{}};"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "ry{settings=validateSettings(JSON.parse(readFileSync(settingsPath,'utf8')),undefined,activeLanguage());}catch(error){if(error.code!=='ENOENT')nativeError=s().se"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 87,
+        "text": "mkdirSync(dirname(settingsPath),{recursive:true});"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "writeFileSync(temp,JSON.stringify(center.snapshot().settings,null,2)+'\\n',{mode:0o600});renameSync(temp,settingsPath);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/native.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "jobs",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

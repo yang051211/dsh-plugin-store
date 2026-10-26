@@ -1,0 +1,114 @@
+{
+  "name": "dsh-remote-mod-plugin",
+  "version": "0.7.11-mod",
+  "scannedAt": "2026-10-26T10:09:39.836Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gateway.cjs",
+        "line": 26,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 27,
+        "text": "const https = require('node:https')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 383,
+        "text": "const connect = http.request({"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 400,
+        "text": "const req = http.request({"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 595,
+        "text": "const probe = await fetch(new URL(DSH_HEALTH_PATH, UPSTREAM), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gateway-stats.cjs",
+        "line": 20,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 198,
+        "text": "fs.mkdirSync(this.daysDir, { recursive: true })"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 205,
+        "text": "return JSON.parse(fs.readFileSync(this._dayFile(date), 'utf8'))"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 214,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 215,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(day))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "gateway-stats.cjs",
+        "line": 23,
+        "text": "const { spawn } = require('node:child_process')"
+      },
+      {
+        "file": "gateway-stats.cjs",
+        "line": 324,
+        "text": "const zstd = spawn('zstd', ['-dc', file], { stdio: ['ignore', 'pipe', 'ignore'] })"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 28,
+        "text": "const { execFile } = require('node:child_process')"
+      },
+      {
+        "file": "gateway.cjs",
+        "line": 511,
+        "text": "execFile(file, args, { timeout, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "index.mjs",
+        "line": 8,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

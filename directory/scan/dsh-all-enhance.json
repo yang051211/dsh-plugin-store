@@ -1,0 +1,99 @@
+{
+  "name": "dsh-all-enhance",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-26T10:09:33.237Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 588,
+        "text": "\t\t\t\tfetch(FALLBACKS_MODELS_PATH, { headers: { accept: \"application/json\" } }).then((resp) => resp.ok ? resp.json() : Promise.reject(new Error(String(resp.status"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1126,
+        "text": "const resp = await fetch(FALLBACKS_STATUS_PATH, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1303,
+        "text": "\t\t\t\tfetch(FALLBACKS_MODELS_PATH, { headers: { accept: \"application/json\" } }).then((resp) => resp.ok ? resp.json() : Promise.reject(new Error(String(resp.status"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1319,
+        "text": "\t\t\t\t\tfetch(FALLBACKS_LOG_PATH, { headers: { accept: \"application/json\" } }).then((resp) => resp.ok ? resp.json() : Promise.reject(new Error(String(resp.status))"
+      },
+      {
+        "file": "client/client.js",
+        "line": 1374,
+        "text": "const resp = await fetch(FALLBACKS_LOG_PATH, { method: \"DELETE\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/delete-session.js",
+        "line": 15,
+        "text": "import { rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/delete-session.js",
+        "line": 174,
+        "text": "await rm(dir, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/delete-session.js",
+        "line": 178,
+        "text": "await rm(location.path, { force: true });"
+      },
+      {
+        "file": "src/host/delete-session.ts",
+        "line": 15,
+        "text": "import { rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host/delete-session.ts",
+        "line": 206,
+        "text": "await rm(dir, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm build"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessionPersistence",
+    "sessions",
+    "settings",
+    "storageDomain",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

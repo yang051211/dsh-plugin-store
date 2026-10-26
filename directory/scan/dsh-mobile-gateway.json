@@ -1,0 +1,110 @@
+{
+  "name": "dsh-mobile-gateway",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:00.562Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/proxy.mjs",
+        "line": 14,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 15,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 132,
+        "text": "try { head = await fetch(url, { method: 'HEAD', signal }); } catch { head = null; }"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 138,
+        "text": "const res = await fetch(url, { signal });"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 148,
+        "text": "const probeRes = await fetch(url, { signal, headers: { Range: `bytes=0-${probeBytes - 1}` } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 2,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 41,
+        "text": "await mkdir(dirname(outputPath), { recursive: true });"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 42,
+        "text": "await writeFile(outputPath, wrapped, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "mkdirSync(dirname(p), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.mjs",
+        "line": 12,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/service.mjs",
+        "line": 121,
+        "text": "execFile(candidates[i], [], { timeout: 5000, windowsHide: true }, (err, stdout) => {"
+      },
+      {
+        "file": "lib/tailscale.mjs",
+        "line": 23,
+        "text": "import { execFile, execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tailscale.mjs",
+        "line": 322,
+        "text": "const child = spawn(layout.tailscaledBin,"
+      },
+      {
+        "file": "lib/tunnel.mjs",
+        "line": 9,
+        "text": "import { spawn, execSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

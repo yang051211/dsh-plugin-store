@@ -1,0 +1,111 @@
+{
+  "name": "dsh-startup-check",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:01.762Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/page-smoke.js",
+        "line": 23,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/page-smoke.js",
+        "line": 66,
+        "text": "const req = http.get({ host: \"127.0.0.1\", port, path, timeout: timeoutMs }, (res) => {"
+      },
+      {
+        "file": "lib/page-smoke.js",
+        "line": 91,
+        "text": "socket = new WebSocket(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = [\"tools\", \"subprocess\", \"fs\", \"skills\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "content: await readFile(SKILL_BODY_URL, \"utf8\")"
+      },
+      {
+        "file": "lib/page-smoke.js",
+        "line": 21,
+        "text": "import { existsSync, mkdtempSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/page-smoke.js",
+        "line": 282,
+        "text": "rmSync(profileDir, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = [\"tools\", \"subprocess\", \"fs\", \"skills\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 130,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/instances.js",
+        "line": 103,
+        "text": "const handle = spawn({"
+      },
+      {
+        "file": "lib/page-smoke.js",
+        "line": 159,
+        "text": "browserHandle = spawn({"
+      },
+      {
+        "file": "lib/smoke.js",
+        "line": 140,
+        "text": "handle = spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "skills",
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

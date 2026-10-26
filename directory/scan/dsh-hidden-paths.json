@@ -1,0 +1,79 @@
+{
+  "name": "dsh-hidden-paths",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:41.234Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "test.js",
+        "line": 12,
+        "text": "import { mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "test.js",
+        "line": 165,
+        "text": "mkdirSync(vault);"
+      },
+      {
+        "file": "test.js",
+        "line": 166,
+        "text": "writeFileSync(join(vault, \"note.txt\"), \"secret\\n\");"
+      },
+      {
+        "file": "test.js",
+        "line": 168,
+        "text": "mkdirSync(publicDir);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "*   `ctx.tools.guard()` — a MONOTONIC guard evaluated after the extensible"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1100,
+        "text": "ctx.tools.guard(() => message);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1109,
+        "text": "ctx.tools.guard(guard);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1143,
+        "text": "dshHiddenPaths.inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

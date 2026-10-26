@@ -1,0 +1,72 @@
+{
+  "name": "dsh-projects",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:09:48.960Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/inject.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/inject.js",
+        "line": 39,
+        "text": "text = readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 1,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 36,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 38,
+        "text": "writeFileSync(tmp, JSON.stringify(value, null, 2) + \"\\n\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/worktree.js",
+        "line": 1,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/worktree.js",
+        "line": 22,
+        "text": "const result = spawnSync(\"git\", args, { cwd: root, encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

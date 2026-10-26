@@ -1,0 +1,77 @@
+{
+  "name": "dsh-plugin-jev-compaction",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:37.280Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jev.js",
+        "line": 177,
+        "text": "response = await fetch(client.endpoint, {"
+      },
+      {
+        "file": "lib/jev.js",
+        "line": 236,
+        "text": "const response = await fetch(endpoint, { method: 'HEAD', signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 13,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 117,
+        "text": "const text = await readFile(resolve(path), 'utf8');"
+      },
+      {
+        "file": "lib/receipt.js",
+        "line": 13,
+        "text": "import { appendFile, mkdir, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/receipt.js",
+        "line": 46,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/receipt.js",
+        "line": 47,
+        "text": "await appendFile(target, lines.join('\\n') + '\\n', 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

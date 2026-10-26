@@ -1,0 +1,86 @@
+{
+  "name": "dsh-session-messenger",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-26T10:10:11.569Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "delivery.js",
+        "line": 14,
+        "text": "import { existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "storage.js",
+        "line": 12,
+        "text": "import { promises as fsp, openSync, writeSync, closeSync, readFileSync, unlinkSync, mkdirSync, existsSync, copyFileSync } from 'node:fs';"
+      },
+      {
+        "file": "storage.js",
+        "line": 32,
+        "text": "mkdirSync(baseDir, { recursive: true });"
+      },
+      {
+        "file": "storage.js",
+        "line": 61,
+        "text": "mkdirSync(baseDir, { recursive: true });"
+      },
+      {
+        "file": "storage.js",
+        "line": 75,
+        "text": "owner = Number(JSON.parse(readFileSync(lockFile, 'utf8')).pid) || 0;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 78,
+        "text": "if (!ctx || typeof ctx.inject !== 'function' || !ctx.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "index.js",
+        "line": 211,
+        "text": "if (typeof ctx.tools.guard === 'function' && settings.guard !== 'off') {"
+      },
+      {
+        "file": "index.js",
+        "line": 212,
+        "text": "        track(ctx.tools.guard(createWriteGuard({ registry, negotiations, mode: settings.guard, metrics, logger, onDeny: () => coordinator.onSignificant && coord"
+      },
+      {
+        "file": "index.js",
+        "line": 214,
+        "text": "logger?.warn?.('[session-messenger] ctx.tools.guard unavailable; dispute freeze is off');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

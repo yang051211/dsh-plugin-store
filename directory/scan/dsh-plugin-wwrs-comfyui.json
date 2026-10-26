@@ -1,0 +1,96 @@
+{
+  "name": "dsh-plugin-wwrs-comfyui",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:45.199Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 120,
+        "text": "this.transport = options.transport ?? ((url, init) => fetch(url, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 12,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 147,
+        "text": "body.append(kind, new Blob([await readFile(absPath)]), basename(localPath));"
+      },
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 269,
+        "text": "const { mkdir, writeFile } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 271,
+        "text": "await mkdir(dirname(resolve(destination)), { recursive: true });"
+      },
+      {
+        "file": "src/lib/comfy-client.ts",
+        "line": 272,
+        "text": "await writeFile(destination, buffer);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cordis.ts",
+        "line": 3,
+        "text": "* 注册面：comfy_submit / comfy_status / comfy_wait / comfy_cancel / comfy_templates → ctx.tools.register；写保护守卫 → ctx.tools.guard（谓词真源见 lib/guard-predicate.ts）。"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 12,
+        "text": "export const inject: string[] = [\"tools\"];"
+      },
+      {
+        "file": "src/cordis.ts",
+        "line": 23,
+        "text": "for (const tool of tools) ctx.tools?.register(tool as unknown as ToolRecord);"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 3,
+        "text": "* 真源在 ./lib/guard-predicate.ts（独立零依赖，见其头注）；本文件只做 ctx.tools.guard 挂载。"
+      },
+      {
+        "file": "src/guard.ts",
+        "line": 10,
+        "text": "const rawGuard = ctx.tools?.guard;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

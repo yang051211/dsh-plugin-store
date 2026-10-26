@@ -1,0 +1,92 @@
+{
+  "name": "dsh-subagent-toggle",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:15.032Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 25,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, symlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 67,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 90,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# The plugin registers ONE tool guard (ctx.tools.guard) that, while the"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "*   - The gate is `ctx.tools.guard` ONLY. `ctx.subagents.start` /"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 218,
+        "text": "const tools = ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "throw new Error(`${NAME}: \\`ctx.tools.guard\\` is unavailable; mount @deepseek-ai/dsh-tools first`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 26,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 119,
+        "text": "return spawnSync(line, { cwd: options.cwd, stdio: 'inherit', shell: true });"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 188,
+        "text": "const dump = spawnSync(`dsh --profile ${quoteShellArgument(options.profile)} --dump-config`, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

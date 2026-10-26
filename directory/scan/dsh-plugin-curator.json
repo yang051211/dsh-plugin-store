@@ -1,0 +1,88 @@
+{
+  "name": "dsh-plugin-curator",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:06.735Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 179,
+        "text": "const response = await fetch(BASE + path, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 179,
+        "text": "const response = await fetch(BASE + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build-client.mjs",
+        "line": 7,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 12,
+        "text": "const id = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).name"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 13,
+        "text": "const source = readFileSync(join(root, 'src', 'client.js'), 'utf8')"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 25,
+        "text": "mkdirSync(join(root, 'lib'), { recursive: true })"
+      },
+      {
+        "file": "build-client.mjs",
+        "line": 26,
+        "text": "writeFileSync(join(root, 'lib', 'client.js'), source)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/verify-host.mjs",
+        "line": 162,
+        "text": "'async function go(ctx) { await ctx.tools.execute({ name: \"read\" }) }',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "entry.js",
+        "line": 37,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "entry.js",
+        "line": 1254,
+        "text": "child = spawn(nodePath, [PROBE_FILE, pathToFileURL(entryPath).href], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

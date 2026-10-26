@@ -1,0 +1,92 @@
+{
+  "name": "hireseeker-cli",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:42.878Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/mcp.js",
+        "line": 45,
+        "text": "fetch: (input, init) => fetch(input, { ...init, signal: init?.signal ? AbortSignal.any([init.signal, combined]) : combined }),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/config.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/config.js",
+        "line": 5,
+        "text": "export const VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;"
+      },
+      {
+        "file": "dist/setup.js",
+        "line": 2,
+        "text": "import { cp, lstat, mkdir, mkdtemp, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/setup.js",
+        "line": 66,
+        "text": "result[relative] = createHash('sha256').update(await readFile(join(root, relative))).digest('hex');"
+      },
+      {
+        "file": "dist/setup.js",
+        "line": 76,
+        "text": "const marker = JSON.parse(await readFile(join(path, MARKER), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "deepseek/cordis.patch.yml",
+        "line": 3,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/npm.js",
+        "line": 18,
+        "text": "const child = spawn('npm', ['install', '--global', '--ignore-scripts', '--no-audit', '--no-fund', `hireseeker-cli@${version}`], {"
+      },
+      {
+        "file": "dist/npm.js",
+        "line": 54,
+        "text": "killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 27,
+      "text": "npm install -g hireseeker-cli"
+    },
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "ance** → **npm-package** и установите его через `npm install -g ./hireseeker-cli-0.1.2.tgz`. Для установки инструкций из tarball используйте `hireseeker skill`."
+    }
+  ],
+  "skippedEntries": []
+}

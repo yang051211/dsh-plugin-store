@@ -1,0 +1,104 @@
+{
+  "name": "dsh-gui-browser",
+  "version": "2.1.0",
+  "scannedAt": "2026-10-26T10:09:55.167Z",
+  "icon": "dsh-gui-browser.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 109,
+        "text": "const response = await fetch('/gui-browser/list', { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 571,
+        "text": "const response = await fetch(`/gui-browser/frame.jpg?port=${port}&t=${Date.now()}`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 592,
+        "text": "socket = new WebSocket(`${scheme}//${window.location.host}/gui-browser/ws`)"
+      },
+      {
+        "file": "engine.js",
+        "line": 217,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}${path}`, { signal: controller.signal })"
+      },
+      {
+        "file": "engine.js",
+        "line": 1039,
+        "text": "socket = new WebSocket(target.webSocketDebuggerUrl)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.js",
+        "line": 36,
+        "text": "import { readdirSync, readFileSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "engine.js",
+        "line": 296,
+        "text": "raw = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "engine.js",
+        "line": 304,
+        "text": "try { unlinkSync(file) } catch { /* another scan won the race */ }"
+      },
+      {
+        "file": "host.js",
+        "line": 14,
+        "text": "import { statSync } from 'node:fs'"
+      },
+      {
+        "file": "launcher/install.mjs",
+        "line": 21,
+        "text": "import { chmodSync, copyFileSync, existsSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launcher/install.mjs",
+        "line": 22,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "launcher/install.mjs",
+        "line": 42,
+        "text": "return spawnSync(command, args, { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node launcher/install.mjs"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

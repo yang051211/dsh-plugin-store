@@ -1,0 +1,103 @@
+{
+  "name": "dsh-plugin-google",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:58.554Z",
+  "icon": "dsh-plugin-google.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api-core.js",
+        "line": 37,
+        "text": "const send = async (token) => http.request(method, url, {"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 251,
+        "text": "const response = await http.request('POST', endpoints.tokenUrl, { form });"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 313,
+        "text": "const response = await http.request('POST', endpoints.revokeUrl, { form: { token: target } });"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 15,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/http.js",
+        "line": 16,
+        "text": "import https from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 77,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 79,
+        "text": "await writeFile(temp, content, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 111,
+        "text": "const text = await readFile(config.clientSecretFile, 'utf8');"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 149,
+        "text": "const parsed = JSON.parse(await readFile(config.tokenFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "index.js",
+        "line": 201,
+        "text": "for (const spec of specs) ctx.tools.register(toDefinition(spec));"
+      },
+      {
+        "file": "lib/tools/common.js",
+        "line": 5,
+        "text": "* 入口 `index.js` 负责把规格包装成 `defineTool` 并注册到 `ctx.tools`。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

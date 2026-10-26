@@ -1,0 +1,102 @@
+{
+  "name": "dsh-project-control",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:34.281Z",
+  "icon": "dsh-project-control.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 233,
+        "text": "const response = await fetch(url, { signal, headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { cp, mkdir, readFile, readdir, rename, stat, symlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 211,
+        "text": "return await readFile(path, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 261,
+        "text": "await writeFile(join(projectDir, 'catalog.json'), `${JSON.stringify(catalogOf(entries), null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 371,
+        "text": "await mkdir(join(projectDir, 'modules'), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 373,
+        "text": "await writeFile(file, renderModuleFile({ ...record, updated: nowIso() }), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'commands', 'workingDirectory', 'agents', 'sessions']"
+      },
+      {
+        "file": "index.js",
+        "line": 1658,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 1789,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 1928,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "index.js",
+        "line": 1979,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "sessions",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

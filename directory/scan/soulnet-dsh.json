@@ -1,0 +1,123 @@
+{
+  "name": "soulnet-dsh",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:10:15.761Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 611,
+        "text": "response = await fetch(`${API_BASE}${route}`, body === void 0 && route === \"state\" ? {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5054,
+        "text": "if (!(await fetch(`/soulmirror/api/state`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2352,
+        "text": "const res = await fetch(`http://127.0.0.1:${status.port}/v2/pay/health`, { signal: AbortSignal.timeout(1500) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2403,
+        "text": "const res = await fetch(`http://127.0.0.1:${status.port}${path}`, init);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 692,
+        "text": "if (toAddress === \"\") toAddress = (await net.directory.fetch(toFp))?.profile?.usdc_address ?? \"\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/events-0klGluMP.js",
+        "line": 3,
+        "text": "import { mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/events-0klGluMP.js",
+        "line": 4,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/events-0klGluMP.js",
+        "line": 35,
+        "text": "const raw = JSON.parse(await readFile(this.path, \"utf8\"));"
+      },
+      {
+        "file": "lib/events-0klGluMP.js",
+        "line": 70,
+        "text": "await mkdir(dirname(this.path), { recursive: true });"
+      },
+      {
+        "file": "lib/events-0klGluMP.js",
+        "line": 71,
+        "text": "await writeFile(this.path, JSON.stringify(this.data, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tools.js",
+        "line": 72,
+        "text": "const inject = [\"tools\", \"soulmirror\"];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 900,
+        "text": "]) ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2299,
+        "text": "if (options.spawn !== void 0) child = options.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2305,
+        "text": "child = spawn(binary, [], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3194,
+        "text": "proc = options.spawn !== void 0 ? options.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3197,
+        "text": "}) : spawn(binary, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

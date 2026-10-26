@@ -1,0 +1,65 @@
+{
+  "name": "dsh-session-tg-notify",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:10:13.083Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 102,
+        "text": "return fetch(API + \"/\" + endpoint, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.js",
+        "line": 13,
+        "text": "import { readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "src/config.js",
+        "line": 163,
+        "text": "const text = readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "src/config.js",
+        "line": 178,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "src/config.js",
+        "line": 179,
+        "text": "writeFileSync(tmp, text, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/screenlock.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

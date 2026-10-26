@@ -1,0 +1,79 @@
+{
+  "name": "dsh-remote-ui-gateway",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:42.293Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/pair-bridge.mjs",
+        "line": 1,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "src/pair-bridge.mjs",
+        "line": 62,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "src/proxy.mjs",
+        "line": 1,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "src/proxy.mjs",
+        "line": 2,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "src/server.mjs",
+        "line": 2,
+        "text": "import http from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/password.mjs",
+        "line": 1,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/password.mjs",
+        "line": 39,
+        "text": "const secret = readFileSync(file, \"utf8\").replace(/\\r?\\n$/, \"\");"
+      },
+      {
+        "file": "src/password.mjs",
+        "line": 45,
+        "text": "mkdirSync(path.dirname(file), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "src/password.mjs",
+        "line": 46,
+        "text": "writeFileSync(file, secret + \"\\n\", { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

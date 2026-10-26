@@ -1,0 +1,95 @@
+{
+  "name": "dsh-jmcomic",
+  "version": "1.0.5",
+  "scannedAt": "2026-10-26T10:10:14.407Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 196,
+        "text": "const r = await fetch(path, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 201,
+        "text": "const r = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 817,
+        "text": "const resp = await fetch(\"/jmcomic/api/download\", {"
+      },
+      {
+        "file": "vendor/viewer/static/js/app.js",
+        "line": 391,
+        "text": "fetch('/api/upload_bg', { method: 'POST', body: fd })"
+      },
+      {
+        "file": "vendor/viewer/static/js/app.js",
+        "line": 410,
+        "text": "fetch('/api/background/clear', { method: 'POST' }).catch(function () {});"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.cjs",
+        "line": 37,
+        "text": "var import_promises = require(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/server.cjs",
+        "line": 429,
+        "text": "const { rm } = await import(\"node:fs/promises\");"
+      },
+      {
+        "file": "lib/server.cjs",
+        "line": 430,
+        "text": "await rm(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/server.cjs",
+        "line": 741,
+        "text": "import(\"node:fs\").then((fs) => fs.mkdirSync(SETTINGS_DIR, { recursive: true }));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.cjs",
+        "line": 36,
+        "text": "var import_node_child_process = require(\"node:child_process\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node build.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/viewer/static/js/jquery-3.7.1.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

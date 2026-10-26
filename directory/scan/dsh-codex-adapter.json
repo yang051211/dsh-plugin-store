@@ -1,0 +1,77 @@
+{
+  "name": "dsh-codex-adapter",
+  "version": "0.1.0-rc.1",
+  "scannedAt": "2026-10-26T10:10:08.014Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 402,
+        "text": "const response = await fetch(SETTINGS_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 10,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 128,
+        "text": "parsed = JSON.parse(await readFile(path, \"utf8\"));"
+      },
+      {
+        "file": "lib/binary-fs.js",
+        "line": 7,
+        "text": "import { link, lstat, mkdir, open, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/binary-fs.js",
+        "line": 74,
+        "text": "await mkdir(parent, { recursive: true })"
+      },
+      {
+        "file": "lib/binary-fs.js",
+        "line": 79,
+        "text": "await handle.writeFile(content, signal === undefined ? {} : { signal })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/images.js",
+        "line": 373,
+        "text": "* @returns the tool definition to register on `ctx.tools`."
+      },
+      {
+        "file": "lib/images.js",
+        "line": 491,
+        "text": "return ctx.inject([\"tools\", \"fs\", \"attachments\"], (toolCtx) => toolCtx.tools.register(createImagegenTool(toolCtx, options)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

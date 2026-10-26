@@ -1,0 +1,110 @@
+{
+  "name": "dsh-database-manager",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:41.300Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 182,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 192,
+        "text": "return readJson(await fetch(DB_API.sources));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 196,
+        "text": "return (await readJson(await fetch(`${DB_API_BASE}/engines`))).engines;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 200,
+        "text": "return (await readJson(await fetch(`${DB_API_BASE}/settings`))).settings;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 249,
+        "text": "return (await readJson(await fetch(DB_API.schemas(id)))).schemas;"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3936,
+        "text": "import { existsSync, mkdirSync, renameSync, rmSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4090,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4113,
+        "text": "rmSync(target, { force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5531,
+        "text": "import { existsSync as existsSync2, mkdirSync as mkdirSync2, readFileSync, renameSync as renameSync2, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5679,
+        "text": "parsed = JSON.parse(readFileSync(this.path, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8452,
+        "text": "var inject = [\"webServer\", \"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8506,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/auth.ts",
+        "line": 7,
+        "text": "* 1. **Monotonic guard** (`ctx.tools.guard`): the read/write split of this"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 27,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 120,
+        "text": "const disposers = tools.map(tool => ctx.tools!.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,110 @@
+{
+  "name": "dsh-skill-mcp",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-26T10:09:34.456Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "import { watch as fsWatch } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "import { lstat, mkdir, readFile, readdir, readlink, realpath, rename, rm, symlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 208,
+        "text": "await readFile(skillMd, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "await readFile(fileMd, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "await mkdir(path.dirname(target), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 9,
+        "text": "*   mcp/sync；host 热加载/热卸载对应 @deepseek-ai/dsh-mcp-client 条目。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "*                    通过 ctx.loader 热加载/热卸载 @deepseek-ai/dsh-mcp-client"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 114,
+        "text": "const MCP_CLIENT_NAME = '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 884,
+        "text": "export const inject = ['connection', 'loader', 'tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1002,
+        "text": "/** 运行状态：fiber 阶段 + 工具计数（seam 优先，ctx.tools 派生回退）。 */"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-skills.mjs",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-skills.mjs",
+        "line": 36,
+        "text": "? spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-File', script, '-SourceDirectory', source, '-TargetDirectory', target], { stdio: 'inherit' })"
+      },
+      {
+        "file": "scripts/link-skills.mjs",
+        "line": 37,
+        "text": ": spawnSync('bash', [script, source, target], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "loader",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

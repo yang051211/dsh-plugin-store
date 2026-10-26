@@ -1,0 +1,94 @@
+{
+  "name": "dsh-distillery",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:33.272Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "const response = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 64,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 65,
+        "text": "const existing = existsSync(file) ? readFileSync(file, 'utf8') : '';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 79,
+        "text": "writeFileSync(file, merged, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "appendFileSync(file, section, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['sessionPersistence', 'webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 329,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 348,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 369,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 406,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

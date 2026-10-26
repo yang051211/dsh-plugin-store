@@ -1,0 +1,107 @@
+{
+  "name": "dsh-notify-ar",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:34.020Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "appendFileSync(diagPath, `${new Date().toISOString()}  ${message}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/reader.js",
+        "line": 19,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/reader.js",
+        "line": 64,
+        "text": "buffer = readFileSync(path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "spawn('cmd.exe', ['/c', 'start', '', 'dsh://open'], {"
+      },
+      {
+        "file": "lib/toast.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/toast.js",
+        "line": 127,
+        "text": "child = spawn("
+      },
+      {
+        "file": "scripts/setup.mjs",
+        "line": 25,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 38,
+      "text": "node \"$env:USERPROFILE\\.dsh\\profiles\\desktop\\node_modules\\dsh-notify-ar\\scripts\\setup.mjs\""
+    },
+    {
+      "file": "README.en.md",
+      "line": 43,
+      "text": "`setup.mjs` does three things:"
+    },
+    {
+      "file": "README.md",
+      "line": 36,
+      "text": "node \"$env:USERPROFILE\\.dsh\\profiles\\desktop\\node_modules\\dsh-notify-ar\\scripts\\setup.mjs\""
+    },
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "`setup.mjs` بيعمل تلات شغلات:"
+    }
+  ],
+  "skippedEntries": []
+}

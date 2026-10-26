@@ -1,0 +1,86 @@
+{
+  "name": "dsh-preset-tool-guard",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:53.550Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "appendFileSync(file, `${new Date().toISOString()} ${line}\\n`, 'utf8')"
+      },
+      {
+        "file": "scripts/check-patch.cjs",
+        "line": 16,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "scripts/check-patch.cjs",
+        "line": 57,
+        "text": "doc = yaml.load(fs.readFileSync(target, 'utf8'), { schema: yaml.DEFAULT_SCHEMA.extend([jsType]) });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "* 在该 Agent **自己的作用域**上调用官方 `ctx.tools.restrict()` 打一层掩码。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 216,
+        "text": "const tools = ctx.tools"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 307,
+        "text": "const disposer = agent.ctx.tools.restrict(filter)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "const names = restrictableNames(ctx.tools, agent)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

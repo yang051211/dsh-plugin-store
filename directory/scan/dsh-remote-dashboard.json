@@ -1,0 +1,64 @@
+{
+  "name": "dsh-remote-dashboard",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:45.494Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pusher.js",
+        "line": 12,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 2,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 114,
+        "text": "const res = await fetch(p.url.replace(/\\/+$/, '') + '/v1/snapshot', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server.js",
+        "line": 4,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 14,
+        "text": "const PAGE = () => readFileSync(join(HERE, 'page.html'), 'utf8')"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 36,
+        "text": "const v = readFileSync(path, 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

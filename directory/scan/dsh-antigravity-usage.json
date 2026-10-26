@@ -1,0 +1,87 @@
+{
+  "name": "dsh-antigravity-usage",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:07.526Z",
+  "icon": "dsh-antigravity-usage.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 42,
+        "text": "fetch(API_DIAG, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 252,
+        "text": "fetch(url, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1065,
+        "text": "fetch(API_REFRESH, { method: 'POST' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1228,
+        "text": "fetch(API, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/collector.js",
+        "line": 88,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/`, { signal: AbortSignal.timeout(timeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collector.js",
+        "line": 16,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/collector.js",
+        "line": 36,
+        "text": "const m = readFileSync(file, 'utf8').match(PORT_RE)"
+      },
+      {
+        "file": "lib/conversations.js",
+        "line": 10,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/conversations.js",
+        "line": 57,
+        "text": "mkdirSync(base, { recursive: true })"
+      },
+      {
+        "file": "lib/conversations.js",
+        "line": 65,
+        "text": "rmSync(tmp, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

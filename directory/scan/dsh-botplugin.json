@@ -1,0 +1,113 @@
+{
+  "name": "dsh-botplugin",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-26T10:09:38.041Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "restart-helper.sh",
+        "line": 108,
+        "text": "resp=\"$(curl -s -m 5 \"https://api.telegram.org/bot${RESTART_TG_TOKEN}/getUpdates?timeout=1&offset=-1\" 2>/dev/null || echo '')\""
+      },
+      {
+        "file": "setup-bot.sh",
+        "line": 3,
+        "text": "#   curl -fsSL https://raw.githubusercontent.com/aitcmhk-web/DSH-bot/main/setup-bot.sh | sh"
+      },
+      {
+        "file": "setup-bot.sh",
+        "line": 9,
+        "text": "#               在线入口：curl -fsSL .../setupdsh.sh | sh"
+      },
+      {
+        "file": "setup-bot.sh",
+        "line": 11,
+        "text": "#               在线入口：curl -fsSL .../setupbot.sh | sh（就是这个文件转发的那个）"
+      },
+      {
+        "file": "setup-bot.sh",
+        "line": 20,
+        "text": "if curl -fsSL --max-time 60 \"$URL\" -o \"$TMP\" 2>/dev/null && [ -s \"$TMP\" ]; then"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "qr-terminal.mjs",
+        "line": 9,
+        "text": "import { readFileSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "qr-terminal.mjs",
+        "line": 337,
+        "text": "const bmp = readFileSync(out);"
+      },
+      {
+        "file": "qr-terminal.mjs",
+        "line": 344,
+        "text": "try { unlinkSync(out); } catch {}"
+      },
+      {
+        "file": "setupbot.sh",
+        "line": 627,
+        "text": "import { readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "setupbot.sh",
+        "line": 701,
+        "text": "const read = (p) => { try { return existsSync(p) ? parseYaml(readFileSync(p, 'utf8')) : null; } catch { return null; } };"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "qr-terminal.mjs",
+        "line": 8,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "qr-terminal.mjs",
+        "line": 335,
+        "text": "const res = spawnSync('osascript', args, { encoding: 'utf8', timeout: 15000 });"
+      },
+      {
+        "file": "qr-terminal.mjs",
+        "line": 350,
+        "text": "const qrRes = spawnSync('qrencode', ['-l', 'M', '-s', '1', '-m', '2', '-o', '-', text], {"
+      },
+      {
+        "file": "restart-helper.sh",
+        "line": 2,
+        "text": "# restart-helper.sh —— 由 botplugin 的 /restart 指令通过 spawn(detached) 拉起的独立进程。"
+      },
+      {
+        "file": "src/asr.js",
+        "line": 15,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "attachments"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

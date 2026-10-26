@@ -1,0 +1,114 @@
+{
+  "name": "dsh-deploy-master",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:00.323Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/announce.ts",
+        "line": 17,
+        "text": "const res = await fetch('https://api.github.com/graphql', {"
+      },
+      {
+        "file": "src/github.ts",
+        "line": 24,
+        "text": "const res = await fetch(`https://api.github.com${path}`, {"
+      },
+      {
+        "file": "src/linear.ts",
+        "line": 18,
+        "text": "const res = await fetch(ENDPOINT, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/github.ts",
+        "line": 6,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 10,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 293,
+        "text": "? await readFile(resolveProjectDir(args.bodyFile, process.cwd()), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.ts",
+        "line": 38,
+        "text": "export const inject = ['tools', 'agents']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 83,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 100,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 181,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 243,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/github.ts",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/github.ts",
+        "line": 93,
+        "text": "const result = spawnSync(program, args, { cwd, encoding: 'utf8', timeout: 180_000, maxBuffer: 16 * 1024 * 1024 })"
+      },
+      {
+        "file": "src/npm.ts",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/npm.ts",
+        "line": 18,
+        "text": "const result = spawnSync('npm', args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,113 @@
+{
+  "name": "dsh-wm-toolkit",
+  "version": "0.2.14",
+  "scannedAt": "2026-10-26T10:09:52.211Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 64,
+        "text": "fetch(\"/bubble/log\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 373,
+        "text": "fetch(\"/bubble/relations\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 386,
+        "text": "return fetch(\"/bubble/relations/register\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 397,
+        "text": "return fetch(\"/bubble/relations/retarget\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 508,
+        "text": "var resp = await fetch(url);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "build.mjs",
+        "line": 15,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "build.mjs",
+        "line": 21,
+        "text": "mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "build.mjs",
+        "line": 41,
+        "text": "import { appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "build.mjs",
+        "line": 65,
+        "text": "appendFileSync(joinPath(home, '${PKG}.log'), JSON.stringify({"
+      },
+      {
+        "file": "build.mjs",
+        "line": 120,
+        "text": "const source = readFileSync(join(dir, 'lib', 'client.js'), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "parts/manager/lib/workspace-menu-patch.js",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "parts/recall/lib/index.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "parts/recall/lib/index.js",
+        "line": 1120,
+        "text": "execFile('pnpm', ['up', 'dsh-message-recall-wm'], { cwd: profileDir, timeout: 90000, windowsHide: true }, (err, stdout, stderr) => {"
+      },
+      {
+        "file": "parts/recall/scripts/check.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "parts/recall/scripts/check.mjs",
+        "line": 5,
+        "text": "const r = spawnSync(process.execPath, ['--check', f], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "parts/manager/lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

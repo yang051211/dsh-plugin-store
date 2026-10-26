@@ -1,0 +1,83 @@
+{
+  "name": "nyx-message-edit",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:13.717Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 118,
+        "text": "const response = await fetch(`/api/nyx-message-edit.state?sessionId=${encodeURIComponent(sessionId)}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 130,
+        "text": "void fetch('/api/nyx-message-edit.diag', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 145,
+        "text": "const response = await fetch('/api/nyx-message-edit.edit', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 26,
+        "text": "import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, copyFileSync, statSync, writeFileSync, cpSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 181,
+        "text": "const before = existsSync(patchFile) ? readFileSync(patchFile, 'utf8') : ''"
+      },
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 189,
+        "text": "writeFileSync(patchFile, insertBlock())"
+      },
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 193,
+        "text": "writeFileSync(patchFile, next)"
+      },
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 199,
+        "text": "const before = readFileSync(patchFile, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/nyx-message-edit.mjs",
+        "line": 29,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

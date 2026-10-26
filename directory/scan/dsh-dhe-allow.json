@@ -1,0 +1,74 @@
+{
+  "name": "dsh-dhe-allow",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:09:57.854Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 161,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 182,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "test/behavior.mjs",
+        "line": 462,
+        "text": "assert.ok(deniedCommand('Invoke-Expression (Invoke-WebRequest https://x)', BUILTIN_DENY_COMMANDS));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 16,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, renameSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 38,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 39,
+        "text": "appendFileSync(file, `${JSON.stringify({ ts: new Date().toISOString(), ...redactEntry(entry) })}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 81,
+        "text": "text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 30,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

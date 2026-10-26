@@ -1,0 +1,82 @@
+{
+  "name": "dsh-agent-pet",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:09:52.709Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 155,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 196,
+        "text": "const response = await fetch('/api/agent-pet/prompt', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 239,
+        "text": "const response = await fetch('/api/agent-pet/import', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 403,
+        "text": "const response = await fetch('/api/agent-pet', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "const bytes = await readFile(pet.avatarPath)"
+      },
+      {
+        "file": "lib/pet-config.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/pet-config.js",
+        "line": 67,
+        "text": "return parsePetMarkdown(readFileSync(petFile, 'utf8'), petFile)"
+      },
+      {
+        "file": "lib/pet-store.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

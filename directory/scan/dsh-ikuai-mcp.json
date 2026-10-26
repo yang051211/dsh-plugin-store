@@ -1,0 +1,121 @@
+{
+  "name": "dsh-ikuai-mcp",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:36.999Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 17,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 18,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "server/ikuai-mcp-server.mjs",
+        "line": 22,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "server/ikuai-mcp-server.mjs",
+        "line": 23,
+        "text": "import https from \"node:https\";"
+      },
+      {
+        "file": "tests/host-test.mjs",
+        "line": 4,
+        "text": "import http from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 13,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 67,
+        "text": "return extractRefsFromStore(readFileSync(join(home, \".credentials.yaml\"), \"utf8\"), KEYS);"
+      },
+      {
+        "file": "server/ikuai-mcp-server.mjs",
+        "line": 25,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "server/ikuai-mcp-server.mjs",
+        "line": 52,
+        "text": "for (const line of fs.readFileSync(STORE_FILE, \"utf8\").split(\"\\n\")) {"
+      },
+      {
+        "file": "server/ikuai-mcp-server.mjs",
+        "line": 125,
+        "text": "return JSON.parse(fs.readFileSync(new URL(\"../package.json\", import.meta.url), \"utf8\")).version ?? \"0.0.0\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 3,
+        "text": "# 这个文件做两件事：插入宿主半（lib/index.mjs），再用 @deepseek-ai/dsh-mcp-client"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 25,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 175,
+        "text": "tools.register({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 202,
+        "text": "tools.register({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 260,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tests/mock-test.mjs",
+        "line": 5,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "tests/mock-test.mjs",
+        "line": 82,
+        "text": "const child = spawn(process.execPath, [SERVER], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

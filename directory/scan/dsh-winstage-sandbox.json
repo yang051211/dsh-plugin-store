@@ -1,0 +1,110 @@
+{
+  "name": "dsh-winstage-sandbox",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:09:40.088Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-plugin/client.js",
+        "line": 17,
+        "text": "*   - 读（**WP3-B 起**）：`fetch('/winstage-panel/snapshot?session=<会话 id>')` —— 这是"
+      },
+      {
+        "file": "dsh-plugin/client.js",
+        "line": 27,
+        "text": "* 另外 `fetch('/winstage-panel/trust')` 取同一份**可信性状态卡**（与 `/winstage status`"
+      },
+      {
+        "file": "dsh-plugin/client.js",
+        "line": 805,
+        "text": "return Promise.resolve(fetch(url, { signal: controller.signal, headers: { accept: 'application/json' } }))"
+      },
+      {
+        "file": "src/executor.mjs",
+        "line": 4412,
+        "text": "    /\\b(Invoke-WebRequest|Invoke-RestMethod|iwr|irm|curl|wget|HttpClient|WebClient|UploadString|UploadData|Send-MailMessage|smtp|ftp|ssh|scp|nc|netcat|Test-NetC"
+      },
+      {
+        "file": "src/testclient.mjs",
+        "line": 69,
+        "text": "res = await fetch(`${base}${path}`, { headers, ...init })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-plugin/assembly-toggle.mjs",
+        "line": 32,
+        "text": "* 唯一可用的读文件通道是 `process.getBuiltinModule('node:fs')`。"
+      },
+      {
+        "file": "dsh-plugin/assembly-toggle.mjs",
+        "line": 36,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh-plugin/assembly-toggle.mjs",
+        "line": 71,
+        "text": "return winStageEnabledInProfileText(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "dsh-plugin/cordis.patch.yml",
+        "line": 16,
+        "text": "# `fiber.dispose()`（内部异步）不 await，新打开那行的 `provide('fs')` 可能先执行"
+      },
+      {
+        "file": "dsh-plugin/cordis.patch.yml",
+        "line": 17,
+        "text": "# ⇒ `service \"fs\" has been registered at <...>` 硬失败。本 profile 在线切换 bundle 时"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-plugin/shell-executor.mjs",
+        "line": 1255,
+        "text": "*      经 `this.ctx.subprocess.spawn(...)`（`dsh-pwsh-local/lib/index.js:306`）⇒"
+      },
+      {
+        "file": "dsh-plugin/shell-executor.mjs",
+        "line": 1500,
+        "text": "*      经 `this.ctx.subprocess.spawn(...)` ⇒ `cannot get property \"subprocess\""
+      },
+      {
+        "file": "src/appcontainer-runtime.mjs",
+        "line": 1024,
+        "text": "* `spawn()` 改了一半状态才发现策略构造不出来。`spawn()` 仍允许按次覆盖。"
+      },
+      {
+        "file": "src/appcontainer-runtime.mjs",
+        "line": 1056,
+        "text": "* 与同类中的 `spawn()` / `resume()` / `dispose()` 保持一致（它们本来就是同步的）。"
+      },
+      {
+        "file": "src/appcontainer-runtime.mjs",
+        "line": 1149,
+        "text": "spawn(options = {}) {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

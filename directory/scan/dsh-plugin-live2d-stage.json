@@ -1,0 +1,128 @@
+{
+  "name": "dsh-plugin-live2d-stage",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-26T10:09:48.586Z",
+  "icon": "dsh-plugin-live2d-stage.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/core.js",
+        "line": 9,
+        "text": "(\"/\")+1):\"\",v=function(b){try{var c=new XMLHttpRequest;return c.open(\"GET\",b,!1),c.send(null),c.responseText}catch(d){if(b=z(b))return C(b);throw d}},q)&&(w=fun"
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 24,
+        "text": "var N=class{static loadFileAsBytes(e,r){fetch(e).then(n=>n.arrayBuffer()).then(n=>r(n,n.byteLength))}static getDeltaTime(){return this.deltaTime}static updateTi"
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 26,
+        "text": "{async loadShader(e){return await(await fetch(e)).text()}async loadShaders(){let e=this._shaderPath??this._defaultShaderPath,r=[{path:e+WC,prop:\"_vertShaderSrc\""
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 33,
+        "text": "l&&this.releasePcmData();let i=async()=>fetch(e).then(o=>o.arrayBuffer()),s=(async()=>{if(this._byteReader._fileByte=await i(),this._byteReader._fileDataView=ne"
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 95,
+        "text": "ge/\";async function Fe(t,e){let r=await fetch(cv+t,e===void 0?{}:{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(e)}),n=await r.j"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/core.js",
+        "line": 9,
+        "text": "b,c){var d=z(b);return d||(x=x||require(\"fs\"),b=(y=y||require(\"path\")).normalize(b),d=x.readFileSync(b)),c?d:d.toString()},w=function(b){return assert((b=(b=v(b"
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 6,
+        "text": "omponent?!ns(r,n)||!ns(i,s):!0}function rm(t,e,r){var n=!1,i=yr,s=e.contextType;return typeof s==\"object\"&&s!==null?s=st(s):(i=ze(e)?Fr:Le.current,n=e.contextTy"
+      },
+      {
+        "file": "assets/floating.js",
+        "line": 8,
+        "text": "1;if(Sn(e,i),e.stateNode===null)Mo(t,e),rm(e,r,n),du(e,r,n,i),n=!0;else if(t===null){var o=e.stateNode,l=e.memoizedProps;o.props=l;var a=o.context,u=r.contextTy"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1,
+        "text": "import {readFile,writeFile} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 31,
+        "text": "wait body(req,16384)).toString());await writeFile(resolve(store.root,'renderer-diagnostics.json'),JSON.stringify({time:new Date().toISOString(),...data},null,2)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 10,
+        "text": "export const inject=['webServer','connection','tools','systemPrompt','sessionController','agents','workspaceRegistry'];"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 65,
+        "text": "inition of definitions)activeTools.push(ctx.tools.register(toolDefinition({...definition,execute:async(...args)=>{if(!store.preferences().actionControl)throw ne"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/floating.mjs",
+        "line": 1,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "lib/floating.mjs",
+        "line": 14,
+        "text": "const child=spawn(resolve(this.directory,'Live2DFloating.exe'),[],{windowsHide:true,stdio:['pipe','pipe','pipe']});this.child=child;"
+      },
+      {
+        "file": "lib/store.cjs",
+        "line": 8319,
+        "text": "debug.deprecated(\"Promise.spawn()\", \"Promise.coroutine()\");"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "assets/core.js",
+    "assets/floating.js",
+    "lib/client.js"
+  ],
+  "binaryFiles": [
+    "lib/native/Live2DFloating.exe",
+    "lib/native/Microsoft.Web.WebView2.Core.dll",
+    "lib/native/Microsoft.Web.WebView2.Wpf.dll",
+    "lib/native/WebView2Loader.dll"
+  ],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessionController",
+    "systemPrompt",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

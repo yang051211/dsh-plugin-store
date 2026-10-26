@@ -1,0 +1,78 @@
+{
+  "name": "dsh-memory-guardian",
+  "version": "0.1.1-beta.1",
+  "scannedAt": "2026-10-26T10:10:03.863Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 70,
+        "text": "      const response = await fetch(path, { credentials: 'same-origin', headers: { Accept: 'application/json', ...(options.body ? { 'Content-Type': 'application/"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 150,
+        "text": "await mkdir(dirname(this.storagePath), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 152,
+        "text": "const parsed = JSON.parse(await readFile(this.storagePath, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 179,
+        "text": "await writeFile(temporary, JSON.stringify(state, null, 2), { encoding: 'utf8', mode: 0o600 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 182,
+        "text": "await rm(temporary, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 235,
+        "text": "for (const definition of toolDefinitions(store)) disposers.push(ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

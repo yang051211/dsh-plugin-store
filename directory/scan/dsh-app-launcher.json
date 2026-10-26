@@ -1,0 +1,84 @@
+{
+  "name": "dsh-app-launcher",
+  "version": "0.0.5",
+  "scannedAt": "2026-10-26T10:10:07.731Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 337,
+        "text": "\"fetch('/__dsh-window-state',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({x:x,y:y,w:w,h:h}),keepalive:true});\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 49,
+        "text": "return JSON.parse(readFileSync(new URL(\"../package.json\", import.meta.url), \"utf8\")).version || \"0.0.0\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 161,
+        "text": "writeFileSync(ps1Path, \"\\uFEFF\" + script, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 215,
+        "text": "raw = readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 234,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "child = spawn(\"powershell.exe\", ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 506,
+        "text": "child = spawn(browser.exe, args, { stdio: \"ignore\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/icon.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

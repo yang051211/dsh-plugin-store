@@ -1,0 +1,80 @@
+{
+  "name": "dsh-whale-copilot",
+  "version": "1.3.3",
+  "scannedAt": "2026-10-26T10:09:32.771Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 216,
+        "text": "const res = await fetch(\"/whale/pull?since=\" + String(state.lastSeq), { cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 829,
+        "text": "try { fetch('/whale/upgrade', { method: 'POST', cache: 'no-store' }).catch(() => { /* 状态由轮询同步 */ }) } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 849,
+        "text": "fetch('/whale/check-update', { method: 'POST', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "const r = https.get(url, { headers: { 'user-agent': 'dsh-whale-copilot/' + (VERSION || '?') } }, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 71,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 142,
+        "text": "child = execFile(bin, args, options)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

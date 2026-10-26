@@ -1,0 +1,101 @@
+{
+  "name": "dsh-doc-attach",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:43.641Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 85,
+        "text": "return fetch(ROUTE + '/upload', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 24,
+        "text": "import { mkdtempSync, readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 358,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 370,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 388,
+        "text": "raw = readFileSync(outPath, 'utf8')"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 393,
+        "text": "try { detail = readFileSync(logPath, 'utf8').trim().split('\\n').slice(-3).join(' | ') } catch { /* no log either */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugins/read-document.mjs",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "plugins/read-document.mjs",
+        "line": 297,
+        "text": "ctx.effect(() => ctx.tools.register(outline), 'dsh-doc-attach: register document_outline')"
+      },
+      {
+        "file": "plugins/read-document.mjs",
+        "line": 298,
+        "text": "ctx.effect(() => ctx.tools.register(search), 'dsh-doc-attach: register document_search')"
+      },
+      {
+        "file": "plugins/read-document.mjs",
+        "line": 299,
+        "text": "ctx.effect(() => ctx.tools.register(read), 'dsh-doc-attach: register document_read')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 351,
+        "text": "/** @type {import('node:child_process').ChildProcess} */"
+      },
+      {
+        "file": "lib/extract/document-python.mjs",
+        "line": 356,
+        "text": "child = spawn(python, args, { stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,88 @@
+{
+  "name": "dsh-gif-background",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:47.735Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.template.js",
+        "line": 255,
+        "text": "fetch(API + \"/gifs\", { cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.template.js",
+        "line": 287,
+        "text": "fetch(API + \"/gifs?name=\" + encodeURIComponent(name), { method: \"POST\", body: file, cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.template.js",
+        "line": 295,
+        "text": "fetch(API + \"/gifs?name=\" + encodeURIComponent(name), { method: \"DELETE\", cache: \"no-store\" })"
+      },
+      {
+        "file": "client/client.template.js",
+        "line": 315,
+        "text": "fetch(API + \"/gifs?name=\" + encodeURIComponent(name) + \"&to=\" + encodeURIComponent(to), { method: \"PATCH\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 255,
+        "text": "fetch(API + \"/gifs\", { cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/build.mjs",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 5,
+        "text": "const b64 = readFileSync(new URL('../gifs/builtin.gif', import.meta.url)).toString('base64')"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 6,
+        "text": "const template = readFileSync(new URL('./client.template.js', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "client/build.mjs",
+        "line": 9,
+        "text": "writeFileSync(new URL('../lib/client.js', import.meta.url), out, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { readdirSync, readFileSync, writeFileSync, unlinkSync, renameSync, statSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

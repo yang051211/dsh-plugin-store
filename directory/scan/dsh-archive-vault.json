@@ -1,0 +1,90 @@
+{
+  "name": "dsh-archive-vault",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:09:35.383Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const response = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive-cleanup.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/archive-cleanup.js",
+        "line": 143,
+        "text": "text = await readFile(this.path, 'utf8');"
+      },
+      {
+        "file": "lib/archive-cleanup.js",
+        "line": 182,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/archive-cleanup.js",
+        "line": 186,
+        "text": "await writeFile(temporary, text, { encoding: 'utf8', flag: 'wx' });"
+      },
+      {
+        "file": "lib/archive-cleanup.js",
+        "line": 190,
+        "text": "await rm(temporary, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "export const inject = ['workspaceRegistry', 'sessionPersistence', 'webServer', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 444,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 467,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 489,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionPersistence",
+    "tools",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

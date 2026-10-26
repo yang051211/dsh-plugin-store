@@ -1,0 +1,71 @@
+{
+  "name": "dsh-auto-review-router",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-26T10:10:07.833Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/approval-history.js",
+        "line": 2,
+        "text": "import * as fileSystem from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/approval-history.js",
+        "line": 167,
+        "text": "bytes = await fs.readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/approval-history.js",
+        "line": 230,
+        "text": "await fs.mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/approval-history.js",
+        "line": 234,
+        "text": "try { await handle.writeFile(line, 'utf8'); await handle.datasync() }"
+      },
+      {
+        "file": "lib/grant-store.js",
+        "line": 40,
+        "text": "import { lstatSync, realpathSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['approval', 'llm', 'permissionPresets', 'tools', 'sessions', 'profileContext']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "llm",
+    "permissionPresets",
+    "profileContext",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

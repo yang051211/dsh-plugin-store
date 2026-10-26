@@ -1,0 +1,91 @@
+{
+  "name": "dsh-light-memory",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:47.391Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "return fetch(path)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 41,
+        "text": "return fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "return readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 191,
+        "text": "writeFileSync(tmp, content, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "unlinkSync(path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt', 'skills', 'sessions']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1302,
+        "text": "const toolDisposers = tools.map((tool) => ctx.tools.register(tool))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1303,
+        "text": "const disposeGuard = ctx.tools.guard(makeGuard(store))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "skills",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,72 @@
+{
+  "name": "dsh-niubash-only",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:09:44.412Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dialect.js",
+        "line": 185,
+        "text": "['invoke-webrequest', '`curl -sSL <url> -o <file>`'],"
+      },
+      {
+        "file": "lib/dialect.js",
+        "line": 186,
+        "text": "['invoke-restmethod', '`curl -sS <url>`'],"
+      },
+      {
+        "file": "lib/dialect.js",
+        "line": 252,
+        "text": "['wget', '`curl -sSL <url> -o <file>`'],"
+      },
+      {
+        "file": "lib/guide.js",
+        "line": 116,
+        "text": "'| `wget` | `curl -sSL <url> -o <file>` |',"
+      },
+      {
+        "file": "lib/guide.js",
+        "line": 202,
+        "text": "'| `Invoke-WebRequest url -OutFile f` | `curl -sSL url -o f` |',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/niubash.js",
+        "line": 26,
+        "text": "import { statSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/executor.js",
+        "line": 405,
+        "text": "const handle = this.ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

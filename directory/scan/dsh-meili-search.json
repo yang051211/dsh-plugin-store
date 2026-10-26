@@ -1,0 +1,97 @@
+{
+  "name": "dsh-meili-search",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-26T10:10:12.981Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 89,
+        "text": "const sr = await fetch(SETTINGS_URL, { signal });"
+      },
+      {
+        "file": "client.js",
+        "line": 99,
+        "text": "const res = await fetch(u.toString(), { signal, headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client.js",
+        "line": 635,
+        "text": "const r = await fetch(SETTINGS_API);"
+      },
+      {
+        "file": "client.js",
+        "line": 650,
+        "text": "const r = await fetch(STATUS_API);"
+      },
+      {
+        "file": "client.js",
+        "line": 658,
+        "text": "const r2 = await fetch(\"/dsh-meili/v1/docs-history\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core.mjs",
+        "line": 8,
+        "text": "import { readdirSync, readFileSync, statSync, writeFileSync, existsSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "core.mjs",
+        "line": 204,
+        "text": "export function loadState(path) { try { return JSON.parse(readFileSync(path, \"utf8\")); } catch { return {}; } }"
+      },
+      {
+        "file": "core.mjs",
+        "line": 205,
+        "text": "export function saveState(path, s) { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, JSON.stringify(s, null, 2)); }"
+      },
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, renameSync, rmSync, existsSync, readdirSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "try { return JSON.parse(readFileSync(SETTINGS_FILE, \"utf8\")); } catch { return {}; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core.mjs",
+        "line": 7,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

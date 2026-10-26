@@ -1,0 +1,85 @@
+{
+  "name": "dsh-rewind-pro",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:10:04.999Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "const response = await transport2.fetch(apiPath(\"/state\", { sessionId }, prefix));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 656,
+        "text": "fetch: async (url) => fetch(url),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 696,
+        "text": "const response = await fetch(`/api/dsh-rewind-pro/plan?sessionId=${encodeURIComponent(sessionIdOf())}&targetSeq=${targetSeq}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 756,
+        "text": "const response = await transport.fetch(apiPath(\"/candidates\", { sessionId: sessionIdOf() }, config.apiPrefix));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 587,
+        "text": "import { mkdir, readFile, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 620,
+        "text": "await mkdir(options.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 621,
+        "text": "await writeFile(tmp, `${JSON.stringify(state, null, 2)}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 629,
+        "text": "raw = await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 841,
+        "text": "import { readFile as readFile2, stat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

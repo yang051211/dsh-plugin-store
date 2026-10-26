@@ -1,0 +1,95 @@
+{
+  "name": "dsh-idea-daily",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:12.541Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const res = await fetch(path);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "const res = await fetch(path, { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body || {}) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(20000) });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 129,
+        "text": "const res = await fetch(url, { signal: AbortSignal.timeout(30000), headers: { \"User-Agent\": \"dsh-idea-daily/1.0\" } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "const res = await fetch(\"https://api.deepseek.com/chat/completions\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, existsSync, renameSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "for (const line of readFileSync(file, \"utf8\").split(\"\\n\")) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "return JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "writeFileSync(tmp, JSON.stringify(data, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "mkdirSync(DATA_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 556,
+        "text": "const inject = [\"webServer\", \"apiProxy\", \"systemPrompt\", \"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 575,
+        "text": "const offTool = ctx.tools.register(defineIdeaTool());"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

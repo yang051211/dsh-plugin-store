@@ -1,0 +1,97 @@
+{
+  "name": "dsh-git-update-notifier",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-26T10:09:36.559Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "return fetch(ROUTE + '/status.json', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 97,
+        "text": "return fetch(ROUTE + path, { method: 'POST', headers: { 'content-type': 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 403,
+        "text": "fetch(ROUTE + '/progress.json', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 467,
+        "text": "fetch(ROUTE + '/rollback/targets.json', { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 526,
+        "text": "fetch(ROUTE + '/diagnostics.json', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/download.js",
+        "line": 15,
+        "text": "import { createWriteStream, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 38,
+        "text": "const parsed = JSON.parse(readFileSync(metaPath, 'utf8'))"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 48,
+        "text": "writeFileSync(metaPath, `${JSON.stringify(meta)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 179,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/download.js",
+        "line": 216,
+        "text": "rmSync(part, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 470,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

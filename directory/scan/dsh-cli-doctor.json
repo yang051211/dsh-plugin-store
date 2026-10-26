@@ -1,0 +1,87 @@
+{
+  "name": "dsh-cli-doctor",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:46.985Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/check.js",
+        "line": 52,
+        "text": "const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/check.js",
+        "line": 17,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "bin/check.js",
+        "line": 155,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "bin/check.js",
+        "line": 286,
+        "text": "const pj = JSON.parse(fs.readFileSync(path.join(root, name, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "bin/check.js",
+        "line": 587,
+        "text": "const cfg = JSON.parse(fs.readFileSync(path.join(home(), '.config', 'cli-doctor', 'self-updating.json'), 'utf8'));"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 30,
+        "text": "import { readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/check.js",
+        "line": 16,
+        "text": "const { spawnSync } = require('child_process');"
+      },
+      {
+        "file": "bin/check.js",
+        "line": 24,
+        "text": "const r = spawnSync(cmd, args, {"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 29,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 272,
+        "text": "child = options.spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

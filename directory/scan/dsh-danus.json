@@ -1,0 +1,136 @@
+{
+  "name": "dsh-danus",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:00.334Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 45,
+        "text": "const res = await fetch(`${BASE}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2002,
+        "text": "const res = await fetch(api.exportUrl(props.project, \"md\"));"
+      },
+      {
+        "file": "src/client/api.ts",
+        "line": 121,
+        "text": "const res = await fetch(`${BASE}${path}`, {"
+      },
+      {
+        "file": "src/client/views/ExportView.tsx",
+        "line": 26,
+        "text": "const res = await fetch(api.exportUrl(props.project, 'md'))"
+      },
+      {
+        "file": "src/integrations/matlas.ts",
+        "line": 51,
+        "text": "resp = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "skills/main/human-summary/md2html.js",
+        "line": 8,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "skills/main/human-summary/md2html.js",
+        "line": 13,
+        "text": "let text = fs.readFileSync(inF, 'utf8');"
+      },
+      {
+        "file": "skills/main/human-summary/md2html.js",
+        "line": 52,
+        "text": "fs.writeFileSync(outF, html);"
+      },
+      {
+        "file": "src/authoring/common.ts",
+        "line": 15,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/authoring/common.ts",
+        "line": 76,
+        "text": "return readFileSync(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugins/gateway.ts",
+        "line": 30,
+        "text": "export const inject = ['tools', 'danusVerify'] as const"
+      },
+      {
+        "file": "src/plugins/gateway.ts",
+        "line": 123,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/plugins/heartbeat.ts",
+        "line": 17,
+        "text": "export const inject = ['agents', 'tools', 'timer'] as const"
+      },
+      {
+        "file": "src/plugins/heartbeat.ts",
+        "line": 134,
+        "text": "tools.register({"
+      },
+      {
+        "file": "src/plugins/orchestration.ts",
+        "line": 14,
+        "text": "export const inject = ['tools', 'danusSwarm'] as const"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/services/compile-check.ts",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/services/compile-check.ts",
+        "line": 77,
+        "text": "const cp = spawnSync(bin, ['--keep-logs', '--chatter', 'minimal', '--outdir', build, `${stem}.tex`], {"
+      },
+      {
+        "file": "src/services/compile-check.ts",
+        "line": 86,
+        "text": "last = spawnSync(bin, ['-interaction=nonstopmode', '-halt-on-error', `${stem}.tex`], {"
+      },
+      {
+        "file": "src/services/write-paper.ts",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/shared/headless.ts",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

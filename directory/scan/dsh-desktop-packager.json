@@ -1,0 +1,125 @@
+{
+  "name": "dsh-desktop-packager",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-26T10:10:14.243Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 22,
+        "text": "return fetch(path).then(function (r) { return r.json() })"
+      },
+      {
+        "file": "client.js",
+        "line": 25,
+        "text": "return fetch(path, {"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 203,
+        "text": "const res = await fetch(`${base}/index.json`)"
+      },
+      {
+        "file": "packaging/electron/main.js",
+        "line": 27,
+        "text": "const http = require('node:http')"
+      },
+      {
+        "file": "packaging/electron/main.js",
+        "line": 109,
+        "text": "const req = http.get(url, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 24,
+        "text": "import { createWriteStream, existsSync, mkdirSync, rmSync, copyFileSync, writeFileSync, readFileSync, readdirSync } from 'node:fs'"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 108,
+        "text": "const raw = readFileSync(resolve(configPath), 'utf8')"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 154,
+        "text": "rmSync(d, { recursive: true, force: true })"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 157,
+        "text": "rmSync(f, { force: true })"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 161,
+        "text": "rmSync(join(root, name), { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.ts",
+        "line": 26,
+        "text": "export const inject = ['tools', 'loader', 'llm']"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 103,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 23,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 83,
+        "text": "const r = spawnSync(cmd, args, { stdio: 'inherit', encoding: 'utf8', ...opts })"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 91,
+        "text": "const r = spawnSync(cmd, { shell: true, stdio: 'inherit', encoding: 'utf8' })"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 177,
+        "text": "const size = spawnSync('du', ['-sh', dest], { encoding: 'utf8' }).stdout?.trim()"
+      },
+      {
+        "file": "packaging/build-macos.mjs",
+        "line": 194,
+        "text": "const size = spawnSync('du', ['-sh', tarPath], { encoding: 'utf8' }).stdout?.trim()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "loader",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

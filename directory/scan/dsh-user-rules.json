@@ -1,0 +1,88 @@
+{
+  "name": "dsh-user-rules",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:10:02.082Z",
+  "icon": "dsh-user-rules.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 218,
+        "text": "const res = await fetch(\"/user-rules/state\", { headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 224,
+        "text": "const res = await fetch(\"/user-rules/action\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 246,
+        "text": "const res = await fetch(\"/user-rules/models\", { headers: { Accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 264,
+        "text": "const res = await fetch(\"/user-rules/optimize\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 29,
+        "text": "import { mkdir, readFile, rename, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 209,
+        "text": "const text = await readFile(runtime.path, 'utf8')"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 215,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 218,
+        "text": "await writeFile(tmp, payload, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 58,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1125,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

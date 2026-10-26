@@ -1,0 +1,131 @@
+{
+  "name": "dsh-webbridge",
+  "version": "0.0.4",
+  "scannedAt": "2026-10-26T10:10:05.827Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "* `curl -fsSL https://cdn.kimi.com/webbridge/install.sh | bash`). Every"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "response = await fetch(`${baseUrl}/command`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 379,
+        "text": "* The daemon is installed independently (`curl -fsSL"
+      },
+      {
+        "file": "lib/types/client.js",
+        "line": 5,
+        "text": "* `curl -fsSL https://cdn.kimi.com/webbridge/install.sh | bash`). Every"
+      },
+      {
+        "file": "lib/types/client.js",
+        "line": 34,
+        "text": "response = await fetch(`${baseUrl}/command`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readdirSync, rmSync, statSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 65,
+        "text": "rmSync(nodeModules, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 66,
+        "text": "mkdirSync(nodeModules, { recursive: true })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 91,
+        "text": "mkdirSync(join(nodeModules, '@types'), { recursive: true })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 115,
+        "text": "rmSync(nodeModules, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 390,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 397,
+        "text": "for (const tool of Object.values(tools)) ctx.effect(() => ctx.tools.register(tool), `dsh-webbridge: register ${tool.name}`);"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/types/index.js",
+        "line": 25,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `dsh-webbridge: register ${tool.name}`);"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 22,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/build.mjs",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 26,
+        "text": "const which = spawnSync('command', ['-v', 'dsh'], { shell: true, encoding: 'utf8' })"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 102,
+        "text": "const result = spawnSync(join(bin, name), args, {"
+      },
+      {
+        "file": "scripts/verify-i18n.mjs",
+        "line": 6,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

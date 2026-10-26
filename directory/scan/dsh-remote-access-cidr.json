@@ -1,0 +1,81 @@
+{
+  "name": "dsh-remote-access-cidr",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:01.253Z",
+  "icon": "dsh-remote-access-cidr.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "index.js",
+        "line": 547,
+        "text": "const retry = http.request("
+      },
+      {
+        "file": "index.js",
+        "line": 559,
+        "text": "const upReq = http.request(options, onUpstream);"
+      },
+      {
+        "file": "index.js",
+        "line": 679,
+        "text": "const req = http.get({ host: up.host, port: up.port, path: '/', timeout: 2500 }, (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 259,
+        "text": "const saved = fs.readFileSync(file, 'utf8').trim();"
+      },
+      {
+        "file": "index.js",
+        "line": 264,
+        "text": "fs.writeFileSync(file, `${created}\\n`, { mode: 0o600 });"
+      },
+      {
+        "file": "index.js",
+        "line": 749,
+        "text": "fs.writeFileSync(statusPathOf(cfg), render(), { mode: 0o600 });"
+      },
+      {
+        "file": "index.js",
+        "line": 792,
+        "text": ".readFileSync(banPathOf(cfg), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

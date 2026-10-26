@@ -1,0 +1,92 @@
+{
+  "name": "dsh-whisper-provider",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:05.874Z",
+  "icon": "dsh-whisper-provider.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 172,
+        "text": "const response = await fetch(`${baseUrl}/health`, { signal: AbortSignal.timeout(1_500) })"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 212,
+        "text": "const response = await fetch(urlToGet, { redirect: \"follow\", signal })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "const response = await fetch(`${baseUrl}/transcribe`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 16,
+        "text": "import { closeSync, createWriteStream, existsSync, mkdirSync, openSync, readFileSync } from \"node:fs\""
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 17,
+        "text": "import { chmod, copyFile, mkdir, mkdtemp, readdir, readFile, rm, stat, writeFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 182,
+        "text": "const content = await readFile(requirementsFile(), \"utf8\")"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 190,
+        "text": "return (await readFile(marker(), \"utf8\")).trim() === expected"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 240,
+        "text": "await mkdir(dirname(binary), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 14,
+        "text": "import { execFile, spawn } from \"node:child_process\""
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 62,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 292,
+        "text": "child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "speechToText"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

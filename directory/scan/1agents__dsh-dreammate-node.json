@@ -1,0 +1,57 @@
+{
+  "name": "@1agents/dsh-dreammate-node",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:59.891Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/service-process.js",
+        "line": 46,
+        "text": "response = await fetch(new URL('/health', url), { signal: AbortSignal.timeout(timeout), redirect: 'error' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 9,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 49,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/service-process.js",
+        "line": 2,
+        "text": "import { fork } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

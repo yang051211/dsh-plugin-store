@@ -1,0 +1,92 @@
+{
+  "name": "dsh-everything-search",
+  "version": "1.0.3",
+  "scannedAt": "2026-10-26T10:09:31.831Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 12,
+        "text": "const res = await fetch('/evs/api/' + name, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { readFileSync, unlinkSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 151,
+        "text": "try { unlinkSync(tmp) } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "try { text = readFileSync(tmp, 'utf-8') } catch (e) { /* ignore */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 159,
+        "text": "try { unlinkSync(tmp) } catch (e) { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 248,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "child = spawn(cmd, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "child = spawn(argv[0], argv.slice(1), { cwd: 'C:\\\\', windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/es.exe"
+  ],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

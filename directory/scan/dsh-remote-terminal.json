@@ -1,0 +1,67 @@
+{
+  "name": "dsh-remote-terminal",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:09:53.818Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 7524,
+        "text": "const ws = new WebSocket(protocol + \"//\" + window.location.host + DEFAULT_WS_PATH);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 2,
+        "text": "import { accessSync, constants, existsSync, mkdtempSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 3,
+        "text": "import { stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 470,
+        "text": "rmSync(dir, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 929,
+        "text": "for (const [name, content] of Object.entries(shellWrapFiles(kind))) writeFileSync(join(dir, name), content, { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 982,
+        "text": "const pty = spawn(file, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

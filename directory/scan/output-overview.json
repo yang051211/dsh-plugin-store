@@ -1,0 +1,79 @@
+{
+  "name": "output-overview",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:42.852Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 8,
+        "text": "* /output-overview/api/summary via a plain relative fetch (same-origin)."
+      },
+      {
+        "file": "client/client.js",
+        "line": 42,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 49,
+        "text": "const response = await fetch(new URL(\"config\", apiBase()), { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 56,
+        "text": "const response = await fetch(new URL(\"config\", apiBase()), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { readFile, writeFile, rename, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "const text = await readFile(CONFIG_PATH, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "await mkdir(dirname(CONFIG_PATH), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "await writeFile(tmp, JSON.stringify(overrides, null, 2) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/session-reader.js",
+        "line": 15,
+        "text": "import { readdirSync, statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

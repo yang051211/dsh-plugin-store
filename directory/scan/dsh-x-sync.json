@@ -1,0 +1,104 @@
+{
+  "name": "dsh-x-sync",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:10:11.658Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 235,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 24,
+        "text": "import { request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 25,
+        "text": "import { Agent, request as httpsRequest } from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine/sync.js",
+        "line": 22,
+        "text": "import { createReadStream, createWriteStream, existsSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 23,
+        "text": "import { copyFile, mkdir, readFile, rename, rm, utimes, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 1016,
+        "text": "await mkdir(dirname(dest), { recursive: true })"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 1028,
+        "text": "await mkdir(dirname(dest), { recursive: true })"
+      },
+      {
+        "file": "lib/engine/sync.js",
+        "line": 1029,
+        "text": "await writeFile(dest, buffer)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 354,
+        "text": ".map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 317,
+        "text": "execFile('powershell', ['-STA', '-NoProfile', '-Command', script], { windowsHide: true, timeout: 5 * 60 * 1000, encoding: 'utf8' }, (error, stdout) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 326,
+        "text": "      execFile('osascript', ['-e', 'activate', '-e', `POSIX path of (${what} with prompt \"选择同步用的目录/文件\")`], { timeout: 5 * 60 * 1000, encoding: 'utf8' }, (error,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,108 @@
+{
+  "name": "dsh-copilot-key",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:50.623Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "writeFileSync(file, new Date().toISOString() + ' ' + message + String.fromCharCode(13) + String.fromCharCode(10), { flag: 'a' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "return parseIni(readFileSync(ini, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "const text = readFileSync(ini, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "writeFileSync(ini, lines.join('\\r\\n') + '\\r\\n', 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 189,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 205,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 219,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "const run = (file, args, timeout = 15000) => spawnSync(file, args, { windowsHide: true, encoding: 'utf8', timeout })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "const child = spawn(exe, ['watch'], { detached: true, stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 18,
+      "text": "> 只 `npm i -g dsh-copilot-key` 不会让插件生效 —— 还必须把它加进 profile 的"
+    }
+  ],
+  "skippedEntries": []
+}

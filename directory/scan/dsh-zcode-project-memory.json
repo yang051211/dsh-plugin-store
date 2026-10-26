@@ -1,0 +1,82 @@
+{
+  "name": "dsh-zcode-project-memory",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:56.402Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/store.js",
+        "line": 36,
+        "text": "import { constants, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/store.js",
+        "line": 37,
+        "text": "import { lstat, mkdir, open, readdir, realpath, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/store.js",
+        "line": 226,
+        "text": "await mkdir(join(targetPath, '..'), { recursive: true })"
+      },
+      {
+        "file": "src/store.js",
+        "line": 251,
+        "text": "await handle.writeFile(content, { signal })"
+      },
+      {
+        "file": "src/store.js",
+        "line": 264,
+        "text": "await rm(temporaryPath, { force: true }).catch(() => undefined)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 49,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 180,
+        "text": "// `ctx.tools` 一定可用。注册返回的 disposer 由 Cordis 的 fiber 管理，插件卸载时"
+      },
+      {
+        "file": "src/index.js",
+        "line": 183,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/subsystems/summarization.js",
+        "line": 50,
+        "text": "* `ctx.tools.register(defineTool({ name: \"read\" }))` 等，名字不从配置派生。因此这里"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,76 @@
+{
+  "name": "dsh-plugin-sub2api",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:51.872Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 54,
+        "text": "const r = await fetch(API + path, Object.assign({ headers: { 'Content-Type': 'application/json' } }, opts || {}));"
+      },
+      {
+        "file": "src/host/http.js",
+        "line": 2,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "src/host/http.js",
+        "line": 3,
+        "text": "import https from 'node:https';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/compat.js",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/host/compat.js",
+        "line": 12,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(pkgRoot, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "src/host/compat.js",
+        "line": 21,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(pkgRoot, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "src/host/credentials.js",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/host/credentials.js",
+        "line": 27,
+        "text": "const d = JSON.parse(fs.readFileSync(p, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

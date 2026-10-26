@@ -1,0 +1,77 @@
+{
+  "name": "dsh-plugin-auto-commit-button",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:10:04.247Z",
+  "icon": "dsh-plugin-auto-commit-button.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 179,
+        "text": "const response = await fetch(ENDPOINT + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 50,
+        "text": "import { accessSync, appendFileSync, constants, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 769,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 771,
+        "text": "writeFileSync(temporary, `${JSON.stringify({ version: 2, repos: Object.fromEntries(merged) }, null, '\\t')}\\n`);"
+      },
+      {
+        "file": "index.js",
+        "line": 792,
+        "text": "const parsed = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 903,
+        "text": "appendFileSync(cfg.traceFile, `${new Date().toISOString()} [${subject}] ${message}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 255,
+        "text": "execFile(gitPath ?? 'git', args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

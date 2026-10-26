@@ -1,0 +1,136 @@
+{
+  "name": "dsh-agent-observe",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-26T10:09:59.866Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/docker-e2e.sh",
+        "line": 15,
+        "text": "if curl -fsS \"${BASE_URL}/api/agent-observe/evaluation-profiles\" 2>/dev/null | grep -q '\"profiles\"'; then"
+      },
+      {
+        "file": "src/client.js",
+        "line": 794,
+        "text": "const response = await fetch('/api/agent-observe/installed-plugins')"
+      },
+      {
+        "file": "src/client.js",
+        "line": 806,
+        "text": "const response = await fetch('/api/agent-observe/models')"
+      },
+      {
+        "file": "src/client.js",
+        "line": 819,
+        "text": "const response = await fetch('/api/agent-observe/evaluation-profiles')"
+      },
+      {
+        "file": "src/client.js",
+        "line": 881,
+        "text": "const response = await fetch('/api/agent-observe/plugin-validation', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 1,
+        "text": "import { access, mkdir, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 16,
+        "text": "async function readJson(path, read = target => readFile(target, 'utf8')) {"
+      },
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 39,
+        "text": "await mkdir(resolve(root, '..'), { recursive: true })"
+      },
+      {
+        "file": "src/plugin-validation-runner.js",
+        "line": 3,
+        "text": "import { access, readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'sessionProjections', 'llm', 'agentDefaultModel']"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 3,
+        "text": "* Registers agent_stats, agent_cost, agent_audit on ctx.tools."
+      },
+      {
+        "file": "src/tools.js",
+        "line": 19,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 73,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 123,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/evaluation-standards.js",
+        "line": 22,
+        "text": "const child = spawn(command, args, { stdio: 'inherit' })"
+      },
+      {
+        "file": "src/plugin-validation-runner.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/plugin-validation-runner.js",
+        "line": 133,
+        "text": "const child = spawn(command, args, { ...options, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "sessionProjections",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,64 @@
+{
+  "name": "dsh-adaptive-effort",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-26T10:10:06.129Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 293,
+        "text": "/** Test seam: classify with an injected fetch (never used by apply()). */"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ledger.js",
+        "line": 10,
+        "text": "import { appendFile, mkdir, readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 41,
+        "text": "this.ready ??= mkdir(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 43,
+        "text": "await appendFile(this.pathFor(record.sessionId), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 53,
+        "text": "return parseLedgerLines(await readFile(this.pathFor(sessionId), 'utf8').catch(() => ''));"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 58,
+        "text": "this.ready ??= mkdir(this.dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

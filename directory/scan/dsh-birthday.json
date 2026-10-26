@@ -1,0 +1,103 @@
+{
+  "name": "dsh-birthday",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:46.773Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 2045,
+        "text": "const response = await fetch(url, { credentials: \"same-origin\", ...init });"
+      },
+      {
+        "file": "src/client/BirthdayPanel.tsx",
+        "line": 105,
+        "text": "const response = await fetch(url, { credentials: 'same-origin', ...init });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/birthday/db.js",
+        "line": 10,
+        "text": "import { closeSync, existsSync, fsyncSync, mkdirSync, openSync, readFileSync, readSync, renameSync, writeFileSync, } from 'node:fs';"
+      },
+      {
+        "file": "lib/birthday/db.js",
+        "line": 90,
+        "text": "writeFileSync(fd, text, 'utf-8');"
+      },
+      {
+        "file": "lib/birthday/db.js",
+        "line": 144,
+        "text": "mkdirSync(dirname(this.dbPath), { recursive: true });"
+      },
+      {
+        "file": "lib/birthday/db.js",
+        "line": 228,
+        "text": "mkdirSync(dirname(this.dbPath), { recursive: true });"
+      },
+      {
+        "file": "lib/birthday/db.js",
+        "line": 231,
+        "text": "const raw = readFileSync(this.dbPath, 'utf-8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/birthday/tools/add.js",
+        "line": 7,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/birthday/tools/almanac.js",
+        "line": 12,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/birthday/tools/delete.js",
+        "line": 7,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/birthday/tools/query.js",
+        "line": 27,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/birthday/tools/transfer.js",
+        "line": 13,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build:all"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

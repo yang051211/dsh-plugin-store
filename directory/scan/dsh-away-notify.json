@@ -1,0 +1,69 @@
+{
+  "name": "dsh-away-notify",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:35.454Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/panel-script.mjs",
+        "line": 193,
+        "text": "fetch(BASE + '/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/panel-script.mjs",
+        "line": 296,
+        "text": "fetch(BASE + '/config', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/diag.mjs",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/diag.mjs",
+        "line": 33,
+        "text": "fs.mkdirSync(base, { recursive: true })"
+      },
+      {
+        "file": "src/diag.mjs",
+        "line": 42,
+        "text": "if (fs.statSync(file).size > maxBytes) fs.rmSync(file, { force: true })"
+      },
+      {
+        "file": "src/diag.mjs",
+        "line": 52,
+        "text": "fs.appendFileSync(file, `${now().toISOString()}  ${String(level).padEnd(5)} ${message}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 13,
+        "text": "import { mkdirSync, writeFileSync, renameSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

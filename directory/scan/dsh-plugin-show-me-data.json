@@ -1,0 +1,110 @@
+{
+  "name": "dsh-plugin-show-me-data",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:09:45.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/http/routes.js",
+        "line": 224,
+        "text": "* 'progress' carries one settled fetch ('{ phase, done, total, label, … }'), then"
+      },
+      {
+        "file": "lib/host/index.js",
+        "line": 107,
+        "text": "const runtime = { fetch: (...args) => globalThis.fetch(...args), clock }"
+      },
+      {
+        "file": "lib/sources/http.js",
+        "line": 96,
+        "text": "response = await fetch(url, { signal: combined, headers: { 'user-agent': USER_AGENT, ...headers } })"
+      },
+      {
+        "file": "src/host/http/routes.js",
+        "line": 224,
+        "text": "* 'progress' carries one settled fetch ('{ phase, done, total, label, … }'), then"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 107,
+        "text": "const runtime = { fetch: (...args) => globalThis.fetch(...args), clock }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/infra/fs-repos.js",
+        "line": 11,
+        "text": "import { readFileSync, renameSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/infra/fs-repos.js",
+        "line": 23,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/host/infra/fs-repos.js",
+        "line": 39,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/host/infra/fs-repos.js",
+        "line": 41,
+        "text": "writeFileSync(temp, `${JSON.stringify(value, null, 2)}\\n`)"
+      },
+      {
+        "file": "src/host/infra/fs-repos.js",
+        "line": 11,
+        "text": "import { readFileSync, renameSync, writeFileSync, mkdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/index.js",
+        "line": 51,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "lib/host/index.js",
+        "line": 229,
+        "text": "disposers.push(registerTools({ tools: ctx.tools, useCases, clock, log }))"
+      },
+      {
+        "file": "lib/host/tools/register.js",
+        "line": 424,
+        "text": "const disposers = createToolDefinitions({ useCases, clock, log }).map((definition) => tools.register(definition))"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 51,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 229,
+        "text": "disposers.push(registerTools({ tools: ctx.tools, useCases, clock, log }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

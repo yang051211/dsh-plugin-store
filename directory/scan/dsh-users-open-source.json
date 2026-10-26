@@ -1,0 +1,86 @@
+{
+  "name": "dsh-users-open-source",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:05.627Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 282,
+        "text": "const res = await fetch(`${API}/state`, { cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 332,
+        "text": "const res = await fetch(`${API}${path}`, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 25,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      },
+      {
+        "file": "tests/smoke.mjs",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "tests/smoke.mjs",
+        "line": 128,
+        "text": "const res = await fetch(base + path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 26,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 27,
+        "text": "import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 392,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 435,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 436,
+        "text": "await writeFile(join(dir, 'history.json'), JSON.stringify(state.history, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

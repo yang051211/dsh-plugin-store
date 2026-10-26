@@ -1,0 +1,95 @@
+{
+  "name": "dsh-annual-activity",
+  "version": "1.1.5",
+  "scannedAt": "2026-10-26T10:10:10.278Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 212,
+        "text": "const res = await fetch(api('/activity/pull' + (year ? '?year=' + year : '')), { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 228,
+        "text": "try { await fetch(api('/activity/refresh'), { method: 'POST' }); } catch (err) { /* host 未就绪时静默 */ }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 283,
+        "text": "const res = await fetch(api('/activity/meta'), { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 302,
+        "text": "const res = await fetch(api(path), { method: 'POST', headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 291,
+        "text": "if (file.endsWith('.zstd')) text = await decompressZstdFrames(await fsp.readFile(file))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 292,
+        "text": "else text = await fsp.readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 312,
+        "text": "const raw = JSON.parse(await fsp.readFile(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 704,
+        "text": "child = execFile(bin, args, options)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

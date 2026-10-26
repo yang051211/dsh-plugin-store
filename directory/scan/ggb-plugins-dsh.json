@@ -1,0 +1,126 @@
+{
+  "name": "ggb-plugins-dsh",
+  "version": "0.8.5",
+  "scannedAt": "2026-10-26T10:09:59.273Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/server.js",
+        "line": 5,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "source/scripts/command-coverage.mjs",
+        "line": 38,
+        "text": "await assert.rejects(fetch(preview.url));"
+      },
+      {
+        "file": "source/src/server.ts",
+        "line": 5,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "source/src/server.ts",
+        "line": 6,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/atomic-file.js",
+        "line": 3,
+        "text": "import { lstat, open, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/src/atomic-file.js",
+        "line": 30,
+        "text": "await handle.writeFile(data);"
+      },
+      {
+        "file": "dist/src/atomic-file.js",
+        "line": 51,
+        "text": "await rm(temporary, { force: true }).catch(() => { });"
+      },
+      {
+        "file": "dist/src/browser-target.js",
+        "line": 6,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/src/browser.js",
+        "line": 5,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/server.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dsh/server.js",
+        "line": 42,
+        "text": "for (const toolName of TOOL_NAMES) ctx.tools.register(createTool(toolName));"
+      },
+      {
+        "file": "source/dsh/server.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "source/dsh/server.js",
+        "line": 42,
+        "text": "for (const toolName of TOOL_NAMES) ctx.tools.register(createTool(toolName));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/browser.js",
+        "line": 6,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/setup-plugin.mjs",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/setup-runtime.mjs",
+        "line": 2,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "source/dsh/test/executor.test.mjs",
+        "line": 11,
+        "text": "import {execFileSync} from 'node:child_process';"
+      },
+      {
+        "file": "source/dsh/test/server.test.mjs",
+        "line": 3,
+        "text": "import {execFileSync} from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

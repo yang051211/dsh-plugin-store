@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plugin-read-image-preview",
+  "version": "1.7.1",
+  "scannedAt": "2026-10-26T10:09:32.330Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 622,
+        "text": "const response = await fetch(url, write"
+      },
+      {
+        "file": "client.js",
+        "line": 652,
+        "text": "const response = await fetch(SHOT_ROUTE + '/capture?delay=' + Math.max(0, Math.round(delayMs)), { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 385,
+        "text": "await fs.mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 407,
+        "text": "const bytes = await fs.readFile(target)"
+      },
+      {
+        "file": "index.js",
+        "line": 415,
+        "text": "fs.unlink(target).catch(() => {})"
+      },
+      {
+        "file": "index.js",
+        "line": 546,
+        "text": "await fs.unlink(path.join(dir, name))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 365,
+        "text": "execFile(file, args, { timeout: timeoutMs, windowsHide: true, maxBuffer: 4 * 1024 * 1024 },"
+      },
+      {
+        "file": "index.js",
+        "line": 690,
+        "text": "const child = spawn(launcher.file, launcher.args, { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

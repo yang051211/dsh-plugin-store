@@ -1,0 +1,124 @@
+{
+  "name": "dsh-runner-watcher",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:12.891Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 19,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 92,
+        "text": "return fetch(url, { signal: ctrl.signal }).then((r) => r.ok ? r.json() : null).catch(() => null).finally(() => clearTimeout(tid));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 21,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 391,
+        "text": "const html = await fs.readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/core/registry.js",
+        "line": 17,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/registry.js",
+        "line": 83,
+        "text": "text = await fs.readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/core/registry.js",
+        "line": 101,
+        "text": "await fs.mkdir(dataDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 108,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 133,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 122,
+        "text": "spawn(cmd, args, { detached: true, stdio: 'ignore', windowsHide: true }).unref();"
+      },
+      {
+        "file": "lib/core/transport.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/transport.js",
+        "line": 38,
+        "text": "child = spawn(command, args, { windowsHide: true, cwd });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 74,
+      "text": "npm i -g dsh-runner-watcher"
+    }
+  ],
+  "skippedEntries": []
+}

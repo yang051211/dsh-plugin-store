@@ -1,0 +1,119 @@
+{
+  "name": "dsh-plugin-log-forwarder",
+  "version": "1.0.4",
+  "scannedAt": "2026-10-26T10:09:48.618Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/channels/loki.js",
+        "line": 211,
+        "text": "const response = await fetch(this.pushUrl, { method: 'POST', headers, body });"
+      },
+      {
+        "file": "lib/channels/websocket.js",
+        "line": 19,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/channels/websocket.js",
+        "line": 105,
+        "text": "const res = await fetch('/status');"
+      },
+      {
+        "file": "lib/channels/websocket.js",
+        "line": 113,
+        "text": "const cs = await (await fetch('/channels')).json();"
+      },
+      {
+        "file": "lib/channels/websocket.js",
+        "line": 124,
+        "text": "wsTail = new WebSocket(proto + '://' + location.host);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/channels/file.js",
+        "line": 22,
+        "text": "import { appendFile, mkdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/channels/file.js",
+        "line": 196,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/channels/file.js",
+        "line": 206,
+        "text": "await appendFile(target, payload, 'utf8');"
+      },
+      {
+        "file": "src/channels/file.ts",
+        "line": 23,
+        "text": "import { appendFile, mkdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/channels/file.ts",
+        "line": 217,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = ['sessions', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 311,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 332,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 353,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build && npm run build:client"
+      }
+    ]
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

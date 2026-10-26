@@ -1,0 +1,107 @@
+{
+  "name": "dsh-image-edge-cap",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:43.629Z",
+  "icon": "dsh-image-edge-cap.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 75,
+        "text": "if (runtime.has(file)) check(!/\\bfetch\\s*\\(|node:https?['\"]|XMLHttpRequest|WebSocket/.test(text), `${file}: runtime code must make no network requests`);"
+      },
+      {
+        "file": "scripts/e2e-gui.mjs",
+        "line": 48,
+        "text": "const list = await (await fetch(`http://127.0.0.1:${port}/json`)).json();"
+      },
+      {
+        "file": "scripts/e2e-gui.mjs",
+        "line": 57,
+        "text": "const ws = new WebSocket(await target());"
+      },
+      {
+        "file": "test/plugin.test.mjs",
+        "line": 9,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 3,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "index.mjs",
+        "line": 69,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 13,
+        "text": "await mkdir(new URL('../lib/', import.meta.url), { recursive: true });"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 14,
+        "text": "await writeFile(output, bundle, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 11,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/e2e-gui.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/e2e-gui.mjs",
+        "line": 36,
+        "text": "const chrome = spawn(chromePath, ["
+      },
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 10,
+        "text": "const result = spawnSync(process.execPath, ['--test', 'test/plugin.test.mjs'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

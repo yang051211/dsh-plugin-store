@@ -1,0 +1,61 @@
+{
+  "name": "dsh-agent-run-logger",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:54.760Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/writer.js",
+        "line": 1,
+        "text": "import { mkdir, open } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/writer.js",
+        "line": 72,
+        "text": "await handle.appendFile(`${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/writer.js",
+        "line": 133,
+        "text": "await handle.appendFile(item.line, 'utf8');"
+      },
+      {
+        "file": "lib/writer.js",
+        "line": 147,
+        "text": "await mkdir(dirname(this.options.path), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

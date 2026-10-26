@@ -1,0 +1,95 @@
+{
+  "name": "dsh-workbuddy-files",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:09:32.827Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 113,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 135,
+        "text": "const body = await (await fetch(\"/workbuddy-drops/home\")).json();"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 172,
+        "text": "return (await (await fetch(\"/workbuddy-drops/list?query=\" + encodeURIComponent(query))).json()).items ?? [];"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 179,
+        "text": "return await (await fetch(\"/workbuddy-drops/stat?path=\" + encodeURIComponent(path))).json();"
+      },
+      {
+        "file": "src/client/lib/transfer.ts",
+        "line": 40,
+        "text": "const res = await fetch(url, { method: 'POST', body: f.file })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 200,
+        "text": "await mkdir(dirname(dst), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "await writeFile(dst, body);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 304,
+        "text": "const buf = await readFile(path);"
+      },
+      {
+        "file": "src/host/index.ts",
+        "line": 13,
+        "text": "import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 344,
+        "text": "ctx.effect(() => tools !== void 0 ? tools.register(readDocumentTool) : (() => {}), \"workbuddy: read_document tool\");"
+      },
+      {
+        "file": "src/host/index.ts",
+        "line": 250,
+        "text": "ctx.effect(() => (tools !== undefined ? tools.register(readDocumentTool) : (() => {})), 'workbuddy: read_document tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,106 @@
+{
+  "name": "dsh-branchman",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-26T10:09:43.125Z",
+  "icon": "dsh-branchman.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 482,
+        "text": "      const response = await fetch(`/branchman/api/${path}`, { ...body === void 0 ? {} : { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body"
+      },
+      {
+        "file": "scripts/branchman.ps1",
+        "line": 12,
+        "text": "Invoke-WebRequest -Uri $BaseUrl -WebSession $session | Out-Null"
+      },
+      {
+        "file": "scripts/branchman.ps1",
+        "line": 15,
+        "text": "$response = Invoke-RestMethod -Uri $uri -WebSession $session"
+      },
+      {
+        "file": "scripts/branchman.ps1",
+        "line": 21,
+        "text": "$response = Invoke-RestMethod -Uri ($uri + '?directionId=' + [Uri]::EscapeDataString($parsed.directionId)) -WebSession $session"
+      },
+      {
+        "file": "scripts/branchman.ps1",
+        "line": 23,
+        "text": "    $response = Invoke-RestMethod -Uri $uri -Method Post -ContentType 'application/json; charset=utf-8' -Body ([Text.Encoding]::UTF8.GetBytes($body)) -WebSessio"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { mkdir as mkdir4, readFile as readFile4, writeFile as writeFile2, access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { mkdir, readFile, open, rename, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 196,
+        "text": "await mkdir(dirname(this.#dataFile), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 198,
+        "text": "const parsed = JSON.parse(await readFile(this.#dataFile, \"utf8\"));"
+      },
+      {
+        "file": "index.js",
+        "line": 235,
+        "text": "await mkdir(dirname(this.#dataFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1284,
+        "text": "var inject = [\"webServer\", \"sessions\", \"tools\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 1879,
+        "text": "disposers.push(ctx.tools.register(toolsPeer.defineTool(definition)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 476,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "index.js",
+        "line": 495,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

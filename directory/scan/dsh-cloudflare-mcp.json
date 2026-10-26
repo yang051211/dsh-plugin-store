@@ -1,0 +1,80 @@
+{
+  "name": "dsh-cloudflare-mcp",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:35.973Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 32,
+        "text": "response = await fetch(path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 81,
+        "text": "const raw = await readFile(configPath(), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 90,
+        "text": "await mkdir(path.dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "await writeFile(configPath(), JSON.stringify(next, null, 2), { mode: 384 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 381,
+        "text": "* 401), discovers the server's tools, and registers them on `ctx.tools`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 383,
+        "text": "* (`mcp__cloudflare__<rawName>`, same contract as @deepseek-ai/dsh-mcp-client)."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 515,
+        "text": "for (const definition of definitions) next.set(definition.name, ctx.tools.register(definition));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1028,
+        "text": "const disposers = buildTools(context).map((tool) => ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,103 @@
+{
+  "name": "dsh-guarded-bot-orchestrator",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:03.885Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh/adapter.js",
+        "line": 24,
+        "text": "import { Server } from 'node:http';"
+      },
+      {
+        "file": "dist/panel/html.js",
+        "line": 320,
+        "text": "resposta = await fetch('/__guard/api/state', { credentials: 'same-origin', headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "dist/panel/html.js",
+        "line": 346,
+        "text": "resposta = await fetch(caminho, {"
+      },
+      {
+        "file": "dist/panel/html.js",
+        "line": 509,
+        "text": "resposta = await fetch('/__guard/magic', {"
+      },
+      {
+        "file": "dist/tunnel/discover.js",
+        "line": 56,
+        "text": "import { request as httpRequest } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/audit/log.js",
+        "line": 24,
+        "text": "import { closeSync, constants, fstatSync, fsyncSync, lstatSync, mkdirSync, openSync, writeSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/audit/log.js",
+        "line": 182,
+        "text": "mkdirSync(dir, { recursive: true, mode: AUDIT_DIR_MODE });"
+      },
+      {
+        "file": "dist/bin/dsh-guard-setup.js",
+        "line": 43,
+        "text": "import { closeSync, constants, fchmodSync, fsyncSync, openSync, renameSync, unlinkSync, writeSync, } from 'node:fs';"
+      },
+      {
+        "file": "dist/bin/dsh-guard-setup.js",
+        "line": 156,
+        "text": "unlinkSync(tmp);"
+      },
+      {
+        "file": "dist/config/assert.js",
+        "line": 31,
+        "text": "import { statSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/proc/supervisor.js",
+        "line": 7,
+        "text": "* contra o assento REAL (`spawn(spec: SubprocessSpawnSpec) -> SubprocessHandle`)."
+      },
+      {
+        "file": "dist/proc/supervisor.js",
+        "line": 139,
+        "text": "const spawned = ctx.subprocess.spawn(spec);"
+      },
+      {
+        "file": "dist/proc/supervisor.js",
+        "line": 148,
+        "text": "* spawn (`done` rejeita)."
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

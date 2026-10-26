@@ -1,0 +1,87 @@
+{
+  "name": "dsh-laa",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-26T10:09:43.988Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 281,
+        "text": "return fetch(\"/dsh-laa/state?sessionId=\" + encodeURIComponent(sessionId), { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 334,
+        "text": "fetch(\"/dsh-laa/mode\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 12,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 111,
+        "text": "text = readFileSync(filePath, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 152,
+        "text": "mkdirSync(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 153,
+        "text": "writeFileSync(temporary, `${JSON.stringify(document, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 158,
+        "text": "rmSync(temporary, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/dev-home.mjs",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/dev-home.mjs",
+        "line": 227,
+        "text": "? spawn([bin, ...args].map(quoteArgument).join(' '), { ...spawnOptions, shell: true })"
+      },
+      {
+        "file": "scripts/dev-home.mjs",
+        "line": 228,
+        "text": ": spawn(bin, args, spawnOptions);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,110 @@
+{
+  "name": "dsh-pin",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:48.384Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 51,
+        "text": "const r = await fetch(`http://127.0.0.1:${CDP_PORT}${path}`);"
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 62,
+        "text": "const r = await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: \"PUT\" });"
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 66,
+        "text": "const ws = new WebSocket(page.webSocketDebuggerUrl);"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 25,
+        "text": "async function getJson(p) { const r = await fetch(`http://127.0.0.1:${CDP_PORT}${p}`); return r.json(); }"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 29,
+        "text": "if (!page) { const r = await fetch(`http://127.0.0.1:${CDP_PORT}/json/new?about:blank`, { method: \"PUT\" }); page = await r.json(); }"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 22,
+        "text": "import { mkdirSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 37,
+        "text": "rmSync(USER_DATA, { recursive: true, force: true });"
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 38,
+        "text": "mkdirSync(USER_DATA, { recursive: true });"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 13,
+        "text": "import { rmSync, mkdirSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 21,
+        "text": "rmSync(USER_DATA, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 20,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 39,
+        "text": "const chrome = spawn(CHROME, ["
+      },
+      {
+        "file": "e2e/browser-e2e.mjs",
+        "line": 344,
+        "text": "\ttry { await new Promise((res) => spawn(\"taskkill\", [\"/PID\", String(chrome.pid), \"/T\", \"/F\"], { stdio: \"ignore\" }).on(\"exit\", res)); } catch { try { chrome.kill"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 11,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "e2e/screenshot.mjs",
+        "line": 23,
+        "text": "const chrome = spawn(CHROME, [\"--headless=new\", `--remote-debugging-port=${CDP_PORT}`, `--user-data-dir=${USER_DATA}`, \"--no-first-run\", \"--window-size=1500,100"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

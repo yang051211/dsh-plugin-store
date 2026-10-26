@@ -1,0 +1,98 @@
+{
+  "name": "dsh-wallport",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-26T10:09:40.239Z",
+  "icon": "dsh-wallport.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 200,
+        "text": "const res = await fetch(API + path, {"
+      },
+      {
+        "file": "src/host/runtime.js",
+        "line": 208,
+        "text": "request = window.fetch(url, { cache: 'no-store', credentials: 'same-origin' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/store.js",
+        "line": 16,
+        "text": "import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 122,
+        "text": "mkdirSync(templatesDir, { recursive: true })"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 127,
+        "text": "writeFileSync(tmp, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 133,
+        "text": "return JSON.parse(readFileSync(statePath, 'utf8'))"
+      },
+      {
+        "file": "src/host/store.js",
+        "line": 141,
+        "text": "const raw = JSON.parse(readFileSync(join(templatesDir, `${id}.json`), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/define-tool.js",
+        "line": 10,
+        "text": "* ctx.tools.register() 收到的是最终定义（parameters 已经是 JSON Schema），"
+      },
+      {
+        "file": "src/host/tools.js",
+        "line": 411,
+        "text": "for (const tool of tools) ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/templates/ink-wash.js",
+        "line": 92,
+        "text": "function spawn(initial) {"
+      },
+      {
+        "file": "src/host/templates/ink-wash.js",
+        "line": 110,
+        "text": "for (var i = 0; i < count; i++) blots.push(spawn(true));"
+      },
+      {
+        "file": "src/host/templates/ink-wash.js",
+        "line": 118,
+        "text": "if (b.life >= 1) { blots[i] = spawn(false); continue; }"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

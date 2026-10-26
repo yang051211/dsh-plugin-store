@@ -1,0 +1,94 @@
+{
+  "name": "dsh-plugin-dashboard",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:09:32.168Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.cjs",
+        "line": 452,
+        "text": "const res = await fetch(`${api}/list`);"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 458,
+        "text": "const res = await fetch(`${api}/upgrade`, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ name }) });"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 464,
+        "text": "const res = await fetch(`${api}/upgrade`, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ name, apply: true }) });"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 470,
+        "text": "const res = await fetch(`${api}/upgrade-all`, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({}) });"
+      },
+      {
+        "file": "lib/client.cjs",
+        "line": 476,
+        "text": "const res = await fetch(`${api}/upgrade-all`, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ apply: true }) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/disable.js",
+        "line": 25,
+        "text": "import { promises as fs } from \"node:fs\";"
+      },
+      {
+        "file": "lib/disable.js",
+        "line": 81,
+        "text": "content = await fs.readFile(path.join(profileDir, PATCH_FILENAME), \"utf8\");"
+      },
+      {
+        "file": "lib/disable.js",
+        "line": 177,
+        "text": "return await fs.readFile(path.join(profileDir, PATCH_FILENAME), \"utf8\");"
+      },
+      {
+        "file": "lib/disable.js",
+        "line": 192,
+        "text": "await fs.writeFile(backupPath, original);"
+      },
+      {
+        "file": "lib/disable.js",
+        "line": 193,
+        "text": "await fs.writeFile(patchPath, next);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 82,
+        "text": "const handle = sub.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

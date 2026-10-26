@@ -1,0 +1,79 @@
+{
+  "name": "dsh-git-dashboard",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:10:14.415Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 14,
+        "text": "import { existsSync, lstatSync, mkdirSync, rmSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 41,
+        "text": "mkdirSync(scope, { recursive: true })"
+      },
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 46,
+        "text": "if (st.isSymbolicLink() || st.isDirectory()) rmSync(link, { recursive: true, force: true })"
+      },
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 47,
+        "text": "else rmSync(link, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git/run.js",
+        "line": 139,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "lib/types/git/run.js",
+        "line": 139,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 17,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/link-runtime-deps.mjs",
+        "line": 57,
+        "text": "const result = spawnSync('cmd', ['/c', 'mklink', '/J', link, target], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

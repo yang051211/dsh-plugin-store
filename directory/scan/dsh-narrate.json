@@ -1,0 +1,106 @@
+{
+  "name": "dsh-narrate",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:38.868Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 220,
+        "text": "await fetch('https://speech.platform.bing.com/', { signal: AbortSignal.timeout(5000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 9,
+        "text": "import { mkdtemp, mkdir, writeFile, readFile, readdir, copyFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 76,
+        "text": "await writeFile(script, `import { copyFileSync } from 'node:fs';\\n`"
+      },
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 254,
+        "text": "const ass = await readFile(`${got.segments[0].path}.ass`, 'utf8');"
+      },
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 291,
+        "text": "await mkdir(assetsRoot, { recursive: true });"
+      },
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 303,
+        "text": "const { access } = await import('node:fs/promises');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/narrate.js",
+        "line": 39,
+        "text": "/** cordis 服务注入：apply 里要用 ctx.tools，必须显式声明。 */"
+      },
+      {
+        "file": "host/narrate.js",
+        "line": 40,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "host/narrate.js",
+        "line": 699,
+        "text": "disposers.push(ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "docs/crew/qa/T-09/case-1-9.mjs",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "docs/crew/qa/T-11/case-1-8.mjs",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/assets-index/scan.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/render/concat.js",
+        "line": 15,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/render/segment.js",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

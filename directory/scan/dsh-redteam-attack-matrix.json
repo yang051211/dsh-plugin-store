@@ -1,0 +1,117 @@
+{
+  "name": "dsh-redteam-attack-matrix",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-26T10:10:04.925Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 47,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "lib/parts/client.shim.js",
+        "line": 16,
+        "text": "return fetch(RPC_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 2913,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2951,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 4058,
+        "text": "export const inject = ['tools', 'fs', 'shell', 'timer', 'webServer']"
+      },
+      {
+        "file": "lib/parts/host.tail.js",
+        "line": 41,
+        "text": "export const inject = ['tools', 'fs', 'shell', 'timer', 'webServer']"
+      },
+      {
+        "file": "src/host.js",
+        "line": 233,
+        "text": "const fs = ctx.get('fs')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 7,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 77,
+        "text": "registerTool(c, tool) { return c.tools.register(tool) },"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 101,
+        "text": "//   - 工具用 defineTool({...}) 构造后 ctx.tools.register(t)，不要用 harness.defineTool"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3576,
+        "text": "// 实测最常见的一种：ctx.tools 不可用（静态形态下没把 tools 写进 inject）。"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 3578,
+        "text": "const hint = /undefined/.test(raw) ? '（ctx.tools 不可用：静态形态下 tools 必须写进 inject）' : ''"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 72,
+        "text": "const build = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs')], {"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 82,
+        "text": "const verify = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs'), '--check'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

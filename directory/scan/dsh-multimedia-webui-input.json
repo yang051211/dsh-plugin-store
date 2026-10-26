@@ -1,0 +1,104 @@
+{
+  "name": "dsh-multimedia-webui-input",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:48.348Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 206,
+        "text": "const created = await responseJson(await fetch(`${API}/batches`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 226,
+        "text": "await responseJson(await fetch(`${API}/batches/${encodeURIComponent(batchId)}/files/${index}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 237,
+        "text": "const committed = await responseJson(await fetch("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 248,
+        "text": "fetch(`${API}/batches/${encodeURIComponent(batchId)}`, { method: 'DELETE' }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 442,
+        "text": "return responseJson(await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "} from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 217,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 232,
+        "text": "await rm(target, { force: true }).catch(() => {});"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 251,
+        "text": "const marker = JSON.parse(await readFile(join(directory, OWNER_FILE), 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 313,
+        "text": "await rm(batch.stagingRoot, { force: true, recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install.mjs",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 127,
+        "text": "const child = spawn('git', args, { cwd: SOURCE_ROOT, stdio: ['ignore', 'pipe', 'ignore'] });"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 289,
+        "text": "const child = spawn(executable, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "sessions",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,97 @@
+{
+  "name": "dsh-c-cleaner",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-26T10:10:16.060Z",
+  "icon": "dsh-c-cleaner.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 264,
+        "text": "const res = await fetch(hostRouteUrl(`${API}/${verb}`).href, {"
+      },
+      {
+        "file": "client.js",
+        "line": 324,
+        "text": "* framed document shares this page's origin. Its relative `fetch('api/<verb>')` calls"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/classifier.js",
+        "line": 19,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/cleaner.js",
+        "line": 9,
+        "text": "*   hardDelete(paths, log)   -> CleanupReport   (fs.rmSync(p, {recursive:true, force:false}))"
+      },
+      {
+        "file": "lib/cleaner.js",
+        "line": 23,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/cleaner.js",
+        "line": 80,
+        "text": "* delete call: `fs.rmSync(p, {recursive:true})` would destroy a whole tree, and the"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cleaner.js",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/cleaner.js",
+        "line": 197,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/handle-index.js",
+        "line": 34,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/handle-index.js",
+        "line": 270,
+        "text": "/** @type {import('node:child_process').ChildProcess|null} */"
+      },
+      {
+        "file": "lib/handle-index.js",
+        "line": 334,
+        "text": "child = spawn(this.pythonPath, ['-u', '-c', BRIDGE, String(this.rootPid)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

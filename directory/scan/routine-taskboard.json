@@ -1,0 +1,112 @@
+{
+  "name": "routine-taskboard",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:09:52.423Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 134,
+        "text": "return fetch(PREFIX + \"/config\").then(function (r) { return r.json() }).then(function (j) { if (j.ok) applyConfig(j) }).catch(function () {})"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 243,
+        "text": "fetch(PREFIX + \"/open\", { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ path: path }) }).catch(function () {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 247,
+        "text": "fetch(PREFIX + \"/run\", { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ task: f.taskName }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 257,
+        "text": "fetch(PREFIX + \"/run-script\", { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ path: path }) })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 268,
+        "text": "fetch(PREFIX + \"/state\", { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify({ task: f.taskName, action: action }) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "userConfig = JSON.parse(readFileSync(join(home, 'storages', 'routine-taskboard.config.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 67,
+        "text": "const raw = readFileSync(fixtureFile, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "writeFileSync(fixtureFile, JSON.stringify(list, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "const child = spawn('explorer.exe', isDir ? [target] : ['/select,' + target], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "const child = spawn('schtasks.exe', ['/Run', '/TN', taskName], { windowsHide: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "const child = spawn(cfg[0], cfg[1], { cwd: dirname(scriptPath), windowsHide: true, detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "const child = spawn('schtasks.exe', ['/Change', '/TN', taskName, action === 'disable' ? '/DISABLE' : '/ENABLE'], { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

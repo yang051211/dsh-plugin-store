@@ -1,0 +1,82 @@
+{
+  "name": "dsh-ast-edit-tool",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-26T10:09:50.445Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/binary.js",
+        "line": 14,
+        "text": "import { closeSync, existsSync, openSync, readSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 17,
+        "text": "import { promises as fs } from \"node:fs\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 98,
+        "text": "await fs.writeFile(mirror, contents.get(file) ?? \"\");"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 138,
+        "text": "finalContents.set(file, await fs.readFile(mirrorFiles[i], \"utf8\"));"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 155,
+        "text": "await fs.rm(tempDir, { recursive: true, force: true }).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "return tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 16,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 23,
+        "text": "const child = spawn(binary, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

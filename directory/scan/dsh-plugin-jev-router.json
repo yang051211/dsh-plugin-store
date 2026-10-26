@@ -1,0 +1,75 @@
+{
+  "name": "dsh-plugin-jev-router",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:48.377Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jev.js",
+        "line": 185,
+        "text": "response = await fetch(client.endpoint, {"
+      },
+      {
+        "file": "lib/jev.js",
+        "line": 235,
+        "text": "const response = await fetch(endpoint, { method: 'HEAD', signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 17,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 57,
+        "text": "const raw = await readFile(resolve(path), 'utf8');"
+      },
+      {
+        "file": "lib/receipts.js",
+        "line": 15,
+        "text": "import { appendFile, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/receipts.js",
+        "line": 27,
+        "text": "await appendFile(this.path, `${JSON.stringify(receipt)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/receipts.js",
+        "line": 65,
+        "text": "const raw = await readFile(path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

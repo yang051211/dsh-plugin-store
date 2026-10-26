@@ -1,0 +1,90 @@
+{
+  "name": "dsh-desktop-launcher",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:43.644Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/templates.js",
+        "line": 28,
+        "text": "if curl -sf \"$DSH_URL\" >/dev/null 2>&1; then"
+      },
+      {
+        "file": "lib/templates.js",
+        "line": 44,
+        "text": "if curl -sf \"$DSH_URL\" >/dev/null 2>&1; then"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/constants.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/constants.js",
+        "line": 3,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 13,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 100,
+        "text": "return JSON.parse(readFileSync(join(installDir, 'state.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 142,
+        "text": "mkdirSync(config.installDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/installer.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 223,
+        "text": "const res = spawnSync('bash', ['-lc', 'command -v dsh 2>/dev/null || true'], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 298,
+        "text": "const r = spawnSync('sips', ['-z', String(size), String(size), pngPath, '--out', join(iconset, name)], { encoding: 'utf8' })"
+      },
+      {
+        "file": "lib/installer.js",
+        "line": 302,
+        "text": "const r = spawnSync('iconutil', ['-c', 'icns', iconset, '-o', icnsPath], { encoding: 'utf8' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

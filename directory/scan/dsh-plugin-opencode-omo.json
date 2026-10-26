@@ -1,0 +1,129 @@
+{
+  "name": "dsh-plugin-opencode-omo",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:10:04.777Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 27,
+        "text": "const response = await fetch(`${endpoint}${suffix}`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 34,
+        "text": "const response = await fetch(endpoint, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 48,
+        "text": "const response = await fetch(endpoint, {"
+      },
+      {
+        "file": "presets/opencode-omo/skills/ast-grep/install.ps1",
+        "line": 161,
+        "text": "Invoke-WebRequest -Uri $url -OutFile (Join-Path $tmp $asset) -UseBasicParsing"
+      },
+      {
+        "file": "presets/opencode-omo/skills/ast-grep/install.sh",
+        "line": 189,
+        "text": "command -v curl >/dev/null 2>&1 || command -v wget >/dev/null 2>&1 || {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 4,
+        "text": "import { existsSync, lstatSync, mkdirSync, readFileSync, symlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 498,
+        "text": "text: readFileSync(entry, \"utf8\")"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 781,
+        "text": "mkdirSync(join(home, \".agent-presets\"), { recursive: true });"
+      },
+      {
+        "file": "presets/opencode-omo/agent.cordis.yml",
+        "line": 253,
+        "text": "persona: !!js \"process.getBuiltinModule('node:fs').readFileSync(process.getBuiltinModule('node:url').fileURLToPath(new URL('roles/prompts/variants/specialists/o"
+      },
+      {
+        "file": "presets/opencode-omo/agent.cordis.yml",
+        "line": 276,
+        "text": "persona: !!js \"process.getBuiltinModule('node:fs').readFileSync(process.getBuiltinModule('node:url').fileURLToPath(new URL('roles/prompts/variants/rendered/libr"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/opencode-omo/apply-patch.mjs",
+        "line": 8,
+        "text": "export const inject = ['tools', 'fs']"
+      },
+      {
+        "file": "presets/opencode-omo/apply-patch.mjs",
+        "line": 60,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "presets/opencode-omo/driver.mjs",
+        "line": 36,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "presets/opencode-omo/driver.mjs",
+        "line": 829,
+        "text": "const view = ctx.tools.view(agent)"
+      },
+      {
+        "file": "presets/opencode-omo/driver.mjs",
+        "line": 831,
+        "text": "return renderToolsSdk(ctx.tools.sdkSchemas(agent))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "presets/opencode-omo/agent.cordis.yml",
+        "line": 61,
+        "text": " spawnSync } = process.getBuiltinModule(\"node:child_process\"); return spawnSync(\"typescript-language-server\", [\"--version\"], { stdio: \"ignore\", timeout: 5000 })"
+      },
+      {
+        "file": "presets/opencode-omo/skills/visual-qa/scripts/cli.test.ts",
+        "line": 68,
+        "text": "const proc = Bun.spawnSync({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 84,
+      "text": "npm install -g typescript-language-server typescript"
+    }
+  ],
+  "skippedEntries": []
+}

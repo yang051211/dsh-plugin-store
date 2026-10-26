@@ -1,0 +1,98 @@
+{
+  "name": "harness-alchemist",
+  "version": "0.1.10",
+  "scannedAt": "2026-10-26T10:09:59.504Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/harness-alchemist.mjs",
+        "line": 3,
+        "text": "import { readFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "bin/harness-alchemist.mjs",
+        "line": 10,
+        "text": "await readFile(new URL(\"../package.json\", import.meta.url), \"utf8\"),"
+      },
+      {
+        "file": "lib/create.mjs",
+        "line": 4,
+        "text": "import { existsSync } from \"node:fs\""
+      },
+      {
+        "file": "lib/create.mjs",
+        "line": 5,
+        "text": "import { chmod, cp, mkdir, readdir, readFile, rename, rm, rmdir, stat, writeFile } from \"node:fs/promises\""
+      },
+      {
+        "file": "lib/create.mjs",
+        "line": 169,
+        "text": "await mkdir(target, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/deepseek.js",
+        "line": 5,
+        "text": "export const inject = [\"tools\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/create.mjs",
+        "line": 8,
+        "text": "import { spawnSync } from \"node:child_process\""
+      },
+      {
+        "file": "lib/create.mjs",
+        "line": 308,
+        "text": "const validation = spawnSync(process.execPath, [join(projectRoot, \"lib/validate.mjs\"), staging], {"
+      },
+      {
+        "file": "lib/install-check.mjs",
+        "line": 8,
+        "text": "import { spawnSync } from \"node:child_process\""
+      },
+      {
+        "file": "lib/install-check.mjs",
+        "line": 32,
+        "text": "const result = spawnSync(command, args, {"
+      },
+      {
+        "file": "lib/install-check.mjs",
+        "line": 311,
+        "text": "if (spawnSync(\"dsh\", [\"--version\"], { encoding: \"utf8\" }).error?.code === \"ENOENT\") {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 36,
+      "text": "npm install -g harness-alchemist"
+    }
+  ],
+  "skippedEntries": []
+}

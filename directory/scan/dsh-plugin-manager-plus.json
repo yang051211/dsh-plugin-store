@@ -1,0 +1,104 @@
+{
+  "name": "dsh-plugin-manager-plus",
+  "version": "1.3.4",
+  "scannedAt": "2026-10-26T10:09:48.753Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 360,
+        "text": "const res = await fetch(\"/plugin-manager/api/guard/status\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 377,
+        "text": "const res = await fetch(\"/plugin-manager/api/guard/restore\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 409,
+        "text": "await fetch(\"/plugin-manager/api/guard/dismiss\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 421,
+        "text": "const res = await fetch(\"/plugin-manager/api/inventory\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 444,
+        "text": "const res = await fetch(\"/plugin-manager/api/status\");"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 9,
+        "text": "import { existsSync, readFileSync, writeFileSync, copyFileSync, unlinkSync, rmSync, mkdirSync, lstatSync, renameSync, statSync, readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 27,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 190,
+        "text": "if (existsSync(cand)) return JSON.parse(readFileSync(cand, 'utf8'));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 200,
+        "text": "return JSON.parse(readFileSync(p, 'utf8'));"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 460,
+        "text": "mkdirSync(dirPath, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 1222,
+        "text": "if (name === '@deepseek-ai/dsh-mcp-client') {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1052,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

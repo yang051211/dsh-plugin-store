@@ -1,0 +1,72 @@
+{
+  "name": "dsh-rpm",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:51.674Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 2,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "index.mjs",
+        "line": 72,
+        "text": "const pkg = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 1,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 13,
+        "text": "await mkdir(new URL('../lib/', import.meta.url), { recursive: true });"
+      },
+      {
+        "file": "scripts/build-client.mjs",
+        "line": 14,
+        "text": "await writeFile(output, bundle, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/test-integration.mjs",
+        "line": 10,
+        "text": "const result = spawnSync(process.execPath, ['--test', 'test/plugin.test.mjs'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

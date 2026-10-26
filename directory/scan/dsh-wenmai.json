@@ -1,0 +1,113 @@
+{
+  "name": "dsh-wenmai",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-26T10:09:34.986Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 359,
+        "text": "const response = await fetch(WENMAI_API_PREFIX, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/adapters/ingest.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/adapters/ingest.js",
+        "line": 11,
+        "text": "const bytes = await readFile(abs);"
+      },
+      {
+        "file": "dist/adapters/ingest.js",
+        "line": 26,
+        "text": "const body = await readFile(abs, 'utf8');"
+      },
+      {
+        "file": "dist/backlinks.js",
+        "line": 6,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/backlinks.js",
+        "line": 45,
+        "text": "const text = await readFile(abs, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 10,
+        "text": "export const inject = ['tools', 'commands', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/plugin/register.js",
+        "line": 3,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/adapters/index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/adapters/index.js",
+        "line": 30,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "dist/ops/index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/ops/index.js",
+        "line": 69,
+        "text": "spawn('open', [file], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "dist/search.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json && tsdown"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

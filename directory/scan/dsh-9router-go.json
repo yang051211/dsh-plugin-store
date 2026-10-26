@@ -1,0 +1,97 @@
+{
+  "name": "dsh-9router-go",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-26T10:09:40.490Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install-desktop.ps1",
+        "line": 168,
+        "text": "$metadata = Invoke-RestMethod -Uri \"$base$($Package.Replace('/', '%2F'))\" -Headers @{ Authorization = \"Bearer $Token\" } -TimeoutSec 30"
+      },
+      {
+        "file": "src/zcode.mjs",
+        "line": 172,
+        "text": "const response = await fetch(`${this.endpoint}/api/settings`, {"
+      },
+      {
+        "file": "src/zcode.mjs",
+        "line": 317,
+        "text": "const response = await fetch(`${this.endpoint}${HEALTH_PATH}`, { signal: AbortSignal.timeout(3000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-9router-go.mjs",
+        "line": 11,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/controller.mjs",
+        "line": 2,
+        "text": "import { cp, mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/controller.mjs",
+        "line": 98,
+        "text": "await writeFile(path, randomBytes(24).toString('base64url') + '\\n', { flag: 'wx', mode: 0o600 })"
+      },
+      {
+        "file": "src/controller.mjs",
+        "line": 102,
+        "text": "const password = (await readFile(path, 'utf8')).trim()"
+      },
+      {
+        "file": "src/controller.mjs",
+        "line": 120,
+        "text": "await rm(staged, { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-9router-go.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/dsh-9router-go.mjs",
+        "line": 95,
+        "text": "const result = spawnSync('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', INSTALLER, ...args], {"
+      },
+      {
+        "file": "src/controller.mjs",
+        "line": 285,
+        "text": "const handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "src/zcode.mjs",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

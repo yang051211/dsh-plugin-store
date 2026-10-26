@@ -1,0 +1,96 @@
+{
+  "name": "dsh-outsideread-switch",
+  "version": "2.0.0",
+  "scannedAt": "2026-10-26T10:09:53.268Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 197,
+        "text": "return fetch(STATE_URL, { headers: { accept: \"application/json\" } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install.js",
+        "line": 48,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 144,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 160,
+        "text": "snapshots.push({ file: file, existed: true, bytes: fs.readFileSync(file) })"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 165,
+        "text": "if (snap.existed) fs.writeFileSync(snap.file, snap.bytes)"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 166,
+        "text": "else if (fs.existsSync(snap.file)) fs.unlinkSync(snap.file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 645,
+        "text": "toolsCtx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install.js",
+        "line": 51,
+        "text": "const { spawnSync } = require('node:child_process')"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 189,
+        "text": "*   1. `spawnSync('pnpm', argv, { shell: false })` — EINVAL on Windows. Node 20.12+ refuses to"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 192,
+        "text": "*   2. `spawnSync(cmd.exe, ['/d','/s','/c', selfQuotedLine])` — cmd re-quotes already-quoted"
+      },
+      {
+        "file": "bin/install.js",
+        "line": 195,
+        "text": "*   3. `spawnSync('pnpm', argv, { shell: true })` — works, and is what this uses."
+      },
+      {
+        "file": "bin/install.js",
+        "line": 204,
+        "text": "const result = spawnSync('pnpm', args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

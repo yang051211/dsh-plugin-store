@@ -1,0 +1,73 @@
+{
+  "name": "dsh-clear-tool-results",
+  "version": "0.8.6",
+  "scannedAt": "2026-10-26T10:09:52.694Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 31,
+        "text": "import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 32,
+        "text": "import { appendFileSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 52,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version ?? '未知'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 157,
+        "text": "appendFileSync(WARN_LOG_FILE, line + '\\n', 'utf8')"
+      },
+      {
+        "file": "index.mjs",
+        "line": 393,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 47,
+        "text": "export const inject = ['commands', 'tools', 'sessionPersistence']"
+      },
+      {
+        "file": "index.mjs",
+        "line": 215,
+        "text": "disposers.push(ctx.tools.register(readToolResultLogTool(ctx)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessionPersistence",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,105 @@
+{
+  "name": "dsh-remote-control-desktop",
+  "version": "1.6.4",
+  "scannedAt": "2026-10-26T10:10:05.351Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 182,
+        "text": "fetch(API + \"/remote-addr\").then(function (r) { return r.json(); }).then(function (d) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 190,
+        "text": "fetch(API + \"/remote-settings\").then(function (r) { return r.json(); }).then(function (s) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 202,
+        "text": "fetch(API + \"/remote-settings\").then(function (r) { return r.json(); }).then(function (s) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 204,
+        "text": "return fetch(API + \"/remote-settings\", { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(next) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 208,
+        "text": "var lockP = fetch(API + \"/remote-screen/lockstate\").then(function (r) { return r.json(); }).catch(function () { return { locked: false }; });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { readFileSync, writeFileSync, existsSync, readdir, stat, createReadStream, mkdir, appendFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "if (existsSync(SETTINGS_FILE)) Object.assign(settings, JSON.parse(readFileSync(SETTINGS_FILE, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "try { writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2)); } catch (_) {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 795,
+        "text": "\t\t\t(function logUnlock(m) { try { appendFileSync(\"D:\\\\dsh-temp\\\\unlock.log\", new Date().toISOString() + \" \" + m + \"\\n\"); } catch (_) {} })(\"unlock request key-l"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 947,
+        "text": "const data = readFileSync(f);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { spawn, exec } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "helperProc = spawn(\"powershell.exe\", [\"-STA\", \"-NoProfile\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", helperPath], { stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "worker = spawn(\"powershell.exe\", [\"-STA\", \"-NoProfile\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", WORKER_SCRIPT], { stdio: [\"pipe\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/dsh-unlock-helper.exe",
+    "lib/dsh-unlock-svc.exe"
+  ],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

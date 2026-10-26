@@ -1,0 +1,91 @@
+{
+  "name": "dsh-agent-selector",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-26T10:10:15.638Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 16,
+        "text": "return fetch(API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "const arr = JSON.parse(fs.readFileSync(WB_MODELS_JSON, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 63,
+        "text": "try { return { ...DEFAULT_CONFIG, ...JSON.parse(fs.readFileSync(CFG_FILE, 'utf8')) } } catch { return { ...DEFAULT_CONFIG } }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 66,
+        "text": "try { fs.mkdirSync(CFG_DIR, { recursive: true }); fs.writeFileSync(CFG_FILE, JSON.stringify(cfg, null, 2)) } catch { /* 尽力持久化 */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "fs.mkdirSync(cwd, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['tools', 'subprocess', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 290,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "return subprocess.spawn(opts)"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 54,
+      "text": "- **Codex 通道**：本机装有 Codex CLI 并已登录（`npm i -g @openai/codex`）"
+    }
+  ],
+  "skippedEntries": []
+}

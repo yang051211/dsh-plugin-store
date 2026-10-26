@@ -1,0 +1,60 @@
+{
+  "name": "dsh-agent-alert",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:57.277Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 88,
+        "text": "const response = await fetch(\"/dsh-alert/test?type=done\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 125,
+        "text": "const response = await fetch(\"/dsh-alert/state?after=\" + cursor, { cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "const raw = JSON.parse(readFileSync(join(here, \"..\", \"config.json\"), \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

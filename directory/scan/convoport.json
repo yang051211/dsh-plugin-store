@@ -1,0 +1,78 @@
+{
+  "name": "convoport",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-26T10:09:56.777Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "extension/background.js",
+        "line": 71,
+        "text": "const res = await fetch(`${backend}/capture/ingest`, {"
+      },
+      {
+        "file": "extension/content.js",
+        "line": 41,
+        "text": "const res = await fetch("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 122,
+        "text": "const res = await fetch(path, opts);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { readFile, writeFile, mkdir, readdir, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 96,
+        "text": "await mkdir(this.sessions, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 98,
+        "text": "await readFile(indexPath(this.root), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "return JSON.parse(await readFile(indexPath(this.root), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 194,
+        "text": "await writeFile(indexPath(this.root), JSON.stringify(index, null, 2), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "sessions",
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

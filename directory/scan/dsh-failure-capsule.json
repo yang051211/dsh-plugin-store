@@ -1,0 +1,81 @@
+{
+  "name": "dsh-failure-capsule",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-26T10:09:36.404Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capsule.js",
+        "line": 1,
+        "text": "import { mkdir, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/capsule.js",
+        "line": 148,
+        "text": "await mkdir(outputDir, { recursive: true });"
+      },
+      {
+        "file": "lib/capsule.js",
+        "line": 155,
+        "text": "await writeFile(temporary, archive.bytes, { flag: 'wx' });"
+      },
+      {
+        "file": "lib/capsule.js",
+        "line": 159,
+        "text": "await rm(temporary, { force: true });"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evidence.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/evidence.js",
+        "line": 15,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "src/evidence.ts",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/evidence.ts",
+        "line": 40,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

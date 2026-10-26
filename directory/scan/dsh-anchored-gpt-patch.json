@@ -1,0 +1,82 @@
+{
+  "name": "dsh-anchored-gpt-patch",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-26T10:10:00.121Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { mkdir, readFile, writeFile, chmod } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 63,
+        "text": "await mkdir(targetDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": "const content = await readFile(source)"
+      },
+      {
+        "file": "index.js",
+        "line": 72,
+        "text": "const existing = await readFile(target)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preset/apply-patch.mjs",
+        "line": 20,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "preset/apply-patch.mjs",
+        "line": 165,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "preset/apply-patch.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "preset/apply-patch.mjs",
+        "line": 113,
+        "text": "const child = spawn(executable, [], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "preset/bin/apply_patch.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

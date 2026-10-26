@@ -1,0 +1,75 @@
+{
+  "name": "dsh-plugin-internet-meme",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-26T10:09:55.670Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 443,
+        "text": "const response = await fetch(PREVIEW_PATH, {"
+      },
+      {
+        "file": "src/bridge.ts",
+        "line": 243,
+        "text": "const response = await fetch(PREVIEW_PATH, { method: 'POST', headers: { 'X-Meme-Preview-Id': id }, signal: controller.signal })"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 2,
+        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "const bridge = readFileSync(new URL(\"./bridge.js\", import.meta.url));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 42,
+        "text": "const bridge = readFileSync(new URL('./bridge.js', import.meta.url))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: pnpm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,69 @@
+{
+  "name": "dsh-open-in-app-base",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-26T10:09:32.124Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 375,
+        "text": "const response = await fetch(`${target.route}/available`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 384,
+        "text": "const response = await fetch(`${target.route}/open`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state.mjs",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/state.mjs",
+        "line": 102,
+        "text": "text = readFileSync(stateFile, \"utf8\");"
+      },
+      {
+        "file": "lib/state.mjs",
+        "line": 183,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/state.mjs",
+        "line": 184,
+        "text": "writeFileSync(tempFile, text, \"utf8\");"
+      },
+      {
+        "file": "lib/state.mjs",
+        "line": 188,
+        "text": "rmSync(tempFile, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

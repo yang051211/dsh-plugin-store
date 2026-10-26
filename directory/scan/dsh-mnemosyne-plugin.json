@@ -1,0 +1,168 @@
+{
+  "name": "dsh-mnemosyne-plugin",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-26T10:09:55.220Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/dashboard/static/app.js",
+        "line": 55,
+        "text": "const r = await fetch(path, options);"
+      },
+      {
+        "file": "assets/dashboard/static/app.js",
+        "line": 111,
+        "text": "const r = await fetch('/mnemosyne/dashboard/api/auth/status', { cache: 'no-store' });"
+      },
+      {
+        "file": "assets/dashboard/static/vendor/three.module.min.js",
+        "line": 6,
+        "text": "\"}),a=this.mimeType,o=this.responseType;fetch(s).then((e=>{if(200===e.status||0===e.status){if(0===e.status&&console.warn(\"THREE.FileLoader: HTTP Status 0 recei"
+      },
+      {
+        "file": "src/client.js",
+        "line": 741,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 929,
+        "text": "fetch(\"/mnemosyne/diagnose\", { headers: { accept: \"application/json\" } }).then(r => r.json()),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/identity.js",
+        "line": 18,
+        "text": "import { existsSync, mkdirSync, readFileSync, realpathSync, renameSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/identity.js",
+        "line": 82,
+        "text": "const uuid = parseMarkerLine(readFileSync(markerPath, \"utf8\"));"
+      },
+      {
+        "file": "src/identity.js",
+        "line": 149,
+        "text": "mkdirSync(targetDir, { recursive: true });"
+      },
+      {
+        "file": "src/identity.js",
+        "line": 153,
+        "text": "writeFileSync(tmpPath, content, \"utf8\");"
+      },
+      {
+        "file": "src/identity.js",
+        "line": 157,
+        "text": "writeFileSync(target, content, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 137,
+        "text": "export const inject = [\"tools\", \"agents\", \"sessions\"];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 3715,
+        "text": "sctx.tools.register("
+      },
+      {
+        "file": "src/index.js",
+        "line": 3756,
+        "text": "sctx.tools.register("
+      },
+      {
+        "file": "src/index.js",
+        "line": 3782,
+        "text": "sctx.tools.register("
+      },
+      {
+        "file": "src/index.js",
+        "line": 3823,
+        "text": "sctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "src/index.js",
+        "line": 391,
+        "text": "execFile("
+      },
+      {
+        "file": "src/index.js",
+        "line": 834,
+        "text": "execFile(file, args, { timeout: timeoutMs, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 937,
+        "text": "execFile(cli, args, {"
+      },
+      {
+        "file": "src/index.js",
+        "line": 2832,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "assets/dashboard/static/vendor/three.module.min.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 37,
+      "text": "ked, local-first AI memory system. One `pip install`, one SQLite file, no external services required. It uses a **BEAM** (Bilevel Episodic-Associative Memory) a"
+    },
+    {
+      "file": "README.md",
+      "line": 47,
+      "text": "ry logic lives in the `mnemosyne` CLI (`pip install mnemosyne-memory`), and the plugin stays CLI-first: normal shared-memory operations shell out to the CLI. Th"
+    },
+    {
+      "file": "README.md",
+      "line": 114,
+      "text": "remember()` time (e.g. `^git status`, `^pip install`, `^Traceback`). The plugin bridges it to `MNEMOSYNE_IGNORE_PATTERNS` on every CLI call, because upstream's "
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 35,
+      "text": "s://github.com/mnemosyne-oss/mnemosyne) 是一个零云依赖、SQLite 支持的本地优先 AI 记忆系统。一个 `pip install`，一个 SQLite 文件，无需外部服务。它采用 **BEAM**（Bilevel Episodic-Associative Memory）架构："
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 45,
+      "text": "//pi.dev/) 扩展。所有记忆逻辑都在 `mnemosyne` CLI（`pip install mnemosyne-memory`）里，插件保持 CLI 优先：常规共享记忆操作通过子进程调用 CLI。移植到 DSH 时增加了设置面板、CLI 自动安装、配置管理和会话收尾自动整合；并超出原版\"无状态代理\"的边界，"
+    }
+  ],
+  "skippedEntries": []
+}

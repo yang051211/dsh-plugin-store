@@ -1,0 +1,139 @@
+{
+  "name": "dsh-dev-memory",
+  "version": "0.4.17",
+  "scannedAt": "2026-10-26T10:10:03.346Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 56,
+        "text": "arget=id==null?browseId:id;Promise.all([fetch('/dsh-dev-memory/workspaces',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('workspaces '+r.st"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 58,
+        "text": "rue);setFeedback({tone:'',text:'保存中…'});fetch('/dsh-dev-memory/config',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}).th"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 59,
+        "text": "rue);setFeedback({tone:'',text:'保存中…'});fetch('/dsh-dev-memory/workspaces',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)}"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 61,
+        "text": "rue);setFeedback({tone:'',text:'打开中…'});fetch('/dsh-dev-memory/open',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({path})}).th"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 99,
+        "text": "f fetch!=='function'||!sessionId)return;fetch('/dsh-dev-memory/session-auto-write?sessionId='+encodeURIComponent(sessionId),{cache:'no-store'}).then(r=>r.ok?r.j"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 1,
+        "text": "import { appendFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 5,
+        "text": "mkdirSync(dirname(logPath), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 8,
+        "text": "appendFileSync(logPath, JSON.stringify(stamped) + '\\n', 'utf8');"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 14,
+        "text": "return readFileSync(logPath, 'utf8').trim().split('\\n').filter(Boolean)"
+      },
+      {
+        "file": "lib/contract.js",
+        "line": 34,
+        "text": "FS: \"fs\", // dsh-fs: resolve/stat/readText/writeText/editText/listDir"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/contract.js",
+        "line": 56,
+        "text": "REGISTER: \"ctx.tools.register\", // register(definition: ToolDefinition): () => void"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "//   tools.register(definition)                -> contract.TOOLS.REGISTER       (\"ctx.tools.register\")"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 462,
+        "text": "// 1) three tools — ctx.tools.register(definition)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 467,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/contract.js",
+        "line": 33,
+        "text": "SUBPROCESS: \"subprocess\", // dsh-subprocess: spawn(argv/cwd/stdio/signal)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 739,
+        "text": "if (process.platform === 'win32') spawn('explorer.exe', [requested], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 740,
+        "text": "else spawn('xdg-open', [requested], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

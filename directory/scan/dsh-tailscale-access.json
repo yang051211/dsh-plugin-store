@@ -1,0 +1,103 @@
+{
+  "name": "dsh-tailscale-access",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:53.922Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/client.js",
+        "line": 634,
+        "text": "notInstalled: 'curl -fsSL https://tailscale.com/install.sh | sh',"
+      },
+      {
+        "file": "lib/client/client.js",
+        "line": 774,
+        "text": "request = fetch(HOST_SETTINGS_PATH, { method: 'GET', headers: { accept: 'application/json' }, cache: 'no-store', credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client/client.js",
+        "line": 908,
+        "text": "request = fetch(STATUS_PATH, options)"
+      },
+      {
+        "file": "lib/client/client.js",
+        "line": 1005,
+        "text": "request = fetch(ACTION_PATH, options)"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 84,
+        "text": "return `curl -L -o ./cloudflared ${RELEASE_BASE}/${target.asset} && chmod +x ./cloudflared`"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared.js",
+        "line": 17,
+        "text": "import { accessSync, constants, createWriteStream, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 18,
+        "text": "import { chmod, mkdir, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 170,
+        "text": "await mkdir(cacheDir, { recursive: true })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 193,
+        "text": "await rm(temporary, { force: true })"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 202,
+        "text": "await rm(temporary, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflared.js",
+        "line": 16,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflared.js",
+        "line": 115,
+        "text": "execFile(file, args, (error) => { if (error == null) resolve(undefined); else reject(error) })"
+      },
+      {
+        "file": "lib/tailscale.js",
+        "line": 21,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,75 @@
+{
+  "name": "dsh-home-sync",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-26T10:09:58.070Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ui.js",
+        "line": 159,
+        "text": "const res = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 95,
+        "text": "res.end(fs.readFileSync(uiUrl, 'utf8'))"
+      },
+      {
+        "file": "lib/sync.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/sync.js",
+        "line": 14,
+        "text": "const hash = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')"
+      },
+      {
+        "file": "lib/sync.js",
+        "line": 23,
+        "text": "try { fs.unlinkSync(path.join(dir, 'owner.json')) } catch { /* 已经没了 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/sync.js",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/sync.js",
+        "line": 153,
+        "text": "const child = execFile('git', ['-c', 'safe.directory=*', '--literal-pathspecs', '-C', cwd, ...args],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

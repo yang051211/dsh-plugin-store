@@ -1,0 +1,61 @@
+{
+  "name": "dsh-shortcut-creator",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:45.593Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/New-DesktopShortcut.ps1",
+        "line": 107,
+        "text": ") -lt $deadline -and -not $ok){ try{ $r=Invoke-WebRequest -Uri '__URL__' -UseBasicParsing -TimeoutSec 2; if($r.StatusCode -lt 500){$ok=$true} }catch{}; if(-not "
+      },
+      {
+        "file": "lib/client.js",
+        "line": 78,
+        "text": "const response = await fetch(`${API_BASE}/install`, {"
+      },
+      {
+        "file": "lib/client/section.js",
+        "line": 71,
+        "text": "const response = await fetch(`${API_BASE}/install`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "execFile('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', PS1_PATH, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

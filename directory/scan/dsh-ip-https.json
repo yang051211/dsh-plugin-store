@@ -1,0 +1,83 @@
+{
+  "name": "dsh-ip-https",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-26T10:09:33.427Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gateway.js",
+        "line": 1,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 2,
+        "text": "import { createServer as createHttpsServer } from 'node:https'"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 3,
+        "text": "import { request as httpRequest } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acme-ip.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/acme-ip.js",
+        "line": 23,
+        "text": "readFile(paths.key, 'utf8'),"
+      },
+      {
+        "file": "lib/acme-ip.js",
+        "line": 24,
+        "text": "readFile(paths.cert, 'utf8'),"
+      },
+      {
+        "file": "lib/acme-ip.js",
+        "line": 82,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/acme-ip.js",
+        "line": 86,
+        "text": "accountKey = await readFile(paths.account)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acme-ip.js",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

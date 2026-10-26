@@ -1,0 +1,89 @@
+{
+  "name": "dsh-judge-worker",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:47.406Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/controller.js",
+        "line": 750,
+        "text": "const chunk = await fetcher.fetch(request, attempt.sandbox);"
+      },
+      {
+        "file": "lib/evidence/fetch.js",
+        "line": 38,
+        "text": "async fetch(request, ref) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/filesystem.js",
+        "line": 11,
+        "text": "import { mkdir, readdir, readFile, realpath, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/adapters/filesystem.js",
+        "line": 15,
+        "text": "async readFile(file) {"
+      },
+      {
+        "file": "lib/adapters/filesystem.js",
+        "line": 16,
+        "text": "return await readFile(file, \"utf8\");"
+      },
+      {
+        "file": "lib/adapters/filesystem.js",
+        "line": 19,
+        "text": "async writeFile(file, content) {"
+      },
+      {
+        "file": "lib/adapters/filesystem.js",
+        "line": 20,
+        "text": "await mkdir(dirnameOf(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/shell.js",
+        "line": 15,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/adapters/shell.js",
+        "line": 25,
+        "text": "const child = spawn(\"/bin/bash\", [\"-lc\", request.command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

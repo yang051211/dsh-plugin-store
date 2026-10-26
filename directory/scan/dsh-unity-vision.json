@@ -1,0 +1,112 @@
+{
+  "name": "dsh-unity-vision",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-26T10:09:54.237Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 24,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, symlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 151,
+        "text": "const SRC_INDEX = readFileSync(join(HERE, 'index.js'))"
+      },
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 152,
+        "text": "const SRC_PKG = readFileSync(join(HERE, 'package.json'))"
+      },
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 155,
+        "text": "mkdirSync(WORK, { recursive: true })"
+      },
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 156,
+        "text": "mkdirSync(WORK_OUT, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "contract-test-adversarial.mjs",
+        "line": 516,
+        "text": "//    而插件 index.js:27-33 明确设计了\"解析不到 @deepseek-ai/* 就把字面量对象直接交给 ctx.tools.register\"的路径。"
+      },
+      {
+        "file": "contract-test.mjs",
+        "line": 18,
+        "text": "//   · P1（1b 节）：交给 ctx.tools.register 的 output.schema 不得带**属性级** required ——"
+      },
+      {
+        "file": "contract-test.mjs",
+        "line": 109,
+        "text": "console.log('== 1b. P1 护栏：交给 ctx.tools.register 的 schema 不得带属性级 required ==')"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "// ctx.tools.register（工具对象的形状按 dsh-ego-browser 的注册点逐字段对齐）。"
+      },
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "review-check.mjs",
+        "line": 7,
+        "text": "const cp = require('node:child_process')"
+      },
+      {
+        "file": "soak.mjs",
+        "line": 15,
+        "text": "import { execSync } from 'node:child_process'"
+      },
+      {
+        "file": "soak.mjs",
+        "line": 40,
+        "text": "const t = execSync(`cmd /c tasklist /fi \"imagename eq ${PROC_NAME}\" /fo csv /nh`, { encoding: 'latin1' })"
+      },
+      {
+        "file": "src/unity.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/unity.js",
+        "line": 23,
+        "text": "* 交给 PATH 查找（spawn('unity', …) 时由操作系统解析）。"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

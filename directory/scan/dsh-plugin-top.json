@@ -1,0 +1,91 @@
+{
+  "name": "dsh-plugin-top",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-26T10:09:56.068Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 224,
+        "text": "fetch(DATA_URL, { signal: ctrl.signal })"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 18,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 242,
+        "text": "const r = await fetch(upstreamUrl, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 1,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 26,
+        "text": "fs.mkdirSync(CACHE_DIR, { recursive: true });"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 27,
+        "text": "fs.writeFileSync(CACHE_FILE, JSON.stringify({"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 36,
+        "text": "const raw = JSON.parse(fs.readFileSync(CACHE_FILE, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 7,
+        "text": "const inject = [\"tools\", \"webServer\"];"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 142,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 183,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown && node scripts/build-client.cjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

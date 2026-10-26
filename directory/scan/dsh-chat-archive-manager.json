@@ -1,0 +1,76 @@
+{
+  "name": "dsh-chat-archive-manager",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-26T10:09:50.535Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 694,
+        "text": "const request = fetch(STATUS_PATH, { method: 'GET', credentials: 'same-origin', signal: controller.signal })"
+      },
+      {
+        "file": "client.js",
+        "line": 720,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive-deletion.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "lib/archive-deletion.js",
+        "line": 3,
+        "text": "import { lstat, mkdir, open, readFile, readdir, realpath, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/archive-deletion.js",
+        "line": 54,
+        "text": "const created = await mkdir(directory, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/archive-deletion.js",
+        "line": 82,
+        "text": "await handle.writeFile(`${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/archive-deletion.js",
+        "line": 90,
+        "text": "await rm(temporary, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "sessionPersistence",
+    "sessions",
+    "storageDomain",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,91 @@
+{
+  "name": "brockdsaver",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-26T10:09:54.552Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "const getHealth = () => fetch('/api/brockdsaver/health', { headers: { accept: 'application/json' } }).then((r) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 139,
+        "text": "const getRescueLog = () => fetch('/api/brockdsaver/rescue-log', { headers: { accept: 'application/json' } }).then((r) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doctor.js",
+        "line": 5,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync, copyFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/doctor.js",
+        "line": 129,
+        "text": "mkdirSync(backupDir, { recursive: true })"
+      },
+      {
+        "file": "lib/doctor.js",
+        "line": 177,
+        "text": "const content = readFileSync(p, 'utf8').trim()"
+      },
+      {
+        "file": "lib/doctor.js",
+        "line": 182,
+        "text": "writeFileSync(p, lines.join('\\n') + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/doctor.js",
+        "line": 202,
+        "text": "writeFileSync(patchPath, lines.join('\\n'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doctor.js",
+        "line": 7,
+        "text": "import { execSync, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 80,
+        "text": "const { execFileSync } = await import('node:child_process')"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 22,
+      "text": "npm install -g brockdsaver"
+    },
+    {
+      "file": "README.md",
+      "line": 107,
+      "text": "npm install -g brockdsaver"
+    }
+  ],
+  "skippedEntries": []
+}

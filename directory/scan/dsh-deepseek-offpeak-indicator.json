@@ -1,0 +1,69 @@
+{
+  "name": "dsh-deepseek-offpeak-indicator",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-26T10:09:31.773Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 110,
+        "text": "const response = await fetch(source(year), { signal: controller.signal, cache: 'no-store' });"
+      },
+      {
+        "file": "tools/update-holidays.mjs",
+        "line": 41,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(15000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/test-classify.mjs",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "tools/test-classify.mjs",
+        "line": 5,
+        "text": "const source = readFileSync(new URL('../client.js', import.meta.url), 'utf8');"
+      },
+      {
+        "file": "tools/update-holidays.mjs",
+        "line": 12,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "tools/update-holidays.mjs",
+        "line": 25,
+        "text": "const source = await readFile(CLIENT, 'utf8');"
+      },
+      {
+        "file": "tools/update-holidays.mjs",
+        "line": 70,
+        "text": "await writeFile(CLIENT, next);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,127 @@
+{
+  "name": "dsh-redteam-asset-graph",
+  "version": "7.9.8",
+  "scannedAt": "2026-10-26T10:09:59.004Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 295,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 610,
+        "text": "'curl -sS -m ' + Math.ceil(t / 1000),"
+      },
+      {
+        "file": "lib/parts/client.shim.js",
+        "line": 13,
+        "text": "return fetch(RPC_PATH, {"
+      },
+      {
+        "file": "src/host.js",
+        "line": 530,
+        "text": "'curl -sS -m ' + Math.ceil(t / 1000),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 715,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1032,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1569,
+        "text": "const fs = ctx.get('fs')"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1854,
+        "text": "export const inject = ['tools', 'fs', 'shell', 'timer', 'webServer']"
+      },
+      {
+        "file": "lib/parts/host.tail.js",
+        "line": 42,
+        "text": "export const inject = ['tools', 'fs', 'shell', 'timer', 'webServer']"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 7,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 77,
+        "text": "registerTool(c, tool) { return c.tools.register(tool) },"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1851,
+        "text": "// 加载期的致命错误 —— 整个 dsh 起不来。三个工具都走 ctx.tools.register"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1854,
+        "text": "export const inject = ['tools', 'fs', 'shell', 'timer', 'webServer']"
+      },
+      {
+        "file": "lib/parts/host.head.js",
+        "line": 7,
+        "text": "//   defineTool / registerTool -> @deepseek-ai/dsh-tools 的 defineTool + ctx.tools.register"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 72,
+        "text": "const build = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs')], {"
+      },
+      {
+        "file": "tools/prepare-gh-packages.mjs",
+        "line": 82,
+        "text": "const verify = spawnSync(process.execPath, [path.join(OUT, 'tools', 'build-lib.mjs'), '--check'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "shell",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
