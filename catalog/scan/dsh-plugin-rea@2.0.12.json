@@ -1,0 +1,161 @@
+{
+  "name": "dsh-plugin-rea",
+  "version": "2.0.12",
+  "scannedAt": "2026-10-26T07:23:32.371Z",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "check-updates.ps1",
+        "line": 166,
+        "text": "try { $latest = (Invoke-RestMethod \"$r/rea-agents/latest\" -TimeoutSec 20).version; Info \"最新版本($r): $latest\"; break }"
+      },
+      {
+        "file": "check-updates.ps1",
+        "line": 236,
+        "text": "$rel = Invoke-RestMethod 'https://api.github.com/repos/NationalSecurityAgency/ghidra/releases/latest' -TimeoutSec 25 -Headers @{ 'User-Agent' = 'rea-check' }"
+      },
+      {
+        "file": "client.js",
+        "line": 229,
+        "text": "fetch(ROUTE, {"
+      },
+      {
+        "file": "scripts/rea-bundle-bootstrap.ps1",
+        "line": 181,
+        "text": "# Invoke-WebRequest buffers the whole body before writing, so a slow mirror"
+      },
+      {
+        "file": "scripts/rea-bundle-bootstrap.ps1",
+        "line": 183,
+        "text": "Invoke-WebRequest -Uri $nodeUrl -OutFile $partial -UseBasicParsing -TimeoutSec 1800"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rea-guide.mjs",
+        "line": 24,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/rea-guide.mjs",
+        "line": 44,
+        "text": "const bytes = readFileSync(file)"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 19,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 40,
+        "text": "const bytes = readFileSync(file);"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 178,
+        "text": "text = readFileSync(patch, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/make-screenshots.ps1",
+        "line": 113,
+        "text": "Draw-Text $g \"@deepseek-ai/dsh-mcp-client`nserverName = rea / transport = stdio`ncommand = 当前 Node 可执行文件`nargs[0] = <DSH_HOME>/plugins/rea-bundle/`n            "
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 37,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 8,
+        "text": "*      `cordis.patch.yml`: it inserts one row of `@deepseek-ai/dsh-mcp-client`"
+      },
+      {
+        "file": "scripts/setup.test.mjs",
+        "line": 1066,
+        "text": "ert:\", \"    - id: rea-mcp\", \"      name: '@deepseek-ai/dsh-mcp-client'\", \"      config:\", \"        serverName: rea\", \"        transport: stdio\", \"\"].join(\"\\n\"),"
+      },
+      {
+        "file": "scripts/setup.test.mjs",
+        "line": 1086,
+        "text": " - id: rea-mcp  # written by upstream\", \"      name: '@deepseek-ai/dsh-mcp-client'\", \"      config:\", \"        serverName: 'rea' # same server\", \"\"].join(\"\\n\"),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 17,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 310,
+        "text": "child = spawn(process.execPath, [setupScript, \"--root\", root], {"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 605,
+        "text": "spawnSync(taskkill, [\"/pid\", String(pid), \"/T\", \"/F\"], {"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 639,
+        "text": "* Absolute on purpose: `spawn(comspec())` is resolved against the CHILD's PATH,"
+      },
+      {
+        "file": "bin/rea-shim.mjs",
+        "line": 696,
+        "text": "? spawn(comspec(), [\"/d\", \"/s\", \"/c\", `\"${[cmdQuote(file), \"--version\"].join(\" \")}\"`], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 5,
+      "text": "# `scripts/setup.mjs` and exports exactly the variables REA reads."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 20,
+      "text": "#     and setup.mjs use — `<home>/.dsh` — never to the bare home directory."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 49,
+      "text": "          - !!js \"(process.env.DSH_HOME && process.env.DSH_HOME.trim() !== '' ? process.env.DSH_HOME : (process.env.USERPROFILE || ((process.env.HOMEDRIVE || ''"
+    },
+    {
+      "file": "README.md",
+      "line": 8,
+      "text": "> JDK, Ghidra) and then wires the row: install the plugin, run `scripts/setup.mjs` once, restart dsh."
+    },
+    {
+      "file": "README.md",
+      "line": 13,
+      "text": "> **You must run `node scripts/setup.mjs` yourself — once after installing, and once after every plugin"
+    }
+  ],
+  "skippedEntries": []
+}

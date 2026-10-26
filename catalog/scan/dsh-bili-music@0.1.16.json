@@ -1,0 +1,104 @@
+{
+  "name": "dsh-bili-music",
+  "version": "0.1.16",
+  "scannedAt": "2026-10-26T07:23:32.925Z",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 920,
+        "text": "data = await fetch("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1644,
+        "text": "fetch(`${API}/search?kw=${encodeURIComponent(t.theme)}&page=${p}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1814,
+        "text": "const rel = await fetch(`${API}/related?bvid=${encodeURIComponent(bvid)}&limit=30`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1828,
+        "text": "fetch(`${API}/search?kw=${encodeURIComponent(kw)}&page=${p}`)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1879,
+        "text": "const data = await fetch(`${API}/search?kw=${encodeURIComponent(kw)}&page=${page}`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, readFileSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 808,
+        "text": "const raw = JSON.parse(readFileSync(hotkeyConfigPath(), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 818,
+        "text": "writeFileSync(hotkeyConfigPath(), JSON.stringify({ keys }, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 862,
+        "text": "writeFileSync(csPath, HOTKEY_CS, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 830,
+        "text": "const child = spawn(\"powershell.exe\", [\"-NoProfile\", \"-NonInteractive\", \"-EncodedCommand\", encoded], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 842,
+        "text": "spawnSync(\"taskkill\", [\"/F\", \"/IM\", \"dsh-bili-music-hotkey.exe\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 874,
+        "text": "spawnSync(\"taskkill\", [\"/F\", \"/IM\", \"dsh-bili-music-hotkey.exe\"], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 886,
+        "text": "const r = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
