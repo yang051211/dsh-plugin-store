@@ -94,6 +94,15 @@ test('the nav has home, all plugins and about, and each tab starts its page over
   assert.equal(currentTab(root), zh.navAbout)
 })
 
+test('the nav shows the brand picture, bundled with the plugin rather than loaded from the web', async () => {
+  const root = await mount()
+  const nav = root.root.find(n => n.type === 'nav' && n.props.className === 'ps-nav')
+  const [logo] = nav.findAllByType('img')
+  assert.ok(logo, 'a picture, not the old colored square')
+  assert.match(logo.props.src, /^data:image\/webp;base64,/)
+  assert.equal(logo.props.alt, '')
+})
+
 test('"see all" from a home section opens the list with that order', async () => {
   const root = await mount()
   const [, updatedMore] = root.root.findAll(n => n.type === 'button' && n.props.className === 'ps-more')

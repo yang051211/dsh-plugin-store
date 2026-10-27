@@ -25,6 +25,7 @@ import { makeTranslate } from './client/ui/common.tsx'
 import { ErrorBoundary } from './client/ui/ErrorBoundary.tsx'
 import { HandoffToast } from './client/ui/HandoffToast.tsx'
 import { StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
+import { BRAND_ICON } from './client/ui/brand-icon.ts'
 import { injectStyles } from './client/ui/styles.ts'
 
 /** Keys of this plugin's dictionary. */
@@ -58,11 +59,9 @@ function useCopy(props: LocaleProps, locale: Context['locale']) {
   return { lang, t }
 }
 
-/** Shopping-bag icon for the sidebar entry. */
+/** The brand picture as the sidebar entry's icon. */
 function StoreIcon({ size }: { size: number }): ReactNode {
-  return createElement('svg', { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true },
-    createElement('path', { d: 'M5 8h14l-1 12H6L5 8z' }),
-    createElement('path', { d: 'M9 8V6a3 3 0 0 1 6 0v2' }))
+  return createElement('img', { src: BRAND_ICON, width: size, height: size, alt: '', style: { borderRadius: Math.round(size / 4), objectFit: 'cover', display: 'block' } })
 }
 
 /** Register the store's surfaces. */

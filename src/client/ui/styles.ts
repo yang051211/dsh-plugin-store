@@ -39,7 +39,7 @@ export const STYLE_TEXT = `
 /* tab bar */
 .ps-nav { position: sticky; top: 0; z-index: 3; display: flex; align-items: stretch; gap: 22px; height: 50px; margin-bottom: 4px; background: ${C.bg1}; border-bottom: 1px solid ${C.borderSoft}; }
 .ps-nav-brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; margin-right: 6px; }
-.ps-nav-brand i { width: 20px; height: 20px; border-radius: 6px; background: ${C.brand}; display: inline-block; }
+.ps-nav-logo { width: 24px; height: 24px; border-radius: 6px; display: block; object-fit: cover; }
 .ps-nav button { border: 0; background: none; padding: 0; color: ${C.text2}; cursor: pointer; border-bottom: 2px solid transparent; }
 .ps-nav button:hover { color: ${C.text}; }
 .ps-nav .ps-nav-on { color: ${C.text}; font-weight: 600; border-bottom-color: ${C.text}; }

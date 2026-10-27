@@ -13,6 +13,7 @@ import { DetailView, type Load, type PluginDetail, type Readme } from './DetailV
 import { Home, type ListFilter } from './Home.tsx'
 import { ListView, type ListSettings } from './ListView.tsx'
 import { AboutView } from './About.tsx'
+import { BRAND_ICON } from './brand-icon.ts'
 
 export interface StoreServices {
   loadCatalog: (refresh?: boolean) => Promise<CatalogSnapshot>
@@ -270,7 +271,7 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
   return (
     <div className={`ps-root ps-mode-${mode}`} ref={root}>
       <nav className="ps-nav" aria-label={t('tab')}>
-        <span className="ps-nav-brand"><i aria-hidden="true" />{t('tab')}</span>
+        <span className="ps-nav-brand"><img className="ps-nav-logo" src={BRAND_ICON} alt="" width={24} height={24} />{t('tab')}</span>
         {TABS.map(tab => (
           <button key={tab} type="button" className={tabOf(current) === tab ? 'ps-nav-on' : ''} aria-current={tabOf(current) === tab ? 'page' : undefined} onClick={() => openTab(tab)}>
             {t({ home: 'navHome', all: 'navAll', about: 'navAbout' }[tab])}
