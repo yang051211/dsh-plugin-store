@@ -1,0 +1,110 @@
+{
+  "name": "dsh-rustxng-web-search",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-27T02:45:08.005Z",
+  "icon": "dsh-rustxng-web-search.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.mjs",
+        "line": 17,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 141,
+        "text": "const request = https.get("
+      },
+      {
+        "file": "index.js",
+        "line": 754,
+        "text": "const probe = await fetch(`${baseUrl}/`, { signal: AbortSignal.timeout(1500) })"
+      },
+      {
+        "file": "index.js",
+        "line": 793,
+        "text": "const res = await fetch(u.toString(), { signal: ac.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.mjs",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 64,
+        "text": "const parsed = JSON.parse(fs.readFileSync(metaPath(destPath), 'utf8'))"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 82,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true })"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 83,
+        "text": "fs.writeFileSync(target, JSON.stringify(merged, null, 2))"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 333,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "// `agent.ctx.tools.restrict()`, and it answers this package's own Web route so the page"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "engine.mjs",
+        "line": 311,
+        "text": "const probe = spawnSync(destPath, ['-v'], { encoding: 'utf8', timeout: 8000, windowsHide: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 741,
+        "text": "child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "web",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

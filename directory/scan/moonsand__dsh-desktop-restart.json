@@ -1,0 +1,87 @@
+{
+  "name": "@moonsand/dsh-desktop-restart",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-27T02:44:48.237Z",
+  "icon": "moonsand__dsh-desktop-restart.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 199,
+        "text": "const response = await fetch('/desktop-restart/status', {"
+      },
+      {
+        "file": "client.js",
+        "line": 220,
+        "text": "const response = await fetch('/desktop-restart/restart', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "import { existsSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 610,
+        "text": "writeFileSync(WATCHDOG_PS1_PATH, watchdogSource(executable, HELPER_LOG_PATH, WATCHDOG_MARKER_PATH, mode), 'ascii')"
+      },
+      {
+        "file": "index.js",
+        "line": 611,
+        "text": "writeFileSync(WATCHDOG_LAUNCHER_PATH, watchdogLauncherSource(systemPowerShellPath(), WATCHDOG_PS1_PATH), 'ascii')"
+      },
+      {
+        "file": "index.js",
+        "line": 627,
+        "text": "return JSON.parse(readFileSync(ARM_STATUS_PATH, 'utf8').replace(/^\\uFEFF/, ''))"
+      },
+      {
+        "file": "index.js",
+        "line": 675,
+        "text": "rmSync(ARM_STATUS_PATH, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 387,
+        "text": "child = spawn(systemPowerShellPath(), ['-NoProfile', '-NonInteractive', '-Command', query], {"
+      },
+      {
+        "file": "index.js",
+        "line": 572,
+        "text": "const helper = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,124 @@
+{
+  "name": "dsh-course-assistant",
+  "version": "1.5.2",
+  "scannedAt": "2026-10-27T02:44:57.145Z",
+  "icon": "dsh-course-assistant.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 570,
+        "text": "fetch(`${ROUTE}/health`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 619,
+        "text": "const res = await fetch(`${ROUTE}/job?id=${encodeURIComponent(jobId)}`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 629,
+        "text": "fetch(`${ROUTE}/report?id=${encodeURIComponent(jobId)}&format=md`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 652,
+        "text": "const res = await fetch(`${ROUTE}/upload?name=${encodeURIComponent(f.name)}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 662,
+        "text": "const res = await fetch(`${ROUTE}/run`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/ocr-windows.js",
+        "line": 6,
+        "text": "import { mkdirSync, mkdtempSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "core/ocr-windows.js",
+        "line": 17,
+        "text": "mkdirSync(scratch, { recursive: true })"
+      },
+      {
+        "file": "core/ocr-windows.js",
+        "line": 82,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "core/ocr-windows.js",
+        "line": 87,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "core/parser.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 40,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 629,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "core/ocr-rapidocr.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "core/ocr-rapidocr.js",
+        "line": 31,
+        "text": "child = spawn(pythonOf(options), ['-c', 'import rapidocr_onnxruntime, fitz'], { windowsHide: true })"
+      },
+      {
+        "file": "core/ocr-rapidocr.js",
+        "line": 61,
+        "text": "const child = spawn(pythonOf(options), args, { windowsHide: true })"
+      },
+      {
+        "file": "core/ocr-windows.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "core/ocr-windows.js",
+        "line": 41,
+        "text": "const child = spawn('powershell.exe', args, { windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

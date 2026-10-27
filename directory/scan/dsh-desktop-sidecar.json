@@ -1,0 +1,98 @@
+{
+  "name": "dsh-desktop-sidecar",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-27T02:44:57.360Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { writeFileSync, mkdirSync, readdirSync, statSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "mkdirSync(SHOT_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "try { if (now - statSync(p).mtimeMs > 3600_000) unlinkSync(p); } catch {}"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 237,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools', 'attachments'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "  const reg = (t) => ctx.tools.register({ ...t, parameters: compileParameters(t.parameters || {}), output: t.output || textOutput, execute: async (...args) => p"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ocr.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ocr.mjs",
+        "line": 17,
+        "text": "const probe = spawnSync('where', ['powershell.exe'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "lib/ocr.mjs",
+        "line": 61,
+        "text": "const r = spawnSync(resolvePs(), ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', OCR_PS1, '-Path', path, '-Language', language], {"
+      },
+      {
+        "file": "lib/uia.mjs",
+        "line": 3,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/uia.mjs",
+        "line": 10,
+        "text": "const r = spawnSync(PS, ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', UIA_PS1, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

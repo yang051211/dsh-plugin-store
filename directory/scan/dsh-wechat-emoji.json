@@ -1,0 +1,119 @@
+{
+  "name": "dsh-wechat-emoji",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-27T02:45:05.270Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 27,
+        "text": "fetch('/api/dsh-wechat-emoji/settings')"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "const r = await fetch('/api/dsh-wechat-emoji/settings', {"
+      },
+      {
+        "file": "lib/vision.mjs",
+        "line": 260,
+        "text": "const res = await fetch(opts.baseUrl || DEFAULT_BASE, {"
+      },
+      {
+        "file": "lib/wechat-cdn.mjs",
+        "line": 82,
+        "text": "response = await fetch(normalizedUrl, { signal: AbortSignal.timeout(timeoutMs), redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "const text = fs.readFileSync(PATCH_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "fs.writeFileSync(PATCH_FILE, BASELINE_PATCH_TEXT, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "const v = JSON.parse(fs.readFileSync(keyFile, 'utf8')).apiKey"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 112,
+        "text": "fs.mkdirSync(path.dirname(keyFile), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vision.mjs",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/vision.mjs",
+        "line": 83,
+        "text": "const probe = spawnSync(process.platform === 'win32' ? 'where' : 'which', ['ffmpeg'], { encoding: 'utf8', windowsHide: true })"
+      },
+      {
+        "file": "lib/vision.mjs",
+        "line": 90,
+        "text": "const r = spawnSync(ffmpeg, ["
+      },
+      {
+        "file": "lib/vision.mjs",
+        "line": 117,
+        "text": "const r1 = spawnSync(ffmpeg, ["
+      },
+      {
+        "file": "lib/vision.mjs",
+        "line": 131,
+        "text": "const r2 = spawnSync(ffmpeg, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

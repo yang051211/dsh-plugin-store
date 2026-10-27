@@ -1,0 +1,69 @@
+{
+  "name": "dsh-plugin-search-hub",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-27T02:45:01.985Z",
+  "icon": "dsh-plugin-search-hub.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/http.js",
+        "line": 39,
+        "text": "response = await call.fetch(buildUrl(request.url, request.query), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool.js",
+        "line": 13,
+        "text": "export const inject = ['tools', 'systemPrompt', 'pluginSearchHub'];"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 195,
+        "text": "if (ctx.tools.get('web_search', scope) === undefined)"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 197,
+        "text": "const fetchHint = ctx.tools.get('web_fetch', scope) === undefined ? '' : ' Follow up with web_fetch when you need the full content of a result.';"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 201,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.build.json && node scripts/build-client.mjs"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "pluginSearchHub",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

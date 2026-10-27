@@ -1,0 +1,71 @@
+{
+  "name": "dsh-appearance-master",
+  "version": "0.9.2",
+  "scannedAt": "2026-10-27T02:45:07.444Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 946,
+        "text": "const response = await fetch(`${ROUTE}/state`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1020,
+        "text": "const response = await fetch(`${ROUTE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/files.js",
+        "line": 1,
+        "text": "import { copyFileSync, existsSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 11,
+        "text": ": existsSync(entry.path) && readFileSync(entry.path, 'utf8') === expected"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 12,
+        "text": "const cleanup = (path) => { try { unlinkSync(path) } catch { /* absent or retained for diagnosis */ } }"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 18,
+        "text": "writeFileSync(temporary, entry.next, 'utf8')"
+      },
+      {
+        "file": "lib/files.js",
+        "line": 35,
+        "text": "if (entry.original === null) unlinkSync(entry.path)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,85 @@
+{
+  "name": "@yadsh/dsh-doc-impact",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-27T02:44:51.450Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config/loader.js",
+        "line": 1,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/config/loader.js",
+        "line": 17,
+        "text": "return parseConfig(await readFile(filePath, \"utf8\"), fallbacks);"
+      },
+      {
+        "file": "lib/dsh/config-source.js",
+        "line": 1,
+        "text": "import { readFile, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/dsh/config-source.js",
+        "line": 12,
+        "text": "raw = await readFile(path, \"utf8\");"
+      },
+      {
+        "file": "lib/dsh/config-source.js",
+        "line": 70,
+        "text": "const source = await readFile(configPath, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh/plugin.js",
+        "line": 11,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/dsh/plugin.js",
+        "line": 76,
+        "text": "ctx.tools.register(createResolveTool({ engine }));"
+      },
+      {
+        "file": "lib/dsh/plugin.js",
+        "line": 77,
+        "text": "ctx.tools.register(createStatusTool({ engine }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/changes/git.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/changes/git.js",
+        "line": 11,
+        "text": "const child = spawn(\"git\", args, { cwd, windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

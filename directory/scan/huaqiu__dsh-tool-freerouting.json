@@ -1,7 +1,7 @@
 {
   "name": "@huaqiu/dsh-tool-freerouting",
-  "version": "0.6.10",
-  "scannedAt": "2026-10-26T10:12:42.642Z",
+  "version": "0.6.11",
+  "scannedAt": "2026-10-27T02:44:45.760Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,18 +18,18 @@
       },
       {
         "file": "lib/index.js",
-        "line": 741,
+        "line": 878,
         "text": "const response = await fetch(`${this.options.baseUrl}/v1${path}`, {"
       },
       {
         "file": "lib/index.js",
-        "line": 801,
+        "line": 939,
         "text": "const status = parseJobStatus(await this.http.request(\"GET\", `/jobs/${jobId}`, void 0, signal));"
       },
       {
         "file": "lib/index.js",
-        "line": 830,
-        "text": "const output = parseJobOutput(await this.http.request(\"GET\", `/jobs/${jobId}/output`, void 0, signal));"
+        "line": 968,
+        "text": "const output = parseJobOutput(await this.http.request(\"GET\", `/jobs/${jobId}/output`, void 0, signal, handlers.onOutputFile));"
       }
     ]
   },
@@ -38,28 +38,28 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 11,
-        "text": "import { access, copyFile, cp, link, mkdir, mkdtemp, open, readFile, rename, rm, unlink, writeFile } from \"node:fs/promises\";"
+        "line": 6,
+        "text": "import { access, copyFile, link, mkdir, mkdtemp, open, readFile, rename, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
       },
       {
         "file": "lib/index.js",
-        "line": 13,
-        "text": "import { existsSync } from \"node:fs\";"
+        "line": 9,
+        "text": "import { closeSync, createWriteStream, existsSync, mkdtempSync, openSync } from \"node:fs\";"
       },
       {
         "file": "lib/index.js",
-        "line": 1065,
-        "text": "await readFile(path);"
+        "line": 391,
+        "text": "await mkdir(directory, { recursive: true });"
       },
       {
         "file": "lib/index.js",
-        "line": 1091,
-        "text": "await mkdir(this.directory, { recursive: true });"
+        "line": 394,
+        "text": "await writeFile(path, artifact.content, {"
       },
       {
         "file": "lib/index.js",
-        "line": 1103,
-        "text": "const lease = leaseSchema.parse(JSON.parse(await readFile(paths.lease, \"utf8\")));"
+        "line": 404,
+        "text": "await rm(path, { force: true });"
       }
     ]
   },
@@ -73,22 +73,22 @@
       },
       {
         "file": "lib/index.js",
-        "line": 3196,
+        "line": 3343,
         "text": "ctx.tools.register(createConfirmBoardTool(runService)),"
       },
       {
         "file": "lib/index.js",
-        "line": 3197,
+        "line": 3344,
         "text": "ctx.tools.register(createRepairRouteTool(runs, runService, routePrefix)),"
       },
       {
         "file": "lib/index.js",
-        "line": 3198,
+        "line": 3345,
         "text": "ctx.tools.register(createCancelRouteTool(runs, runService)),"
       },
       {
         "file": "lib/index.js",
-        "line": 3199,
+        "line": 3346,
         "text": "ctx.tools.register(createRouteTool(runs, runService, routePrefix, settings)),"
       }
     ]
@@ -98,13 +98,13 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 16,
+        "line": 20,
         "text": "import { spawn } from \"node:child_process\";"
       },
       {
         "file": "lib/index.js",
-        "line": 1296,
-        "text": "this.child = spawn(options.pythonPath, ["
+        "line": 1482,
+        "text": "const child = spawn(options.pythonPath, ["
       }
     ]
   },
@@ -189,12 +189,12 @@
   "setupHints": [
     {
       "file": "README.md",
-      "line": 103,
+      "line": 105,
       "text": "python -m pip install -r packages/dsh-tool-freerouting/requirements-dev.txt"
     },
     {
       "file": "README.zh-CN.md",
-      "line": 105,
+      "line": 107,
       "text": "python -m pip install -r packages/dsh-tool-freerouting/requirements-dev.txt"
     }
   ],

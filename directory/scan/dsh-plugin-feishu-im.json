@@ -1,0 +1,122 @@
+{
+  "name": "dsh-plugin-feishu-im",
+  "version": "1.16.0",
+  "scannedAt": "2026-10-27T02:45:01.395Z",
+  "icon": "dsh-plugin-feishu-im.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 92,
+        "text": "var response = await fetch(API + path, init);"
+      },
+      {
+        "file": "lib/feishu.js",
+        "line": 66,
+        "text": "const response = await fetch(`${base}${REGISTRATION_PATH}`, {"
+      },
+      {
+        "file": "lib/feishu.js",
+        "line": 161,
+        "text": "const response = await fetch(`${openBase(domain)}/open-apis/auth/v3/tenant_access_token/internal`, {"
+      },
+      {
+        "file": "lib/feishu.js",
+        "line": 186,
+        "text": "const response = await fetch(`${openBase(domain)}/open-apis/bot/v3/info`, {"
+      },
+      {
+        "file": "lib/feishu.js",
+        "line": 200,
+        "text": "const response = await fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { appendFileSync, existsSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { readFile, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 88,
+        "text": "const raw = await readFile(new URL('./package.json', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 176,
+        "text": "mkdirSync(join(home, 'feishu-im'), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 177,
+        "text": "appendFileSync("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 821,
+        "text": "scope.effect(() => scope.tools.register(permissionDefinition), `${PLUGIN_NAME}: feishu_permission tool`)"
+      },
+      {
+        "file": "index.js",
+        "line": 830,
+        "text": "scope.effect(() => scope.tools.register(definition), `${PLUGIN_NAME}: feishu_sessions tool`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/restart.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 53,
+        "text": "const child = spawn('/bin/sh', ['-c', `sleep ${Math.round(delayMs / 1000)}; exec ${command}`], {"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 37,
+      "text": "npm i -g dsh-plugin-feishu-im"
+    },
+    {
+      "file": "README.md",
+      "line": 37,
+      "text": "npm i -g dsh-plugin-feishu-im"
+    }
+  ],
+  "skippedEntries": []
+}

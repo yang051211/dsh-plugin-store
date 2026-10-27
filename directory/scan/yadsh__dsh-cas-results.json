@@ -1,0 +1,84 @@
+{
+  "name": "@yadsh/dsh-cas-results",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-27T02:44:51.216Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cas/filesystem-store.js",
+        "line": 16,
+        "text": "import { mkdir, opendir, open, readFile, rename, link, stat, unlink, writeFile, } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/cas/filesystem-store.js",
+        "line": 71,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/cas/filesystem-store.js",
+        "line": 120,
+        "text": "await mkdir(dirname(finalBlob), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/cas/filesystem-store.js",
+        "line": 124,
+        "text": "await handle.writeFile(storedBytes);"
+      },
+      {
+        "file": "lib/cas/filesystem-store.js",
+        "line": 151,
+        "text": "await unlink(tmp).catch(() => undefined);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.js",
+        "line": 82,
+        "text": "disposers.push(toolCtx.tools.register(createRetrieveTool(toolDeps)));"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 83,
+        "text": "disposers.push(toolCtx.tools.register(createSearchTool({ store: this.store, counters: this.counters })));"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 84,
+        "text": "disposers.push(toolCtx.tools.register(createInfoTool({ store: this.store })));"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 85,
+        "text": "disposers.push(toolCtx.tools.register(createStatsTool({ store: this.store, counters: this.counters })));"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 87,
+        "text": "disposers.push(toolCtx.tools.register(createGcTool({ store: this.store, readConfig: () => this.config })));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

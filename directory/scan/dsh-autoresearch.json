@@ -1,0 +1,101 @@
+{
+  "name": "dsh-autoresearch",
+  "version": "0.0.3",
+  "scannedAt": "2026-10-27T02:44:55.868Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evaluator-artifacts.js",
+        "line": 2,
+        "text": "import { closeSync, constants, fstatSync, fsyncSync, lstatSync, openSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/evaluator-artifacts.js",
+        "line": 59,
+        "text": "writeFileSync(fd, bytes);"
+      },
+      {
+        "file": "lib/evaluator-artifacts.js",
+        "line": 93,
+        "text": "const bytes = readFileSync(fd);"
+      },
+      {
+        "file": "lib/evaluator.js",
+        "line": 2,
+        "text": "import { closeSync, fstatSync, lstatSync, openSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/evaluator.js",
+        "line": 3,
+        "text": "import { constants } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent.js",
+        "line": 270,
+        "text": "childCtx.tools.register(reportTool(async (args, exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "export const inject = ['agents', 'jobs', 'subprocess', 'systemPrompt', 'tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "const releaseTool = ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/evaluator.js",
+        "line": 234,
+        "text": "handle = options.subprocess.spawn({"
+      },
+      {
+        "file": "lib/git.js",
+        "line": 63,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/tracker.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/tracker.js",
+        "line": 1262,
+        "text": "const result = spawnSync(process.execPath, ['-e', SQLITE_BACKUP_PROGRAM, path, snapshotPath, String(TRACKER_BUSY_TIMEOUT_MS)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "jobs",
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

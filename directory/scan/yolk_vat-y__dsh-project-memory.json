@@ -1,7 +1,7 @@
 {
   "name": "@yolk_vat-y/dsh-project-memory",
-  "version": "0.6.5",
-  "scannedAt": "2026-10-26T10:15:19.654Z",
+  "version": "0.6.6",
+  "scannedAt": "2026-10-27T02:44:54.567Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -11,29 +11,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "scripts/bench-store.mjs",
-        "line": 4,
-        "text": "import { readdirSync, readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs'"
+        "file": "scripts/bench-edits.mjs",
+        "line": 17,
+        "text": "import { mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'"
       },
       {
-        "file": "scripts/bench-store.mjs",
-        "line": 42,
-        "text": "mkdirSync(dir, { recursive: true })"
+        "file": "scripts/bench-edits.mjs",
+        "line": 33,
+        "text": "if (parent) mkdirSync(base, { recursive: true })"
       },
       {
-        "file": "scripts/bench-store.mjs",
-        "line": 44,
-        "text": "writeFileSync(p, synthFile(i))"
+        "file": "scripts/bench-edits.mjs",
+        "line": 45,
+        "text": "mkdirSync(root, { recursive: true })"
       },
       {
-        "file": "scripts/bench-store.mjs",
-        "line": 77,
-        "text": "const entries = scanSymbols(p, readFileSync(p, 'utf8'))"
+        "file": "scripts/bench-edits.mjs",
+        "line": 47,
+        "text": "writeFileSync(path.join(root, `m${i}.js`), `export function f${i}(a) {\\n  return a + ${i}\\n}\\n\\nexport const v${i} = ${i}\\n`)"
       },
       {
-        "file": "scripts/bench-store.mjs",
-        "line": 94,
-        "text": "writeFileSync(p, synthFile(round % files.length) + `\\n// touch ${round}\\n`)"
+        "file": "scripts/bench-edits.mjs",
+        "line": 70,
+        "text": "writeFileSync(file, `export function f${i % files}(a) {\\n  return a + ${i} // edit ${i}\\n}\\n`)"
       }
     ]
   },
@@ -42,27 +42,27 @@
     "evidence": [
       {
         "file": "src/index.js",
-        "line": 21,
+        "line": 23,
         "text": "export const inject = ['llm', 'tools']"
       },
       {
         "file": "src/index.js",
-        "line": 212,
+        "line": 220,
         "text": "ctx.tools.register(listTasksTool(config))"
       },
       {
         "file": "src/index.js",
-        "line": 213,
+        "line": 221,
         "text": "ctx.tools.register(selectTaskTool(config, { llm: ctx.llm, ctx }))"
       },
       {
         "file": "src/index.js",
-        "line": 214,
+        "line": 222,
         "text": "ctx.tools.register(archiveTaskTool(config, { llm: ctx.llm, ctx }))"
       },
       {
         "file": "src/index.js",
-        "line": 215,
+        "line": 223,
         "text": "ctx.tools.register(showTaskPanelTool(config))"
       }
     ]

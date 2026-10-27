@@ -1,0 +1,80 @@
+{
+  "name": "@ponydev/dsh-system-hud",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-27T02:44:48.779Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1043,
+        "text": "const res = await fetch('system-hud/' + endpoint, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "const res = await fetch(url, { headers: { accept: 'application/json' }, signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { chmod, mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "SELF_VERSION = JSON.parse(readFileSync(fileURLToPath(new URL('../package.json', import.meta.url)), 'utf8')).version || '0.0.0'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "await mkdir(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "await writeFile(tmp, JSON.stringify(config, null, 2) + '\\n', { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/metrics.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/metrics.js",
+        "line": 51,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

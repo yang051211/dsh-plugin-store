@@ -1,0 +1,72 @@
+{
+  "name": "dsh-session-mng",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-27T02:45:08.045Z",
+  "icon": "dsh-session-mng.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 543,
+        "text": "response = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store-jsonl.js",
+        "line": 25,
+        "text": "import { access, cp, mkdir, open, readdir, readFile, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store-jsonl.js",
+        "line": 242,
+        "text": "const buf = await readFile(log.path)"
+      },
+      {
+        "file": "lib/store-jsonl.js",
+        "line": 277,
+        "text": "await handle.writeFile(content)"
+      },
+      {
+        "file": "lib/store-jsonl.js",
+        "line": 288,
+        "text": "await rm(path, { force: true })"
+      },
+      {
+        "file": "lib/store-jsonl.js",
+        "line": 291,
+        "text": "await rm(temp, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "sessionPersistence",
+    "sessionQuery",
+    "sessionTitle",
+    "sessions",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

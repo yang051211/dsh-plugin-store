@@ -1,0 +1,86 @@
+{
+  "name": "@goodandready/dsh-opencode-provider",
+  "version": "0.5.16",
+  "scannedAt": "2026-10-27T02:44:45.293Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 387,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4046,
+        "text": "const response = await fetch(`${registry.replace(/\\/$/, \"\")}/${encodeURIComponent(packageName)}/latest`, { signal: AbortSignal.timeout(8e3) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { appendFile, mkdir, readFile, readdir, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1560,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1563,
+        "text": "await appendFile(path, line, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1574,
+        "text": "const lines = (await readFile(path, \"utf8\")).split(\"\\n\").filter((line) => line !== \"\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4082,
+        "text": "const child = spawn(process.execPath, ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown 1>&2"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

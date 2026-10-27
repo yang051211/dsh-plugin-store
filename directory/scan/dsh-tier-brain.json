@@ -1,0 +1,73 @@
+{
+  "name": "dsh-tier-brain",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-27T02:45:04.315Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 213,
+        "text": "const res = await fetch('/dsh-tier-brain/preview', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { mkdirSync, appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "try { mkdirSync(DATA_DIR, { recursive: true }); } catch { /* 落盘失败不影响主流程 */ }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "try { appendFileSync(LOG_FILE, JSON.stringify(record) + '\\n', 'utf8'); } catch { /* 同上 */ }"
+      },
+      {
+        "file": "scripts/dsh-tier-brain.mjs",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/dsh-tier-brain.mjs",
+        "line": 22,
+        "text": "text = readFileSync(0, 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 176,
+      "text": "# 装了包（npm i -g dsh-tier-brain）之后"
+    }
+  ],
+  "skippedEntries": []
+}

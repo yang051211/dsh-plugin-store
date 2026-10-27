@@ -1,0 +1,80 @@
+{
+  "name": "@pandablessing/dsh-user-sync",
+  "version": "1.0.25",
+  "scannedAt": "2026-10-27T02:44:48.429Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 118,
+        "text": "const response = await fetch(url, { cache: 'no-store', ...options });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 408,
+        "text": "const response = await fetch(`${registry}/-/package/${encoded}/dist-tags`, { signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/apply.js",
+        "line": 1,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 35,
+        "text": "mkdirSync(p, { recursive: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 73,
+        "text": "rmSync(abs, { force: true });"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 79,
+        "text": "const existing = existsSync(abs) ? readFileSync(abs) : null;"
+      },
+      {
+        "file": "lib/apply.js",
+        "line": 89,
+        "text": "writeFileSync(tmp, entry.data);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "const child = spawn(file, args, { cwd: options.cwd, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

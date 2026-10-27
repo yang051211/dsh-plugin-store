@@ -1,0 +1,115 @@
+{
+  "name": "@yadsh/dsh-qa-surface",
+  "version": "0.18.0",
+  "scannedAt": "2026-10-27T02:44:53.713Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 481,
+        "text": "ser.gullet.beginGroup();var next=parser.fetch().text;if(next===`&`||next===`\\\\\\\\`)parser.consume();else if(next===`\\\\end`){if(parsedRows[parsedRows.length-1].le"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 485,
+        "text": "f(consume===void 0)consume=true;if(this.fetch().text!==text)throw new ParseError(`Expected '`+text+`', got '`+this.fetch().text+`'`,this.fetch());if(consume)thi"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/access/role-repository.js",
+        "line": 1,
+        "text": "import { readFileSync, renameSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/access/role-repository.js",
+        "line": 249,
+        "text": "raw = readFileSync(legacyFilePath, \"utf8\");"
+      },
+      {
+        "file": "lib/accounts/database.js",
+        "line": 2,
+        "text": "import { readFileSync, renameSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/accounts/database.js",
+        "line": 556,
+        "text": "raw = readFileSync(legacyFilePath, \"utf8\");"
+      },
+      {
+        "file": "lib/admin/quality-store.js",
+        "line": 2,
+        "text": "import { readFileSync, renameSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/access/capability-catalog.js",
+        "line": 66,
+        "text": "const schemas = new Map((scopes.length === 0 ? [undefined] : scopes.reverse()).flatMap((key) => this.ctx.tools"
+      },
+      {
+        "file": "lib/chat-sharing/turn-guard.js",
+        "line": 75,
+        "text": "this.disposers.push(ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/enforcement/skill-policy.js",
+        "line": 114,
+        "text": "const disposeTool = agent.ctx.tools.register(definition);"
+      },
+      {
+        "file": "lib/enforcement/skill-policy.js",
+        "line": 119,
+        "text": "disposePaths = agent.ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/enforcement/structured-result.js",
+        "line": 21,
+        "text": "const definition = ctx.tools.get(name, scope);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 8,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client/admin/pages/Conversations.js",
+    "lib/client/admin/pages/Quality.js",
+    "lib/client/admin/pages/Users.js",
+    "lib/client/admin/RoleEditor.js",
+    "lib/client/markdown/katex-css.js",
+    "lib/client/user-settings/IntegrationTokensPage.js",
+    "lib/client/user-settings/SkillEditor.js",
+    "lib/typert.host.js",
+    "lib/typert.remote-client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "permissionPresets",
+    "sessionController",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

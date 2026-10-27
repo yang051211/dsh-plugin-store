@@ -1,7 +1,7 @@
 {
   "name": "@dsh-enhanced/assistant-delivery",
-  "version": "0.1.62",
-  "scannedAt": "2026-10-26T10:12:00.516Z",
+  "version": "0.1.63",
+  "scannedAt": "2026-10-27T02:44:40.532Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -11,29 +11,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "bin/dsh-restart-supervisor.js",
+        "line": 3,
+        "text": "import { constants } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-restart-supervisor.js",
+        "line": 4,
+        "text": "import { open, lstat } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/dsh-restart-supervisor.js",
+        "line": 33,
+        "text": "const contents = await file.readFile()"
+      },
+      {
         "file": "lib/agent-runtime.js",
         "line": 2,
         "text": "import { mkdir, stat } from 'node:fs/promises';"
       },
       {
         "file": "lib/agent-runtime.js",
-        "line": 824,
+        "line": 826,
         "text": "await mkdir(workspace, { recursive: true, mode: 0o700 });"
-      },
-      {
-        "file": "lib/operator-snapshot.js",
-        "line": 2,
-        "text": "nstants, fstatSync, lstatSync, mkdtempSync, openSync, readdirSync, readSync, realpathSync, rmSync, rmdirSync, statSync, unlinkSync, writeSync, } from 'node:fs';"
-      },
-      {
-        "file": "lib/operator-snapshot.js",
-        "line": 428,
-        "text": "unlinkSync(`${anchor}/${name}`);"
-      },
-      {
-        "file": "lib/operator-snapshot.js",
-        "line": 920,
-        "text": "rmSync(temporaryPath, { recursive: true, force: true });"
       }
     ]
   },
@@ -42,34 +42,50 @@
     "evidence": [
       {
         "file": "lib/agent-runtime.js",
-        "line": 1440,
+        "line": 1460,
         "text": "removeToolGuard = agent.ctx.tools.guard(() => guardContinuationAuthorization()"
       },
       {
         "file": "lib/agent-runtime.js",
-        "line": 1714,
+        "line": 1742,
         "text": "liftRestriction = agent.ctx.tools.restrict({ allow: [] });"
       },
       {
         "file": "lib/agent-runtime.js",
-        "line": 1715,
+        "line": 1743,
         "text": "liftGuard = agent.ctx.tools.guard(() => AUTOMATIC_COMPLETION_TOOL_DENIAL);"
       },
       {
         "file": "lib/agent-runtime.js",
-        "line": 2698,
+        "line": 2726,
         "text": "const guard = agent.ctx.tools.guard(() => {"
       },
       {
-        "file": "lib/tools.js",
-        "line": 3,
-        "text": "ctx.tools.register(defineTool({"
+        "file": "lib/service.js",
+        "line": 5071,
+        "text": "current = agent.ctx.tools.get(name, agent);"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/restart-supervisor.js",
+        "line": 9,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/restart-supervisor.js",
+        "line": 327,
+        "text": "const child = spawn(executable, args, { stdio: ['ignore', 'pipe', 'ignore'],"
+      },
+      {
+        "file": "lib/restart-supervisor.js",
+        "line": 599,
+        "text": "const result = spawnSync('/usr/bin/flock', ['-n', '-E', '75', '3'], {"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,

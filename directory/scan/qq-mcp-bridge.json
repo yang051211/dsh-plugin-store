@@ -1,0 +1,110 @@
+{
+  "name": "qq-mcp-bridge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-27T02:45:06.582Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/doctor.js",
+        "line": 200,
+        "text": "const res = await fetch(`${cfg.apiBase}/gateway/bot`, {"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 75,
+        "text": "this.#createSocket = deps.createSocket ?? ((url) => new WebSocket(url));"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 76,
+        "text": "this.#fetch = deps.fetch ?? ((...args) => fetch(...args));"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 192,
+        "text": "const res = await this.#fetch(`${this.#cfg.apiBase}/gateway/bot`, {"
+      },
+      {
+        "file": "src/qq-api.js",
+        "line": 157,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.js",
+        "line": 10,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/config.js",
+        "line": 29,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "src/contacts.js",
+        "line": 11,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/contacts.js",
+        "line": 121,
+        "text": "const raw = fs.readFileSync(this.#file, 'utf8');"
+      },
+      {
+        "file": "src/contacts.js",
+        "line": 138,
+        "text": "fs.mkdirSync(path.dirname(this.#file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 7,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "src/gateway.js",
+        "line": 431,
+        "text": "* `dsh-mcp-client` 「先起探测进程再起正式进程」造成的两次 Identify 顶号。"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 5,
+        "text": "* 按 dsh-mcp-client 的文档，注册的工具越多，每轮 token 成本越高。"
+      },
+      {
+        "file": "waker/index.js",
+        "line": 129,
+        "text": "* 这一点来自 dsh-mcp-client 源码里的显式注释。"
+      },
+      {
+        "file": "waker/index.js",
+        "line": 201,
+        "text": "// 插件随 DSH 启动即连接。这里没有 dsh-mcp-client 的「探测进程」问题，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

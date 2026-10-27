@@ -1,0 +1,46 @@
+{
+  "name": "@yadsh/dsh-model-safety-gate",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-27T02:44:52.682Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/classifier/openai-backend.js",
+        "line": 11,
+        "text": "const fetchImpl = options.fetchImpl ?? ((url, init) => fetch(url, init));"
+      },
+      {
+        "file": "lib/rules/injection.js",
+        "line": 103,
+        "text": "source: \"\\\\b(?:curl|wget|Invoke-WebRequest|iwr|irm)\\\\b[^|;]{0,120}\\\\|\\\\s*(?:sudo\\\\s+)?(?:sh|bash|zsh|fish|powershell|pwsh|cmd|python3?|iex|perl|ruby)\\\\b\","
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/typert.host.js",
+    "lib/typert.remote-client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

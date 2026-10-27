@@ -1,39 +1,45 @@
 {
   "name": "dsh-super-code",
-  "version": "0.3.7",
-  "scannedAt": "2026-10-26T10:05:31.603Z",
+  "version": "0.3.8",
+  "scannedAt": "2026-10-27T02:45:04.074Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection/http.js",
+        "line": 2,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
     "evidence": [
       {
-        "file": "lib/dsh/preset-declaration.js",
-        "line": 3,
-        "text": "import { lstat, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promises';"
+        "file": "lib/connection/directories.js",
+        "line": 2,
+        "text": "import { realpath, stat } from 'node:fs/promises';"
       },
       {
-        "file": "lib/dsh/preset-declaration.js",
-        "line": 32,
-        "text": "const record = JSON.parse(await readFile(path, 'utf8'));"
+        "file": "lib/connection/git.js",
+        "line": 4,
+        "text": "import { constants } from 'node:fs';"
       },
       {
-        "file": "lib/dsh/preset-declaration.js",
-        "line": 67,
-        "text": "await writeFile(file, JSON.stringify({ plugin: 'dsh-super-code', format: 1, ...value }), { mode: 0o600 });"
+        "file": "lib/connection/git.js",
+        "line": 5,
+        "text": "import { lstat, open, readlink, realpath } from 'node:fs/promises';"
       },
       {
-        "file": "lib/dsh/preset-declaration.js",
-        "line": 72,
-        "text": "await rm(stage, { recursive: true, force: true });"
+        "file": "lib/connection/service.js",
+        "line": 2,
+        "text": "import { realpath, stat } from 'node:fs/promises';"
       },
       {
-        "file": "lib/dsh/preset-declaration.js",
-        "line": 179,
-        "text": "const rows = yaml.load(await readFile(this.bundlePath, 'utf8'), { schema: declarationSchema });"
+        "file": "lib/connection/store.js",
+        "line": 2,
+        "text": "import { chmod, mkdir, open, readFile, rename, unlink, lstat } from 'node:fs/promises';"
       }
     ]
   },
@@ -63,14 +69,20 @@
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/connection/git.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,
     "evidence": []
   },
-  "dependencies": 2,
+  "dependencies": 3,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [],

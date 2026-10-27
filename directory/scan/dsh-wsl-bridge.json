@@ -1,0 +1,115 @@
+{
+  "name": "dsh-wsl-bridge",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-27T02:45:05.693Z",
+  "icon": "dsh-wsl-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 154,
+        "text": "const response = await fetch(url)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 120,
+        "text": "appendFileSync(config.selfCheckMarker, '[dsh-wsl-bridge] mount ' + new Date().toISOString()"
+      },
+      {
+        "file": "src/self-check.js",
+        "line": 18,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/self-check.js",
+        "line": 33,
+        "text": "appendFileSync(config.selfCheckMarker, '[self-check] ' + label + ' ' + new Date().toISOString() + '\\n')"
+      },
+      {
+        "file": "src/self-check.js",
+        "line": 42,
+        "text": "appendFileSync(config.selfCheckMarker, '[self-check] started ' + new Date().toISOString() + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['tools', 'subprocess', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 98,
+        "text": "const unregister = ctx.tools.register(tool)"
+      },
+      {
+        "file": "wsl-world.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'subprocess']"
+      },
+      {
+        "file": "wsl-world.js",
+        "line": 66,
+        "text": "const unregister = ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 72,
+        "text": "spawn: (options) => subprocess.spawn(options),"
+      },
+      {
+        "file": "src/jobs.js",
+        "line": 80,
+        "text": "process = subprocess.spawn({"
+      },
+      {
+        "file": "src/shell.js",
+        "line": 397,
+        "text": "handle = spawn({"
+      },
+      {
+        "file": "src/shell.js",
+        "line": 440,
+        "text": "handle = spawn({"
+      },
+      {
+        "file": "wsl-world.js",
+        "line": 54,
+        "text": "spawn: (options) => subprocess.spawn(options),"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

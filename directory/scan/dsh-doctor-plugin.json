@@ -1,0 +1,118 @@
+{
+  "name": "dsh-doctor-plugin",
+  "version": "0.14.1",
+  "scannedAt": "2026-10-27T02:44:57.548Z",
+  "icon": "dsh-doctor-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 120,
+        "text": "const response = await fetch('/dsh-doctor/status' + (force === true ? '?force=1' : ''), { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 126,
+        "text": "const response = await fetch('/dsh-doctor/cached', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 132,
+        "text": "const response = await fetch('/dsh-doctor/history', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 138,
+        "text": "const response = await fetch('/dsh-doctor/rescue', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 148,
+        "text": "const response = await fetch('/dsh-doctor/report', { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "ort { existsSync, readFileSync, readdirSync, renameSync, copyFileSync, statSync, writeFileSync, mkdirSync, appendFileSync, openSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "return JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "try { return JSON.parse(readFileSync(rescueRegistryPath(), 'utf8')) } catch (error) { return null }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 131,
+        "text": "writeFileSync(rescueRegistryPath(), JSON.stringify(value, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 214,
+        "text": "try { raw = readFileSync(workspaceFile(), 'utf8') } catch (error) { return null }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 574,
+        "text": "if (!line.includes('@deepseek-ai/dsh-mcp-client')) return"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { spawnSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 68,
+        "text": "const result = spawnSync('powershell.exe', ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const run = spawnSync(command, argv, { windowsHide: true, encoding: 'utf8', timeout })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "const result = spawnSync('/bin/sh', ['-lc', command], { encoding: 'utf8', timeout })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 564,
+        "text": "const probe = spawnSync(candidate, ['--version'], { encoding: 'utf8', timeout: 5000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,129 @@
+{
+  "name": "dsh-websift",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-27T02:45:05.025Z",
+  "icon": "dsh-websift.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 148,
+        "text": "fetch(\"/_websift/settings\", { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 161,
+        "text": "fetch(\"/_websift/settings\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 247,
+        "text": "fetch(\"/_websift/chrome-candidates\", { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 266,
+        "text": "fetch(\"/_websift/clash\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 285,
+        "text": "fetch(\"/_websift/window\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 301,
+        "text": "mkdirSync(DEFAULTS.outputDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 353,
+        "text": "return JSON.parse(readFileSync(SETTINGS_PATH, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 362,
+        "text": "mkdirSync(DEFAULTS.outputDir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 363,
+        "text": "writeFileSync(SETTINGS_PATH, JSON.stringify(next, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2420,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2501,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2601,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2965,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 647,
+        "text": "const child = spawn(bin, [], { detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 852,
+        "text": "const child = spawn(settings.chromePath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

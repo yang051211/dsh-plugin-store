@@ -1,0 +1,77 @@
+{
+  "name": "dsh-gemini-argon",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-27T02:44:57.769Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 515,
+        "text": "* process-wide fetch (which already carries the harness proxy dispatcher)."
+      },
+      {
+        "file": "index.js",
+        "line": 518,
+        "text": "if (proxy === undefined) return fetch(url, init)"
+      },
+      {
+        "file": "index.js",
+        "line": 519,
+        "text": "const undici = await import('undici')"
+      },
+      {
+        "file": "index.js",
+        "line": 525,
+        "text": "return undici.fetch(url, { ...init, dispatcher })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 211,
+        "text": "text = readFileSync(path, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 1242,
+        "text": "(hostPath) => ctx.get('fs')?.processPathFromHostPath(hostPath),"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

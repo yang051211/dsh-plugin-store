@@ -1,0 +1,143 @@
+{
+  "name": "@sputnikzaychik/dsh-qq-bot",
+  "version": "0.12.4",
+  "scannedAt": "2026-10-27T02:45:07.553Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/milky.mjs",
+        "line": 22,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/adapters/qq-official.mjs",
+        "line": 25,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/adapters/qq-official.mjs",
+        "line": 158,
+        "text": "const response = await fetch(API_BASE + apiPath, {"
+      },
+      {
+        "file": "lib/adapters/qq-official.mjs",
+        "line": 918,
+        "text": "try { opening = new WebSocket(url); }"
+      },
+      {
+        "file": "lib/bridge/stdio.mjs",
+        "line": 122,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/qq-official.mjs",
+        "line": 28,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/adapters/qq-official.mjs",
+        "line": 518,
+        "text": "try { buffer = await readFile(source.value); }"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 4,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/compat.js",
+        "line": 91,
+        "text": "const pkg = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/flow-store.js",
+        "line": 14,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "export const inject = ['subprocess', 'sessionController', 'timer', 'attachments', 'llm', 'tools'];"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 137,
+        "text": "// 0.2 起 Guard 也管着 agent 上下文里的 tools：直接 ctx.tools 会抛，get() 才安全；"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 144,
+        "text": "try { agentTools = entry.agent.ctx.tools; } catch (error) { agentTools = undefined; }"
+      },
+      {
+        "file": "lib/session.js",
+        "line": 214,
+        "text": "toolsService = (typeof entry.agent.ctx.get === 'function') ? entry.agent.ctx.get('tools') : entry.agent.ctx.tools;"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 26,
+        "text": "* DSH 0.2 起 Cordis 的 Guard 规定：读写 ctx.tools 必须先声明 inject: ['tools']，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 752,
+        "text": "proc = subprocess.spawn({"
+      },
+      {
+        "file": "lib/moli.js",
+        "line": 6,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/moli.js",
+        "line": 52,
+        "text": "execFile(exe, args, { timeout: deadline + 10000, maxBuffer: 8 * 1024 * 1024, encoding: 'utf8' },"
+      },
+      {
+        "file": "lib/workspace.js",
+        "line": 7,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "llm",
+    "sessionController",
+    "subprocess",
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

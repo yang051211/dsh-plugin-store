@@ -1,0 +1,135 @@
+{
+  "name": "dsh-douyin-watch",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-27T02:44:57.531Z",
+  "icon": "dsh-douyin-watch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 104,
+        "text": "fetch('/api/douyin-watch/sessions')"
+      },
+      {
+        "file": "client.js",
+        "line": 170,
+        "text": "const load = () => fetch('/api/douyin-watch/config')"
+      },
+      {
+        "file": "client.js",
+        "line": 181,
+        "text": "const tick = () => fetch('/api/douyin-watch/config')"
+      },
+      {
+        "file": "client.js",
+        "line": 190,
+        "text": "fetch('/api/douyin-watch/config', {"
+      },
+      {
+        "file": "client.js",
+        "line": 353,
+        "text": "fetch('/api/douyin-watch/persona/inject', { method: 'POST' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "import { appendFileSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync, existsSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 335,
+        "text": "const raw = readFileSync(cfgPath, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 348,
+        "text": "try { appendFileSync(cfg.logFile, `[${new Date().toISOString()}] ${m}\\n`) } catch { /* 日志写不进去不影响主流程 */ }"
+      },
+      {
+        "file": "index.js",
+        "line": 405,
+        "text": "const j = JSON.parse(readFileSync(join(cfg.home || HOME, 'browser-mode.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 446,
+        "text": "const head = zlib.zstdDecompressSync(readFileSync(file)).toString('utf8').split('\\n')[0]"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 98,
+        "text": "export const inject = ['agents', 'tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 1282,
+        "text": "const d = targetCtx.tools.register(spec)"
+      },
+      {
+        "file": "index.js",
+        "line": 1914,
+        "text": "if (agent.ctx && agent.ctx.tools && typeof agent.ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "index.js",
+        "line": 1918,
+        "text": "log('agent.ctx.tools 不可用，跳过工具注册')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 353,
+        "text": "execFile(cfg.nodeBin || process.execPath, [script, ...args], {"
+      },
+      {
+        "file": "index.js",
+        "line": 1096,
+        "text": "execFile(bin, [script, '--limit', String(limit)], {"
+      },
+      {
+        "file": "index.js",
+        "line": 1127,
+        "text": "execFile(node, [script, '--to', peer, '--text', text], {"
+      },
+      {
+        "file": "index.js",
+        "line": 1775,
+        "text": "execFile(node, [script, aweme, peer], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "dsh-session-save",
-  "version": "0.1.0",
-  "scannedAt": "2026-10-26T10:15:36.089Z",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-27T02:45:08.183Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -22,29 +22,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "index.js",
-        "line": 12,
+        "file": "dialog/shared.mjs",
+        "line": 7,
         "text": "import fs from 'node:fs';"
       },
       {
-        "file": "index.js",
-        "line": 414,
-        "text": "const raw = JSON.parse(fs.readFileSync(stateFile(), 'utf8'));"
+        "file": "dialog/windows.mjs",
+        "line": 23,
+        "text": "import fs from 'node:fs';"
       },
       {
-        "file": "index.js",
-        "line": 453,
-        "text": "const buf = fs.readFileSync(target);"
+        "file": "dialog/windows.mjs",
+        "line": 62,
+        "text": "raw = fs.readFileSync(resultFile, 'utf8');"
       },
       {
-        "file": "index.js",
-        "line": 477,
-        "text": "fs.mkdirSync(path.dirname(target), { recursive: true });"
+        "file": "dialog/windows.mjs",
+        "line": 86,
+        "text": "fs.unlinkSync(resultFile);"
       },
       {
-        "file": "index.js",
-        "line": 479,
-        "text": "fs.writeFileSync(tmp, bytes);"
+        "file": "dialog/windows.mjs",
+        "line": 108,
+        "text": "fs.unlinkSync(resultFile);"
       }
     ]
   },
@@ -56,14 +56,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "index.js",
-        "line": 10,
+        "file": "dialog/linux.mjs",
+        "line": 17,
         "text": "import { execFile } from 'node:child_process';"
       },
       {
-        "file": "index.js",
-        "line": 732,
+        "file": "dialog/linux.mjs",
+        "line": 95,
         "text": "execFile("
+      },
+      {
+        "file": "dialog/macos.mjs",
+        "line": 17,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dialog/macos.mjs",
+        "line": 92,
+        "text": "execFile("
+      },
+      {
+        "file": "dialog/windows.mjs",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process';"
       }
     ]
   },

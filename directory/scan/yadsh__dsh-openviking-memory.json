@@ -1,0 +1,84 @@
+{
+  "name": "@yadsh/dsh-openviking-memory",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-27T02:44:53.005Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api-client.js",
+        "line": 52,
+        "text": "const response = await fetch(`${this.config.endpoint}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 8,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 34,
+        "text": "const manifest = JSON.parse(readFileSync(new URL(\"../package.json\", import.meta.url), \"utf-8\"));"
+      },
+      {
+        "file": "lib/openviking/credentials.js",
+        "line": 9,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/openviking/credentials.js",
+        "line": 33,
+        "text": "return JSON.parse(readFileSync(path, \"utf-8\"));"
+      },
+      {
+        "file": "lib/openviking/debug-log.js",
+        "line": 15,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "export const inject = [\"agents\", \"sessions\", \"tools\"];"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 13,
+        "text": "import * as mcpClient from \"@deepseek-ai/dsh-mcp-client\";"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 18,
+        "text": "* Build the dsh-mcp-client config for the OpenViking stdio proxy."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,61 @@
+{
+  "name": "dsh-web-search-plus",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-27T02:45:05.017Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 347,
+        "text": "const response = await fetch(`${ROUTE_PREFIX}${suffix}`, {"
+      },
+      {
+        "file": "lib/routes.js",
+        "line": 153,
+        "text": "* 一个恶意页面**——它可以 `fetch('http://127.0.0.1:<port>/api/...')`。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "const parsed = JSON.parse(readFileSync(url, 'utf8'))"
+      },
+      {
+        "file": "lib/schema.js",
+        "line": 30,
+        "text": "import { existsSync, readdirSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "web"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

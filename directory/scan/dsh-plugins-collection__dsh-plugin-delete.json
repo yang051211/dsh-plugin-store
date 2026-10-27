@@ -1,0 +1,76 @@
+{
+  "name": "@dsh-plugins-collection/dsh-plugin-delete",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-27T02:45:07.225Z",
+  "icon": "dsh-plugins-collection__dsh-plugin-delete.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 160,
+        "text": "const response = await fetch(path, init)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 55,
+        "text": "for (const dir of dirs) await rm(dir, RM_OPTIONS)"
+      },
+      {
+        "file": "index.js",
+        "line": 57,
+        "text": "await rm(path.join(projcacheDir, `${sessionId}.json`), { force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 161,
+        "text": "await rm(target, RM_OPTIONS)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "export const inject = ['webServer', 'workspaceRegistry', 'workspaceController', 'agents', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 442,
+        "text": "const dispose = ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "tools",
+    "webServer",
+    "workspaceController",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

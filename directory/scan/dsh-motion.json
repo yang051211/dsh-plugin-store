@@ -1,0 +1,131 @@
+{
+  "name": "dsh-motion",
+  "version": "0.10.2",
+  "scannedAt": "2026-10-27T02:45:00.136Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/approvals.js",
+        "line": 7,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/approvals.js",
+        "line": 40,
+        "text": "mkdirSync(join(project.root, '.dsh-motion'), { recursive: true })"
+      },
+      {
+        "file": "lib/approvals.js",
+        "line": 41,
+        "text": "appendFileSync(path, `${JSON.stringify({"
+      },
+      {
+        "file": "lib/approvals.js",
+        "line": 95,
+        "text": "const data = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 8,
+        "text": "import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 195,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doctor.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/ops.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/preflight.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/lib/audio.mjs",
+        "line": 9,
+        "text": "import { execFile, spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 174,
+      "text": "npm install -g dsh-motion"
+    },
+    {
+      "file": "README.md",
+      "line": 208,
+      "text": "~/.dsh/data/dsh-motion/venv/bin/pip install manimgx sympy"
+    },
+    {
+      "file": "README.md",
+      "line": 289,
+      "text": ".venv-tts/bin/pip install edge-tts numpy   # Windows: .venv-tts\\Scripts\\pip"
+    },
+    {
+      "file": "README.md",
+      "line": 408,
+      "text": "1. **npm CLI 必须 ≥ 11.5.1**。Node 22 自带的 npm 10 不支持 OIDC，会把占位 token 发出去，registry 返回误导性的 `404 not in this registry`。工作流里已加 `npm install -g npm@latest`。"
+    }
+  ],
+  "skippedEntries": []
+}

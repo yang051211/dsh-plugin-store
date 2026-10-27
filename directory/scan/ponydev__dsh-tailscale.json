@@ -1,0 +1,105 @@
+{
+  "name": "@ponydev/dsh-tailscale",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-27T02:44:48.908Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2626,
+        "text": "res = await fetch('tailscale/' + endpoint, {"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 5,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 6,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 9,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 79,
+        "text": "const request = https.get(url, { timeout: timeoutMs, headers: { 'user-agent': 'dsh-tailscale' } }, (response) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 5,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 8,
+        "text": "import { existsSync, promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 96,
+        "text": "await fsp.writeFile(destination, Buffer.concat(chunks), { mode: 0o600 })"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 218,
+        "text": "await fsp.rm(script, { force: true })"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 254,
+        "text": "await fsp.rm(pkg, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 86,
+        "text": "execFile(this.cliPath, args, { timeout, maxBuffer: 8 * 1024 * 1024, windowsHide: true, env }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 65,
+        "text": "    execFile(file, args, { timeout, maxBuffer: 8 * 1024 * 1024, windowsHide: true, env: env ? { ...process.env, ...env } : process.env }, (error, stdout, stderr"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,84 @@
+{
+  "name": "dsh-api-hub",
+  "version": "0.11.0",
+  "scannedAt": "2026-10-27T02:44:55.669Z",
+  "icon": "dsh-api-hub.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 52,
+        "text": "const response = await fetch(base + \"/api/health\", { signal: controller.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 76,
+        "text": "const response = await fetch(base + path, body === undefined"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2471,
+        "text": "fetch(base + \"/api/health\")"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 894,
+        "text": "const r = await fetch(target, {"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 1699,
+        "text": "const res = await fetch(target, { headers, signal: AbortSignal.timeout(10000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 3,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, readdirSync, statSync, renameSync, cpSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 41,
+        "text": "return JSON.parse(readFileSync(OWN_PATH, 'utf8'));"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 147,
+        "text": "if (existsSync(manifest)) return String(JSON.parse(readFileSync(manifest, 'utf8')).version ?? '');"
+      },
+      {
+        "file": "lib/server.mjs",
+        "line": 166,
+        "text": "mkdirSync(DATA_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

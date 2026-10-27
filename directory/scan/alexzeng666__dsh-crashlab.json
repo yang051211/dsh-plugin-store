@@ -1,0 +1,99 @@
+{
+  "name": "@alexzeng666/dsh-crashlab",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-27T02:44:38.781Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/dwarf.js",
+        "line": 17,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 32,
+        "text": "const text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 64,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 65,
+        "text": "appendFileSync(join(dir, file), `${JSON.stringify(entry)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 179,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/dwarf.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/dwarf.js",
+        "line": 41,
+        "text": "execFile("
+      },
+      {
+        "file": "src/eventlog.js",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/eventlog.js",
+        "line": 54,
+        "text": "execFile("
+      },
+      {
+        "file": "src/helper.js",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/x64/crash_helper.exe"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

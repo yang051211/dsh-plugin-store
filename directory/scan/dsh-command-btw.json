@@ -1,0 +1,73 @@
+{
+  "name": "dsh-command-btw",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-27T02:44:56.762Z",
+  "icon": "dsh-command-btw.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 435,
+        "text": "fetch(`/btw/answer?session=${encodeURIComponent(state.sessionId)}&cancel=1`, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 642,
+        "text": "fetch(`/btw/answer?session=${encodeURIComponent(sessionId)}`, { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 192,
+        "text": "fsModule = await import('node:fs/promises')"
+      },
+      {
+        "file": "index.js",
+        "line": 219,
+        "text": "await fs.mkdir(storeRoot(), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 220,
+        "text": "await fs.writeFile(file, JSON.stringify(entry), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 264,
+        "text": "if (Date.now() - stat.mtimeMs > maxAgeMs) await fs.unlink(file)"
+      },
+      {
+        "file": "index.js",
+        "line": 282,
+        "text": "const text = await fs.readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "llm",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

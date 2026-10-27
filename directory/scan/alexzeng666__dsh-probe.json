@@ -1,0 +1,96 @@
+{
+  "name": "@alexzeng666/dsh-probe",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-27T02:44:38.833Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/fragment.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 32,
+        "text": "const text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 64,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 65,
+        "text": "appendFileSync(join(dir, file), `${JSON.stringify(entry)}\\n`, 'utf8');"
+      },
+      {
+        "file": "src/fragment.js",
+        "line": 78,
+        "text": "for (const line of readFileSync(path, 'utf8').split('\\n')) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 127,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "src/index.js",
+        "line": 288,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/helper.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/helper.js",
+        "line": 58,
+        "text": "execFile("
+      },
+      {
+        "file": "src/helper.js",
+        "line": 123,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/x64/hook_helper.dll",
+    "vendor/x64/hook_host.exe",
+    "vendor/x64/value_hook.dll"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

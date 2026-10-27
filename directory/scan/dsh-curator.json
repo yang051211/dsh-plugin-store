@@ -1,0 +1,104 @@
+{
+  "name": "dsh-curator",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-27T02:45:07.736Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1463,
+        "text": "const res = await fetch(path, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1469,
+        "text": "const res = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7625,
+        "text": "fetch(API.harness, { headers: { accept: \"application/json\" } })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1525,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1600,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { cp, copyFile, mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 35,
+        "text": "const pkg = JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "return String(JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8')).version ?? '')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "const text = await readFile(this.path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1831,
+        "text": "* 这里刻意不走 `execFile(cli, args, { shell: true })`：那个模式会把命令和参数"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1844,
+        "text": "execFile(command, commandArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

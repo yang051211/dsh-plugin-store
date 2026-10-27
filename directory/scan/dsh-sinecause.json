@@ -1,0 +1,89 @@
+{
+  "name": "dsh-sinecause",
+  "version": "0.1.19",
+  "scannedAt": "2026-10-27T02:45:03.799Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-embedding.mjs",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "src/agenda.js",
+        "line": 11,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/agenda.js",
+        "line": 80,
+        "text": "const raw = JSON.parse(readFileSync(this.path, 'utf8'))"
+      },
+      {
+        "file": "src/agenda.js",
+        "line": 90,
+        "text": "mkdirSync(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "src/agenda.js",
+        "line": 92,
+        "text": "writeFileSync(temporary, `${JSON.stringify(this.data, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/clock/index.js",
+        "line": 171,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 8,
+        "text": "*   2. `tools.register()` —— 一个 action 形式的 `plan` 工具，读写同一个 agenda.json。"
+      },
+      {
+        "file": "src/index.js",
+        "line": 28,
+        "text": "export const inject = ['tools', 'systemPrompt', 'llm']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 161,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/memory/index.js",
+        "line": 7,
+        "text": "*   2. `tools.register()` —— `memory` 工具，增 / 改 / 归档 / 恢复 / 查。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "sessions",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

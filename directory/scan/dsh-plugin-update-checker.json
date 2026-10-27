@@ -1,0 +1,82 @@
+{
+  "name": "dsh-plugin-update-checker",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-27T02:45:02.158Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 423,
+        "text": "const res = await fetch(\"/api/plugin-update-checker/scan\", { method: \"POST\" });"
+      },
+      {
+        "file": "lib/host/registry.js",
+        "line": 193,
+        "text": "const res = await fetch(url, { method: 'GET', headers: { accept: 'application/json' }, signal })"
+      },
+      {
+        "file": "lib/host/runtime.js",
+        "line": 88,
+        "text": "const res = await fetch(url, { method: 'GET', signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/dsh.js",
+        "line": 7,
+        "text": "import { readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/dsh.js",
+        "line": 53,
+        "text": "return JSON.parse(readFileSync(require.resolve('@deepseek-ai/dsh-app-boot/package.json'), 'utf8')).version"
+      },
+      {
+        "file": "lib/host/dsh.js",
+        "line": 65,
+        "text": "try { return JSON.parse(readFileSync(candidate, 'utf8')).version } catch { /* keep walking */ }"
+      },
+      {
+        "file": "lib/host/dsh.js",
+        "line": 134,
+        "text": "const raw = JSON.parse(readFileSync(join(profileDir, 'compatibility.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/host/profile.js",
+        "line": 7,
+        "text": "import { readFile, readdir } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/profile.js",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

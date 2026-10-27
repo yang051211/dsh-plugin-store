@@ -1,0 +1,86 @@
+{
+  "name": "dsh-session-sync-xxg",
+  "version": "0.9.5",
+  "scannedAt": "2026-10-27T02:45:03.651Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1798,
+        "text": "response = await fetch(new URL(API_PATH.slice(1), document.baseURI).toString(), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 541,
+        "text": "response = await fetch(`${base}${pathname}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 578,
+        "text": "response = await fetch(`${base}${pathname}`, { headers, signal: AbortSignal.timeout(180_000) })"
+      },
+      {
+        "file": "lib/lan.js",
+        "line": 16,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 60,
+        "text": "const response = await fetch(`http://${host}:${port}/v1/info`, { headers, signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "return JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "fs.mkdirSync(stateDir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "const raw = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

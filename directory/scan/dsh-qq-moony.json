@@ -1,0 +1,128 @@
+{
+  "name": "dsh-qq-moony",
+  "version": "0.13.0",
+  "scannedAt": "2026-10-27T02:45:03.080Z",
+  "icon": "dsh-qq-moony.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 70,
+        "text": "fetch('/api/qq-moony/state')"
+      },
+      {
+        "file": "client.js",
+        "line": 78,
+        "text": "fetch('/api/qq-moony/version').then((r) => r.json()).then(设版本).catch(() => {});"
+      },
+      {
+        "file": "client.js",
+        "line": 86,
+        "text": "const r = await fetch('/api/qq-moony/config', {"
+      },
+      {
+        "file": "client.js",
+        "line": 153,
+        "text": "const r = await fetch('/api/qq-moony/connect', { method: 'POST' });"
+      },
+      {
+        "file": "index.js",
+        "line": 193,
+        "text": "const r = await fetch(`${c.baseUrl}/get_login_info`, { headers: 头, signal: AbortSignal.timeout(4000) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 101,
+        "text": "const 原文 = readFileSync(文件, 'utf8').replace(/^\\uFEFF/, '');"
+      },
+      {
+        "file": "index.js",
+        "line": 113,
+        "text": "for (const 行 of readFileSync(账本, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "index.js",
+        "line": 121,
+        "text": "mkdirSync(join(账本, '..'), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 122,
+        "text": "appendFileSync(账本, `${Date.now() / 1000}\\t${目标}\\t${String(摘要).slice(0, 60).replace(/\\s+/g, ' ')}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 1248,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 1285,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 1361,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 1404,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 250,
+        "text": "const 子 = spawn('wscript.exe', [启动脚本], { detached: true, stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 298,
+        "text": "const 子 = spawn('wscript.exe', [启动脚本], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

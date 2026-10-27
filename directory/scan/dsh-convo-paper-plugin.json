@@ -1,0 +1,87 @@
+{
+  "name": "dsh-convo-paper-plugin",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-27T02:44:57.074Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/lib/refs.mjs",
+        "line": 25,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "dsh/lib/refs.mjs",
+        "line": 40,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/lib/sessions.mjs",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "dsh/lib/zstd.mjs",
+        "line": 11,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "dsh/lib/zstd.mjs",
+        "line": 51,
+        "text": "return decodeSessionBytes(fs.readFileSync(file));"
+      },
+      {
+        "file": "dsh/pipeline.mjs",
+        "line": 8,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "dsh/pipeline.mjs",
+        "line": 17,
+        "text": "const ensure = (dir) => fs.mkdirSync(dir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 5,
+        "text": "* object definitions go through `ctx.tools.register` so the package depends on"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 61,
+        "text": "return ctx.effect(() => ctx.tools.register(def), `${LABEL} ${def.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

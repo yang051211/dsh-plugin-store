@@ -1,0 +1,77 @@
+{
+  "name": "@yadsh/dsh-git-readonly",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-27T02:44:52.031Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git/repo.js",
+        "line": 9,
+        "text": "import { realpath, stat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "ctx.tools.register(createGitContextTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "ctx.tools.register(createGitHistoryTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "ctx.tools.register(createGitShowTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "ctx.tools.register(createGitBlameTool(deps));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git/runner.js",
+        "line": 15,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/git/runner.js",
+        "line": 38,
+        "text": "child = spawn(program, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "dsh-zen-remote",
-  "version": "2.2.9",
-  "scannedAt": "2026-10-26T10:04:54.694Z",
+  "version": "2.3.2",
+  "scannedAt": "2026-10-27T02:45:05.869Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -23,12 +23,12 @@
       },
       {
         "file": "lib/client.js",
-        "line": 3977,
+        "line": 4393,
         "text": "singleton ??= createSharesStore((input, init) => fetch(input, init));"
       },
       {
         "file": "lib/client.js",
-        "line": 4077,
+        "line": 4493,
         "text": "res = await fetch(buildShareExportQuery(session, range), { cache: 'no-store' });"
       }
     ]
@@ -43,7 +43,7 @@
       },
       {
         "file": "lib/config.js",
-        "line": 285,
+        "line": 347,
         "text": "const parsed = JSON.parse(readFileSync(join(home, 'lan-gate.config.json'), 'utf8'));"
       },
       {
@@ -59,7 +59,7 @@
       {
         "file": "lib/index.js",
         "line": 18,
-        "text": "import { lstat, mkdir, open, realpath, rm, writeFile } from 'node:fs/promises';"
+        "text": "import { lstat, mkdir, open, realpath, rename, rm, writeFile } from 'node:fs/promises';"
       }
     ]
   },
@@ -83,8 +83,18 @@
     "evidence": [
       {
         "file": "lan-gate.mjs",
-        "line": 111,
+        "line": 121,
         "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/wizard/caddy-process.js",
+        "line": 57,
+        "text": "const spawnChild = (argv, env) => subprocess.spawn({"
+      },
+      {
+        "file": "lib/wizard/cloudflared.js",
+        "line": 84,
+        "text": "const spawnChild = (argv) => subprocess.spawn({"
       },
       {
         "file": "scripts/cdp-probe.mjs",
@@ -103,7 +113,9 @@
     "evidence": []
   },
   "dependencies": 1,
-  "minifiedFiles": [],
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
   "binaryFiles": [],
   "requiredServices": [],
   "setupHints": [],
