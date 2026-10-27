@@ -32,6 +32,8 @@ Startide is a directory of DSH plugins. It lists every DSH plugin on npm that me
 - **Easy to find**: trending, recently updated and new plugins on the home page; on the list page, filter by category, sort by popularity, release date, first release or stars, and hide plugins that do not support your DSH.
 - **Clear**: every plugin has its README, version history, source links and automatic detection results.
 - **Safe installs**: installing always goes through DSH's own install dialog; nothing installs until you confirm.
+- **Manage what you have**: the Installed page lists your plugins, marks the ones with a newer version, and lets you enable, disable, uninstall or open their settings.
+- **One entry**: turn on "Keep only Startide" and the sidebar shows only Startide, while the Plugins page hides its own heading and tabs; turn it off to restore them.
 - **Always current**: GitHub Actions rebuilds the directory on a schedule, and the store tells you when a new store release is out.
 
 | All plugins | Plugin page |
@@ -49,7 +51,7 @@ github:yang051211/dsh-startide#<tag>
 - Enter the full `github:` address. This plugin is not published to npm, so the bare package name will not be found.
 - Leave the install source on the npm registry or the mainland China mirror. **Do not** set a custom address: every dependency of the profile would then resolve from it, and the install fails.
 
-Once installed, Startide appears in the DSH sidebar and on the Plugins page.
+Once installed, Startide appears in the DSH sidebar; it opens the Startide tab on the Plugins page. To make it your only plugins entry, turn on "Keep only Startide" in the top right corner of the Installed page.
 
 ### Upgrading from the old name
 

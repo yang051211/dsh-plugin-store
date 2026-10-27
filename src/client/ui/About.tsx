@@ -8,7 +8,7 @@ const GROUPS: Array<[string, string[]]> = [
   ['aboutBasics', ['faqWhat', 'faqVsDiscover']],
   ['aboutListing', ['faqWhatListed', 'faqHowOften']],
   ['aboutDetection', ['faqDetectWhat', 'faqDetectWrong']],
-  ['aboutInstall', ['faqHowInstall', 'faqReport']],
+  ['aboutInstall', ['faqHowInstall', 'faqManage', 'faqKeepOnly', 'faqReport']],
 ]
 
 export function AboutView({ t }: { t: Translate }): ReactNode {
