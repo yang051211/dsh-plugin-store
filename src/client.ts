@@ -90,6 +90,8 @@ export function apply(ctx: Context): void {
     loadLatest,
     setEnabled: async (name, enabled) => changeOutcome(await pm.setBundleEnabled(name, enabled)),
     remove: async (name) => changeOutcome(await pm.removeBundle(name)),
+    // DSH's install dialog refuses a name that is already installed, so an update goes to the plugin manager directly.
+    update: async (name, version) => changeOutcome(await pm.installBundle(`${name}@${version}`)),
     inspect: async (spec) => {
       try {
         const result = await pm.inspect(spec)

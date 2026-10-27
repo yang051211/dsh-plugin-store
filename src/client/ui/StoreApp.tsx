@@ -26,6 +26,7 @@ export interface StoreServices {
   loadLatest: () => Promise<Record<string, string>>
   setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
   remove: (name: string) => Promise<ChangeOutcome>
+  update: (name: string, version: string) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
 }
 
@@ -268,7 +269,7 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
     body = (
       <InstalledView rows={rows} error={bundlesError} selfUpdate={selfUpdate} t={t} keepOnly={keepOnly}
         onRetry={() => refreshBundles.current()} onOpenPackage={onOpenPackage} onSelfUpdate={onSelfUpdate}
-        setEnabled={services.setEnabled} remove={services.remove} inspect={services.inspect} onInstallSpec={onInstallSpec} />
+        setEnabled={services.setEnabled} remove={services.remove} update={services.update} inspect={services.inspect} onInstallSpec={onInstallSpec} />
     )
   } else if (catalog.status === 'loading') {
     body = <div className="ps-pad ps-muted">{t('loading')}</div>

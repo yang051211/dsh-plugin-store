@@ -87,8 +87,8 @@ test('a backslash in the range is not a registry spec', () => {
 })
 
 test("DSH's own error shape reads as its diagnostic, else its code", () => {
-  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'bundle-in-use', diagnostic: 'used by dsh-x' } } }), { error: 'used by dsh-x' })
-  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'not-removable' } } }), { error: 'not-removable' })
+  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'bundle-in-use', diagnostic: 'used by dsh-x' } } }), { error: 'used by dsh-x', code: 'bundle-in-use' })
+  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'not-removable' } } }), { error: 'not-removable', code: 'not-removable' })
 })
 
 test('a read-only or broken bundle is marked so its switch can be locked', () => {
@@ -100,4 +100,12 @@ test('a read-only or broken bundle is marked so its switch can be locked', () =>
   const by = Object.fromEntries(rows.others.map(r => [r.name, r]))
   assert.deepEqual([by.locked.locked, by.broken.locked, by.fine.locked], [true, true, false])
   assert.deepEqual([by.locked.problem, by.broken.problem, by.fine.problem], [null, 'load failed', null])
+})
+
+test('a failed change keeps its code and the builds waiting for approval', () => {
+  assert.deepEqual(
+    changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'operation-error', diagnostic: 'pnpm output' }, pendingBuilds: ['esbuild'] } }),
+    { error: 'pnpm output', code: 'operation-error', pendingBuilds: ['esbuild'] },
+  )
+  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'already-installed' } } }), { error: 'already-installed', code: 'already-installed' })
 })

@@ -7,7 +7,7 @@ import { useCallback, useState, type ReactNode } from 'react'
 import type { ChangeOutcome, InstalledRow, InstalledRows } from '../model/installed.ts'
 import type { SelfUpdate } from '../model/install-state.ts'
 import { PageHeader, PluginIcon, type Translate } from './common.tsx'
-import { ConfirmSpec } from './ConfirmInstall.tsx'
+import { ConfirmSpec, ConfirmUpdate } from './ConfirmInstall.tsx'
 import { ConfirmRemove } from './ConfirmRemove.tsx'
 
 export type Inspection = { ok: true; name: string; version: string } | { ok: false; reason: string }
@@ -25,11 +25,28 @@ export interface InstalledViewProps {
   onSelfUpdate: (update: SelfUpdate) => void
   setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
   remove: (name: string) => Promise<ChangeOutcome>
+  /** Install `version` of an installed plugin in place. */
+  update: (name: string, version: string) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
   onInstallSpec: (target: { spec: string; title: string; version: string }) => void
 }
 
 const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
+
+/** A failure under a row stays short: pnpm's whole output can be thousands of lines. */
+const MAX_NOTE = 300
+const clip = (text: string) => (text.length > MAX_NOTE ? `${text.slice(0, MAX_NOTE)}…` : text)
+
+type Action = 'enable' | 'remove' | 'update'
+
+/** The words for a change that did not simply apply, in DSH's terms where it gave a code. */
+function outcomeNote(outcome: Exclude<ChangeOutcome, 'applied'>, action: Action, version: string | null, t: Translate): { text: string; error: boolean } {
+  if (outcome === 'restart-required') return { text: action === 'update' && version ? t('updatedRestart', { version }) : t('restartRequired'), error: false }
+  if (action === 'update' && outcome.code === 'already-installed') return { text: t('updateNeedsReinstall'), error: true }
+  if (outcome.pendingBuilds) return { text: t('updateNeedsBuilds', { names: outcome.pendingBuilds.join('、') }), error: true }
+  if (action === 'remove' && outcome.code === 'stop-profile') return { text: t('removeNeedsStop'), error: true }
+  return { text: clip(outcome.error), error: true }
+}
 
 function Switch({ on, label, className = '', disabled, onChange }: { on: boolean; label: string; className?: string; disabled?: boolean; onChange: (on: boolean) => void }): ReactNode {
   return (
@@ -79,15 +96,18 @@ function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't'
 }
 
 export function InstalledView(props: InstalledViewProps): ReactNode {
-  const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove } = props
+  const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove, update } = props
   // Notes keep the row's title, so an outcome outlives a row that a refresh removed.
   const [notes, setNotes] = useState<Record<string, { title: string; text: string; error: boolean }>>({})
   const [busy, setBusy] = useState<Record<string, boolean>>({})
   const [removing, setRemoving] = useState<InstalledRow | null>(null)
+  const [updating, setUpdating] = useState<InstalledRow | null>(null)
+  const [running, setRunning] = useState<Record<string, Action>>({})
 
-  /** Run one change for `name`; a restart or a failure is noted under its row, an applied change shows on refresh. */
-  const change = useCallback(async ({ name, title }: InstalledRow, run: () => Promise<ChangeOutcome>) => {
+  /** Run one change for a row; a restart or a failure is noted under it, an applied change shows on refresh. */
+  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: () => Promise<ChangeOutcome>, version: string | null = null) => {
     setBusy(prev => ({ ...prev, [name]: true }))
+    setRunning(prev => ({ ...prev, [name]: action }))
     setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })
     let outcome: ChangeOutcome
     try {
@@ -96,15 +116,25 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
       outcome = { error: messageOf(error) }
     }
     setBusy(prev => ({ ...prev, [name]: false }))
-    if (outcome === 'restart-required') setNotes(prev => ({ ...prev, [name]: { title, text: t('restartRequired'), error: false } }))
-    else if (outcome !== 'applied') setNotes(prev => ({ ...prev, [name]: { title, text: outcome.error, error: true } }))
+    setRunning(prev => { const { [name]: _, ...rest } = prev; return rest })
+    if (outcome !== 'applied') {
+      const note = outcomeNote(outcome, action, version, t)
+      setNotes(prev => ({ ...prev, [name]: { title, ...note } }))
+    }
   }, [t])
+
+  const cancelUpdate = useCallback(() => setUpdating(null), [])
+  const acceptUpdate = useCallback(() => {
+    const row = updating
+    setUpdating(null)
+    if (row?.latest) void change(row, 'update', () => update(row.name, row.latest!), row.latest)
+  }, [updating, change, update])
 
   const cancelRemove = useCallback(() => setRemoving(null), [])
   const acceptRemove = useCallback(() => {
     const row = removing
     setRemoving(null)
-    if (row) void change(row, () => remove(row.name))
+    if (row) void change(row, 'remove', () => remove(row.name))
   }, [removing, change, remove])
 
   const renderRow = (row: InstalledRow) => {
@@ -127,13 +157,13 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
         </div>
         <div className="ps-inst-actions">
           {hasUpdate && (
-            <button type="button" className="ps-btn ps-btn-primary" disabled={row.self && !selfUpdate}
-              onClick={() => (row.self ? selfUpdate && onSelfUpdate(selfUpdate) : onOpenPackage(row.name))}>
-              {t('updateAction')}
+            <button type="button" className="ps-btn ps-btn-primary" disabled={row.self ? !selfUpdate : busy[row.name]}
+              onClick={() => (row.self ? selfUpdate && onSelfUpdate(selfUpdate) : setUpdating(row))}>
+              {running[row.name] === 'update' ? t('updating') : t('updateAction')}
             </button>
           )}
           {manageable && !row.missing && (
-            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, () => setEnabled(row.name, on))} />
+            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, 'enable', () => setEnabled(row.name, on))} />
           )}
           {manageable && row.removable && !row.missing && (
             <button type="button" className="ps-btn ps-btn-quiet" disabled={busy[row.name]} onClick={() => setRemoving(row)}>{t('remove')}</button>
@@ -191,6 +221,9 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
       ))}
       {keepOnly.value && <SpecInstall t={t} inspect={props.inspect} onInstallSpec={props.onInstallSpec} />}
       {body}
+      {updating && updating.version && updating.latest && (
+        <ConfirmUpdate title={updating.title} current={updating.version} latest={updating.latest} t={t} onCancel={cancelUpdate} onConfirm={acceptUpdate} />
+      )}
       {removing && <ConfirmRemove title={removing.title} t={t} onCancel={cancelRemove} onConfirm={acceptRemove} />}
     </div>
   )

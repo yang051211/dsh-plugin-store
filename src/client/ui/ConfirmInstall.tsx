@@ -52,6 +52,38 @@ export function ConfirmInstall({ plugin, lang, t, onCancel, onConfirm }: Confirm
   )
 }
 
+export interface ConfirmUpdateProps {
+  title: string
+  current: string
+  latest: string
+  t: Translate
+  onCancel: () => void
+  onConfirm: () => void
+}
+
+/** Before updating an installed plugin in place: the store installs the new version itself, so it asks here. */
+export function ConfirmUpdate({ title, current, latest, t, onCancel, onConfirm }: ConfirmUpdateProps): ReactNode {
+  const confirmButton = useDialog(onCancel)
+  const heading = t('updateTitle', { name: title })
+  return (
+    <div className="ps-modal-backdrop" onClick={onCancel}>
+      <div className="ps-modal" role="dialog" aria-modal="true" aria-label={heading} onClick={e => e.stopPropagation()}>
+        <h3>{heading}</h3>
+        <dl className="ps-facts">
+          <dt>{t('confirmVersion')}</dt><dd>{t('updateArrow', { current, latest })}</dd>
+          <dt>{t('confirmSource')}</dt><dd>npm</dd>
+        </dl>
+        <p className="ps-fine">{t('updateHint')}</p>
+        <p className="ps-trust">{t('confirmTrust')}</p>
+        <div className="ps-modal-actions">
+          <button type="button" className="ps-btn" onClick={onCancel}>{t('cancel')}</button>
+          <button type="button" className="ps-btn ps-btn-primary" ref={confirmButton} onClick={onConfirm}>{t('updateConfirm')}</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export interface ConfirmSpecProps {
   spec: string
   name: string

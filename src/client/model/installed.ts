@@ -71,7 +71,10 @@ export function buildInstalledRows(
   return rows
 }
 
-type ChangeResult = { ok: true; value: { application: string; error?: unknown } } | { ok: false; error: unknown }
+type ChangeResult = { ok: true; value: { application: string; error?: unknown; pendingBuilds?: string[] } } | { ok: false; error: unknown }
+
+/** Why a change did not happen: the text, DSH's error code when it gave one, and packages whose scripts wait for approval. */
+export interface ChangeFailure { error: string; code?: string; pendingBuilds?: string[] }
 
 /** Readable text for an Error, DSH's `{ code, diagnostic }` management error, or anything else. */
 export function errorText(error: unknown): string {
@@ -82,12 +85,16 @@ export function errorText(error: unknown): string {
   return String(error)
 }
 
-/** How an enable, disable or remove went: applied now, applied after a restart, or the reason it did not. */
-export function changeOutcome(result: ChangeResult): 'applied' | 'restart-required' | { error: string } {
+/** How an enable, disable, remove or update went: applied now, applied after a restart, or why it did not. */
+export function changeOutcome(result: ChangeResult): 'applied' | 'restart-required' | ChangeFailure {
   if (!result.ok) return { error: errorText(result.error) }
-  const { application, error } = result.value
+  const { application, error, pendingBuilds } = result.value
   if (application === 'applied' || application === 'restart-required') return application
-  return { error: error !== undefined ? errorText(error) : application }
+  const failure: ChangeFailure = { error: error !== undefined ? errorText(error) : application }
+  const code = (error as { code?: unknown } | undefined)?.code
+  if (typeof code === 'string') failure.code = code
+  if (pendingBuilds && pendingBuilds.length > 0) failure.pendingBuilds = pendingBuilds
+  return failure
 }
 
 export type ChangeOutcome = ReturnType<typeof changeOutcome>

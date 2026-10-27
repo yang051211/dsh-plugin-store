@@ -24,7 +24,7 @@ const textIn = node => (typeof node === 'string' ? node : (node.children ?? []).
 
 /** Mount the store with `bundles` installed and open the Installed tab. */
 async function open({ bundles = [], services = {}, storeVersion, ...props } = {}) {
-  const calls = { openPackage: [], selfUpdate: [], install: [], installSpec: [], setEnabled: [], remove: [], inspect: [], keepOnly: [] }
+  const calls = { openPackage: [], selfUpdate: [], install: [], installSpec: [], setEnabled: [], remove: [], inspect: [], keepOnly: [], update: [] }
   const all = {
     loadCatalog: async () => snapshot(storeVersion),
     loadDetail: async () => ({}),
@@ -34,6 +34,7 @@ async function open({ bundles = [], services = {}, storeVersion, ...props } = {}
     loadLatest: async () => ({}),
     setEnabled: async (name, on) => { calls.setEnabled.push([name, on]); return 'applied' },
     remove: async name => { calls.remove.push(name); return 'applied' },
+    update: async (name, version) => { calls.update.push([name, version]); return 'restart-required' },
     inspect: async spec => { calls.inspect.push(spec); return { ok: false, reason: 'nope' } },
     ...services,
   }
@@ -70,14 +71,21 @@ test('the Installed tab shows a count of available updates, none when zero', asy
   assert.equal(textIn(navButton(none.root)), zh.navInstalled)
 })
 
-test('an update row shows "0.9.0 → 1.0.0" and its button opens the official page for that plugin', async () => {
+test('an update row shows "0.9.0 → 1.0.0"; its button asks first, then updates in the store', async () => {
   const { root, calls } = await open({ bundles: [bundle('dsh-pet', '0.9.0')] })
   assert.deepEqual(rows(root, 'updates'), ['dsh-pet'])
   const pet = row(root, 'dsh-pet')
   assert.ok(textIn(pet).includes('0.9.0 → 1.0.0'), textIn(pet))
   await click(buttonIn(pet, zh.updateAction))
-  assert.deepEqual(calls.openPackage, ['dsh-pet'])
-  assert.deepEqual(calls.install, [])
+  const dialog = root.root.find(n => n.props.role === 'dialog')
+  for (const part of ['更新「Pet」', '0.9.0 → 1.0.0', zh.confirmTrust]) assert.ok(textIn(dialog).includes(part), part)
+  await click(buttonIn(dialog, zh.cancel))
+  assert.deepEqual(calls.update, [])
+  await click(buttonIn(row(root, 'dsh-pet'), zh.updateAction))
+  await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.updateConfirm))
+  assert.deepEqual(calls.update, [['dsh-pet', '1.0.0']])
+  assert.deepEqual([calls.openPackage, calls.install], [[], []], 'neither the official page nor the install dialog')
+  assert.ok(textIn(row(root, 'dsh-pet')).includes('已装好 v1.0.0，重启 DSH 后生效'), textIn(row(root, 'dsh-pet')))
 })
 
 test('an off-catalog npm plugin takes its latest version from the Host lookup', async () => {
@@ -238,4 +246,35 @@ test('a read-only or failed bundle has its switch locked and shows its problem',
 test('a missing plugin is left to DSH: settings only, no uninstall', async () => {
   const { root } = await open({ bundles: [bundle('lost', '1.0.0', { availability: 'missing' })] })
   assert.equal(buttonsIn(row(root, 'lost'), zh.remove).length, 0)
+})
+
+const confirmUpdate = async root => {
+  await click(buttonIn(row(root, 'dsh-pet'), zh.updateAction))
+  await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.updateConfirm))
+}
+
+test('an update DSH refuses under hot reload says to uninstall and install again', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'already-installed', code: 'already-installed' }) } })
+  await confirmUpdate(root)
+  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updateNeedsReinstall))
+})
+
+test('an update whose new version needs install scripts approved names them', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'pnpm said a lot', code: 'operation-error', pendingBuilds: ['esbuild', 'sharp'] }) } })
+  await confirmUpdate(root)
+  const text = textIn(row(root, 'dsh-pet'))
+  assert.ok(text.includes('esbuild、sharp') && !text.includes('pnpm said a lot'), text)
+})
+
+test('a long failure is cut short under its row', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'x'.repeat(2000) }) } })
+  await confirmUpdate(root)
+  assert.ok(textIn(row(root, 'dsh-pet')).length < 600)
+})
+
+test('an uninstall DSH refuses while the plugin runs says how to get there', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '1.0.0')], services: { remove: async () => ({ error: 'stop-profile', code: 'stop-profile' }) } })
+  await click(buttonIn(row(root, 'dsh-pet'), zh.remove))
+  await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.remove))
+  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.removeNeedsStop))
 })

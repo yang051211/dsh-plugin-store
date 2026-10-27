@@ -29,6 +29,7 @@ function services(overrides = {}) {
     loadLatest: async () => ({}),
     setEnabled: async () => 'applied',
     remove: async () => 'applied',
+    update: async () => 'applied',
     inspect: async () => ({ ok: false, reason: 'not used' }),
     ...overrides,
   }
