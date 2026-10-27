@@ -6,8 +6,10 @@ import { createHash } from 'node:crypto'
 import { gunzipSync } from 'node:zlib'
 import * as tar from 'tar'
 
-/** Largest tarball (compressed or unpacked) accepted. */
-export const MAX_TARBALL_BYTES = 64 * 1024 * 1024
+/** Largest tarball accepted; plugins that ship Live2D models or videos run past 64 MB. */
+export const MAX_TARBALL_BYTES = 128 * 1024 * 1024
+/** Largest unpacked package accepted. */
+export const MAX_UNPACKED_BYTES = 256 * 1024 * 1024
 /** Largest icon accepted. */
 export const MAX_ICON_BYTES = 256 * 1024
 const ICON_TYPES = { '.svg': 'svg', '.png': 'png', '.jpg': 'jpg', '.jpeg': 'jpg', '.webp': 'webp' }
@@ -74,8 +76,15 @@ const FILE_TYPES = new Set(['File', 'OldFile', 'ContiguousFile'])
  * Read a gzipped tarball into package-relative paths. Regular files outside node_modules are kept; every other
  * entry (links, devices, escaping paths, duplicates) is listed in `skipped` for the reviewer.
  */
-async function untar(tgz) {
-  const data = gunzipSync(tgz, { maxOutputLength: MAX_TARBALL_BYTES })
+export async function untar(tgz, limit = MAX_UNPACKED_BYTES) {
+  let data
+  try {
+    data = gunzipSync(tgz, { maxOutputLength: limit })
+  } catch (error) {
+    // zlib reports the cap as a bare buffer-size RangeError; say what it means.
+    if (error instanceof RangeError || error?.code === 'ERR_BUFFER_TOO_LARGE') throw new Error(`package unpacks to more than ${limit} bytes`)
+    throw error
+  }
   const files = new Map()
   const skipped = []
   const parser = new tar.Parser({ strict: true })
