@@ -1,0 +1,101 @@
+{
+  "name": "dsh-web-launcher",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-27T04:17:13.049Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.js",
+        "line": 109,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}`, { signal: AbortSignal.timeout(timeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.js",
+        "line": 7,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 29,
+        "text": "if (fallback) mkdirSync(fallback, { recursive: true })"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 51,
+        "text": "const raw = readFileSync(TEMPLATE_PATH, 'utf8')"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 64,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 67,
+        "text": "writeFileSync(target, renderTemplate({ port, url: `http://127.0.0.1:${port}` }), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launcher.js",
+        "line": 6,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 95,
+        "text": "const result = spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', ps], { stdio: 'ignore' })"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 123,
+        "text": "spawn('cmd', ['/c', 'start', '', url], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 125,
+        "text": "spawn('open', [url], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "lib/launcher.js",
+        "line": 127,
+        "text": "spawn('xdg-open', [url], { detached: true, stdio: 'ignore' }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

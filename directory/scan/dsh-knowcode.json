@@ -1,0 +1,143 @@
+{
+  "name": "dsh-knowcode",
+  "version": "0.1.23",
+  "scannedAt": "2026-10-27T04:17:10.408Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/db/client.js",
+        "line": 30,
+        "text": "typescript: { pkg: 'axios', install: 'npm install axios', desc: 'Promise-based HTTP client for node.js and the browser.' },"
+      },
+      {
+        "file": "lib/server/client-rpc.js",
+        "line": 45,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/status`, {"
+      },
+      {
+        "file": "lib/server/client-rpc.js",
+        "line": 118,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/rpc`, {"
+      },
+      {
+        "file": "lib/server/client-rpc.js",
+        "line": 135,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/query`, {"
+      },
+      {
+        "file": "lib/server/client-rpc.js",
+        "line": 152,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/index`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/knowcode.js",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/knowcode.js",
+        "line": 14,
+        "text": "const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/db/falkor-manager.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/db/falkor-manager.js",
+        "line": 95,
+        "text": "mkdirSync(resolvedDataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/db/falkor-manager.js",
+        "line": 111,
+        "text": "writeFileSync(confPath, confContent, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "// `tools.register()`. Every `@deepseek-ai` reference above is `import type`,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/db/falkor-manager.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/db/falkor-manager.js",
+        "line": 118,
+        "text": "const child = spawn(binaries.redisServerPath, [confPath], {"
+      },
+      {
+        "file": "lib/parser/git-diff-parser.js",
+        "line": 1,
+        "text": "import { execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/parser/git-diff-parser.js",
+        "line": 79,
+        "text": "rawDiff = execSync(`git diff ${baseRef}`, {"
+      },
+      {
+        "file": "lib/parser/git-diff-parser.js",
+        "line": 89,
+        "text": "rawDiff = execSync('git diff HEAD', {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/darwin-arm64/falkordb.so",
+    "bin/darwin-arm64/libcrypto.3.dylib",
+    "bin/darwin-arm64/libomp.dylib",
+    "bin/darwin-arm64/libssl.3.dylib",
+    "bin/darwin-arm64/redis-server",
+    "bin/linux-x64/falkordb.so",
+    "bin/linux-x64/redis-server"
+  ],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 192,
+      "text": "npm install -g dsh-knowcode"
+    }
+  ],
+  "skippedEntries": []
+}

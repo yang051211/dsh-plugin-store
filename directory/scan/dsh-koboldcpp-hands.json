@@ -1,0 +1,139 @@
+{
+  "name": "dsh-koboldcpp-hands",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-27T04:17:09.084Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/images.js",
+        "line": 69,
+        "text": "const response = await fetch(url, { signal });"
+      },
+      {
+        "file": "lib/koboldcpp.js",
+        "line": 67,
+        "text": "response = await fetch(`${baseURL}/v1/chat/completions`, {"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 77,
+        "text": "const response = await fetch(`${connection.baseURL}/v1/models`, {"
+      },
+      {
+        "file": "src/images.ts",
+        "line": 74,
+        "text": "const response = await fetch(url, { signal })"
+      },
+      {
+        "file": "src/koboldcpp.ts",
+        "line": 143,
+        "text": "response = await fetch(`${baseURL}/v1/chat/completions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/images.js",
+        "line": 10,
+        "text": "import { readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/images.js",
+        "line": 56,
+        "text": "const bytes = await readFile(path, { signal });"
+      },
+      {
+        "file": "src/images.ts",
+        "line": 11,
+        "text": "import { readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/images.ts",
+        "line": 61,
+        "text": "const bytes = await readFile(path, { signal })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 4,
+        "text": "# module. The plugin registers two tools on ctx.tools:"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 216,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 310,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 35,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/launch.js",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 121,
+        "text": "const child = spawn(connection.exePath, args, {"
+      },
+      {
+        "file": "lib/launch.js",
+        "line": 204,
+        "text": "const killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], {"
+      },
+      {
+        "file": "src/launch.ts",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/launch.ts",
+        "line": 15,
+        "text": "import type { ChildProcess } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

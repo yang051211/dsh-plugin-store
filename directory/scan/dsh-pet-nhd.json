@@ -1,0 +1,110 @@
+{
+  "name": "dsh-pet-nhd",
+  "version": "1.1.4",
+  "scannedAt": "2026-10-27T04:17:12.175Z",
+  "icon": "dsh-pet-nhd.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app.js",
+        "line": 10,
+        "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 986,
+        "text": "fetch(cb, {"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 1127,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 1262,
+        "text": "async fetch({ key, provider }) {"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 1354,
+        "text": "async fetch({ provider, resolveAccount }) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app.js",
+        "line": 5,
+        "text": "ReadStream, existsSync, fstatSync, fsyncSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 6,
+        "text": "import { appendFile, mkdir, readFile, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 81,
+        "text": "const ensureDir = () => dirReady ??= mkdir(dirname(file), { recursive: true }).then(() => void 0).catch(() => void 0);"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 108,
+        "text": "if (droppedNote > 0) await appendFile(file, formatLogLine(\"warn\", `日志缓冲溢出，丢弃 ${droppedNote} 条`, now()), \"utf8\");"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 109,
+        "text": "await appendFile(file, chunk, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/app.js",
+        "line": 7,
+        "text": "import { execFileSync, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/app.js",
+        "line": 905,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4158,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/node-_mjr43TG.js",
+        "line": 6,
+        "text": "import * as cp from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

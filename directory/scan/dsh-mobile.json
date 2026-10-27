@@ -1,0 +1,117 @@
+{
+  "name": "dsh-mobile",
+  "version": "0.6.18",
+  "scannedAt": "2026-10-27T04:17:10.024Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2488,
+        "text": "`curl -k -sS -o /dev/null -w '%{http_code}\\\\n' https://${parts.publicHost}:${String(publicPort)}${FRP_ATTACH_DISCOVERY_PATH}`,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2521,
+        "text": "`curl -sS -o /dev/null -w '%{http_code}\\\\n' https://${parts.publicHost}${FRP_ATTACH_DISCOVERY_PATH}`,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7120,
+        "text": "const response = await fetch(scope === \"computer\" ? \"/api/mobile-access/client-modules\" : \"/mobile-access/client-modules\", init);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8611,
+        "text": "const response = await fetch(WORKSPACE_DIRECTORIES_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 8637,
+        "text": "const response = await fetch(`${WORKSPACE_DIRECTORIES_PATH}${query}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 2,
+        "text": "import { chmod, lstat, mkdir, readFile, rename, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 300,
+        "text": "await mkdir(directory, {"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 306,
+        "text": "await writeFile(temporary, \"\", {"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 311,
+        "text": "await writeFile(temporary, contents);"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 314,
+        "text": "await rm(temporary, { force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 6,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 15,
+        "text": "execFile(file, [...args], {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 9,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1167,
+        "text": "execFile(file, [...args], {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 9207,
+        "text": "execFile(file, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 7,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/mobile-compat.js"
+  ],
+  "binaryFiles": [
+    "bin/dsh-mobile-funnel-linux-arm64",
+    "bin/dsh-mobile-funnel-linux-x64",
+    "bin/dsh-mobile-funnel-win32-x64.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

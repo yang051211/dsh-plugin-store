@@ -1,0 +1,151 @@
+{
+  "name": "dsh-crwu-workbench",
+  "version": "0.0.45",
+  "scannedAt": "2026-10-27T04:17:08.009Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2446,
+        "text": "const response = await fetch(WORKBENCH_ROUTE, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9312,
+        "text": "const response = await fetch(request.url, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22053,
+        "text": "const outcome = await deps.client.fetch({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41351,
+        "text": "const response = await deps.fetch(metadataUrl(source), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 41577,
+        "text": "fetch: (url, init) => fetch(url, init),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { constants, existsSync, readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { access, copyFile, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "return parseWorkbenchYaml(readFileSync(configFile, \"utf8\"), configFile);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 814,
+        "text": "return ctx.get(\"fs\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 11871,
+        "text": "body: await readFile(source, \"utf8\")"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 359,
+        "text": "*   `crwu_*` 工具全部在 `apply()` 里 `ctx.tools.register()`。没有工具注册表，审核链就没有"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 6121,
+        "text": "* 用 `ctx.tools.get(name, agent)`：这是 registry 的 resolver，会把 scoped restriction"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31541,
+        "text": "* **只走 DSH 自己的注册表**（`ctx.tools.register` / `defineTool`），不自造私有 registry："
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31542,
+        "text": "* 只有注册进 `ctx.tools`，schema 才会自动进入 Agent 的 system prompt，也才会走"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 31589,
+        "text": "* 判据是 registry 的 scope resolver（`ctx.tools.get(name, agent)`）而不是「插件注册过没有」："
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15276,
+        "text": "\"child_process\","
+      },
+      {
+        "file": "scripts/lib/cli-entry.mjs",
+        "line": 4,
+        "text": "* ## 为什么不能 `spawn('tsdown', …, { shell: true })`"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 16,
+        "text": "* ## 为什么不再 `spawnSync('tsdown', { shell: process.platform === 'win32' })`"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/prepare.mjs",
+        "line": 73,
+        "text": "const result = spawn(plan.command, plan.args, { cwd: plan.cwd, stdio: ['inherit', 2, 'inherit'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: node scripts/prepare.mjs"
+      }
+    ]
+  },
+  "dependencies": 6,
+  "minifiedFiles": [
+    "skills/crwu/crwu-dev-audit-optimize/template/echarts.min.js"
+  ],
+  "binaryFiles": [
+    "bin/darwin-arm64/crwu",
+    "bin/darwin-arm64/dws",
+    "bin/darwin-arm64/ossutil",
+    "bin/win32-x64/crwu.exe",
+    "bin/win32-x64/dws.exe",
+    "bin/win32-x64/ossutil.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
