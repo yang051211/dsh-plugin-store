@@ -1,0 +1,87 @@
+{
+  "name": "@yulianjie/dsh-brain",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-27T06:31:59.968Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/brain.mjs",
+        "line": 4,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/brain.mjs",
+        "line": 97,
+        "text": "      await writeFile(resolve(args[0]), `${JSON.stringify(await brain.exportData(), null, 2)}\\n`, { encoding: 'utf8', flag: options.force ? 'w' : 'wx', mode: 0o"
+      },
+      {
+        "file": "bin/brain.mjs",
+        "line": 100,
+        "text": "case 'import': requireArgs(args, 1); result = await brain.importData(JSON.parse(await readFile(resolve(args[0]), 'utf8'))); break;"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 3,
+        "text": "import { promises as fs, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 107,
+        "text": "await fs.mkdir(this.dataDir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = ['systemPrompt', 'tools', 'commands', 'agents', 'llm', 'workingDirectory'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 185,
+        "text": "const tool = (toolName, description, parameters, execute) => ctx.tools.register({ name: toolName, description, parameters,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "llm",
+    "systemPrompt",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 56,
+      "text": "`npm install -g @yulianjie/dsh-brain@0.2.1`, then `dsh-brain --help`."
+    },
+    {
+      "file": "README.en.md",
+      "line": 198,
+      "text": "`npm install -g ./yulianjie-dsh-brain-0.2.1.tgz` to obtain `dsh-brain`. Use a matching"
+    }
+  ],
+  "skippedEntries": []
+}
