@@ -56,6 +56,7 @@ const TEST_ENTRIES = {
   safe: { entry: 'src/client/safe/testing.ts', platform: 'neutral' },
   ui: { entry: 'src/client/ui/testing.ts', platform: 'neutral' },
   handoff: { entry: 'src/client/handoff.ts', platform: 'neutral' },
+  hub: { entry: 'src/client/hub.ts', platform: 'neutral' },
 }
 for (const [name, { entry, platform }] of Object.entries(TEST_ENTRIES)) {
   if (!existsSync(entry)) throw new Error(`test entry ${entry} is missing; tests would run against stale lib/test/${name}.js`)
