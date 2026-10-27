@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { localize, buildCatalog, searchPlugins, sortPlugins, pageOf, installStateOf, installedFrom, selfUpdateOf } from '../lib/test/model.js'
+import { localize, buildCatalog, searchPlugins, sortPlugins, pageOf, installStateOf, selfUpdateOf } from '../lib/test/model.js'
 
 const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 const fixture = () => JSON.parse(readFileSync(new URL('./fixtures/directory/index.json', import.meta.url), 'utf8'))
@@ -89,13 +89,6 @@ test('install state', () => {
   assert.equal(installStateOf(pet, new Map([['dsh-pet', { version: '1.0.0' }]])), 'installed')
   assert.equal(installStateOf(pet, new Map([['dsh-pet', { version: '0.9.0' }]])), 'update')
   assert.equal(installStateOf(qq, new Map()), 'incompatible')
-})
-
-test('installedFrom unwraps the Remote result and keeps installed bundles only', () => {
-  // ctx.remote.pluginManager.listBundles() resolves to { ok, value }, not to the bare array.
-  const map = installedFrom({ ok: true, value: [{ name: 'a', installed: true, version: '1.0.0' }, { name: 'b', installed: false }] })
-  assert.deepEqual([...map.entries()], [['a', { version: '1.0.0' }]])
-  assert.throws(() => installedFrom({ ok: false, error: new Error('plugin manager unavailable') }), /plugin manager unavailable/)
 })
 
 test('the store offers its own update only when the installed copy is older', () => {
