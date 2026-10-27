@@ -14,7 +14,9 @@ export const toJson = value => `${JSON.stringify(value, null, 2)}\n`
  * @param readIcon - icon file name → contents from the icon cache, or null when absent.
  */
 export function plannedMarketFiles(index, details, readIcon) {
-  const planned = new Map([['index.json', toJson(index)]])
+  // No indentation: it saves a third of the size, and store 0.1.x refuses an index over 8 MB (so it would never see
+  // the release that replaces it).
+  const planned = new Map([['index.json', `${JSON.stringify(index)}\n`]])
   for (const [name, detail] of details) planned.set(`plugins/${slugOf(name)}.json`, toJson(detail))
   for (const plugin of index.plugins) {
     if (!plugin.icon) continue
