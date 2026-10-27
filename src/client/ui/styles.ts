@@ -212,7 +212,6 @@ export const STYLE_TEXT = `
 .ps-modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
 .ps-modal-actions .ps-btn-large { width: auto; }
 .ps-crash { padding: 32px; height: auto; }
-.ps-toast { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); pointer-events: auto; display: flex; gap: 14px; align-items: center; background: ${C.bg1}; color: ${C.text}; border: 1px solid ${C.border}; border-radius: ${C.rLg}; padding: 10px 16px; box-shadow: 0 8px 28px rgba(0,0,0,.18); z-index: 1000; font-size: 14px; }
 /* installed page */
 .ps-btn-danger { background: ${C.error}; border-color: ${C.error}; color: #fff; }
 .ps-btn-danger:hover:not(:disabled) { border-color: ${C.error}; filter: brightness(1.08); }

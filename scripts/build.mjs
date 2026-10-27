@@ -55,7 +55,6 @@ const TEST_ENTRIES = {
   model: { entry: 'src/client/model/testing.ts', platform: 'neutral' },
   safe: { entry: 'src/client/safe/testing.ts', platform: 'neutral' },
   ui: { entry: 'src/client/ui/testing.ts', platform: 'neutral' },
-  handoff: { entry: 'src/client/handoff.ts', platform: 'neutral' },
   hub: { entry: 'src/client/hub.ts', platform: 'neutral' },
 }
 for (const [name, { entry, platform }] of Object.entries(TEST_ENTRIES)) {
