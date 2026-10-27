@@ -1,0 +1,75 @@
+{
+  "name": "@br4zz4/deepcode",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-27T13:14:14.911Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/config.mjs",
+        "line": 95,
+        "text": "const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');"
+      },
+      {
+        "file": "src/openrouter.mjs",
+        "line": 16,
+        "text": "const response = await fetch(OPENROUTER_API + '/models');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/deepcode.mjs",
+        "line": 4,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/deepcode.mjs",
+        "line": 8,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/deepcode.mjs",
+        "line": 11,
+        "text": "const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf8'));"
+      },
+      {
+        "file": "bin/deepcode.mjs",
+        "line": 102,
+        "text": "mkdirSync(profileDir, { recursive: true });"
+      },
+      {
+        "file": "bin/deepcode.mjs",
+        "line": 107,
+        "text": "writeFileSync(join(profileDir, 'pnpm-workspace.yaml'), pnpmContent);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: echo initialized"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

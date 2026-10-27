@@ -1,0 +1,95 @@
+{
+  "name": "dsh-plugin-qq-bridge",
+  "version": "1.1.2",
+  "scannedAt": "2026-10-27T13:14:11.553Z",
+  "icon": "dsh-plugin-qq-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 46,
+        "text": "const response = await fetch(`${API}${path}`, options);"
+      },
+      {
+        "file": "index.js",
+        "line": 688,
+        "text": "const response = await fetch(`${connection.httpApiUrl}/${action}`, {"
+      },
+      {
+        "file": "index.js",
+        "line": 808,
+        "text": "const response = await fetch(media.url, { signal: AbortSignal.timeout(CALL_TIMEOUT_MS * 3) })"
+      },
+      {
+        "file": "test/bridge.test.mjs",
+        "line": 12,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install.mjs",
+        "line": 34,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 41,
+        "text": "const SELF = JSON.parse(fs.readFileSync(path.join(HERE, '..', 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 113,
+        "text": "const readManifest = (file) => JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 125,
+        "text": "snapshots.push({ file, existed: true, bytes: fs.readFileSync(file) })"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 130,
+        "text": "if (snapshot.existed) fs.writeFileSync(snapshot.file, snapshot.bytes)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/install.mjs",
+        "line": 37,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 188,
+        "text": "const probe = spawnSync('pnpm --version', { shell: true, windowsHide: true, encoding: 'utf8' })"
+      },
+      {
+        "file": "bin/install.mjs",
+        "line": 208,
+        "text": "const result = spawnSync(parts.concat(args).join(' '), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

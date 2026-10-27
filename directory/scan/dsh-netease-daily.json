@@ -1,11 +1,21 @@
 {
   "name": "dsh-netease-daily",
-  "version": "0.1.2",
-  "scannedAt": "2026-10-26T10:15:34.593Z",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-27T13:14:15.524Z",
   "icon": "dsh-netease-daily.svg",
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "client.js",
+        "line": 22,
+        "text": "const jget = (path) => fetch(API + path, { credentials: 'same-origin' }).then(asJson);"
+      },
+      {
+        "file": "client.js",
+        "line": 23,
+        "text": "const jpost = (path, body) => fetch(API + path, {"
+      },
       {
         "file": "scripts/cli.js",
         "line": 1,
@@ -15,6 +25,11 @@
         "file": "scripts/cli.js",
         "line": 48,
         "text": "n;pending=true;try{const response=await fetch(location.pathname+'/status');const data=await response.json();document.getElementById('state').textContent=({waiti"
+      },
+      {
+        "file": "src/netease_cdp.js",
+        "line": 1,
+        "text": "import http from 'node:http';"
       }
     ]
   },
@@ -27,24 +42,24 @@
         "text": "import { existsSync } from 'node:fs';"
       },
       {
-        "file": "src/service.js",
+        "file": "src/deps.js",
         "line": 1,
-        "text": "import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';"
+        "text": "import { existsSync } from 'node:fs';"
       },
       {
-        "file": "src/service.js",
-        "line": 16,
-        "text": "await writeFile(temporary_path, content, { encoding: 'utf8', mode: 0o600 });"
+        "file": "src/logger.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir, readFile, readdir, stat, unlink, writeFile, access } from 'node:fs/promises';"
       },
       {
-        "file": "src/service.js",
-        "line": 21,
-        "text": "try { return JSON.parse(await readFile(path, 'utf8')); }"
+        "file": "src/logger.js",
+        "line": 40,
+        "text": "await mkdir(dir, { recursive: true });"
       },
       {
-        "file": "src/service.js",
-        "line": 86,
-        "text": "await mkdir(this.data_dir, { recursive: true, mode: 0o700 });"
+        "file": "src/logger.js",
+        "line": 51,
+        "text": "await mkdir(dir, { recursive: true });"
       }
     ]
   },
@@ -53,12 +68,12 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 4,
-        "text": "export const inject = ['tools'];"
+        "line": 8,
+        "text": "export const inject = ['tools', 'webServer'];"
       },
       {
         "file": "index.js",
-        "line": 51,
+        "line": 64,
         "text": "ctx.tools.register({"
       }
     ]
@@ -77,14 +92,19 @@
         "text": "const child = spawn(executable, args, { windowsHide: true, stdio: 'ignore', shell: false });"
       },
       {
-        "file": "src/netease_api.js",
-        "line": 1,
-        "text": "import { fork } from 'node:child_process';"
+        "file": "src/deps.js",
+        "line": 2,
+        "text": "import { execFile, spawn } from 'node:child_process';"
       },
       {
-        "file": "src/player.js",
-        "line": 1,
-        "text": "import { spawn } from 'node:child_process';"
+        "file": "src/deps.js",
+        "line": 9,
+        "text": "execFile(command, args, { windowsHide: true, timeout: timeout_ms, maxBuffer: 1 << 20 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "src/deps.js",
+        "line": 80,
+        "text": "const child = spawn('winget', ['install', '--id', 'shinchiro.mpv', '--exact', '--silent', '--accept-package-agreements', '--accept-source-agreements'], {"
       }
     ]
   },
@@ -96,7 +116,8 @@
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [
-    "tools"
+    "tools",
+    "webServer"
   ],
   "setupHints": [],
   "skippedEntries": []

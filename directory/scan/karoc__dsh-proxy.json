@@ -1,0 +1,85 @@
+{
+  "name": "@karoc/dsh-proxy",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-27T13:14:14.435Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 18,
+        "text": "* same-origin fetch (no settingsScope — the proxy config lives in"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "const res = await fetch(\"/proxy/api\", init);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { createServer, request } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "* dsh model fetch (undici), web search, npm install/update, git, child CLIs."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "const raw = JSON.parse(readFileSync(configFile, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 250,
+        "text": "text = readFileSync(settingsPath, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 508,
+        "text": "writeFileSync(configFile, JSON.stringify({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 570,
+        "text": "mkdirSync(dirname(configFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown --config ./tsdown.config.ts"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

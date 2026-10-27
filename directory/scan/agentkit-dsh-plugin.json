@@ -1,0 +1,84 @@
+{
+  "name": "agentkit-dsh-plugin",
+  "version": "0.0.9",
+  "scannedAt": "2026-10-27T13:14:10.643Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 10,
+        "text": "import { appendFileSync, copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 31,
+        "text": "mkdirSync(paths.stateDir, { recursive: true });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 33,
+        "text": "appendFileSync(join(paths.stateDir, \"ledger.jsonl\"), `${JSON.stringify(rec)}"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 42,
+        "text": "mkdirSync(paths.stateDir, { recursive: true });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 43,
+        "text": "writeFileSync(paths.patch, `${renderRow(opts.configFile)}`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 8,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 117,
+        "text": "const r = spawnSync(pm, [\"add\", opts.from], { cwd: profileDir, encoding: \"utf8\", timeout: 18e4 });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 137,
+        "text": "const probe = spawnSync(c, [\"--version\"], { encoding: \"utf8\", timeout: 15e3 });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 140,
+        "text": "const viaNpx = spawnSync(\"npx\", [\"--no-install\", \"pnpm\", \"--version\"], { encoding: \"utf8\", timeout: 2e4 });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 175,
+        "text": "const r = spawnSync(pm, [\"remove\", ROW_NAME], { cwd: profileDir, encoding: \"utf8\", timeout: 18e4 });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

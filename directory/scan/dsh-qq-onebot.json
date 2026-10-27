@@ -1,7 +1,7 @@
 {
   "name": "dsh-qq-onebot",
-  "version": "1.2.0",
-  "scannedAt": "2026-10-27T02:45:03.066Z",
+  "version": "1.2.2",
+  "scannedAt": "2026-10-27T13:14:10.016Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -23,13 +23,13 @@
       },
       {
         "file": "src/inbound.js",
-        "line": 316,
+        "line": 410,
         "text": "const res = await fetch(url, { signal: AbortSignal.timeout(20000) })"
       },
       {
-        "file": "src/onebot/client.js",
-        "line": 59,
-        "text": "ws = new WebSocket(this.url, { headers, handshakeTimeout: 10_000 })"
+        "file": "src/index.js",
+        "line": 262,
+        "text": "// 没配地址就别去连——空 url 会让 `new WebSocket('')` 抛 Invalid URL，然后静默重连到天荒地老；"
       }
     ]
   },
@@ -43,22 +43,22 @@
       },
       {
         "file": "src/chatlog.js",
-        "line": 53,
-        "text": "await mkdir(join(dir, CHATLOG_DIR), { recursive: true })"
+        "line": 68,
+        "text": "await mkdir(join(dir, sub), { recursive: true })"
       },
       {
         "file": "src/chatlog.js",
-        "line": 54,
+        "line": 69,
         "text": "await appendFile(file, line, 'utf8')"
       },
       {
         "file": "src/client-selfcheck.js",
-        "line": 20,
+        "line": 23,
         "text": "import { readFileSync } from 'node:fs'"
       },
       {
         "file": "src/client-selfcheck.js",
-        "line": 93,
+        "line": 125,
         "text": "pkgText = readFileSync(join(root, 'package.json'), 'utf8')"
       }
     ]
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "src/tools.js",
-        "line": 88,
+        "line": 115,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 135,
+        "line": 162,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 194,
+        "line": 207,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 238,
+        "line": 260,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 281,
+        "line": 319,
         "text": "tools.register({"
       }
     ]
@@ -98,12 +98,12 @@
     "evidence": [
       {
         "file": "src/inbound.js",
-        "line": 11,
+        "line": 19,
         "text": "import { spawn } from 'node:child_process'"
       },
       {
         "file": "src/inbound.js",
-        "line": 36,
+        "line": 44,
         "text": "child = spawn(py, model ? [script, wavPath, model] : [script, wavPath], { windowsHide: true })"
       }
     ]

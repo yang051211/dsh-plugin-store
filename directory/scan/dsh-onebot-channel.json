@@ -1,0 +1,123 @@
+{
+  "name": "dsh-onebot-channel",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-27T13:14:17.804Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 29,
+        "text": "return fetch(API + path, { cache: 'no-store' }).then(readJson)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 33,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "lib/images.js",
+        "line": 140,
+        "text": "const response = await fetch(seg.url, {"
+      },
+      {
+        "file": "lib/onebot.js",
+        "line": 17,
+        "text": "const response = await fetch(config.onebotHttp, {"
+      },
+      {
+        "file": "lib/sendapi.js",
+        "line": 11,
+        "text": "import { createServer } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 110,
+        "text": "config = { ...DEFAULTS, ...JSON.parse(readFileSync(CONFIG_FILE, 'utf8')) }"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 168,
+        "text": "writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/env.js",
+        "line": 8,
+        "text": "import { appendFileSync, statSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/env.js",
+        "line": 35,
+        "text": "const tail = readFileSync(LOAD_LOG).subarray(size - LOG_KEEP_BYTES)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 52,
+        "text": "// 必须声明 inject：cordis 里没 inject 的服务，读 ctx.agents / ctx.tools 会直接抛"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "export const inject = ['agents', 'tools', 'webServer', 'llm', 'sessions', 'attachments']"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 27,
+        "text": "const disposeTool = tools.register("
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 126,
+        "text": "const disposeTool = tools.register({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 211,
+        "text": "const disposeTool = tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/snowluma.js",
+        "line": 22,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "attachments",
+    "llm",
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

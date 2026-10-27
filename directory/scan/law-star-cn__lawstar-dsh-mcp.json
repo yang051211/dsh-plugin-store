@@ -1,0 +1,73 @@
+{
+  "name": "@law-star-cn/lawstar-dsh-mcp",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-27T13:14:14.597Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.sh",
+        "line": 5,
+        "text": "#   远端：  bash <(curl -fsSL https://raw.githubusercontent.com/law-star-cn/lawstar-dsh-mcp/main/install.sh)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "res = await fetch(endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": false,
+    "evidence": []
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "*   - 通过 ctx.loader 动态配置 @deepseek-ai/dsh-mcp-client 条目（注入 Bearer header）"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 72,
+        "text": "export const inject = ['tools', 'storageDomain', 'loader'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "/** 探针是否已上线（ctx.tools.get 存在即就绪；resolve 抛错视为未就绪） */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "return Boolean(ctx.tools.get(PROBE_TOOL));"
+      },
+      {
+        "file": "lib/mcp-provision.js",
+        "line": 2,
+        "text": "* MCP 条目动态配置：通过 ctx.loader 创建/更新/停用 @deepseek-ai/dsh-mcp-client 条目。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "loader",
+    "storageDomain",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

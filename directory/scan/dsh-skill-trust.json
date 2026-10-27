@@ -1,0 +1,79 @@
+{
+  "name": "dsh-skill-trust",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-27T13:14:18.351Z",
+  "icon": "dsh-skill-trust.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 843,
+        "text": "return fetch(API + path, init).then(async (response) => {"
+      },
+      {
+        "file": "lib/yuandun.js",
+        "line": 106,
+        "text": "const response = await fetch(target, {"
+      },
+      {
+        "file": "lib/yuandun.js",
+        "line": 429,
+        "text": "const response = await fetch(`${base}/yuandun/ui/skills/file?${query.toString()}`, {"
+      },
+      {
+        "file": "lib/yuandun.js",
+        "line": 484,
+        "text": "const response = await fetch(`${base}/yuandun/ui/skill-downloads?${query.toString()}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import fsp from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "raw = await fsp.readFile(path.join(dir, '_meta.json'), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 602,
+        "text": "await fsp.rm(target, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 618,
+        "text": "await fsp.writeFile(path.join(root, slug, '_meta.json'), JSON.stringify(meta, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/zip.js",
+        "line": 14,
+        "text": "import fsp from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

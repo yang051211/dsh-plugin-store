@@ -1,15 +1,25 @@
 {
   "name": "dsh-skill-cockpit",
-  "version": "1.1.2",
-  "scannedAt": "2026-10-26T10:04:50.146Z",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-27T13:14:08.413Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1122,
+        "line": 1189,
         "text": "const res = await fetch(path, init)"
+      },
+      {
+        "file": "lib/translate.js",
+        "line": 2,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/translate.js",
+        "line": 51,
+        "text": "const req = http.request({"
       }
     ]
   },
@@ -53,12 +63,12 @@
       },
       {
         "file": "lib/index.js",
-        "line": 327,
+        "line": 330,
         "text": "const dispose = ctx.tools.register(skillTool);"
       },
       {
         "file": "lib/index.js",
-        "line": 466,
+        "line": 499,
         "text": "const dispose = ctx.tools.register(autoloadTool);"
       },
       {
@@ -71,6 +81,11 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/translate.js",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
       {
         "file": "lib/vault.js",
         "line": 12,
@@ -90,11 +105,6 @@
         "file": "test/run-all.mjs",
         "line": 10,
         "text": "import { spawnSync } from 'node:child_process';"
-      },
-      {
-        "file": "test/run-all.mjs",
-        "line": 39,
-        "text": "const result = spawnSync(process.execPath, [script, reportDir], { stdio: 'inherit' });"
       }
     ]
   },

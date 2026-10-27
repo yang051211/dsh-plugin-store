@@ -1,0 +1,104 @@
+{
+  "name": "dsh-reload",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-27T13:14:17.973Z",
+  "icon": "dsh-reload.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 310,
+        "text": "const response = await fetch(apiUrl(path), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 102,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 103,
+        "text": "await writeFile("
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 17,
+        "text": "import { accessSync, constants, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/restarter.mjs",
+        "line": 15,
+        "text": "import { appendFileSync, readFileSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 148,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 155,
+        "text": "// `tools.register()` 直接接收 JSON Schema（不是 defineTool 的简写规格），"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/restart.js",
+        "line": 8,
+        "text": "* 为什么用 `spawn({ detached: true })` 就够了：实测 DSH 的进程树**不在** job"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 149,
+        "text": "const child = spawn(command, [script, configPath], {"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 162,
+        "text": "* 为什么不能只看 `spawn()` 有没有抛错：Electron 在单实例锁被占用、或"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 181,
+        "text": "child = spawn(exe, args, { detached: true, stdio: 'ignore', windowsHide: false, env })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
