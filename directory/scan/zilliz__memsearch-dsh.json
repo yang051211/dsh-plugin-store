@@ -1,7 +1,7 @@
 {
   "name": "@zilliz/memsearch-dsh",
-  "version": "0.1.7",
-  "scannedAt": "2026-10-26T10:15:28.807Z",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-27T05:21:51.994Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -38,27 +38,27 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 42,
+        "line": 41,
         "text": "} from 'node:fs'"
       },
       {
         "file": "index.js",
-        "line": 473,
+        "line": 408,
         "text": "meta = JSON.parse(readFileSync(metaPath, 'utf-8'))"
       },
       {
         "file": "index.js",
-        "line": 747,
+        "line": 701,
         "text": "content = readFileSync(realAbs, 'utf-8')"
       },
       {
         "file": "index.js",
-        "line": 878,
+        "line": 822,
         "text": "if (readFileSync(join(memoryDir, file), 'utf-8').includes(anchor)) return true"
       },
       {
         "file": "index.js",
-        "line": 886,
+        "line": 830,
         "text": "mkdirSync(memoryDir, { recursive: true })"
       }
     ]
@@ -72,28 +72,23 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 32,
-        "text": "import { execFile, execFileSync, spawn } from 'node:child_process'"
+        "line": 29,
+        "text": "import { execFile } from 'node:child_process'"
       },
       {
         "file": "index.js",
-        "line": 368,
-        "text": "execFile("
+        "line": 616,
+        "text": "const child = execFile('xdg-open', [dir], {"
       },
       {
-        "file": "index.js",
-        "line": 401,
-        "text": "const child = execFile('bash', ['-c', command], {"
+        "file": "runtime.js",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
       },
       {
-        "file": "index.js",
-        "line": 431,
-        "text": "const child = execFile('bash', ['-c', command], {"
-      },
-      {
-        "file": "index.js",
-        "line": 631,
-        "text": "const child = execFile('bash', ['-c', command], {"
+        "file": "runtime.js",
+        "line": 52,
+        "text": "const child = spawn(file, [...prefix, ...args], { windowsHide: true, ...spawnOptions })"
       }
     ]
   },
@@ -101,7 +96,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 0,
+  "dependencies": 1,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

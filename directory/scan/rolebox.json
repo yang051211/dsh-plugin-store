@@ -1,7 +1,7 @@
 {
   "name": "rolebox",
-  "version": "2.0.0",
-  "scannedAt": "2026-10-26T10:05:49.261Z",
+  "version": "2.1.0",
+  "scannedAt": "2026-10-27T05:21:51.032Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,17 +18,17 @@
       },
       {
         "file": "dist/dsh-web-client.js",
-        "line": 836,
+        "line": 869,
         "text": "fetch(ROLES_ENDPOINT),"
       },
       {
         "file": "dist/dsh-web-client.js",
-        "line": 837,
+        "line": 870,
         "text": "fetch(ACTIVE_ENDPOINT + \"?session=\" + encodeURIComponent(sessionId))"
       },
       {
         "file": "dist/dsh-web-client.js",
-        "line": 881,
+        "line": 923,
         "text": "const res = await fetch(SWITCH_ENDPOINT, {"
       }
     ]
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "dist/cli/commands/checkpoint/checkpoint-clean.js",
-        "line": 12,
-        "text": "import { existsSync } from \"node:fs\";"
+        "file": "dist/benchmark/baseline.js",
+        "line": 1,
+        "text": "import { mkdirSync } from \"node:fs\";"
       },
       {
-        "file": "dist/cli/commands/checkpoint/checkpoint-clean.js",
-        "line": 13,
-        "text": "import { readdir, unlink } from \"node:fs/promises\";"
+        "file": "dist/benchmark/baseline.js",
+        "line": 50,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
       },
       {
-        "file": "dist/cli/commands/checkpoint/checkpoint-clean.js",
-        "line": 85,
-        "text": "await unlink(join(checkpointsDir, file));"
+        "file": "dist/benchmark/command-grader.js",
+        "line": 2,
+        "text": "import { chmod, mkdir, mkdtemp, rm } from \"node:fs/promises\";"
       },
       {
-        "file": "dist/cli/commands/checkpoint/checkpoint-clean.js",
-        "line": 120,
-        "text": "const { readFile } = await import(\"node:fs/promises\");"
+        "file": "dist/benchmark/command-grader.js",
+        "line": 53,
+        "text": "await Promise.all(Object.values(directories).map(path => mkdir(path, { recursive: true, mode: 0o700 })));"
       },
       {
-        "file": "dist/cli/commands/checkpoint/checkpoint-clean.js",
-        "line": 125,
-        "text": "const raw = await readFile(join(checkpointsDir, file), \"utf-8\");"
+        "file": "dist/benchmark/command-grader.js",
+        "line": 197,
+        "text": "await rm(root, { recursive: true, force: true });"
       }
     ]
   },
@@ -68,28 +68,28 @@
     "evidence": [
       {
         "file": "dist/entries/dsh.js",
-        "line": 50,
+        "line": 53,
         "text": "* contract §3.2); `ctx.tools.register(def)` consumes them (§3.1). The real"
       },
       {
         "file": "dist/entries/dsh.js",
-        "line": 106,
+        "line": 128,
         "text": "export const inject = [\"tools\", \"sessions\", \"subagents\"];"
       },
       {
         "file": "dist/entries/dsh.js",
-        "line": 406,
+        "line": 443,
         "text": "* dsh's registry rejects a duplicate name WITHIN one layer (`ctx.tools.register`"
       },
       {
         "file": "dist/entries/dsh.js",
-        "line": 766,
+        "line": 861,
         "text": "*      session client) and register them into `ctx.tools`, filtered by"
       },
       {
         "file": "dist/entries/dsh.js",
-        "line": 834,
-        "text": "* with `ctx.tools.get` is what decides, so a name this boot did not actually"
+        "line": 950,
+        "text": "const catalog = ctx.tools.schemas?.(agent);"
       }
     ]
   },
@@ -97,29 +97,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "dist/cli/registry-client.js",
-        "line": 6,
-        "text": "import { spawn, spawnSync } from \"node:child_process\";"
-      },
-      {
-        "file": "dist/computer/exec.js",
-        "line": 15,
+        "file": "dist/benchmark/command-grader.js",
+        "line": 1,
         "text": "import { spawn } from \"node:child_process\";"
       },
       {
-        "file": "dist/computer/exec.js",
-        "line": 121,
-        "text": "const child = spawn(executable, [...vector.argv.slice(1)], {"
+        "file": "dist/benchmark/command-grader.js",
+        "line": 136,
+        "text": "child = spawn(argv[0], argv.slice(1), { cwd: workspace, env, detached: true, shell: false, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
       },
       {
-        "file": "dist/graph/policy/acceptance-primitives.js",
-        "line": 2,
-        "text": "import { spawnSync } from \"node:child_process\";"
+        "file": "dist/benchmark/process.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
       },
       {
-        "file": "dist/graph/policy/acceptance-primitives.js",
-        "line": 300,
-        "text": "const result = spawnSync(executable, argv.slice(1), {"
+        "file": "dist/benchmark/process.js",
+        "line": 202,
+        "text": "child = spawn(process.execPath, [...runtimeArgs, workerPath, requestPath, resultPath], {"
+      },
+      {
+        "file": "dist/cli/registry-client.js",
+        "line": 6,
+        "text": "import { spawn, spawnSync } from \"node:child_process\";"
       }
     ]
   },
@@ -129,7 +129,7 @@
       {
         "file": "package.json",
         "line": 0,
-        "text": "scripts.postinstall: node -e \"try{require('./dist/cli/postinstall.js')}catch(e){}\" && node scripts/patch-opentui-native-entry.mjs"
+        "text": "scripts.postinstall: node -e \"try{require('./dist/cli/postinstall.js')}catch(e){}\""
       }
     ]
   },
@@ -140,8 +140,8 @@
   "setupHints": [
     {
       "file": "README.md",
-      "line": 217,
-      "text": "npm install -g rolebox     # or run from a checkout built with `bun run build`"
+      "line": 220,
+      "text": "npm install -g rolebox     # or run from a checkout built with `npm run build`"
     }
   ],
   "skippedEntries": []

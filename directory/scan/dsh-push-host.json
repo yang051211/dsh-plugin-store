@@ -1,0 +1,101 @@
+{
+  "name": "dsh-push-host",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-27T05:21:52.408Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pairing.mjs",
+        "line": 110,
+        "text": "const response = await fetch(url, { headers })"
+      },
+      {
+        "file": "lib/pairing.mjs",
+        "line": 157,
+        "text": "const response = await fetch(relay + '/', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credentials.mjs",
+        "line": 45,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/credentials.mjs",
+        "line": 194,
+        "text": "text = readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "import { copyFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 407,
+        "text": "const text = readFileSync(file, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1204,
+        "text": "try { mkdir(dirOf(path), { recursive: true }) } catch { /* 目录已存在 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "export const inject = ['userQuestions', 'timer', 'configEditor', 'profileContext', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1029,
+        "text": "if (!ctx.configEditor || !ctx.tools) return"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1032,
+        "text": "const tool = ctx.tools.get('ask_user_question')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1065,
+        "text": "const landed = isTimedAskUserQuestion(ctx.tools.get('ask_user_question'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1104,
+        "text": "if (!ctx.configEditor || !ctx.tools) return"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "configEditor",
+    "profileContext",
+    "timer",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
