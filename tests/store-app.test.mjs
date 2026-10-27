@@ -187,20 +187,20 @@ const selfBar = root => root.root.findAll(n => n.type === 'div' && n.props.class
 
 test('an older installed store shows the update prompt, and its button asks for the new version', async () => {
   const updates = []
-  const root = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }]]) }, onSelfUpdate: u => updates.push(u) })
+  const root = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.1.8' }]]) }, onSelfUpdate: u => updates.push(u) })
   const [bar] = selfBar(root)
   assert.ok(bar)
   await act(async () => { bar.findByType('button').props.onClick() })
-  assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-plugin-store#v0.2.0' }])
-  const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.2.0' }]]) } })
+  assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-startide#v0.2.0' }])
+  const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.2.0' }]]) } })
   assert.equal(selfBar(upToDate).length, 0)
 })
 
 test('a self-update handed over from the panel goes straight to the installer in the tab', async () => {
   const updates = []
   let installs = 0
-  await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }]]) }, onInstall: () => { installs++ }, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-plugin-store' })
-  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-plugin-store#v0.2.0'])
+  await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.1.8' }]]) }, onInstall: () => { installs++ }, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-startide' })
+  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-startide#v0.2.0'])
   assert.equal(installs, 0)
 })
 
@@ -221,4 +221,16 @@ test('a plugin installed while the store is open gets a notice pointing to the P
   assert.ok(text.includes('Pet') && text.includes(zh.installedHint), text)
   await act(async () => { notice.findByProps({ className: 'ps-link-btn' }).props.onClick() })
   assert.equal(installedNotice(root).length, 0)
+})
+
+const legacyNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-legacy-notice'))
+
+test('with the old dsh-plugin-store still installed, the store says it can be removed', async () => {
+  const both = await mount({ services: { loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }], ['dsh-startide', { version: '0.2.0' }]]) } })
+  const [notice] = legacyNotice(both)
+  assert.ok(notice, 'notice shown')
+  const textIn = node => node.children.map(c => (typeof c === 'string' ? c : textIn(c))).join('')
+  assert.ok(textIn(notice).includes('dsh-plugin-store'))
+  const onlyNew = await mount({ services: { loadInstalled: async () => new Map([['dsh-startide', { version: '0.2.0' }]]) } })
+  assert.equal(legacyNotice(onlyNew).length, 0)
 })

@@ -4,16 +4,16 @@ import type { CatalogCache, CatalogSource, IndexDocument } from './catalog-cache
 import { NotListedError } from './catalog-cache.ts'
 import { json } from './http.ts'
 
-export const INDEX_ROUTE = '/api/plugin-store/index'
-export const DETAIL_ROUTE = '/api/plugin-store/detail'
+export const INDEX_ROUTE = '/api/startide/index'
+export const DETAIL_ROUTE = '/api/startide/detail'
 
 /**
  * Where the published catalog is read from, in order. GitHub serves a push within minutes; jsDelivr's `@main` can
  * keep resolving the branch to an older commit for hours, so it is the fallback for networks that cannot reach GitHub.
  */
 export const INDEX_SOURCES: CatalogSource[] = [
-  { url: 'https://raw.githubusercontent.com/yang051211/dsh-plugin-store/main/market/index.json', timeoutMs: 5_000 },
-  { url: 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json', timeoutMs: 15_000 },
+  { url: 'https://raw.githubusercontent.com/yang051211/dsh-startide/main/market/index.json', timeoutMs: 5_000 },
+  { url: 'https://cdn.jsdelivr.net/gh/yang051211/dsh-startide@main/market/index.json', timeoutMs: 15_000 },
 ]
 
 export type Compatibility = 'compatible' | 'incompatible' | 'unknown'
@@ -36,7 +36,7 @@ export function compatibilityOf(index: IndexDocument, dshVersion: string | null)
 
 const message = (error: unknown) => (error instanceof Error ? error.message : String(error))
 
-/** GET /api/plugin-store/index[?refresh=1] */
+/** GET /api/startide/index[?refresh=1] */
 export function createIndexFetch(cache: CatalogCache, versionOf: () => Promise<string | null>): (request: Request) => Promise<Response> {
   return async (request) => {
     try {
@@ -57,7 +57,7 @@ export function createIndexFetch(cache: CatalogCache, versionOf: () => Promise<s
   }
 }
 
-/** GET /api/plugin-store/detail?name=<package> */
+/** GET /api/startide/detail?name=<package> */
 export function createDetailFetch(cache: CatalogCache): (request: Request) => Promise<Response> {
   return async (request) => {
     const name = new URL(request.url).searchParams.get('name') ?? ''

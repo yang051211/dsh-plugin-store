@@ -17,7 +17,7 @@ export interface HomeProps {
   onInstallClick: (plugin: StorePlugin, state: InstallState) => void
 }
 
-export const ISSUES_URL = 'https://github.com/yang051211/dsh-plugin-store/issues'
+export const ISSUES_URL = 'https://github.com/yang051211/dsh-startide/issues'
 const icon = (d: ReactNode) => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
 const GRID = icon(<><rect x="4" y="4" width="6" height="6" rx="1.5" /><rect x="14" y="4" width="6" height="6" rx="1.5" /><rect x="4" y="14" width="6" height="6" rx="1.5" /><rect x="14" y="14" width="6" height="6" rx="1.5" /></>)
 const NOTE = icon(<><rect x="4" y="4" width="16" height="16" rx="3" /><path d="M8 9h8M8 13h5" /></>)

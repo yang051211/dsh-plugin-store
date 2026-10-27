@@ -9,7 +9,7 @@ import { categorize } from './categorize.mjs'
 import { qualifies } from './packages.mjs'
 import { slugOf } from './slug.mjs'
 
-export const INDEX_PUBLIC_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json'
+export const INDEX_PUBLIC_URL = 'https://cdn.jsdelivr.net/gh/yang051211/dsh-startide@main/market/index.json'
 export const DETECTION_KEYS = ['network', 'fileSystem', 'agentTools', 'childProcess', 'installScripts']
 /** Evidence lines kept per detection kind in a detail document. */
 const MAX_EVIDENCE = 5

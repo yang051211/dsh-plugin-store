@@ -64,7 +64,7 @@ export function pickStarRefresh(names, stats, limit) {
 export async function fetchStars(io, repositoryUrl) {
   const match = /^https:\/\/github\.com\/([^/]+)\/([^/#?]+)/.exec(repositoryUrl ?? '')
   if (!match) return null
-  const headers = { accept: 'application/vnd.github+json', 'user-agent': 'dsh-plugin-store-directory' }
+  const headers = { accept: 'application/vnd.github+json', 'user-agent': 'dsh-startide-directory' }
   if (io.githubToken) headers.authorization = `Bearer ${io.githubToken}`
   try {
     const response = await get(io, `https://api.github.com/repos/${match[1]}/${match[2]}`, { headers })

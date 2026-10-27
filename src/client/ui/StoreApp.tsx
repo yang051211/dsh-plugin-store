@@ -6,7 +6,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type SortKey, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
-import { installStateOf, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
+import { installStateOf, LEGACY_PACKAGE, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
 import type { Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail, type Readme } from './DetailView.tsx'
@@ -297,6 +297,11 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
             <span>{t('installedHint')}</span>
           </div>
           <button type="button" className="ps-link-btn" onClick={() => setJustInstalled(null)}>{t('dismiss')}</button>
+        </div>
+      )}
+      {installed?.has(LEGACY_PACKAGE) && (
+        <div className="ps-notice ps-notice-bar ps-legacy-notice">
+          <span>{t('legacyInstalled', { name: LEGACY_PACKAGE })}</span>
         </div>
       )}
       {installedUnknown && (

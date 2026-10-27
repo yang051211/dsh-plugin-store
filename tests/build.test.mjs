@@ -7,7 +7,7 @@ const host = () => readFileSync(new URL('../lib/index.js', import.meta.url), 'ut
 const pkg = () => JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 
 test('client bundle is wrapped for the web module loader', () => {
-  assert.ok(client().startsWith('window.__ModuleLoader__.load({ id: "dsh-plugin-store"'))
+  assert.ok(client().startsWith('window.__ModuleLoader__.load({ id: "dsh-startide"'))
   assert.ok(client().trimEnd().endsWith('return module.exports; } });'))
 })
 
@@ -21,7 +21,7 @@ test('host bundle is ESM and exports apply', () => {
 
 test('manifest declares the bundle, the client half, and no prepare script', () => {
   const manifest = pkg()
-  assert.equal(manifest.name, 'dsh-plugin-store')
+  assert.equal(manifest.name, 'dsh-startide')
   assert.equal(manifest.dsh.bundle.patch, './cordis.patch.yml')
   assert.equal(manifest.dsh.client.platform, 'web')
   // `-0` keeps 0.3.0 prereleases out: DSH checks engines with includePrerelease.

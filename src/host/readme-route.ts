@@ -6,7 +6,7 @@ import type { CatalogCache } from './catalog-cache.ts'
 import { CACHE_TTL_MS, FETCH_TIMEOUT_MS } from './catalog-cache.ts'
 import { json, readCapped } from './http.ts'
 
-export const README_ROUTE = '/api/plugin-store/readme'
+export const README_ROUTE = '/api/startide/readme'
 /** Largest README accepted. */
 export const MAX_README_BYTES = 1024 * 1024
 const NPM_CDN = 'https://cdn.jsdelivr.net/npm/'
@@ -17,7 +17,7 @@ const README_NAMES = ['README.md', 'readme.md', 'Readme.md']
 
 const message = (error: unknown) => (error instanceof Error ? error.message : String(error))
 
-/** GET /api/plugin-store/readme?name=<package> → `{ ok, markdown, base }`; `markdown` is '' when the package has none. */
+/** GET /api/startide/readme?name=<package> → `{ ok, markdown, base }`; `markdown` is '' when the package has none. */
 export function createReadmeFetch(cache: CatalogCache, fetchImpl: typeof fetch, now: () => number = Date.now, maxEntries: number = MAX_README_ENTRIES): (request: Request) => Promise<Response> {
   const cached = new Map<string, { at: number; markdown: string }>()
   return async (request) => {

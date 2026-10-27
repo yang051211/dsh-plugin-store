@@ -2,9 +2,9 @@
 import type { CatalogSnapshot } from './catalog.ts'
 
 /** Same-origin paths served by the Host half (src/host/index-route.ts); literals because the browser never imports Host code. */
-const INDEX_ROUTE = '/api/plugin-store/index'
-const DETAIL_ROUTE = '/api/plugin-store/detail'
-const README_ROUTE = '/api/plugin-store/readme'
+const INDEX_ROUTE = '/api/startide/index'
+const DETAIL_ROUTE = '/api/startide/detail'
+const README_ROUTE = '/api/startide/readme'
 
 async function call<T>(url: string): Promise<T> {
   const response = await fetch(url, { headers: { accept: 'application/json' } })

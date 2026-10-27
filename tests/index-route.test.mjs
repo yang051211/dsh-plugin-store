@@ -30,8 +30,8 @@ const get = async (route, url) => {
 
 test('the published catalog is read from GitHub first, then jsDelivr', () => {
   assert.deepEqual(INDEX_SOURCES.map(source => source.url), [
-    'https://raw.githubusercontent.com/yang051211/dsh-plugin-store/main/market/index.json',
-    'https://cdn.jsdelivr.net/gh/yang051211/dsh-plugin-store@main/market/index.json',
+    'https://raw.githubusercontent.com/yang051211/dsh-startide/main/market/index.json',
+    'https://cdn.jsdelivr.net/gh/yang051211/dsh-startide@main/market/index.json',
   ])
   // A blocked GitHub must not hold the store up for the full deadline before jsDelivr is tried.
   assert.ok(INDEX_SOURCES[0].timeoutMs < INDEX_SOURCES[1].timeoutMs)

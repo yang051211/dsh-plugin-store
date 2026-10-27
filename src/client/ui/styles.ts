@@ -217,10 +217,10 @@ export const STYLE_TEXT = `
 
 /** Add the stylesheet to the page once; returns a function that removes it. */
 export function injectStyles(doc: Document = document): () => void {
-  const existing = doc.querySelector('style[data-plugin="dsh-plugin-store"]')
+  const existing = doc.querySelector('style[data-plugin="dsh-startide"]')
   if (existing) return () => {}
   const tag = doc.createElement('style')
-  tag.dataset.plugin = 'dsh-plugin-store'
+  tag.dataset.plugin = 'dsh-startide'
   tag.textContent = STYLE_TEXT
   doc.head.appendChild(tag)
   return () => tag.remove()

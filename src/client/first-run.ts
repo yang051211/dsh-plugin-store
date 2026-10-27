@@ -1,7 +1,7 @@
 /** First-run marker: the store opens itself once, right after it is installed. */
 
 /** localStorage key recording that the first run already happened. */
-export const FIRST_RUN_KEY = 'dsh-plugin-store:first-run-done'
+export const FIRST_RUN_KEY = 'dsh-startide:first-run-done'
 
 /**
  * Whether this load is the first one since install; records the answer so later loads say no.

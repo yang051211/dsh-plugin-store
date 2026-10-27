@@ -27,9 +27,11 @@ export function installStateOf(plugin: StorePlugin, installed: Installed): Insta
 }
 
 /** This plugin's own package name, as DSH lists it. */
-export const STORE_PACKAGE = 'dsh-plugin-store'
+export const STORE_PACKAGE = 'dsh-startide'
+/** The store's name before 0.2.0. Updating from it installs this package beside it, so the old one is left to remove. */
+export const LEGACY_PACKAGE = 'dsh-plugin-store'
 /** Where this plugin is installed from; a release is the tag `v<version>`. */
-const STORE_REPO = 'github:yang051211/dsh-plugin-store'
+const STORE_REPO = 'github:yang051211/dsh-startide'
 
 export interface SelfUpdate { current: string; latest: string; spec: string }
 

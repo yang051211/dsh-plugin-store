@@ -13,7 +13,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   override componentDidCatch(error: unknown): void {
-    console.error('[dsh-plugin-store]', error)
+    console.error('[dsh-startide]', error)
   }
 
   override render(): ReactNode {

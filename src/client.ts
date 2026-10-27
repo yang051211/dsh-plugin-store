@@ -1,5 +1,5 @@
 /**
- * dsh-plugin-store, browser half: the Store tab on the Plugins page (the only place that can open DSH's install
+ * dsh-startide (生态家园), browser half: the Store tab on the Plugins page (the only place that can open DSH's install
  * dialog), a full-page Store panel with its own sidebar entry, a frame-wide notice for installs handed over from
  * the panel to the tab, and a first-run jump to the panel so a fresh install shows where the store lives.
  */
@@ -34,23 +34,23 @@ export type StoreLocaleKey = keyof typeof zh.ui
 declare module '@deepseek-ai/dsh-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** Plugin store copy. */
-    'pluginStore': StoreLocaleKey
+    'startide': StoreLocaleKey
   }
 }
 
-export const name = 'plugin-store'
+export const name = 'startide'
 
 /** Dictionary namespace owned by this plugin. */
-export const NS = 'pluginStore'
+export const NS = 'startide'
 
 /** Main panel and sidebar entry id. */
-export const PANEL_ID = 'plugin-store' as MainPanelId
+export const PANEL_ID = 'startide' as MainPanelId
 /** The Plugins page's own panel id. */
 const PLUGINS_PANEL_ID = 'plugins' as MainPanelId
 
 export const inject = ['slots', 'locale', 'layout', 'remote', 'remote.pluginManager']
 
-type LocaleProps = PropsLocale<'pluginStore'>
+type LocaleProps = PropsLocale<'startide'>
 
 /** The active UI language (re-rendering on switches) and a translator with `{name}` interpolation. */
 function useCopy(props: LocaleProps, locale: Context['locale']) {
@@ -66,8 +66,8 @@ function StoreIcon({ size }: { size: number }): ReactNode {
 
 /** Register the store's surfaces. */
 export function apply(ctx: Context): void {
-  ctx.effect(() => ctx.locale.register(NS, { zh: zh.ui, en: en.ui }), 'plugin-store: dictionaries')
-  ctx.effect(() => injectStyles(), 'plugin-store: styles')
+  ctx.effect(() => ctx.locale.register(NS, { zh: zh.ui, en: en.ui }), 'startide: dictionaries')
+  ctx.effect(() => injectStyles(), 'startide: styles')
   const t = ctx.locale.bind(NS)
   const handoff = createHandoff()
 
@@ -138,6 +138,6 @@ export function apply(ctx: Context): void {
   ctx.slots.inject('plugins.tab', () => ctx.slots.register({ name: 'plugins.tab', id: 'store', label: () => t('tab'), locale: NS }, StoreTab))
   ctx.slots.inject('main', () => ctx.slots.register({ name: 'main', key: PANEL_ID, locale: NS }, StorePanel))
   ctx.slots.inject('sidebar.panellist', () => ctx.slots.register({ name: 'sidebar.panellist', id: PANEL_ID, order: 1, label: () => t('tab'), locale: NS }, StoreIcon))
-  ctx.slots.inject('shell.overlay', () => ctx.slots.register({ name: 'shell.overlay', id: 'plugin-store.handoff', locale: NS }, Notice))
+  ctx.slots.inject('shell.overlay', () => ctx.slots.register({ name: 'shell.overlay', id: 'startide.handoff', locale: NS }, Notice))
   if (shouldAutoOpen(() => window.localStorage)) ctx.layout.selectPanel(PANEL_ID)
 }

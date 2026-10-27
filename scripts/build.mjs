@@ -14,7 +14,7 @@
 import { build } from 'esbuild'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 
-const ID = 'dsh-plugin-store'
+const ID = 'dsh-startide'
 const CLIENT_EXTERNALS = ['react', 'react/jsx-runtime']
 
 mkdirSync('lib', { recursive: true })
