@@ -48,6 +48,17 @@ test('a rate-limited answer is retried after a growing pause instead of becoming
   assert.deepEqual(waits, [2000, 4000])
 })
 
+test('an answer for a stale week is unknown, not zero', async () => {
+  // Seen on 2026-10-27: "last-week" answered every package with 0 for 2026-06-25..07-01.
+  const stale = { downloads: 0, start: '2026-06-25', end: '2026-07-01' }
+  const fresh = { downloads: 9, start: '2026-10-19', end: '2026-10-25' }
+  const io = { fetch: async url => new Response(JSON.stringify(url.includes(',') ? { a: stale, b: fresh } : { ...fresh, package: '@s/c' })) }
+  const result = await weeklyDownloads(io, ['a', 'b', '@s/c'], { now: Date.parse('2026-10-27T00:00:00Z') })
+  assert.equal(result.get('a'), null)
+  assert.equal(result.get('b'), 9)
+  assert.equal(result.get('@s/c'), 9)
+})
+
 test('a single unscoped name still reads the flat answer', async () => {
   const { io } = fakeApi({ solo: 9 })
   assert.equal((await weeklyDownloads(io, ['solo'])).get('solo'), 9)

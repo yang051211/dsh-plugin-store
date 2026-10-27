@@ -15,7 +15,14 @@ const SCOPED_CONCURRENCY = 2
 const RATE_LIMIT_RETRIES = 5
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 
-const countOf = entry => (typeof entry?.downloads === 'number' ? entry.downloads : null)
+/** An answer whose week ended longer ago than this is stale (the API has served months-old zeros), so unknown. */
+const MAX_WEEK_AGE_MS = 10 * 86_400_000
+
+const countOf = (entry, now) => {
+  if (typeof entry?.downloads !== 'number') return null
+  const end = Date.parse(entry.end ?? '')
+  return Number.isFinite(end) && now - end > MAX_WEEK_AGE_MS ? null : entry.downloads
+}
 
 async function readJson(io, url, sleep) {
   try {
@@ -30,7 +37,7 @@ async function readJson(io, url, sleep) {
 }
 
 /** Weekly downloads per name; null where unknown. */
-export async function weeklyDownloads(io, names, { concurrency = 8, sleep = wait } = {}) {
+export async function weeklyDownloads(io, names, { concurrency = 8, sleep = wait, now = Date.now() } = {}) {
   const result = new Map(names.map(name => [name, null]))
   const plain = names.filter(name => !name.startsWith('@'))
   const batches = []
@@ -38,11 +45,11 @@ export async function weeklyDownloads(io, names, { concurrency = 8, sleep = wait
   await runPool(batches, concurrency, async batch => {
     const body = await readJson(io, DOWNLOADS + batch.join(','), sleep)
     // One name in a "batch" gets the flat single-package answer.
-    if (batch.length === 1) result.set(batch[0], countOf(body))
-    else for (const name of batch) result.set(name, countOf(body?.[name]))
+    if (batch.length === 1) result.set(batch[0], countOf(body, now))
+    else for (const name of batch) result.set(name, countOf(body?.[name], now))
   })
   await runPool(names.filter(name => name.startsWith('@')), Math.min(concurrency, SCOPED_CONCURRENCY), async name => {
-    result.set(name, countOf(await readJson(io, DOWNLOADS + name, sleep)))
+    result.set(name, countOf(await readJson(io, DOWNLOADS + name, sleep), now))
   })
   return result
 }
