@@ -72,3 +72,12 @@ test('change outcome: applied, restart required, or the error text', () => {
   assert.deepEqual(changeOutcome({ ok: false, error: new Error('offline') }), { error: 'offline' })
   assert.deepEqual(changeOutcome({ ok: false, error: 'plain' }), { error: 'plain' })
 })
+
+test("the store row takes its latest version from the catalog's store release", () => {
+  const self = { ...bundle('dsh-startide', '0.2.0'), source: 'github:yang051211/dsh-startide#v0.2.0' }
+  const newer = buildInstalledRows([self], catalog, {}, 'zh', '0.3.0')
+  assert.deepEqual(newer.updates.map(r => [r.name, r.latest, r.check]), [['dsh-startide', '0.3.0', 'catalog']])
+  const same = buildInstalledRows([self], catalog, {}, 'zh', '0.2.0')
+  assert.deepEqual(same.others.map(r => [r.name, r.check]), [['dsh-startide', 'catalog']])
+  assert.equal(buildInstalledRows([self], catalog, {}, 'zh').others[0].check, 'catalog', 'never "not npm" for the store itself')
+})

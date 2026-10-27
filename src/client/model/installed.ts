@@ -29,16 +29,20 @@ export interface InstalledRows { updates: InstalledRow[]; others: InstalledRow[]
 const newer = (latest: string | null, version: string | null): boolean =>
   !!latest && !!version && !!semver.valid(latest) && !!semver.valid(version) && semver.gt(latest, version)
 
-/** Split installed bundles into rows with an update, DSH's own bundles, and the rest; each group sorted by title. */
+/**
+ * Split installed bundles into rows with an update, DSH's own bundles, and the rest; each group sorted by title.
+ * The store's own row takes its latest version from `storeLatest`, the release the catalog was published with.
+ */
 export function buildInstalledRows(
-  bundles: InstalledBundle[], catalog: Catalog | null, registryLatest: Record<string, string>, lang: string,
+  bundles: InstalledBundle[], catalog: Catalog | null, registryLatest: Record<string, string>, lang: string, storeLatest: string | null = null,
 ): InstalledRows {
   const rows: InstalledRows = { updates: [], others: [], official: [] }
   for (const b of bundles) {
     if (!b.installed) continue
     const plugin = catalog?.byName.get(b.name) ?? null
-    const check: InstalledRow['check'] = plugin ? 'catalog' : isRegistrySpec(b.name, b.source) ? 'registry' : 'not-npm'
-    const latest = plugin ? plugin.version : check === 'registry' ? registryLatest[b.name] ?? null : null
+    const self = b.name === STORE_PACKAGE
+    const check: InstalledRow['check'] = plugin || self ? 'catalog' : isRegistrySpec(b.name, b.source) ? 'registry' : 'not-npm'
+    const latest = plugin ? plugin.version : self ? storeLatest : check === 'registry' ? registryLatest[b.name] ?? null : null
     const metaIcon = typeof b.meta?.icon === 'string' && b.meta.icon.startsWith('data:image/') ? b.meta.icon : null
     const row: InstalledRow = {
       name: b.name,
@@ -52,7 +56,7 @@ export function buildInstalledRows(
       official: b.official,
       missing: b.availability === 'missing',
       removable: b.removable,
-      self: b.name === STORE_PACKAGE,
+      self,
     }
     const group = b.official ? rows.official : newer(latest, row.version) ? rows.updates : rows.others
     group.push(row)
@@ -75,3 +79,5 @@ export function changeOutcome(result: ChangeResult): 'applied' | 'restart-requir
   if (application === 'applied' || application === 'restart-required') return application
   return { error: error !== undefined ? messageOf(error) : application }
 }
+
+export type ChangeOutcome = ReturnType<typeof changeOutcome>

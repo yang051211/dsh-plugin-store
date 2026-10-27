@@ -1,52 +1,60 @@
 /**
- * The store, shared by the Plugins-page tab and the full-page panel: loads the directory and install states, keeps a
- * back stack of views (home → list → detail) with their scroll positions and list settings, and routes install
- * clicks. Only the tab can install; it confirms first. The panel hands the install over (see client.ts).
+ * The store in the Plugins-page tab: loads the directory and the installed bundles, keeps a back stack of views
+ * (home → list → detail) with their scroll positions and list settings, and routes install clicks, confirming first.
  */
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { buildCatalog, searchPlugins, type Catalog, type CatalogSnapshot, type SortKey, type StorePlugin } from '../model/catalog.ts'
 import { localize } from '../model/localize.ts'
-import { installStateOf, LEGACY_PACKAGE, selfUpdateOf, STORE_PACKAGE, type InstallState, type Installed, type SelfUpdate } from '../model/install-state.ts'
+import { installedOf, LEGACY_PACKAGE, selfUpdateOf, type InstallState, type Installed, type InstalledBundle, type SelfUpdate } from '../model/install-state.ts'
+import { buildInstalledRows, type ChangeOutcome } from '../model/installed.ts'
 import type { Translate } from './common.tsx'
 import { ConfirmInstall } from './ConfirmInstall.tsx'
 import { DetailView, type Load, type PluginDetail, type Readme } from './DetailView.tsx'
 import { Home, type ListFilter } from './Home.tsx'
 import { ListView, type ListSettings } from './ListView.tsx'
 import { AboutView } from './About.tsx'
+import { InstalledView, type Inspection } from './InstalledView.tsx'
 import { BRAND_ICON } from './brand-icon.ts'
 
 export interface StoreServices {
   loadCatalog: (refresh?: boolean) => Promise<CatalogSnapshot>
   loadDetail: (name: string) => Promise<PluginDetail>
   loadReadme: (name: string) => Promise<Readme>
-  loadInstalled: () => Promise<Installed>
+  loadBundles: () => Promise<InstalledBundle[]>
   subscribeInstalled: (onChange: () => void) => () => void
+  /** Latest versions of unlisted npm plugins; {} when they cannot be asked. */
+  loadLatest: () => Promise<Record<string, string>>
+  setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
+  remove: (name: string) => Promise<ChangeOutcome>
+  inspect: (spec: string) => Promise<Inspection>
 }
 
 export interface StoreAppProps {
-  mode: 'tab' | 'panel'
   lang: string
   t: Translate
   services: StoreServices
-  /** Tab: called after the store's confirmation. Panel: starts the hand-over to the tab. */
+  /** Called after the store's confirmation; opens DSH's install dialog. */
   onInstall: (plugin: StorePlugin) => void
   /** Install a newer release of the store itself through DSH's installer. */
   onSelfUpdate: (update: SelfUpdate) => void
-  /** Open an installed plugin's page in the Plugins manager. */
-  onOpenInstalled: (plugin: StorePlugin) => void
-  /** Tab only: the plugin a panel handed over, if any (taken once). */
-  takePending?: () => string | null
+  /** Open an installed plugin's own page in the Plugins manager. */
+  onOpenPackage: (name: string) => void
+  /** Open DSH's install dialog for an address typed on the Installed page. */
+  onInstallSpec: (target: { spec: string; title: string; version: string }) => void
+  /** The "keep only Startide" preference. */
+  keepOnly: { value: boolean; set: (on: boolean) => void }
 }
 
-export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'about' }
+export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'installed' } | { view: 'about' }
 
 /** The store's own tabs; each opens its page as a new root, so back never walks across tabs. */
-export type NavTab = 'home' | 'all' | 'about'
-const TABS: NavTab[] = ['home', 'all', 'about']
+export type NavTab = 'home' | 'all' | 'installed' | 'about'
+const TABS: NavTab[] = ['home', 'all', 'installed', 'about']
+const TAB_LABELS: Record<NavTab, string> = { home: 'navHome', all: 'navAll', installed: 'navInstalled', about: 'navAbout' }
 
 /** Which tab a view belongs to. */
 export function tabOf(view: View): NavTab {
-  return view.view === 'home' ? 'home' : view.view === 'about' ? 'about' : 'all'
+  return view.view === 'home' || view.view === 'about' || view.view === 'installed' ? view.view : 'all'
 }
 
 const listView = (filter: ListFilter, sort: SortKey = 'popular'): View => ({ view: 'list', filter, sort, page: 1, compatibleOnly: false })
@@ -93,13 +101,16 @@ function useLoads<T>(load: (name: string) => Promise<T>) {
   return [loads, start] as const
 }
 
-export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onOpenInstalled, takePending }: StoreAppProps): ReactNode {
+export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPackage, onInstallSpec, keepOnly }: StoreAppProps): ReactNode {
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
-  const [installed, setInstalled] = useState<Installed | null>(null)
-  const [installedUnknown, setInstalledUnknown] = useState(false)
+  // Null until the first read answers. A failed read keeps whatever was read before and records why.
+  const [bundles, setBundles] = useState<InstalledBundle[] | null>(null)
+  const [bundlesError, setBundlesError] = useState<string | null>(null)
+  const [latest, setLatest] = useState<Record<string, string>>({})
+  const refreshBundles = useRef<() => void>(() => {})
   // The plugin that became installed while the store was open; a notice is shown until dismissed.
   const [justInstalled, setJustInstalled] = useState<string | null>(null)
-  const lastInstalled = useRef<Installed | null>(null)
+  const lastInstalled = useRef<Set<string> | null>(null)
   const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
   const [details, loadDetail] = useLoads(services.loadDetail)
   const [readmes, loadReadme] = useLoads(services.loadReadme)
@@ -109,13 +120,12 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
   const seq = useRef({ catalog: 0, installed: 0 })
   const current = stack[stack.length - 1]!.view
 
-  /** The element that actually scrolls: the panel root, or the Plugins page container around the tab. */
+  /** The element that actually scrolls: the Plugins page container around the tab. */
   const scroller = useCallback((): HTMLElement | null => {
     const el = root.current
     if (!el) return null
-    if (mode === 'panel') return el
     return scrollParentOf<HTMLElement>(el.parentElement, node => getComputedStyle(node).overflowY) ?? (document.scrollingElement as HTMLElement | null)
-  }, [mode])
+  }, [])
 
   const load = useCallback((refresh = false) => {
     const id = ++seq.current.catalog
@@ -135,26 +145,43 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     let live = true
     const refresh = () => {
       const id = ++seq.current.installed
-      // A failed read falls back to "nothing installed": buttons stay usable, and DSH's own install dialog still
-      // refuses a plugin that is already there. Only the first read in flight keeps the buttons disabled.
-      services.loadInstalled().then(
-        map => {
+      services.loadBundles().then(
+        list => {
           if (!live || id !== seq.current.installed) return
           // Only a change seen after the first read counts: plugins installed before the store opened need no notice.
           const before = lastInstalled.current
-          const fresh = before ? [...map.keys()].filter(name => !before.has(name)) : []
+          const fresh = before ? list.map(b => b.name).filter(name => !before.has(name)) : []
           if (fresh.length > 0) setJustInstalled(fresh[fresh.length - 1]!)
-          lastInstalled.current = map
-          setInstalled(map)
-          setInstalledUnknown(false)
+          lastInstalled.current = new Set(list.map(b => b.name))
+          setBundles(list)
+          setBundlesError(null)
         },
-        () => { if (live && id === seq.current.installed) { setInstalled(prev => prev ?? new Map()); setInstalledUnknown(true) } },
+        (error: unknown) => { if (live && id === seq.current.installed) setBundlesError(messageOf(error)) },
       )
     }
+    refreshBundles.current = refresh
     refresh()
     const unsubscribe = services.subscribeInstalled(refresh)
     return () => { live = false; unsubscribe() }
   }, [services])
+
+  // Unlisted npm plugins' latest versions, asked again whenever the installed list changes.
+  useEffect(() => {
+    if (!bundles) return
+    let live = true
+    services.loadLatest().then(found => { if (live) setLatest(found) }, () => {})
+    return () => { live = false }
+  }, [services, bundles])
+
+  // A failed read falls back to "nothing installed" for the install buttons: they stay usable, and DSH's own install
+  // dialog still refuses a plugin that is already there. Only the first read in flight keeps them disabled.
+  const installed: Installed | null = useMemo(() => (bundles ? installedOf(bundles) : bundlesError ? new Map() : null), [bundles, bundlesError])
+  const catalogData = catalog.status === 'ready' ? catalog.data : null
+  const selfUpdate = catalogData ? selfUpdateOf(catalogData.storeVersion, installed) : null
+  const rows = useMemo(
+    () => (bundles ? buildInstalledRows(bundles, catalogData, latest, lang, catalogData?.storeVersion ?? null) : null),
+    [bundles, catalogData, latest, lang],
+  )
 
   const go = useCallback((view: View) => {
     const scroll = scroller()?.scrollTop ?? 0
@@ -199,28 +226,10 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     if (el) el.scrollTop = top
   }, [stack, scroller])
 
-  // A plugin handed over from the panel: once the catalog and install states are known, show it, and ask for
-  // confirmation only if it still needs installing.
-  const handedOver = useRef(false)
-  useEffect(() => {
-    if (handedOver.current || mode !== 'tab' || !takePending || catalog.status !== 'ready' || installed === null) return
-    handedOver.current = true
-    const name = takePending()
-    if (name === STORE_PACKAGE) {
-      const update = selfUpdateOf(catalog.data.storeVersion, installed)
-      if (update) onSelfUpdate(update)
-      return
-    }
-    const plugin = name ? catalog.data.byName.get(name) : undefined
-    if (!plugin) return
-    go({ view: 'detail', name: plugin.name })
-    if (installStateOf(plugin, installed) === 'install') setConfirming(plugin)
-  }, [mode, takePending, catalog, installed, go, onSelfUpdate])
-
   const onInstallClick = useCallback((plugin: StorePlugin, state: InstallState) => {
-    if (state === 'installed' || state === 'update') onOpenInstalled(plugin)
-    else if (state === 'install') { if (mode === 'tab') setConfirming(plugin); else onInstall(plugin) }
-  }, [mode, onInstall, onOpenInstalled])
+    if (state === 'installed' || state === 'update') onOpenPackage(plugin.name)
+    else if (state === 'install') setConfirming(plugin)
+  }, [onOpenPackage])
 
   const cancelConfirm = useCallback(() => setConfirming(null), [])
   const acceptConfirm = useCallback(() => {
@@ -236,7 +245,14 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
   }), [go, onInstallClick, back])
 
   let body: ReactNode
-  if (catalog.status === 'loading') {
+  if (current.view === 'installed') {
+    // The installed list does not wait for the catalog: without it, rows just lack directory titles and versions.
+    body = (
+      <InstalledView rows={rows} error={bundlesError} selfUpdate={selfUpdate} t={t} keepOnly={keepOnly}
+        onRetry={() => refreshBundles.current()} onOpenPackage={onOpenPackage} onSelfUpdate={onSelfUpdate}
+        setEnabled={services.setEnabled} remove={services.remove} inspect={services.inspect} onInstallSpec={onInstallSpec} />
+    )
+  } else if (catalog.status === 'loading') {
     body = <div className="ps-pad ps-muted">{t('loading')}</div>
   } else if (catalog.status === 'error') {
     body = (
@@ -265,16 +281,16 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
     }
   }
 
-  const selfUpdate = catalog.status === 'ready' ? selfUpdateOf(catalog.data.storeVersion, installed) : null
   const justPlugin = justInstalled && catalog.status === 'ready' ? catalog.data.byName.get(justInstalled) ?? null : null
 
   return (
-    <div className={`ps-root ps-mode-${mode}`} ref={root}>
+    <div className="ps-root ps-mode-tab" ref={root}>
       <nav className="ps-nav" aria-label={t('tab')}>
         <span className="ps-nav-brand"><img className="ps-nav-logo" src={BRAND_ICON} alt="" width={24} height={24} />{t('tab')}</span>
         {TABS.map(tab => (
           <button key={tab} type="button" className={tabOf(current) === tab ? 'ps-nav-on' : ''} aria-current={tabOf(current) === tab ? 'page' : undefined} onClick={() => openTab(tab)}>
-            {t({ home: 'navHome', all: 'navAll', about: 'navAbout' }[tab])}
+            {t(TAB_LABELS[tab])}
+            {tab === 'installed' && rows && rows.updates.length > 0 && <span className="ps-badge">{rows.updates.length}</span>}
           </button>
         ))}
       </nav>
@@ -304,7 +320,7 @@ export function StoreApp({ mode, lang, t, services, onInstall, onSelfUpdate, onO
           <span>{t('legacyInstalled', { name: LEGACY_PACKAGE })}</span>
         </div>
       )}
-      {installedUnknown && (
+      {bundlesError && current.view !== 'installed' && (
         <div className="ps-notice ps-notice-bar ps-installed-unknown">
           <span>{t('installedUnknown')}</span>
         </div>
