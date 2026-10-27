@@ -81,3 +81,23 @@ test("the store row takes its latest version from the catalog's store release", 
   assert.deepEqual(same.others.map(r => [r.name, r.check]), [['dsh-startide', 'catalog']])
   assert.equal(buildInstalledRows([self], catalog, {}, 'zh').others[0].check, 'catalog', 'never "not npm" for the store itself')
 })
+
+test('a backslash in the range is not a registry spec', () => {
+  assert.equal(isRegistrySpec('dsh-pet', 'dsh-pet@a\\b'), false)
+})
+
+test("DSH's own error shape reads as its diagnostic, else its code", () => {
+  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'bundle-in-use', diagnostic: 'used by dsh-x' } } }), { error: 'used by dsh-x' })
+  assert.deepEqual(changeOutcome({ ok: true, value: { application: 'failed', error: { code: 'not-removable' } } }), { error: 'not-removable' })
+})
+
+test('a read-only or broken bundle is marked so its switch can be locked', () => {
+  const rows = buildInstalledRows([
+    bundle('locked', '1.0.0', { readOnlyReason: 'management-required' }),
+    bundle('broken', '1.0.0', { enabled: false, error: { code: 'operation-error', diagnostic: 'load failed' } }),
+    bundle('fine', '1.0.0'),
+  ], catalog, {}, 'zh')
+  const by = Object.fromEntries(rows.others.map(r => [r.name, r]))
+  assert.deepEqual([by.locked.locked, by.broken.locked, by.fine.locked], [true, true, false])
+  assert.deepEqual([by.locked.problem, by.broken.problem, by.fine.problem], [null, 'load failed', null])
+})

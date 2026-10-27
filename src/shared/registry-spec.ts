@@ -6,5 +6,5 @@ export function isRegistrySpec(name: string, source: string | undefined): boolea
   if (source === name) return true
   if (!source?.startsWith(`${name}@`)) return false
   const rest = source.slice(name.length + 1)
-  return rest !== '' && !/[:/\#]/.test(rest)
+  return rest !== '' && !/[:/\\#]/.test(rest)
 }

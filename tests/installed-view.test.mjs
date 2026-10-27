@@ -177,6 +177,14 @@ test('the address box shows only with keep-only on; it inspects, then installs w
   await act(async () => { input.props.onChange({ target: { value: '  github:o/dsh-x  ' } }) })
   await click(buttonIn(root.root, zh.installFromSpecAction))
   assert.deepEqual(calls.inspect, ['github:o/dsh-x'])
+  assert.deepEqual(calls.installSpec, [], 'nothing installs before the confirmation')
+  const dialog = root.root.find(n => n.props.role === 'dialog')
+  const text = textIn(dialog)
+  for (const part of ['dsh-x', '2.1.0', 'github:o/dsh-x', zh.confirmTrust]) assert.ok(text.includes(part), part)
+  await click(buttonIn(dialog, zh.cancel))
+  assert.deepEqual(calls.installSpec, [])
+  await click(buttonIn(root.root, zh.installFromSpecAction))
+  await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.continue))
   assert.deepEqual(calls.installSpec, [{ spec: 'github:o/dsh-x', title: 'dsh-x', version: '2.1.0' }])
 })
 
@@ -198,4 +206,36 @@ test('a failed installed-list read shows the error and a retry, not an empty lis
   fail = false
   await click(buttonIn(root.root, zh.retry))
   assert.deepEqual(rows(root, 'others'), ['dsh-pet'])
+})
+
+test('an uninstall that needs a restart says so even after its row is gone', async () => {
+  let list = [bundle('dsh-pet', '1.0.0')]
+  let changed = () => {}
+  const { root } = await open({
+    services: {
+      loadBundles: async () => list,
+      subscribeInstalled: fn => { changed = fn; return () => {} },
+      remove: async () => { list = []; changed(); return 'restart-required' },
+    },
+  })
+  await click(buttonIn(row(root, 'dsh-pet'), zh.remove))
+  await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.remove))
+  assert.equal(root.root.findAll(n => n.props['data-name'] === 'dsh-pet').length, 0)
+  const text = JSON.stringify(root.toJSON())
+  assert.ok(text.includes('Pet') && text.includes(zh.restartRequired), text)
+})
+
+test('a read-only or failed bundle has its switch locked and shows its problem', async () => {
+  const { root } = await open({ bundles: [
+    bundle('locked', '1.0.0', { readOnlyReason: 'management-required' }),
+    bundle('broken', '1.0.0', { enabled: false, error: { code: 'operation-error', diagnostic: 'load failed' } }),
+  ] })
+  assert.equal(switchIn(row(root, 'locked'))[0].props.disabled, true)
+  assert.equal(switchIn(row(root, 'broken'))[0].props.disabled, true)
+  assert.ok(textIn(row(root, 'broken')).includes('load failed'))
+})
+
+test('a missing plugin is left to DSH: settings only, no uninstall', async () => {
+  const { root } = await open({ bundles: [bundle('lost', '1.0.0', { availability: 'missing' })] })
+  assert.equal(buttonsIn(row(root, 'lost'), zh.remove).length, 0)
 })

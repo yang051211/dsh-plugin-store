@@ -1,5 +1,12 @@
 /** Small HTTP helpers shared by the Host routes. */
 
+/** The server answered, but not with 2xx. */
+export class HttpStatusError extends Error {
+  constructor(message: string, readonly status: number) {
+    super(message)
+  }
+}
+
 /** Read a response body as text, refusing more than `limit` bytes (announced or actual). */
 export async function readCapped(response: Response, limit: number, what: string): Promise<string> {
   const announced = Number(response.headers.get('content-length'))
@@ -35,7 +42,7 @@ export async function fetchJson(
   const response = await fetchImpl(url, { signal: cancel ? AbortSignal.any([deadline, cancel]) : deadline, ...(headers && { headers }) })
   if (!response.ok) {
     await response.body?.cancel()
-    throw new Error(`${what} answered HTTP ${response.status}`)
+    throw new HttpStatusError(`${what} answered HTTP ${response.status}`, response.status)
   }
   const text = await readCapped(response, limit, what)
   try {

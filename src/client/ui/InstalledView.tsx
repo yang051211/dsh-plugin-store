@@ -7,6 +7,7 @@ import { useCallback, useState, type ReactNode } from 'react'
 import type { ChangeOutcome, InstalledRow, InstalledRows } from '../model/installed.ts'
 import type { SelfUpdate } from '../model/install-state.ts'
 import { PageHeader, PluginIcon, type Translate } from './common.tsx'
+import { ConfirmSpec } from './ConfirmInstall.tsx'
 import { ConfirmRemove } from './ConfirmRemove.tsx'
 
 export type Inspection = { ok: true; name: string; version: string } | { ok: false; reason: string }
@@ -43,6 +44,8 @@ function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't'
   const [spec, setSpec] = useState('')
   const [busy, setBusy] = useState(false)
   const [reason, setReason] = useState<string | null>(null)
+  const [confirming, setConfirming] = useState<{ spec: string; name: string; version: string } | null>(null)
+  const cancel = useCallback(() => setConfirming(null), [])
   const submit = async () => {
     const value = spec.trim()
     if (!value || busy) return
@@ -50,7 +53,8 @@ function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't'
     setReason(null)
     try {
       const result = await inspect(value)
-      if (result.ok) onInstallSpec({ spec: value, title: result.name, version: result.version })
+      // DSH's dialog installs a tab's request without asking again, so the store asks first, as it does for listed plugins.
+      if (result.ok) setConfirming({ spec: value, name: result.name, version: result.version })
       else setReason(result.reason)
     } catch (error) {
       setReason(messageOf(error))
@@ -66,18 +70,23 @@ function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't'
         <button type="button" className="ps-btn ps-btn-primary" disabled={busy || !spec.trim()} onClick={() => void submit()}>{t('installFromSpecAction')}</button>
       </div>
       {reason && <div className="ps-row-note ps-row-error">{reason}</div>}
+      {confirming && (
+        <ConfirmSpec {...confirming} t={t} onCancel={cancel}
+          onConfirm={() => { setConfirming(null); onInstallSpec({ spec: confirming.spec, title: confirming.name, version: confirming.version }) }} />
+      )}
     </form>
   )
 }
 
 export function InstalledView(props: InstalledViewProps): ReactNode {
   const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove } = props
-  const [notes, setNotes] = useState<Record<string, { text: string; error: boolean }>>({})
+  // Notes keep the row's title, so an outcome outlives a row that a refresh removed.
+  const [notes, setNotes] = useState<Record<string, { title: string; text: string; error: boolean }>>({})
   const [busy, setBusy] = useState<Record<string, boolean>>({})
   const [removing, setRemoving] = useState<InstalledRow | null>(null)
 
   /** Run one change for `name`; a restart or a failure is noted under its row, an applied change shows on refresh. */
-  const change = useCallback(async (name: string, run: () => Promise<ChangeOutcome>) => {
+  const change = useCallback(async ({ name, title }: InstalledRow, run: () => Promise<ChangeOutcome>) => {
     setBusy(prev => ({ ...prev, [name]: true }))
     setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })
     let outcome: ChangeOutcome
@@ -87,15 +96,15 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
       outcome = { error: messageOf(error) }
     }
     setBusy(prev => ({ ...prev, [name]: false }))
-    if (outcome === 'restart-required') setNotes(prev => ({ ...prev, [name]: { text: t('restartRequired'), error: false } }))
-    else if (outcome !== 'applied') setNotes(prev => ({ ...prev, [name]: { text: outcome.error, error: true } }))
+    if (outcome === 'restart-required') setNotes(prev => ({ ...prev, [name]: { title, text: t('restartRequired'), error: false } }))
+    else if (outcome !== 'applied') setNotes(prev => ({ ...prev, [name]: { title, text: outcome.error, error: true } }))
   }, [t])
 
   const cancelRemove = useCallback(() => setRemoving(null), [])
   const acceptRemove = useCallback(() => {
     const row = removing
     setRemoving(null)
-    if (row) void change(row.name, () => remove(row.name))
+    if (row) void change(row, () => remove(row.name))
   }, [removing, change, remove])
 
   const renderRow = (row: InstalledRow) => {
@@ -113,6 +122,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
             {hasUpdate && <span className="ps-inst-arrow">{t('updateArrow', { current: row.version!, latest: row.latest! })}</span>}
             {row.check === 'not-npm' && !row.official && <span className="ps-muted">{t('notNpm')}</span>}
           </div>
+          {row.problem && <div className="ps-row-note ps-row-error">{row.problem}</div>}
           {note && <div className={`ps-row-note ${note.error ? 'ps-row-error' : ''}`}>{note.text}</div>}
         </div>
         <div className="ps-inst-actions">
@@ -123,9 +133,9 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
             </button>
           )}
           {manageable && !row.missing && (
-            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name]} onChange={on => void change(row.name, () => setEnabled(row.name, on))} />
+            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, () => setEnabled(row.name, on))} />
           )}
-          {manageable && row.removable && (
+          {manageable && row.removable && !row.missing && (
             <button type="button" className="ps-btn ps-btn-quiet" disabled={busy[row.name]} onClick={() => setRemoving(row)}>{t('remove')}</button>
           )}
           <button type="button" className="ps-btn" onClick={() => onOpenPackage(row.name)}>{t('settings')}</button>
@@ -158,6 +168,10 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
     body = <>{group('updates', 'groupUpdates')}{group('others', 'groupOthers')}{group('official', 'groupOfficial')}</>
   }
 
+  // Outcomes whose row is gone, such as an uninstall that takes effect after a restart.
+  const listed = new Set(rows ? [...rows.updates, ...rows.others, ...rows.official].map(r => r.name) : [])
+  const orphans = Object.entries(notes).filter(([name]) => !listed.has(name))
+
   return (
     <div className="ps-installed">
       <PageHeader crumb={t('installedCrumb')} title={t('installedTitle')} intro={t('installedIntro')}>
@@ -169,6 +183,12 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
           <p className="ps-fine">{t('keepOnlyHint')}</p>
         </div>
       </PageHeader>
+      {orphans.map(([name, note]) => (
+        <div key={name} className={`ps-notice ps-notice-bar ${note.error ? 'ps-row-error' : ''}`}>
+          <span>{note.title}：{note.text}</span>
+          <button type="button" className="ps-link-btn" onClick={() => setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })}>{t('dismiss')}</button>
+        </div>
+      ))}
       {keepOnly.value && <SpecInstall t={t} inspect={props.inspect} onInstallSpec={props.onInstallSpec} />}
       {body}
       {removing && <ConfirmRemove title={removing.title} t={t} onCancel={cancelRemove} onConfirm={acceptRemove} />}

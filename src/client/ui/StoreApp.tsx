@@ -43,6 +43,18 @@ export interface StoreAppProps {
   onInstallSpec: (target: { spec: string; title: string; version: string }) => void
   /** The "keep only Startide" preference. */
   keepOnly: { value: boolean; set: (on: boolean) => void }
+  /** Kept across remounts; without it the store starts at home each time. */
+  memory?: StoreMemory
+}
+
+/**
+ * What the store keeps when DSH unmounts its tab, which it does whenever it shows its own Installed list (after an
+ * install, or for a plugin's own page): the tab to come back to, and the plugins already seen as installed.
+ */
+export interface StoreMemory { tab: NavTab; installed: Set<string> | null }
+
+export function createStoreMemory(): StoreMemory {
+  return { tab: 'home', installed: null }
 }
 
 export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'installed' } | { view: 'about' }
@@ -58,6 +70,9 @@ export function tabOf(view: View): NavTab {
 }
 
 const listView = (filter: ListFilter, sort: SortKey = 'popular'): View => ({ view: 'list', filter, sort, page: 1, compatibleOnly: false })
+
+/** The page a tab opens on. */
+const rootOf = (tab: NavTab): View => (tab === 'all' ? listView({ kind: 'all' }) : { view: tab })
 
 export type Stack = Array<{ view: View; scroll: number }>
 
@@ -101,7 +116,8 @@ function useLoads<T>(load: (name: string) => Promise<T>) {
   return [loads, start] as const
 }
 
-export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPackage, onInstallSpec, keepOnly }: StoreAppProps): ReactNode {
+export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPackage, onInstallSpec, keepOnly, memory: given }: StoreAppProps): ReactNode {
+  const memory = useRef(given ?? createStoreMemory()).current
   const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
   // Null until the first read answers. A failed read keeps whatever was read before and records why.
   const [bundles, setBundles] = useState<InstalledBundle[] | null>(null)
@@ -110,8 +126,7 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
   const refreshBundles = useRef<() => void>(() => {})
   // The plugin that became installed while the store was open; a notice is shown until dismissed.
   const [justInstalled, setJustInstalled] = useState<string | null>(null)
-  const lastInstalled = useRef<Set<string> | null>(null)
-  const [stack, setStack] = useState<Stack>([{ view: { view: 'home' }, scroll: 0 }])
+  const [stack, setStack] = useState<Stack>(() => [{ view: rootOf(memory.tab), scroll: 0 }])
   const [details, loadDetail] = useLoads(services.loadDetail)
   const [readmes, loadReadme] = useLoads(services.loadReadme)
   const [confirming, setConfirming] = useState<StorePlugin | null>(null)
@@ -149,10 +164,10 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
         list => {
           if (!live || id !== seq.current.installed) return
           // Only a change seen after the first read counts: plugins installed before the store opened need no notice.
-          const before = lastInstalled.current
+          const before = memory.installed
           const fresh = before ? list.map(b => b.name).filter(name => !before.has(name)) : []
           if (fresh.length > 0) setJustInstalled(fresh[fresh.length - 1]!)
-          lastInstalled.current = new Set(list.map(b => b.name))
+          memory.installed = new Set(list.map(b => b.name))
           setBundles(list)
           setBundlesError(null)
         },
@@ -164,6 +179,9 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
     const unsubscribe = services.subscribeInstalled(refresh)
     return () => { live = false; unsubscribe() }
   }, [services])
+
+  const currentTab = tabOf(current)
+  useEffect(() => { memory.tab = currentTab }, [memory, currentTab])
 
   // Unlisted npm plugins' latest versions, asked again whenever the installed list changes.
   useEffect(() => {
@@ -205,7 +223,7 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
 
   /** A tab click starts over at that tab's page. */
   const openTab = useCallback((tab: NavTab) => {
-    setStack([{ view: tab === 'all' ? listView({ kind: 'all' }) : { view: tab }, scroll: 0 }])
+    setStack([{ view: rootOf(tab), scroll: 0 }])
     pendingScroll.current = 0
   }, [])
 

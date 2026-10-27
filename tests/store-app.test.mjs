@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { createElement } from 'react'
 import TestRenderer from 'react-test-renderer'
-import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf, tabOf } from '../lib/test/ui.js'
+import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf, tabOf, createStoreMemory } from '../lib/test/ui.js'
 
 const { act } = TestRenderer
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
@@ -194,7 +194,7 @@ test('an older installed store shows the update prompt, and its button asks for 
 
 const installedNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-notice'))
 
-test('a plugin installed while the store is open gets a notice pointing to the Plugins page', async () => {
+test('a plugin installed while the store is open gets a notice pointing to the Installed page', async () => {
   let installed = [bundle('dsh-context', '1.0.0')]
   let changed
   const root = await mount({ services: { loadBundles: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } } })
@@ -221,4 +221,19 @@ test('with the old dsh-plugin-store still installed, the store says it can be re
   assert.ok(textIn(notice).includes('dsh-plugin-store'))
   const onlyNew = await mount({ services: { loadBundles: async () => [bundle('dsh-startide', '0.2.0')] } })
   assert.equal(legacyNotice(onlyNew).length, 0)
+})
+
+test('the store comes back on the tab it was on, and still notices plugins installed while it was away', async () => {
+  // DSH unmounts the tab whenever it shows its own Installed list (after an install, or for a plugin's own page).
+  const memory = createStoreMemory()
+  let installed = [bundle('dsh-context', '1.0.0')]
+  const first = await mount({ memory, services: { loadBundles: async () => installed } })
+  await click(tab(first, zh.navInstalled))
+  await act(async () => { first.unmount() })
+  installed = [...installed, bundle('dsh-pet', '1.0.0')]
+  const again = await mount({ memory, services: { loadBundles: async () => installed } })
+  assert.equal(currentTab(again), zh.navInstalled)
+  assert.ok(installedNotice(again).length > 0, "the notice for dsh-pet is shown")
+  const fresh = await mount({ services: { loadBundles: async () => installed } })
+  assert.equal(currentTab(fresh), zh.navHome, 'without a memory the store starts at home')
 })

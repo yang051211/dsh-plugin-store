@@ -89,3 +89,55 @@ test('a failing plugin manager answers 502', async () => {
   const { route } = setup({ manager: { listBundles: async () => { throw new Error('profile unreadable') }, registries: async () => ({}) } })
   assert.deepEqual(await get(route), { status: 502, json: { ok: false, error: 'profile unreadable' } })
 })
+
+test('with nothing to look up, the plugin manager is not asked for its registries', async () => {
+  let asked = 0
+  const { route, calls } = setup({ manager: { listBundles: async () => [bundle('dsh-pet'), bundle('from-git', { source: 'github:o/r' })], registries: async () => { asked++; return { registry: null, resolved: null } } } })
+  assert.deepEqual(await get(route), { status: 200, json: { ok: true, latest: {} } })
+  assert.equal(asked, 0)
+  assert.equal(calls.length, 0)
+})
+
+test('the registries answer is kept for ten minutes', async () => {
+  let asked = 0
+  let clock = 1_000_000
+  const { route } = setup({ manager: { listBundles: async () => BUNDLES, registries: async () => { asked++; return { registry: null, resolved: null } } }, now: () => clock })
+  await get(route)
+  await get(route)
+  assert.equal(asked, 1)
+  clock += 600_000
+  await get(route)
+  assert.equal(asked, 2)
+})
+
+test('a package the registry does not have is not asked again within ten minutes', async () => {
+  const { route, calls } = setup()
+  await get(route)
+  await get(route)
+  assert.equal(calls.length, 1, 'the 404 for off-catalog is remembered')
+})
+
+test('lookups in flight are shared between requests', async () => {
+  const { route, calls } = setup({ packuments: { 'https://registry.npmjs.org/off-catalog': latest('2.0.0') } })
+  const [a, b] = await Promise.all([get(route), get(route)])
+  assert.deepEqual([a.json.latest, b.json.latest], [{ 'off-catalog': '2.0.0' }, { 'off-catalog': '2.0.0' }])
+  assert.equal(calls.length, 1)
+})
+
+test('a network failure is not remembered', async () => {
+  let fail = true
+  const calls = []
+  const fetchImpl = async url => {
+    url = String(url)
+    if (url === INDEX_URL) return new Response(JSON.stringify(index))
+    calls.push(url)
+    if (fail) throw new TypeError('fetch failed')
+    return new Response(JSON.stringify(latest('2.0.0')))
+  }
+  const cache = createCatalogCache({ fetch: fetchImpl, sources: [{ url: INDEX_URL }] })
+  const route = createUpdatesFetch({ cache, manager: { listBundles: async () => BUNDLES, registries: async () => ({ registry: null, resolved: null }) }, fetch: fetchImpl })
+  assert.deepEqual((await get(route)).json.latest, {})
+  fail = false
+  assert.deepEqual((await get(route)).json.latest, { 'off-catalog': '2.0.0' })
+  assert.equal(calls.length, 2)
+})

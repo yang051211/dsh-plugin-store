@@ -16,6 +16,10 @@ export interface InstalledBundle {
   /** The spec the bundle was installed from, as `pnpm add` accepts it. */
   source?: string
   removable: boolean
+  /** Why DSH will not let this bundle be changed here. */
+  readOnlyReason?: string
+  /** DSH's `{ code, diagnostic }` for a bundle that failed to load or be managed. */
+  error?: { code: string; diagnostic?: string }
   meta?: { title?: string | Record<string, string>; icon?: string }
 }
 

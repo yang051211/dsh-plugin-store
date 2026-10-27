@@ -25,7 +25,7 @@ import { localize } from './client/model/localize.ts'
 import type { StorePlugin } from './client/model/catalog.ts'
 import { makeTranslate } from './client/ui/common.tsx'
 import { ErrorBoundary } from './client/ui/ErrorBoundary.tsx'
-import { StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
+import { createStoreMemory, StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
 import { BRAND_ICON } from './client/ui/brand-icon.ts'
 import { injectStyles } from './client/ui/styles.ts'
 
@@ -74,6 +74,8 @@ export function apply(ctx: Context): void {
   const t = ctx.locale.bind(NS)
   const keepOnly = createKeepOnly(() => window.localStorage)
   const pm = ctx.remote.pluginManager
+  // DSH unmounts the store's tab whenever it shows its own Installed list; this brings the store back where it was.
+  const memory = createStoreMemory()
 
   const services: StoreServices = {
     loadCatalog,
@@ -114,6 +116,7 @@ export function apply(ctx: Context): void {
       onOpenPackage: (name: string) => props.openPackage(name),
       onInstallSpec: target => props.install(target),
       keepOnly: { value: keepOnlyOn, set: keepOnly.set },
+      memory,
     }) })
   }
 

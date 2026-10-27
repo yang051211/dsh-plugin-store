@@ -240,6 +240,7 @@ export const STYLE_TEXT = `
 .ps-inst-actions { display: flex; align-items: center; gap: 8px; flex: none; }
 .ps-row-note { font-size: 12.5px; color: ${C.warn}; }
 .ps-row-error { color: ${C.error}; }
+.ps-spec-text { font-family: ${C.mono}; font-size: 12.5px; word-break: break-all; }
 @container (max-width: 560px) { .ps-inst-row { flex-wrap: wrap; } .ps-inst-actions { width: 100%; justify-content: flex-end; } }
 `
 

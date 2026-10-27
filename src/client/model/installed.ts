@@ -20,6 +20,10 @@ export interface InstalledRow {
   official: boolean
   missing: boolean
   removable: boolean
+  /** The switch is locked, as DSH's own page locks it: the bundle is read-only, or it is off because it failed. */
+  locked: boolean
+  /** What went wrong loading or managing the bundle; null when nothing did. */
+  problem: string | null
   /** This store's own row. */
   self: boolean
 }
@@ -56,6 +60,8 @@ export function buildInstalledRows(
       official: b.official,
       missing: b.availability === 'missing',
       removable: b.removable,
+      locked: b.readOnlyReason !== undefined || (!b.enabled && b.error !== undefined),
+      problem: b.error !== undefined ? errorText(b.error) : null,
       self,
     }
     const group = b.official ? rows.official : newer(latest, row.version) ? rows.updates : rows.others
@@ -67,17 +73,21 @@ export function buildInstalledRows(
 
 type ChangeResult = { ok: true; value: { application: string; error?: unknown } } | { ok: false; error: unknown }
 
-const messageOf = (error: unknown): string =>
-  error && typeof error === 'object' && typeof (error as { message?: unknown }).message === 'string'
-    ? (error as { message: string }).message
-    : String(error)
+/** Readable text for an Error, DSH's `{ code, diagnostic }` management error, or anything else. */
+export function errorText(error: unknown): string {
+  if (error && typeof error === 'object') {
+    const { message, diagnostic, code } = error as { message?: unknown; diagnostic?: unknown; code?: unknown }
+    for (const text of [message, diagnostic, code]) if (typeof text === 'string' && text !== '') return text
+  }
+  return String(error)
+}
 
 /** How an enable, disable or remove went: applied now, applied after a restart, or the reason it did not. */
 export function changeOutcome(result: ChangeResult): 'applied' | 'restart-required' | { error: string } {
-  if (!result.ok) return { error: messageOf(result.error) }
+  if (!result.ok) return { error: errorText(result.error) }
   const { application, error } = result.value
   if (application === 'applied' || application === 'restart-required') return application
-  return { error: error !== undefined ? messageOf(error) : application }
+  return { error: error !== undefined ? errorText(error) : application }
 }
 
 export type ChangeOutcome = ReturnType<typeof changeOutcome>
