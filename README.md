@@ -1,3 +1,5 @@
+<p align="center"><img src="icon.png" alt="生态家园图标" width="128" height="128"></p>
+
 # 生态家园（dsh-plugin-store）
 
 发现适合你自己的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）插件。
