@@ -24,9 +24,10 @@ export async function readCapped(response: Response, limit: number, what: string
   return Buffer.concat(chunks).toString('utf8')
 }
 
-/** Fetch `url` as JSON under a size cap and a deadline; non-2xx and invalid JSON become errors. */
-export async function fetchJson(fetchImpl: typeof fetch, url: string, limit: number, timeoutMs: number, what: string): Promise<unknown> {
-  const response = await fetchImpl(url, { signal: AbortSignal.timeout(timeoutMs) })
+/** Fetch `url` as JSON under a size cap and a deadline; non-2xx and invalid JSON become errors. `cancel` stops it early. */
+export async function fetchJson(fetchImpl: typeof fetch, url: string, limit: number, timeoutMs: number, what: string, cancel?: AbortSignal): Promise<unknown> {
+  const deadline = AbortSignal.timeout(timeoutMs)
+  const response = await fetchImpl(url, { signal: cancel ? AbortSignal.any([deadline, cancel]) : deadline })
   if (!response.ok) {
     await response.body?.cancel()
     throw new Error(`${what} answered HTTP ${response.status}`)

@@ -4,6 +4,7 @@
  * first that answers serves the catalog and its details. Detail documents are read only for plugins the catalog lists, and only from
  * under the catalog's own directory, so a browser request can never make the Host fetch an arbitrary URL.
  */
+import type { DiskCopy } from './disk-copy.ts'
 import { fetchJson } from './http.ts'
 
 /** Largest catalog document accepted. */
@@ -61,48 +62,88 @@ export class NotListedError extends Error {}
 
 export interface CatalogCacheOptions {
   fetch: typeof fetch
-  /** Tried in order; the first that answers wins. */
+  /** Most preferred first. All are asked at once: the first answer serves, and a more preferred later answer replaces it. */
   sources: CatalogSource[]
+  /** The last catalog read, kept across restarts. */
+  disk?: DiskCopy
   ttlMs?: number
   now?: () => number
 }
 
 const message = (error: unknown) => (error instanceof Error ? error.message : String(error))
 
-export function createCatalogCache({ fetch: fetchImpl, sources, ttlMs = CACHE_TTL_MS, now = Date.now }: CatalogCacheOptions) {
+export function createCatalogCache({ fetch: fetchImpl, sources, disk, ttlMs = CACHE_TTL_MS, now = Date.now }: CatalogCacheOptions) {
   let good: CatalogSnapshot | null = null
   let failedAt: number | null = null
   let inflight: Promise<CatalogSnapshot> | null = null
+  let loaded: Promise<void> | null = null
   const details = new Map<string, { at: number; doc: unknown }>()
   const detailFlights = new Map<string, Promise<unknown>>()
 
-  async function read(): Promise<CatalogSnapshot> {
-    const failures: string[] = []
-    for (const source of sources) {
-      try {
-        const doc = await fetchJson(fetchImpl, source.url, MAX_INDEX_BYTES, source.timeoutMs ?? FETCH_TIMEOUT_MS, 'catalog')
-        checkIndexShape(doc)
-        good = { index: doc, fetchedAt: now(), stale: false, indexUrl: source.url }
-        failedAt = null
-        details.clear()
-        return good
-      } catch (error) {
-        failures.push(`${source.url}: ${message(error)}`)
-      }
-    }
-    throw new Error(`no catalog source answered (${failures.join('; ')})`)
+  function accept(doc: IndexDocument, indexUrl: string): CatalogSnapshot {
+    good = { index: doc, fetchedAt: now(), stale: false, indexUrl }
+    failedAt = null
+    details.clear()
+    void disk?.save({ index: doc, indexUrl, savedAt: good.fetchedAt })
+    return good
   }
 
-  /** The catalog; `refresh` skips the cache. A failed read falls back to the last good copy, marked stale. */
+  /** Ask every source at once; settles with the first answer, while a more preferred source may still replace it. */
+  function read(): Promise<CatalogSnapshot> {
+    return new Promise((resolve, reject) => {
+      const cancels = sources.map(() => new AbortController())
+      const failures: string[] = []
+      let best = sources.length
+      let pending = sources.length
+      let settled = false
+      sources.forEach((source, rank) => {
+        fetchJson(fetchImpl, source.url, MAX_INDEX_BYTES, source.timeoutMs ?? FETCH_TIMEOUT_MS, 'catalog', cancels[rank].signal)
+          .then(doc => {
+            checkIndexShape(doc)
+            if (rank > best) return
+            best = rank
+            const snapshot = accept(doc, source.url)
+            // Less preferred sources can no longer change anything; stop their downloads.
+            for (const cancel of cancels.slice(rank + 1)) cancel.abort()
+            if (!settled) { settled = true; resolve(snapshot) }
+          })
+          .catch(error => { failures[rank] = `${source.url}: ${message(error)}` })
+          .finally(() => {
+            if (--pending === 0 && !settled) reject(new Error(`no catalog source answered (${failures.filter(Boolean).join('; ')})`))
+          })
+      })
+    })
+  }
+
+  /** Start a read unless one is under way; a failure is remembered so the copy is marked stale. */
+  function startRead(): Promise<CatalogSnapshot> {
+    if (!inflight) {
+      inflight = read().finally(() => { inflight = null })
+      inflight.catch(() => { failedAt = now() })
+    }
+    return inflight
+  }
+
+  /**
+   * The catalog. Any copy held (in memory, or on disk from an earlier run) is served at once, and an expired one is
+   * refreshed behind it; only the very first read, and `refresh`, wait for upstream. A failed read falls back to the
+   * last good copy, marked stale.
+   */
   async function index(refresh = false): Promise<CatalogSnapshot> {
-    if (!refresh && good && now() - good.fetchedAt < ttlMs) return good
-    // While upstream is down, answer from the stale copy instead of making every request wait for a timeout.
-    if (!refresh && good && failedAt !== null && now() - failedAt < RETRY_DELAY_MS) return { ...good, stale: true }
-    inflight ??= read().finally(() => { inflight = null })
+    loaded ??= (async () => {
+      const copy = await disk?.load()
+      if (copy && !good) good = { index: copy.index, fetchedAt: copy.savedAt, stale: false, indexUrl: copy.indexUrl }
+    })()
+    await loaded
+    if (!refresh && good) {
+      // While upstream is down, answer from the stale copy instead of trying again on every request.
+      const failing = failedAt !== null && now() - failedAt < RETRY_DELAY_MS
+      if (now() - good.fetchedAt >= ttlMs && !failing) void startRead().catch(() => {})
+      return failedAt !== null ? { ...good, stale: true } : good
+    }
     try {
-      return await inflight
+      return await startRead()
     } catch (error) {
-      failedAt = now()
       if (good) return { ...good, stale: true }
       throw error
     }

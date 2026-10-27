@@ -1,5 +1,8 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import fs from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import * as host from '../lib/index.js'
 import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, INDEX_SOURCES, MAX_DETAIL_BYTES, README_ROUTE } from '../lib/test/host.js'
 
@@ -13,11 +16,11 @@ function plugin(name, dsh) {
 /** A fetch stand-in serving `routes` (url → body or function) and counting calls. */
 function upstream(routes) {
   const calls = []
-  const fetchImpl = async (url) => {
+  const fetchImpl = async (url, init) => {
     url = String(url); calls.push(url)
     const route = routes[url]
     if (route === undefined) return new Response('nope', { status: 404 })
-    const body = typeof route === 'function' ? route() : route
+    const body = await (typeof route === 'function' ? route(init) : route)
     return body instanceof Response ? body : new Response(typeof body === 'string' ? body : JSON.stringify(body))
   }
   return { fetchImpl, calls }
@@ -28,13 +31,13 @@ const get = async (route, url) => {
   return { status: response.status, json: await response.json() }
 }
 
-test('the published catalog is read from GitHub first, then jsDelivr', () => {
+test('the published catalog prefers GitHub over jsDelivr, and each gets long enough for a slow network', () => {
   assert.deepEqual(INDEX_SOURCES.map(source => source.url), [
     'https://raw.githubusercontent.com/yang051211/dsh-startide/main/market/index.json',
     'https://cdn.jsdelivr.net/gh/yang051211/dsh-startide@main/market/index.json',
   ])
-  // A blocked GitHub must not hold the store up for the full deadline before jsDelivr is tried.
-  assert.ok(INDEX_SOURCES[0].timeoutMs < INDEX_SOURCES[1].timeoutMs)
+  // Both are asked at once, so a slow one never holds the other up; measured in mainland China: 4–14 s each.
+  for (const source of INDEX_SOURCES) assert.ok(source.timeoutMs >= 30_000)
 })
 
 const PRIMARY = 'https://raw.example/o/r/main/market/index.json'
@@ -42,12 +45,68 @@ const MIRROR = 'https://cdn.example/gh/o/r@main/market/index.json'
 const SOURCES = [{ url: PRIMARY }, { url: MIRROR }]
 const detailOf = (indexUrl, name) => new URL(`plugins/${name}.json`, indexUrl).href
 
-test('the first source that answers serves the catalog, and the route says which one', async () => {
-  const { fetchImpl, calls } = upstream({ [PRIMARY]: doc(), [MIRROR]: doc([plugin('stale', null)]) })
+const later = (ms, value) => new Promise(resolve => setTimeout(() => resolve(value), ms))
+const settle = () => later(30)
+
+test('every source is asked at once and the first answer serves the catalog, and the route says which one', async () => {
+  const { fetchImpl, calls } = upstream({ [PRIMARY]: () => later(200, doc()), [MIRROR]: doc([plugin('mirrored', null)]) })
+  const started = Date.now()
   const { json } = await get(createIndexFetch(createCatalogCache({ fetch: fetchImpl, sources: SOURCES }), async () => null), INDEX_ROUTE)
-  assert.equal(json.indexUrl, PRIMARY)
-  assert.deepEqual(json.index.plugins.map(p => p.name), ['alpha', 'beta'])
-  assert.deepEqual(calls, [PRIMARY])
+  assert.ok(Date.now() - started < 150, 'did not wait for the slow source')
+  assert.equal(json.indexUrl, MIRROR)
+  assert.deepEqual(json.index.plugins.map(p => p.name), ['mirrored'])
+  assert.deepEqual(calls.sort(), [MIRROR, PRIMARY].sort())
+})
+
+test('a preferred source that answers later replaces the copy, because the mirror can lag behind', async () => {
+  const { fetchImpl } = upstream({ [PRIMARY]: () => later(50, doc()), [MIRROR]: doc([plugin('old', null)]) })
+  const cache = createCatalogCache({ fetch: fetchImpl, sources: SOURCES })
+  assert.equal((await cache.index()).indexUrl, MIRROR)
+  await later(100)
+  const snapshot = await cache.index()
+  assert.equal(snapshot.indexUrl, PRIMARY)
+  assert.deepEqual(snapshot.index.plugins.map(p => p.name), ['alpha', 'beta'])
+})
+
+test('a lesser source still downloading is cancelled once the preferred one answers', async () => {
+  let aborted = false
+  const slowMirror = init => new Promise(resolve => {
+    init.signal.addEventListener('abort', () => { aborted = true; resolve(new Response('cancelled', { status: 499 })) })
+  })
+  const { fetchImpl } = upstream({ [PRIMARY]: doc(), [MIRROR]: slowMirror })
+  await createCatalogCache({ fetch: fetchImpl, sources: SOURCES }).index()
+  await settle()
+  assert.equal(aborted, true)
+})
+
+/** A disk copy stand-in. */
+function diskWith(saved) {
+  const writes = []
+  return { writes, load: async () => saved, save: async copy => { writes.push(copy) } }
+}
+
+test('a copy saved on disk is served at once, and a fresh catalog is read behind it and saved', async () => {
+  const disk = diskWith({ index: doc([plugin('saved', null)]), indexUrl: PRIMARY, savedAt: 0 })
+  const { fetchImpl } = upstream({ [PRIMARY]: () => later(100, doc()), [MIRROR]: () => later(100, doc()) })
+  const cache = createCatalogCache({ fetch: fetchImpl, sources: SOURCES, disk, now: () => 10 * 86_400_000 })
+  const started = Date.now()
+  const first = await cache.index()
+  assert.ok(Date.now() - started < 80, 'answered from disk without waiting')
+  assert.deepEqual(first.index.plugins.map(p => p.name), ['saved'])
+  assert.equal(first.stale, false)
+  await later(150)
+  assert.deepEqual((await cache.index()).index.plugins.map(p => p.name), ['alpha', 'beta'])
+  assert.deepEqual(disk.writes.at(-1).index.plugins.map(p => p.name), ['alpha', 'beta'])
+})
+
+test('without a disk copy the first read waits for upstream; a refresh always waits', async () => {
+  const disk = diskWith(null)
+  let version = 'one'
+  const { fetchImpl } = upstream({ [PRIMARY]: () => doc([plugin(version, null)]) })
+  const cache = createCatalogCache({ fetch: fetchImpl, sources: [{ url: PRIMARY }], disk })
+  assert.deepEqual((await cache.index()).index.plugins.map(p => p.name), ['one'])
+  version = 'two'
+  assert.deepEqual((await cache.index(true)).index.plugins.map(p => p.name), ['two'])
 })
 
 test('a failed source falls through to the next one', async () => {
@@ -97,6 +156,28 @@ test('registers the catalog, detail and README routes through the authenticated 
   }
 })
 
+test('loading the plugin starts reading the catalog, so it is ready by the time the store is opened', async () => {
+  const home = fs.mkdtempSync(join(tmpdir(), 'startide-home-'))
+  const realFetch = globalThis.fetch
+  const realHome = process.env.DSH_HOME
+  const asked = []
+  globalThis.fetch = async url => { asked.push(String(url)); return new Response(JSON.stringify(doc())) }
+  process.env.DSH_HOME = home
+  try {
+    host.apply({ connection: { fetch: { register: () => async () => {} } }, effect: fn => fn() })
+    await settle()
+    assert.ok(asked.includes(INDEX_SOURCES[0].url))
+    const saved = join(home, 'cache', 'startide', 'index.json')
+    for (let i = 0; i < 50 && !fs.existsSync(saved); i++) await settle()
+    assert.ok(fs.existsSync(saved), 'the catalog was saved for the next start')
+  } finally {
+    globalThis.fetch = realFetch
+    if (realHome === undefined) delete process.env.DSH_HOME
+    else process.env.DSH_HOME = realHome
+    fs.rmSync(home, { recursive: true, force: true })
+  }
+})
+
 test('the host module exports only what DSH loads', () => {
   assert.deepEqual(Object.keys(host).sort(), ['apply', 'inject', 'name'])
 })
@@ -142,17 +223,21 @@ test('concurrent requests share one upstream fetch', async () => {
   assert.equal(calls.length, 1)
 })
 
-test('cache expires after ttl', async () => {
+test('after the ttl the copy is still served at once while a fresh one is read', async () => {
   let clock = 0
-  const { fetchImpl, calls } = upstream({ [INDEX_URL]: doc() })
+  let version = 'one'
+  const { fetchImpl, calls } = upstream({ [INDEX_URL]: () => doc([plugin(version, null)]) })
   const cache = createCatalogCache({ fetch: fetchImpl, sources: [{ url: INDEX_URL }], ttlMs: 1000, now: () => clock })
   await cache.index()
   clock = 999
   await cache.index()
   assert.equal(calls.length, 1)
+  version = 'two'
   clock = 1001
-  await cache.index()
+  assert.deepEqual((await cache.index()).index.plugins.map(p => p.name), ['one'])
   assert.equal(calls.length, 2)
+  await settle()
+  assert.deepEqual((await cache.index()).index.plugins.map(p => p.name), ['two'])
 })
 
 test('compatibility per plugin', () => {
@@ -175,6 +260,8 @@ test('after a failed refresh the stale copy is served without hitting upstream a
   await cache.index()
   fail = true
   clock = 2000
+  await cache.index()
+  await settle()
   assert.equal((await cache.index()).stale, true)
   assert.equal(calls.length, 2)
   clock = 2500
