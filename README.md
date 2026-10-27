@@ -1,8 +1,17 @@
 <p align="center"><img src="icon.png" alt="生态家园图标" width="128" height="128"></p>
 
-# 生态家园（dsh-plugin-store）
+<h1 align="center">生态家园（dsh-plugin-store）</h1>
 
-发现适合你自己的 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）插件。
+<p align="center">发现适合你自己的 <a href="https://github.com/deepseek-ai/deepseek-harness">DeepSeek Harness</a>（DSH）插件</p>
+
+<p align="center">
+  <a href="https://github.com/yang051211/dsh-plugin-store/tags"><img alt="version" src="https://img.shields.io/github/v/tag/yang051211/dsh-plugin-store?label=version&color=4d6bfe"></a>
+  <a href="https://github.com/yang051211/dsh-plugin-store/blob/main/market/index.json"><img alt="plugins" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fyang051211%2Fdsh-plugin-store%2Fmain%2Fmarket%2Findex.json&query=%24.plugins.length&label=plugins&color=2ea44f"></a>
+  <a href="https://github.com/yang051211/dsh-plugin-store/actions/workflows/directory.yml"><img alt="directory" src="https://github.com/yang051211/dsh-plugin-store/actions/workflows/directory.yml/badge.svg"></a>
+  <a href="https://github.com/yang051211/dsh-plugin-store/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/yang051211/dsh-plugin-store?style=social"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/yang051211/dsh-plugin-store?color=d4a106"></a>
+  <img alt="DSH" src="https://img.shields.io/badge/DSH-0.2.1--rc.2%2B-4d6bfe">
+</p>
 
 生态家园是一个 DSH 插件目录：自动收录 npm 上所有符合条件的 DSH 插件（目前约 6400 个），定时更新，可以在 DSH 里按分类、热度、更新时间浏览，并一键安装。当前版本 0.2.0。
 
