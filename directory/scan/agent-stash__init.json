@@ -1,0 +1,101 @@
+{
+  "name": "@agent-stash/init",
+  "version": "1.4.1",
+  "scannedAt": "2026-10-27T23:28:56.964Z",
+  "icon": "agent-stash__init.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/dsh/client.js",
+        "line": 246,
+        "text": "const response = await fetch(url, init);"
+      },
+      {
+        "file": "dsh/init/index.test.ts",
+        "line": 2,
+        "text": "import { createServer, type Server } from \"node:http\";"
+      },
+      {
+        "file": "dsh/init/index.test.ts",
+        "line": 116,
+        "text": "return fetch(`${base}/agent-stash-init/run`, {"
+      },
+      {
+        "file": "dsh/init/index.test.ts",
+        "line": 138,
+        "text": "const response = await fetch(`${base}/agent-stash-init/presets`);"
+      },
+      {
+        "file": "dsh/init/index.test.ts",
+        "line": 161,
+        "text": "const rejected = await fetch(`${base}/agent-stash-init/presets`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 4,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 5,
+        "text": "import { mkdir, readFile, readdir, rm, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 7077,
+        "text": "return renderInitPrompt(await readFile(preset.file, \"utf8\"), extra, PROJECT_DIR);"
+      },
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 7095,
+        "text": "const prompt = fillInitTemplate(await readFile(preset.file, \"utf8\"), PROJECT_DIR);"
+      },
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 7150,
+        "text": "const text = await readFile(file, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 3,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/cli/agent-stash.js",
+        "line": 7277,
+        "text": "const result = spawnSync(\"aider\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 128,
+      "text": "npm install -g github:Alice39s/agent-stash"
+    }
+  ],
+  "skippedEntries": []
+}

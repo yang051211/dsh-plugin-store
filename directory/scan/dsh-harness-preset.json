@@ -1,0 +1,116 @@
+{
+  "name": "dsh-harness-preset",
+  "version": "2.0.0",
+  "scannedAt": "2026-10-27T23:28:56.679Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "flow-panel/lib/client.js",
+        "line": 116,
+        "text": "const response = await fetch(\"/api/harness-flow/state?sessionId=\" + encodeURIComponent(sessionId), { signal: AbortSignal.timeout(8000) });"
+      },
+      {
+        "file": "flow-panel/lib/client.js",
+        "line": 121,
+        "text": "const response = await fetch(\"/api/harness-flow/state\", {"
+      },
+      {
+        "file": "flow-panel/lib/client.js",
+        "line": 133,
+        "text": "const response = await fetch(\"/api/harness-flow/state\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 13,
+        "text": "import { appendFile, mkdir, readFile, rename, unlink, open } from \"node:fs/promises\";"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 381,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 382,
+        "text": "await appendFile(join(dir, `${safeKey(sid)}.log.jsonl`), entries.map((e) => JSON.stringify(e)).join(\"\\n\") + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 389,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 393,
+        "text": "await handle.writeFile(logEntries.map((e) => JSON.stringify(e)).join(\"\\n\") + \"\\n\", \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 5,
+        "text": "// 零 npm 依赖（仅 node: 内建）；工具用 ctx.tools.register 的 raw JSON-Schema 形态注册。"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 7,
+        "text": "// B17（2026-09-25）：**工具一路门禁此前缺失**——ctx.tools.register 无条件注册，标准模式会话照样"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 18,
+        "text": "const inject = [\"webServer\", \"tools\", \"systemPrompt\"];  // B16：agentPresets 故意**不**进 inject——声明它会触发 cordis-plugin-loader 的 typert 装配（zod .volatile 在捆绑版缺失）连带降级 @"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 904,
+        "text": "// B17 fail-closed 兜底（ctx.tools.guard 不可用时也守住）：非 harness 会话一律拒绝，且卡在"
+      },
+      {
+        "file": "flow-panel/lib/index.js",
+        "line": 1010,
+        "text": "// 历史：本插件曾在 ctx.tools.guard 注册 G1–G5 五道门禁（冻结期拒派/五问未完成/丙段逐字/卡上限/未答即冻结）"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/selftest-workflow-compliance.mjs",
+        "line": 10,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "tools/selftest-workflow-compliance.mjs",
+        "line": 170,
+        "text": "const r = spawnSync(process.execPath, [AUDIT, \"--sessions-dir\", dir, \"--root\", rootId, \"--skill\", SKILL, \"--json\"], { encoding: \"utf8\" });"
+      },
+      {
+        "file": "tools/selftest-workflow-compliance.mjs",
+        "line": 246,
+        "text": "    const r10 = spawnSync(process.execPath, [AUDIT, \"--sessions-dir\", join(d10, \"sess\"), \"--root\", \"root-r10\", \"--skill\", SKILL, \"--cwd\", d10, \"--json\"], { enco"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

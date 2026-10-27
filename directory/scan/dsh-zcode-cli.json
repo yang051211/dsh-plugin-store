@@ -1,0 +1,105 @@
+{
+  "name": "dsh-zcode-cli",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-27T23:28:57.776Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 784,
+        "text": "const response = await fetch(STATE_PATH, { headers: { Accept: 'application/json' }, ...(signal === undefined ? {} : { signal }) });"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 792,
+        "text": "const response = await fetch(STATE_PATH, {"
+      },
+      {
+        "file": "lib/zcode/billing.js",
+        "line": 219,
+        "text": "response = await deps.fetch(ZCODE_BILLING_URL, { method: 'GET', headers });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/diagnostics.js",
+        "line": 11,
+        "text": "import { readFileSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/diagnostics.js",
+        "line": 107,
+        "text": "return readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/provider/zcode.js",
+        "line": 108,
+        "text": "import { appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/provider/zcode.js",
+        "line": 1265,
+        "text": "appendFileSync(path, `${JSON.stringify({ t: new Date().toISOString(), record })}\\n`, { flag: 'a' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp/bridge.js",
+        "line": 86,
+        "text": "// load, but the file, shell, and web tools only join `ctx.tools` once the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/zcode/app-server.js",
+        "line": 21,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/zcode/process.js",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/zcode/process.js",
+        "line": 295,
+        "text": "child = spawn(nodePath, [zcodeCjsPath, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/zcode/prefix.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "approval",
+    "llm",
+    "permissionPresets",
+    "sandboxPolicy",
+    "sessions",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

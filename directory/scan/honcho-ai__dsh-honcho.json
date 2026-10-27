@@ -1,0 +1,86 @@
+{
+  "name": "@honcho-ai/dsh-honcho",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-27T23:28:54.367Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capture.js",
+        "line": 13,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/capture.js",
+        "line": 157,
+        "text": "const parsed = JSON.parse(readFileSync(path, \"utf-8\"));"
+      },
+      {
+        "file": "lib/capture.js",
+        "line": 188,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/capture.js",
+        "line": 189,
+        "text": "writeFileSync(path, JSON.stringify(cursors, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/core-shim.js",
+        "line": 19,
+        "text": "import { readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 349,
+        "text": "ctx.tools.register(tool);"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 10,
+        "text": "* an implicit object root, while `ctx.tools.register()` on its own expects"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/git.js",
+        "line": 8,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,95 @@
+{
+  "name": "dsh-rofm",
+  "version": "1.2.1",
+  "scannedAt": "2026-10-27T23:28:54.038Z",
+  "icon": "dsh-rofm.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine/cli.mjs",
+        "line": 17,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "engine/cli.mjs",
+        "line": 123,
+        "text": "text = fs.readFileSync(filePath, 'utf8')"
+      },
+      {
+        "file": "engine/config.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "engine/config.js",
+        "line": 385,
+        "text": "const text = fs.readFileSync(configPath, 'utf8')"
+      },
+      {
+        "file": "engine/config.js",
+        "line": 414,
+        "text": "const parsed = JSON.parse(fs.readFileSync(fileConfigOrPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image-tool.js",
+        "line": 17,
+        "text": "* `ctx.tools.register()`."
+      },
+      {
+        "file": "lib/image-tool.js",
+        "line": 244,
+        "text": "/** ToolDefinition handed to `ctx.tools.register()`. */"
+      },
+      {
+        "file": "lib/memory-tool.js",
+        "line": 10,
+        "text": "* The tool is registered by `RofmPlugin.start()` through `ctx.tools.register()`"
+      },
+      {
+        "file": "lib/memory-tool.js",
+        "line": 133,
+        "text": "/** ToolDefinition handed to `ctx.tools.register()`. */"
+      },
+      {
+        "file": "lib/plugin.js",
+        "line": 187,
+        "text": "this.ctx.effect(() => tools.register(this.memoryTool.definition()))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/selfcheck.mjs",
+        "line": 45,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "tools/selfcheck.mjs",
+        "line": 1345,
+        "text": "const result = spawnSync(process.execPath, ['--test'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

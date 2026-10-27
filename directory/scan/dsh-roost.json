@@ -1,0 +1,122 @@
+{
+  "name": "dsh-roost",
+  "version": "0.10.3",
+  "scannedAt": "2026-10-27T23:28:57.610Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 49,
+        "text": "const r = await fetch(API + p, { cache: 'no-store', ...init });"
+      },
+      {
+        "file": "src/embed.js",
+        "line": 76,
+        "text": "const res = await fetch(`${c.baseUrl}/embeddings`, {"
+      },
+      {
+        "file": "src/server.js",
+        "line": 12,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "src/server.js",
+        "line": 40,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "src/setup.js",
+        "line": 166,
+        "text": "const r = await fetch('https://registry.npmjs.org/qq-bot-roost/latest', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/awake.js",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "src/awake.js",
+        "line": 298,
+        "text": "state = { ...state, ...JSON.parse(readFileSync(file(), 'utf8')) };"
+      },
+      {
+        "file": "src/awake.js",
+        "line": 303,
+        "text": "mkdirSync(dirname(file()), { recursive: true });"
+      },
+      {
+        "file": "src/awake.js",
+        "line": 304,
+        "text": "writeFileSync(file(), JSON.stringify(state), 'utf8');"
+      },
+      {
+        "file": "src/config.js",
+        "line": 9,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.js",
+        "line": 879,
+        "text": "* 挂在这里而不是插件的 ctx：`agent.ctx.tools` 是每轮都在用的那个"
+      },
+      {
+        "file": "src/host.js",
+        "line": 1200,
+        "text": "restore = agent.ctx.tools.restrict({ deny: [...LOCAL_TOOLS, 'memory_note'] });"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/setup.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/setup.js",
+        "line": 49,
+        "text": "child = spawn(cmd, args, { ...opts, stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "src/setup.js",
+        "line": 630,
+        "text": "child = spawn(process.execPath, ['src/main.js', '--serve', '--no-open'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions",
+    "systemPrompt",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 214,
+      "text": "setup.js       一键流程：下载解压、写配置、起停、装插件、配适配器"
+    }
+  ],
+  "skippedEntries": []
+}

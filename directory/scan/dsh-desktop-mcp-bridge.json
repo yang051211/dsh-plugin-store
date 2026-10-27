@@ -1,0 +1,86 @@
+{
+  "name": "dsh-desktop-mcp-bridge",
+  "version": "0.2.1-rc2",
+  "scannedAt": "2026-10-27T23:28:56.220Z",
+  "icon": "dsh-desktop-mcp-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 167,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 230,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "dist/desktop-plugin.js",
+        "line": 582,
+        "text": "import http from \"node:http\";"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cli.js",
+        "line": 7,
+        "text": "import { constants } from \"node:fs\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 8,
+        "text": "import { lstat, mkdir, open, realpath } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 80,
+        "text": "return await file.readFile(\"utf8\");"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 136,
+        "text": "await mkdir(stateDir, { mode: 448 });"
+      },
+      {
+        "file": "dist/cli.js",
+        "line": 137,
+        "text": "await mkdir(workspaceRoot, { mode: 448 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/desktop-plugin.js",
+        "line": 766,
+        "text": "var inject = [\"agents\", \"agentPresets\", \"agentDefaultModel\", \"tools\", \"pluginPackages\"];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/desktop-plugin.js",
+        "line": 199,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

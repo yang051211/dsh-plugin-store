@@ -1,0 +1,140 @@
+{
+  "name": "dsh-vm-tester",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-27T23:28:53.912Z",
+  "icon": "dsh-vm-tester.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 9,
+        "text": "const http = require('http');"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 416,
+        "text": "const r = await fetch('/status',{cache:'no-store'});"
+      },
+      {
+        "file": "agent/tunnel-install.ps1",
+        "line": 3,
+        "text": "Invoke-WebRequest -UseBasicParsing -Uri 'http://10.0.2.2:8800/QaTunnel.exe' -OutFile 'C:\\qa\\QaTunnel.exe'"
+      },
+      {
+        "file": "agent/tunnel-install.ps1",
+        "line": 15,
+        "text": "Invoke-WebRequest -UseBasicParsing -TimeoutSec 8 -Uri ('http://10.0.2.2:8800/mark?r=' + [uri]::EscapeDataString('tunnel-installed')) | Out-Null"
+      },
+      {
+        "file": "index.js",
+        "line": 53,
+        "text": "res = await fetch(base + path, { signal: AbortSignal.timeout(30000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 10,
+        "text": "const fs = require('fs');"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 57,
+        "text": "try { if (now - fs.statSync(fp).mtimeMs > 10 * 60 * 1000) fs.unlinkSync(fp); } catch (e) { }"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 187,
+        "text": "fs.mkdirSync(SHOTS, { recursive: true });"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 188,
+        "text": "fs.writeFileSync(ip, buf);"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 192,
+        "text": "return fs.readFileSync(op);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'attachments']"
+      },
+      {
+        "file": "index.js",
+        "line": 88,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 136,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 179,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 218,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 12,
+        "text": "const { spawn, execFileSync } = require('child_process');"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 114,
+        "text": "const p = spawn(cmd, args, { windowsHide: true });"
+      },
+      {
+        "file": "agent/tunnel-host.js",
+        "line": 158,
+        "text": "const p = spawn(cmd, args, { windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "agent/Calibrate.exe",
+    "agent/QaTunnel.exe",
+    "agent/RulerOverlay.exe",
+    "scripts/VmWatch.exe"
+  ],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 278,
+      "text": "**第一次用？一条命令部署：`scripts/quick-setup.ps1`（见 [docs/SHARE.md](docs/SHARE.md)）；完整手动流程看 [docs/QUICKSTART.md](docs/QUICKSTART.md)** —— 保姆级流程，从装插件到第一次截图点击，含常见问题排查表。"
+    }
+  ],
+  "skippedEntries": []
+}

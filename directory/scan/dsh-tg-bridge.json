@@ -1,0 +1,121 @@
+{
+  "name": "dsh-tg-bridge",
+  "version": "1.19.12",
+  "scannedAt": "2026-10-27T23:28:48.809Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bot-menu.mjs",
+        "line": 151,
+        "text": "const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, {"
+      },
+      {
+        "file": "bridge.mjs",
+        "line": 535,
+        "text": "const res = await fetch(api(method), {"
+      },
+      {
+        "file": "bridge.mjs",
+        "line": 636,
+        "text": "const res = await fetch(`https://api.telegram.org/bot${token}/sendDocument`, { method: 'POST', body: form });"
+      },
+      {
+        "file": "bridge.mjs",
+        "line": 645,
+        "text": "const res = await fetch(`https://api.telegram.org/file/bot${token}/${file.file_path}`);"
+      },
+      {
+        "file": "bridge.mjs",
+        "line": 1510,
+        "text": "const bin = await fetch(`https://api.telegram.org/file/bot${token}/${file.file_path}`);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "agentsets.mjs",
+        "line": 15,
+        "text": "import { closeSync, existsSync, fsyncSync, openSync, readFileSync, renameSync, writeFileSync, writeSync } from 'node:fs';"
+      },
+      {
+        "file": "agentsets.mjs",
+        "line": 89,
+        "text": "const raw = JSON.parse(readFileSync(this.file, 'utf8').replace(/^\\uFEFF/, ''));"
+      },
+      {
+        "file": "agentsets.mjs",
+        "line": 211,
+        "text": "writeFileSync(this.file, text, 'utf8');"
+      },
+      {
+        "file": "agentsets.mjs",
+        "line": 222,
+        "text": "const raw = JSON.parse(readFileSync(this.file, 'utf8').replace(/^\\uFEFF/, ''));"
+      },
+      {
+        "file": "aset-jobs.mjs",
+        "line": 8,
+        "text": "import { mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "aset-job.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "aset-job.mjs",
+        "line": 52,
+        "text": "const child = spawn(node, [SELF, 'aset', ...args], {"
+      },
+      {
+        "file": "bridge-kick.mjs",
+        "line": 11,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bridge-kick.mjs",
+        "line": 26,
+        "text": "// bridge with spawnSync(), which blocks until the child EXITS — for a long-lived"
+      },
+      {
+        "file": "bridge-kick.mjs",
+        "line": 29,
+        "text": "// 18:57 while the bridge lived). Two fixes: spawn() + unref() below, and"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "`node setup.mjs --check` reports state on every platform."
+    },
+    {
+      "file": "README.md",
+      "line": 147,
+      "text": "npm install -g dsh-tg-bridge"
+    }
+  ],
+  "skippedEntries": []
+}

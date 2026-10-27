@@ -1,0 +1,112 @@
+{
+  "name": "dsh-web-search-pro",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-27T23:28:53.437Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provider.js",
+        "line": 86,
+        "text": "async fetch(request, signal) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/actions/history.js",
+        "line": 5,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/actions/history.js",
+        "line": 143,
+        "text": "fs.mkdirSync(outDir, { recursive: true });"
+      },
+      {
+        "file": "lib/actions/history.js",
+        "line": 153,
+        "text": "fs.writeFileSync(exportPath, JSON.stringify(payload, null, 2), 'utf8');"
+      },
+      {
+        "file": "lib/actions/rules.js",
+        "line": 6,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/actions/rules.js",
+        "line": 119,
+        "text": "fs.mkdirSync(path.dirname(exportPath), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 63,
+        "text": "const register = (tool) => { ctx.tools.register(tool); };"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/util.js",
+        "line": 8,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/save-login.mjs",
+        "line": 14,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [
+    "lib/client/group-cli.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 52,
+      "text": "红书 / 知乎 / Reddit / X 要用你日常 Chrome 的登录态：`npm i -g @jackwener/opencli` 并装它的 Browser Bridge 扩展（`opencli doctor` 全 OK），本插件优先用 PATH 上的独立 `opencli`；没有它这几个平台会往后落到独立 CL"
+    },
+    {
+      "file": "README.md",
+      "line": 489,
+      "text": "(https://github.com/jackwener/opencli)（`npm i -g @jackwener/opencli`）和它的 **OpenCLI Browser Bridge** 扩展（`opencli doctor` 全 OK 即连通）。独立 `opencli` 是这四个平台的首选后端，直接使用那"
+    },
+    {
+      "file": "README.md",
+      "line": 501,
+      "text": "packageNote: 'mytool (npm i -g mytool)'"
+    },
+    {
+      "file": "README.md",
+      "line": 534,
+      "text": "day-to-day Chrome and install OpenCLI (`npm i -g @jackwener/opencli`) with its OpenCLI Browser Bridge extension (`opencli doctor` all OK); the standalone `openc"
+    }
+  ],
+  "skippedEntries": []
+}

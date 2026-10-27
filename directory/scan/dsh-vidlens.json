@@ -1,0 +1,103 @@
+{
+  "name": "dsh-vidlens",
+  "version": "1.4.2",
+  "scannedAt": "2026-10-27T23:28:53.386Z",
+  "icon": "dsh-vidlens.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 292,
+        "text": "const data = readFileSync(im.path)"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 148,
+        "text": "const { readFileSync } = await import('node:fs')"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 152,
+        "text": "const text = readFileSync(path.join(ROOT, rel), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 816,
+        "text": "ctx.effect(() => ctx.tools.register(definition), `dsh-vidlens: ${tool.name}`)"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 33,
+        "text": "assert('index.js exports inject=[tools]', JSON.stringify(mod.inject) === '[\"tools\"]')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 99,
+        "text": "const child = spawn(this.python, ['-u', BRIDGE], {"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "tools/selftest.mjs",
+        "line": 93,
+        "text": "const child = spawn(python, ['-u', path.join(ROOT, 'bridge', 'vidlens_bridge.py')], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 16,
+      "text": "(`pip install vidlens-mcp`). This repository is only the DSH plugin plus its long-lived bridge."
+    }
+  ],
+  "skippedEntries": []
+}

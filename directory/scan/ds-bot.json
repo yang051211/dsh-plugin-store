@@ -1,14 +1,14 @@
 {
   "name": "ds-bot",
-  "version": "0.2.2",
-  "scannedAt": "2026-10-26T10:04:38.576Z",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-27T23:28:50.305Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 1275,
+        "line": 1303,
         "text": "response = await fetch(ROUTE, {"
       },
       {
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "src/host/avatar.js",
-        "line": 5,
-        "text": "import { readFile, realpath, stat } from 'node:fs/promises'"
+        "file": "src/host/avatar-library.js",
+        "line": 6,
+        "text": "import { mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises'"
       },
       {
-        "file": "src/host/avatar.js",
-        "line": 65,
-        "text": "bytes = await readFile(real)"
+        "file": "src/host/avatar-library.js",
+        "line": 39,
+        "text": "try { parsed = JSON.parse(await readFile(indexPath, 'utf8')) } catch { return [] }"
       },
       {
-        "file": "src/host/browser/mount.js",
-        "line": 3,
-        "text": "import { rm } from 'node:fs/promises'"
+        "file": "src/host/avatar-library.js",
+        "line": 53,
+        "text": "await mkdir(root, { recursive: true })"
       },
       {
-        "file": "src/host/browser/mount.js",
-        "line": 57,
-        "text": "await rm(join(profileRoot, botId), { recursive: true, force: true }).catch(() => {})"
+        "file": "src/host/avatar-library.js",
+        "line": 55,
+        "text": "await writeFile(temp, JSON.stringify({ version: 1, items }, null, 2), 'utf8')"
       },
       {
-        "file": "src/host/browser/session.js",
-        "line": 5,
-        "text": "import { mkdir, open, readFile, realpath, stat, unlink, writeFile } from 'node:fs/promises'"
+        "file": "src/host/avatar-library.js",
+        "line": 60,
+        "text": "await mkdir(files, { recursive: true })"
       }
     ]
   },
@@ -68,7 +68,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 43,
+        "line": 44,
         "text": "export const inject = ['llm', 'tools', 'systemPrompt', 'sessionController', 'sessions', 'sessionTitle', 'workspaceRegistry', 'connection']"
       },
       {
@@ -88,7 +88,7 @@
       },
       {
         "file": "src/host/browser/mount.js",
-        "line": 61,
+        "line": 125,
         "text": "ctx.tools.register(defineTool({"
       }
     ]

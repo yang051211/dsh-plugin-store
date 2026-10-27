@@ -1,0 +1,136 @@
+{
+  "name": "@anweat/dsh-browser",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-27T23:28:53.269Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/scripts.js",
+        "line": 102,
+        "text": "if (/\\b(fetch|XMLHttpRequest|WebSocket|sendBeacon)\\b/.test(source))"
+      },
+      {
+        "file": "scripts/check-host-rpc.mjs",
+        "line": 38,
+        "text": "const request = (signed, method = 'snapshot') => fetch(base + '/dsh-browser-assets/' + method, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth-profiles.js",
+        "line": 39,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/automation-assets.js",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/automation-assets.js",
+        "line": 599,
+        "text": "return persistedState(JSON.parse(fs.readFileSync(this.statePath, 'utf8')));"
+      },
+      {
+        "file": "lib/automation-assets.js",
+        "line": 606,
+        "text": "fs.mkdirSync(this.policy.directory, { recursive: true });"
+      },
+      {
+        "file": "lib/automation-assets.js",
+        "line": 608,
+        "text": "fs.writeFileSync(temporary, JSON.stringify(this.state, null, 2), { encoding: 'utf8', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 84,
+        "text": "const register = (tool) => { ctx.tools.register(tool); };"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/deps.js",
+        "line": 20,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/deps.js",
+        "line": 403,
+        "text": "// spawn() is used without a shell, so argv must be passed verbatim. Adding"
+      },
+      {
+        "file": "lib/deps.js",
+        "line": 405,
+        "text": "child = spawn(executable, [script, ...args], {"
+      },
+      {
+        "file": "scripts/dump-prompts.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/dump-prompts.mjs",
+        "line": 28,
+        "text": "  const result = spawnSync(process.execPath, ['--experimental-transform-types', '--no-warnings', fileURLToPath(import.meta.url), ...process.argv.slice(2)], { st"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client/group-assets.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 9,
+      "text": "l`，下载约 190 MB）。**OpenCLI 是可选的、需要单独安装**（`npm i -g @jackwener/opencli`）：只有 `opencli.*` 动作和 Web Search Pro 的 `browser-opencli` 后端用到它，不装也不影响其他浏览器工具，也不会让 `dsh plugin"
+    },
+    {
+      "file": "README.md",
+      "line": 93,
+      "text": "Web Search Pro 的 `browser-opencli` 后端时：`npm i -g @jackwener/opencli`，装完重启 DSH，再调用 `opencli.status`。插件按这个顺序找它：环境变量 `DSH_BROWSER_OPENCLI`（`main.js`、`opencli` 启动器或"
+    },
+    {
+      "file": "README.md",
+      "line": 107,
+      "text": "e 里自己装的、`DSH_BROWSER_OPENCLI`），找不到时返回带 `npm i -g @jackwener/opencli` 的说明；`runtime.status` 多了 `opencliSource` 与 `opencliInstallHint`，未安装不再是 `runtimeWarnings`。**已"
+    },
+    {
+      "file": "README.md",
+      "line": 549,
+      "text": "opencliEnabled: true     # OpenCLI（站点 adapter 与 Chrome Browser Bridge）总开关。默认 true；OpenCLI 需要另外安装（npm i -g @jackwener/opencli），没装时只是 opencli.* 不可用"
+    },
+    {
+      "file": "README.md",
+      "line": 763,
+      "text": "npm i -g @jackwener/opencli"
+    }
+  ],
+  "skippedEntries": []
+}

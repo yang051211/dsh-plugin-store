@@ -1,0 +1,81 @@
+{
+  "name": "dsh-fast-mode",
+  "version": "1.5.11",
+  "scannedAt": "2026-10-27T23:28:57.294Z",
+  "icon": "dsh-fast-mode.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/report.mjs",
+        "line": 244,
+        "text": "response = await fetch(`${base}/api/v1/sessions/recent?page=1&pageSize=50&range=${range}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/experiment.mjs",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/experiment.mjs",
+        "line": 107,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "bin/experiment.mjs",
+        "line": 148,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "bin/experiment.mjs",
+        "line": 149,
+        "text": "writeFileSync(file, `${JSON.stringify({ enabled: true, gears }, null, 2)}\\n`)"
+      },
+      {
+        "file": "bin/experiment.mjs",
+        "line": 166,
+        "text": "rmSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 489,
+        "text": "() => toolCtx.tools.register(buildShellParallelTool({ spawn, logger: ctx.logger })),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/parallel.js",
+        "line": 169,
+        "text": "child = spawn('bash', ['-lc', job.command], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

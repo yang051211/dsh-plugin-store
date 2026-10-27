@@ -1,0 +1,139 @@
+{
+  "name": "dsh-napcat-keeper",
+  "version": "2.8.2",
+  "scannedAt": "2026-10-27T23:28:57.446Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 19,
+        "text": "const get = (p) => fetch(B + p, { cache: 'no-store' }).then((r) => r.json()).catch(() => null)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 21,
+        "text": "fetch(B + p, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 168,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 961,
+        "text": "req = http.request("
+      },
+      {
+        "file": "scripts/selftest-companion.mjs",
+        "line": 14,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 167,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 317,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 358,
+        "text": "unlinkSync(from)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 362,
+        "text": "unlinkSync(to)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 393,
+        "text": "parsed = JSON.parse(readFileSync(stray, 'utf8').replace(/^\\uFEFF/, ''))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 177,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3479,
+        "text": "* 拿得到就用它的 defineTool，拿不到就把定义原样交给 ctx.tools.register —— 跟"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3515,
+        "text": "if (!ctx || !ctx.tools || typeof ctx.tools.register !== 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3530,
+        "text": "return ctx.tools.register(def)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3539,
+        "text": "tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 150,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 912,
+        "text": "child = spawn(file, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2941,
+        "text": "const child = spawn('explorer.exe', [hasCmd ? `/select,${p.cmd}` : p.dir], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3060,
+        "text": "const child = spawn('cscript.exe', ['//nologo', vbsFile], {"
+      },
+      {
+        "file": "scripts/selftest-probe.mjs",
+        "line": 20,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

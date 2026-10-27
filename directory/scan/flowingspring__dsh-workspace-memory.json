@@ -1,0 +1,100 @@
+{
+  "name": "@flowingspring/dsh-workspace-memory",
+  "version": "0.2.16",
+  "scannedAt": "2026-10-27T23:28:55.653Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 117,
+        "text": "const response = await fetch(\"/workspace-memory/api/v1/scopes\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 123,
+        "text": "const response = await fetch(`/workspace-memory/api/v1/scope?cwd=${encodeURIComponent(cwd)}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 128,
+        "text": "const response = await fetch(\"/workspace-memory/api/v1/archived-scopes\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 134,
+        "text": "const response = await fetch(`/workspace-memory/api/v1/archived-scope?key=${encodeURIComponent(key)}`);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 215,
+        "text": "const response = await fetch(`/workspace-memory/api/v1/archived-scope?key=${encodeURIComponent(archivedSelectedKey)}`, { method: \"DELETE\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 3,
+        "text": "import { mkdir, readFile, readdir, rename, rm, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 310,
+        "text": "await mkdir(join(scope.dir, CHECKPOINT_DIR), { recursive: true });"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 311,
+        "text": "await mkdir(join(scope.dir, HISTORY_DIR), { recursive: true });"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 315,
+        "text": "await writeFile(descriptor, JSON.stringify({ key: scope.key, cwd: scope.cwd }, null, 2) + '\\n', { encoding: 'utf8', flag: 'wx' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 468,
+        "text": "disposers.push(tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 507,
+        "text": "disposers.push(tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 528,
+        "text": "disposers.push(tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

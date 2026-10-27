@@ -1,0 +1,107 @@
+{
+  "name": "@sieuno/dsh-native-collab",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-27T23:28:56.996Z",
+  "icon": "sieuno__dsh-native-collab.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/subagent/out-of-process.js",
+        "line": 12,
+        "text": "import { accessSync, constants, statSync } from 'node:fs';"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 1,
+        "text": "import { readFile, readdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 35,
+        "text": "const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 89,
+        "text": "const fields = JSON.parse(await readFile(file, 'utf8')).meta"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 95,
+        "text": "const patch = await readFile(join(root, 'cordis.patch.yml'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/subagent/structured.js",
+        "line": 52,
+        "text": "childCtx.tools.register({"
+      },
+      {
+        "file": "dist/tool-agent-team/index.js",
+        "line": 12,
+        "text": "export const inject = ['agents', 'agentTeams', 'subagents', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/tool-agent-team/index.js",
+        "line": 271,
+        "text": "register(scoped.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tool-agent-team/index.js",
+        "line": 318,
+        "text": "register(scoped.tools.register(defineTool({"
+      },
+      {
+        "file": "dist/tool-agent-team/index.js",
+        "line": 378,
+        "text": "register(scoped.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/agent-team/index.js",
+        "line": 158,
+        "text": "return await this.roster.spawn(caller, request);"
+      },
+      {
+        "file": "dist/agent-team/roster.js",
+        "line": 198,
+        "text": "async spawn(caller, request) {"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/check-release.mjs",
+        "line": 121,
+        "text": "const check = spawnSync(process.execPath, ['--check', file], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

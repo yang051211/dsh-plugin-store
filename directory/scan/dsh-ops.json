@@ -1,7 +1,7 @@
 {
   "name": "dsh-ops",
-  "version": "0.4.1",
-  "scannedAt": "2026-10-26T10:04:35.644Z",
+  "version": "0.4.3",
+  "scannedAt": "2026-10-27T23:28:48.138Z",
   "icon": "dsh-ops.png",
   "network": {
     "hit": true,
@@ -48,28 +48,28 @@
     "evidence": [
       {
         "file": "lib/discovery/index.js",
-        "line": 81,
-        "text": "entry.disposers.push(await registerNativeProvider(entry.ctx, [registration], tool => entry.ctx.tools.register(tool), { inheritable: false, priority: 10 }));"
+        "line": 116,
+        "text": "const dispose = registerNativeProviderAtScope(entry.ctx, agent, [registration], tool => entry.ctx.tools.register(tool), { inheritable: false, priority: 10 });"
       },
       {
         "file": "lib/discovery/index.js",
-        "line": 145,
+        "line": 198,
         "text": "entry.disposers.push(entry.ctx.tools.restrict({ deny }));"
       },
       {
         "file": "lib/discovery/index.js",
-        "line": 173,
+        "line": 240,
         "text": "entry.fiber = agent.ctx.plugin({ inject: ['tools'], apply(scoped) { entry.ctx = scoped; } });"
       },
       {
         "file": "lib/file/runtime.js",
-        "line": 38,
+        "line": 41,
         "text": "this.unregisterProvider = await registerNativeProvider(this.ctx, definitions, tool => this.ctx.tools.register(tool));"
       },
       {
         "file": "lib/index.js",
-        "line": 45,
-        "text": "const names = (ctx.tools.schemas(agent) ?? []).map(tool => tool.name).filter(name => denied.has(name));"
+        "line": 50,
+        "text": "const names = visibleNames(ctx.tools, agent).filter(name => denied.has(name));"
       }
     ]
   },
@@ -111,6 +111,7 @@
   "minifiedFiles": [],
   "binaryFiles": [
     "runtime/darwin-arm64/dsh-ops-worker",
+    "runtime/darwin-x64/dsh-ops-worker",
     "runtime/linux-x64/dsh-ops-worker",
     "runtime/win32-x64/bash-ipc/opsipc.dll",
     "runtime/win32-x64/bash-ipc/opsnt.dll",
