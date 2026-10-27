@@ -6,7 +6,7 @@ function fakeApi(table, { failBulk = false } = {}) {
   const calls = []
   const fetch = async url => {
     calls.push(url)
-    const path = decodeURIComponent(new URL(url).pathname.replace('/downloads/point/last-week/', ''))
+    const path = decodeURIComponent(new URL(url).pathname.replace(/^\/downloads\/point\/[^/]+\//, ''))
     const names = path.startsWith('@') ? [path] : path.split(',')
     if (names.length > 1) {
       if (failBulk) return new Response('x', { status: 500 })
@@ -57,6 +57,14 @@ test('an answer for a stale week is unknown, not zero', async () => {
   assert.equal(result.get('a'), null)
   assert.equal(result.get('b'), 9)
   assert.equal(result.get('@s/c'), 9)
+})
+
+test('asks for the last complete week by date, because the last-week alias got stuck on an old week', async () => {
+  // Seen on 2026-10-27: "last-week" still answered 2026-06-25..07-01 for every package, react included.
+  const urls = []
+  const io = { fetch: async url => { urls.push(url); return new Response(JSON.stringify({ downloads: 1, start: '2026-10-19', end: '2026-10-25', package: '@s/a' })) } }
+  await weeklyDownloads(io, ['@s/a'], { now: Date.parse('2026-10-27T05:00:00Z') })
+  assert.equal(urls[0], 'https://api.npmjs.org/downloads/point/2026-10-19:2026-10-25/@s/a')
 })
 
 test('a single unscoped name still reads the flat answer', async () => {

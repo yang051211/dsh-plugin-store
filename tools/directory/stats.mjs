@@ -7,7 +7,16 @@ import { runPool } from './pool.mjs'
 
 /** The downloads API takes at most this many unscoped names per request; scoped names are not batchable. */
 export const BULK_SIZE = 128
-const DOWNLOADS = 'https://api.npmjs.org/downloads/point/last-week/'
+const DAY_MS = 86_400_000
+
+/**
+ * The seven days ending two days ago (the API lags about a day), as an explicit range: the "last-week" alias got
+ * stuck serving 2026-06-25..07-01 for every package.
+ */
+function downloadsUrl(now) {
+  const day = offset => new Date(now - offset * DAY_MS).toISOString().slice(0, 10)
+  return `https://api.npmjs.org/downloads/point/${day(8)}:${day(2)}/`
+}
 
 /** Scoped names go one request each; the API rate-limits bursts, so they go a couple at a time. */
 const SCOPED_CONCURRENCY = 2
@@ -39,6 +48,7 @@ async function readJson(io, url, sleep) {
 /** Weekly downloads per name; null where unknown. */
 export async function weeklyDownloads(io, names, { concurrency = 8, sleep = wait, now = Date.now() } = {}) {
   const result = new Map(names.map(name => [name, null]))
+  const DOWNLOADS = downloadsUrl(now)
   const plain = names.filter(name => !name.startsWith('@'))
   const batches = []
   for (let i = 0; i < plain.length; i += BULK_SIZE) batches.push(plain.slice(i, i + BULK_SIZE))
