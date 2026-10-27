@@ -151,7 +151,8 @@ export async function downloadTarball(version, io) {
   const unpacked = await untar(tgz)
   let manifest
   try {
-    manifest = JSON.parse(unpacked.files.get('package.json')?.toString('utf8') ?? 'null')
+    // npm reads a package.json that starts with a byte-order mark; so must we.
+    manifest = JSON.parse(unpacked.files.get('package.json')?.toString('utf8').replace(/^﻿/, '') ?? 'null')
   } catch {
     manifest = null
   }

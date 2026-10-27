@@ -54,7 +54,7 @@ export function scanPackage(files) {
   const required = new Set()
   let manifest = {}
   try {
-    manifest = JSON.parse(files.get('package.json')?.toString('utf8') ?? '{}')
+    manifest = JSON.parse(files.get('package.json')?.toString('utf8').replace(/^﻿/, '') ?? '{}')
   } catch {
     manifest = {}
   }
