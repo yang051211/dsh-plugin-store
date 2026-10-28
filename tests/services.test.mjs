@@ -56,7 +56,9 @@ function scripted(script, calls) {
     get: (_, method) => async (...args) => {
       await strict[method](...args)
       const queue = script[method]
-      return queue && queue.length > 0 ? queue.shift() : ANSWERS[method]
+      const answer = queue && queue.length > 0 ? queue.shift() : ANSWERS[method]
+      if (answer instanceof Error) throw answer
+      return answer
     },
   })
 }
@@ -89,4 +91,39 @@ test('an uninstall DSH refuses leaves the old version in place and says why', as
   const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed')], removeBundle: [failed('bundle-in-use')] }, calls))
   assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'bundle-in-use said so', code: 'bundle-in-use' })
   assert.deepEqual(calls.map(c => c[0]), ['installBundle', 'removeBundle'])
+})
+
+test('an install that throws after the uninstall still puts the old version back', async () => {
+  const calls = []
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), new Error('lock wait timed out'), done('applied')], removeBundle: [done('applied')] }, calls))
+  assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'lock wait timed out', code: 'restored', version: '1.0.0' })
+  assert.deepEqual(calls.at(-1).slice(0, 2), ['installBundle', 'dsh-pet@1.0.0'])
+})
+
+test('DSH makes one change at a time, so a second update waits for the first and says so', async () => {
+  const calls = []
+  const gates = []
+  const strict = strictManager(calls)
+  const gated = new Proxy({}, {
+    get: (_, method) => async (...args) => {
+      const answer = await strict[method](...args)
+      await new Promise(resolve => gates.push(resolve))
+      return answer
+    },
+  })
+  const services = pluginManagerServices(gated)
+  const seen = { a: [], b: [] }
+  const tick = () => new Promise(r => setTimeout(r, 0))
+  const a = services.update('dsh-a', '2.0.0', { current: '1.0.0', enabled: true }, s => seen.a.push(s))
+  const b = services.update('dsh-b', '2.0.0', { current: '1.0.0', enabled: true }, s => seen.b.push(s))
+  await tick()
+  assert.deepEqual(calls.map(c => c[1]), ['dsh-a@2.0.0'])
+  assert.deepEqual(seen, { a: ['running'], b: ['waiting'] })
+  gates.shift()()
+  assert.equal(await a, 'restart-required')
+  await tick()
+  assert.deepEqual(calls.map(c => c[1]), ['dsh-a@2.0.0', 'dsh-b@2.0.0'])
+  assert.deepEqual(seen.b, ['waiting', 'running'])
+  gates.shift()()
+  assert.equal(await b, 'restart-required')
 })

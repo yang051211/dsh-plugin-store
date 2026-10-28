@@ -16,6 +16,8 @@ import { AboutView } from './About.tsx'
 import { InstalledView, type Inspection } from './InstalledView.tsx'
 import { BRAND_ICON } from './brand-icon.ts'
 
+export type ChangeProgress = (state: 'waiting' | 'running') => void
+
 export interface StoreServices {
   loadCatalog: (refresh?: boolean) => Promise<CatalogSnapshot>
   loadDetail: (name: string) => Promise<PluginDetail>
@@ -24,10 +26,11 @@ export interface StoreServices {
   subscribeInstalled: (onChange: () => void) => () => void
   /** Latest versions of unlisted npm plugins; {} when they cannot be asked. */
   loadLatest: () => Promise<Record<string, string>>
-  setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
-  remove: (name: string) => Promise<ChangeOutcome>
+  /** Changes go to DSH one at a time; `progress` hears whether one is waiting its turn or running. */
+  setEnabled: (name: string, enabled: boolean, progress?: ChangeProgress) => Promise<ChangeOutcome>
+  remove: (name: string, progress?: ChangeProgress) => Promise<ChangeOutcome>
   /** Install `version` over the installed `from.current`, keeping it enabled or disabled as it was. */
-  update: (name: string, version: string, from: { current: string; enabled: boolean }) => Promise<ChangeOutcome>
+  update: (name: string, version: string, from: { current: string; enabled: boolean }, progress?: ChangeProgress) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
 }
 

@@ -282,7 +282,7 @@ test('an uninstall DSH refuses while the plugin runs says how to get there', asy
 test('an update that fell back to the old version says so, with the reason', async () => {
   const { root, calls } = await open({ bundles: [bundle('dsh-pet', '0.9.0', { enabled: false })], services: { update: async (...args) => { calls.update.push(args); return { error: 'no such version', code: 'restored', version: '0.9.0' } } } })
   await confirmUpdate(root)
-  assert.deepEqual(calls.update[0], ['dsh-pet', '1.0.0', { current: '0.9.0', enabled: false }])
+  assert.deepEqual(calls.update[0].slice(0, 3), ['dsh-pet', '1.0.0', { current: '0.9.0', enabled: false }])
   const text = textIn(row(root, 'dsh-pet'))
   assert.ok(text.includes('已装回 v0.9.0') && text.includes('no such version'), text)
 })
@@ -311,4 +311,13 @@ test('a row stays put while its update uninstalls and reinstalls it', async () =
   await act(async () => { changed(); finish('applied') })
   await flush()
   assert.ok(textIn(row(root, 'dsh-pet')).includes('v1.0.0'))
+})
+
+test('an update behind another says it is waiting, then updating once its turn comes', async () => {
+  let progress
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: (name, version, from, report) => { progress = report; report('waiting'); return new Promise(() => {}) } } })
+  await confirmUpdate(root)
+  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updateQueued), textIn(row(root, 'dsh-pet')))
+  await act(async () => { progress('running') })
+  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updating))
 })

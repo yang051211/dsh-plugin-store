@@ -1,11 +1,12 @@
 /**
- * The Installed page: plugins with a newer version first, then the rest, then DSH's own. Updates and settings open
- * DSH's page for that plugin; only the store's own update goes straight to the installer. Enable and disable apply
+ * The Installed page: plugins with a newer version first, then the rest, then DSH's own. Updates install in the
+ * store, one at a time; the store's own update goes to DSH's installer, and settings open DSH's page for the plugin. Enable and disable apply
  * at once, uninstall asks first, and the keep-only switch lives in the top right corner.
  */
 import { useCallback, useState, type ReactNode } from 'react'
 import type { ChangeOutcome, InstalledRow, InstalledRows } from '../model/installed.ts'
 import type { SelfUpdate } from '../model/install-state.ts'
+import type { ChangeProgress } from './StoreApp.tsx'
 import { PageHeader, PluginIcon, type Translate } from './common.tsx'
 import { ConfirmSpec, ConfirmUpdate } from './ConfirmInstall.tsx'
 import { ConfirmRemove } from './ConfirmRemove.tsx'
@@ -23,10 +24,10 @@ export interface InstalledViewProps {
   onRetry: () => void
   onOpenPackage: (name: string) => void
   onSelfUpdate: (update: SelfUpdate) => void
-  setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
-  remove: (name: string) => Promise<ChangeOutcome>
+  setEnabled: (name: string, enabled: boolean, progress?: ChangeProgress) => Promise<ChangeOutcome>
+  remove: (name: string, progress?: ChangeProgress) => Promise<ChangeOutcome>
   /** Install `version` of an installed plugin in place. */
-  update: (name: string, version: string, from: { current: string; enabled: boolean }) => Promise<ChangeOutcome>
+  update: (name: string, version: string, from: { current: string; enabled: boolean }, progress?: ChangeProgress) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
   onInstallSpec: (target: { spec: string; title: string; version: string }) => void
 }
@@ -106,23 +107,26 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
   const [removing, setRemoving] = useState<InstalledRow | null>(null)
   const [updating, setUpdating] = useState<InstalledRow | null>(null)
   const [running, setRunning] = useState<Record<string, Action>>({})
+  // Changes waiting behind another one; DSH makes them one at a time.
+  const [waiting, setWaiting] = useState<Record<string, boolean>>({})
   // Rows under update, as they were when it started: an update may uninstall before it installs, and the row should
   // not blink out of the list in between.
   const [pinned, setPinned] = useState<Record<string, { row: InstalledRow; group: keyof InstalledRows }>>({})
 
   /** Run one change for a row; a restart or a failure is noted under it, an applied change shows on refresh. */
-  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: () => Promise<ChangeOutcome>, version: string | null = null) => {
+  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: (progress: ChangeProgress) => Promise<ChangeOutcome>, version: string | null = null) => {
     setBusy(prev => ({ ...prev, [name]: true }))
     setRunning(prev => ({ ...prev, [name]: action }))
     setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })
     let outcome: ChangeOutcome
     try {
-      outcome = await run()
+      outcome = await run(state => setWaiting(prev => ({ ...prev, [name]: state === 'waiting' })))
     } catch (error) {
       outcome = { error: messageOf(error) }
     }
     setBusy(prev => ({ ...prev, [name]: false }))
     setRunning(prev => { const { [name]: _, ...rest } = prev; return rest })
+    setWaiting(prev => { const { [name]: _, ...rest } = prev; return rest })
     setPinned(prev => { const { [name]: _, ...rest } = prev; return rest })
     if (outcome !== 'applied') {
       const note = outcomeNote(outcome, action, version, t)
@@ -138,14 +142,14 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
       const group = (['updates', 'others', 'official'] as const).find(id => rows?.[id].some(r => r.name === row.name)) ?? 'updates'
       setPinned(prev => ({ ...prev, [row.name]: { row, group } }))
     }
-    if (row?.latest && row.version) void change(row, 'update', () => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }), row.latest)
+    if (row?.latest && row.version) void change(row, 'update', progress => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }, progress), row.latest)
   }, [updating, change, update])
 
   const cancelRemove = useCallback(() => setRemoving(null), [])
   const acceptRemove = useCallback(() => {
     const row = removing
     setRemoving(null)
-    if (row) void change(row, 'remove', () => remove(row.name))
+    if (row) void change(row, 'remove', progress => remove(row.name, progress))
   }, [removing, change, remove])
 
   const renderRow = (row: InstalledRow) => {
@@ -170,11 +174,11 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
           {hasUpdate && (
             <button type="button" className="ps-btn ps-btn-primary" disabled={row.self ? !selfUpdate : busy[row.name]}
               onClick={() => (row.self ? selfUpdate && onSelfUpdate(selfUpdate) : setUpdating(row))}>
-              {running[row.name] === 'update' ? t('updating') : t('updateAction')}
+              {running[row.name] === 'update' ? t(waiting[row.name] ? 'updateQueued' : 'updating') : t('updateAction')}
             </button>
           )}
           {manageable && !row.missing && (
-            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, 'enable', () => setEnabled(row.name, on))} />
+            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, 'enable', progress => setEnabled(row.name, on, progress))} />
           )}
           {manageable && row.removable && !row.missing && (
             <button type="button" className="ps-btn ps-btn-quiet" disabled={busy[row.name]} onClick={() => setRemoving(row)}>{t('remove')}</button>
