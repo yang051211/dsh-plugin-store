@@ -131,7 +131,7 @@ Design notes live in [docs/superpowers/specs](docs/superpowers/specs/).
 ## Thanks
 
 - Extra candidate names: [REALOIYO/dsh-plugin-market](https://github.com/REALOIYO/dsh-plugin-market).
-- The store icon is the head of a maid illustration by an unknown artist. If it is yours and you want credit or removal, please [open an issue](https://github.com/yang051211/dsh-startide/issues).
+- The store icon is an AI-generated whale maid.
 
 ## License
 

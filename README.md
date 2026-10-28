@@ -131,7 +131,7 @@ npm run directory:check      # 确认 market/ 和状态文件一致，索引能�
 ## 致谢
 
 - 候选包名的补充来源：[REALOIYO/dsh-plugin-market](https://github.com/REALOIYO/dsh-plugin-market)。
-- 商店图标取自一幅女仆插画的头像部分，作者未知。如果你是作者，希望署名或撤下，请[开 Issue](https://github.com/yang051211/dsh-startide/issues)。
+- 商店图标是 AI 生成的鲸鱼女仆形象。
 
 ## 许可证
 
