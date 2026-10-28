@@ -1,0 +1,98 @@
+{
+  "name": "dsh-mcp-tools",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-28T14:05:41.424Z",
+  "icon": "dsh-mcp-tools.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1316,
+        "text": "pending = fetch(url, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/profile-modules.js",
+        "line": 5,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 3,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 4,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 35,
+        "text": "fs.mkdirSync(next, { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 51,
+        "text": "fs.mkdirSync(managerDir(), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "// Owns the MCP connections, registers only the enabled tools on ctx.tools, and"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 2,
+        "text": "// Per-tool switch semantics: a disabled tool is NEVER registered on ctx.tools,"
+      },
+      {
+        "file": "lib/manager.js",
+        "line": 330,
+        "text": "const dispose = this.ctx.tools.register(definition)"
+      },
+      {
+        "file": "lib/profile-modules.js",
+        "line": 90,
+        "text": "const mod = await loadProfileModule('@deepseek-ai/dsh-mcp-client')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/smoke.mjs",
+        "line": 5,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

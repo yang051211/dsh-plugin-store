@@ -1,7 +1,7 @@
 {
   "name": "dsh-lumen-market",
-  "version": "0.5.3",
-  "scannedAt": "2026-10-26T10:08:21.587Z",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-28T14:05:49.826Z",
   "icon": "dsh-lumen-market.svg",
   "network": {
     "hit": true,
@@ -10,6 +10,11 @@
         "file": "lib/client.js",
         "line": 38,
         "text": "          const response=await window.fetch(API+path,{method:body?'POST':'GET',headers:{'x-dsh-lumen-market':'1','content-type':'application/json'},body:body?JS"
+      },
+      {
+        "file": "lib/host/reinstall.js",
+        "line": 56,
+        "text": "response=await this.fetch(url.href,{redirect:'manual',signal})"
       }
     ]
   },
@@ -17,29 +22,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/host/profile.js",
+        "file": "lib/host/backups.js",
         "line": 1,
-        "text": "import { readFileSync } from 'node:fs'"
+        "text": "import {mkdir,readFile,writeFile,readdir,stat,rename} from 'node:fs/promises'"
       },
       {
-        "file": "lib/host/profile.js",
-        "line": 6,
-        "text": "function read(path){try{return JSON.parse(readFileSync(path,'utf8'))}catch{return null}}"
+        "file": "lib/host/backups.js",
+        "line": 11,
+        "text": "try{const info=await stat(file);if(!info.isFile()||info.size>max)throw new MarketError('backup-too-large',413);return await readFile(file)}"
       },
       {
-        "file": "lib/host/snapshots.js",
-        "line": 1,
-        "text": "import {mkdirSync,readFileSync,writeFileSync,renameSync,statSync} from 'node:fs'"
+        "file": "lib/host/backups.js",
+        "line": 61,
+        "text": "await mkdir(join(directory,'files'),{recursive:true,mode:0o700})"
       },
       {
-        "file": "lib/host/snapshots.js",
-        "line": 16,
-        "text": "const data=JSON.parse(readFileSync(path,'utf8'))"
+        "file": "lib/host/backups.js",
+        "line": 62,
+        "text": "for(const name of FILES)if(saved[name]!==null)await writeFile(join(directory,'files',name),saved[name],{mode:0o600,flag:'wx'})"
       },
       {
-        "file": "lib/host/snapshots.js",
-        "line": 41,
-        "text": "mkdirSync(folder,{recursive:true})"
+        "file": "lib/host/backups.js",
+        "line": 64,
+        "text": "await writeFile(join(directory,'index.json.tmp'),JSON.stringify(meta,null,2)+'\\n',{mode:0o600,flag:'wx'})"
       }
     ]
   },

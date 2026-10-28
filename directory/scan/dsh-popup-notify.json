@@ -1,0 +1,59 @@
+{
+  "name": "dsh-popup-notify",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-28T14:05:47.147Z",
+  "icon": "dsh-popup-notify.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 20,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 244,
+        "text": "appendFileSync(config.traceFile, `${new Date().toISOString()} ${message}\\n`)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 146,
+        "text": "* @returns {import('node:child_process').ChildProcess} 已启动的子进程。"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 150,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

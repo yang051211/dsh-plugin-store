@@ -1,21 +1,42 @@
 {
   "name": "dsh-model-picker-control",
-  "version": "0.4.2",
-  "scannedAt": "2026-10-27T23:28:54.079Z",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-28T14:05:40.512Z",
   "icon": "dsh-model-picker-control.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1244,
+        "line": 1299,
         "text": "response = await fetch(routeUrl(API + method), {"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 120,
+        "text": "try { return JSON.parse(readFileSync(stateFile, 'utf8')) } catch { return {} }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 123,
+        "text": "mkdirSync(dirname(stateFile), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 125,
+        "text": "writeFileSync(tmp, JSON.stringify(state))"
+      }
+    ]
   },
   "agentTools": {
     "hit": false,

@@ -1,0 +1,64 @@
+{
+  "name": "dsh-config-transfer",
+  "version": "1.0.6",
+  "scannedAt": "2026-10-28T14:05:44.546Z",
+  "icon": "dsh-config-transfer.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 211,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/patch.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 61,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 63,
+        "text": "await writeFile(temp, text, { mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 75,
+        "text": "await rm(temp, { force: true })"
+      },
+      {
+        "file": "lib/patch.js",
+        "line": 85,
+        "text": "text = await readFile(path, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

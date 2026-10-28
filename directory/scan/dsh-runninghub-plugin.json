@@ -1,0 +1,108 @@
+{
+  "name": "dsh-runninghub-plugin",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-28T14:05:41.040Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1055,
+        "text": "const response = await fetch(HTTP_PATH, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 3884,
+        "text": "const response = await fetch(IMAGE_ROUTE, {"
+      },
+      {
+        "file": "host/core/api.mjs",
+        "line": 32,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "host/core/api.mjs",
+        "line": 33,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "host/rpc.mjs",
+        "line": 20,
+        "text": "*   - 浏览器半边 `client/client.js` 已经内置了这条通道作为兜底（`fetch(HTTP_PATH)`）。"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/core/api.mjs",
+        "line": 35,
+        "text": "import { open, unlink } from 'node:fs/promises'"
+      },
+      {
+        "file": "host/core/api.mjs",
+        "line": 1813,
+        "text": "if (file) await file.writeFile(value)"
+      },
+      {
+        "file": "host/core/api.mjs",
+        "line": 1820,
+        "text": "if (file) await file.writeFile(value)"
+      },
+      {
+        "file": "host/core/api.mjs",
+        "line": 1833,
+        "text": "if (created) await unlink(filePath).catch(() => {})"
+      },
+      {
+        "file": "host/core/media.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/index.mjs",
+        "line": 36,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 161,
+        "text": "ctx.effect(() => ctx.tools.register(makeSearchTool()), 'dsh-runninghub-plugin: runninghub_search')"
+      },
+      {
+        "file": "host/index.mjs",
+        "line": 162,
+        "text": "ctx.effect(() => ctx.tools.register(makeCallTool(getRuntime)), 'dsh-runninghub-plugin: runninghub_call')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "host/core/media.mjs",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

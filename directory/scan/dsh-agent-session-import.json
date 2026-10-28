@@ -1,0 +1,87 @@
+{
+  "name": "dsh-agent-session-import",
+  "version": "0.2.4",
+  "scannedAt": "2026-10-28T14:05:48.720Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 236,
+        "text": "const response = await fetch(endpointUrl(endpoint), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/cursor-store.js",
+        "line": 12,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/platform.js",
+        "line": 8,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/providers/claude-code.js",
+        "line": 31,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/host/providers/claude-code.js",
+        "line": 522,
+        "text": "const text = await fs.promises.readFile(entry.file, 'utf8');"
+      },
+      {
+        "file": "lib/host/providers/codex.js",
+        "line": 32,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/providers/codex.js",
+        "line": 34,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/providers/kimi.js",
+        "line": 35,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/sqlite.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/sqlite.js",
+        "line": 52,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

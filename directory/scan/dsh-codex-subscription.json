@@ -1,25 +1,25 @@
 {
   "name": "dsh-codex-subscription",
-  "version": "3.1.7",
-  "scannedAt": "2026-10-26T10:04:37.877Z",
+  "version": "3.2.0",
+  "scannedAt": "2026-10-28T14:05:25.555Z",
   "icon": "dsh-codex-subscription.webp",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 6306,
+        "line": 14590,
+        "text": "const response = await fetch(src, { signal: lifetime.signal });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 14604,
+        "text": "const response = await fetch(src, { signal: lifetime.signal });"
+      },
+      {
+        "file": "lib/client.sketch.js",
+        "line": 5380,
         "text": "const blob = await (await fetch(dataUrl)).blob();"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 20616,
-        "text": "const response = await fetch(src, { signal: lifetime.signal });"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 20630,
-        "text": "const response = await fetch(src, { signal: lifetime.signal });"
       },
       {
         "file": "lib/index.js",
@@ -28,7 +28,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 1068,
+        "line": 1205,
         "text": "return new WebSocket(args[0], {"
       }
     ]
@@ -43,22 +43,22 @@
       },
       {
         "file": "lib/index.js",
-        "line": 19,
+        "line": 18,
         "text": "import { lstat, mkdir, open, readFile, readdir, rename, rm, stat, writeFile } from \"node:fs/promises\";"
       },
       {
         "file": "lib/index.js",
-        "line": 819,
+        "line": 911,
         "text": "appendFileSync(file, `${JSON.stringify(entry)}\\n`);"
       },
       {
         "file": "lib/index.js",
-        "line": 859,
+        "line": 951,
         "text": "mkdirSync(dirname(path), { recursive: true });"
       },
       {
         "file": "lib/index.js",
-        "line": 861,
+        "line": 953,
         "text": "entries = [...readFileSync(path, \"utf8\").trim().split(\"\\n\").slice(-Math.floor(limit / 2)).flatMap((line) => {"
       }
     ]
@@ -68,28 +68,28 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 14430,
+        "line": 9538,
+        "text": "const scopedTools = (agent) => agent?.ctx?.get?.(\"tools\") ?? (Object.hasOwn(agent?.ctx ?? {}, \"tools\") ? agent.ctx.tools : void 0);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 16430,
         "text": "ctx.effect(() => watchImageTool(settings, () => ctx.tools.register(createCodexImageTool({"
       },
       {
         "file": "lib/index.js",
-        "line": 14454,
+        "line": 16454,
         "text": "}).map((tool) => ctx.tools.register(tool));"
       },
       {
         "file": "lib/index.js",
-        "line": 14839,
+        "line": 16849,
         "text": "etch && value.imageEditing) dispose ??= ctx.tools.register(createSketchAgentTool(sketchBridge, ctx.attachments, (sessionId) => ctx.get?.(\"sessions\")?.get?.(sess"
       },
       {
         "file": "lib/index.js",
-        "line": 14876,
-        "text": "desktopVoice: withEndCallTool(remoteBridge.desktopVoice, (tool) => ctx.tools.register(tool)),"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 14902,
-        "text": "tools: ctx.tools"
+        "line": 16875,
+        "text": "const desktopVoice = withEndCallTool(remoteBridge.desktopVoice, (tool) => ctx.tools.register(tool));"
       }
     ]
   },
@@ -103,8 +103,13 @@
       },
       {
         "file": "lib/index.js",
-        "line": 2863,
+        "line": 3029,
         "text": "subprocess: { spawn: (spec) => authenticatedSubagentChild(ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15538,
+        "text": "const child = spawn(python, [path], {"
       }
     ]
   },

@@ -1,7 +1,7 @@
 {
   "name": "@aiwayds/dsh-tui-pi",
-  "version": "2.29.0",
-  "scannedAt": "2026-10-26T10:10:52.755Z",
+  "version": "2.33.0",
+  "scannedAt": "2026-10-28T14:05:37.729Z",
   "icon": "aiwayds__dsh-tui-pi.svg",
   "network": {
     "hit": true,
@@ -77,24 +77,24 @@
         "text": "import { execFileSync } from 'node:child_process'"
       },
       {
-        "file": "lib/agent-manager.js",
-        "line": 22,
-        "text": "* `deep` caps how many levels of subagents this agent may spawn (default 1,"
+        "file": "bin/boot.mjs",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process'"
       },
       {
-        "file": "lib/clipboard.js",
-        "line": 39,
-        "text": "import { execFile as execFileCb } from 'node:child_process';"
+        "file": "bin/boot.mjs",
+        "line": 29,
+        "text": "const result = spawnSync(dsh, ['--profile', 'tui', ...args], { stdio: 'inherit' })"
       },
       {
-        "file": "lib/clipboard.js",
-        "line": 180,
-        "text": "const { stdout } = await impl.execFile(cmd, args, {"
+        "file": "bin/onboard-core.mjs",
+        "line": 20,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
       },
       {
-        "file": "lib/clipboard.js",
-        "line": 212,
-        "text": "await impl.execFile(cmd, args, {"
+        "file": "bin/onboard-core.mjs",
+        "line": 127,
+        "text": "const result = spawnSync('npm', ['install', '-g', name], {"
       }
     ]
   },
@@ -104,7 +104,7 @@
       {
         "file": "package.json",
         "line": 0,
-        "text": "scripts.postinstall: node scripts/link-dsh-closure.mjs"
+        "text": "scripts.postinstall: node scripts/postinstall.mjs"
       }
     ]
   },
@@ -118,6 +118,12 @@
     "systemPrompt",
     "userQuestions"
   ],
-  "setupHints": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "npm i -g @aiwayds/dsh-tui-pi"
+    }
+  ],
   "skippedEntries": []
 }

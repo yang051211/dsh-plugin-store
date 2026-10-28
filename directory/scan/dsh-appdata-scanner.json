@@ -1,0 +1,80 @@
+{
+  "name": "dsh-appdata-scanner",
+  "version": "0.7.1",
+  "scannedAt": "2026-10-28T14:05:36.509Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/client.js",
+        "line": 139,
+        "text": "const response = await fetch(API + path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.js",
+        "line": 7,
+        "text": "import { readdir, realpath, stat } from \"node:fs/promises\";"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 3,
+        "text": "import { readFile, writeFile, mkdir } from \"node:fs/promises\";"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 110,
+        "text": "await mkdir(dirname(target), { recursive: true });"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 111,
+        "text": "await writeFile(target, text, \"utf8\");"
+      },
+      {
+        "file": "src/cli.mjs",
+        "line": 127,
+        "text": "text = await readFile(resolve(input), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.js",
+        "line": 6,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 979,
+        "text": "* 一个受限令牌的 runner 去跑（spawn(runner, [\"--\", ...argv])）。本机这条路径上的子进程会以"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 996,
+        "text": "child = spawn(argv[0], argv.slice(1), { detached: true, stdio: \"ignore\", windowsHide: false });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

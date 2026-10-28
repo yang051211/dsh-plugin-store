@@ -1,0 +1,61 @@
+{
+  "name": "dsh-drag-graft",
+  "version": "2.2.1",
+  "scannedAt": "2026-10-28T14:05:44.845Z",
+  "icon": "dsh-drag-graft.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/manifest.test.mjs",
+        "line": 3,
+        "text": "import { readFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "test/manifest.test.mjs",
+        "line": 8,
+        "text": "const read = (name) => readFileSync(join(root, name), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 239,
+        "text": "const tools = (() => { try { return ctx.tools } catch { return null } })()"
+      },
+      {
+        "file": "index.js",
+        "line": 241,
+        "text": "tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 285,
+        "text": "logger?.warn?.('[drag-graft] ctx.tools 不可用：诊断工具未注册（不影响拖拽）')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

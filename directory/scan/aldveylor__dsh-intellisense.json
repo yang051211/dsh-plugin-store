@@ -1,0 +1,148 @@
+{
+  "name": "@aldveylor/dsh-intellisense",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-28T14:05:36.577Z",
+  "icon": "aldveylor__dsh-intellisense.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 176,
+        "text": "archParams.set(\"session\",e);let P=await fetch(u),y=await P.json();if(!P.ok)throw new Error(y.error);D&&N===b.current&&(d(y),g(void 0))}catch(u){D&&N===b.current"
+      },
+      {
+        "file": "dist/client.js",
+        "line": 559,
+        "text": "\");async function Wt(e,t,n){let o=await fetch(e,{credentials:\"same-origin\",signal:n,...t===void 0?{}:{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},"
+      },
+      {
+        "file": "dist/web/panel/management_panel.js",
+        "line": 24,
+        "text": "const response = await fetch(api, {"
+      },
+      {
+        "file": "dist/web/session_profile/session_profile.js",
+        "line": 35,
+        "text": "const response = await fetch(url);"
+      },
+      {
+        "file": "dist/web/session_profile/session_profile.js",
+        "line": 67,
+        "text": "const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ profile }) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/namespace/plugin.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/namespace/plugin.js",
+        "line": 24,
+        "text": "const aliases = Aliases.parse(config.aliasesFile ? parse(await readFile(config.aliasesFile, 'utf8')) : []);"
+      },
+      {
+        "file": "dist/preset/index.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/preset/index.js",
+        "line": 10,
+        "text": "string(), description: z.string(), order: z.number() }).parse(parse(await readFile(new URL(`../../presets/${directory}/preset.yml`, import.meta.url), 'utf8')));"
+      },
+      {
+        "file": "dist/preset/index.js",
+        "line": 11,
+        "text": "const plugins = parse(await readFile(new URL(`../../presets/${directory}/agent.cordis.yml`, import.meta.url), 'utf8'), {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'agents', 'systemPrompt', 'storage', storageBackendServiceKey('json'), 'connection'];"
+      },
+      {
+        "file": "dist/integration/presentation.js",
+        "line": 6,
+        "text": "export const inject = ['tools', 'commandNamespaces'];"
+      },
+      {
+        "file": "dist/integration/presentation.js",
+        "line": 30,
+        "text": "ctx.tools.presentAs('native');"
+      },
+      {
+        "file": "dist/namespace/component.js",
+        "line": 77,
+        "text": "const tools = agent?.ctx.tools ?? this.ctx.tools;"
+      },
+      {
+        "file": "dist/namespace/component.js",
+        "line": 144,
+        "text": "const tools = Reflect.get(agent.ctx.tools, symbols.original) ?? agent.ctx.tools;"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/runtime/host.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/runtime/host.js",
+        "line": 43,
+        "text": "const child = spawn(process.execPath, ['--permission', `--max-old-space-size=${this.config.heapMb}`, '--input-type=module', '-'], {"
+      },
+      {
+        "file": "dist/runtime/sandbox.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "dist/runtime/sandbox.js",
+        "line": 6,
+        "text": "const childProcess = require('node:child_process');"
+      },
+      {
+        "file": "dist/runtime/sandbox.js",
+        "line": 16,
+        "text": "const result = spawnSync(process.execPath, ['--permission', '--eval', probe], { env: {}, encoding: 'utf8', timeout: timeoutMs });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "dist/client.js",
+    "dist/runtime/worker_bundle.mjs",
+    "dist/web/standalone.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "connection",
+    "json",
+    "storage",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "@innerd/dsh-notify",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-28T14:05:52.360Z",
+  "icon": "innerd__dsh-notify.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 36,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 13,
+        "text": "import { appendFile, mkdir, rename, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 55,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 57,
+        "text": "await appendFile(path, line, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 9,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/focus.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/notify.js",
+        "line": 105,
+        "text": "child = spawn(spec.command, spec.args, { stdio: 'ignore', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

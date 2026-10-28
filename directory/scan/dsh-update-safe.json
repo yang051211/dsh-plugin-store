@@ -1,0 +1,110 @@
+{
+  "name": "dsh-update-safe",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-28T14:05:47.334Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.js",
+        "line": 116,
+        "text": "const bootstrap = await fetch(url, { redirect: 'manual', signal: AbortSignal.timeout(10000) })"
+      },
+      {
+        "file": "engine.js",
+        "line": 118,
+        "text": "        const response = await fetch(new URL('/api/safe-release-update.health', url), { method: 'POST', headers: { 'Content-Type': 'application/json', Cookie: c"
+      },
+      {
+        "file": "supervisor.mjs",
+        "line": 56,
+        "text": "const bootstrap = await fetch(match[1], { redirect: 'manual', signal: AbortSignal.timeout(5000) })"
+      },
+      {
+        "file": "supervisor.mjs",
+        "line": 58,
+        "text": "  const res = await fetch(`${origin}/api/safe-release-update.health`, { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin, Cookie: c"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.js",
+        "line": 3,
+        "text": "import { mkdir, mkdtemp, readFile, writeFile, cp, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "engine.js",
+        "line": 60,
+        "text": "return JSON.parse(await readFile(file, 'utf8'))"
+      },
+      {
+        "file": "engine.js",
+        "line": 61,
+        "text": "} finally { await rm(directory, { recursive: true, force: true }) }"
+      },
+      {
+        "file": "engine.js",
+        "line": 79,
+        "text": "} finally { await rm(temp, { recursive: true, force: true }) }"
+      },
+      {
+        "file": "engine.js",
+        "line": 87,
+        "text": "try { hash.update(await readFile(file)) }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "engine.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "engine.js",
+        "line": 21,
+        "text": "const child = spawn(file, args, { cwd: options.cwd, env: options.env ?? buildEnvironment(), stdio: ['ignore', 'pipe', 'pipe'], detached: true })"
+      },
+      {
+        "file": "engine.js",
+        "line": 106,
+        "text": "const child = spawn('pnpm', ['dsh', 'web', '--port', '0', '--no-open'], { cwd: source, env, detached: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "supervisor.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "supervisor.mjs",
+        "line": 91,
+        "text": "    child = spawn('pnpm', args, { cwd: candidate, env: { ...process.env, DSH_HOME: home, DSH_SAFE_UPDATE_ROOT: root, DSH_SAFE_SUPERVISOR_ID: owner }, detached: "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "jobs",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

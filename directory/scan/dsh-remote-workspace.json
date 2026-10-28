@@ -1,0 +1,106 @@
+{
+  "name": "dsh-remote-workspace",
+  "version": "0.1.0-alpha.2",
+  "scannedAt": "2026-10-28T14:05:49.940Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 902,
+        "text": "response = await fetch(`${API_PREFIX}/api/${route}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3742,
+        "text": "/** The production runner: `curl -fL` into a file (or stdout), bounded by a timeout. */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3995,
+        "text": "* `curl -C -` is what turns a hiccup at 99.8% into a retry instead of a lost"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 957,
+        "text": "mkdir(targetId, path) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3396,
+        "text": "await api.mkdir(targetId, path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { createReadStream, existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { access, glob, mkdir, readFile, readdir, realpath, rename, rm, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "text = await readFile(absolute, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 322,
+        "text": "execFile(sshBinary, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 723,
+        "text": "child = spawn(WSL_EXE, [...args], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 837,
+        "text": "child = spawn(WSL_EXE, wslScriptArgs(distro, options.user), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 901,
+        "text": "const child = spawn(WSL_EXE, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

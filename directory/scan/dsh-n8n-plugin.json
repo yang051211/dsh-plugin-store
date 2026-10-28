@@ -1,0 +1,99 @@
+{
+  "name": "dsh-n8n-plugin",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-28T14:05:42.439Z",
+  "icon": "dsh-n8n-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 159,
+        "text": "return readJson(await fetch(API.instances, { headers: { accept: 'application/json' } }))"
+      },
+      {
+        "file": "client/index.js",
+        "line": 164,
+        "text": "return readJson(await fetch(API.instances, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 173,
+        "text": "return readJson(await fetch(`${API.instances}?alias=${encodeURIComponent(alias)}`, {"
+      },
+      {
+        "file": "client/index.js",
+        "line": 182,
+        "text": "return readJson(await fetch(`${API.instances}?alias=${encodeURIComponent(alias)}`, { method: 'DELETE' }))"
+      },
+      {
+        "file": "client/index.js",
+        "line": 187,
+        "text": "return readJson(await fetch(API.test, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 268,
+        "text": "const parsed = JSON.parse(readFileSync(this.path, 'utf8'))"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 289,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 291,
+        "text": "writeFileSync(tmp, JSON.stringify({ version: FORMAT_VERSION, instances: file.instances }, null, 2) + '\\n', {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['webServer', 'tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "text: visibleToolText(ctx.tools, GUIDANCE_TEXT),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "const disposers = tools.map(tool => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

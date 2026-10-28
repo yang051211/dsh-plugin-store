@@ -1,0 +1,139 @@
+{
+  "name": "dsh-rea-workbench",
+  "version": "3.0.4",
+  "scannedAt": "2026-10-28T14:05:50.159Z",
+  "icon": "dsh-rea-workbench.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2559,
+        "text": "const response = await fetch(API.status, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "client.js",
+        "line": 2585,
+        "text": "fetch(API.health, { headers: { accept: 'application/json' } }),"
+      },
+      {
+        "file": "client.js",
+        "line": 2586,
+        "text": "fetch(`${API.metrics}?limit=${STREAM_LIMIT}`, { headers: { accept: 'application/json' } }),"
+      },
+      {
+        "file": "client.js",
+        "line": 2611,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "client.js",
+        "line": 2641,
+        "text": "const response = await fetch(API.jdk, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/health.js",
+        "line": 200,
+        "text": "const fs = await import('node:fs/promises');"
+      },
+      {
+        "file": "lib/health.js",
+        "line": 201,
+        "text": "await fs.mkdir(cacheRoot, { recursive: true });"
+      },
+      {
+        "file": "lib/health.js",
+        "line": 203,
+        "text": "await fs.writeFile(probe, 'ok');"
+      },
+      {
+        "file": "lib/health.js",
+        "line": 204,
+        "text": "await fs.rm(probe, { force: true });"
+      },
+      {
+        "file": "lib/jdk.js",
+        "line": 18,
+        "text": "import fs from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 6,
+        "text": "# `@deepseek-ai/dsh-mcp-client` installed in the profile, and that package"
+      },
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "* A profile row needs `@deepseek-ai/dsh-mcp-client` installed, and that package"
+      },
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 117,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 142,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/jdk.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/jdk.js",
+        "line": 119,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/jdk.js",
+        "line": 332,
+        "text": "const child = spawn(command, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true });"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/mcp-client.js",
+        "line": 108,
+        "text": "await this.#spawn();"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/mobilere/skills/rev-dex-dumper/mem-dex-dumper",
+    "vendor/mobilere/skills/rev-dex-dumper/panda-dex-dumper"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,102 @@
+{
+  "name": "dsh-file-preview",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-28T14:05:50.128Z",
+  "icon": "dsh-file-preview.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1045,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1221,
+        "text": "const response = await fetch(apiUrl('raw', pathParams(path)), { signal: signal, cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1273,
+        "text": "const response = await fetch(apiUrl('officePdf', pathParams(path)), { signal: signal, cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1500,
+        "text": "const response = await fetch(target.src)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1528,
+        "text": "const response = await fetch(apiUrl('action'), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/actions.js",
+        "line": 39,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/actions.js",
+        "line": 40,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/office.js",
+        "line": 20,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/host/office.js",
+        "line": 58,
+        "text": "const bytes = await fsp.readFile(cachePath)"
+      },
+      {
+        "file": "lib/host/office.js",
+        "line": 67,
+        "text": "await fsp.mkdir(cacheDir, { recursive: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/actions.js",
+        "line": 38,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host/actions.js",
+        "line": 188,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/host/actions.js",
+        "line": 234,
+        "text": "child = spawn(command, args, { stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

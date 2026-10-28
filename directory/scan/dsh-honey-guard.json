@@ -1,37 +1,74 @@
 {
   "name": "dsh-honey-guard",
-  "version": "0.1.0",
-  "scannedAt": "2026-10-26T10:08:39.698Z",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-28T14:05:45.094Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/index.js",
+        "line": 229,
+        "text": "const res = await fetch(\"/api/honey-guard/log?limit=50\");"
+      }
+    ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 4,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 708,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 712,
+        "text": "unlinkSync(`${path}.1`);"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 719,
+        "text": "appendFileSync(path, `${JSON.stringify(record)}\\n`);"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 757,
+        "text": "raw = readFileSync(path, \"utf8\");"
+      }
+    ]
   },
   "agentTools": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/index.mjs",
-        "line": 905,
+        "line": 1146,
         "text": "ctx.tools.register(createHoneyMarkTool(deps)),"
       },
       {
         "file": "lib/index.mjs",
-        "line": 906,
+        "line": 1147,
         "text": "ctx.tools.register(createHoneyRestoreTool(deps)),"
       },
       {
         "file": "lib/index.mjs",
-        "line": 907,
-        "text": "ctx.tools.register(createHoneyStatsTool(deps))"
+        "line": 1148,
+        "text": "ctx.tools.register(createHoneyStatsTool(deps)),"
       },
       {
         "file": "lib/index.mjs",
-        "line": 918,
+        "line": 1149,
+        "text": "ctx.tools.register(createHoneyLogTool(deps))"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 1248,
         "text": "const inject = [\"llm\", \"tools\"];"
       }
     ]

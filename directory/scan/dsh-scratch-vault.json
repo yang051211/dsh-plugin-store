@@ -1,0 +1,76 @@
+{
+  "name": "dsh-scratch-vault",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-28T14:05:47.161Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 15,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 241,
+        "text": "const parsed = JSON.parse(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "appendFileSync("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "appendFileSync(tracePath, `${new Date().toISOString()} ${message}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 143,
+        "text": "ctx.tools.register(definition)"
+      },
+      {
+        "file": "test/tools.test.mjs",
+        "line": 4,
+        "text": "* `registerTools` only ever touches `ctx.tools.register`, `ctx.get` and the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

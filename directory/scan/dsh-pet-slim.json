@@ -1,0 +1,110 @@
+{
+  "name": "dsh-pet-slim",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-28T14:05:53.808Z",
+  "icon": "dsh-pet-slim.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 172,
+        "text": "const res = await fetch(url, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 923,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1636,
+        "text": "const r = await fetch(\"/dsh-pet-7340/config\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2485,
+        "text": "fetch(\"/dsh-pet-7340/config/meta\").then((r) => r.ok ? r.json() : null).then((p) => setPaths(p)).catch(() => console.warn(\"[dsh-pet] 读取配置文件路径失败\"));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { appendFileSync, createReadStream, existsSync, fstatSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFile, mkdir, readFile, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5156,
+        "text": "return this.ctx.get(\"fs\")?.processPathFromHostPath(hostPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5347,
+        "text": "const ensureDir = () => dirReady ?? (dirReady = mkdir(dirname(file), { recursive: true }).then(() => void 0).catch(() => void 0));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5374,
+        "text": "if (droppedNote > 0) await appendFile(file, formatLogLine(\"warn\", `日志缓冲溢出，丢弃 ${droppedNote} 条`, now()), \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9271,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "runtime/electron-helper/main.js",
+        "line": 27,
+        "text": "const { execFileSync } = require('node:child_process');"
+      },
+      {
+        "file": "src/host/helper-process.ts",
+        "line": 13,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/host/helper-process.ts",
+        "line": 322,
+        "text": "declare private child?: import('node:child_process').ChildProcess;"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 6,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,107 @@
+{
+  "name": "dsh-cloudflare-codemode",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-28T14:05:49.073Z",
+  "icon": "dsh-cloudflare-codemode.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 41,
+        "text": "res = await fetch(path, init)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 143,
+        "text": "const res = await fetch(TOKEN, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 209,
+        "text": "const res = await fetch(UPSTREAM, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 356,
+        "text": "upstream = await fetch(UPSTREAM, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "import { mkdir, readFile, writeFile, rename } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "const raw = await readFile(CONFIG_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "await mkdir(path.dirname(CONFIG_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "await writeFile(temp, `${JSON.stringify(next, null, 2)}\\n`, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 6,
+        "text": "#   2. cloudflare-codemode-mcp — the shipped @deepseek-ai/dsh-mcp-client, pointed"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "#                                registers Cloudflare's tools on ctx.tools as"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 20,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 14,
+        "text": "* The MCP connection itself is owned by the `@deepseek-ai/dsh-mcp-client` row"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "* The MCP protocol itself is owned by the shipped `@deepseek-ai/dsh-mcp-client`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

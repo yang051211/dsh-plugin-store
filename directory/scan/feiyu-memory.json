@@ -1,0 +1,80 @@
+{
+  "name": "feiyu-memory",
+  "version": "4.0.1",
+  "scannedAt": "2026-10-28T14:05:43.834Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client/index.js",
+        "line": 261,
+        "text": "fetch(`${API}/state`, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "src/client/index.js",
+        "line": 280,
+        "text": "fetch(`${API}/forget`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.mjs",
+        "line": 21,
+        "text": "import { readFile, writeFile, mkdir, rename, readdir, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/host/index.mjs",
+        "line": 22,
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/host/index.mjs",
+        "line": 243,
+        "text": "await mkdir(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "src/host/index.mjs",
+        "line": 245,
+        "text": "await writeFile(tmp, text, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "src/host/index.mjs",
+        "line": 259,
+        "text": "files.set(rel, await readFile(path.join(dir, rel), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.mjs",
+        "line": 2090,
+        "text": "scope.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessions",
+    "systemPrompt"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

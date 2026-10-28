@@ -1,0 +1,92 @@
+{
+  "name": "@suntion/dsh-tool-gate",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-28T14:05:49.327Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 26,
+        "text": "return fetch(API_BASE + pathname, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/scan/asar.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/scan/asar.js",
+        "line": 124,
+        "text": "readFile(relPath) {"
+      },
+      {
+        "file": "lib/scan/asar.js",
+        "line": 138,
+        "text": "return this.readFile(relPath)?.toString('utf8')"
+      },
+      {
+        "file": "lib/scan/index.js",
+        "line": 18,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/scan/index.js",
+        "line": 71,
+        "text": "return fs.readFileSync(abs, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/policy.js",
+        "line": 51,
+        "text": "return agent.ctx.tools.schemas()"
+      },
+      {
+        "file": "lib/policy.js",
+        "line": 73,
+        "text": "const offGuard = agent.ctx.tools.guard(execution =>"
+      },
+      {
+        "file": "lib/policy.js",
+        "line": 111,
+        "text": "return agent.ctx.tools.schemas()"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 4,
+        "text": "* `ctx.tools.schemas()` exposes only `{ name, description, parameters }`: the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "dsh-config-vault",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-28T14:05:46.370Z",
+  "icon": "dsh-config-vault.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 97,
+        "text": "response = await fetch(new URL(`${ROUTE_PREFIX}/${action}`, document.baseURI), {"
+      },
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 31,
+        "text": "const response = await fetch(`${base}/config-vault/${action}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 16,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 86,
+        "text": "const original = await readFile(patchPath, 'utf8')"
+      },
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 87,
+        "text": "await writeFile(patchPath, `${original}\\n# e2e tamper\\n`)"
+      },
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 97,
+        "text": "assert.equal(await readFile(patchPath, 'utf8'), `${original}\\n# e2e tamper\\n`)"
+      },
+      {
+        "file": "scripts/e2e-http.mjs",
+        "line": 101,
+        "text": "assert.equal(await readFile(patchPath, 'utf8'), original)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 58,
+        "text": "const dispose = toolCtx.tools.register(buildTool(vault, settings))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

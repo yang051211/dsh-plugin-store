@@ -1,7 +1,7 @@
 {
   "name": "dsh-weiwen-law",
-  "version": "0.2.9",
-  "scannedAt": "2026-10-28T06:59:38.480Z",
+  "version": "0.2.12",
+  "scannedAt": "2026-10-28T14:05:42.421Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,7 +18,7 @@
       },
       {
         "file": "src/core/engine.mjs",
-        "line": 199,
+        "line": 201,
         "text": "const REMOTE_SRC = /\\b(curl|wget|iwr|Invoke-WebRequest)\\b/i;"
       },
       {
@@ -68,18 +68,28 @@
     "evidence": [
       {
         "file": "src/index.js",
-        "line": 235,
+        "line": 245,
         "text": "const inject = ['tools'];"
       },
       {
         "file": "src/index.js",
-        "line": 768,
+        "line": 888,
         "text": "//      将来若加入有副作用的工具，必须直接走 `ctx.tools.register`，**不要**走本函数。"
       },
       {
         "file": "src/index.js",
-        "line": 772,
+        "line": 893,
         "text": "return ctx.tools.register(def);"
+      },
+      {
+        "file": "src/index.js",
+        "line": 1044,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "test/break-window-scope.test.mjs",
+        "line": 98,
+        "text": "// 册 ⊆ 注册表，且差集必须**只有有副作用的那个**（`submit_pledge` 走 ctx.tools.register 直注册）。"
       }
     ]
   },

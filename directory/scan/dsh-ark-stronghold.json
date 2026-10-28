@@ -1,0 +1,123 @@
+{
+  "name": "dsh-ark-stronghold",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-28T14:05:47.876Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "corresponding-source/ark-play-core/src/rpc.mjs",
+        "line": 82,
+        "text": "const ws=new WebSocket(this.url,{headers:this.headers,maxPayload:8*1024*1024,handshakeTimeout:10_000});"
+      },
+      {
+        "file": "corresponding-source/ark-play-core/src/site-loader.mjs",
+        "line": 41,
+        "text": "const response=await fetch(url,{headers,redirect:'error',signal:AbortSignal.timeout(30_000)});"
+      },
+      {
+        "file": "corresponding-source/ark-play-core/src/site.mjs",
+        "line": 6,
+        "text": "const response=await fetch(url,{headers,redirect:'error',signal:AbortSignal.timeout(30_000)});"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 23516,
+        "text": "const response = await fetch(url2, { headers, redirect: \"error\", signal: AbortSignal.timeout(3e4) });"
+      },
+      {
+        "file": "dist/site-loader.mjs",
+        "line": 41,
+        "text": "const response = await fetch(url, { headers, redirect: \"error\", signal: AbortSignal.timeout(3e4) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "configure.mjs",
+        "line": 4,
+        "text": "import { existsSync as existsSync2, mkdirSync, writeFileSync, renameSync, rmSync } from \"node:fs\";"
+      },
+      {
+        "file": "configure.mjs",
+        "line": 9,
+        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "configure.mjs",
+        "line": 43,
+        "text": "const value = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "configure.mjs",
+        "line": 85,
+        "text": "mkdirSync(dirname(target), { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "configure.mjs",
+        "line": 89,
+        "text": "writeFileSync(temporary, content, { mode: 384, flag: \"wx\" });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.mjs",
+        "line": 25128,
+        "text": "var inject = [\"tools\"];"
+      },
+      {
+        "file": "dist/index.mjs",
+        "line": 25195,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.mjs",
+        "line": 6,
+        "text": "export const inject=['tools'];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 77,
+        "text": "ctx.tools.register({name:tool.name,description:tool.description,parameters,"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "corresponding-source/ark-play-core/tools/check-package.mjs",
+        "line": 6,
+        "text": "import {execFileSync} from 'node:child_process';"
+      },
+      {
+        "file": "corresponding-source/ark-play-core/tools/package.mjs",
+        "line": 7,
+        "text": "import {execFileSync} from 'node:child_process';"
+      },
+      {
+        "file": "tools/check-package.mjs",
+        "line": 6,
+        "text": "import {execFileSync} from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

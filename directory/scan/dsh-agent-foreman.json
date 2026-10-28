@@ -1,0 +1,97 @@
+{
+  "name": "dsh-agent-foreman",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-28T14:05:44.003Z",
+  "icon": "dsh-agent-foreman.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 87,
+        "text": "fetch(STATE_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 291,
+        "text": "fetch(LIVE_URL, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 252,
+        "text": "return fetch(P + path, Object.assign({ headers: { 'content-type': 'application/json' } }, options || {}))"
+      },
+      {
+        "file": "lib/page.js",
+        "line": 828,
+        "text": "fetch(P + '/api/live')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 399,
+        "text": "const text = fs.readFileSync(this.rosterFile, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 421,
+        "text": "fs.mkdirSync(this.dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 423,
+        "text": "fs.writeFileSync(temp, `${JSON.stringify(this.state, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 516,
+        "text": "fs.mkdirSync(this.dataDir, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 121,
+        "text": "disposers.push(tools.register(definition));"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 53,
+        "text": "* @returns 工具定义数组，交给 `ctx.tools.register`。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

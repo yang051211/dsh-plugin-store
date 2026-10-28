@@ -1,0 +1,79 @@
+{
+  "name": "dsh-novel-shelf",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-28T14:05:44.203Z",
+  "icon": "dsh-novel-shelf.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 227,
+        "text": "fetch(routeUrl(`${API_PREFIX}/client.log`), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 237,
+        "text": "const res = await fetch(routeUrl(`${API_PREFIX}/${method}`), {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 673,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 17,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 210,
+        "text": "const raw = await fs.readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 221,
+        "text": "await fs.mkdir(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 223,
+        "text": "await fs.writeFile(tmp, JSON.stringify(value, null, 2), 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "connection",
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,81 @@
+{
+  "name": "dsh-plugin-github-issues",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-28T14:05:53.363Z",
+  "icon": "dsh-plugin-github-issues.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/github/client.js",
+        "line": 515,
+        "text": "const response = await fetch(`${base}/user/orgs?per_page=100`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/controller.js",
+        "line": 266,
+        "text": "return this.options.prefs.unlink(repo, number, sessionId);"
+      },
+      {
+        "file": "lib/github/auth.js",
+        "line": 17,
+        "text": "import { accessSync, constants, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/github/state.js",
+        "line": 11,
+        "text": "import { chmodSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/github/state.js",
+        "line": 99,
+        "text": "const saved = this.readFile()?.prefs;"
+      },
+      {
+        "file": "lib/github/state.js",
+        "line": 107,
+        "text": "const links = this.readFile()?.links;"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/github/auth.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/github/auth.js",
+        "line": 83,
+        "text": "execFile(bin, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

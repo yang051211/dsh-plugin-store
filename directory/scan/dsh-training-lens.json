@@ -1,0 +1,84 @@
+{
+  "name": "dsh-training-lens",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-28T14:05:44.840Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "python/web/app.js",
+        "line": 473,
+        "text": "const response = await fetch("
+      },
+      {
+        "file": "src/manager.js",
+        "line": 179,
+        "text": "const response = await fetch(`${record.url}/api/health`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/manager.js",
+        "line": 2,
+        "text": "import { realpath, stat } from \"node:fs/promises\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 37,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/manager.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "src/manager.js",
+        "line": 64,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 41,
+      "text": "python -m pip install -r requirements.txt"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 44,
+      "text": "优先复用已有训练 Python。缺少 TensorBoard 时，在源码目录用该解释器执行 `python -m pip install -r requirements.txt`。插件不会自动安装或修改依赖，也不读取账号、凭证或训练模型。"
+    }
+  ],
+  "skippedEntries": []
+}

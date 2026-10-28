@@ -1,0 +1,96 @@
+{
+  "name": "dsh-project-inbox",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-28T14:05:37.234Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 695,
+        "text": "const res = await fetch(`${API_BASE}/${method}`, {"
+      },
+      {
+        "file": "lib/host/webhook.js",
+        "line": 117,
+        "text": "const fetchImpl = options.fetchImpl ?? ((url, init) => fetch(url, init));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/discovery.js",
+        "line": 5,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/discovery.js",
+        "line": 92,
+        "text": "display = markerDisplayName(readFileSync(join(child, marker), 'utf8')) ?? entry.name;"
+      },
+      {
+        "file": "lib/host/storage.js",
+        "line": 11,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/storage.js",
+        "line": 48,
+        "text": "const raw = readFileSync(this.file, 'utf8');"
+      },
+      {
+        "file": "lib/host/storage.js",
+        "line": 55,
+        "text": "writeFileSync(this.file + '.v1.bak', raw);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'systemPrompt', 'webServer', 'sessionController', 'userQuestions', 'agents', 'sessionQuery', 'sessionProjections', 'timer', 'wor"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 804,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 854,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionController",
+    "sessionProjections",
+    "sessionQuery",
+    "systemPrompt",
+    "timer",
+    "tools",
+    "userQuestions",
+    "webServer",
+    "workspaceController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

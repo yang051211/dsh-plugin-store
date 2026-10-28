@@ -1,0 +1,110 @@
+{
+  "name": "dsh-subagent-setup",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-28T14:05:46.565Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/client.js",
+        "line": 89,
+        "text": "const response = await fetch(SETTINGS_ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 117,
+        "text": "const response = await fetch(SETTINGS_ROUTE, {"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 138,
+        "text": "const response = await fetch(SUBAGENT_MODEL_ROUTE + '?id=' + encodeURIComponent(childId), { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 156,
+        "text": "const response = await fetch(CLOSE_SUBAGENT_ROUTE, {"
+      },
+      {
+        "file": "plugin/client.js",
+        "line": 177,
+        "text": "const response = await fetch(CATALOG_ROUTE, { headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/config-io.mjs",
+        "line": 9,
+        "text": "import { stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 15,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 457,
+        "text": "const content = await readFile(skillUrl, 'utf8')"
+      },
+      {
+        "file": "plugin/startup-log.mjs",
+        "line": 10,
+        "text": "import { appendFile, mkdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "plugin/startup-log.mjs",
+        "line": 28,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.js",
+        "line": 52,
+        "text": "export const inject = ['tools', 'subagents', 'agents', 'systemPrompt', 'skills', 'llm', 'webServer']"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 265,
+        "text": "disposeDelegation = ctx.tools.register(tool)"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 338,
+        "text": "const tool = ctx.tools.get(exec.name, exec.agent)"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 345,
+        "text": "if (ctx.tools?.register) {"
+      },
+      {
+        "file": "plugin/index.js",
+        "line": 346,
+        "text": "const disposeCatalog = ctx.tools.register(createCatalogTool(ctx))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
