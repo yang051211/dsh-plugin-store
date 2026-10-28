@@ -278,3 +278,17 @@ test('an uninstall DSH refuses while the plugin runs says how to get there', asy
   await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.remove))
   assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.removeNeedsStop))
 })
+
+test('an update that fell back to the old version says so, with the reason', async () => {
+  const { root, calls } = await open({ bundles: [bundle('dsh-pet', '0.9.0', { enabled: false })], services: { update: async (...args) => { calls.update.push(args); return { error: 'no such version', code: 'restored', version: '0.9.0' } } } })
+  await confirmUpdate(root)
+  assert.deepEqual(calls.update[0], ['dsh-pet', '1.0.0', { current: '0.9.0', enabled: false }])
+  const text = textIn(row(root, 'dsh-pet'))
+  assert.ok(text.includes('已装回 v0.9.0') && text.includes('no such version'), text)
+})
+
+test('an update that lost the plugin says to reinstall it', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'registry down', code: 'lost' }) } })
+  await confirmUpdate(root)
+  assert.ok(textIn(row(root, 'dsh-pet')).includes('请到插件页重新安装'))
+})

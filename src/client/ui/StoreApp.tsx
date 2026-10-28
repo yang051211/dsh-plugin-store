@@ -26,7 +26,8 @@ export interface StoreServices {
   loadLatest: () => Promise<Record<string, string>>
   setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
   remove: (name: string) => Promise<ChangeOutcome>
-  update: (name: string, version: string) => Promise<ChangeOutcome>
+  /** Install `version` over the installed `from.current`, keeping it enabled or disabled as it was. */
+  update: (name: string, version: string, from: { current: string; enabled: boolean }) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
 }
 

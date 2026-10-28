@@ -26,7 +26,7 @@ export interface InstalledViewProps {
   setEnabled: (name: string, enabled: boolean) => Promise<ChangeOutcome>
   remove: (name: string) => Promise<ChangeOutcome>
   /** Install `version` of an installed plugin in place. */
-  update: (name: string, version: string) => Promise<ChangeOutcome>
+  update: (name: string, version: string, from: { current: string; enabled: boolean }) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
   onInstallSpec: (target: { spec: string; title: string; version: string }) => void
 }
@@ -43,7 +43,10 @@ type Action = 'enable' | 'remove' | 'update'
 function outcomeNote(outcome: Exclude<ChangeOutcome, 'applied'>, action: Action, version: string | null, t: Translate): { text: string; error: boolean } {
   if (outcome === 'restart-required') return { text: action === 'update' && version ? t('updatedRestart', { version }) : t('restartRequired'), error: false }
   if (action === 'update' && outcome.code === 'already-installed') return { text: t('updateNeedsReinstall'), error: true }
-  if (outcome.pendingBuilds) return { text: t('updateNeedsBuilds', { names: outcome.pendingBuilds.join('、') }), error: true }
+  const reason = outcome.pendingBuilds ? t('updateNeedsBuilds', { names: outcome.pendingBuilds.join('、') }) : clip(outcome.error)
+  if (outcome.code === 'restored') return { text: t('updateRestored', { version: outcome.version ?? '', reason }), error: true }
+  if (outcome.code === 'lost') return { text: t('updateLost', { reason }), error: true }
+  if (outcome.pendingBuilds) return { text: reason, error: true }
   if (action === 'remove' && outcome.code === 'stop-profile') return { text: t('removeNeedsStop'), error: true }
   return { text: clip(outcome.error), error: true }
 }
@@ -127,7 +130,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
   const acceptUpdate = useCallback(() => {
     const row = updating
     setUpdating(null)
-    if (row?.latest) void change(row, 'update', () => update(row.name, row.latest!), row.latest)
+    if (row?.latest && row.version) void change(row, 'update', () => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }), row.latest)
   }, [updating, change, update])
 
   const cancelRemove = useCallback(() => setRemoving(null), [])

@@ -74,7 +74,14 @@ export function buildInstalledRows(
 type ChangeResult = { ok: true; value: { application: string; error?: unknown; pendingBuilds?: string[] } } | { ok: false; error: unknown }
 
 /** Why a change did not happen: the text, DSH's error code when it gave one, and packages whose scripts wait for approval. */
-export interface ChangeFailure { error: string; code?: string; pendingBuilds?: string[] }
+export interface ChangeFailure {
+  error: string
+  /** DSH's error code; the store adds `restored` (an update fell back to the old version) and `lost` (neither installs). */
+  code?: string
+  pendingBuilds?: string[]
+  /** With `restored`: the version that went back. */
+  version?: string
+}
 
 /** Readable text for an Error, DSH's `{ code, diagnostic }` management error, or anything else. */
 export function errorText(error: unknown): string {
