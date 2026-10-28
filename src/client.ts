@@ -19,8 +19,7 @@ import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
 import { createKeepOnly, injectHideStyle, PLUGINS_PANEL_ID as PLUGINS_PANEL, selectTabByLabel, selectTabWhenReady } from './client/hub.ts'
 import { loadCatalog, loadDetail, loadLatest, loadReadme } from './client/model/api.ts'
-import { installedFrom, type SelfUpdate } from './client/model/install-state.ts'
-import { changeOutcome } from './client/model/installed.ts'
+import type { SelfUpdate } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
 import type { StorePlugin } from './client/model/catalog.ts'
 import { makeTranslate } from './client/ui/common.tsx'
@@ -28,6 +27,7 @@ import { ErrorBoundary } from './client/ui/ErrorBoundary.tsx'
 import { createStoreMemory, StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
 import { BRAND_ICON } from './client/ui/brand-icon.ts'
 import { injectStyles } from './client/ui/styles.ts'
+import { pluginManagerServices } from './client/services.ts'
 
 /** Keys of this plugin's dictionary. */
 export type StoreLocaleKey = keyof typeof zh.ui
@@ -65,15 +65,12 @@ function StoreIcon({ size }: { size: number }): ReactNode {
   return createElement('img', { src: BRAND_ICON, width: size, height: size, alt: '', style: { borderRadius: Math.round(size / 4), objectFit: 'cover', display: 'block' } })
 }
 
-const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
-
 /** Register the store's surfaces. */
 export function apply(ctx: Context): void {
   ctx.effect(() => ctx.locale.register(NS, { zh: zh.ui, en: en.ui }), 'startide: dictionaries')
   ctx.effect(() => injectStyles(), 'startide: styles')
   const t = ctx.locale.bind(NS)
   const keepOnly = createKeepOnly(() => window.localStorage)
-  const pm = ctx.remote.pluginManager
   // DSH unmounts the store's tab whenever it shows its own Installed list; this brings the store back where it was.
   const memory = createStoreMemory()
 
@@ -81,28 +78,13 @@ export function apply(ctx: Context): void {
     loadCatalog,
     loadDetail,
     loadReadme,
-    loadBundles: async () => installedFrom(await pm.listBundles()),
+    ...pluginManagerServices(ctx.remote.pluginManager),
     subscribeInstalled: (onChange) => {
       // A reconnect may have missed change events, so it also triggers a fresh read (as the official Discover does).
       const stops = [ctx.remote.$on('plugin-manager/changed', () => onChange()), ctx.on('connection/reset', () => onChange())]
       return () => { for (const stop of stops) stop() }
     },
     loadLatest,
-    setEnabled: async (name, enabled) => changeOutcome(await pm.setBundleEnabled(name, enabled)),
-    remove: async (name) => changeOutcome(await pm.removeBundle(name)),
-    // DSH's install dialog refuses a name that is already installed, so an update goes to the plugin manager directly.
-    update: async (name, version) => changeOutcome(await pm.installBundle(`${name}@${version}`)),
-    inspect: async (spec) => {
-      try {
-        const result = await pm.inspect(spec)
-        if (!result.ok) return { ok: false, reason: messageOf(result.error) }
-        const found = result.value
-        // A git or path spec may not name its package or version until it is fetched; the dialog shows what it learns.
-        return found.status === 'accepted' ? { ok: true, name: found.name ?? spec, version: found.version ?? '' } : { ok: false, reason: found.reason }
-      } catch (error) {
-        return { ok: false, reason: messageOf(error) }
-      }
-    },
   }
   const titleOf = (plugin: StorePlugin, lang: string) => localize(plugin.title, lang) || plugin.name
 
