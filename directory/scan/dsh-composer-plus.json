@@ -1,34 +1,34 @@
 {
   "name": "dsh-composer-plus",
-  "version": "1.15.0",
-  "scannedAt": "2026-10-28T14:05:32.389Z",
+  "version": "1.16.0",
+  "scannedAt": "2026-10-28T23:43:48.801Z",
   "icon": "dsh-composer-plus.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 408,
+        "line": 426,
         "text": "function createRollback(call = (init, query = '') => fetch(`${ROLLBACK_ROUTE}${query}`, init)) {"
       },
       {
         "file": "client.js",
-        "line": 674,
+        "line": 692,
         "text": "ction createDeleteChat(post = (body) => fetch(DELETE_CHAT_ROUTE, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) }"
       },
       {
         "file": "client.js",
-        "line": 765,
+        "line": 783,
         "text": "function createExportChat(get = (sessionId) => fetch(`${EXPORT_ROUTE}?${new URLSearchParams({ sessionId })}`)) {"
       },
       {
         "file": "client.js",
-        "line": 1068,
+        "line": 1087,
         "text": "const response = await fetch(`${route}?catalog=1`);"
       },
       {
         "file": "client.js",
-        "line": 1080,
+        "line": 1099,
         "text": "const response = await fetch(route, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ model }) });"
       }
     ]
@@ -37,63 +37,69 @@
     "hit": true,
     "evidence": [
       {
-        "file": "cordis.patch.yml",
+        "file": "backup.mjs",
+        "line": 13,
+        "text": "import { constants, createReadStream, createWriteStream, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "backup.mjs",
         "line": 14,
-        "text": "urn JSON.parse(process.getBuiltinModule('node:fs').readFileSync(dshHomePath('storages', 'dsh-composer-plus', 'content-search.json'), 'utf8'))?.on === false ? 'n"
+        "text": "import * as fsp from 'node:fs/promises';"
       },
       {
-        "file": "index.js",
-        "line": 20,
-        "text": "import { constants, readFileSync } from 'node:fs';"
+        "file": "backup.mjs",
+        "line": 15,
+        "text": "import { chmod, copyFile, link, lstat, mkdir, open, readdir, readlink, realpath, rename, rm, stat, symlink, utimes, writeFile } from 'node:fs/promises';"
       },
       {
-        "file": "index.js",
-        "line": 21,
-        "text": "port { copyFile, cp, lstat, mkdir, mkdtemp, open, readdir, readFile, readlink, realpath, rename, rm, stat, symlink, unlink, writeFile } from 'node:fs/promises';"
+        "file": "backup.mjs",
+        "line": 194,
+        "text": "await mkdir(dest, { recursive: true, mode: 0o700 });"
       },
       {
-        "file": "index.js",
-        "line": 62,
-        "text": "const PACKAGE = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));"
-      },
-      {
-        "file": "index.js",
-        "line": 558,
-        "text": "read: async () => { try { const on = JSON.parse(await readFile(file, 'utf8'))?.on; return fallback ? on !== false : on === true; } catch { return fallback; } },"
+        "file": "backup.mjs",
+        "line": 207,
+        "text": "await mkdir(join(realDest, VAULT), { recursive: true, mode: 0o700 });"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5115,
+        "text": "for (const tool of tools) sub.tools.register(tool);"
+      }
+    ]
   },
   "childProcess": {
     "hit": true,
     "evidence": [
       {
+        "file": "backup.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "backup.mjs",
+        "line": 1023,
+        "text": "const r2 = spawnSync(pnpm[0], [...pnpm.slice(1), 'install'], { cwd: join(done.home, 'profiles', p), stdio: 'inherit' });"
+      },
+      {
+        "file": "backup.mjs",
+        "line": 1052,
+        "text": "if (spawnSync('pnpm', ['--version'], { stdio: 'ignore' }).status === 0) return ['pnpm'];"
+      },
+      {
+        "file": "backup.mjs",
+        "line": 1054,
+        "text": "return spawnSync(process.execPath, [own, '--version'], { stdio: 'ignore' }).status === 0 ? [process.execPath, own] : undefined;"
+      },
+      {
         "file": "index.js",
-        "line": 86,
+        "line": 95,
         "text": "    const probe = subprocess.spawn({ argv: ['/usr/bin/xcode-select', '-p'], cwd: homedir(), stdio: { stdin: 'ignore', stdout: { maxBytes: 4096 }, stderr: { maxB"
-      },
-      {
-        "file": "index.js",
-        "line": 96,
-        "text": "const handle = subprocess.spawn({"
-      },
-      {
-        "file": "index.js",
-        "line": 1537,
-        "text": "      const handle = subprocess.spawn({ argv: ['/usr/bin/trash', ...existing], cwd: dirname(existing[0]), stdio: { stdin: 'ignore', stdout: { maxBytes: 4096 }, "
-      },
-      {
-        "file": "tether/gateway/server.mjs",
-        "line": 8,
-        "text": "import { execFile, execFileSync, spawn } from 'node:child_process'"
-      },
-      {
-        "file": "tether/gateway/server.mjs",
-        "line": 103,
-        "text": "execFile(bins[i], ['status', '--json'], { timeout: 3000, maxBuffer: 8 << 20, env: { ...process.env, TAILSCALE_BE_CLI: '1' } }, (err, out) => {"
       }
     ]
   },

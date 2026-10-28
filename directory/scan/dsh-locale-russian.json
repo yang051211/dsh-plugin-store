@@ -1,7 +1,7 @@
 {
   "name": "dsh-locale-russian",
-  "version": "0.2.4",
-  "scannedAt": "2026-10-26T10:05:06.169Z",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-28T23:43:48.934Z",
   "icon": "dsh-locale-russian.svg",
   "network": {
     "hit": true,
@@ -13,12 +13,22 @@
       },
       {
         "file": "lib/index.js",
-        "line": 222,
+        "line": 125,
+        "text": "const response = await fetch(archiveUrl, { signal: AbortSignal.timeout(300_000) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 171,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(20_000) })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 330,
         "text": "const response = await fetch(`${origin}/ready`, { signal: AbortSignal.timeout(2_000) })"
       },
       {
         "file": "lib/index.js",
-        "line": 287,
+        "line": 395,
         "text": "const response = await fetch(url, {"
       }
     ]
@@ -29,22 +39,27 @@
       {
         "file": "lib/index.js",
         "line": 14,
-        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+        "text": "import { chmodSync, copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
       },
       {
         "file": "lib/index.js",
-        "line": 122,
+        "line": 150,
+        "text": "writeFileSync(join(tempDir, archiveName), archive)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 156,
+        "text": "mkdirSync(dirname(binaryPath), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 164,
+        "text": "rmSync(tempDir, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
         "text": "mkdirSync(dirname(hotwordsFile), { recursive: true })"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 123,
-        "text": "writeFileSync(hotwordsFile, SEED_HOTWORDS, 'utf8')"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 146,
-        "text": "for (const line of readFileSync(hotwordsFile, 'utf8').split('\\n')) add(line)"
       }
     ]
   },
@@ -53,13 +68,13 @@
     "evidence": [
       {
         "file": "dictionary/plugin-meta.json",
-        "line": 202,
+        "line": 258,
         "text": "idge: connects to MCP servers and registers their tools on ctx.tools\": \"Мост-клиент MCP: подключается к серверам MCP и регистрирует их инструменты в ctx.tools\","
       },
       {
         "file": "lib/client.js",
         "line": 38,
-        "text": "CP servers and registers their tools on ctx.tools\":\"Мост-клиент MCP: подключается к серверам MCP и регистрирует их инструменты в ctx.tools\",\"Meta-Framework for "
+        "text": "CP servers and registers their tools on ctx.tools\":\"Мост-клиент MCP: подключается к серверам MCP и регистрирует их инструменты в ctx.tools\",\"Message quotes\":\"Ци"
       }
     ]
   },
@@ -79,17 +94,17 @@
       {
         "file": "lib/index.js",
         "line": 13,
-        "text": "import { spawn } from 'node:child_process'"
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
       },
       {
         "file": "lib/index.js",
-        "line": 197,
-        "text": "const child = spawn(binaryPath, ["
+        "line": 151,
+        "text": "const untar = spawnSync('tar', ['-xzf', archiveName], { cwd: tempDir, encoding: 'utf8' })"
       },
       {
         "file": "lib/index.js",
-        "line": 333,
-        "text": "const child = spawn(binaryPath, ["
+        "line": 159,
+        "text": "const probe = spawnSync(binaryPath, ['--version'], { encoding: 'utf8' })"
       }
     ]
   },
@@ -102,9 +117,7 @@
     "lib/client.js"
   ],
   "binaryFiles": [],
-  "requiredServices": [
-    "speechToText"
-  ],
+  "requiredServices": [],
   "setupHints": [],
   "skippedEntries": []
 }

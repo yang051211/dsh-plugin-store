@@ -1,0 +1,93 @@
+{
+  "name": "envoy-dsh",
+  "version": "0.1.26",
+  "scannedAt": "2026-10-28T23:43:54.560Z",
+  "icon": "envoy-dsh.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launch.cjs",
+        "line": 154,
+        "text": "// curl/wget are present on macOS and Linux; on Windows let Python do it."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 45,
+        "text": "readFileSync(new URL('./skill/manifest.json', import.meta.url), 'utf8'),"
+      },
+      {
+        "file": "index.js",
+        "line": 78,
+        "text": "content: await readFile(SKILL_BODY_URL, 'utf8'),"
+      },
+      {
+        "file": "index.js",
+        "line": 393,
+        "text": "linkVerdictTables ??= JSON.parse(readFileSync(LINK_VERDICTS_URL, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 39,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "* `envoy mcp` through `@deepseek-ai/dsh-mcp-client`; this module deliberately"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launch.cjs",
+        "line": 23,
+        "text": "const { spawn, spawnSync } = require('node:child_process')"
+      },
+      {
+        "file": "launch.cjs",
+        "line": 93,
+        "text": "return spawnSync(command, commandArgs, options)"
+      },
+      {
+        "file": "launch.cjs",
+        "line": 262,
+        "text": "const child = spawn(command, commandArgs, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

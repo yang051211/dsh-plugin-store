@@ -1,20 +1,25 @@
 {
   "name": "dsh-page-refresh",
-  "version": "1.1.0",
-  "scannedAt": "2026-10-26T10:07:12.612Z",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-28T23:43:55.798Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 147,
-        "text": "fetch('/api/power/close', { method: 'POST' }).catch(() => {});"
+        "line": 145,
+        "text": "// 2026-10-29（issue #1 第 3 点）：不再 fetch(...).catch(() => {}) 一吞了之。"
       },
       {
         "file": "client.js",
-        "line": 161,
-        "text": "fetch('/api/power/restart', { method: 'POST' }).catch(() => {});"
+        "line": 151,
+        "text": "const r = await fetch('/api/power/close', { method: 'POST' });"
+      },
+      {
+        "file": "client.js",
+        "line": 178,
+        "text": "const r = await fetch('/api/power/restart', { method: 'POST' });"
       }
     ]
   },
@@ -24,16 +29,26 @@
       {
         "file": "lib/index.js",
         "line": 25,
-        "text": "import { existsSync, readFileSync, readdirSync, statSync, appendFileSync } from 'node:fs'"
+        "text": "import { existsSync, readFileSync, readdirSync, statSync, appendFileSync, mkdirSync } from 'node:fs'"
       },
       {
         "file": "lib/index.js",
-        "line": 90,
+        "line": 81,
+        "text": "if (!existsSync(LOG_DIR)) mkdirSync(LOG_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "appendFileSync(LOG_FILE, line, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 165,
         "text": "const raw = readFileSync(newest, 'utf8')"
       },
       {
         "file": "lib/index.js",
-        "line": 108,
+        "line": 183,
         "text": "appendFileSync(newest, lead + JSON.stringify(record) + '\\n', 'utf8')"
       }
     ]
@@ -57,8 +72,18 @@
       },
       {
         "file": "lib/index.js",
-        "line": 63,
-        "text": "const child = spawn(exe, args, {"
+        "line": 42,
+        "text": "// spawn({detached:true}) 只新建进程组、进程仍在 job 内，父进程一退就被清掉"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 110,
+        "text": "const child = spawn('powershell.exe', ["
+      },
+      {
+        "file": "lib/wmi-launch.ps1",
+        "line": 7,
+        "text": "#   The naive approach - Node's spawn(..., { detached: true }) - does NOT work on"
       }
     ]
   },

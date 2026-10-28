@@ -1,0 +1,136 @@
+{
+  "name": "agentschat-mcp",
+  "version": "0.36.20",
+  "scannedAt": "2026-10-28T23:43:50.341Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex/transport.ts",
+        "line": 26,
+        "text": "response = await fetch(this.config.apiUrl + path, { method: body ? \"POST\" : \"GET\", redirect: \"error\","
+      },
+      {
+        "file": "codex/transport.ts",
+        "line": 67,
+        "text": "const socket = new WebSocket(this.config.wsUrl, { maxPayload: 1_048_576, handshakeTimeout: 15_000 });"
+      },
+      {
+        "file": "connector/run.ts",
+        "line": 235,
+        "text": "const r = await fetch(`${API}/api/channels/mine`, { headers: { Authorization: `Bearer ${id.token}` } });"
+      },
+      {
+        "file": "connector/run.ts",
+        "line": 273,
+        "text": "const r = await fetch(`${API}/api/channels/${encodeURIComponent(channelId)}/messages${params}`, {"
+      },
+      {
+        "file": "connector/run.ts",
+        "line": 407,
+        "text": "const res = await fetch(`${API}/api/channels/${encodeURIComponent(chatId)}/messages`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex/bots-config.ts",
+        "line": 1,
+        "text": "import { readFileSync, realpathSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "codex/bots-config.ts",
+        "line": 10,
+        "text": "try { doc = JSON.parse(readFileSync(file, \"utf8\")); } catch { throw new Error(\"Cannot read bot registry JSON\"); }"
+      },
+      {
+        "file": "codex/bots-config.ts",
+        "line": 32,
+        "text": "if (!doc.default_workdir && !bot.workdir) mkdirSync(defaultDir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "codex/bridge.ts",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, openSync, closeSync, unlinkSync } from \"node:fs\";"
+      },
+      {
+        "file": "codex/bridge.ts",
+        "line": 44,
+        "text": "mkdirSync(config.stateDir, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "# automatically at boot. It mounts `@deepseek-ai/dsh-mcp-client` under the"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 11,
+        "text": "# `mcp__agentschat__get_history` register on `ctx.tools` with zero manual"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 15,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 564,
+        "text": "`${indent}  name: '@deepseek-ai/dsh-mcp-client'`,"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 734,
+        "text": "2. Patch setup (injects @deepseek-ai/dsh-mcp-client into cordis.patch.yml):"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "codex/app-server.ts",
+        "line": 1,
+        "text": "import { spawn, type ChildProcessWithoutNullStreams } from \"node:child_process\";"
+      },
+      {
+        "file": "codex/app-server.ts",
+        "line": 34,
+        "text": "this.child = spawn(this.bin, args, { env, stdio: \"pipe\" });"
+      },
+      {
+        "file": "codex/manager.ts",
+        "line": 1,
+        "text": "import { spawn, type ChildProcess } from \"node:child_process\";"
+      },
+      {
+        "file": "codex/manager.ts",
+        "line": 36,
+        "text": "  const child = spawn(process.execPath, [resolve(process.argv[1]!), \"--codex-bridge\", \"--managed-worker\"], { cwd: w.config.cwd, detached: true, stdio: [\"ignore\""
+      },
+      {
+        "file": "codex/processes.ts",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

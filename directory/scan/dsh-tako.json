@@ -1,0 +1,104 @@
+{
+  "name": "dsh-tako",
+  "version": "0.5.12",
+  "scannedAt": "2026-10-28T23:43:49.278Z",
+  "icon": "dsh-tako.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 227,
+        "text": "const response = await fetch(route, init)"
+      },
+      {
+        "file": "client/client.js",
+        "line": 253,
+        "text": "const next = await fetch(`${ROUTE}?id=${encodeURIComponent(id)}`, { cache: 'no-store' }).then(r => r.json())"
+      },
+      {
+        "file": "lib/login.js",
+        "line": 10,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli.js",
+        "line": 9,
+        "text": "import { readFileSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cli.js",
+        "line": 56,
+        "text": "patch = runtime.parseYaml(readFileSync(patchFile, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 21,
+        "text": "import { existsSync, readFileSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 29,
+        "text": "return JSON.parse(readFileSync(packageJson, 'utf8'));"
+      },
+      {
+        "file": "lib/upgrade.js",
+        "line": 16,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/open.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/open.js",
+        "line": 24,
+        "text": "child = spawn(command, args, { stdio: 'ignore', detached: platform !== 'win32' });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 95,
+        "text": "const npmRoot = spawnSync(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['root', '-g'], { encoding: 'utf8', env, shell: process.platform === 'win32' });"
+      },
+      {
+        "file": "lib/upgrade.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

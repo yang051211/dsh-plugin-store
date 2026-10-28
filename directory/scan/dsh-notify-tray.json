@@ -1,0 +1,102 @@
+{
+  "name": "dsh-notify-tray",
+  "version": "0.1.6",
+  "scannedAt": "2026-10-28T23:43:50.377Z",
+  "icon": "dsh-notify-tray.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 473,
+        "text": "return fetch(url, { headers: { accept: 'application/json' }, cache: 'no-store', ...init }).then(res => (res.ok ? res.json() : undefined))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 914,
+        "text": "fetch(RAISE_ROUTE, { method: 'POST', cache: 'no-store' }).catch(function () {})"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 924,
+        "text": "        fetch(ROUTE + '?after=' + cursor + (granted ? '&notify=1' : '') + (claimToast ? '&claim=1' : ''), { headers: { accept: 'application/json' }, cache: 'no-"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 174,
+        "text": "appendFileSync(join(dir, 'debug.log'), `${new Date().toISOString()} ${parts.map(p => typeof p === 'string' ? p : JSON.stringify(p)).join(' ')}\\n`)"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/ledger.js",
+        "line": 131,
+        "text": "const parsed = JSON.parse(await readFile(this.file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pricing.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/system.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/system.js",
+        "line": 12,
+        "text": "const child = spawn(file, args, { stdio: 'ignore', windowsHide: true, ...options })"
+      },
+      {
+        "file": "lib/tray/index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tray/index.js",
+        "line": 93,
+        "text": "child = spawn(file, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

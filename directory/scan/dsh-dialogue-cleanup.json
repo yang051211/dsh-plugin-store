@@ -1,0 +1,71 @@
+{
+  "name": "dsh-dialogue-cleanup",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-28T23:43:59.666Z",
+  "icon": "dsh-dialogue-cleanup.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1367,
+        "text": "response = await fetch(`${BASE}/delete`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1874,
+        "text": "const response = await fetch(`${PANEL_API.list}?${query.toString()}`, { method: \"GET\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 14,
+        "text": "import { appendFile, lstat, mkdir, readdir, realpath, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 52,
+        "text": "*   · `rm(recursive)` 于是删掉了 root 之外的**真实目录**。"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 372,
+        "text": "await rm(file, { force: true });"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 392,
+        "text": "await mkdir(dirname(filePath), { recursive: true });"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 398,
+        "text": "await appendFile(filePath, `${JSON.stringify(value)}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

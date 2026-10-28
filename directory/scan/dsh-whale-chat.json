@@ -1,0 +1,74 @@
+{
+  "name": "dsh-whale-chat",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-28T23:44:04.285Z",
+  "icon": "dsh-whale-chat.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 388,
+        "text": "req = fetch(apiUrl(path), init);"
+      },
+      {
+        "file": "lib/selfcheck.js",
+        "line": 58,
+        "text": "const response = await fetch(BASE + path, options);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 174,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 177,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(value, null, 2) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 181,
+        "text": "fs.unlinkSync(tmp)"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 193,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "connection",
+    "llm",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

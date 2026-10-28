@@ -1,0 +1,91 @@
+{
+  "name": "dsh-magpie-connector",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-28T23:44:01.825Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 16,
+        "text": "const response = await fetch(`${base}${path}${search}`, {"
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 8,
+        "text": "const response = await fetch(`${base}${path}${search}`, {"
+      },
+      {
+        "file": "lib/host/transport.js",
+        "line": 1,
+        "text": "import { Agent, fetch as directFetch } from 'undici';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/settings.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync, mkdirSync, writeFileSync, renameSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 10,
+        "text": "this.value = { ...this.value, ...JSON.parse(readFileSync(path, 'utf8')) };"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 14,
+        "text": "mkdirSync(dirname(this.path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/host/settings.js",
+        "line": 16,
+        "text": "writeFileSync(tmp, JSON.stringify(value), { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client/bird-svg.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "llm"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 42,
+      "text": "isibility and default efforts live at `$DSH_HOME/plugins/dsh-magpie-connector/settings.json` — keys and Access values are never written there or returned by the"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 42,
+      "text": "p://192.168.1.20:3425/v1`，以及这条线路的 gateway key。地址、线路列表、可见性与默认 effort 保存在 `$DSH_HOME/plugins/dsh-magpie-connector/settings.json` —— key/Access 不会写入该文件，也不会被设置接口返回。"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "dsh-vista",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-28T23:43:51.046Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/archive.js",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 3,
+        "text": "import { access, mkdir, readFile, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 35,
+        "text": "await mkdir(this.config.archiveDir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 38,
+        "text": "raw = await readFile(this.indexPath, 'utf8');"
+      },
+      {
+        "file": "lib/archive.js",
+        "line": 79,
+        "text": "await writeFile(path, bytes, { mode: 0o400 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "export const inject = ['tools', 'systemPrompt', 'attachments'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 42,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 117,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 200,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

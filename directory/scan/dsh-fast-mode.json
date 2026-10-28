@@ -1,7 +1,7 @@
 {
   "name": "dsh-fast-mode",
-  "version": "1.5.19",
-  "scannedAt": "2026-10-28T14:05:33.293Z",
+  "version": "1.5.32",
+  "scannedAt": "2026-10-28T23:43:49.336Z",
   "icon": "dsh-fast-mode.png",
   "network": {
     "hit": true,
@@ -17,6 +17,16 @@
     "hit": true,
     "evidence": [
       {
+        "file": "bench/replay.mjs",
+        "line": 31,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bench/replay.mjs",
+        "line": 70,
+        "text": ": readFileSync(path)"
+      },
+      {
         "file": "bin/experiment.mjs",
         "line": 19,
         "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
@@ -30,16 +40,6 @@
         "file": "bin/experiment.mjs",
         "line": 148,
         "text": "mkdirSync(dirname(file), { recursive: true })"
-      },
-      {
-        "file": "bin/experiment.mjs",
-        "line": 149,
-        "text": "writeFileSync(file, `${JSON.stringify({ enabled: true, gears }, null, 2)}\\n`)"
-      },
-      {
-        "file": "bin/experiment.mjs",
-        "line": 166,
-        "text": "rmSync(file)"
       }
     ]
   },
@@ -48,7 +48,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 487,
+        "line": 495,
         "text": "() => toolCtx.tools.register(buildShellParallelTool({ spawn, logger: ctx.logger })),"
       }
     ]
@@ -56,6 +56,11 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "bench/replay.mjs",
+        "line": 30,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
       {
         "file": "index.js",
         "line": 58,

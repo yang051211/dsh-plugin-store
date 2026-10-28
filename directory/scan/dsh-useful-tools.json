@@ -1,7 +1,7 @@
 {
   "name": "dsh-useful-tools",
-  "version": "0.1.31",
-  "scannedAt": "2026-10-28T14:05:36.636Z",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-28T23:43:50.728Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "lib/core/github-mirror/store.js",
+        "line": 11,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/github-mirror/store.js",
+        "line": 55,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/core/github-mirror/store.js",
+        "line": 89,
+        "text": "mkdirSync(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/core/github-mirror/store.js",
+        "line": 91,
+        "text": "writeFileSync(tmp, `${JSON.stringify(payload, null, 2)}\\n`, 'utf8');"
+      },
+      {
         "file": "lib/core/mark-edit/hook.js",
         "line": 202,
         "text": "const fs = fsCtx.get?.('fs') || fsCtx.fs;"
-      },
-      {
-        "file": "lib/core/mark-edit/index.js",
-        "line": 25,
-        "text": "import { existsSync, readFileSync } from 'node:fs';"
-      },
-      {
-        "file": "lib/core/mark-edit/index.js",
-        "line": 49,
-        "text": "return readFileSync(listFile, 'utf8')"
-      },
-      {
-        "file": "lib/core/mark-edit/index.js",
-        "line": 119,
-        "text": "const fs = ctx.get?.('fs') || ctx.fs;"
-      },
-      {
-        "file": "lib/core/mark-edit/store.js",
-        "line": 14,
-        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
       }
     ]
   },
@@ -70,6 +70,16 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/core/github-mirror/git.js",
+        "line": 18,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/github-mirror/git.js",
+        "line": 32,
+        "text": "child = execFile(cmd, args, { timeout: timeoutMs, env: env ?? process.env, maxBuffer: 4 * 1024 * 1024 }, (error, stdout, stderr) => {"
+      },
       {
         "file": "lib/core/minihost/host.mjs",
         "line": 28,
@@ -83,16 +93,6 @@
       {
         "file": "lib/core/minihost/tools.js",
         "line": 16,
-        "text": "import { spawn } from 'node:child_process';"
-      },
-      {
-        "file": "lib/core/minihost/tools.js",
-        "line": 137,
-        "text": "const child = spawn(process.execPath, spawnArgs, {"
-      },
-      {
-        "file": "lib/core/preview/server.js",
-        "line": 9,
         "text": "import { spawn } from 'node:child_process';"
       }
     ]

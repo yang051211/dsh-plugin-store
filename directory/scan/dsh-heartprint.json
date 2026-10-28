@@ -1,0 +1,93 @@
+{
+  "name": "dsh-heartprint",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-28T23:43:55.472Z",
+  "icon": "dsh-heartprint.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 121,
+        "text": "fetch('/dsh-heartprint/api/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 137,
+        "text": "fetch('/dsh-heartprint/api/policy', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 27,
+        "text": "import { stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/alignment.js",
+        "line": 19,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/alignment.js",
+        "line": 91,
+        "text": "await mkdir(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/alignment.js",
+        "line": 92,
+        "text": "await writeFile(file, `${JSON.stringify(payload, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/alignment.js",
+        "line": 113,
+        "text": "raw = await readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 77,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1011,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      },
+      {
+        "file": "index.js",
+        "line": 1012,
+        "text": "ctx.effect(() => ctx.tools.register(adminTool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/vault.js",
+        "line": 23,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

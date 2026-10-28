@@ -1,35 +1,35 @@
 {
   "name": "dsh-plugins-update",
-  "version": "0.1.3",
-  "scannedAt": "2026-10-27T23:28:53.480Z",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-28T23:43:51.548Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 464,
-        "text": "const res = await fetch(\"/api/dsh-plugins-update/check\", {"
+        "line": 1083,
+        "text": "const res = await fetch(CHECK_PATH, {"
       },
       {
         "file": "lib/client.js",
-        "line": 503,
-        "text": "const res = await fetch(\"/api/dsh-plugins-update/update\", {"
+        "line": 1213,
+        "text": "const res = await fetch(`${PROGRESS_PATH}?jobId=${encodeURIComponent(jobId)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1305,
+        "text": "const res = await fetch(UPDATE_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1372,
+        "text": "res = await fetch(CANCEL_PATH, {"
       },
       {
         "file": "lib/index.js",
-        "line": 242,
-        "text": "const res = await fetch(`https://cdn.jsdelivr.net/gh/${owner}/${repo}@main/package.json`, {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 249,
-        "text": "const res = await fetch(`https://fastly.jsdelivr.net/gh/${owner}/${repo}@main/package.json`, {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 256,
-        "text": "const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/main/package.json`, {"
+        "line": 5,
+        "text": "import * as http from \"node:http\";"
       }
     ]
   },
@@ -38,27 +38,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 3,
-        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+        "line": 4,
+        "text": "import { existsSync, readFileSync, unlinkSync, writeFileSync } from \"node:fs\";"
       },
       {
         "file": "lib/index.js",
-        "line": 185,
+        "line": 324,
         "text": "const pkgJson = JSON.parse(readFileSync(installedPkgJsonPath, \"utf8\"));"
       },
       {
         "file": "lib/index.js",
-        "line": 198,
+        "line": 337,
         "text": "const manifest = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
       },
       {
         "file": "lib/index.js",
-        "line": 213,
+        "line": 352,
         "text": "const pkgJson = JSON.parse(readFileSync(installedPkgJsonPath, \"utf8\"));"
       },
       {
         "file": "lib/index.js",
-        "line": 225,
+        "line": 366,
         "text": "const manifest = JSON.parse(readFileSync(manifestPath, \"utf8\"));"
       }
     ]
@@ -77,8 +77,13 @@
       },
       {
         "file": "lib/index.js",
-        "line": 455,
-        "text": "const child = spawn(plan.command, plan.args, {"
+        "line": 1348,
+        "text": "const killer = spawn(\"taskkill\", [\"/pid\", String(pid), \"/T\", \"/F\"], { shell: false, windowsHide: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1387,
+        "text": "child = spawn(plan.command, plan.args, {"
       }
     ]
   },

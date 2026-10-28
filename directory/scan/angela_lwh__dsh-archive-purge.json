@@ -1,0 +1,68 @@
+{
+  "name": "@angela_lwh/dsh-archive-purge",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-28T23:43:55.656Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 700,
+        "text": "const response = await fetch(new URL(ROUTE_PATH.slice(1), document.baseURI), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "import { open, readdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 408,
+        "text": "await rm(plan.directory, { recursive: true, force: true, maxRetries: 3 })"
+      },
+      {
+        "file": "index.js",
+        "line": 706,
+        "text": "await rm(path, { force: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 743,
+        "text": "await rm(spillSessionDirectory(root, sessionId), { recursive: true, force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionPersistence",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

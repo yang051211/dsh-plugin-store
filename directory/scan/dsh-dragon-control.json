@@ -1,0 +1,145 @@
+{
+  "name": "dsh-dragon-control",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-28T23:43:57.610Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "browser-launch.mjs",
+        "line": 58,
+        "text": "response = await fetch(`http://127.0.0.1:${found.port}/json/version`, { redirect: 'error', signal: bound });"
+      },
+      {
+        "file": "browser-launch.mjs",
+        "line": 146,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "browser-self.mjs",
+        "line": 855,
+        "text": "const response = await fetch(href, {"
+      },
+      {
+        "file": "chrome-cdp.mjs",
+        "line": 70,
+        "text": "try { response = await fetch(`http://127.0.0.1:${port}/json/version`, { redirect: 'error', signal: signalFor(signal, 1500) }); }"
+      },
+      {
+        "file": "client.js",
+        "line": 62,
+        "text": "return fetch(MODE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "audit.mjs",
+        "line": 1,
+        "text": "import { appendFile, mkdir, readdir, lstat, unlink, readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "audit.mjs",
+        "line": 11,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "audit.mjs",
+        "line": 22,
+        "text": "await unlink(file.path); total -= file.size;"
+      },
+      {
+        "file": "audit.mjs",
+        "line": 27,
+        "text": "await appendFile(path, JSON.stringify(record) + '\\n', { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "audit.mjs",
+        "line": 57,
+        "text": "const lines = (await readFile(path, 'utf8')).trim().split('\\n');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.mjs",
+        "line": 26,
+        "text": "export const inject = ['tools', 'systemPrompt', 'attachments', 'webServer', 'connection'];"
+      },
+      {
+        "file": "index.mjs",
+        "line": 113,
+        "text": "ctx.tools.guard(exec => {"
+      },
+      {
+        "file": "index.mjs",
+        "line": 191,
+        "text": "ctx.tools.register(makeControlTool({ ...common, name: 'dragon_browser', actions: BROWSER_ACTIONS, definitions: webDefs,"
+      },
+      {
+        "file": "index.mjs",
+        "line": 203,
+        "text": "ctx.tools.register(makeControlTool({ ...common, name: 'dragon_desktop', actions: DESKTOP_ACTIONS, definitions: desktopDefs,"
+      },
+      {
+        "file": "scripts/integration.mjs",
+        "line": 52,
+        "text": "const call = (tool, action, args = {}) => ctx.tools.get(tool).execute({ action, args }, exec);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "browser-launch.mjs",
+        "line": 1,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "desktop-defs.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "desktop-defs.mjs",
+        "line": 18,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: false });"
+      },
+      {
+        "file": "desktop-extra.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "desktop-extra.mjs",
+        "line": 12,
+        "text": "const child = spawn(fileURLToPath(new URL('./native/A11yProbe.exe', import.meta.url)), [String(windowId)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "native/A11yProbe.exe",
+    "native/DragonNative.exe"
+  ],
+  "requiredServices": [
+    "attachments",
+    "connection",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,102 @@
+{
+  "name": "dsh-freecad",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-28T23:43:54.112Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import fsSync from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 235,
+        "text": "fsSync.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 313,
+        "text": "fsSync.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 337,
+        "text": "await fs.writeFile(reqPath, JSON.stringify(payload), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 905,
+        "text": "if (ctx === undefined || ctx === null || typeof ctx.tools?.register !== 'function') {"
+      },
+      {
+        "file": "index.js",
+        "line": 910,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 261,
+        "text": "child = spawn(cmd, ['--version'], {"
+      },
+      {
+        "file": "index.js",
+        "line": 356,
+        "text": "const child = spawn(cmd, [WORKER], {"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/install.mjs",
+        "line": 159,
+        "text": "const result = spawnSync(process.execPath, [pnpmBin, 'list', 'dsh-freecad', '--depth', '0'],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

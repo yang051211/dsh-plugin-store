@@ -1,0 +1,115 @@
+{
+  "name": "dsh-pet-watch",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-28T23:43:56.340Z",
+  "icon": "dsh-pet-watch.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 288,
+        "text": "fetch(ENDPOINT, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 306,
+        "text": "fetch('/dsh-pet-watch/health')"
+      },
+      {
+        "file": "client.js",
+        "line": 339,
+        "text": "const response = await fetch(ENDPOINT, {"
+      },
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "index.js",
+        "line": 218,
+        "text": "const response = await fetch(origin + '/dsh-pet-7340/state', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 135,
+        "text": "const parsed = JSON.parse(readFileSync(CONFIG_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 143,
+        "text": "mkdirSync(CONFIG_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 144,
+        "text": "writeFileSync(CONFIG_FILE, JSON.stringify(value, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 321,
+        "text": "mkdirSync(CONFIG_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 191,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 408,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 285,
+        "text": "const spawned = spawn(python, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 24,
+      "text": "python -m pip install pillow"
+    }
+  ],
+  "skippedEntries": []
+}

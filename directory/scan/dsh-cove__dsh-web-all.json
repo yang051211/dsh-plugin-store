@@ -1,0 +1,140 @@
+{
+  "name": "@dsh-cove/dsh-web-all",
+  "version": "0.4.8",
+  "scannedAt": "2026-10-28T23:44:00.218Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 203,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 302,
+        "text": "return (await readJson$1(await fetch(SSH_API.hosts + query$1({ query: queryText })))).hosts;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 305,
+        "text": "return (await readJson$1(await fetch(SSH_API.hosts, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 312,
+        "text": "return (await readJson$1(await fetch(SSH_API.hosts + query$1({ alias }), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 319,
+        "text": "await readJson$1(await fetch(SSH_API.hosts + query$1({ alias }), { method: \"DELETE\" }));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": ", mkdtempSync, openSync, readFileSync, readSync, readdirSync, realpathSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync, writeSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { mkdir, readFile, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1791,
+        "text": "mkdirSync(resolve(this.path, \"..\"), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1838,
+        "text": "unlinkSync(lock);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1841,
+        "text": "if (named.isFile() && named.dev === identity.dev && named.ino === identity.ino && named.size === 0) unlinkSync(lock);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3858,
+        "text": "for (const tool of makeSshTools(engine, store)) own(ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4790,
+        "text": "for (const tool of makeMemoirTools(store, settings)) own(ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7659,
+        "text": "/** The agent-facing tool definition (registered via `ctx.tools.register`). */"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7726,
+        "text": "const dispose = ctx.tools.register(makeLaneTool(worktrees));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 10511,
+        "text": "for (const tool of createInboxTools(getStore)) own(ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { execFile, spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4852,
+        "text": "handle = ctx.subprocess.spawn(spec);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 4874,
+        "text": "const handle = ctx.subprocess.spawn(spec);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8750,
+        "text": "const processHandle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9854,
+        "text": "this.spawn = options.spawn ?? ((command, args, spawnOptions) => spawn(command, args, spawnOptions));"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 14,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/types/client/sidebar/panels/ssh/HostFormDialog.js",
+    "lib/types/client/sidebar/panels/ssh/xterm.css.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,15 +1,25 @@
 {
   "name": "dsh-hermes-bridge",
-  "version": "0.4.1",
-  "scannedAt": "2026-10-26T10:09:00.049Z",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-28T23:44:00.475Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "hd-events.js",
-        "line": 101,
-        "text": "const post = (url, body, sig, event, tries) => fetch(url, {"
+        "line": 144,
+        "text": "const post = (url, body, sig, event) => fetch(url, {"
+      },
+      {
+        "file": "phone-agent.js",
+        "line": 39,
+        "text": "/** 调 Android 侧 3090 桥（token 由宿主写进 .bridge_headers，用 curl -H @file 传）。尽力而为，失败只记日志。 */"
+      },
+      {
+        "file": "relay.js",
+        "line": 27,
+        "text": "import { request as httpsRequest } from 'node:https';"
       }
     ]
   },
@@ -18,27 +28,27 @@
     "evidence": [
       {
         "file": "hd-events.js",
-        "line": 16,
+        "line": 24,
         "text": "import { watch, readFileSync, writeFileSync, existsSync, unlinkSync, statSync, readdirSync } from 'node:fs';"
       },
       {
         "file": "hd-events.js",
-        "line": 31,
+        "line": 90,
+        "text": "const sub = findSubscription(JSON.parse(readFileSync(p, 'utf8')), subName);"
+      },
+      {
+        "file": "hd-events.js",
+        "line": 111,
         "text": "const pid = Number(readFileSync(LOCK, 'utf8'));"
       },
       {
         "file": "hd-events.js",
-        "line": 40,
+        "line": 121,
         "text": "writeFileSync(LOCK, String(process.pid));"
       },
       {
         "file": "hd-events.js",
-        "line": 51,
-        "text": "const j = JSON.parse(readFileSync(process.env.HERMES_HOME || homedir() + '/.hermes/webhook_subscriptions.json', 'utf8'));"
-      },
-      {
-        "file": "hd-events.js",
-        "line": 163,
+        "line": 231,
         "text": "unlinkSync(LOCK);"
       }
     ]
@@ -48,12 +58,12 @@
     "evidence": [
       {
         "file": "hermes-bridge.js",
-        "line": 33,
+        "line": 36,
         "text": "export const inject = ['tools'];"
       },
       {
         "file": "hermes-bridge.js",
-        "line": 100,
+        "line": 108,
         "text": "ctx.tools.register(defineTool({"
       }
     ]
@@ -68,13 +78,23 @@
       },
       {
         "file": "hermes-bridge.js",
-        "line": 73,
+        "line": 81,
         "text": "execFile(hermesBinPath(), ['sessions', 'list', '--limit', '500'], { timeout: 30000, maxBuffer: 8 * 1024 * 1024 }, (_err, stdout) => {"
       },
       {
         "file": "hermes-bridge.js",
-        "line": 97,
+        "line": 105,
         "text": "            execFile(hermesBinPath(), args, { timeout: timeoutMs, maxBuffer: 16 * 1024 * 1024, env: { ...process.env } }, (err, stdout, stderr) => (err ? reject"
+      },
+      {
+        "file": "phone-agent.js",
+        "line": 21,
+        "text": "import { execFile, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "phone-agent.js",
+        "line": 45,
+        "text": "const r = spawnSync('curl', args, { encoding: 'utf8', timeout: 9000 });"
       }
     ]
   },

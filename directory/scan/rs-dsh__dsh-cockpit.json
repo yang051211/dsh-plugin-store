@@ -1,0 +1,81 @@
+{
+  "name": "@rs-dsh/dsh-cockpit",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-28T23:43:54.167Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 1140,
+        "text": "const res = await fetch(VIEW + '?sessionId=' + encodeURIComponent(sessionId), { signal: controller.signal, cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/route.js",
+        "line": 6,
+        "text": "import { readdir, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/route.js",
+        "line": 35,
+        "text": "return await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 4,
+        "text": "import { mkdir, open, readFile, readdir, rename, rm } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 43,
+        "text": "text = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 55,
+        "text": "await mkdir(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "for (const definition of createDefinitions(bodies)) toolsCtx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/drift.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/drift.js",
+        "line": 23,
+        "text": "const child = spawn(command, { shell: true, cwd: cwd || undefined, env, detached: true, stdio: ['pipe', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

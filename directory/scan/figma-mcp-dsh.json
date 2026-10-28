@@ -1,0 +1,79 @@
+{
+  "name": "figma-mcp-dsh",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-28T23:44:00.494Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapter/index.js",
+        "line": 77,
+        "text": "getFs: () => ctx.get('fs'),"
+      },
+      {
+        "file": "src/adapter/spool-fs.js",
+        "line": 20,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/adapter/spool-fs.js",
+        "line": 85,
+        "text": "await mkdir(dirname(processPath), { recursive: true })"
+      },
+      {
+        "file": "src/adapter/spool-fs.js",
+        "line": 86,
+        "text": "await writeFile(processPath, bytes, { signal: context?.signal })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/adapter/index.js",
+        "line": 6,
+        "text": "* owned by the plugin's fiber through `ctx.effect()` or `ctx.tools.register()`"
+      },
+      {
+        "file": "src/adapter/index.js",
+        "line": 32,
+        "text": "export const inject = ['tools', 'credentials']"
+      },
+      {
+        "file": "src/adapter/index.js",
+        "line": 122,
+        "text": "const confirmed = TOOL_NAMES.filter((toolName) => ctx.tools.get(toolName) !== undefined)"
+      },
+      {
+        "file": "src/adapter/tools.js",
+        "line": 25,
+        "text": "* `ctx.tools.register` is itself an effect, so unregistering is automatic when"
+      },
+      {
+        "file": "src/adapter/tools.js",
+        "line": 35,
+        "text": "const disposers = [ctx.tools.register(defineTool(capabilitiesTool(provider))), ctx.tools.register(defineTool(callTool(provider)))]"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

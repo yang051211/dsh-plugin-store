@@ -1,0 +1,74 @@
+{
+  "name": "dsh-audio-alert",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-28T23:43:56.317Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { accessSync, constants, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/render-sounds.js",
+        "line": 9,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/render-sounds.js",
+        "line": 15,
+        "text": "mkdirSync(out, { recursive: true })"
+      },
+      {
+        "file": "sounds.js",
+        "line": 12,
+        "text": "import { existsSync, mkdirSync, renameSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "sounds.js",
+        "line": 230,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 258,
+        "text": "const res = spawnSync('pw-dump', [], { encoding: 'utf8', timeout: 1_500, env: audioEnv(), maxBuffer: 16 * 1024 * 1024 })"
+      },
+      {
+        "file": "index.js",
+        "line": 348,
+        "text": "const child = spawn(target.player, target.args, { stdio: 'ignore', detached: true, env: audioEnv() })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

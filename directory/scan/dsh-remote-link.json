@@ -1,11 +1,16 @@
 {
   "name": "dsh-remote-link",
-  "version": "1.5.12",
-  "scannedAt": "2026-10-28T06:59:39.334Z",
+  "version": "1.5.13",
+  "scannedAt": "2026-10-28T23:43:56.369Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/agent/src/browser.js",
+        "line": 39,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/json/version`);"
+      },
       {
         "file": "lib/agent/src/cli.js",
         "line": 91,
@@ -23,12 +28,7 @@
       },
       {
         "file": "lib/agent/src/stream.js",
-        "line": 185,
-        "text": "const req = http.request({"
-      },
-      {
-        "file": "lib/agent/src/stream.js",
-        "line": 274,
+        "line": 186,
         "text": "const req = http.request({"
       }
     ]
@@ -36,6 +36,16 @@
   "fileSystem": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/agent/src/browser.js",
+        "line": 10,
+        "text": "import { existsSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/agent/src/browser.js",
+        "line": 67,
+        "text": "mkdirSync(profile, { recursive: true });"
+      },
       {
         "file": "lib/agent/src/cli.js",
         "line": 15,
@@ -50,16 +60,6 @@
         "file": "lib/agent/src/cli.js",
         "line": 41,
         "text": "await mkdir(dirname(configPath()), { recursive: true });"
-      },
-      {
-        "file": "lib/agent/src/cli.js",
-        "line": 42,
-        "text": "await writeFile(configPath(), JSON.stringify(cfg, null, 2), { mode: 0o600 });"
-      },
-      {
-        "file": "lib/agent/src/cli.js",
-        "line": 88,
-        "text": "await mkdir(CONFIG_DIR, { recursive: true });"
       }
     ]
   },
@@ -70,6 +70,16 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/agent/src/browser.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/agent/src/browser.js",
+        "line": 68,
+        "text": "const child = spawn(browser, ["
+      },
       {
         "file": "lib/index.js",
         "line": 11,
@@ -84,16 +94,6 @@
         "file": "lib/index.js",
         "line": 547,
         "text": "child = spawn(rt.file, [entry, ...args], {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 2604,
-        "text": "* <p>`spawn()` can return a ChildProcess and still fail asynchronously (a"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 2616,
-        "text": "const child = spawn(file, args, options);"
       }
     ]
   },

@@ -1,7 +1,7 @@
 {
   "name": "dsh-git-push",
-  "version": "2.10.5",
-  "scannedAt": "2026-10-27T23:28:54.612Z",
+  "version": "2.12.3",
+  "scannedAt": "2026-10-28T23:43:55.019Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -17,19 +17,19 @@
         "text": "curlout=\"$(curl -sS -m 5 -o /tmp/${PROJECT_NAME}-status.body -w '%{http_code} %{time_total}' \"http://127.0.0.1:$port/preview-ping\" 2>/dev/null || echo \"000 0\")\""
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2037,
-        "text": "bytes = fetch(input).then((response) => response.arrayBuffer().then((buffer) => {"
+        "file": "lib/app/inject-text.js",
+        "line": 147,
+        "text": "L.push(`  curl -L '${base}?${qs}'`); // -L：宿主反代一次 302 中转（不带 -L 会显示 302 误判失败）"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2141,
-        "text": "var xhr = new XMLHttpRequest();"
+        "file": "lib/audit-rules/audit-rules-nodejs.yml",
+        "line": 294,
+        "text": "# 负向后瞻排除自定义封装名（apiFetch/githubFetch 等）——\"fetch(\" 子串会把"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2154,
-        "text": "var xhr = new XMLHttpRequest();"
+        "file": "lib/audit/file-context.js",
+        "line": 127,
+        "text": "* robustness/timeout-on-external-api 规则用纯 regex 匹配 `fetch(`/`axios.(` 等调用，"
       }
     ]
   },
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2034,
-        "text": "const fs2 = await import(\"fs/promises\");"
+        "file": "cli.mjs",
+        "line": 14,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2035,
-        "text": "bytes = fs2.readFile(input);"
+        "file": "cli.mjs",
+        "line": 280,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2101,
-        "text": "var fs = require(\"fs\");"
+        "file": "lib/app/apply.js",
+        "line": 75,
+        "text": "//   必须走 ctx.inject(['fs'])：project 内直接 ctx.get('fs') 会抛 \"without inject\"（本文件早前踩过）。"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2108,
-        "text": "var ret = fs.readFileSync(filename);"
+        "file": "lib/app/apply.js",
+        "line": 78,
+        "text": "ctx.inject(['fs'], (c) => { fsCtx = c; });"
       },
       {
-        "file": "assets/tree-sitter/tree-sitter.js",
-        "line": 2113,
-        "text": "var ret = fs.readFileSync(filename, binary2 ? void 0 : \"utf8\");"
+        "file": "lib/app/handlers/npm.js",
+        "line": 7,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
       }
     ]
   },
@@ -93,12 +93,12 @@
       },
       {
         "file": "lib/audit/collector.js",
-        "line": 83,
+        "line": 91,
         "text": "const r = spawnSync('git', [...GIT_QUOTEPATH_ARGS, '-C', dir, 'rev-parse', '--is-inside-work-tree'], {"
       },
       {
         "file": "lib/audit/collector.js",
-        "line": 174,
+        "line": 182,
         "text": "const probe = spawnSync('git', [...GIT_QUOTEPATH_ARGS, '-C', root, 'rev-parse', '--is-inside-work-tree'], {"
       }
     ]
@@ -113,14 +113,9 @@
       }
     ]
   },
-  "dependencies": 0,
+  "dependencies": 3,
   "minifiedFiles": [],
-  "binaryFiles": [
-    "assets/tree-sitter/tree-sitter-javascript.wasm",
-    "assets/tree-sitter/tree-sitter-python.wasm",
-    "assets/tree-sitter/tree-sitter-typescript.wasm",
-    "assets/tree-sitter/tree-sitter.wasm"
-  ],
+  "binaryFiles": [],
   "requiredServices": [],
   "setupHints": [],
   "skippedEntries": []

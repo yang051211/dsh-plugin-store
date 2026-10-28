@@ -1,7 +1,7 @@
 {
   "name": "dsh-bard",
-  "version": "0.4.1",
-  "scannedAt": "2026-10-26T10:05:40.458Z",
+  "version": "0.11.0",
+  "scannedAt": "2026-10-28T23:43:53.936Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -10,6 +10,16 @@
         "file": "client.js",
         "line": 24,
         "text": "response = await fetch(`${API}${path}`, { ...init, signal: controller.signal })"
+      },
+      {
+        "file": "lib/debug-server.mjs",
+        "line": 7,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/debug-server.mjs",
+        "line": 117,
+        "text": "const res = await fetch('/api/advance', {"
       }
     ]
   },
@@ -17,29 +27,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
-        "line": 5,
+        "file": "lib/db.js",
+        "line": 3,
         "text": "import fs from 'node:fs'"
       },
       {
-        "file": "lib/index.js",
-        "line": 360,
-        "text": "try { fs.mkdirSync(absPath, { recursive: true, mode: 0o700 }) }"
+        "file": "lib/db.js",
+        "line": 18,
+        "text": "if (!fs.existsSync(dirs.root)) fs.mkdirSync(dirs.root, { recursive: true })"
       },
       {
-        "file": "lib/index.js",
-        "line": 365,
-        "text": "const parsed = JSON.parse(fs.readFileSync(marker, 'utf8'))"
+        "file": "lib/db.js",
+        "line": 147,
+        "text": "const raw = JSON.parse(fs.readFileSync(path.join(personasDir, file), 'utf8'))"
       },
       {
-        "file": "lib/index.js",
-        "line": 370,
-        "text": "try { fs.writeFileSync(marker, `${JSON.stringify({ token: ownershipToken }, null, 2)}\\n`, { mode: 0o600 }) } catch (e) {}"
+        "file": "lib/debug-server.mjs",
+        "line": 4,
+        "text": "import fs from 'node:fs'"
       },
       {
-        "file": "lib/index.js",
-        "line": 843,
-        "text": "const raw = fs.readFileSync(path.join(absPath, '.bard-session'), 'utf8')"
+        "file": "lib/debug-server.mjs",
+        "line": 22,
+        "text": "const raw = fs.readFileSync(path.join(personasDir, f), 'utf8')"
       }
     ]
   },
@@ -48,8 +58,8 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 471,
-        "text": "try { disposers.push(tools.register(definition)) }"
+        "line": 702,
+        "text": "try { disposers.push(tools.register(definition)) } catch (error) { reportError('memory tools', String(error.message || error)) }"
       }
     ]
   },
@@ -61,7 +71,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 0,
+  "dependencies": 1,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

@@ -1,34 +1,34 @@
 {
   "name": "dsh-tavern",
-  "version": "2.7.20",
-  "scannedAt": "2026-10-26T10:04:43.523Z",
+  "version": "2.7.23",
+  "scannedAt": "2026-10-28T23:43:47.416Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 1228,
+        "line": 1265,
         "text": "          fetch('/api/tavern/state', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ activePresetIdx: state.activePres"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 1359,
+        "line": 1405,
         "text": "fetch('/api/tavern/worldbook', {"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 1470,
+        "line": 1516,
         "text": "fetch('/api/tavern/worldbook', {"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 1491,
+        "line": 1537,
         "text": "return fetch('/api/tavern/preset/import-st', {"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 1718,
+        "line": 1764,
         "text": "var r = await fetch('/api/tavern/current-session');"
       }
     ]
@@ -38,17 +38,17 @@
     "evidence": [
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 5492,
+        "line": 5831,
         "text": "function readFile(f) {"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 5503,
+        "line": 5842,
         "text": "readFile(f);"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 5509,
+        "line": 5848,
         "text": "if (files && files.length > 0) readFile(files[0]);"
       },
       {
@@ -58,7 +58,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 234,
+        "line": 235,
         "text": "const raw = fs.readFileSync(PRESETS_META, 'utf8')"
       }
     ]
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 3849,
+        "line": 3875,
         "text": "? '　|　工具注册：✅ 有 ctx.tools 且能 register()（探针只读，不再真注册）'"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 3850,
+        "line": 3876,
         "text": ": '　|　工具注册：⚠️ 有 ctx.tools 但没有 register()：' + esc(p.registerError || p.note || '未知'))"
       },
       {
         "file": "lib/client.manager.bundle.js",
-        "line": 3851,
+        "line": 3877,
         "text": ": '　|　工具注册：❌ 宿主未暴露 ctx.tools（只能靠 /名称 手打或文件读取）';"
       },
       {
         "file": "lib/server/routes.js",
-        "line": 427,
+        "line": 429,
         "text": "//   唯一未知是：酒馆的 fiber 能不能拿到 `ctx.tools`（`dsh-tools` 是否在 profile 层也挂载）。"
       },
       {
         "file": "lib/server/routes.js",
-        "line": 464,
+        "line": 466,
         "text": "//     1) 这个探测早就把答案拿到了 —— ctx.tools 在不在、有没有 register()，看上面两个"
       }
     ]
@@ -97,8 +97,28 @@
     "hit": true,
     "evidence": [
       {
+        "file": "lib/server/export.js",
+        "line": 20,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/server/export.js",
+        "line": 207,
+        "text": "execFile('powershell', ['-NoProfile', '-STA', '-ExecutionPolicy', 'Bypass', '-Command', script], opts, done)"
+      },
+      {
+        "file": "lib/server/export.js",
+        "line": 213,
+        "text": "execFile('osascript', ['-e', script], opts, done)"
+      },
+      {
+        "file": "lib/server/export.js",
+        "line": 216,
+        "text": "execFile('zenity', ['--file-selection', '--directory', '--title=选择导出文件夹', '--filename=' + start + '/'], opts, done)"
+      },
+      {
         "file": "lib/server/routes.js",
-        "line": 1262,
+        "line": 1307,
         "text": "const { exec } = await import('node:child_process')"
       }
     ]

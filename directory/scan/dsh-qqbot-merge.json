@@ -1,0 +1,108 @@
+{
+  "name": "dsh-qqbot-merge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-28T23:44:03.870Z",
+  "icon": "dsh-qqbot-merge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/vision-tool.js",
+        "line": 48,
+        "text": "const resp = await fetch(image, { signal, redirect: 'error' });"
+      },
+      {
+        "file": "dist/transport/attachment.js",
+        "line": 108,
+        "text": "const resp = await fetch(url, { signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS) });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 208,
+        "text": "const res = await fetch(BIND_STATE_PATH, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 260,
+        "text": "const res = await fetch(BIND_MANUAL_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 367,
+        "text": "fetch(BIND_UNBIND_PATH, { method: \"POST\" }).then(async (res) => {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 7,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 8,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/media/media-cleaner.js",
+        "line": 36,
+        "text": "await rm(filePath, { force: true });"
+      },
+      {
+        "file": "dist/media/send-file-tool.js",
+        "line": 9,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/media/send-media.js",
+        "line": 7,
+        "text": "import { stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/media/send-file-tool.js",
+        "line": 119,
+        "text": "tools.register(definition);"
+      },
+      {
+        "file": "dist/media/vision-tool.js",
+        "line": 238,
+        "text": "tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/setup/presenters.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "dist/setup/presenters.js",
+        "line": 74,
+        "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

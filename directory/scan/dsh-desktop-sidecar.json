@@ -1,7 +1,7 @@
 {
   "name": "dsh-desktop-sidecar",
-  "version": "0.5.3",
-  "scannedAt": "2026-10-28T14:05:34.263Z",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-28T23:43:49.897Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -11,29 +11,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
-        "line": 9,
-        "text": "import { writeFileSync, mkdirSync, readdirSync, statSync, unlinkSync } from 'node:fs';"
+        "file": "lib/actions-log.mjs",
+        "line": 3,
+        "text": "import { appendFileSync, readFileSync, writeFileSync, mkdirSync, existsSync, renameSync } from 'node:fs';"
       },
       {
-        "file": "lib/index.js",
-        "line": 32,
-        "text": "mkdirSync(SHOT_DIR, { recursive: true });"
+        "file": "lib/actions-log.mjs",
+        "line": 12,
+        "text": "try { mkdirSync(DIR, { recursive: true }); } catch {}"
       },
       {
-        "file": "lib/index.js",
-        "line": 36,
-        "text": "try { if (now - statSync(p).mtimeMs > 3600_000) unlinkSync(p); } catch {}"
+        "file": "lib/actions-log.mjs",
+        "line": 26,
+        "text": "appendFileSync(FILE, line + '\\n', 'utf8');"
       },
       {
-        "file": "lib/index.js",
-        "line": 123,
-        "text": "mkdirSync(dir, { recursive: true });"
+        "file": "lib/actions-log.mjs",
+        "line": 28,
+        "text": "const raw = readFileSync(FILE, 'utf8');"
       },
       {
-        "file": "lib/index.js",
-        "line": 239,
-        "text": "mkdirSync(dirname(file), { recursive: true });"
+        "file": "lib/actions-log.mjs",
+        "line": 31,
+        "text": "writeFileSync(FILE, lines.slice(-MAX_LINES).join('\\n') + '\\n', 'utf8');"
       }
     ]
   },
@@ -42,12 +42,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 23,
+        "line": 27,
         "text": "export const inject = ['tools', 'attachments'];"
       },
       {
         "file": "lib/index.js",
-        "line": 133,
+        "line": 146,
         "text": "  const reg = (t) => ctx.tools.register({ ...t, parameters: compileParameters(t.parameters || {}), output: t.output || textOutput, execute: async (...args) => p"
       }
     ]

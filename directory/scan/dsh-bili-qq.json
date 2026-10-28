@@ -1,0 +1,93 @@
+{
+  "name": "dsh-bili-qq",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-28T23:44:01.451Z",
+  "icon": "dsh-bili-qq.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 174,
+        "text": "const jget = (path) => fetch(API + path, { credentials: 'same-origin' }).then(asJson)"
+      },
+      {
+        "file": "client.js",
+        "line": 176,
+        "text": "fetch(API + path, {"
+      },
+      {
+        "file": "lib/bili.js",
+        "line": 155,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/bili.js",
+        "line": 421,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 11,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 62,
+        "text": "VERSION = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8')).version || VERSION"
+      },
+      {
+        "file": "lib/qq-channel.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/qq-channel.js",
+        "line": 68,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/qq-channel.js",
+        "line": 97,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 57,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1290,
+        "text": "ctx.effect(() => ctx.tools.register({ ...wrapped, output: toolOutput }), `bili-fav: ${definition.name}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

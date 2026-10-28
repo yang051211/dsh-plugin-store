@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-morlin-e2e",
+  "version": "0.8.8",
+  "scannedAt": "2026-10-28T23:43:54.210Z",
+  "icon": "dsh-plugin-morlin-e2e.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/enforcement.js",
+        "line": 205,
+        "text": "res = await this.opts.fetch(`${upstream}/v1/e2e/policy`, {"
+      },
+      {
+        "file": "lib/enforcement.js",
+        "line": 238,
+        "text": "res = await this.opts.fetch(`${upstream}/v1/chat/completions`, {"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 2,
+        "text": "import { getGlobalDispatcher, setGlobalDispatcher } from 'undici';"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 227,
+        "text": "* `require('http')` / `require('https')` gets a copy whose request/get check the guard first. A direct"
+      },
+      {
+        "file": "lib/guard.js",
+        "line": 228,
+        "text": "* ESM `import http from 'node:http'` in this very process is best-effort not covered (documented in the README)."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/settings.js",
+        "line": 6,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 14,
+        "text": "const raw = JSON.parse(readFileSync(path, 'utf8'));"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 28,
+        "text": "mkdirSync(dirname(path), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 30,
+        "text": "writeFileSync(tmp, JSON.stringify(settings), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 8,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, readFileSync, renameSync, writeSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
