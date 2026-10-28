@@ -238,3 +238,17 @@ test('the store comes back on the tab it was on, and still notices plugins insta
   const fresh = await mount({ services: { loadBundles: async () => installed } })
   assert.equal(currentTab(fresh), zh.navHome, 'without a memory the store starts at home')
 })
+
+test('a remount shows what the store last read at once, while it reads again', async () => {
+  const memory = createStoreMemory()
+  const first = await mount({ memory, services: { loadBundles: async () => [bundle('dsh-context', '1.0.0')] } })
+  await click(tab(first, zh.navInstalled))
+  await act(async () => { first.unmount() })
+  const never = new Promise(() => {})
+  const again = await mount({ memory, services: { loadCatalog: () => never, loadBundles: () => never } })
+  const text = textOf(again)
+  assert.equal(text.includes(zh.loading), false, 'no loading flash')
+  assert.ok(text.includes('dsh-context'), 'the installed list from before')
+  await click(tab(again, zh.navAll))
+  assert.ok(cards(again).length >= 8, 'the catalog from before')
+})

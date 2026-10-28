@@ -106,6 +106,9 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
   const [removing, setRemoving] = useState<InstalledRow | null>(null)
   const [updating, setUpdating] = useState<InstalledRow | null>(null)
   const [running, setRunning] = useState<Record<string, Action>>({})
+  // Rows under update, as they were when it started: an update may uninstall before it installs, and the row should
+  // not blink out of the list in between.
+  const [pinned, setPinned] = useState<Record<string, { row: InstalledRow; group: keyof InstalledRows }>>({})
 
   /** Run one change for a row; a restart or a failure is noted under it, an applied change shows on refresh. */
   const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: () => Promise<ChangeOutcome>, version: string | null = null) => {
@@ -120,6 +123,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
     }
     setBusy(prev => ({ ...prev, [name]: false }))
     setRunning(prev => { const { [name]: _, ...rest } = prev; return rest })
+    setPinned(prev => { const { [name]: _, ...rest } = prev; return rest })
     if (outcome !== 'applied') {
       const note = outcomeNote(outcome, action, version, t)
       setNotes(prev => ({ ...prev, [name]: { title, ...note } }))
@@ -130,6 +134,10 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
   const acceptUpdate = useCallback(() => {
     const row = updating
     setUpdating(null)
+    if (row?.latest && row.version) {
+      const group = (['updates', 'others', 'official'] as const).find(id => rows?.[id].some(r => r.name === row.name)) ?? 'updates'
+      setPinned(prev => ({ ...prev, [row.name]: { row, group } }))
+    }
     if (row?.latest && row.version) void change(row, 'update', () => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }), row.latest)
   }, [updating, change, update])
 
@@ -141,7 +149,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
   }, [removing, change, remove])
 
   const renderRow = (row: InstalledRow) => {
-    const hasUpdate = row.latest !== null && row.version !== null && rows?.updates.includes(row)
+    const hasUpdate = row.latest !== null && row.version !== null && (rows?.updates.includes(row) || pinned[row.name]?.row === row)
     const manageable = !row.official && !row.self
     const note = notes[row.name]
     return (
@@ -177,13 +185,17 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
     )
   }
 
-  const group = (id: keyof InstalledRows, titleKey: string) =>
-    rows && rows[id].length > 0 && (
+  const present = new Set(rows ? [...rows.updates, ...rows.others, ...rows.official].map(r => r.name) : [])
+  const group = (id: keyof InstalledRows, titleKey: string) => {
+    if (!rows) return null
+    const shown = [...rows[id], ...Object.values(pinned).filter(p => p.group === id && !present.has(p.row.name)).map(p => p.row)]
+    return shown.length > 0 && (
       <section className="ps-inst-group" data-group={id} key={id}>
-        <h2 className="ps-inst-group-title">{t(titleKey)} <span className="ps-muted">{rows[id].length}</span></h2>
-        <ul className="ps-inst-list">{rows[id].map(renderRow)}</ul>
+        <h2 className="ps-inst-group-title">{t(titleKey)} <span className="ps-muted">{shown.length}</span></h2>
+        <ul className="ps-inst-list">{shown.map(renderRow)}</ul>
       </section>
     )
+  }
 
   let body: ReactNode
   if (error) {
@@ -195,15 +207,14 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
     )
   } else if (!rows) {
     body = <div className="ps-pad ps-muted">{t('loading')}</div>
-  } else if (rows.updates.length + rows.others.length + rows.official.length === 0) {
+  } else if (present.size === 0 && Object.keys(pinned).length === 0) {
     body = <div className="ps-empty">{t('installedEmpty')}</div>
   } else {
     body = <>{group('updates', 'groupUpdates')}{group('others', 'groupOthers')}{group('official', 'groupOfficial')}</>
   }
 
   // Outcomes whose row is gone, such as an uninstall that takes effect after a restart.
-  const listed = new Set(rows ? [...rows.updates, ...rows.others, ...rows.official].map(r => r.name) : [])
-  const orphans = Object.entries(notes).filter(([name]) => !listed.has(name))
+  const orphans = Object.entries(notes).filter(([name]) => !present.has(name) && !pinned[name])
 
   return (
     <div className="ps-installed">

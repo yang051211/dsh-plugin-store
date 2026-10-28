@@ -292,3 +292,23 @@ test('an update that lost the plugin says to reinstall it', async () => {
   await confirmUpdate(root)
   assert.ok(textIn(row(root, 'dsh-pet')).includes('请到插件页重新安装'))
 })
+
+test('a row stays put while its update uninstalls and reinstalls it', async () => {
+  let list = [bundle('dsh-pet', '0.9.0')]
+  let changed = () => {}
+  let finish
+  const { root } = await open({
+    services: {
+      loadBundles: async () => list,
+      subscribeInstalled: fn => { changed = fn; return () => {} },
+      update: () => { list = []; changed(); return new Promise(resolve => { finish = resolve }) },
+    },
+  })
+  await confirmUpdate(root)
+  const pet = row(root, 'dsh-pet')
+  assert.ok(textIn(pet).includes(zh.updating), textIn(pet))
+  list = [bundle('dsh-pet', '1.0.0')]
+  await act(async () => { changed(); finish('applied') })
+  await flush()
+  assert.ok(textIn(row(root, 'dsh-pet')).includes('v1.0.0'))
+})

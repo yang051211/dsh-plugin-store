@@ -51,12 +51,18 @@ export interface StoreAppProps {
 
 /**
  * What the store keeps when DSH unmounts its tab, which it does whenever it shows its own Installed list (after an
- * install, or for a plugin's own page): the tab to come back to, and the plugins already seen as installed.
+ * install, or for a plugin's own page) and when hot reload recomposes the page: the tab to come back to, the plugins
+ * already seen as installed, and the last catalog and installed list, shown at once while they are read again.
  */
-export interface StoreMemory { tab: NavTab; installed: Set<string> | null }
+export interface StoreMemory {
+  tab: NavTab
+  installed: Set<string> | null
+  catalog: Catalog | null
+  bundles: InstalledBundle[] | null
+}
 
 export function createStoreMemory(): StoreMemory {
-  return { tab: 'home', installed: null }
+  return { tab: 'home', installed: null, catalog: null, bundles: null }
 }
 
 export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'installed' } | { view: 'about' }
@@ -120,9 +126,9 @@ function useLoads<T>(load: (name: string) => Promise<T>) {
 
 export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPackage, onInstallSpec, keepOnly, memory: given }: StoreAppProps): ReactNode {
   const memory = useRef(given ?? createStoreMemory()).current
-  const [catalog, setCatalog] = useState<Load<Catalog>>({ status: 'loading' })
+  const [catalog, setCatalog] = useState<Load<Catalog>>(() => (memory.catalog ? { status: 'ready', data: memory.catalog } : { status: 'loading' }))
   // Null until the first read answers. A failed read keeps whatever was read before and records why.
-  const [bundles, setBundles] = useState<InstalledBundle[] | null>(null)
+  const [bundles, setBundles] = useState<InstalledBundle[] | null>(memory.bundles)
   const [bundlesError, setBundlesError] = useState<string | null>(null)
   const [latest, setLatest] = useState<Record<string, string>>({})
   const refreshBundles = useRef<() => void>(() => {})
@@ -148,7 +154,11 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
     const id = ++seq.current.catalog
     setCatalog(prev => (prev.status === 'ready' ? prev : { status: 'loading' }))
     services.loadCatalog(refresh).then(
-      snapshot => { if (id === seq.current.catalog) setCatalog({ status: 'ready', data: buildCatalog(snapshot) }) },
+      snapshot => {
+        if (id !== seq.current.catalog) return
+        memory.catalog = buildCatalog(snapshot)
+        setCatalog({ status: 'ready', data: memory.catalog })
+      },
       (error: unknown) => {
         if (id !== seq.current.catalog) return
         setCatalog(prev => (prev.status === 'ready' ? { status: 'ready', data: { ...prev.data, stale: true } } : { status: 'error', error: messageOf(error) }))
@@ -170,6 +180,7 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
           const fresh = before ? list.map(b => b.name).filter(name => !before.has(name)) : []
           if (fresh.length > 0) setJustInstalled(fresh[fresh.length - 1]!)
           memory.installed = new Set(list.map(b => b.name))
+          memory.bundles = list
           setBundles(list)
           setBundlesError(null)
         },
