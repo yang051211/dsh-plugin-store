@@ -1,0 +1,78 @@
+{
+  "name": "dsh-archive-desk",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-28T06:59:40.416Z",
+  "icon": "dsh-archive-desk.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 2,
+        "text": ";async function C(e,n={},s){let c=await fetch(`${Da}/${e}`,{method:\"POST\",credentials:\"same-origin\",headers:{\"content-type\":\"application/json\"},body:JSON.string"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/cache.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/cache.js",
+        "line": 131,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "dist/cache.js",
+        "line": 132,
+        "text": "await writeFile(temporary, body, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "dist/cache.js",
+        "line": 147,
+        "text": "parsed = JSON.parse(await readFile(this.file, 'utf8'));"
+      },
+      {
+        "file": "dist/diagnostics.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 276,
+        "text": "toolCtx.effect(() => tools.register(toolDefinition(createService, ctx)), 'archive-desk: agent tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: husky"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

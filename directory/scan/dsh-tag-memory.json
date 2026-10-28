@@ -1,0 +1,125 @@
+{
+  "name": "dsh-tag-memory",
+  "version": "0.3.5",
+  "scannedAt": "2026-10-28T06:59:36.242Z",
+  "icon": "dsh-tag-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 326,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "client.js",
+        "line": 341,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "importers/memory-md.mjs",
+        "line": 19,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "importers/memory-md.mjs",
+        "line": 180,
+        "text": "try { text = readFileSync(src, 'utf8') } catch (e) {"
+      },
+      {
+        "file": "importers/memory-md.mjs",
+        "line": 187,
+        "text": "writeFileSync(outPath, res.csv, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "t { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync, accessSync, appendFileSync, statSync, realpathSync, renameSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { constants as FS } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 33,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "preset.js",
+        "line": 57,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "preset.js",
+        "line": 499,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "preset.js",
+        "line": 576,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "preset.js",
+        "line": 736,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 30,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 572,
+        "text": "!indexSrc0.includes('child_process') && !indexSrc0.includes('powershell') &&"
+      },
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 807,
+        "text": "!clientSrc.includes('child_process') && !clientSrc.includes('powershell') && !clientSrc.includes('/pick-dir'))"
+      },
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 1187,
+        "text": "const install = (extra = []) => spawnSync(process.execPath,"
+      },
+      {
+        "file": "scripts/selftest.mjs",
+        "line": 1296,
+        "text": "const runSeed = (extra = []) => spawnSync(process.execPath,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

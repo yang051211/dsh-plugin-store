@@ -1,7 +1,7 @@
 {
   "name": "dsh-push-host",
-  "version": "0.3.2",
-  "scannedAt": "2026-10-27T13:14:17.815Z",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-28T06:59:41.960Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -15,6 +15,21 @@
         "file": "lib/pairing.mjs",
         "line": 157,
         "text": "const response = await fetch(relay + '/', {"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 31,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 238,
+        "text": "const res = await fetch(url + path, { redirect: 'manual' })"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 433,
+        "text": "res = await fetch(target.toString(), { redirect: 'manual', headers: { 'cache-control': 'no-store' } })"
       }
     ]
   },
@@ -28,7 +43,7 @@
       },
       {
         "file": "lib/credentials.mjs",
-        "line": 194,
+        "line": 200,
         "text": "text = readFile(path, 'utf8')"
       },
       {
@@ -38,12 +53,12 @@
       },
       {
         "file": "lib/index.js",
-        "line": 407,
+        "line": 441,
         "text": "const text = readFileSync(file, 'utf8')"
       },
       {
         "file": "lib/index.js",
-        "line": 1204,
+        "line": 1254,
         "text": "try { mkdir(dirOf(path), { recursive: true }) } catch { /* 目录已存在 */ }"
       }
     ]
@@ -53,34 +68,45 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 61,
+        "line": 62,
         "text": "export const inject = ['userQuestions', 'timer', 'configEditor', 'profileContext', 'tools']"
       },
       {
         "file": "lib/index.js",
-        "line": 1029,
+        "line": 1079,
         "text": "if (!ctx.configEditor || !ctx.tools) return"
       },
       {
         "file": "lib/index.js",
-        "line": 1032,
+        "line": 1082,
         "text": "const tool = ctx.tools.get('ask_user_question')"
       },
       {
         "file": "lib/index.js",
-        "line": 1065,
+        "line": 1115,
         "text": "const landed = isTimedAskUserQuestion(ctx.tools.get('ask_user_question'))"
       },
       {
         "file": "lib/index.js",
-        "line": 1104,
+        "line": 1154,
         "text": "if (!ctx.configEditor || !ctx.tools) return"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/remote.js",
+        "line": 32,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/remote.js",
+        "line": 291,
+        "text": "child = spawn(bin, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,

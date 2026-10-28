@@ -1,15 +1,20 @@
 {
   "name": "dsh-rice-on-a-stick",
-  "version": "0.2.0-rc.1",
-  "scannedAt": "2026-10-26T10:08:30.739Z",
+  "version": "0.2.1-rc.1",
+  "scannedAt": "2026-10-28T06:59:37.947Z",
   "icon": "dsh-rice-on-a-stick.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client/client.js",
-        "line": 17,
-        "text": "return fetch(RPC_BASE + '/' + method, {"
+        "line": 462,
+        "text": "return fetch(\"/_dsh/dsh-rice-on-a-stick/\" + method, {"
+      },
+      {
+        "file": "lib/core/config.js",
+        "line": 124,
+        "text": "http: { enumerable: true, configurable: true, get: () => parsed.http.get() !== false },"
       },
       {
         "file": "lib/host/attachments.js",
@@ -25,11 +30,6 @@
         "file": "lib/mcp/web.js",
         "line": 1,
         "text": "import http from 'node:http';"
-      },
-      {
-        "file": "src/client/client.ts",
-        "line": 29,
-        "text": "return fetch(RPC_BASE + '/' + method, {"
       }
     ]
   },
@@ -52,14 +52,14 @@
         "text": "const data = await readFile(p);"
       },
       {
-        "file": "lib/mcp/onboarding.js",
-        "line": 12,
+        "file": "lib/host/prompt.js",
+        "line": 11,
         "text": "import { readFileSync } from 'node:fs';"
       },
       {
-        "file": "lib/mcp/onboarding.js",
-        "line": 19,
-        "text": "return readFileSync(url, 'utf8');"
+        "file": "lib/host/prompt.js",
+        "line": 17,
+        "text": "return readFileSync(url, 'utf8').trimEnd();"
       }
     ]
   },
@@ -68,17 +68,17 @@
     "evidence": [
       {
         "file": "lib/host/data.js",
-        "line": 428,
+        "line": 645,
         "text": "const tools = ctx.tools;"
       },
       {
         "file": "lib/index.js",
-        "line": 18,
+        "line": 19,
         "text": "export const inject = ['tools', 'llm', 'agents', 'agentPresets', 'workspaceRegistry', 'sessionPersistence', 'sessions'];"
       },
       {
         "file": "lib/index.js",
-        "line": 136,
+        "line": 185,
         "text": "// ── 本实例自用工具: 同一份 MCP 工具面再注册到 ctx.tools, 不走 HTTP/认证 ──"
       },
       {

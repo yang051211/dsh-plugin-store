@@ -1,0 +1,71 @@
+{
+  "name": "dsh-kimi-quota",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-28T06:59:40.860Z",
+  "icon": "dsh-kimi-quota.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 115,
+        "text": "const res = await fetch(ROUTE, { cache: 'no-store' });"
+      },
+      {
+        "file": "index.js",
+        "line": 62,
+        "text": "const res = await fetch(url, { ...options, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "import { createReadStream } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { readFile, writeFile, rename, stat, glob } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 41,
+        "text": "const toml = await readFile(join(kimiHome(), 'config.toml'), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 95,
+        "text": "await writeFile(tmp, JSON.stringify(next), 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 159,
+        "text": "return JSON.parse(await readFile(credentialsPath(), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

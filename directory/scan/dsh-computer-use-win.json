@@ -1,14 +1,14 @@
 {
   "name": "dsh-computer-use-win",
-  "version": "0.5.2",
-  "scannedAt": "2026-10-26T10:04:41.056Z",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-28T06:59:30.897Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "mcp/browser.mjs",
-        "line": 683,
+        "line": 718,
         "text": "const response = await fetch(new URL('/json/version', url), { signal: AbortSignal.timeout(3000) });"
       }
     ]
@@ -17,29 +17,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "mcp/browser.mjs",
-        "line": 7,
-        "text": "import { mkdirSync, mkdtempSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+        "file": "mcp/browser-bidi.mjs",
+        "line": 5,
+        "text": "import { existsSync, readFileSync, mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';"
       },
       {
-        "file": "mcp/browser.mjs",
-        "line": 42,
+        "file": "mcp/browser-bidi.mjs",
+        "line": 38,
+        "text": "const app = /(?:^|\\r?\\n)\\[App\\]\\s*\\r?\\n([\\s\\S]*?)(?=\\r?\\n\\[|$)/i.exec(readFileSync(file, 'utf8'))?.[1] ?? '';"
+      },
+      {
+        "file": "mcp/browser-bidi.mjs",
+        "line": 141,
+        "text": "mkdirSync(root, { recursive: true });"
+      },
+      {
+        "file": "mcp/browser-bidi.mjs",
+        "line": 143,
+        "text": "mkdirSync(profile, { recursive: true });"
+      },
+      {
+        "file": "mcp/browser-bidi.mjs",
+        "line": 146,
         "text": "try { writeFileSync(lock, String(process.pid), { flag: 'wx' }); break; }"
-      },
-      {
-        "file": "mcp/browser.mjs",
-        "line": 46,
-        "text": "const owner = Number(readFileSync(lock, 'utf8'));"
-      },
-      {
-        "file": "mcp/browser.mjs",
-        "line": 47,
-        "text": "if (owner > 0 && !processAlive(owner)) { rmSync(lock, { force: true }); continue; }"
-      },
-      {
-        "file": "mcp/browser.mjs",
-        "line": 53,
-        "text": "try { return await action(); } finally { rmSync(lock, { force: true }); }"
       }
     ]
   },
@@ -67,6 +67,16 @@
     "hit": true,
     "evidence": [
       {
+        "file": "mcp/browser-bidi.mjs",
+        "line": 3,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "mcp/browser-bidi.mjs",
+        "line": 22,
+        "text": "const regBytes = args => new Promise(resolve => execFile('reg.exe', args,"
+      },
+      {
         "file": "mcp/browser.mjs",
         "line": 5,
         "text": "import { execFile, spawn } from 'node:child_process';"
@@ -78,18 +88,8 @@
       },
       {
         "file": "mcp/browser.mjs",
-        "line": 782,
+        "line": 817,
         "text": "const child = this.agentChild = spawn(executable.path, ['--remote-debugging-port=0', `--user-data-dir=${profile}`, '--no-first-run',"
-      },
-      {
-        "file": "mcp/browser.mjs",
-        "line": 815,
-        "text": "      const watcher = spawn(process.execPath, [fileURLToPath(import.meta.url), '--watch-profile', profile, url, String(browser.pid)], { env: { ...process.env, E"
-      },
-      {
-        "file": "mcp/server.mjs",
-        "line": 2,
-        "text": "import { spawn } from \"node:child_process\";"
       }
     ]
   },

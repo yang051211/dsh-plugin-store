@@ -1,0 +1,78 @@
+{
+  "name": "@kleinkross/dsh-reverie",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-28T06:59:40.206Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 66,
+        "text": "const response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, readdir, rename, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 121,
+        "text": "await mkdir(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 143,
+        "text": "await writeFile(path.join(directory, name), content, \"utf8\");"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 145,
+        "text": "await writeFile("
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 172,
+        "text": "await mkdir(path.dirname(to), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 170,
+        "text": "disposers.push(ctx.tools.register(tool));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

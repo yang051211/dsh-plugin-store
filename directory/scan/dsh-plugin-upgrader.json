@@ -1,0 +1,86 @@
+{
+  "name": "dsh-plugin-upgrader",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-28T06:59:35.700Z",
+  "icon": "dsh-plugin-upgrader.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 295,
+        "text": "fetch(`${API}/overview?${query.toString()}`, { credentials: \"same-origin\" }).then((response) => readJson(response)).then((data) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 317,
+        "text": "const response = await fetch(`${API}/job`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 329,
+        "text": "const response = await fetch(`${API}/job?id=${encodeURIComponent(id)}`, { credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 350,
+        "text": "await fetch(`${API}/cancel`, { method: \"POST\", credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/host/registry.js",
+        "line": 93,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/lock.js",
+        "line": 26,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/lock.js",
+        "line": 63,
+        "text": "raw = readFileSync(join(dir, LOCK_FILE), 'utf8');"
+      },
+      {
+        "file": "lib/host/manifest.js",
+        "line": 24,
+        "text": "import { readFileSync, writeFileSync, renameSync, rmSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/host/manifest.js",
+        "line": 67,
+        "text": "const raw = readFileSync(join(dir, MANIFEST_FILE), 'utf8');"
+      },
+      {
+        "file": "lib/host/manifest.js",
+        "line": 91,
+        "text": "writeFileSync(temporary, `${JSON.stringify(manifest, undefined, 2)}\\n`, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

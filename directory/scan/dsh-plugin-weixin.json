@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-weixin",
-  "version": "0.9.10",
-  "scannedAt": "2026-10-27T23:28:52.141Z",
+  "version": "0.9.12",
+  "scannedAt": "2026-10-28T06:59:33.137Z",
   "icon": "dsh-plugin-weixin.png",
   "network": {
     "hit": true,
@@ -58,7 +58,7 @@
       },
       {
         "file": "bin/doctor.mjs",
-        "line": 33,
+        "line": 35,
         "text": "try { return JSON.parse(fs.readFileSync(file, 'utf8')) } catch (error) { return { __error: String(error) } }"
       }
     ]
@@ -70,6 +70,16 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "bin/backup.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/backup.mjs",
+        "line": 92,
+        "text": "const running = spawnSync('pgrep', ['-f', 'dsh-plugin-weixin'], { encoding: 'utf8' })"
+      },
       {
         "file": "bin/check.mjs",
         "line": 7,
@@ -84,16 +94,6 @@
         "file": "bin/lib/profile-pin.mjs",
         "line": 17,
         "text": "import { spawnSync } from 'node:child_process'"
-      },
-      {
-        "file": "bin/lib/profile-pin.mjs",
-        "line": 92,
-        "text": "? spawn(nodePath, [BUNDLED_PNPM, ...args], { cwd, encoding: 'utf8' })"
-      },
-      {
-        "file": "bin/lib/profile-pin.mjs",
-        "line": 93,
-        "text": ": spawn('pnpm', args, { cwd, encoding: 'utf8' })"
       }
     ]
   },
@@ -110,22 +110,22 @@
   "setupHints": [
     {
       "file": "README.en.md",
-      "line": 813,
+      "line": 916,
       "text": "pip install mlx-whisper        # Apple Silicon, uses the GPU"
     },
     {
       "file": "README.en.md",
-      "line": 814,
+      "line": 917,
       "text": "pip install faster-whisper     # other platforms, uses the CPU"
     },
     {
       "file": "README.md",
-      "line": 801,
+      "line": 901,
       "text": "pip install mlx-whisper        # Apple Silicon，走 GPU"
     },
     {
       "file": "README.md",
-      "line": 802,
+      "line": 902,
       "text": "pip install faster-whisper     # 其它平台，走 CPU"
     }
   ],

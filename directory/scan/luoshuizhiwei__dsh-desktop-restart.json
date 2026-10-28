@@ -1,30 +1,35 @@
 {
   "name": "@luoshuizhiwei/dsh-desktop-restart",
-  "version": "0.4.4",
-  "scannedAt": "2026-10-26T10:13:30.343Z",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-28T06:59:38.825Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 727,
+        "line": 1174,
         "text": "const response = await fetch(STATUS_ROUTE, { method: \"GET\" });"
       },
       {
         "file": "lib/client.js",
-        "line": 763,
+        "line": 1270,
         "text": "response = await fetch(RESTART_ROUTE + query, { method: \"POST\" });"
       },
       {
         "file": "lib/client.js",
-        "line": 1516,
-        "text": "fetch(SWEEP_ROUTE + query, { method: \"POST\" })"
+        "line": 1749,
+        "text": "const response = await fetch(PREFS_ROUTE + \"?readNotice=\" + encodeURIComponent(id), {method:\"POST\"});"
       },
       {
-        "file": "lib/index.js",
-        "line": 304,
-        "text": "* 桌面版的页面是以 `dsh-app://` 协议装载的，页面里的 `fetch('/…')` 由壳层"
+        "file": "lib/client.js",
+        "line": 2458,
+        "text": "const response = await fetch(PREFS_ROUTE + \"?countdown=\" + encodeURIComponent(draft), { method: \"POST\", credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2631,
+        "text": "fetch((query === \"?cancelSweep=1\" ? PREFS_ROUTE : SWEEP_ROUTE) + query, { method: \"POST\" })"
       }
     ]
   },
@@ -33,28 +38,28 @@
     "evidence": [
       {
         "file": "lib/helper.cjs",
-        "line": 33,
+        "line": 32,
         "text": "const fs = require('node:fs')"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 580,
-        "text": "handoff = JSON.parse(fs.readFileSync(handoffPath, 'utf8'))"
+        "line": 399,
+        "text": "try { fs.writeFileSync(paths.delivery, JSON.stringify({ status: 'failed', code: 'toast-process-failed' }), 'utf8') }"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 592,
-        "text": "fs.appendFileSync(logPath, `[${new Date().toISOString()}] ${line}\\n`)"
+        "line": 409,
+        "text": "const parse = file => JSON.parse(io.readFileSync(file,'utf8'))"
       },
       {
-        "file": "lib/index.js",
-        "line": 67,
-        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs'"
+        "file": "lib/helper.cjs",
+        "line": 477,
+        "text": "try { io.unlinkSync(paths[kind]) }"
       },
       {
-        "file": "lib/index.js",
-        "line": 139,
-        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+        "file": "lib/helper.cjs",
+        "line": 494,
+        "text": "io.mkdirSync(dir,{recursive:true})"
       }
     ]
   },
@@ -67,17 +72,17 @@
     "evidence": [
       {
         "file": "lib/helper.cjs",
-        "line": 32,
+        "line": 31,
         "text": "const { execFileSync, spawn } = require('node:child_process')"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 246,
-        "text": "const child = spawn(shell, ['-NoProfile', '-NonInteractive', '-EncodedCommand', encoded], {"
+        "line": 397,
+        "text": "  const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-WindowStyle', 'Hidden', '-EncodedCommand', encoded], { detached: true, stdio: 'ignor"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 492,
+        "line": 829,
         "text": "const child = spawn(exe, relaunchArgs ?? [], {"
       },
       {
@@ -87,7 +92,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 668,
+        "line": 843,
         "text": "const helper = spawn(process.execPath, [HELPER_PATH, handoffPath], {"
       }
     ]

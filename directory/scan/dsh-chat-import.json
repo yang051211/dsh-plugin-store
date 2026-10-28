@@ -1,14 +1,14 @@
 {
   "name": "dsh-chat-import",
-  "version": "0.26.2",
-  "scannedAt": "2026-10-26T10:04:40.920Z",
+  "version": "0.26.3",
+  "scannedAt": "2026-10-28T06:59:31.707Z",
   "icon": "dsh-chat-import.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1510,
+        "line": 1640,
         "text": "const resp = await fetch(path, {"
       }
     ]
@@ -68,14 +68,25 @@
       },
       {
         "file": "lib/tools.mjs",
-        "line": 36,
+        "line": 41,
         "text": "//（injectTools）只控制 ctx.tools.register 是否执行，构建与 IMPORT_SPECS 恒发生。"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session-actions.mjs",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/session-actions.mjs",
+        "line": 91,
+        "text": "execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-Command', script], {"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,

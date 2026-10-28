@@ -1,0 +1,103 @@
+{
+  "name": "dsh-subagent-remote",
+  "version": "0.9.2-rc.4",
+  "scannedAt": "2026-10-28T06:59:39.421Z",
+  "icon": "dsh-subagent-remote.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/settings.js",
+        "line": 382,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acp.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/acp.js",
+        "line": 31,
+        "text": "return JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version"
+      },
+      {
+        "file": "lib/acp.js",
+        "line": 180,
+        "text": "const text = fs.readFileSync(shim, 'utf8')"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 23,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 61,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 728,
+        "text": "runtime.toolDisposer = runtime.toolCtx.tools.register(buildUnifiedRemoteTool({"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 120,
+        "text": "ctx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/acp.js",
+        "line": 20,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/acp.js",
+        "line": 335,
+        "text": "this.child = spawn(spec.command, spec.args, {"
+      },
+      {
+        "file": "lib/acp.js",
+        "line": 721,
+        "text": "execFile('taskkill', ['/PID', String(this.child.pid), '/T', '/F'], { windowsHide: true }, () => {})"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/settings.js",
+        "line": 330,
+        "text": "const child = spawn(host.sshBin || 'ssh', args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

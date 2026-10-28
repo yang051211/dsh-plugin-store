@@ -1,0 +1,125 @@
+{
+  "name": "dsh-auto-approval-frame",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-28T06:59:41.972Z",
+  "icon": "dsh-auto-approval-frame.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1326,
+        "text": "const response = await fetch(`${EXPLAIN_ROUTE}?q=${encodeURIComponent(q)}`,"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1508,
+        "text": "fetch(`${AUDIT_ROUTE}?${query}`, { credentials: \"same-origin\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1541,
+        "text": "fetch(SECRETS_ROUTE, { credentials: \"same-origin\", cache: \"no-store\" })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1561,
+        "text": "const response = await fetch(SECRETS_ROUTE, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1577,
+        "text": "const response = await fetch(`${SECRETS_ROUTE}?token=${encodeURIComponent(token)}`,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/frame/audit.js",
+        "line": 11,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/frame/audit.js",
+        "line": 43,
+        "text": "const fileSha256 = path => sha256(readFileSync(path));"
+      },
+      {
+        "file": "lib/frame/audit.js",
+        "line": 110,
+        "text": "writeFileSync(temporary, JSON.stringify(state, null, 2));"
+      },
+      {
+        "file": "lib/frame/audit.js",
+        "line": 121,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/frame/audit.js",
+        "line": 122,
+        "text": "appendFileSync(manifestPath, `${JSON.stringify({ ...record, timestamp: record.timestamp ?? now() })}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 39,
+        "text": "export const inject = ['approval', 'permissionPresets', 'sessions', 'tools', 'llm', 'agents', 'settings', 'userQuestions'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/frame/facts.js",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/frame/facts.js",
+        "line": 50,
+        "text": "spawn: (command, args) => spawnSync(command, args, { encoding: 'utf8', windowsHide: true, timeout: 5000 }),"
+      },
+      {
+        "file": "lib/frame/facts.js",
+        "line": 139,
+        "text": "const probeRepo = probe.spawn('git', ['-C', workspace, 'rev-parse', '--is-inside-work-tree']);"
+      },
+      {
+        "file": "lib/frame/facts.js",
+        "line": 142,
+        "text": "const listed = probe.spawn('git', ['-C', workspace, 'ls-files', '-z', '--', ...relatives]);"
+      },
+      {
+        "file": "lib/frame/facts.js",
+        "line": 147,
+        "text": "const status = probe.spawn('git', ['-C', workspace, 'status', '--porcelain=v1', '-z',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "llm",
+    "permissionPresets",
+    "sessions",
+    "settings",
+    "tools",
+    "userQuestions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

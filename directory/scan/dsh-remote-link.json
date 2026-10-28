@@ -1,0 +1,112 @@
+{
+  "name": "dsh-remote-link",
+  "version": "1.5.12",
+  "scannedAt": "2026-10-28T06:59:39.334Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 91,
+        "text": "const res = await fetch(`${relay}/api/devices/login`, {"
+      },
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 212,
+        "text": "const res = await fetch(`${cfg.relayUrl}/api/devices/heartbeat`, {"
+      },
+      {
+        "file": "lib/agent/src/stream.js",
+        "line": 8,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/agent/src/stream.js",
+        "line": 185,
+        "text": "const req = http.request({"
+      },
+      {
+        "file": "lib/agent/src/stream.js",
+        "line": 274,
+        "text": "const req = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 15,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 33,
+        "text": "return JSON.parse(await readFile(configPath(), 'utf8'));"
+      },
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 41,
+        "text": "await mkdir(dirname(configPath()), { recursive: true });"
+      },
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 42,
+        "text": "await writeFile(configPath(), JSON.stringify(cfg, null, 2), { mode: 0o600 });"
+      },
+      {
+        "file": "lib/agent/src/cli.js",
+        "line": 88,
+        "text": "await mkdir(CONFIG_DIR, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 463,
+        "text": "const proc = spawn(rt.file, ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 547,
+        "text": "child = spawn(rt.file, [entry, ...args], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2604,
+        "text": "* <p>`spawn()` can return a ChildProcess and still fail asynchronously (a"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2616,
+        "text": "const child = spawn(file, args, options);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

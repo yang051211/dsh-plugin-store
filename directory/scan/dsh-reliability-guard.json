@@ -1,0 +1,87 @@
+{
+  "name": "dsh-reliability-guard",
+  "version": "1.1.8",
+  "scannedAt": "2026-10-28T06:59:41.363Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/util.js",
+        "line": 164,
+        "text": "// `curl -u user:password` and `-u :password` keep the credential out of the URL."
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/checkpoints.js",
+        "line": 3,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, renameSync, openSync, fsyncSync, closeSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/checkpoints.js",
+        "line": 41,
+        "text": "const saved = JSON.parse(readFileSync(this.#path(state), 'utf8'))"
+      },
+      {
+        "file": "lib/checkpoints.js",
+        "line": 71,
+        "text": "mkdirSync(this.#dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/checkpoints.js",
+        "line": 72,
+        "text": "writeFileSync(temporary, data, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/checkpoints.js",
+        "line": 81,
+        "text": "try { unlinkSync(temporary) } catch { /* Only this writer's exact temporary file. */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1238,
+        "text": "return ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1258,
+        "text": "toolsRegistered: guardToolsPresent(ctx.tools, exec.agent),"
+      },
+      {
+        "file": "lib/reconciliation.js",
+        "line": 69,
+        "text": "return ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

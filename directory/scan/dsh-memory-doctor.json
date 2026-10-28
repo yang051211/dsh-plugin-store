@@ -1,0 +1,93 @@
+{
+  "name": "dsh-memory-doctor",
+  "version": "0.5.12",
+  "scannedAt": "2026-10-28T06:59:31.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 28,
+        "text": "const res = await fetch(`${API}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync, copyFileSync, renameSync, unlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 34,
+        "text": "return readFileSync(p, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 167,
+        "text": "mkdirSync(归档目录, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 176,
+        "text": "writeFileSync(归档文件, 移出.join('\\n§\\n'), 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 179,
+        "text": "writeFileSync(join(运行时目录(), 文件), 新文本, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 856,
+        "text": "export const inject = ['commands', 'webServer', 'tools', 'agents'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 888,
+        "text": "if (ctx.tools && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 893,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

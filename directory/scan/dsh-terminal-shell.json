@@ -1,0 +1,103 @@
+{
+  "name": "dsh-terminal-shell",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-28T06:59:39.022Z",
+  "icon": "dsh-terminal-shell.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 171,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 187,
+        "text": "import { appendFileSync, mkdirSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 207,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 210,
+        "text": "appendFileSync(path, line, \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "import { existsSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 686,
+        "text": "import { rmSync as rmSync2, statSync as statSync3 } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1048,
+        "text": "var inject = [\"tools\", \"shell\", \"systemPrompt\", \"shellEnv\", \"workingDirectory\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1569,
+        "text": "ctx.tools.register(cmdTool(void 0));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1572,
+        "text": "let foregroundOnly = ctx.get(\"jobs\") === void 0 ? ctx.tools.register(cmdTool(void 0)) : void 0;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1576,
+        "text": "const unregister = ctx.tools.register(cmdTool(jobCtx.jobs));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1579,
+        "text": "if (ctx.fiber.state === 2) foregroundOnly = ctx.tools.register(cmdTool(void 0));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 551,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 556,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

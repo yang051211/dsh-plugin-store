@@ -1,19 +1,29 @@
 {
   "name": "dsh-chat-link-actions",
-  "version": "0.3.1",
-  "scannedAt": "2026-10-27T23:28:57.157Z",
+  "version": "0.5.8",
+  "scannedAt": "2026-10-28T06:59:34.746Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 926,
+        "line": 581,
+        "text": "var request = typeof fetch === \"function\" ? fetch(source, { credentials: \"include\" }) : Promise.reject(new Error(\"no fetch\"));"
+      },
+      {
+        "file": "client.js",
+        "line": 957,
+        "text": "return fetch(routeUrl(action), {"
+      },
+      {
+        "file": "client.js",
+        "line": 1317,
         "text": "fetch(\"/chat-link-actions?action=trace&note=\" + encodeURIComponent(text), { method: \"POST\", keepalive: true }).catch(function () {});"
       },
       {
         "file": "client.js",
-        "line": 1046,
+        "line": 1437,
         "text": "fetch(\"/chat-link-actions?action=reveal&path=\" + encodeURIComponent(path), { method: \"POST\" }).then(function (response) {"
       }
     ]
@@ -24,12 +34,27 @@
       {
         "file": "index.js",
         "line": 12,
-        "text": "import { appendFile, lstat, stat } from 'node:fs/promises'"
+        "text": "import { readFileSync } from 'node:fs'"
       },
       {
         "file": "index.js",
-        "line": 282,
-        "text": "await appendFile(file, `${new Date().toISOString()} ${line}\\n`)"
+        "line": 13,
+        "text": "import { appendFile, lstat, mkdir, readdir, readFile, rename, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 432,
+        "text": "await mkdir(paths.bin, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 433,
+        "text": "await writeFile(paths.script, SHARE_SCRIPT, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 434,
+        "text": "await writeFile(paths.services, SERVICES_SCRIPT, 'utf8')"
       }
     ]
   },
@@ -43,12 +68,27 @@
       {
         "file": "index.js",
         "line": 11,
-        "text": "import { execFile } from 'node:child_process'"
+        "text": "import { execFile, spawn } from 'node:child_process'"
       },
       {
         "file": "index.js",
-        "line": 230,
+        "line": 231,
         "text": "execFile(command, args, {"
+      },
+      {
+        "file": "index.js",
+        "line": 586,
+        "text": "const child = spawn('osascript', ['-l', 'JavaScript', paths.services, probe], {"
+      },
+      {
+        "file": "index.js",
+        "line": 630,
+        "text": "const child = spawn('shortcuts', ['list'], { stdio: ['ignore', 'pipe', 'ignore'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 667,
+        "text": "const child = spawn('osascript', ['-l', 'JavaScript', paths.script, '--warm'], {"
       }
     ]
   },

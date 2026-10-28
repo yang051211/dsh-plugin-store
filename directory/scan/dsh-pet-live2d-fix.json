@@ -1,0 +1,104 @@
+{
+  "name": "dsh-pet-live2d-fix",
+  "version": "3.3.4",
+  "scannedAt": "2026-10-28T06:59:38.526Z",
+  "icon": "dsh-pet-live2d-fix.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 262,
+        "text": "const response = await fetch(API + \"/layer\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3871,
+        "text": "void fetch(SETTINGS_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3900,
+        "text": "const response = await fetch(SETTINGS_URL, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4117,
+        "text": "const response = await fetch(SOUND_URL + \"/\" + encodeURIComponent(id), { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 4165,
+        "text": "const response = await fetch(SOUND_URL + \"/\" + encodeURIComponent(id) + \"/\" + phase, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/desktop.js",
+        "line": 15,
+        "text": "import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync, chmodSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 48,
+        "text": "return JSON.parse(readFileSync(join(HERE, '..', 'package.json'), 'utf8')).version ?? '0.0.0'"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 188,
+        "text": "const version = JSON.parse(readFileSync(join(pack, 'package.json'), 'utf8')).version"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 294,
+        "text": "mkdirSync(dirname(target), { recursive: true })"
+      },
+      {
+        "file": "lib/desktop.js",
+        "line": 295,
+        "text": "writeFileSync(target, inner)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/display.js",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/display.js",
+        "line": 226,
+        "text": "spawnSync('taskkill', ['/pid', String(childPid), '/T', '/F'], {"
+      },
+      {
+        "file": "lib/display.js",
+        "line": 274,
+        "text": "child = spawn(binary.path, ['--attach', dshUrl, '--from-plugin'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/live2d-vendor.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

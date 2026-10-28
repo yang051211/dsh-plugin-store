@@ -1,0 +1,97 @@
+{
+  "name": "dsh-better-right-click",
+  "version": "0.6.6",
+  "scannedAt": "2026-10-28T06:59:39.549Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 512,
+        "text": "return fetch(url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 541,
+        "text": "return fetch(url, { method: 'GET' }).then("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "const raw = readFileSync(file)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "const text = readFileSync(CONFIG_FILE, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "mkdirSync(dirname(CONFIG_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 193,
+        "text": "writeFileSync(CONFIG_FILE, `${JSON.stringify(merged, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "*   - 所有外部进程都用 spawn(exe, [args]) 数组传参，路径不经 shell 字符串拼接；"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 482,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 510,
+        "text": "child = spawn(command, args, { stdio: 'ignore', windowsHide: true, ...extra })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 698,
+        "text": "child = spawn('powershell.exe', args, { windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

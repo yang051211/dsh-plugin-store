@@ -1,35 +1,35 @@
 {
   "name": "dsh-autorestart",
-  "version": "0.3.6",
-  "scannedAt": "2026-10-26T10:05:53.688Z",
+  "version": "0.6.1",
+  "scannedAt": "2026-10-28T06:59:33.921Z",
   "icon": "dsh-autorestart.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 228,
+        "line": 643,
         "text": "const response = await fetch(HEALTH_URL, {"
       },
       {
         "file": "client.js",
-        "line": 820,
+        "line": 1289,
         "text": "const response = await fetch(parkUrlFor(info), {"
       },
       {
         "file": "client.js",
-        "line": 996,
+        "line": 1482,
         "text": "const response = await fetch(choiceUrlFor(info), {"
       },
       {
-        "file": "index.js",
-        "line": 2759,
-        "text": "'var t=setInterval(function(){fetch(',"
+        "file": "client.js",
+        "line": 1518,
+        "text": "const response = await fetch(choiceUrlFor(info), {"
       },
       {
-        "file": "lib/restart.js",
-        "line": 204,
-        "text": "+ '\"try { $r = Invoke-RestMethod -Uri '"
+        "file": "client.js",
+        "line": 1828,
+        "text": "const response = await fetch(DEFAULT_SLEEP_URL, {"
       }
     ]
   },
@@ -43,23 +43,23 @@
       },
       {
         "file": "index.js",
-        "line": 559,
+        "line": 174,
+        "text": "const raw = fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 785,
         "text": "const raw = fs.readFileSync(path.join(stateDir, INSTALL_CHOICE_FILE), 'utf8')"
       },
       {
         "file": "index.js",
-        "line": 577,
+        "line": 833,
         "text": "fs.mkdirSync(stateDir, { recursive: true })"
       },
       {
         "file": "index.js",
-        "line": 578,
-        "text": "fs.writeFileSync("
-      },
-      {
-        "file": "index.js",
-        "line": 660,
-        "text": "const manifest = JSON.parse(fs.readFileSync(path.join(candidate, 'package.json'), 'utf8'))"
+        "line": 834,
+        "text": "fs.writeFileSync(file, JSON.stringify(payload, null, 2), 'utf8')"
       }
     ]
   },
@@ -68,22 +68,22 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 169,
+        "line": 329,
         "text": "export const inject = ['agents', 'goals', 'tools', 'timer', 'systemPrompt', 'sessionController']"
       },
       {
         "file": "index.js",
-        "line": 2344,
+        "line": 2955,
         "text": "* The disposer returned by `ctx.tools.register` is handed to `ctx.effect`, so"
       },
       {
         "file": "index.js",
-        "line": 2359,
+        "line": 2970,
         "text": "() => ctx.tools.register(definition),"
       },
       {
         "file": "index.js",
-        "line": 2908,
+        "line": 3551,
         "text": "const tools = ctx.tools"
       }
     ]
@@ -100,6 +100,21 @@
         "file": "lib/restart.js",
         "line": 511,
         "text": "const child = spawn(text, { shell: true, detached: true, windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/sleep.js",
+        "line": 30,
+        "text": "import { spawn as spawnProcess } from 'node:child_process';"
+      },
+      {
+        "file": "lib/sleep.js",
+        "line": 298,
+        "text": "* `spawn()` reports a failure through the child's `error` event, so the answer"
+      },
+      {
+        "file": "lib/sleep.js",
+        "line": 331,
+        "text": "child = spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: true });"
       }
     ]
   },

@@ -1,0 +1,145 @@
+{
+  "name": "dsh-pixel-team",
+  "version": "0.1.15",
+  "scannedAt": "2026-10-28T06:59:39.699Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 4829,
+        "text": "const fetchState = runtime.fetchState ?? ((url, init) => fetch(url, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5451,
+        "text": "const response = await fetch(PLAN_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7034,
+        "text": "const response = await fetch(ACTIVITY_RESUME_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7062,
+        "text": "const response = await fetch(ACTIVITY_HALT_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 7092,
+        "text": "const response = await fetch(ACTIVITY_CLEANUP_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 28,
+        "text": "import { closeSync, lstatSync, openSync, readSync, readdirSync, realpathSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/capabilities.js",
+        "line": 3,
+        "text": "import { readdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/delivery-report.js",
+        "line": 7,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/delivery-report.js",
+        "line": 100,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/delivery-report.js",
+        "line": 102,
+        "text": "await writeFile(path, markdown, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/capabilities.js",
+        "line": 85,
+        "text": "revoke = agent.ctx.tools.restrict({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 44,
+        "text": "export const inject = ['tools', 'llm', 'subagents', 'systemPrompt', 'agents'];"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 787,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1002,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 1131,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/harness-compat.js",
+        "line": 369,
+        "text": "* forwarding a name the host dropped aborts every member spawn (#163, #164)."
+      },
+      {
+        "file": "lib/host-verify.js",
+        "line": 9,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host-verify.js",
+        "line": 19,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/host-verify.js",
+        "line": 34,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 139,
+        "text": "// member spawn (`spawnMember`), the earliest point the provider list is"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js",
+    "lib/client/art-data.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "subagents",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

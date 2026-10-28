@@ -1,0 +1,114 @@
+{
+  "name": "@uumit-ai/dsh-uumit-remote",
+  "version": "0.1.0-beta.3",
+  "scannedAt": "2026-10-28T06:59:41.747Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 253,
+        "text": "return fetch(API + path, opts).then(function (r) {"
+      },
+      {
+        "file": "src/control/api.js",
+        "line": 3,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/control/api.js",
+        "line": 4,
+        "text": "import https from 'node:https'"
+      },
+      {
+        "file": "src/proxy/inner-auth.js",
+        "line": 3,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "src/proxy/inner-auth.js",
+        "line": 4,
+        "text": "import https from 'node:https'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "export const VERSION = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8')).version"
+      },
+      {
+        "file": "src/control/device.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "src/control/device.js",
+        "line": 23,
+        "text": "return readFileSync(path, 'utf8').split('\\n')[0].trim()"
+      },
+      {
+        "file": "src/control/store.js",
+        "line": 3,
+        "text": "import { chmodSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 71,
+        "text": "if (typeof ctx.inject === 'function') ctx.inject(['tools'], mountTool)"
+      },
+      {
+        "file": "index.js",
+        "line": 72,
+        "text": "else if (ctx.tools) mountTool(ctx)"
+      },
+      {
+        "file": "src/tool.js",
+        "line": 89,
+        "text": "if (!ctx.tools || typeof ctx.tools.register !== 'function') return null"
+      },
+      {
+        "file": "src/tool.js",
+        "line": 90,
+        "text": "return ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/control/device.js",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

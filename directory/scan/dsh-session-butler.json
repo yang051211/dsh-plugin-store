@@ -1,0 +1,80 @@
+{
+  "name": "dsh-session-butler",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-28T06:59:42.118Z",
+  "icon": "dsh-session-butler.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 53,
+        "text": "response = await fetch(`${API_PREFIX}/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/fs.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, rm, rmdir, stat, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host/fs.js",
+        "line": 25,
+        "text": "return JSON.parse(await readFile(file, 'utf8'));"
+      },
+      {
+        "file": "lib/host/fs.js",
+        "line": 35,
+        "text": "await mkdir(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/host/fs.js",
+        "line": 37,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/host/fs.js",
+        "line": 45,
+        "text": "await mkdir(path.dirname(to), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/tools.js",
+        "line": 6,
+        "text": "* `ctx.tools`, which is also what keeps this package free of DSH runtime"
+      },
+      {
+        "file": "lib/host/tools.js",
+        "line": 401,
+        "text": "const disposers = [tools.register(createListTool(read)), tools.register(createDetailTool(read))];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessionPersistence",
+    "sessionQuery",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

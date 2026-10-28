@@ -1,0 +1,89 @@
+{
+  "name": "@jcs130/dsh-harness2",
+  "version": "0.1.0-rc.1",
+  "scannedAt": "2026-10-28T06:59:40.927Z",
+  "icon": "jcs130__dsh-harness2.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "examples/create-ledger-config.mjs",
+        "line": 1,
+        "text": "import {readFileSync,writeFileSync} from 'node:fs';"
+      },
+      {
+        "file": "examples/create-ledger-config.mjs",
+        "line": 6,
+        "text": "const file=resolve(output),worker=JSON.parse(readFileSync(resolve(workerFile),'utf8'));"
+      },
+      {
+        "file": "examples/create-ledger-config.mjs",
+        "line": 7,
+        "text": "writeFileSync(file,JSON.stringify({enabled:false,dataDir:join(dirname(file),'harness2-data'),"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 2,
+        "text": "import {readFileSync} from 'node:fs';"
+      },
+      {
+        "file": "scripts/demo.mjs",
+        "line": 10,
+        "text": "const worker=JSON.parse(readFileSync(resolve(file),'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/plugin.mjs",
+        "line": 9,
+        "text": "export const inject=['llm','tools'];"
+      },
+      {
+        "file": "src/plugin.mjs",
+        "line": 21,
+        "text": "for(const tool of experimentTools(lab))ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/runtime.mjs",
+        "line": 1,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "src/runtime.mjs",
+        "line": 122,
+        "text": "child=spawn(worker.command,[...(worker.args??[]),worker.script],{env,windowsHide:true,stdio:['pipe','pipe','pipe']});"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 46,
+      "text": "uv pip install --python .venv/bin/python -r bridges/requirements.txt"
+    }
+  ],
+  "skippedEntries": []
+}

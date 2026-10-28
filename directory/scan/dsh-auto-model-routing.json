@@ -1,14 +1,14 @@
 {
   "name": "dsh-auto-model-routing",
-  "version": "0.4.2",
-  "scannedAt": "2026-10-27T23:28:53.723Z",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-28T06:59:36.259Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/jev.js",
-        "line": 110,
+        "line": 82,
         "text": "const response = await fetch(this.service ? service.endpoint : this.url, {"
       }
     ]
@@ -23,23 +23,23 @@
       },
       {
         "file": "lib/feedback.js",
-        "line": 24,
+        "line": 26,
         "text": "text = readFileSync(file, 'utf8');"
       },
       {
         "file": "lib/feedback.js",
-        "line": 87,
+        "line": 97,
         "text": "append(record) { mkdirSync(dirname(this.file), { recursive: true }); appendFileSync(this.file, JSON.stringify(record) + '\\n', { mode: 0o600 }); }"
       },
       {
-        "file": "lib/judgements.js",
-        "line": 1,
-        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+        "file": "lib/policy-store.js",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, writeFileSync, renameSync, chmodSync } from 'node:fs';"
       },
       {
-        "file": "lib/judgements.js",
-        "line": 16,
-        "text": "mkdirSync(dirname(this.file), { recursive: true });"
+        "file": "lib/policy-store.js",
+        "line": 32,
+        "text": "mkdirSync(this.directory, { recursive: true, mode: 0o700 });"
       }
     ]
   },
@@ -48,12 +48,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 18,
+        "line": 17,
         "text": "export const inject = ['llm', 'agents', 'tools'];"
       },
       {
         "file": "lib/index.js",
-        "line": 45,
+        "line": 32,
         "text": "    ctx.effect(() => ctx.tools.register(routeSubagentTool(jev, { agents: ctx.agents, state, readSettings: () => settings.read().settings, catalog: hostSettings."
       }
     ]
@@ -89,7 +89,7 @@
     {
       "file": "README.zh.md",
       "line": 90,
-      "text": "- **本地状态**：配置在 `$DSH_HOME/plugins/dsh-auto-model-routing/`，模式、子路由及反馈在 `$DSH_HOME/state/auto-model-routing/`。反馈只保存资源元数据、身份、版本、返回分布及时间，不保存任务或回复正文。请求事件序号供后续关联用量，缺失"
+      "text": "- **本地状态**：配置在 `$DSH_HOME/plugins/dsh-auto-model-routing/`，模式、子路由及反馈在 `$DSH_HOME/state/auto-model-routing/`。反馈只保存资源元数据、身份、策略家族、返回分布及时间，不保存任务或回复正文。请求事件序号供后续关联用量，"
     }
   ],
   "skippedEntries": []

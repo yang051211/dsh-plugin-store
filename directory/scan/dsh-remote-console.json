@@ -1,0 +1,99 @@
+{
+  "name": "dsh-remote-console",
+  "version": "0.10.0",
+  "scannedAt": "2026-10-28T06:59:35.873Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 75,
+        "text": "const response = await fetch(RELEASES_API, { headers: { accept: 'application/vnd.github+json' } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 19,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 90,
+        "text": "const text = readFileSync(SSH_CONFIG, 'utf8');"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 108,
+        "text": "return readFileSync(HOSTS_FILE, 'utf8')"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 123,
+        "text": "mkdirSync(RC_DIR, { recursive: true });"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 124,
+        "text": "writeFileSync(HOSTS_FILE, `${host}\\t${user}\\t${port}\\n`, { flag: 'a', mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2927,
+        "text": "tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 18,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 82,
+        "text": "const probe = spawnSync('ssh', ['-G', 'localhost'], { encoding: 'utf8', timeout: 8000 });"
+      },
+      {
+        "file": "bin/dsh-ssh.mjs",
+        "line": 201,
+        "text": "const child = spawn(argv[0], argv.slice(1), { stdio: 'inherit' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "execFile('ssh', ['-G', 'localhost'], { timeout: 5000 }, (error, _stdout, stderr) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "terminalController"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

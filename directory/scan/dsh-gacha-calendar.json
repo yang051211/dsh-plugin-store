@@ -1,49 +1,91 @@
 {
   "name": "dsh-gacha-calendar",
-  "version": "0.12.6",
-  "scannedAt": "2026-10-26T10:04:52.748Z",
+  "version": "0.12.7",
+  "scannedAt": "2026-10-28T06:59:36.447Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 8805,
+        "line": 8832,
         "text": "//   所以 POST 的最小形态是 `fetch(proxyUrl, { method:\"POST\", body: JSON.stringify(payload) })`。"
       },
       {
         "file": "lib/client.js",
-        "line": 9180,
+        "line": 9207,
         "text": "*    相对 URL 只有浏览器同源能解析 —— Node / 原生宿主里 `fetch(\"/api/…\")` 直接抛"
       },
       {
         "file": "lib/client.js",
-        "line": 16842,
-        "text": "return fetch(url, opts);"
+        "line": 16794,
+        "text": "const res = await fetch(NOTIFY_IDENTITY_API, { headers: { Accept: \"application/json\" } });"
       },
       {
         "file": "lib/client.js",
-        "line": 16865,
-        "text": "const res = await fetch(api, opts);"
+        "line": 16807,
+        "text": "const res = await fetch(NOTIFY_IDENTITY_API, {"
       },
       {
         "file": "lib/client.js",
-        "line": 16882,
-        "text": "void fetch(DSH_SNAPSHOT_API, {"
+        "line": 16827,
+        "text": "const res = await fetch(NOTIFY_TEST_API, { method: \"POST\" });"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 441,
+        "text": "mkdirSync(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 442,
+        "text": "appendFileSync(file, line + \"\\n\", \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 446,
+        "text": "const kept = readFileSync(file, \"utf8\").slice(-Math.floor(REMIND_LOG_MAX_BYTES / 2));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 447,
+        "text": "writeFileSync(file, kept.slice(kept.indexOf(\"\\n\") + 1), \"utf8\");"
+      }
+    ]
   },
   "agentTools": {
     "hit": false,
     "evidence": []
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 745,
+        "text": "execFile("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1123,
+        "text": "execFile("
+      }
+    ]
   },
   "installScripts": {
     "hit": true,

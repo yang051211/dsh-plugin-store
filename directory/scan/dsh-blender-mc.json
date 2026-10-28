@@ -1,0 +1,135 @@
+{
+  "name": "dsh-blender-mc",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-28T06:59:35.536Z",
+  "icon": "dsh-blender-mc.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 388,
+        "text": "return fetch(path, init).then("
+      },
+      {
+        "file": "lib/client.js",
+        "line": 412,
+        "text": "var xhr = new XMLHttpRequest()"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 457,
+        "text": "var xhr = new XMLHttpRequest()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 317,
+        "text": "return JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "lib/map-routes.js",
+        "line": 28,
+        "text": "import { createWriteStream, existsSync, promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/map-routes.js",
+        "line": 155,
+        "text": "text = await fsp.readFile(logPath, 'utf8')"
+      },
+      {
+        "file": "lib/map-routes.js",
+        "line": 158,
+        "text": "await fsp.rm(logPath, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['subprocess', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 191,
+        "text": "* 只写 { schema } 会在 ctx.tools.register() 里抛 TypeError → apply 直接中断 →"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 277,
+        "text": "// 单个工具注册失败不能拖垮整批：旧写法里 ctx.tools.register 第一次抛错就把"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 281,
+        "text": "const dispose = ctx.tools.register(def)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 146,
+        "text": "child = spawn(py, argv, {"
+      },
+      {
+        "file": "lib/map-routes.js",
+        "line": 26,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/map-routes.js",
+        "line": 122,
+        "text": "const child = spawn(deps.python, [deps.cli, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 141,
+      "text": "pip install opencv-python numpy"
+    },
+    {
+      "file": "README.md",
+      "line": 76,
+      "text": "pip install opencv-python numpy"
+    },
+    {
+      "file": "README.md",
+      "line": 145,
+      "text": "pip install opencv-python numpy"
+    }
+  ],
+  "skippedEntries": []
+}

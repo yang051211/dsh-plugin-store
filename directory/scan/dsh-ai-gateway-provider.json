@@ -1,0 +1,83 @@
+{
+  "name": "dsh-ai-gateway-provider",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-28T06:59:36.921Z",
+  "icon": "dsh-ai-gateway-provider.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 599,
+        "text": "const response = await fetch(apiUrl(path), {"
+      },
+      {
+        "file": "lib/model-test.js",
+        "line": 361,
+        "text": "const res = await fetch(req.url, { method: 'POST', redirect: 'manual', signal, headers: req.headers, body: JSON.stringify(req.body) });"
+      },
+      {
+        "file": "lib/model-test.js",
+        "line": 387,
+        "text": "const res = await fetch(`${gatewayRoot(facts.baseURL)}/v1/images/generations`, {"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 61,
+        "text": "res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 224,
+        "text": "resolveImageAccess: (attachments, ref) => resolveImageAttachmentAccess(attachments, (hostPath) => ctx.get('fs')?.processPathFromHostPath(hostPath), ref),"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 4,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 134,
+        "text": "return JSON.parse(fs.readFileSync(path.join(dataDir(), name), 'utf8'));"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 142,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/util.js",
+        "line": 145,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(value));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "@zhiqiangme/dsh-magpie",
+  "version": "26.10.28",
+  "scannedAt": "2026-10-28T06:59:36.968Z",
+  "icon": "zhiqiangme__dsh-magpie.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 213,
+        "text": "const response = await fetch(url, { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 301,
+        "text": "const res = await fetch(path, body ? { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) } : { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 446,
+        "text": "const response = await fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 5,
+        "text": "import { copyFileSync, existsSync, lstatSync, mkdirSync, openSync, closeSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/backend.js",
+        "line": 12,
+        "text": "function readJson(path, fallback = null) { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return fallback; } }"
+      },
+      {
+        "file": "lib/backend.js",
+        "line": 15,
+        "text": "try { writeFileSync(temporary, JSON.stringify(value, null, 2)); renameSync(temporary, path); }"
+      },
+      {
+        "file": "lib/backend.js",
+        "line": 16,
+        "text": "finally { rmSync(temporary, { force: true }); }"
+      },
+      {
+        "file": "lib/backend.js",
+        "line": 174,
+        "text": "mkdirSync(this.paths.cache, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backend.js",
+        "line": 1,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/backend.js",
+        "line": 46,
+        "text": "const child = spawn(path, args, { cwd: dirname(path), detached: true, stdio: 'ignore', windowsHide: false, env });"
+      },
+      {
+        "file": "lib/lifecycle.js",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

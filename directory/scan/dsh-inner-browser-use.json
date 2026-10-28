@@ -1,0 +1,118 @@
+{
+  "name": "dsh-inner-browser-use",
+  "version": "0.34.28",
+  "scannedAt": "2026-10-28T06:59:39.561Z",
+  "icon": "dsh-inner-browser-use.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 121,
+        "text": "void fetch(`${ROUTE}/sidecar/forget?session=${encodeURIComponent(sessionId)}`, { method: 'POST' }) // ui-copy-ignore"
+      },
+      {
+        "file": "client.js",
+        "line": 300,
+        "text": "void fetch(`${ROUTE}/sidecar/claim`, { // ui-copy-ignore"
+      },
+      {
+        "file": "client.js",
+        "line": 322,
+        "text": "void fetch(`${ROUTE}/sidecar/state?session=${encodeURIComponent(who)}`, { cache: 'no-store' }) // ui-copy-ignore"
+      },
+      {
+        "file": "client.js",
+        "line": 457,
+        "text": "void fetch(`${ROUTE}${path}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 473,
+        "text": "void fetch(`${ROUTE}/sidecar/input`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "const saved = JSON.parse(readFileSync(MIRROR_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 46,
+        "text": "mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "writeFileSync(MIRROR_FILE, JSON.stringify(value))"
+      },
+      {
+        "file": "review.js",
+        "line": 8,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 654,
+        "text": "return scope.tools.register(scoped)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 11,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "sidecar.js",
+        "line": 8,
+        "text": "import { execFileSync, spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "sidecar.js",
+        "line": 1635,
+        "text": "const child = spawn(binary, args, { detached: false, stdio: 'ignore' })"
+      },
+      {
+        "file": "sidecar.js",
+        "line": 1895,
+        "text": "const guard = spawn('/bin/sh', ['-c', `while kill -0 ${app} 2>/dev/null; do sleep 5; done; kill ${chrome} 2>/dev/null`], {"
+      },
+      {
+        "file": "sidecar.js",
+        "line": 1928,
+        "text": "spawnSync('taskkill', ['/pid', String(this.child.pid), '/T', '/F'], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
