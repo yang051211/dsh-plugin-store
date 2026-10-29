@@ -1,0 +1,92 @@
+{
+  "name": "dsh-screenshot-chat",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-29T07:06:36.076Z",
+  "icon": "dsh-screenshot-chat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 176,
+        "text": "const response = await fetch(`${PREFIX}/capture`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 385,
+        "text": "fetch(`${PREFIX}/health`, { cache: 'no-store', headers: { accept: 'application/json' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 248,
+        "text": "void fs.unlink(file).catch(() => {})"
+      },
+      {
+        "file": "index.js",
+        "line": 257,
+        "text": "void fs.unlink(file).catch(() => {})"
+      },
+      {
+        "file": "index.js",
+        "line": 272,
+        "text": "const buffer = await fs.readFile(file)"
+      },
+      {
+        "file": "index.js",
+        "line": 281,
+        "text": "void fs.unlink(file).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 145,
+        "text": "child = spawn('osascript', ['-e', script], { stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "index.js",
+        "line": 232,
+        "text": "/** @type {import('node:child_process').ChildProcess} */"
+      },
+      {
+        "file": "index.js",
+        "line": 237,
+        "text": "child = spawn('screencapture', ['-i', '-x', '-o', file], { stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

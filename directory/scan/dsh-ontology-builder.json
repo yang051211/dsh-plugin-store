@@ -1,11 +1,22 @@
 {
   "name": "dsh-ontology-builder",
-  "version": "0.1.0",
-  "scannedAt": "2026-10-28T14:05:53.225Z",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-29T07:06:41.572Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/ui/assets/index-Br-WupE8.js",
+        "line": 1,
+        "text": " n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var l=o((e=>{var t=Symbol.for(`react.transitional.element`),n=Symbol.for(`react.portal`),r=Symbol.f"
+      },
+      {
+        "file": "dist/ui/assets/index-Br-WupE8.js",
+        "line": 9,
+        "text": "es(t).filter(e=>e[1]!==void 0)),r=await fetch(`api/${e}?${n}`,{credentials:`same-origin`}),i=await r.json().catch(()=>({error:r.statusText}));if(!r.ok)throw new"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
@@ -13,27 +24,27 @@
       {
         "file": "dist/dsh/tools.js",
         "line": 2,
-        "text": "import { readFile, stat, writeFile, mkdir } from 'node:fs/promises';"
+        "text": "import { readFile, readdir, stat, writeFile, mkdir } from 'node:fs/promises';"
       },
       {
         "file": "dist/dsh/tools.js",
-        "line": 132,
+        "line": 41,
+        "text": "files.push({ path, text: await readFile(full, 'utf8') });"
+      },
+      {
+        "file": "dist/dsh/tools.js",
+        "line": 182,
         "text": "text = await readFile(full, 'utf8');"
       },
       {
         "file": "dist/dsh/tools.js",
-        "line": 289,
+        "line": 339,
         "text": "await mkdir(dirname(full), { recursive: true });"
       },
       {
         "file": "dist/dsh/tools.js",
-        "line": 290,
+        "line": 340,
         "text": "await writeFile(full, text);"
-      },
-      {
-        "file": "dist/index.js",
-        "line": 1,
-        "text": "import { mkdirSync } from 'node:fs';"
       }
     ]
   },
@@ -42,29 +53,49 @@
     "evidence": [
       {
         "file": "dist/index.js",
-        "line": 7,
-        "text": "export const inject = ['tools', 'approval'];"
+        "line": 10,
+        "text": "export const inject = ['tools', 'approval', 'llm', 'agentDefaultModel'];"
       },
       {
         "file": "dist/index.js",
-        "line": 29,
+        "line": 53,
+        "text": "ctx.effect(() => services.tools.register({"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 68,
         "text": "ctx.effect(() => services.tools.register({"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/ui/assets/index-Br-WupE8.js",
+        "line": 18,
+        "text": "hift(a.node),r=a.node,i=r.id()}return o.spawn(n)}}}},wy={kruskal:function(e){e||=function(e){return 1};for(var t=this.byGroup(),n=t.nodes,r=t.edges,i=n.length,a"
+      },
+      {
+        "file": "dist/ui/assets/index-Br-WupE8.js",
+        "line": 21,
+        "text": "qs++,r.updateItem(o);else{var s={eles:e.spawn().merge(e),level:t,reqs:1,key:a};r.push(s),i[a]=s}},jA.dequeue=function(e){for(var t=this,n=t.getElementQueue(),r="
+      }
+    ]
   },
   "installScripts": {
     "hit": false,
     "evidence": []
   },
   "dependencies": 1,
-  "minifiedFiles": [],
+  "minifiedFiles": [
+    "dist/ui/assets/index-Br-WupE8.js"
+  ],
   "binaryFiles": [],
   "requiredServices": [
+    "agentDefaultModel",
     "approval",
+    "llm",
     "tools"
   ],
   "setupHints": [],

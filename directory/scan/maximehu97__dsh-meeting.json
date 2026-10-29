@@ -1,0 +1,95 @@
+{
+  "name": "@maximehu97/dsh-meeting",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-29T07:06:32.279Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "fetch(url + \"api/state\", { mode: \"cors\" }).then(function (r) { if (alive) setUp(r.ok); }).catch(function () { if (alive) setUp(false); });"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 9,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 173,
+        "text": "const r = await fetch(url, {"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 257,
+        "text": "const r = await fetch(url, { ...opts, signal: AbortSignal.timeout(opts.timeout || 4000),"
+      },
+      {
+        "file": "web/app.js",
+        "line": 24,
+        "text": "const r = await fetch(url, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(body || {}) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/node.mjs",
+        "line": 10,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 20,
+        "text": "const SEEDS = JSON.parse(fs.readFileSync(path.join(HERE, \"seeds.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 21,
+        "text": "const VERSION = JSON.parse(fs.readFileSync(path.join(HERE, \"..\", \"package.json\"), \"utf8\")).version;"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 55,
+        "text": "fs.mkdirSync(this.dataDir, { recursive: true });"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 75,
+        "text": "try { this.S = { ...this.blank(), ...JSON.parse(fs.readFileSync(this.file, \"utf8\")) }; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 24,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/patch.mjs",
+        "line": 35,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

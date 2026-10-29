@@ -1,11 +1,21 @@
 {
   "name": "dsh-engram",
-  "version": "0.7.4",
-  "scannedAt": "2026-10-26T10:05:48.783Z",
+  "version": "0.9.0",
+  "scannedAt": "2026-10-29T07:06:27.753Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "eval/gate-audit.mjs",
+        "line": 507,
+        "text": "const response = await fetch(`${base}/overview?workspace=${encodeURIComponent(workspace)}`);"
+      },
+      {
+        "file": "eval/gate-audit.mjs",
+        "line": 523,
+        "text": "const response = await fetch(url);"
+      },
       {
         "file": "lib/client.js",
         "line": 67,
@@ -20,16 +30,6 @@
         "file": "lib/client.js",
         "line": 75,
         "text": "return readJson(await fetch(`${API_PREFIX}/tasks${query({ workspace, includeStable: includeStable ? \"1\" : void 0 })}`));"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 79,
-        "text": "return readJson(await fetch(`${API_PREFIX}/toolstats?days=${days}`));"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 83,
-        "text": "await fetch(`${API_PREFIX}/tasks`, {"
       }
     ]
   },
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/anchor.js",
-        "line": 23,
-        "text": "import { readFileSync, statSync } from \"node:fs\";"
-      },
-      {
-        "file": "lib/anchor.js",
+        "file": "eval/gate-audit.mjs",
         "line": 30,
-        "text": "return createHash(\"sha256\").update(readFileSync(file)).digest(\"hex\").slice(0, 32);"
-      },
-      {
-        "file": "lib/boundary-prune.js",
-        "line": 39,
         "text": "import fs from \"node:fs\";"
       },
       {
-        "file": "lib/ledger.js",
-        "line": 27,
-        "text": "import fs from \"node:fs\";"
+        "file": "eval/gate-audit.mjs",
+        "line": 163,
+        "text": "status = JSON.parse(fs.readFileSync(file, \"utf8\"));"
       },
       {
-        "file": "lib/ledger.js",
-        "line": 124,
-        "text": "const parsed = JSON.parse(fs.readFileSync(file, \"utf8\"));"
+        "file": "eval/gate-audit.mjs",
+        "line": 221,
+        "text": "parsed = JSON.parse(fs.readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "eval/gate-audit.mjs",
+        "line": 247,
+        "text": "parsed = JSON.parse(fs.readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "eval/gate-audit.mjs",
+        "line": 291,
+        "text": "const report = JSON.parse(fs.readFileSync(file, \"utf8\"));"
       }
     ]
   },
@@ -68,12 +68,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 49,
+        "line": 50,
         "text": "export const inject = [\"tools\"];"
       },
       {
         "file": "lib/index.js",
-        "line": 1105,
+        "line": 1192,
         "text": "ctx.tools.register(resultRecallTool(l2Dir, pageChars));"
       },
       {
@@ -88,7 +88,7 @@
     "evidence": [
       {
         "file": "scripts/dsh-engram.mjs",
-        "line": 21,
+        "line": 24,
         "text": "import { execFileSync } from \"node:child_process\";"
       },
       {

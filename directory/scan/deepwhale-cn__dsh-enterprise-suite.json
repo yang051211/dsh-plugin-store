@@ -1,0 +1,82 @@
+{
+  "name": "@deepwhale-cn/dsh-enterprise-suite",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-29T07:06:31.033Z",
+  "icon": "deepwhale-cn__dsh-enterprise-suite.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dashboard.js",
+        "line": 154,
+        "text": "fetch('/enterprise/data?view=all').then(function(r){return r.json();}).then(function(d){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 5,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 25,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 51,
+        "text": "const saved = JSON.parse(readFileSync(stateFile, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 43,
+        "text": "if (existsSync(file)) return readFileSync(file, 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

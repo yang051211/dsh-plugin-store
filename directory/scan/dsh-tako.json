@@ -1,7 +1,7 @@
 {
   "name": "dsh-tako",
-  "version": "0.5.12",
-  "scannedAt": "2026-10-28T23:43:49.278Z",
+  "version": "0.5.13",
+  "scannedAt": "2026-10-29T07:06:24.813Z",
   "icon": "dsh-tako.png",
   "network": {
     "hit": true,
@@ -47,15 +47,26 @@
         "text": "return JSON.parse(readFileSync(packageJson, 'utf8'));"
       },
       {
-        "file": "lib/upgrade.js",
-        "line": 16,
-        "text": "import { existsSync, readFileSync } from 'node:fs';"
+        "file": "lib/tako-tools.js",
+        "line": 9,
+        "text": "import { writeFile, unlink, readFile } from 'node:fs/promises';"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tako-tools.js",
+        "line": 2,
+        "text": "* Tako-backed executable tools for official DSH profiles that mount `ctx.tools`."
+      },
+      {
+        "file": "lib/tako-tools.js",
+        "line": 506,
+        "text": "const unregister = tools.register(definition);"
+      }
+    ]
   },
   "childProcess": {
     "hit": true,

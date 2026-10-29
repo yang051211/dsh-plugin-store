@@ -1,45 +1,39 @@
 {
   "name": "dsh-1bot",
-  "version": "0.2.0",
-  "scannedAt": "2026-10-26T10:08:46.360Z",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-29T07:06:35.595Z",
   "icon": null,
   "network": {
-    "hit": true,
-    "evidence": [
-      {
-        "file": "lib/tools.js",
-        "line": 66,
-        "text": "description: \"Max messages to fetch (default 20, max 100)\","
-      }
-    ]
+    "hit": false,
+    "evidence": []
   },
   "fileSystem": {
     "hit": true,
     "evidence": [
       {
-        "file": "lib/bridge.js",
-        "line": 1,
-        "text": "import { mkdir } from \"node:fs/promises\";"
+        "file": "lib/adapter/client-api.js",
+        "line": 2,
+        "text": "import { readFile } from \"node:fs/promises\";"
       },
       {
-        "file": "lib/bridge.js",
-        "line": 90,
-        "text": "await mkdir(cwd, { recursive: true });"
+        "file": "lib/adapter/client-api.js",
+        "line": 7,
+        "text": "nst [client, interfaces, structs] = await Promise.all([\"client.d.ts\", \"interfaces.d.ts\", \"structs.d.ts\"].map((file) => readFile(new URL(file, entry), \"utf8\")));"
       },
       {
         "file": "lib/profile-setup.js",
-        "line": 4,
+        "line": 1,
         "text": "import { readFile, writeFile } from \"node:fs/promises\";"
       },
       {
         "file": "lib/profile-setup.js",
-        "line": 69,
+        "line": 17,
         "text": "content = await readFile(file, \"utf8\");"
       },
       {
         "file": "lib/profile-setup.js",
-        "line": 76,
-        "text": "await writeFile(file, content.replace(/\\s*$/, \"\\n\") + buildPatchTemplate(config), \"utf8\");"
+        "line": 27,
+        "text": "await writeFile(file, content + (content.endsWith(\"\\n\") ? \"\" : \"\\n\") + buildPatchTemplate(config), \"utf8\");"
       }
     ]
   },
@@ -48,27 +42,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 16,
-        "text": "export const inject = [\"tools\", \"agents\", \"sessions\", \"sessionPersistence\", \"agentDefaultModel\"];"
+        "line": 9,
+        "text": "export const inject = [\"tools\", \"sessionProjections\"];"
       },
       {
         "file": "lib/tools.js",
-        "line": 10,
-        "text": "* 在 `ctx.tools` 上注册全部 OneBot 工具。"
-      },
-      {
-        "file": "lib/tools.js",
-        "line": 16,
+        "line": 5,
         "text": "ctx.tools.register(defineTool({"
       },
       {
         "file": "lib/tools.js",
-        "line": 55,
+        "line": 37,
         "text": "ctx.tools.register(defineTool({"
       },
       {
         "file": "lib/tools.js",
-        "line": 106,
+        "line": 59,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 71,
         "text": "ctx.tools.register(defineTool({"
       }
     ]
@@ -81,14 +75,11 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 2,
+  "dependencies": 3,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [
-    "agentDefaultModel",
-    "agents",
-    "sessionPersistence",
-    "sessions",
+    "sessionProjections",
     "tools"
   ],
   "setupHints": [],

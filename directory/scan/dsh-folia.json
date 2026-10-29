@@ -1,7 +1,7 @@
 {
   "name": "dsh-folia",
-  "version": "4.0.0",
-  "scannedAt": "2026-10-28T23:44:01.668Z",
+  "version": "4.0.2",
+  "scannedAt": "2026-10-29T07:06:26.863Z",
   "icon": "dsh-folia.png",
   "network": {
     "hit": true,
@@ -38,28 +38,28 @@
     "evidence": [
       {
         "file": "lib/boot/index.js",
-        "line": 11,
+        "line": 12,
         "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';"
       },
       {
         "file": "lib/boot/index.js",
-        "line": 22,
+        "line": 23,
         "text": "try { if (!existsSync(d)) mkdirSync(d, { recursive: true }); } catch { /* 只读盘：后续写入会失败并如实报错 */ }"
       },
       {
         "file": "lib/boot/index.js",
-        "line": 32,
+        "line": 33,
         "text": "return JSON.parse(readFileSync(bootConfigPath(), 'utf8')) || {};"
       },
       {
         "file": "lib/boot/index.js",
-        "line": 66,
+        "line": 67,
         "text": "writeFileSync(bootConfigPath(), JSON.stringify(cfg, null, 2) + '\\n');"
       },
       {
         "file": "lib/boot/index.js",
-        "line": 95,
-        "text": "try { meta = JSON.parse(readFileSync(join(dir, id + '.json'), 'utf8')) || {}; } catch { /* 没 meta 也能用 */ }"
+        "line": 123,
+        "text": "try { meta = JSON.parse(readFileSync(join(dir, stem + '.json'), 'utf8')) || {}; } catch { /* 没 meta 也能用 */ }"
       }
     ]
   },

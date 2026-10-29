@@ -1,0 +1,121 @@
+{
+  "name": "chatsync",
+  "version": "0.21.0",
+  "scannedAt": "2026-10-29T07:06:29.484Z",
+  "icon": "chatsync.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 23,
+        "text": "fetch('/dsh-sync/api/run', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 29,
+        "text": "fetch('/dsh-sync/api/startup', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 35,
+        "text": "fetch('/dsh-sync/api/send-check', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 45,
+        "text": "fetch('/dsh-sync/api/startup', { signal: signal || AbortSignal.timeout(10000) }).then(r => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "status: () => fetch('/dsh-sync/api/status').then(r => r.json()),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/branch-history.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/branch-history.js",
+        "line": 63,
+        "text": "return fs.readFileSync(active?.file || safePath(engine.home, record.path));"
+      },
+      {
+        "file": "lib/branch-history.js",
+        "line": 70,
+        "text": "fs.mkdirSync(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/branch-history.js",
+        "line": 83,
+        "text": "prior = JSON.parse(fs.readFileSync(state, 'utf8'));"
+      },
+      {
+        "file": "lib/cli.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 94,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 119,
+        "text": "tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine/git-runner.js",
+        "line": 2,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/engine/git-runner.js",
+        "line": 71,
+        "text": "child = spawn(cmd, args, opts);"
+      },
+      {
+        "file": "lib/engine/git-runner.js",
+        "line": 86,
+        "text": "spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], {"
+      },
+      {
+        "file": "lib/engine/git-runner.js",
+        "line": 195,
+        "text": "const r = spawnSync('git', args, {"
+      },
+      {
+        "file": "lib/engine/remote-repo.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

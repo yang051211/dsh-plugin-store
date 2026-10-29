@@ -1,0 +1,112 @@
+{
+  "name": "dsh-deepseek-webdesk",
+  "version": "0.12.2",
+  "scannedAt": "2026-10-29T07:06:36.235Z",
+  "icon": "dsh-deepseek-webdesk.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 189,
+        "text": "const response = await fetch(url, { credentials: 'same-origin', cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 218,
+        "text": "const response = await fetch('/dsh-deepseek-webdesk/api/sessions/pin', {"
+      },
+      {
+        "file": "client.js",
+        "line": 238,
+        "text": "const response = await fetch('/dsh-deepseek-webdesk/api/sessions/delete', {"
+      },
+      {
+        "file": "client.js",
+        "line": 331,
+        "text": "fetch(SHARED_LOGIN_API, { credentials: 'same-origin', cache: 'no-store' }),"
+      },
+      {
+        "file": "client.js",
+        "line": 348,
+        "text": "const response = await fetch('/dsh-deepseek-webdesk/api/auth/session', { credentials: 'same-origin', cache: 'no-store' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 56,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 154,
+        "text": "return normalizeSessionSnapshot(JSON.parse(readFileSync(file, 'utf8')));"
+      },
+      {
+        "file": "index.js",
+        "line": 164,
+        "text": "mkdirSync(deskDir(), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 165,
+        "text": "writeFileSync(file, JSON.stringify({ ...snapshot, at: new Date().toISOString() }, null, 2) + '\\n', { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 650,
+        "text": "const result = spawnSync('swiftc', ['-O', '-o', binary, source], { timeout: 120_000, encoding: 'utf8' });"
+      },
+      {
+        "file": "index.js",
+        "line": 655,
+        "text": "spawnSync('chmod', ['755', binary]);"
+      },
+      {
+        "file": "index.js",
+        "line": 673,
+        "text": "const child = spawn(binary, [String(keyCode), String(modifiers)], { stdio: 'ignore' });"
+      },
+      {
+        "file": "index.js",
+        "line": 694,
+        "text": "      const child = spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script, '-Modifiers', String(modifiers), '-VirtualKey', String"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

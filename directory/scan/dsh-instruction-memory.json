@@ -1,7 +1,7 @@
 {
   "name": "dsh-instruction-memory",
-  "version": "1.4.3",
-  "scannedAt": "2026-10-27T02:44:58.252Z",
+  "version": "1.4.5",
+  "scannedAt": "2026-10-29T07:06:28.017Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -17,29 +17,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
-        "line": 28,
-        "text": "import { copyFile, mkdir, readdir, readFile, rename, stat, unlink, writeFile } from 'node:fs/promises'"
+        "file": "install.mjs",
+        "line": 20,
+        "text": "import { existsSync, readFileSync, writeFileSync, symlinkSync, lstatSync, unlinkSync, copyFileSync, mkdirSync } from 'node:fs'"
       },
       {
-        "file": "lib/index.js",
-        "line": 29,
-        "text": "import { readFileSync, watch } from 'node:fs'"
+        "file": "install.mjs",
+        "line": 43,
+        "text": "return JSON.parse(readFileSync(pkgPath, 'utf8'))"
       },
       {
-        "file": "lib/index.js",
-        "line": 170,
-        "text": "const manifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+        "file": "install.mjs",
+        "line": 47,
+        "text": "writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\\n', 'utf8')"
       },
       {
-        "file": "lib/index.js",
-        "line": 2068,
-        "text": "await writeFile(lockPath, token, { flag: 'wx' })"
+        "file": "install.mjs",
+        "line": 62,
+        "text": "// the old `rmSync(link, {recursive: true})` fallback deleted the installed"
       },
       {
-        "file": "lib/index.js",
-        "line": 2079,
-        "text": "await unlink(lockPath).catch(() => {})"
+        "file": "install.mjs",
+        "line": 76,
+        "text": "unlinkSync(link)"
       }
     ]
   },

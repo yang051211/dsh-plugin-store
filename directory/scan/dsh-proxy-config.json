@@ -1,0 +1,85 @@
+{
+  "name": "dsh-proxy-config",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-29T07:06:35.938Z",
+  "icon": "dsh-proxy-config.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 311,
+        "text": "const response = await fetch(`${API}/status`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 406,
+        "text": "const response = await fetch(`${API}/check`, { method: 'POST' })"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 14,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/probe.js",
+        "line": 75,
+        "text": "const request = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/env-file.js",
+        "line": 15,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/env-file.js",
+        "line": 92,
+        "text": "text = await readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/env-file.js",
+        "line": 103,
+        "text": "await mkdir(dirname(path), { recursive: true })"
+      },
+      {
+        "file": "lib/env-file.js",
+        "line": 106,
+        "text": "await rm(path, { force: true })"
+      },
+      {
+        "file": "lib/env-file.js",
+        "line": 110,
+        "text": "await writeFile(temporary, result.text, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool.js",
+        "line": 50,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

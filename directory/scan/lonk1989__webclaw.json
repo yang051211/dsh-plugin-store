@@ -1,0 +1,125 @@
+{
+  "name": "@lonk1989/webclaw",
+  "version": "0.1.16",
+  "scannedAt": "2026-10-29T07:06:30.092Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 7,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 88,
+        "text": "const res = await fetch('/api/accounts');"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 122,
+        "text": "const r = await fetch('/api/accounts/' + encodeURIComponent(item.id), {"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 305,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/api/health`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 46,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/api/health`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 8,
+        "text": "import { chmodSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 156,
+        "text": "mkdirSync(binDir, { recursive: true });"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 161,
+        "text": "writeFileSync(join(binDir, 'webclaw-lite.cmd'), liteCmd, 'utf8');"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 163,
+        "text": "writeFileSync(join(binDir, 'webclaw-accounts.cmd'), accountsCmd, 'utf8');"
+      },
+      {
+        "file": "lib/accounts-ui-server.js",
+        "line": 172,
+        "text": "writeFileSync(litePath, liteSh, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 224,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 278,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 408,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 464,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/spawn.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/spawn.js",
+        "line": 25,
+        "text": "const child = spawn(env.binaryPath, [...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

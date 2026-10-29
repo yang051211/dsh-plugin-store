@@ -1,0 +1,113 @@
+{
+  "name": "@maximehu97/dsh-meeting-dd",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-29T07:06:34.653Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "fetch(url + \"api/state\", { mode: \"cors\" }).then(function (r) { if (alive) setUp(r.ok); }).catch(function () { if (alive) setUp(false); });"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 9,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "web/app.js",
+        "line": 24,
+        "text": "const r = await fetch(url, { method: \"POST\", headers: { \"content-type\": \"application/json\" }, body: JSON.stringify(body || {}) });"
+      },
+      {
+        "file": "web/app.js",
+        "line": 33,
+        "text": "S = await (await fetch(\"/api/state\")).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 11,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 211,
+        "text": "fs.mkdirSync(path.join(this.dir, \"inbox\", this.me.openId), { recursive: true });"
+      },
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 214,
+        "text": "fs.writeFileSync(path.join(this.dir, \"users.json\"), JSON.stringify(users, null, 1));"
+      },
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 217,
+        "text": "users() { try { return JSON.parse(fs.readFileSync(path.join(this.dir, \"users.json\"), \"utf8\")); } catch { return {}; } }"
+      },
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 225,
+        "text": "fs.writeFileSync(f + \".tmp\", JSON.stringify({ id: key, from: this.me.openId, fromName: this.me.name, text }));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 22,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/patch.mjs",
+        "line": 33,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 9,
+        "text": "import { spawn, execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/dingtalk.mjs",
+        "line": 160,
+        "text": "const child = spawn(this.exe(), a, { stdio: [\"ignore\", \"pipe\", \"pipe\"], env: this.env() });"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 14,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/node.mjs",
+        "line": 330,
+        "text": "const child = spawn(this.link.exe ? this.link.exe() : \"dws\", [\"auth\", \"login\"], { env, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,98 @@
+{
+  "name": "computer-user",
+  "version": "0.5.9",
+  "scannedAt": "2026-10-29T07:06:29.337Z",
+  "icon": "computer-user.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools.js",
+        "line": 653,
+        "text": "const res = await fetch(url, opts);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/ps.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/ps.js",
+        "line": 107,
+        "text": "mkdirSync(GUARD_DIR, { recursive: true });"
+      },
+      {
+        "file": "src/ps.js",
+        "line": 108,
+        "text": "writeFileSync(GUARD_STOP_FLAG, 'reason=' + reason + ' at=' + new Date().toISOString(), 'utf8');"
+      },
+      {
+        "file": "src/ps.js",
+        "line": 114,
+        "text": "try { rmSync(GUARD_STOP_FLAG, { force: true }); } catch { /* best effort */ }"
+      },
+      {
+        "file": "src/ps.js",
+        "line": 127,
+        "text": "const raw = readFileSync(GUARD_PID_FILE, 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 137,
+        "text": "disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 12,
+        "text": "* @returns {Array<object>} tool definitions ready for ctx.tools.register"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/ps.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/ps.js",
+        "line": 28,
+        "text": "const child = spawn("
+      },
+      {
+        "file": "src/ps.js",
+        "line": 176,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

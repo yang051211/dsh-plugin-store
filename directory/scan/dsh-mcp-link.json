@@ -1,0 +1,94 @@
+{
+  "name": "dsh-mcp-link",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-29T07:06:32.428Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 333,
+        "text": "const response = await fetch(`${API_BASE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 142,
+        "text": "async unlink(entryId) {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 257,
+        "text": "unlink: (entryId) => this.unlink(entryId),"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1302,
+        "text": "const ok = await unlink(pendingUnlink.entryId);"
+      },
+      {
+        "file": "lib/host/parsers.js",
+        "line": 2,
+        "text": "import { readFile, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/host/parsers.js",
+        "line": 17,
+        "text": "text = await readFile(descriptor.path, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/actions.js",
+        "line": 420,
+        "text": "return name === '@deepseek-ai/dsh-mcp-client' || (name?.endsWith('/dsh-mcp-client') ?? false);"
+      },
+      {
+        "file": "lib/host/patch.js",
+        "line": 7,
+        "text": "const MCP_MODULE = '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "lib/host/patch.js",
+        "line": 272,
+        "text": "return name === MCP_MODULE || name.endsWith('/dsh-mcp-client');"
+      },
+      {
+        "file": "lib/host/scan.js",
+        "line": 352,
+        "text": "return name === '@deepseek-ai/dsh-mcp-client' || name.endsWith('/dsh-mcp-client');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "loader"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

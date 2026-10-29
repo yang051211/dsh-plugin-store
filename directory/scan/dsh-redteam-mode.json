@@ -1,7 +1,7 @@
 {
   "name": "dsh-redteam-mode",
-  "version": "0.15.2",
-  "scannedAt": "2026-10-28T14:05:33.317Z",
+  "version": "0.15.1",
+  "scannedAt": "2026-10-29T07:06:27.311Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -43,23 +43,23 @@
       },
       {
         "file": "lib/index.js",
-        "line": 125,
-        "text": "text = readFileSync(presetFile, 'utf8')"
+        "line": 67,
+        "text": "wanted = readFileSync(paths.setupScript, 'utf8')"
       },
       {
         "file": "lib/index.js",
-        "line": 132,
-        "text": "writeFileSync(presetFile, rendered.text, 'utf8')"
+        "line": 72,
+        "text": "mkdirSync(redteamDataDir(), { recursive: true })"
       },
       {
         "file": "lib/index.js",
-        "line": 148,
-        "text": "mkdirSync(target, { recursive: true })"
+        "line": 75,
+        "text": "try { current = readFileSync(target, 'utf8') } catch { current = '' }"
       },
       {
         "file": "lib/index.js",
-        "line": 150,
-        "text": "const text = readFileSync(join(paths.presetDir, file), 'utf8')"
+        "line": 81,
+        "text": "writeFileSync(target, wanted, { encoding: 'utf8', mode: 0o755 })"
       }
     ]
   },

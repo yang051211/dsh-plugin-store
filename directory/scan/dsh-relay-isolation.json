@@ -1,0 +1,82 @@
+{
+  "name": "dsh-relay-isolation",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-29T07:06:30.027Z",
+  "icon": "dsh-relay-isolation.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provision.js",
+        "line": 133,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/provision.js",
+        "line": 159,
+        "text": "const response = await fetch(`${provider.probeBaseURL}/models`, { headers, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/provision.js",
+        "line": 8,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/provision.js",
+        "line": 65,
+        "text": "const text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/provision.js",
+        "line": 357,
+        "text": "function writeFile(file, content, mode) {"
+      },
+      {
+        "file": "lib/provision.js",
+        "line": 358,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/provision.js",
+        "line": 359,
+        "text": "fs.writeFileSync(file, content, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 91,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "ctx.effect(() => ctx.tools.register(definition));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

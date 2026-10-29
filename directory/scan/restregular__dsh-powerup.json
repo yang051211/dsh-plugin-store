@@ -1,34 +1,34 @@
 {
   "name": "@restregular/dsh-powerup",
-  "version": "0.6.1",
-  "scannedAt": "2026-10-27T02:44:49.787Z",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-29T07:06:26.791Z",
   "icon": "restregular__dsh-powerup.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 1703,
+        "line": 1773,
         "text": "let response = await fetch(url, {"
       },
       {
         "file": "client.js",
-        "line": 1709,
+        "line": 1779,
         "text": "response = await fetch(url, { signal });"
       },
       {
         "file": "client.js",
-        "line": 1937,
+        "line": 2007,
         "text": "const response = await fetch(AUDIT_API, { headers: { accept: 'application/json' } });"
       },
       {
         "file": "client.js",
-        "line": 2261,
+        "line": 2331,
         "text": "const response = await fetch(JOB_KILL_API, {"
       },
       {
         "file": "client.js",
-        "line": 2947,
+        "line": 3017,
         "text": "const response = await fetch(SELF_UPDATE_API, {"
       }
     ]
@@ -38,22 +38,22 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 26,
+        "line": 32,
         "text": "import { appendFileSync, mkdirSync, readFileSync, statSync } from 'node:fs';"
       },
       {
         "file": "index.js",
-        "line": 54,
+        "line": 62,
         "text": "const manifest = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));"
       },
       {
         "file": "index.js",
-        "line": 187,
+        "line": 195,
         "text": "mkdirSync(dirname(path), { recursive: true });"
       },
       {
         "file": "index.js",
-        "line": 188,
+        "line": 196,
         "text": "appendFileSync(path, `${new Date().toISOString()} ${line}\\n`);"
       },
       {
@@ -64,8 +64,19 @@
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 485,
+        "text": "() => tools.register(createStepReadTool(defineTool, {"
+      },
+      {
+        "file": "lib/step-tool.js",
+        "line": 25,
+        "text": "* @returns {any} a ToolDefinition for `ctx.tools.register`"
+      }
+    ]
   },
   "childProcess": {
     "hit": true,

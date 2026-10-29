@@ -1,0 +1,97 @@
+{
+  "name": "@sueleven/dsh-auto-update",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-29T07:06:30.871Z",
+  "icon": "sueleven__dsh-auto-update.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 38,
+        "text": "const response = await fetch(routeUrl(`${ROUTE}/${path}`), {"
+      },
+      {
+        "file": "lib/update.mjs",
+        "line": 309,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 53,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "writeFileSync(join(LOG_DIR, 'plugin.log'), `${new Date().toISOString()} ${line}\\n`, { flag: 'a' });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 79,
+        "text": "writeFileSync(file, `${JSON.stringify(data, null, 2)}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 106,
+        "text": "child = spawn(process.execPath, [SCRIPT_PATH, ...args], {"
+      },
+      {
+        "file": "lib/update.mjs",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/update.mjs",
+        "line": 504,
+        "text": "child = spawn(exe, args, { cwd: profileDir, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/update.mjs",
+        "line": 521,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

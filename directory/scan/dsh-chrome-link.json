@@ -1,0 +1,88 @@
+{
+  "name": "dsh-chrome-link",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-29T07:06:40.047Z",
+  "icon": "dsh-chrome-link.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "import { mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 28,
+        "text": "mkdirSync(outputDirectory, { recursive: true })"
+      },
+      {
+        "file": "launcher.mjs",
+        "line": 16,
+        "text": "import { existsSync, mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "launcher.mjs",
+        "line": 32,
+        "text": "mkdirSync(home, { recursive: true })"
+      },
+      {
+        "file": "launcher.mjs",
+        "line": 33,
+        "text": "mkdirSync(profiles, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 27,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "export const inject = ['systemPrompt', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "if (ctx.tools.get(`mcp__${serverName}__browser_navigate`, scope) === undefined) return ''"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launcher.mjs",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "launcher.mjs",
+        "line": 132,
+        "text": "const child = spawn(process.execPath, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

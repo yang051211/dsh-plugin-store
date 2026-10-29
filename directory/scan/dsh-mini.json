@@ -1,0 +1,120 @@
+{
+  "name": "dsh-mini",
+  "version": "0.1.8",
+  "scannedAt": "2026-10-29T07:06:31.014Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "app/build-app.ps1",
+        "line": 46,
+        "text": "Invoke-WebRequest -Uri $url -OutFile $pkg -UseBasicParsing"
+      },
+      {
+        "file": "app/dev.ps1",
+        "line": 16,
+        "text": "$r = Invoke-RestMethod -Method Post -Uri 'http://127.0.0.1:58791/dsh-hud/open' `"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 185,
+        "text": "const response = await fetch(`${PREFIX}${path}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 490,
+        "text": "const response = await fetch(`${PREFIX}/config`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 504,
+        "text": "const response = await fetch(`${PREFIX}/config`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 82,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 101,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 115,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 124,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 83,
+        "text": "const child = spawn(NATIVE_EXE, args, { detached: true, stdio: 'ignore', env: shellEnv(), windowsHide: false })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 102,
+        "text": "spawnSync('schtasks.exe', ['/Create', '/TN', TASK_NAME, '/TR', ('\"' + NATIVE_EXE + '\"'), '/SC', 'ONCE', '/ST', '23:59', '/SD', '2099/12/31', '/F'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "const run = spawnSync('schtasks.exe', ['/Run', '/TN', TASK_NAME], { env: shellEnv(), windowsHide: true, timeout: 20000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "app/bin/DSH小窗.exe",
+    "app/bin/Microsoft.Web.WebView2.Core.dll",
+    "app/bin/Microsoft.Web.WebView2.WinForms.dll",
+    "app/bin/WebView2Loader.dll",
+    "app/vendor/Microsoft.Web.WebView2.Core.dll",
+    "app/vendor/Microsoft.Web.WebView2.WinForms.dll",
+    "app/vendor/WebView2Loader.dll"
+  ],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "@morehao/dsh-commands",
-  "version": "0.3.2",
-  "scannedAt": "2026-10-28T06:59:32.171Z",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-29T07:06:26.128Z",
   "icon": "morehao__dsh-commands.svg",
   "network": {
     "hit": false,
@@ -12,8 +12,18 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 48,
+        "line": 50,
         "text": "import { access } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 18,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/plugin-update.js",
+        "line": 27,
+        "text": "const pkg = JSON.parse(readFileSync(new URL(\"../package.json\", import.meta.url), \"utf8\"));"
       },
       {
         "file": "lib/skill-cache.js",
@@ -24,16 +34,6 @@
         "file": "lib/skill-cache.js",
         "line": 18,
         "text": "import { access, mkdir, readFile, readdir, rename, rm, writeFile } from \"node:fs/promises\";"
-      },
-      {
-        "file": "lib/skill-cache.js",
-        "line": 140,
-        "text": "const parsed = JSON.parse(await readFile(metaPath(cacheDir), \"utf8\"));"
-      },
-      {
-        "file": "lib/skill-cache.js",
-        "line": 148,
-        "text": "await mkdir(dirname(cacheDir), { recursive: true });"
       }
     ]
   },
@@ -42,7 +42,7 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 323,
+        "line": 354,
         "text": "tools.register("
       }
     ]
@@ -85,12 +85,12 @@
   "setupHints": [
     {
       "file": "README.md",
-      "line": 64,
+      "line": 72,
       "text": "- 命令与工具共用 `lib/skill-setup.js` 的 observe/plan/apply/verify；无 `tools`、无 `agent.followup` 或注入失败时，命令回退到 `runSkillInit` / `runSkillUpdate`，旧宿主仍可用。"
     },
     {
       "file": "README.md",
-      "line": 76,
+      "line": 84,
       "text": "node scripts/smoke-skill-setup.mjs      # 技能自举 + 过程可见（stub，不联网）"
     }
   ],

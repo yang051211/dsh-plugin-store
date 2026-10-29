@@ -1,0 +1,82 @@
+{
+  "name": "@deepwhale-cn/dsh-approval-ledger",
+  "version": "0.2.8",
+  "scannedAt": "2026-10-29T07:06:29.876Z",
+  "icon": "deepwhale-cn__dsh-approval-ledger.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dashboard.js",
+        "line": 192,
+        "text": "fetch('/approval-ledger/data').then(function(r){ return r.json(); }).then(render).catch(function(e){"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "appendFileSync(ledgerPath(dir), `${JSON.stringify(record)}\\n`, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "if (existsSync(file)) return readFileSync(file, 'utf8').trim();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 286,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 304,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

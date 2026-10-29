@@ -1,0 +1,118 @@
+{
+  "name": "dsh-herdr",
+  "version": "0.11.1",
+  "scannedAt": "2026-10-29T07:06:32.066Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/index.js",
+        "line": 44,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "client/index.js",
+        "line": 51,
+        "text": "const res = await fetch(\"/herdr/api/action\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "const res = await fetch(url, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 51,
+        "text": "const res = await fetch(\"/herdr/api/action\", {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/fs/store.js",
+        "line": 7,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, readFileSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync, writeSync, } from \"node:fs\";"
+      },
+      {
+        "file": "lib/adapters/fs/store.js",
+        "line": 83,
+        "text": "const parsed = JSON.parse(readFileSync(this.stateFile, \"utf8\"));"
+      },
+      {
+        "file": "lib/adapters/fs/store.js",
+        "line": 104,
+        "text": "mkdirSync(dirname(this.stateFile), { recursive: true });"
+      },
+      {
+        "file": "lib/adapters/fs/store.js",
+        "line": 106,
+        "text": "writeFileSync(temporary, JSON.stringify(state, null, 2), \"utf8\");"
+      },
+      {
+        "file": "lib/adapters/fs/store.js",
+        "line": 110,
+        "text": "mkdirSync(dirname(this.lockPath), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 32,
+        "text": "export const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapters/git/local.js",
+        "line": 3,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/adapters/git/local.js",
+        "line": 9,
+        "text": "execFile(\"git\", [\"-C\", cwd, ...args], { timeout: timeoutMs, maxBuffer: 8 * 1024 * 1024, windowsHide: true }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/adapters/herdr/cli.js",
+        "line": 7,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/adapters/herdr/cli.js",
+        "line": 123,
+        "text": "child = spawn(this.bin, args, {"
+      },
+      {
+        "file": "lib/adapters/machine/local-io.js",
+        "line": 1,
+        "text": "import { execFile } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

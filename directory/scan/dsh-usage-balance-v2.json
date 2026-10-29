@@ -1,0 +1,79 @@
+{
+  "name": "dsh-usage-balance-v2",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-29T07:06:34.349Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 159,
+        "text": "const res = await fetch(STATE_URL + (force ? \"?refresh=1\" : \"\"), { cache: \"no-store\" });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 212,
+        "text": "fetch(\"/dsh-workspace-usage-v2/reconcile\", {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 404,
+        "text": "const res = await fetch(\"/dsh-workspace-usage-v2/state.json\", { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 217,
+        "text": "res = await fetch(BALANCE_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 70,
+        "text": "return normalizeState(JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 80,
+        "text": "fs.writeFileSync(temp, JSON.stringify(state), 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": "const value = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

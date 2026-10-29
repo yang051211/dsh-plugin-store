@@ -1,35 +1,35 @@
 {
   "name": "@dpskk2/dsh-chatsync",
-  "version": "0.20.3",
-  "scannedAt": "2026-10-26T10:11:55.870Z",
+  "version": "0.21.0",
+  "scannedAt": "2026-10-29T07:06:28.037Z",
   "icon": "dpskk2__dsh-chatsync.png",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 22,
-        "text": "      run: (approval) => fetch('/dsh-sync/api/run', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ approval }) }).the"
-      },
-      {
-        "file": "lib/client.js",
         "line": 23,
-        "text": "      startup: (action, approval) => fetch('/dsh-sync/api/startup', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ac"
+        "text": "fetch('/dsh-sync/api/run', {"
       },
       {
         "file": "lib/client.js",
-        "line": 24,
-        "text": "      maySend: sessionId => fetch('/dsh-sync/api/send-check', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ sessionI"
+        "line": 29,
+        "text": "fetch('/dsh-sync/api/startup', {"
       },
       {
         "file": "lib/client.js",
-        "line": 25,
-        "text": "      startupState: signal => fetch('/dsh-sync/api/startup', { signal: signal || AbortSignal.timeout(10000) }).then(r => { if (!r.ok) throw new Error('状态连接暂时中断'"
+        "line": 35,
+        "text": "fetch('/dsh-sync/api/send-check', {"
       },
       {
         "file": "lib/client.js",
-        "line": 26,
-        "text": "status: () => fetch('/dsh-sync/api/status').then((r) => r.json()),"
+        "line": 45,
+        "text": "fetch('/dsh-sync/api/startup', { signal: signal || AbortSignal.timeout(10000) }).then(r => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 49,
+        "text": "status: () => fetch('/dsh-sync/api/status').then(r => r.json()),"
       }
     ]
   },
@@ -43,18 +43,18 @@
       },
       {
         "file": "lib/branch-history.js",
-        "line": 45,
+        "line": 63,
         "text": "return fs.readFileSync(active?.file || safePath(engine.home, record.path));"
       },
       {
         "file": "lib/branch-history.js",
-        "line": 48,
-        "text": "const directory = safePath(engine.home, LOCAL_DATA + '/branch-preservations'); fs.mkdirSync(directory, { recursive: true });"
+        "line": 70,
+        "text": "fs.mkdirSync(directory, { recursive: true });"
       },
       {
         "file": "lib/branch-history.js",
-        "line": 56,
-        "text": "try { prior = JSON.parse(fs.readFileSync(state, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw new Error('分支恢复记录损坏'); }"
+        "line": 83,
+        "text": "prior = JSON.parse(fs.readFileSync(state, 'utf8'));"
       },
       {
         "file": "lib/cli.mjs",
@@ -68,23 +68,13 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 884,
+        "line": 94,
         "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools;"
       },
       {
         "file": "lib/index.js",
-        "line": 889,
-        "text": "]) disposers.push(tools.register({ name: toolName, description, parameters: noParameters, output: toolOut,"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 891,
-        "text": "disposers.push(tools.register({"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 905,
-        "text": "disposers.push(tools.register({"
+        "line": 119,
+        "text": "tools.register({"
       }
     ]
   },
@@ -92,29 +82,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/host-sync.js",
-        "line": 1,
+        "file": "lib/engine/git-runner.js",
+        "line": 2,
         "text": "import { spawn, spawnSync } from 'node:child_process';"
       },
       {
-        "file": "lib/host-sync.js",
-        "line": 16,
-        "text": "const child = spawn(process.execPath, [path.join(here, 'exit-sync.mjs'), engine.home, String(process.pid), configFile], {"
+        "file": "lib/engine/git-runner.js",
+        "line": 71,
+        "text": "child = spawn(cmd, args, opts);"
       },
       {
-        "file": "lib/patches.js",
-        "line": 28,
-        "text": "import { spawnSync } from \"node:child_process\";"
+        "file": "lib/engine/git-runner.js",
+        "line": 86,
+        "text": "spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F'], {"
       },
       {
-        "file": "lib/patches.js",
-        "line": 53,
-        "text": "const r = spawnSync(\"npm root -g\", { shell: true, encoding: \"utf8\", timeout: 8000, windowsHide: true });"
+        "file": "lib/engine/git-runner.js",
+        "line": 195,
+        "text": "const r = spawnSync('git', args, {"
       },
       {
-        "file": "lib/sync.js",
-        "line": 15,
-        "text": "import { spawn, spawnSync } from 'node:child_process';"
+        "file": "lib/engine/remote-repo.js",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process';"
       }
     ]
   },

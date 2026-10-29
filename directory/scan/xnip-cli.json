@@ -1,0 +1,96 @@
+{
+  "name": "xnip-cli",
+  "version": "0.5.7",
+  "scannedAt": "2026-10-29T07:06:39.340Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/native.cjs",
+        "line": 3,
+        "text": "const fs = require(\"node:fs\");"
+      },
+      {
+        "file": "lib/native.cjs",
+        "line": 10,
+        "text": "return crypto.createHash(\"sha256\").update(fs.readFileSync(file)).digest(\"hex\");"
+      },
+      {
+        "file": "lib/native.cjs",
+        "line": 21,
+        "text": "try { manifest = JSON.parse(fs.readFileSync(manifestPath, \"utf8\")); }"
+      },
+      {
+        "file": "lib/native.cjs",
+        "line": 57,
+        "text": "const metadata = JSON.parse(fs.readFileSync(path.join(payloadRoot, \"binary.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/native.cjs",
+        "line": 66,
+        "text": "fs.mkdirSync(root, { recursive: true, mode: 0o700 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "integrations/dsh/index.mjs",
+        "line": 17,
+        "text": "return import('@deepseek-ai/dsh-mcp-client');"
+      },
+      {
+        "file": "integrations/dsh/index.mjs",
+        "line": 69,
+        "text": "inject: ['tools'],"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/xnip.cjs",
+        "line": 4,
+        "text": "const { spawn } = require(\"node:child_process\");"
+      },
+      {
+        "file": "bin/xnip.cjs",
+        "line": 9,
+        "text": "child = spawn(resolveNativeExecutable(), process.argv.slice(2), {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 15,
+      "text": "npm install --global xnip-cli"
+    },
+    {
+      "file": "README.md",
+      "line": 122,
+      "text": "npm install --global xnip-cli@latest"
+    },
+    {
+      "file": "README.md",
+      "line": 127,
+      "text": "`npm install --global 'xnip-cli@<version>'`. For a project-local installation,"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "@weniatall/dsh-plugin-manager",
+  "version": "0.3.60",
+  "scannedAt": "2026-10-29T07:06:31.887Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 961,
+        "text": "const resp = await fetch(\"/?_ping=\" + Date.now(), {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "import { EnvHttpProxyAgent, fetch as undiciFetch } from 'undici'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 11,
+        "text": "import { closeSync, existsSync, openSync, readFileSync, readdirSync, readSync, realpathSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 238,
+        "text": "const text = readFileSync(npmrcPath, 'utf8')"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 773,
+        "text": "const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 800,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))"
+      },
+      {
+        "file": "lib/core.js",
+        "line": 813,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core.js",
+        "line": 14,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1610,
+        "text": "*     `spawn('sh', ['-c', 'sleep && systemctl restart ...'])` runs inside the"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "settings",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,132 @@
+{
+  "name": "dsh-plugin-omni-plan",
+  "version": "0.0.3",
+  "scannedAt": "2026-10-29T07:06:32.242Z",
+  "icon": "dsh-plugin-omni-plan.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1863,
+        "text": "const response = await fetch(`${API}/state`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1890,
+        "text": "const response = await fetch(`${API}${path}`, init)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1965,
+        "text": "const statusRes = await fetch(`${API}/topmost`, { cache: 'no-store', headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1976,
+        "text": "const startRes = await fetch(`${API}/topmost`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2070,
+        "text": "const response = await fetch(`${API}/topmost`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 17,
+        "text": "import { copyFileSync, existsSync, readFileSync, statSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 48,
+        "text": "const PACKAGE = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1070,
+        "text": "try { unlinkSync(readyFile) } catch { /* already gone */ }"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 23,
+        "text": "import { promises as fs, watch as watchDirectory } from 'node:fs'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 473,
+        "text": "await handle.writeFile("
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh-organize.js",
+        "line": 378,
+        "text": "// 注意：ctx.tools.execute 必须带 signal，否则注册表读取 callerSignal.aborted 会抛错"
+      },
+      {
+        "file": "lib/dsh-sticky.js",
+        "line": 108,
+        "text": "await ctx.tools.execute({"
+      },
+      {
+        "file": "lib/dsh-todos.js",
+        "line": 222,
+        "text": "// ctx.tools.execute 要求 signal 一定存在：注册表会读取 callerSignal.aborted。"
+      },
+      {
+        "file": "lib/dsh-todos.js",
+        "line": 293,
+        "text": "if (!ctx.tools || typeof ctx.tools.execute !== 'function') {"
+      },
+      {
+        "file": "lib/dsh-todos.js",
+        "line": 298,
+        "text": "const execute_result = await ctx.tools.execute({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host.js",
+        "line": 16,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1057,
+        "text": "child = spawn(this.executablePath, args, {"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 1131,
+        "text": "spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "lib/OmniPlanTopmost.exe"
+  ],
+  "requiredServices": [
+    "agents",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

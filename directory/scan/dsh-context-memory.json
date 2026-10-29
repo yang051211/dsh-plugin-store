@@ -1,7 +1,7 @@
 {
   "name": "dsh-context-memory",
-  "version": "1.0.0",
-  "scannedAt": "2026-10-28T06:59:39.766Z",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-29T07:06:31.973Z",
   "icon": "dsh-context-memory.svg",
   "network": {
     "hit": true,
@@ -13,23 +13,23 @@
       },
       {
         "file": "lib/client/view.js",
-        "line": 46,
+        "line": 59,
         "text": "            const r = await fetch(REMEMBER_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text, subject: subjec"
       },
       {
         "file": "lib/client/view.js",
-        "line": 68,
+        "line": 81,
         "text": "        const r = await fetch(PREFS_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ [key]: !(prefs?.[key] ?? tru"
       },
       {
         "file": "lib/client/view.js",
-        "line": 72,
-        "text": "useEffect(() => { void fetch(PREFS_PATH).then(async (r) => { if (r.ok)"
+        "line": 87,
+        "text": "const r = await fetch(PREFS_PATH, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ reverifyIntervalMs }) });"
       },
       {
         "file": "lib/client/view.js",
-        "line": 77,
-        "text": "void fetch(STATS_PATH).then(async (r) => { if (r.ok)"
+        "line": 91,
+        "text": "useEffect(() => { void fetch(PREFS_PATH).then(async (r) => { if (r.ok)"
       }
     ]
   },
@@ -57,9 +57,9 @@
         "text": "const lines = readFileSync(this.logPath, 'utf8').split('\\n');"
       },
       {
-        "file": "lib/guard.js",
-        "line": 45,
-        "text": "import { closeSync, openSync, readSync, statSync } from 'node:fs';"
+        "file": "lib/cli.js",
+        "line": 9,
+        "text": "import { appendFileSync, copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';"
       }
     ]
   },
@@ -108,9 +108,7 @@
     "evidence": []
   },
   "dependencies": 0,
-  "minifiedFiles": [
-    "lib/client/view.js"
-  ],
+  "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [],
   "setupHints": [],

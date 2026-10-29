@@ -1,7 +1,7 @@
 {
   "name": "dsh-fast-mode",
-  "version": "1.5.32",
-  "scannedAt": "2026-10-28T23:43:49.336Z",
+  "version": "1.6.1",
+  "scannedAt": "2026-10-29T07:06:26.315Z",
   "icon": "dsh-fast-mode.png",
   "network": {
     "hit": true,
@@ -27,19 +27,19 @@
         "text": ": readFileSync(path)"
       },
       {
-        "file": "bin/experiment.mjs",
-        "line": 19,
-        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+        "file": "bench/soak.mjs",
+        "line": 28,
+        "text": "import { rmSync } from 'node:fs'"
       },
       {
-        "file": "bin/experiment.mjs",
-        "line": 107,
-        "text": "for (const line of readFileSync(file, 'utf8').split('\\n')) {"
+        "file": "bench/soak.mjs",
+        "line": 173,
+        "text": "rmSync(metricsFile, { force: true })"
       },
       {
-        "file": "bin/experiment.mjs",
-        "line": 148,
-        "text": "mkdirSync(dirname(file), { recursive: true })"
+        "file": "bench/soak.mjs",
+        "line": 174,
+        "text": "rmSync(`${metricsFile}.1`, { force: true })"
       }
     ]
   },
@@ -48,7 +48,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 495,
+        "line": 565,
         "text": "() => toolCtx.tools.register(buildShellParallelTool({ spawn, logger: ctx.logger })),"
       }
     ]

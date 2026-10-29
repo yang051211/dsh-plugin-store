@@ -1,0 +1,88 @@
+{
+  "name": "@deepwhale-cn/dsh-pptx-batch",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-29T07:06:33.083Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 40,
+        "text": ") => { void (async () => { try { const r = await fetch(`${API}/info`); const j = await r.json(); if (j.version) 设版本(String(j.version)); } catch {} })(); }, []);"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 44,
+        "text": "const res = await fetch(`${API}/run`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ op, ...values }) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 4,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/api.js",
+        "line": 9,
+        "text": "const VERSION = (() => { try { return JSON.parse(readFileSync(join(PKG_ROOT, 'package.json'), 'utf8')).version || ''; } catch { return ''; } })();"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/cli.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 86,
+        "text": "const r = spawnSync(cmd, ['-c', 'import sys; print(sys.version_info[0])'], {"
+      },
+      {
+        "file": "bin/cli.mjs",
+        "line": 203,
+        "text": "const r = spawnSync(py, [PY_SCRIPT, action, JSON.stringify(payload)], {"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 1,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core.mjs",
+        "line": 50,
+        "text": "const r = spawnSync('python3', ['-c', PY, op, input, out], { encoding: 'utf8' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "python3 -m pip install python-pptx"
+    }
+  ],
+  "skippedEntries": []
+}
