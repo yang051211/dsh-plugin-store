@@ -1,0 +1,87 @@
+{
+  "name": "dsh-ark-wiki",
+  "version": "0.10.2",
+  "scannedAt": "2026-10-29T14:01:33.778Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/prts.js",
+        "line": 41,
+        "text": "return (input, init = {}) => fetch(input, { ...init, headers: { ...HEADERS, ...(init.headers ?? {}) }, signal })"
+      },
+      {
+        "file": "lib/prts.js",
+        "line": 66,
+        "text": "const response = await fetch(url, { headers: HEADERS, signal: composed, redirect: 'follow' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collab-events.js",
+        "line": 1,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/collab-events.js",
+        "line": 35,
+        "text": "const data = JSON.parse(readFileSync(DATA_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/debut.js",
+        "line": 1,
+        "text": "import { readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/debut.js",
+        "line": 56,
+        "text": "const data = JSON.parse(readFileSync(ALIAS_URL, 'utf8'))"
+      },
+      {
+        "file": "lib/debut.js",
+        "line": 80,
+        "text": "const data = JSON.parse(readFileSync(CAST_URL, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 639,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 647,
+        "text": "ctx.tools.register(arkWikiLookup),"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 648,
+        "text": "ctx.tools.register(arkBannerPredict)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

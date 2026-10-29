@@ -1,7 +1,7 @@
 {
   "name": "dsh-roost",
-  "version": "0.10.13",
-  "scannedAt": "2026-10-29T07:06:22.525Z",
+  "version": "0.10.14",
+  "scannedAt": "2026-10-29T14:01:12.708Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,7 +18,7 @@
       },
       {
         "file": "src/host.js",
-        "line": 476,
+        "line": 626,
         "text": "const r = await fetch(url, { signal: AbortSignal.timeout(5000) });"
       },
       {
@@ -43,17 +43,17 @@
       },
       {
         "file": "src/awake.js",
-        "line": 356,
+        "line": 417,
         "text": "state = { ...state, ...JSON.parse(readFileSync(file(), 'utf8')) };"
       },
       {
         "file": "src/awake.js",
-        "line": 361,
+        "line": 422,
         "text": "mkdirSync(dirname(file()), { recursive: true });"
       },
       {
         "file": "src/awake.js",
-        "line": 362,
+        "line": 423,
         "text": "writeFileSync(file(), JSON.stringify(state), 'utf8');"
       },
       {
@@ -68,8 +68,18 @@
     "evidence": [
       {
         "file": "src/host.js",
-        "line": 1095,
+        "line": 1381,
         "text": "* 挂在这里而不是插件的 ctx：`agent.ctx.tools` 是每轮都在用的那个"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 59,
+        "text": "* 而走 `ctx.tools.register` 的普通对象要的是标准 JSON Schema"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 93,
+        "text": "* `ctx.tools.register`。**不要反过来**——把 JSON Schema 交给 defineTool"
       }
     ]
   },
@@ -88,7 +98,7 @@
       },
       {
         "file": "src/setup.js",
-        "line": 630,
+        "line": 671,
         "text": "child = spawn(process.execPath, ['src/main.js', '--serve', '--no-open'], {"
       }
     ]

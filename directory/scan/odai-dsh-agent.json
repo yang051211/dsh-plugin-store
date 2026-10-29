@@ -1,14 +1,14 @@
 {
   "name": "odai-dsh-agent",
-  "version": "0.3.1",
-  "scannedAt": "2026-10-28T06:59:37.301Z",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-29T14:01:29.863Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "preset/odai/runtime/control-center-runtime.mjs",
-        "line": 17,
+        "line": 18,
         "text": "async fetch(request) {"
       }
     ]
@@ -48,7 +48,7 @@
     "evidence": [
       {
         "file": "preset/odai/runtime/index.mjs",
-        "line": 20,
+        "line": 23,
         "text": "export const inject = [\"systemPrompt\", \"tools\", \"subagents\", \"sessions\", \"llm\"];"
       },
       {
@@ -92,14 +92,14 @@
         "text": "return spawn(command_, args, options_);"
       },
       {
-        "file": "preset/odai/skills/odai-orchestration/scripts/install-routing.mjs",
-        "line": 10,
-        "text": "import { spawnSync } from \"node:child_process\";"
+        "file": "preset/odai/runtime/local-cli-catalog.mjs",
+        "line": 1,
+        "text": "import { execFile, spawn } from 'node:child_process';"
       },
       {
-        "file": "preset/odai/skills/odai-orchestration/scripts/install-routing.mjs",
-        "line": 144,
-        "text": "const result = spawnSync(process.execPath, command, { encoding: \"utf8\", windowsHide: true });"
+        "file": "preset/odai/runtime/local-cli-catalog.mjs",
+        "line": 24,
+        "text": "execFile(command, cli === 'claude' ? ['--help'] : ['models'], { timeout: 15000, maxBuffer: 1024 * 1024, signal }, (error, stdout) => {"
       }
     ]
   },

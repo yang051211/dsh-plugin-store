@@ -1,24 +1,24 @@
 {
   "name": "dsh-git-branch-manage",
-  "version": "1.0.7",
-  "scannedAt": "2026-10-27T13:14:11.065Z",
+  "version": "1.0.9",
+  "scannedAt": "2026-10-29T14:01:23.343Z",
   "icon": "dsh-git-branch-manage.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 150,
+        "line": 171,
         "text": "const response = await fetch(url, {"
       },
       {
         "file": "lib/client.js",
-        "line": 185,
+        "line": 206,
         "text": "const response = await fetch(`${ROUTE_STATUS}?path=${encodeURIComponent(path)}`, { cache: \"no-store\" });"
       },
       {
         "file": "lib/client.js",
-        "line": 2941,
+        "line": 3016,
         "text": "/** Remote-sync flow: POST /fetch (fetch every remote + prune), then"
       }
     ]
@@ -47,15 +47,41 @@
         "text": "await seams.mkdir(dirname(dest));"
       },
       {
-        "file": "lib/git.js",
-        "line": 7,
-        "text": "import { existsSync, readdirSync } from 'node:fs';"
+        "file": "lib/credentials.js",
+        "line": 14,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 166,
+        "text": "toolsCtx.effect(() => tools.register(gitCredentialsTool({ home: () => homedir(), envHome: () => process.env.DSH_HOME })), 'git-worktree: git_credentials tool');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 173,
+        "text": "toolsCtx.effect(() => tools.register(gitNetworkTool({ home: () => homedir(), envHome: () => process.env.DSH_HOME })), 'git-worktree: git_network tool');"
+      },
+      {
+        "file": "lib/network-tool.js",
+        "line": 162,
+        "text": "* @returns a definition ready for `ctx.tools.register`."
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 10,
+        "text": "* registered through `ctx.tools.register` is the documented path for a plugin"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 48,
+        "text": "* @returns a definition ready for `ctx.tools.register`."
+      }
+    ]
   },
   "childProcess": {
     "hit": true,

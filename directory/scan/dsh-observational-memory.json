@@ -1,34 +1,34 @@
 {
   "name": "dsh-observational-memory",
-  "version": "0.4.1",
-  "scannedAt": "2026-10-26T10:05:59.760Z",
-  "icon": null,
+  "version": "0.4.2",
+  "scannedAt": "2026-10-29T14:01:36.392Z",
+  "icon": "dsh-observational-memory.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1130,
+        "line": 1026,
         "text": "async fetch(endpoint, request, guard) {"
       },
       {
         "file": "lib/client.js",
-        "line": 1150,
+        "line": 1046,
         "text": "this.attempt(this.fetch(\"observationalMemory/status\", { sessionId: this.sessionId }, isTextResult)),"
       },
       {
         "file": "lib/client.js",
-        "line": 1151,
+        "line": 1047,
         "text": "this.attempt(this.fetch(\"observationalMemory/view\", { sessionId: this.sessionId, mode }, isTextResult)),"
       },
       {
         "file": "lib/client.js",
-        "line": 1152,
+        "line": 1048,
         "text": "this.attempt(this.fetch(\"observationalMemory/logs\", { sessionId: this.sessionId }, isLogsResult))"
       },
       {
         "file": "lib/client.js",
-        "line": 1179,
+        "line": 1075,
         "text": "const run = await this.attempt(this.fetch(\"observationalMemory/run\", { sessionId: this.sessionId }, isRunResult));"
       }
     ]
@@ -38,27 +38,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 137,
+        "line": 145,
         "text": "import { appendFile as appendFile2, mkdir as mkdir2 } from \"node:fs/promises\";"
       },
       {
         "file": "lib/index.js",
-        "line": 141,
+        "line": 149,
         "text": "import { appendFile, mkdir, readFile } from \"node:fs/promises\";"
       },
       {
         "file": "lib/index.js",
-        "line": 228,
+        "line": 254,
         "text": "await mkdir(this.rootDir, { recursive: true });"
       },
       {
         "file": "lib/index.js",
-        "line": 250,
+        "line": 276,
         "text": "text = await readFile(this.path(sessionId), \"utf8\");"
       },
       {
         "file": "lib/index.js",
-        "line": 308,
+        "line": 337,
         "text": "await appendFile(this.path(sessionId), line, \"utf8\");"
       }
     ]
@@ -68,12 +68,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 2622,
+        "line": 2823,
         "text": "ctx.tools.register("
       },
       {
         "file": "lib/index.js",
-        "line": 2660,
+        "line": 2869,
         "text": "var inject = [\"llm\", \"tools\", \"sessions\", \"agents\"];"
       },
       {
@@ -83,7 +83,7 @@
       },
       {
         "file": "src/tools/recall.ts",
-        "line": 52,
+        "line": 61,
         "text": "ctx.tools.register("
       }
     ]
@@ -98,7 +98,7 @@
       {
         "file": "package.json",
         "line": 0,
-        "text": "scripts.prepare: node build.mjs"
+        "text": "scripts.prepare: node -e \"if (require('node:fs').existsSync('build.mjs')) require('node:child_process').execFileSync(process.execPath, ['build.mjs'], { stdio: '"
       }
     ]
   },

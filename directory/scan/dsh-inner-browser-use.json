@@ -1,35 +1,35 @@
 {
   "name": "dsh-inner-browser-use",
-  "version": "0.34.28",
-  "scannedAt": "2026-10-28T06:59:39.561Z",
+  "version": "0.34.97",
+  "scannedAt": "2026-10-29T14:01:28.357Z",
   "icon": "dsh-inner-browser-use.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 121,
+        "line": 125,
         "text": "void fetch(`${ROUTE}/sidecar/forget?session=${encodeURIComponent(sessionId)}`, { method: 'POST' }) // ui-copy-ignore"
       },
       {
         "file": "client.js",
-        "line": 300,
+        "line": 270,
+        "text": "fetch(`${ROUTE}/sidecar/state?session=${encodeURIComponent(who)}`) // ui-copy-ignore"
+      },
+      {
+        "file": "client.js",
+        "line": 378,
         "text": "void fetch(`${ROUTE}/sidecar/claim`, { // ui-copy-ignore"
       },
       {
         "file": "client.js",
-        "line": 322,
+        "line": 400,
         "text": "void fetch(`${ROUTE}/sidecar/state?session=${encodeURIComponent(who)}`, { cache: 'no-store' }) // ui-copy-ignore"
       },
       {
         "file": "client.js",
-        "line": 457,
-        "text": "void fetch(`${ROUTE}${path}`, {"
-      },
-      {
-        "file": "client.js",
-        "line": 473,
-        "text": "void fetch(`${ROUTE}/sidecar/input`, {"
+        "line": 544,
+        "text": "fetch(`${ROUTE}/sidecar/tabs?session=${encodeURIComponent(chat)}`) // ui-copy-ignore"
       }
     ]
   },
@@ -39,7 +39,7 @@
       {
         "file": "index.js",
         "line": 23,
-        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+        "text": "import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
       },
       {
         "file": "index.js",
@@ -57,9 +57,9 @@
         "text": "writeFileSync(MIRROR_FILE, JSON.stringify(value))"
       },
       {
-        "file": "review.js",
-        "line": 8,
-        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs'"
+        "file": "index.js",
+        "line": 332,
+        "text": "appendFileSync(join(STATE_DIR, 'asks.log'), `${new Date().toISOString()} asked ${owner.slice(-8)} to draw the mirror again\\n`)"
       }
     ]
   },
@@ -68,7 +68,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 654,
+        "line": 811,
         "text": "return scope.tools.register(scoped)"
       }
     ]
@@ -76,6 +76,11 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "runtime/flash-setup.mjs",
+        "line": 6,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
       {
         "file": "scripts/doctor.mjs",
         "line": 11,
@@ -88,18 +93,13 @@
       },
       {
         "file": "sidecar.js",
-        "line": 1635,
-        "text": "const child = spawn(binary, args, { detached: false, stdio: 'ignore' })"
+        "line": 2580,
+        "text": "const child = spawn(binary, args, { detached: false, stdio: 'ignore', env: flashEnv })"
       },
       {
         "file": "sidecar.js",
-        "line": 1895,
+        "line": 2918,
         "text": "const guard = spawn('/bin/sh', ['-c', `while kill -0 ${app} 2>/dev/null; do sleep 5; done; kill ${chrome} 2>/dev/null`], {"
-      },
-      {
-        "file": "sidecar.js",
-        "line": 1928,
-        "text": "spawnSync('taskkill', ['/pid', String(this.child.pid), '/T', '/F'], { stdio: 'ignore' })"
       }
     ]
   },

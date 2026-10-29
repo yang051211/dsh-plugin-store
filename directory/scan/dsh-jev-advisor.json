@@ -1,26 +1,37 @@
 {
   "name": "dsh-jev-advisor",
-  "version": "0.1.6",
-  "scannedAt": "2026-10-26T10:06:00.024Z",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-29T14:01:41.489Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 254,
+        "line": 300,
         "text": "response = await fetch(`${API}/${method}`, {"
       },
       {
         "file": "lib/index.js",
-        "line": 525,
+        "line": 552,
         "text": "const request = fetch(endpoint, {"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 31,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 85,
+        "text": "const pluginManifest = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))"
+      }
+    ]
   },
   "agentTools": {
     "hit": false,

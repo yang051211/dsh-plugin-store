@@ -1,0 +1,74 @@
+{
+  "name": "dsh-sidebar-todo",
+  "version": "0.2.3",
+  "scannedAt": "2026-10-29T14:01:42.339Z",
+  "icon": "dsh-sidebar-todo.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 104,
+        "text": "const res = await fetch(apiUrl(method), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 3,
+        "text": "import { readFile, writeFile, rename, mkdir, copyFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 44,
+        "text": "raw = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 84,
+        "text": "await mkdir(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 86,
+        "text": "await writeFile(tmp, snapshot, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "export const inject = ['webServer', 'connection', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 73,
+        "text": "ctx.effect(() => ctx.tools.register(createTool(api, ready)), 'dsh-sidebar-todo: tool')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

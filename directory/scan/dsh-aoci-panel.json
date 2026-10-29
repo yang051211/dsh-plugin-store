@@ -1,34 +1,34 @@
 {
   "name": "dsh-aoci-panel",
-  "version": "0.5.0",
-  "scannedAt": "2026-10-26T10:06:36.247Z",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-29T14:01:36.177Z",
   "icon": "dsh-aoci-panel.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 165,
+        "line": 172,
         "text": "return fetch(url.toString(), { headers: { accept: \"application/json\" } })"
       },
       {
         "file": "lib/client.js",
-        "line": 175,
+        "line": 182,
         "text": "return fetch(path, {"
       },
       {
         "file": "lib/client.js",
-        "line": 194,
+        "line": 201,
         "text": "return fetch(url.toString(), { headers: { accept: \"application/json\" } })"
       },
       {
         "file": "lib/index.js",
-        "line": 92,
+        "line": 109,
         "text": "const result = await web.fetch({ url }, signal)"
       },
       {
         "file": "lib/index.js",
-        "line": 102,
+        "line": 119,
         "text": "const response = await fetch(url, {"
       }
     ]
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/cognition.js",
-        "line": 18,
-        "text": "import { promises as fsp } from 'node:fs'"
+        "file": "lib/bind/aoci.js",
+        "line": 13,
+        "text": "import fs from 'node:fs/promises';"
       },
       {
-        "file": "lib/cognition.js",
-        "line": 276,
-        "text": "text = await fsp.readFile(join(dir, name), 'utf8')"
+        "file": "lib/bind/config.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
       },
       {
-        "file": "lib/cognition.js",
-        "line": 320,
-        "text": "const manifestRaw = await fsp.readFile(winJoin(repo, 'aoci.txt'), 'utf8').catch(() => null)"
+        "file": "lib/bind/discovery.js",
+        "line": 15,
+        "text": "import fs from 'node:fs/promises';"
       },
       {
-        "file": "lib/cognition.js",
-        "line": 327,
-        "text": "const body = await fsp.readFile(winJoin(repo, volume.path), 'utf8').catch(() => null)"
+        "file": "lib/bind/discovery.js",
+        "line": 27,
+        "text": "const text = await fs.readFile(file, 'utf8');"
       },
       {
-        "file": "lib/index.js",
-        "line": 45,
-        "text": "import { readFileSync } from 'node:fs'"
+        "file": "lib/bind/discovery.js",
+        "line": 68,
+        "text": "text = await fs.readFile(file, 'utf8');"
       }
     ]
   },
@@ -67,35 +67,45 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/client.js",
-        "line": 714,
-        "text": "kids.push(react.createElement(\"div\", { className: \"aoci-mini\", key: \"norows\" }, \"未发现任何 dsh-mcp-client 补丁行。\"));"
+        "file": "lib/bind/binding.js",
+        "line": 4,
+        "text": "* A *binding* is one `@deepseek-ai/dsh-mcp-client` row in a Cordis patch file"
       },
       {
-        "file": "lib/client.js",
-        "line": 967,
-        "text": "SH 接入：在当前 DSH home 的 cordis.patch.yml（或指定 profile 补丁）保持一条 dsh-mcp-client 行，工具以 mcp__<serverName>__aoci_* 形式出现在会话中；同机多个仓库绑定并存时认准各自 serverName 前缀，改补丁后需重启 DSH。\"));"
+        "file": "lib/bind/binding.js",
+        "line": 352,
+        "text": "`${deep}name: '@deepseek-ai/dsh-mcp-client'`,"
       },
       {
-        "file": "lib/index.js",
-        "line": 780,
-        "text": "* 供幂等检测与防碰撞。name 是 dsh-mcp-client 才算 aoci/工具行，"
+        "file": "lib/bind/index.js",
+        "line": 25,
+        "text": "export const inject = ['tools'];"
       },
       {
-        "file": "lib/index.js",
-        "line": 823,
-        "text": "// flow 形态 args: ['--repo', '…']（dsh-mcp-client README 最小配置即此形态）；"
+        "file": "lib/bind/tools.js",
+        "line": 102,
+        "text": "ctx.tools.register("
       },
       {
-        "file": "lib/index.js",
-        "line": 852,
-        "text": "/** 某 insert 行是否是 aoci MCP（dsh-mcp-client）工具行。 */"
+        "file": "lib/bind/tools.js",
+        "line": 216,
+        "text": "ctx.tools.register("
       }
     ]
   },
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/bind/aoci.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bind/aoci.js",
+        "line": 26,
+        "text": "child = spawn(binary, args, { cwd, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
       {
         "file": "lib/cognition.js",
         "line": 19,
@@ -108,7 +118,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 362,
+        "line": 397,
         "text": "handle = subprocess.spawn({"
       }
     ]

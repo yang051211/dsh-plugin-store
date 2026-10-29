@@ -1,0 +1,80 @@
+{
+  "name": "dsh-sidebar-human-browser",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-29T14:01:40.075Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 477,
+        "text": "const response = await fetch(`${PREFIX}/${path}`, {"
+      },
+      {
+        "file": "src/client.template.js",
+        "line": 295,
+        "text": "const response = await fetch(`${PREFIX}/${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 20,
+        "text": "try { appendFileSync(LOG, `${new Date().toISOString()} ${parts.join(' ')}\\n`) } catch (e) {}"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 6,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 11,
+        "text": "const engine = readFileSync(join(root, 'lib/human.js'), 'utf8')"
+      },
+      {
+        "file": "scripts/build.mjs",
+        "line": 16,
+        "text": "const template = readFileSync(join(root, 'src/client.template.js'), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

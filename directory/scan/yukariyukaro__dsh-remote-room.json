@@ -1,7 +1,7 @@
 {
   "name": "@yukariyukaro/dsh-remote-room",
-  "version": "0.4.2",
-  "scannedAt": "2026-10-28T23:44:01.500Z",
+  "version": "0.5.4",
+  "scannedAt": "2026-10-29T14:01:40.194Z",
   "icon": "yukariyukaro__dsh-remote-room.svg",
   "network": {
     "hit": true,
@@ -13,13 +13,23 @@
       },
       {
         "file": "lib/index.js",
-        "line": 821,
+        "line": 823,
         "text": "const ws = new WebSocket(target$1, {"
       },
       {
         "file": "lib/local-relay.mjs",
         "line": 2,
         "text": "import { createServer } from \"node:http\";"
+      },
+      {
+        "file": "src/client/bridge.ts",
+        "line": 14,
+        "text": "const response = await fetch(endpoint, { method: 'POST', credentials: 'same-origin', signal,"
+      },
+      {
+        "file": "src/host/controller.ts",
+        "line": 11,
+        "text": "(route: { path: string; methods: ('POST' | 'GET')[]; requestBody: 'buffered' | 'streaming'; fetch(request: Request): Promise<Response> }): () => Promise<void> }"
       }
     ]
   },
@@ -33,13 +43,23 @@
       },
       {
         "file": "lib/index.js",
-        "line": 2894,
+        "line": 16,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2896,
         "text": "const { stat } = await import(\"node:fs/promises\");"
       },
       {
         "file": "lib/index.js",
-        "line": 3660,
-        "text": "\"fs\","
+        "line": 3665,
+        "text": "const value = JSON.parse(readFileSync(join(packageRoot, \"package.json\"), \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3680,
+        "text": "return readFileSync(guidePath, \"utf8\").split(\"\\n\").filter((line) => /^#{1,2} /u.test(line)).map((line) => line.replace(/^#+ /u, \"\").trim());"
       }
     ]
   },
@@ -48,13 +68,28 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 3117,
+        "line": 3119,
         "text": "disposers.push(ctx.tools.register({"
       },
       {
         "file": "lib/index.js",
-        "line": 3482,
+        "line": 3484,
         "text": "const register = (definition) => disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 3729,
+        "text": "return ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "src/guest/process-tools.ts",
+        "line": 99,
+        "text": "const register = (definition: ToolDefinition) => disposers.push(ctx.tools.register({"
+      },
+      {
+        "file": "src/guest/tools.ts",
+        "line": 105,
+        "text": "disposers.push(ctx.tools.register({"
       }
     ]
   },
@@ -63,8 +98,13 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 1575,
+        "line": 1577,
         "text": "state.handle = this.subprocess.spawn({"
+      },
+      {
+        "file": "src/host/processes.ts",
+        "line": 176,
+        "text": "state.handle = this.subprocess.spawn({ argv, cwd: processCwd, env, stdio: { stdin: 'pipe', stdout: 'pipe', stderr: 'pipe' }, graceMs: 500, signal: lifetime });"
       }
     ]
   },

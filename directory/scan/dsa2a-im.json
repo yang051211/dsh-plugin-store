@@ -1,0 +1,133 @@
+{
+  "name": "dsa2a-im",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-29T14:01:40.753Z",
+  "icon": "dsa2a-im.webp",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 2693,
+        "text": "for (const name2 of [\"dingtalkStream\", \"axios\", \"httpsProxyAgent\", \"agentBase\"]) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 140,
+        "text": "{let a={};for(let e of[\"dingtalkStream\",\"axios\",\"httpsProxyAgent\",\"agentBase\"]){let i=n.dependencies[e];typeof i==\"string\"&&/^\\d+\\.\\d+\\.\\d+(?:[-+][A-Za-z0-9.-]+"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 144,
+        "text": "n PS;let n=LS(\"dingtalk-stream\"),A=n?LS(\"axios\",n.require):null,o=A?LS(\"https-proxy-agent\",A.require):null,a=o?LS(\"agent-base\",o.require):null;return PS=Object."
+      },
+      {
+        "file": "lib/index.js",
+        "line": 248,
+        "text": ",fetchImpl:g=fetch,createWebSocket:l=O=>new WebSocket(O),interactionReconnectDelayMs:d=500,rpcIdPrefix:u=\"im\",logPrefix:B=\"dsh-im\",commandExecutor:y,controlExec"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "s:[\"POST\"],requestBody:\"buffered\",async fetch(t){if(e===\"loopback\"&&!uTe(t))return new Response(\"forbidden\",{status:403});if(t.method!==\"POST\")return new Respon"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-im.mjs",
+        "line": 3,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/dsh-im.mjs",
+        "line": 52,
+        "text": "const manifest = JSON.parse(await readFile(profilePackage, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "=gt(\"https\"),Ave=gt(\"url\").parse,rve=gt(\"fs\"),ive=gt(\"stream\").Stream,ave=gt(\"crypto\"),eL=Y6(),ove=n5(),nve=bZ(),lI=eD(),tL=MZ();function _Z(n){return String(n)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 50,
+        "text": "ce();td();AC()});import{open as OZe}from\"node:fs/promises\";var rC,d1=Re(()=>{AC();td();rC=class n extends Sc{static async fromFile(A){let o=await OZe(A,\"r\"),a=a"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 55,
+        "text": "str),await this.tokenizer.readToken(new rm(a))}}while(--A)}async addTags(A){await Promise.all(A.map(({id:o,value:a})=>this.metadata.addTag(NXe,o,a)))}async pars"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "of n?.tools?.register==\"function\"?null:\"ctx.tools missing,\",typeof n?.systemPrompt?.context==\"function\"?null:\"ctx.systemPrompt missing,\",typeof n?.on==\"function"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 543,
+        "text": "ice\",M]];return Object.freeze({name:_Qe,inject:mdt,async apply(G,k={}){let x=L.map(([P])=>P).filter(P=>P!==\"office\"&&k[P]?.harnessBaseUrl!==void 0),H=c({unavail"
+      },
+      {
+        "file": "src/channels/shared/semantic/artifact.mjs",
+        "line": 732,
+        "text": "typeof ctx?.tools?.register === 'function' ? null : 'ctx.tools missing,',"
+      },
+      {
+        "file": "src/channels/shared/semantic/artifact.mjs",
+        "line": 741,
+        "text": "ctx.tools.register(tool.definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-im.mjs",
+        "line": 6,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dsh-im.mjs",
+        "line": 36,
+        "text": "const result = spawnSync('dsh', args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "[...this.#t])}};import{spawn as oOe}from\"node:child_process\";import{randomUUID as XS}from\"node:crypto\";import{mkdir as nOe}from\"node:fs/promises\";import{basenam"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 428,
+        "text": "?.message_id)}};import{spawn as rJe}from\"node:child_process\";import{randomUUID as ex}from\"node:crypto\";import{mkdirSync as ure,readFileSync as tx,rmSync as Ax,w"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 483,
+        "text": "ar wc=At(Vi(),1);import{exec as s7e}from\"child_process\";import*as $n from\"crypto\";import{once as TC}from\"events\";import{createReadStream as SN,createWriteStream"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 10,
+  "minifiedFiles": [
+    "lib/index.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

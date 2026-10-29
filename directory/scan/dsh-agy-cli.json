@@ -1,0 +1,130 @@
+{
+  "name": "dsh-agy-cli",
+  "version": "0.12.2",
+  "scannedAt": "2026-10-29T14:01:35.784Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 3160,
+        "text": "* fetch (that is what \"opening the panel\" means), the returned refresh is the"
+      },
+      {
+        "file": "lib/web/router.js",
+        "line": 1,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/web/router.js",
+        "line": 2,
+        "text": "import https from 'node:https';"
+      },
+      {
+        "file": "lib/web/router.js",
+        "line": 188,
+        "text": "const httpsReq = https.request({"
+      },
+      {
+        "file": "lib/web/router.js",
+        "line": 231,
+        "text": "const connectReq = http.request({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agent-installer.js",
+        "line": 2,
+        "text": "import { lstat, mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/agent-installer.js",
+        "line": 34,
+        "text": "return { exists: true, file: true, content: await readFile(targetPath, 'utf8') };"
+      },
+      {
+        "file": "lib/agent-installer.js",
+        "line": 49,
+        "text": "await writeFile(tempPath, content, { encoding: 'utf8', flag: 'wx', mode: 0o600 });"
+      },
+      {
+        "file": "lib/agent-installer.js",
+        "line": 53,
+        "text": "await unlink(tempPath).catch(() => undefined);"
+      },
+      {
+        "file": "lib/agent-installer.js",
+        "line": 94,
+        "text": "await mkdir(directory, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/mcp/bridge.js",
+        "line": 80,
+        "text": "// load, but the file, shell, and web tools only join `ctx.tools` once the"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/agy/experimental-transport.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/agy/experimental-transport.js",
+        "line": 104,
+        "text": "const killer = spawn('taskkill', ['/pid', String(pid), '/t', '/f'], {"
+      },
+      {
+        "file": "lib/agy/experimental-transport.js",
+        "line": 282,
+        "text": "const child = spawn(this.options.executable, [...this.options.args], {"
+      },
+      {
+        "file": "lib/agy/keepalive.js",
+        "line": 47,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/agy/keepalive.js",
+        "line": 205,
+        "text": "        execFile('powershell.exe', ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-Command', `& { ${WIN_CRED_SCRIPT} }`, AGY_KEYRING_TARGET], "
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: npm run build"
+      }
+    ]
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/win32-x64/agy-launcher.exe"
+  ],
+  "requiredServices": [
+    "approval",
+    "llm",
+    "permissionPresets",
+    "sandboxPolicy",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

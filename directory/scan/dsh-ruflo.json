@@ -1,0 +1,127 @@
+{
+  "name": "dsh-ruflo",
+  "version": "1.2.5",
+  "scannedAt": "2026-10-29T14:01:33.088Z",
+  "icon": "dsh-ruflo.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 203,
+        "text": "const response = await fetch(STATUS_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 12,
+        "text": "import { copyFileSync, existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 17,
+        "text": "const SELF = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 113,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 157,
+        "text": "writeFileSync(temporary, `${JSON.stringify(next, null, 2)}\\n`);"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 225,
+        "text": "const installed = JSON.parse(readFileSync(installedFile, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 12,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/host-1.2.5.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'commands', 'systemPrompt', 'subprocess'];"
+      },
+      {
+        "file": "lib/host-1.2.5.js",
+        "line": 595,
+        "text": "return ctx.tools.schemas().filter((tool) => tool.name.startsWith(prefix)).length;"
+      },
+      {
+        "file": "lib/host-1.2.5.js",
+        "line": 862,
+        "text": "schemas = ctx.tools.schemas();"
+      },
+      {
+        "file": "lib/host-1.2.5.js",
+        "line": 961,
+        "text": "ctx.effect(() => ctx.tools.register(createStatusTool(ctx, runner)));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 121,
+        "text": "const probe = spawnSync(binary, ['--version'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "bin/dsh-ruflo.js",
+        "line": 171,
+        "text": "const result = spawnSync(dsh, args, {"
+      },
+      {
+        "file": "lib/host-1.2.5.js",
+        "line": 503,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "scripts/ruflo-mcp-launcher.mjs",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 162,
+      "text": "bundle **from that registry**; you do not need a global Ruflo install, and a bare `npm install -g dsh-ruflo` only downloads files without activating the bundle."
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 164,
+      "text": "dsh-ruflo`](https://www.npmjs.com/package/dsh-ruflo)。DSH 会**从该 registry 安装**这个 bundle；不需要提前全局安装 Ruflo，单纯执行 `npm install -g dsh-ruflo` 只会下载文件，不会把 bundle 注册进 DSH。"
+    }
+  ],
+  "skippedEntries": []
+}

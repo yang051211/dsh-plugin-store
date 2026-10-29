@@ -1,11 +1,21 @@
 {
   "name": "dsh-onebot-hub",
-  "version": "0.11.1",
-  "scannedAt": "2026-10-26T10:05:05.563Z",
+  "version": "0.12.2",
+  "scannedAt": "2026-10-29T14:01:15.512Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/audio/tts.js",
+        "line": 43,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/audio/tts.js",
+        "line": 44,
+        "text": "import https from 'node:https';"
+      },
       {
         "file": "lib/client-probe.js",
         "line": 62,
@@ -18,18 +28,8 @@
       },
       {
         "file": "lib/client.js",
-        "line": 537,
+        "line": 666,
         "text": "const res = await fetch(HUB_PERSONA_PATH + location.search, { headers: { accept: 'application/json' } });"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 551,
-        "text": "const res = await fetch(HUB_PERSONA_PATH + location.search, {"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 573,
-        "text": "const res = await fetch(HUB_MODEL_LIST_PATH + location.search, {"
       }
     ]
   },
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/hub.js",
-        "line": 804,
-        "text": "const { readFile } = await import('node:fs/promises');"
-      },
-      {
-        "file": "lib/hub.js",
-        "line": 805,
-        "text": "return await readFile(ref.blob);"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 38,
+        "file": "lib/audio/tts.js",
+        "line": 42,
         "text": "import fs from 'node:fs';"
       },
       {
-        "file": "lib/index.js",
-        "line": 2615,
-        "text": "const bytes = await fs.promises.readFile(file);"
+        "file": "lib/audio/tts.js",
+        "line": 567,
+        "text": "fs.writeFileSync(this.diagFile, JSON.stringify(rec, null, 1), 'utf8');"
       },
       {
-        "file": "lib/index.js",
-        "line": 2903,
-        "text": "const fs = await import('node:fs');"
+        "file": "lib/audio/tts.js",
+        "line": 860,
+        "text": "const bytes = fs.readFileSync(source.value);"
+      },
+      {
+        "file": "lib/audio/tts.js",
+        "line": 879,
+        "text": "fs.mkdirSync(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/audio/tts.js",
+        "line": 881,
+        "text": "fs.writeFileSync(tmp, bytes);"
       }
     ]
   },
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 67,
+        "line": 75,
         "text": "export const inject = ['webServer', 'tools'];"
       },
       {
         "file": "lib/index.js",
-        "line": 2174,
+        "line": 2545,
         "text": "agentCtx.tools.register("
       },
       {
         "file": "lib/index.js",
-        "line": 2375,
+        "line": 2783,
         "text": "rec.dispose = rec.ctx.tools.restrict({ deny: list });"
       },
       {
         "file": "lib/index.js",
-        "line": 2797,
+        "line": 3228,
         "text": "return toolCtx.tools.register(def);"
       },
       {
         "file": "lib/index.js",
-        "line": 2807,
+        "line": 3238,
         "text": "registerCtx.tools.register("
       }
     ]
@@ -101,7 +101,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 1,
+  "dependencies": 3,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

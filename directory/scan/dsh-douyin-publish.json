@@ -1,0 +1,94 @@
+{
+  "name": "dsh-douyin-publish",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-29T14:01:29.697Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/attach.js",
+        "line": 42,
+        "text": "const script = `return fetch(${JSON.stringify(String(opts.url))}).then(function(res){"
+      },
+      {
+        "file": "lib/serve.js",
+        "line": 17,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bgm-library.js",
+        "line": 14,
+        "text": "import { existsSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/serve.js",
+        "line": 18,
+        "text": "import { createReadStream, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/video.js",
+        "line": 11,
+        "text": "import { stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 77,
+        "text": "if (ctx.tools !== undefined && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bgm.js",
+        "line": 16,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/handover.js",
+        "line": 11,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/video.js",
+        "line": 10,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

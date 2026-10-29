@@ -1,0 +1,113 @@
+{
+  "name": "@yann9/dsh-git-workbench",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-29T14:01:24.283Z",
+  "icon": "yann9__dsh-git-workbench.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client/client.core.js",
+        "line": 160,
+        "text": "const response = await fetch(`/dsh-git/api${path}?${query}`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "src/client/client.core.js",
+        "line": 193,
+        "text": "const response = await fetch(`/dsh-git/api${path}?${search}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/git/checks.js",
+        "line": 10,
+        "text": "import { readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/git/checks.js",
+        "line": 31,
+        "text": "raw = await readFile(path.join(root, 'package.json'), 'utf8')"
+      },
+      {
+        "file": "src/git/patch.js",
+        "line": 18,
+        "text": "import { readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/git/patch.js",
+        "line": 110,
+        "text": "const original = await readFile(target, 'utf8')"
+      },
+      {
+        "file": "src/git/patch.js",
+        "line": 163,
+        "text": "await writeFile(target, `${lines.join('\\n')}${endsWithNewline && lines.length > 0 ? '\\n' : ''}`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/tools-boot.js",
+        "line": 10,
+        "text": "if (ctx.tools === undefined) return"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 15,
+        "text": "if (typeof ctx.tools?.register !== 'function') return"
+      },
+      {
+        "file": "src/tools.js",
+        "line": 16,
+        "text": "const register = (tool) => ctx.tools.register(defineTool(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/git/checks.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/git/checks.js",
+        "line": 110,
+        "text": "/** @type {import('node:child_process').ChildProcess} */"
+      },
+      {
+        "file": "src/git/checks.js",
+        "line": 113,
+        "text": "child = spawn(file, args, {"
+      },
+      {
+        "file": "src/git/exec.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/git/exec.js",
+        "line": 152,
+        "text": "/** @type {import('node:child_process').ChildProcessWithoutNullStreams} */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

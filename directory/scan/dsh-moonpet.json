@@ -1,35 +1,35 @@
 {
   "name": "dsh-moonpet",
-  "version": "0.1.6",
-  "scannedAt": "2026-10-28T23:43:56.709Z",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-29T14:01:42.624Z",
   "icon": "dsh-moonpet.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 356,
+        "line": 379,
         "text": "const pending = fetch(url, { cache: 'force-cache' })"
       },
       {
         "file": "lib/client.js",
-        "line": 719,
+        "line": 748,
         "text": "const res = await fetch('/api/our-free-model/summary', { cache: 'no-store', credentials: 'same-origin', signal: AbortSignal.timeout(5000) })"
       },
       {
         "file": "lib/client.js",
-        "line": 734,
+        "line": 763,
         "text": "const res = await fetch('/api/channel-pack', {"
       },
       {
         "file": "lib/client.js",
-        "line": 804,
-        "text": "const res = await fetch(url, { cache: 'no-store' })"
+        "line": 850,
+        "text": "const res = await fetch(url, { cache: 'no-store', signal: AbortSignal.timeout(10000) })"
       },
       {
         "file": "lib/client.js",
-        "line": 822,
-        "text": "return fetch(`${API}/config`, {"
+        "line": 868,
+        "text": "const res = await fetch(`${API}/config`, {"
       }
     ]
   },
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "lib/atomic-write.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/atomic-write.js",
+        "line": 6,
+        "text": "io.writeFileSync(temporary, text, 'utf8')"
+      },
+      {
         "file": "lib/index.js",
         "line": 12,
         "text": "import fs from 'node:fs'"
       },
       {
         "file": "lib/index.js",
-        "line": 92,
+        "line": 93,
         "text": "fs.mkdirSync(USER_PACK_ROOT, { recursive: true })"
       },
       {
         "file": "lib/index.js",
-        "line": 93,
+        "line": 94,
         "text": "fs.writeFileSync(path.join(USER_PACK_ROOT, 'README.md'), USER_PACK_README, 'utf8')"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 95,
-        "text": "fs.mkdirSync(path.join(USER_ROOT, 'ui'), { recursive: true })"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 222,
-        "text": "return fs.readFileSync(file, 'utf8')"
       }
     ]
   },

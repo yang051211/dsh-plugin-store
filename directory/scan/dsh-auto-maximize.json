@@ -1,0 +1,64 @@
+{
+  "name": "dsh-auto-maximize",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-29T14:01:33.983Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 33,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 121,
+        "text": "fs.writeFileSync(LOG_PATH, `${RUN_HEADER}${body}${PREVIOUS_TEXT}`);"
+      },
+      {
+        "file": "src/index.js",
+        "line": 132,
+        "text": "existing = fs.readFileSync(LOG_PATH, 'utf8');"
+      },
+      {
+        "file": "src/index.js",
+        "line": 137,
+        "text": "try { fs.rmSync(`${LOG_PATH}.old`, { force: true }); } catch { /* 忽略 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 32,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/index.js",
+        "line": 300,
+        "text": "child = spawn(file, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

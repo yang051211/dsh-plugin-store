@@ -1,0 +1,119 @@
+{
+  "name": "dsh-tieba-dive",
+  "version": "1.32.1",
+  "scannedAt": "2026-10-29T14:01:30.860Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 24,
+        "text": "const jget = async (p) => parse(await fetch(API + p, { credentials: 'same-origin' }))"
+      },
+      {
+        "file": "client.js",
+        "line": 25,
+        "text": "const jpost = async (p, body) => parse(await fetch(API + p, {"
+      },
+      {
+        "file": "lib/tieba.js",
+        "line": 11,
+        "text": "*    curl → `{\"is_login\":1}`；node 的 fetch(undici) → `{\"is_login\":0}`。"
+      },
+      {
+        "file": "lib/tieba.js",
+        "line": 80,
+        "text": "/** 把 cookie.txt 里的键值补进 Netscape 格式的 jar（curl -b/-c 用） */"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "try { VERSION = JSON.parse(fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version } catch { /* ignore */ }"
+      },
+      {
+        "file": "index.js",
+        "line": 73,
+        "text": "try { return { source: abs, text: fs.readFileSync(abs, 'utf8').slice(0, 20000) } } catch {"
+      },
+      {
+        "file": "index.js",
+        "line": 117,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 119,
+        "text": "fs.writeFileSync(f, 'ok'); fs.unlinkSync(f)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 51,
+        "text": "export const inject = ['tools', 'settings']"
+      },
+      {
+        "file": "index.js",
+        "line": 209,
+        "text": "try { ctx.tools.register(hostDefineTool(wrapped)) } catch (e) {"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 40,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runner.mjs",
+        "line": 18,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runner.mjs",
+        "line": 95,
+        "text": "try { spawnSync('taskkill', ['/pid', String(c.pid), '/T', '/F'], { stdio: 'ignore' }) } catch { /* 已经没了 */ }"
+      },
+      {
+        "file": "lib/runner.mjs",
+        "line": 214,
+        "text": "child = spawn(bin, args, {"
+      },
+      {
+        "file": "lib/tieba.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

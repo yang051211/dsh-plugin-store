@@ -1,0 +1,109 @@
+{
+  "name": "dsh-office-kit",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-29T14:01:15.927Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "postinstall.mjs",
+        "line": 170,
+        "text": "const script = 'Invoke-WebRequest -UseBasicParsing -Uri $env:DSH_URL -OutFile $env:DSH_TARGET'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 3,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 4,
+        "text": "import { readFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 272,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 287,
+        "text": "const parsed = JSON.parse(readFileSync(file, \"utf8\"));"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 291,
+        "text": "const parsed = JSON.parse(readFileSync(configFile, \"utf8\"));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 502,
+        "text": "const inject = [\"skills\", \"tools\"];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 643,
+        "text": "ctx.effect(() => ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 2,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 182,
+        "text": "execFile(file, args, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 434,
+        "text": "execFile(process.execPath, [POSTINSTALL_SCRIPT], {"
+      },
+      {
+        "file": "postinstall.mjs",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "postinstall.mjs",
+        "line": 66,
+        "text": "const result = spawnSync(command, ['--version'], { stdio: 'ignore', shell: false })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.postinstall: node postinstall.mjs"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "dist/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

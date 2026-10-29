@@ -1,0 +1,107 @@
+{
+  "name": "dsh-whale-commands",
+  "version": "1.4.0",
+  "scannedAt": "2026-10-29T14:01:30.691Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/impl.mjs",
+        "line": 502,
+        "text": "const res = await fetch(PLATFORM_BASE + path, {"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 1429,
+        "text": "const r = await web.fetch({ url: s.url }, ac.signal);"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 2055,
+        "text": "const response = await fetch(BALANCE_URL, {"
+      },
+      {
+        "file": "src/weixin-send.mjs",
+        "line": 91,
+        "text": "const res = await fetch(url, {"
+      },
+      {
+        "file": "tools/share-file.mjs",
+        "line": 25,
+        "text": "import { createServer } from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/impl.mjs",
+        "line": 26,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 110,
+        "text": "readFileSync(HIDDEN_FILE, \"utf8\")"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 164,
+        "text": "raw = readFileSync(STATE_FILE, \"utf8\").trim();"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 175,
+        "text": "writeFileSync(STATE_FILE, id ? `${id}\\n` : \"off\\n\", \"utf8\");"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 217,
+        "text": "appendFileSync(`${DSH_HOME}/.playground/whale-plugin.log`, `  ${line}\\n`, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/impl.mjs",
+        "line": 27,
+        "text": "import { execFileSync, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "src/impl.mjs",
+        "line": 318,
+        "text": "const result = spawnSync(ZSTD_BIN, [\"-dc\", zst], {"
+      },
+      {
+        "file": "tools/share-file.mjs",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "tools/share-file.mjs",
+        "line": 94,
+        "text": "const child = spawn(process.execPath, [process.argv[1], 'daemon', '--port', String(port)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

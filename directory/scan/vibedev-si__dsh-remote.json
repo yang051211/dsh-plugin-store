@@ -1,0 +1,110 @@
+{
+  "name": "@vibedev-si/dsh-remote",
+  "version": "0.1.14",
+  "scannedAt": "2026-10-29T14:01:30.140Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/account-summary.mjs",
+        "line": 132,
+        "text": "const response = await handler.fetch(new Request(new URL(path, 'http://localhost'), { method: 'GET', headers: { accept: 'application/json' }, signal }), peer)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 454,
+        "text": "const response = await fetch('/mgw/remote/' + path, { credentials: 'same-origin', headers: { 'X-VibeDev-Local': '1', 'Content-Type': 'application/json' },"
+      },
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 2,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/dsh-host-adapter.mjs",
+        "line": 264,
+        "text": "const response = await uploadHandler.fetch(new Request(url, {"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 141,
+        "text": "import http from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/account-summary.mjs",
+        "line": 1,
+        "text": "import { appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/account-summary.mjs",
+        "line": 145,
+        "text": "appendFileSync('/tmp/vibedev-account-raw.log', JSON.stringify({ at: new Date().toISOString(), path, status, raw }) + '\\n')"
+      },
+      {
+        "file": "lib/account-summary.mjs",
+        "line": 196,
+        "text": "appendFileSync('/tmp/vibedev-account-shape.log', JSON.stringify({ at: new Date().toISOString(),"
+      },
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 29,
+        "text": "const value = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cloudflare-tunnel.mjs",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/cloudflared-binary.mjs",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/gateway-tools.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/web-restart.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/web-restart.mjs",
+        "line": 32,
+        "text": "const child = spawn(spec.execPath, [...spec.execArgv, ...spec.argv], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

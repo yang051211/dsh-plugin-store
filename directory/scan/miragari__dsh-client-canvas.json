@@ -1,0 +1,116 @@
+{
+  "name": "@miragari/dsh-client-canvas",
+  "version": "0.1.5",
+  "scannedAt": "2026-10-29T14:01:35.552Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 26,
+        "text": "var response = await fetch(path, { credentials: 'same-origin', cache: 'no-store' });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 30,
+        "text": "var saved = await fetch(path + '/replace', {"
+      },
+      {
+        "file": "lib/preview-service.js",
+        "line": 1165,
+        "text": "const response = await route.fetch({ url: pinned.href, headers, timeout: RESOURCE_TIMEOUT, maxRedirects: 0, maxRetries: 0 })"
+      },
+      {
+        "file": "lib/site/adapters/prompt-builder.js",
+        "line": 4,
+        "text": "const response = await fetch('/xindong-canvas/prompt-settings', { credentials: 'same-origin', cache: 'no-store', signal })"
+      },
+      {
+        "file": "lib/site/adapters/settings.js",
+        "line": 137,
+        "text": "const response = await fetch('/xindong-canvas/prompt-settings', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/preview-journal.js",
+        "line": 1,
+        "text": "import { appendFile, mkdir, rename, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/preview-journal.js",
+        "line": 13,
+        "text": "await mkdir(root, { recursive: true })"
+      },
+      {
+        "file": "lib/preview-journal.js",
+        "line": 22,
+        "text": "await rm(`${path}.1`, { force: true })"
+      },
+      {
+        "file": "lib/preview-journal.js",
+        "line": 26,
+        "text": "await appendFile(path, line, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/preview-service.js",
+        "line": 4,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pdf-preview.js",
+        "line": 1,
+        "text": "import { fork } from 'node:child_process'"
+      },
+      {
+        "file": "lib/preview-service.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/preview-service.js",
+        "line": 582,
+        "text": "const child = spawn(process.execPath, [cli, 'install', 'chromium'], {"
+      },
+      {
+        "file": "lib/storage-actions.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/setup-preview-runtime.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 11,
+  "minifiedFiles": [
+    "lib/site/deps/pixi.js/dist/pixi.mjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "canvas",
+    "officeToPdf",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

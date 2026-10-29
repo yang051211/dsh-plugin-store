@@ -1,0 +1,72 @@
+{
+  "name": "dsh-polza",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-29T14:01:41.942Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 50,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "src/host/polza.js",
+        "line": 71,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/cache.js",
+        "line": 11,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/host/cache.js",
+        "line": 134,
+        "text": "const payload = JSON.parse(await readFile(file, 'utf8'))"
+      },
+      {
+        "file": "src/host/cache.js",
+        "line": 186,
+        "text": "await mkdir(this.root, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/host/cache.js",
+        "line": 367,
+        "text": "await mkdir(this.root, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "src/host/cache.js",
+        "line": 368,
+        "text": "await writeFile(temporary, JSON.stringify(payload), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "credentials",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

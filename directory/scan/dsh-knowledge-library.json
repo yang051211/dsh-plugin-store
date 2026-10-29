@@ -1,0 +1,107 @@
+{
+  "name": "dsh-knowledge-library",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-29T14:01:30.738Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 92,
+        "text": "const response = await fetch(API + path, { ...options, headers: { \"Content-Type\": \"application/json\", \"X-Knowledge-Library\": \"1\", ...options.headers } });"
+      },
+      {
+        "file": "dist/core/fetch.js",
+        "line": 1,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "dist/core/fetch.js",
+        "line": 2,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "dist/knowledge-model.js",
+        "line": 137,
+        "text": "            const response = await fetch(`${base.replace(/\\/$/, '')}/models`, { headers: { Authorization: `Bearer ${key}` }, redirect: 'error', signal: AbortSig"
+      },
+      {
+        "file": "dist/knowledge-model.js",
+        "line": 173,
+        "text": "response = await fetch(url, { method: 'POST', redirect: 'error', signal,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/core/image-capture.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/image-capture.js",
+        "line": 22,
+        "text": "const stored = JSON.parse(readFileSync(this.file, 'utf8'));"
+      },
+      {
+        "file": "dist/core/jobs.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "dist/core/jobs.js",
+        "line": 25,
+        "text": "this.jobs = existsSync(this.file) ? JSON.parse(readFileSync(this.file, 'utf8')) : [];"
+      },
+      {
+        "file": "dist/core/knowledge.js",
+        "line": 1,
+        "text": "import { existsSync, readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 42,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "dist/public/app.js",
+    "dist/ui/App.js",
+    "dist/ui/Knowledge.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 308,
+      "text": "python -m pip install -r requirements-test.txt"
+    }
+  ],
+  "skippedEntries": []
+}

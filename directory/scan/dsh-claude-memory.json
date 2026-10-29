@@ -1,7 +1,7 @@
 {
   "name": "dsh-claude-memory",
-  "version": "0.1.0",
-  "scannedAt": "2026-10-26T10:07:51.800Z",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-29T14:01:44.200Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -13,7 +13,7 @@
       {
         "file": "src/paths.js",
         "line": 15,
-        "text": "import { existsSync, realpathSync } from 'node:fs'"
+        "text": "import { existsSync, readFileSync, realpathSync } from 'node:fs'"
       },
       {
         "file": "src/paths.js",
@@ -21,14 +21,19 @@
         "text": "import { readdirSync, statSync } from 'node:fs'"
       },
       {
-        "file": "src/store.js",
-        "line": 11,
-        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs'"
+        "file": "src/paths.js",
+        "line": 211,
+        "text": "const pointer = /^gitdir:\\s*(.+)$/m.exec(readFileSync(join(root, '.git'), 'utf8'))"
+      },
+      {
+        "file": "src/paths.js",
+        "line": 214,
+        "text": "const commonDir = resolve(gitDir, readFileSync(join(gitDir, 'commondir'), 'utf8').trim())"
       },
       {
         "file": "src/store.js",
-        "line": 42,
-        "text": "return { text: readFileSync(real, 'utf8'), mtimeMs: stat.mtimeMs, size: stat.size }"
+        "line": 11,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs'"
       }
     ]
   },

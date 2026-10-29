@@ -1,7 +1,7 @@
 {
   "name": "dsh-skill-superpowers",
-  "version": "1.1.1",
-  "scannedAt": "2026-10-26T10:06:56.584Z",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-29T14:01:41.751Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -23,28 +23,28 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 29,
-        "text": "import { existsSync, readFileSync } from 'node:fs'"
+        "line": 36,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs'"
       },
       {
         "file": "index.js",
-        "line": 196,
+        "line": 177,
+        "text": "raw = readFileSync(skillFile, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 301,
         "text": "cached = composeBootstrap(readFileSync(file, 'utf8'), { skillsDir, toolMapping })"
       },
       {
         "file": "index.js",
-        "line": 241,
+        "line": 346,
         "text": "return readFileSync(file, 'utf8').trim()"
       },
       {
         "file": "scripts/check-upstream.mjs",
         "line": 16,
         "text": "import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'"
-      },
-      {
-        "file": "scripts/check-upstream.mjs",
-        "line": 31,
-        "text": "const pkg = JSON.parse(readFileSync(join(packageRoot, 'package.json'), 'utf8'))"
       }
     ]
   },
@@ -62,7 +62,7 @@
       },
       {
         "file": "scripts/sync-skills.mjs",
-        "line": 24,
+        "line": 26,
         "text": "import { execFileSync } from 'node:child_process'"
       },
       {

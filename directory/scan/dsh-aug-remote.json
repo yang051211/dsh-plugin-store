@@ -1,0 +1,111 @@
+{
+  "name": "dsh-aug-remote",
+  "version": "2.5.0",
+  "scannedAt": "2026-10-29T14:01:35.992Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-push.mjs",
+        "line": 106,
+        "text": "const res = await fetch(`http://127.0.0.1:${gatewayPort}/pwa/push/send`, {"
+      },
+      {
+        "file": "lib/admin-routes.js",
+        "line": 40,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/client-routes.js",
+        "line": 299,
+        "text": "const fetchImpl = options.fetchImpl ?? ((url, init) => fetch(url, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3880,
+        "text": "singleton ??= createSharesStore((input, init) => fetch(input, init));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3980,
+        "text": "res = await fetch(buildShareExportQuery(session, range), { cache: 'no-store' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 30,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 285,
+        "text": "const parsed = JSON.parse(readFileSync(join(home, 'lan-gate.config.json'), 'utf8'));"
+      },
+      {
+        "file": "lib/fingerprint.js",
+        "line": 65,
+        "text": "import { readFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/fingerprint.js",
+        "line": 230,
+        "text": "const text = readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { lstat, mkdir, open, realpath, rm } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh-push.mjs",
+        "line": 293,
+        "text": "// Registers the push_notify model tool against ctx.tools, if present and not"
+      },
+      {
+        "file": "dsh-push.mjs",
+        "line": 343,
+        "text": "ctx.effect(() => tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lan-gate.mjs",
+        "line": 111,
+        "text": "handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "scripts/cdp-probe.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/cdp-probe.mjs",
+        "line": 11,
+        "text": "const chrome = spawn(CHROME, ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage', '--remote-debugging-port=' + port, '--user-data-dir=' + PROFILE, '--w"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

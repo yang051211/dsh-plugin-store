@@ -1,20 +1,35 @@
 {
   "name": "dsh-app-packager",
-  "version": "0.6.10",
-  "scannedAt": "2026-10-26T10:07:50.709Z",
-  "icon": null,
+  "version": "0.7.2",
+  "scannedAt": "2026-10-29T14:01:24.600Z",
+  "icon": "dsh-app-packager.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "dist/client.js",
-        "line": 596,
+        "line": 598,
         "text": "const response = await fetch(`${ROUTE}/${path}`, {"
       },
       {
         "file": "dist/upgrade.js",
         "line": 36,
         "text": "const res = await fetch(`https://registry.npmjs.org/${PACKAGE_NAME}/latest`, { signal: AbortSignal.timeout(8000) });"
+      },
+      {
+        "file": "vendor/app-packager/dist/engine/uploaders/pgyer.js",
+        "line": 335,
+        "text": "const response = await fetch(setting(settings, 'PGYER_GET_COS_TOKEN_URL') || 'https://www.pgyer.com/apiv2/app/getCOSToken', {"
+      },
+      {
+        "file": "vendor/app-packager/dist/engine/uploaders/pgyer.js",
+        "line": 365,
+        "text": "const response = await fetch(endpoint, { method: 'POST', body: uploadForm, signal: AbortSignal.timeout(timeoutMs) });"
+      },
+      {
+        "file": "vendor/app-packager/dist/engine/uploaders/pgyer.js",
+        "line": 381,
+        "text": "const response = await fetch(setting(settings, 'PGYER_HARMONY_CERT_UPLOAD_URL') || 'https://upload.pgyer.com/apiv2/app/uploadHarmonyCert', {"
       }
     ]
   },
@@ -28,12 +43,12 @@
       },
       {
         "file": "dist/home.js",
-        "line": 131,
+        "line": 162,
         "text": "fs.rmSync(to, { recursive: true, force: true });"
       },
       {
         "file": "dist/home.js",
-        "line": 132,
+        "line": 163,
         "text": "fs.mkdirSync(path.dirname(to), { recursive: true });"
       },
       {
@@ -43,7 +58,7 @@
       },
       {
         "file": "dist/upgrade.js",
-        "line": 59,
+        "line": 87,
         "text": "const installed = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;"
       }
     ]
@@ -112,7 +127,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 1,
+  "dependencies": 0,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

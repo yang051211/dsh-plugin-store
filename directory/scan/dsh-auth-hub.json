@@ -1,0 +1,120 @@
+{
+  "name": "dsh-auth-hub",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-29T14:01:45.109Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "checkin-runner.js",
+        "line": 115,
+        "text": "const response = await fetch(url, init)"
+      },
+      {
+        "file": "checkin-runner.js",
+        "line": 233,
+        "text": "const response = await fetch(`${base}${path}`, { headers, signal: AbortSignal.timeout(timeout) })"
+      },
+      {
+        "file": "checkin-runner.js",
+        "line": 257,
+        "text": "const response = await fetch(`${base}${path}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 308,
+        "text": "return readJsonResponse(await fetch(`${GROWTH_PATH}?provider=${encodeURIComponent(provider)}`, { headers: { accept: 'application/json' } }), '成长中心')"
+      },
+      {
+        "file": "client.js",
+        "line": 313,
+        "text": "return readJsonResponse(await fetch(GROWTH_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "checkin-channels.js",
+        "line": 41,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "checkin-channels.js",
+        "line": 775,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "checkin-channels.js",
+        "line": 782,
+        "text": "mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "checkin-channels.js",
+        "line": 784,
+        "text": "writeFileSync(tmp, JSON.stringify(value, null, 2), 'utf8')"
+      },
+      {
+        "file": "credit-usage.js",
+        "line": 55,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 1313,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 1403,
+        "text": "const child = spawn(\"cmd\", args, { detached: true, stdio: \"ignore\", windowsVerbatimArguments: true });"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 1414,
+        "text": "const child = spawn(cmd, [url], { detached: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 50179,
+        "text": "import { spawn as spawn2, spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "vendor/channel-pack/pack.js",
+        "line": 51187,
+        "text": "* ⚠⚠ **必须同步等它做完**（真实缺陷）：早期用异步 `spawn('taskkill', …)`"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/channel-pack/pack.js"
+  ],
+  "binaryFiles": [
+    "vendor/channel-pack/qoder-auth-wasm.wasm"
+  ],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 212,
+      "text": "- 存 `$DSH_HOME/channel-pack/rotations.json`，经 `GET/POST /plugins/dsh-auth-hub/rotations` 读写。"
+    }
+  ],
+  "skippedEntries": []
+}

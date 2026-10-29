@@ -1,0 +1,108 @@
+{
+  "name": "@makame/dsh-gvs",
+  "version": "2.6.0",
+  "scannedAt": "2026-10-29T14:01:29.555Z",
+  "icon": "makame__dsh-gvs.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "v3/runtime.js",
+        "line": 774,
+        "text": " let occupied=false;try{const res=await fetch(url,{signal:AbortSignal.timeout(700)});await res.body?.cancel();occupied=true;}catch{}if(occupied)throw new Error("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "v3/browser.js",
+        "line": 1,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "v3/browser.js",
+        "line": 93,
+        "text": "=null;try{const pkg=JSON.parse(await fs.readFile(path.join(path.dirname(resolved.modulePath),'package.json'),'utf8'));packageName=pkg.name??null;packageVersion="
+      },
+      {
+        "file": "v3/coordinator.js",
+        "line": 12,
+        "text": "export const inject=['agents','agentTeams','tools','workingDirectory','fs','sessionProjections','systemPrompt'];"
+      },
+      {
+        "file": "v3/recovery-host.js",
+        "line": 3,
+        "text": "export const inject=['sessionPersistence','sessionController','fs'];"
+      },
+      {
+        "file": "v3/runtime.js",
+        "line": 22,
+        "text": " inject=['tools','agentTeams','agents','sessionController','subagents','fs','workingDirectory','sandboxPolicy','attachments','llm','jobs','sessionProjections'];"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "v3/coordinator.js",
+        "line": 12,
+        "text": "export const inject=['agents','agentTeams','tools','workingDirectory','fs','sessionProjections','systemPrompt'];"
+      },
+      {
+        "file": "v3/coordinator.js",
+        "line": 61,
+        "text": ":101,text:({scope})=>{const description=ctx.tools.get('read',scope)?.parameters?.properties?.limit?.description??'Use the configured Native read default.';retur"
+      },
+      {
+        "file": "v3/models-host.js",
+        "line": 46,
+        "text": "   const restored=await root.ctx.tools.execute({callId:randomUUID(),agent:root,signal:AbortSignal.timeout(120000),name:'gvs_recover',arguments:{reason:'model-ch"
+      },
+      {
+        "file": "v3/recovery-host.js",
+        "line": 12,
+        "text": "const restored=await agent.ctx.tools.execute({callId:randomUUID(),agent,signal:controller.signal,name:'gvs_recover',arguments:{}});"
+      },
+      {
+        "file": "v3/runtime.js",
+        "line": 22,
+        "text": "export const inject=['tools','agentTeams','agents','sessionController','subagents','fs','workingDirectory','sandboxPolicy','attachments','llm','jobs','sessionPr"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentTeams",
+    "agents",
+    "commands",
+    "fs",
+    "llm",
+    "sessionController",
+    "sessionPersistence",
+    "sessionProjections",
+    "systemPrompt",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 253,
+      "text": "Это плагин Harness, поэтому обычное `npm install -g @makame/dsh-gvs` само по себе не подключает его к профилю. Установка через Plugin Manager сохраняется после "
+    }
+  ],
+  "skippedEntries": []
+}

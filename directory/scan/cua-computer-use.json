@@ -1,0 +1,91 @@
+{
+  "name": "cua-computer-use",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-29T14:01:33.493Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/locate.js",
+        "line": 28,
+        "text": "unix: '/bin/bash -c \"$(curl -fsSL https://cua.ai/driver/install.sh)\"',"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 183,
+        "text": "args: ['-c', `curl -fsSL ${INSTALLER_URL.unix} | /bin/bash -s`],"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 151,
+        "text": "const { attributes, body } = parseFrontmatter(readFileSync(path, 'utf8'))"
+      },
+      {
+        "file": "lib/locate.js",
+        "line": 16,
+        "text": "import { accessSync, constants, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 23,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 259,
+        "text": "const parsed = JSON.parse(readFileSync(join(dir, STATE_FILE), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 14,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "* in-box `@deepseek-ai/dsh-mcp-client`, which starts `cua-driver mcp` and"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/setup.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 303,
+        "text": "child = spawn(file, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

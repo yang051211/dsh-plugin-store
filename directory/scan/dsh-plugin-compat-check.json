@@ -1,25 +1,25 @@
 {
   "name": "dsh-plugin-compat-check",
-  "version": "0.1.7",
-  "scannedAt": "2026-10-26T10:06:26.283Z",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-29T14:01:28.392Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 3582,
-        "text": "return fetch(url, {"
+        "line": 13,
+        "text": ")?request:[request]){let response=await fetch(\"/plugin-compat-check/history\",{method:\"POST\",credentials:\"same-origin\",headers:{\"Content-Type\":\"application/json\""
       },
       {
         "file": "lib/client.js",
-        "line": 4490,
-        "text": "var response = await fetch("
+        "line": 14,
+        "text": "hase:\"loading\"});try{var response=await fetch(\"/plugin-compat-check/upgrade-preview?targetVersion=\"+encodeURIComponent(requested)+\"&currentVersion=\"+encodeURICo"
       },
       {
         "file": "lib/client.js",
-        "line": 4725,
-        "text": "var response = await fetch(\"/plugin-compat-check/reviews\", {"
+        "line": 15,
+        "text": "eFindingReview(body){var response=await fetch(\"/plugin-compat-check/reviews\",{method:\"POST\",credentials:\"same-origin\",headers:{\"Content-Type\":\"application/json\""
       }
     ]
   },
@@ -29,27 +29,27 @@
       {
         "file": "index.js",
         "line": 29,
-        "text": "} from \"node:fs\";"
+        "text": "import { existsSync, readFileSync, realpathSync } from \"node:fs\";"
       },
       {
         "file": "index.js",
-        "line": 776,
+        "line": 807,
         "text": "readFileSync(join(dir, \"package.json\"), \"utf8\"),"
       },
       {
         "file": "index.js",
-        "line": 1510,
-        "text": "readFileSync(new URL(\"./package.json\", import.meta.url), \"utf8\"),"
-      },
-      {
-        "file": "index.js",
-        "line": 2116,
+        "line": 1366,
         "text": "const raw = readFileSync(file, \"utf8\");"
       },
       {
-        "file": "kernel/lib/execution-environment.mjs",
-        "line": 1,
+        "file": "kernel/lib/extract.mjs",
+        "line": 2,
         "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "kernel/lib/extract.mjs",
+        "line": 406,
+        "text": "fs.readFileSync(join(REPO_ROOT, \"rules/dsh-api-catalog.json\"), \"utf8\"),"
       }
     ]
   },
@@ -58,7 +58,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 1908,
+        "line": 1158,
         "text": "const dispose = scope.tools.register({"
       }
     ]
@@ -66,16 +66,6 @@
   "childProcess": {
     "hit": true,
     "evidence": [
-      {
-        "file": "kernel/lib/owned-process.mjs",
-        "line": 3,
-        "text": "import { spawnSync } from \"node:child_process\";"
-      },
-      {
-        "file": "kernel/lib/owned-process.mjs",
-        "line": 57,
-        "text": "const r = spawnSync(\"/bin/ps\", args, {"
-      },
       {
         "file": "scripts/prepublish-check.mjs",
         "line": 4,
@@ -88,7 +78,9 @@
     "evidence": []
   },
   "dependencies": 3,
-  "minifiedFiles": [],
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
   "binaryFiles": [],
   "requiredServices": [],
   "setupHints": [],

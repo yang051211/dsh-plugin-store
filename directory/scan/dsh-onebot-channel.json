@@ -1,7 +1,7 @@
 {
   "name": "dsh-onebot-channel",
-  "version": "0.4.0",
-  "scannedAt": "2026-10-27T13:14:17.804Z",
+  "version": "0.11.0",
+  "scannedAt": "2026-10-29T14:01:27.423Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,12 +18,12 @@
       },
       {
         "file": "lib/images.js",
-        "line": 140,
+        "line": 162,
         "text": "const response = await fetch(seg.url, {"
       },
       {
         "file": "lib/onebot.js",
-        "line": 17,
+        "line": 23,
         "text": "const response = await fetch(config.onebotHttp, {"
       },
       {
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/config.js",
-        "line": 7,
-        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+        "file": "lib/api.js",
+        "line": 15,
+        "text": "import { readFileSync } from 'node:fs'"
       },
       {
-        "file": "lib/config.js",
-        "line": 110,
-        "text": "config = { ...DEFAULTS, ...JSON.parse(readFileSync(CONFIG_FILE, 'utf8')) }"
+        "file": "lib/api.js",
+        "line": 37,
+        "text": "readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8')"
       },
       {
-        "file": "lib/config.js",
-        "line": 168,
-        "text": "writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2) + '\\n', 'utf8')"
+        "file": "lib/closure.js",
+        "line": 17,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs'"
       },
       {
-        "file": "lib/env.js",
-        "line": 8,
-        "text": "import { appendFileSync, statSync, readFileSync, writeFileSync } from 'node:fs'"
+        "file": "lib/closure.js",
+        "line": 197,
+        "text": "if (existsSync(CLOSURE_FILE)) closings = JSON.parse(readFileSync(CLOSURE_FILE, 'utf8'))"
       },
       {
-        "file": "lib/env.js",
-        "line": 35,
-        "text": "const tail = readFileSync(LOAD_LOG).subarray(size - LOG_KEEP_BYTES)"
+        "file": "lib/closure.js",
+        "line": 220,
+        "text": "writeFileSync(CLOSURE_FILE, JSON.stringify(table, null, 2), 'utf8')"
       }
     ]
   },
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 52,
+        "line": 65,
         "text": "// 必须声明 inject：cordis 里没 inject 的服务，读 ctx.agents / ctx.tools 会直接抛"
       },
       {
         "file": "lib/index.js",
-        "line": 56,
+        "line": 69,
         "text": "export const inject = ['agents', 'tools', 'webServer', 'llm', 'sessions', 'attachments']"
       },
       {
         "file": "lib/tool.js",
-        "line": 27,
+        "line": 33,
         "text": "const disposeTool = tools.register("
       },
       {
         "file": "lib/tool.js",
-        "line": 126,
+        "line": 154,
         "text": "const disposeTool = tools.register({"
       },
       {
         "file": "lib/tool.js",
-        "line": 211,
+        "line": 244,
         "text": "const disposeTool = tools.register({"
       }
     ]

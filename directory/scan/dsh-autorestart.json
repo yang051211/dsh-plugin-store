@@ -1,35 +1,35 @@
 {
   "name": "dsh-autorestart",
-  "version": "0.6.1",
-  "scannedAt": "2026-10-28T06:59:33.921Z",
+  "version": "0.8.2",
+  "scannedAt": "2026-10-29T14:01:20.805Z",
   "icon": "dsh-autorestart.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 643,
+        "line": 2231,
         "text": "const response = await fetch(HEALTH_URL, {"
       },
       {
         "file": "client.js",
-        "line": 1289,
+        "line": 3109,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "client.js",
+        "line": 3164,
         "text": "const response = await fetch(parkUrlFor(info), {"
       },
       {
         "file": "client.js",
-        "line": 1482,
+        "line": 3511,
         "text": "const response = await fetch(choiceUrlFor(info), {"
       },
       {
         "file": "client.js",
-        "line": 1518,
-        "text": "const response = await fetch(choiceUrlFor(info), {"
-      },
-      {
-        "file": "client.js",
-        "line": 1828,
-        "text": "const response = await fetch(DEFAULT_SLEEP_URL, {"
+        "line": 3551,
+        "text": "const response = await fetch(supervisorUrlFor(info), {"
       }
     ]
   },
@@ -38,27 +38,27 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 22,
+        "line": 23,
         "text": "import fs from 'node:fs'"
       },
       {
         "file": "index.js",
-        "line": 174,
+        "line": 435,
         "text": "const raw = fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')"
       },
       {
         "file": "index.js",
-        "line": 785,
+        "line": 1172,
         "text": "const raw = fs.readFileSync(path.join(stateDir, INSTALL_CHOICE_FILE), 'utf8')"
       },
       {
         "file": "index.js",
-        "line": 833,
+        "line": 1220,
         "text": "fs.mkdirSync(stateDir, { recursive: true })"
       },
       {
         "file": "index.js",
-        "line": 834,
+        "line": 1221,
         "text": "fs.writeFileSync(file, JSON.stringify(payload, null, 2), 'utf8')"
       }
     ]
@@ -68,22 +68,22 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 329,
+        "line": 592,
         "text": "export const inject = ['agents', 'goals', 'tools', 'timer', 'systemPrompt', 'sessionController']"
       },
       {
         "file": "index.js",
-        "line": 2955,
+        "line": 5378,
         "text": "* The disposer returned by `ctx.tools.register` is handed to `ctx.effect`, so"
       },
       {
         "file": "index.js",
-        "line": 2970,
+        "line": 5393,
         "text": "() => ctx.tools.register(definition),"
       },
       {
         "file": "index.js",
-        "line": 3551,
+        "line": 6231,
         "text": "const tools = ctx.tools"
       }
     ]
@@ -92,29 +92,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "index.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 7128,
+        "text": "const child = spawn(process.platform === 'win32' ? 'explorer.exe' : 'xdg-open', [folder], {"
+      },
+      {
         "file": "lib/restart.js",
         "line": 17,
         "text": "import { execFileSync, spawn } from 'node:child_process';"
       },
       {
-        "file": "lib/restart.js",
-        "line": 511,
-        "text": "const child = spawn(text, { shell: true, detached: true, windowsHide: true, stdio: 'ignore' });"
+        "file": "lib/scheduler-capability.js",
+        "line": 36,
+        "text": "import { execFileSync } from 'node:child_process';"
       },
       {
         "file": "lib/sleep.js",
         "line": 30,
         "text": "import { spawn as spawnProcess } from 'node:child_process';"
-      },
-      {
-        "file": "lib/sleep.js",
-        "line": 298,
-        "text": "* `spawn()` reports a failure through the child's `error` event, so the answer"
-      },
-      {
-        "file": "lib/sleep.js",
-        "line": 331,
-        "text": "child = spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: true });"
       }
     ]
   },

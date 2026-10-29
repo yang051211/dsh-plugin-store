@@ -1,0 +1,75 @@
+{
+  "name": "@moon16u/dsh-hooks",
+  "version": "2.1.1",
+  "scannedAt": "2026-10-29T14:01:37.104Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 119,
+        "text": "const response = await fetch(API + path, data === undefined ? { credentials: \"same-origin\", signal } : {"
+      },
+      {
+        "file": "lib/hooks/routes.js",
+        "line": 17,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hooks/config.js",
+        "line": 2,
+        "text": "import { existsSync, lstatSync, readFileSync, realpathSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/hooks/config.js",
+        "line": 131,
+        "text": "return readFileSync(path, \"utf8\");"
+      },
+      {
+        "file": "lib/hooks/config.js",
+        "line": 177,
+        "text": "return [isAbsolute(file) ? path : file, hash(readFileSync(path))];"
+      },
+      {
+        "file": "lib/hooks/engine.js",
+        "line": 2,
+        "text": "import { realpathSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/hooks/routes.js",
+        "line": 2,
+        "text": "import { realpathSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hooks/runner.js",
+        "line": 22,
+        "text": "handle = subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}
