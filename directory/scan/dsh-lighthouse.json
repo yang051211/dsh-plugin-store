@@ -1,0 +1,88 @@
+{
+  "name": "dsh-lighthouse",
+  "version": "0.3.3",
+  "scannedAt": "2026-10-29T23:41:59.882Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 103,
+        "text": "fetch(ROUTE, { credentials: \"same-origin\", cache: \"no-store\" })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collect.js",
+        "line": 13,
+        "text": "import { readFile, readdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/collect.js",
+        "line": 57,
+        "text": "const text = await readFile(join(dir, 'package.json'), 'utf8');"
+      },
+      {
+        "file": "lib/fleet.js",
+        "line": 21,
+        "text": "import { readFile, writeFile, mkdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "const text = await readFile(file, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "if (ctx.tools !== undefined && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 137,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

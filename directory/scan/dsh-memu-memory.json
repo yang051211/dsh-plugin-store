@@ -1,0 +1,131 @@
+{
+  "name": "dsh-memu-memory",
+  "version": "1.1.3",
+  "scannedAt": "2026-10-29T23:42:07.261Z",
+  "icon": "dsh-memu-memory.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 3204,
+        "text": "const response = await fetch('/dsh-memu-memory/import/' + encodeURIComponent(browseLibId) + '.zip', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 5213,
+        "text": "const response = await fetch('/dsh-memu-memory/' + endpoint, {"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 109,
+        "text": "const response = await fetch(source.url, {"
+      },
+      {
+        "file": "lib/local-embedding-worker.js",
+        "line": 1,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/local-vector-service.js",
+        "line": 212,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/activity-log.js",
+        "line": 1,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/activity-log.js",
+        "line": 82,
+        "text": "if (fs.existsSync(file)) cache = parseLines(fs.readFileSync(file, 'utf8')).slice(-MAX_ENTRIES)"
+      },
+      {
+        "file": "lib/activity-log.js",
+        "line": 97,
+        "text": "fs.writeFileSync(temp, entries.map(entry => JSON.stringify(entry)).join('\\n') + (entries.length ? '\\n' : ''), 'utf8')"
+      },
+      {
+        "file": "lib/activity-log.js",
+        "line": 111,
+        "text": "fs.appendFileSync(file, JSON.stringify(entry) + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/backup.js",
+        "line": 2,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "export const inject = ['tools', 'timer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "} else if (ctx.tools) {"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 464,
+        "text": "const disposers = usable.map((tool) => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/backup.js",
+        "line": 4,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/embedding-runtime.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 159,
+        "text": "const child = spawn(cmd, args, {"
+      },
+      {
+        "file": "lib/local-embedding-manager.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [
+    "lib/webui/graph-view.bundle.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "timer",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "@zumikua/dsh-junie-subagent",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-29T23:42:07.066Z",
+  "icon": "zumikua__dsh-junie-subagent.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 64,
+        "text": "const response = await fetch(ROUTE, { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 93,
+        "text": "const response = await fetch(ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "helpers.js",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 52,
+        "text": "const parsed = JSON.parse(readFileSync(SETTINGS_FILE, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 69,
+        "text": "mkdirSync(dirname(SETTINGS_FILE), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 70,
+        "text": "writeFileSync(SETTINGS_FILE, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 99,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 182,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "index.js",
+        "line": 521,
+        "text": "handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "subprocess",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

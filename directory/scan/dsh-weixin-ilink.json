@@ -1,0 +1,87 @@
+{
+  "name": "dsh-weixin-ilink",
+  "version": "0.9.1",
+  "scannedAt": "2026-10-29T23:42:07.825Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 92,
+        "text": "sts: z.array(z.string()).default([]).description('Extra hostnames allowed for media fetch (e.g. a private CDN mirror). Empty = the WeChat CDN allowlist only.'),"
+      },
+      {
+        "file": "src/media.js",
+        "line": 141,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "src/media.js",
+        "line": 198,
+        "text": "const response = await fetch(uploadUrl, {"
+      },
+      {
+        "file": "src/transport/ilink.js",
+        "line": 122,
+        "text": "const res = await fetch(apiUrl(baseUrl, endpoint), {"
+      },
+      {
+        "file": "src/transport/ilink.js",
+        "line": 143,
+        "text": "const res = await fetch(apiUrl(baseUrl, endpoint), {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 22,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "src/index.js",
+        "line": 849,
+        "text": "fs.writeFileSync(file, data, { mode: 0o600 })"
+      },
+      {
+        "file": "src/life-state.js",
+        "line": 15,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/life-state.js",
+        "line": 48,
+        "text": "const parsed = JSON.parse(fs.readFileSync(lifeFilePath(stateRoot, accountId), 'utf8'));"
+      },
+      {
+        "file": "src/life-state.js",
+        "line": 71,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agents"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

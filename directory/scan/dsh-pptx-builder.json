@@ -1,0 +1,108 @@
+{
+  "name": "dsh-pptx-builder",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-29T23:42:00.557Z",
+  "icon": "dsh-pptx-builder.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/image.js",
+        "line": 150,
+        "text": "response = await fetch(parsed, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { access } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/examples.js",
+        "line": 13,
+        "text": "import { mkdtemp, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/examples.js",
+        "line": 33,
+        "text": "await writeFile(file, bytes);"
+      },
+      {
+        "file": "lib/examples.js",
+        "line": 36,
+        "text": "await rm(directory, { recursive: true, force: true }).catch(() => {});"
+      },
+      {
+        "file": "lib/image.js",
+        "line": 12,
+        "text": "import { readFile } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "index.js",
+        "line": 242,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 307,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 367,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 445,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/python.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 55,
+        "text": "child = spawn(candidate, ['-c', 'import PIL'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/python.js",
+        "line": 158,
+        "text": "child = spawn(command, args, { stdio: ['ignore', 'ignore', descriptor], windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

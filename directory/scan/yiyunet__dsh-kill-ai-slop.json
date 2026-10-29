@@ -1,0 +1,97 @@
+{
+  "name": "@yiyunet/dsh-kill-ai-slop",
+  "version": "0.7.17",
+  "scannedAt": "2026-10-29T23:41:58.062Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rpc.mjs",
+        "line": 554,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "plugin-src/host/rpc.mjs",
+        "line": 552,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 19,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 424,
+        "text": "const buffer = await readFile(target)"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 495,
+        "text": "const buffer = await readFile(target)"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 14,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 524,
+        "text": "await mkdir(root, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 35,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 204,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 304,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 390,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 455,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

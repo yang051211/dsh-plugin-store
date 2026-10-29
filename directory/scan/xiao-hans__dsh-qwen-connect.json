@@ -1,0 +1,97 @@
+{
+  "name": "@xiao-hans/dsh-qwen-connect",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-29T23:42:04.627Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/chat-shim.js",
+        "line": 24,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "lib/chat-shim.js",
+        "line": 89,
+        "text": "* 为什么需要它：`fetch()` 会等到**响应头**到达才 resolve。若上游接受了连接"
+      },
+      {
+        "file": "lib/chat-shim.js",
+        "line": 149,
+        "text": "response = await fetch(signed.url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 614,
+        "text": "const response = await fetch(QWENWORK_STATUS_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 792,
+        "text": "const response = await fetch(QWENWORK_STATUS_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auth.js",
+        "line": 21,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 185,
+        "text": "fs.writeFileSync(tmp, payload, { mode: 0o600 });"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 188,
+        "text": "try { fs.rmSync(tmp, { force: true }); } catch { /* ignore */ }"
+      },
+      {
+        "file": "lib/auth.js",
+        "line": 195,
+        "text": "return decryptV10(fs.readFileSync(file), masterKey);"
+      },
+      {
+        "file": "lib/credentials.js",
+        "line": 15,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dpapi.js",
+        "line": 15,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/dpapi.js",
+        "line": 224,
+        "text": "res = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,108 @@
+{
+  "name": "quicktui-dsh",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-29T23:42:08.004Z",
+  "icon": "quicktui-dsh.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 170,
+        "text": "const response = await fetch(API + path, init)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 327,
+        "text": "h('pre', { style: style.code }, `curl -fsSL ${url} | sh -s -- ${status?.installArgs ?? ''}`)))"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 181,
+        "text": "const response = await fetch(`http://127.0.0.1:${port}/v3/healthz`, { signal: AbortSignal.timeout(HEALTH_TIMEOUT_MS) })"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 204,
+        "text": "fetchScript = (url) => fetch(url, { redirect: 'error', signal: AbortSignal.timeout(SCRIPT_TIMEOUT_MS) }),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 25,
+        "text": "import { appendFile, mkdir, open, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 347,
+        "text": "await writeFile(temp, JSON.stringify({ schema_version: SIDECAR_SCHEMA, last_seq: seq, updated_at: Date.now() }))"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 371,
+        "text": "await mkdir(sidecarDir, { recursive: true })"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 382,
+        "text": "if (known === undefined) await writeFile(sidecarPath(sessionId), lines.join('\\n') + '\\n')"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 383,
+        "text": "else await appendFile(sidecarPath(sessionId), lines.join('\\n') + '\\n')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 23,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 152,
+        "text": "return spawn(command[0], args, { shell: false, stdio, windowsHide: true })"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 3,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 162,
+        "text": "execFile(file, args, { timeout: timeoutMs, maxBuffer: MAX_COMMAND_OUTPUT, windowsHide: true, encoding: 'utf8' },"
+      },
+      {
+        "file": "lib/setup.js",
+        "line": 205,
+        "text": "spawnInstaller = (script, args) => spawn('/bin/sh', [script, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "sessionQuery"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

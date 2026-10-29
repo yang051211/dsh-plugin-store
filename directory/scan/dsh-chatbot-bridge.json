@@ -1,0 +1,111 @@
+{
+  "name": "dsh-chatbot-bridge",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-29T23:42:02.977Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 141,
+        "text": "const response = await fetch(BRIDGE + path, options);"
+      },
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "index.js",
+        "line": 1006,
+        "text": "const response = await fetch(config.napcat.webui + '/api/auth/login', {"
+      },
+      {
+        "file": "index.js",
+        "line": 1027,
+        "text": "const response = await fetch(config.napcat.webui + apiPath, {"
+      },
+      {
+        "file": "index.js",
+        "line": 1111,
+        "text": "const response = await fetch(config.astrbot.webui + '/api/v1/auth/login', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "config.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "config.js",
+        "line": 90,
+        "text": "const saved = JSON.parse(fs.readFileSync(activeConfigFile, 'utf8'));"
+      },
+      {
+        "file": "config.js",
+        "line": 95,
+        "text": "fs.mkdirSync(path.dirname(target), { recursive: true });"
+      },
+      {
+        "file": "config.js",
+        "line": 96,
+        "text": "fs.writeFileSync(target, JSON.stringify(defaults, null, 2), 'utf8');"
+      },
+      {
+        "file": "config.js",
+        "line": 113,
+        "text": "if (directory) fs.mkdirSync(directory, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 7,
+        "text": "import { spawn, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 1230,
+        "text": "const child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "index.js",
+        "line": 1287,
+        "text": "child = spawn(config.astrbot.exe, ['run'], {"
+      },
+      {
+        "file": "index.js",
+        "line": 2087,
+        "text": "const child = spawn('cmd.exe', ['/c', config.napcat.launcher], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "approval",
+    "sessionController",
+    "sessions",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

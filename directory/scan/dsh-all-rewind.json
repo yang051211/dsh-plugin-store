@@ -1,0 +1,70 @@
+{
+  "name": "dsh-all-rewind",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-29T23:42:04.138Z",
+  "icon": "dsh-all-rewind.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/ui.js",
+        "line": 45,
+        "text": "return fetch(API + path, init).then(function (response) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.mjs",
+        "line": 20,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "install.mjs",
+        "line": 87,
+        "text": "fs.mkdirSync(target, { recursive: true })"
+      },
+      {
+        "file": "install.mjs",
+        "line": 92,
+        "text": "fs.rmSync(to, { recursive: true, force: true })"
+      },
+      {
+        "file": "install.mjs",
+        "line": 167,
+        "text": "const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'))"
+      },
+      {
+        "file": "install.mjs",
+        "line": 182,
+        "text": "let current = fs.existsSync(patchFile) ? fs.readFileSync(patchFile, 'utf8') : ''"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 147,
+        "text": "for (const tool of tools) disposers.push(ctx.tools.register(toolDefinition(tool)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

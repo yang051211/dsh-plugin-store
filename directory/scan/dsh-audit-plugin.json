@@ -1,0 +1,71 @@
+{
+  "name": "dsh-audit-plugin",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-29T23:42:00.047Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/webui.mjs",
+        "line": 138,
+        "text": "const r = await fetch(url, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "lib/webui.mjs",
+        "line": 234,
+        "text": "const r = await fetch('/dsh-cost-audit/api/fix', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-audit.mjs",
+        "line": 12,
+        "text": "import { statSync, existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/dsh-audit.mjs",
+        "line": 48,
+        "text": "return JSON.parse(readFileSync(join(HERE, '..', 'package.json'), 'utf8')).version;"
+      },
+      {
+        "file": "lib/core/session.mjs",
+        "line": 11,
+        "text": "import { readFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/session.mjs",
+        "line": 80,
+        "text": "const buf = readFileSync(file);"
+      },
+      {
+        "file": "lib/fixes.mjs",
+        "line": 23,
+        "text": "import { existsSync, readFileSync, writeFileSync, readdirSync, copyFileSync, unlinkSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionQuery"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

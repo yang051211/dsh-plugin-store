@@ -1,0 +1,141 @@
+{
+  "name": "dsh-dot-life",
+  "version": "0.10.16",
+  "scannedAt": "2026-10-29T23:42:07.322Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 59,
+        "text": "const res = await fetch(\"/dsh-dot/computer/status\", {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 91,
+        "text": "return (await (await fetch(`${phoneLiveViewUrl(endpoint)}status`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 111,
+        "text": "return (await fetch(`${panelUrl()}api/state`, {"
+      },
+      {
+        "file": "scripts/check-mac-aio.sh",
+        "line": 21,
+        "text": "code() { curl -s -o /dev/null -w '%{http_code}' --noproxy '*' --max-time 5 \"$1\" 2>/dev/null || echo 000; }"
+      },
+      {
+        "file": "scripts/check-mac-aio.sh",
+        "line": 33,
+        "text": "curl -s --noproxy '*' --max-time 5 \"http://127.0.0.1:$SP/\" | grep -q smoke-ok && step 'port forward (detached server)' 1 || {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/computer/audit.js",
+        "line": 4,
+        "text": "import { appendFileSync, renameSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "src/computer/audit.js",
+        "line": 26,
+        "text": "appendFileSync(file, `${JSON.stringify({ ts: new Date().toISOString(), ...entry })}\\n`);"
+      },
+      {
+        "file": "src/computer/backends/microsandbox.js",
+        "line": 6,
+        "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/computer/backends/microsandbox.js",
+        "line": 116,
+        "text": "const member = JSON.parse(readFileSync(join(snapDir, id, 'group-member.json'), 'utf8')).name;"
+      },
+      {
+        "file": "src/computer/backends/microsandbox.js",
+        "line": 117,
+        "text": "const created = JSON.parse(readFileSync(join(snapDir, id, 'snapshot.json'), 'utf8')).capture?.created_at || '';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/computer/gate.js",
+        "line": 15,
+        "text": "export const inject = ['tools', 'dshComputer'];"
+      },
+      {
+        "file": "src/computer/vm.js",
+        "line": 34,
+        "text": "// Mount the VM's browser/desktop tools (mcp__dot-vm__*) through dsh-mcp-client with the key attached."
+      },
+      {
+        "file": "src/computer/vm.js",
+        "line": 312,
+        "text": "ent = config.mcpClient ?? await import('@deepseek-ai/dsh-mcp-client'); } catch (err) { logger.error(`${VM_TOOL_PREFIX}* unavailable: ${err.message}`); return; }"
+      },
+      {
+        "file": "src/memory/memory.js",
+        "line": 499,
+        "text": "scope.effect(() => scope.tools.register({"
+      },
+      {
+        "file": "src/memory/memory.js",
+        "line": 523,
+        "text": "scope.effect(() => scope.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/computer/backends/microsandbox.js",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/computer/backends/proxy.js",
+        "line": 3,
+        "text": "import { execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "src/computer/docker.js",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/computer/subprocess.js",
+        "line": 3,
+        "text": "// and only rewrites argv into the backend's exec command (`msb exec` / `docker exec`), so spawn()"
+      },
+      {
+        "file": "src/computer/subprocess.js",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "dshComputer",
+    "llm",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

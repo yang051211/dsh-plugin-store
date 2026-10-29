@@ -1,0 +1,98 @@
+{
+  "name": "@huai_xin/dsh-memory",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-29T23:42:08.579Z",
+  "icon": "huai_xin__dsh-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "ui/client.js",
+        "line": 1057,
+        "text": "const response = await fetch(target, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "ui/client.js",
+        "line": 1074,
+        "text": "const response = await fetch(target, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic.js",
+        "line": 13,
+        "text": "import { rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 57,
+        "text": "await writeFile(temp, text, 'utf8')"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 70,
+        "text": "await rm(temp, { force: true }).catch(() => {})"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 17,
+        "text": "import { mkdir, readdir, readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/cache.js",
+        "line": 145,
+        "text": "await mkdir(logDir, { recursive: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "index.js",
+        "line": 219,
+        "text": "agent.ctx.tools.restrict({ deny: [TOOL_NAMES.edit, TOOL_NAMES.manage] })"
+      },
+      {
+        "file": "index.js",
+        "line": 308,
+        "text": "ctx.effect(() => ctx.tools.register(readTool(runtime)), 'memory.tool.read()')"
+      },
+      {
+        "file": "index.js",
+        "line": 309,
+        "text": "ctx.effect(() => ctx.tools.register(editTool(runtime)), 'memory.tool.edit()')"
+      },
+      {
+        "file": "index.js",
+        "line": 310,
+        "text": "ctx.effect(() => ctx.tools.register(manageTool(runtime)), 'memory.tool.manage()')"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

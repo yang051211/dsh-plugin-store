@@ -1,41 +1,51 @@
 {
   "name": "dsh-mesh-waker",
-  "version": "0.4.60",
-  "scannedAt": "2026-10-29T14:01:16.898Z",
+  "version": "0.5.6",
+  "scannedAt": "2026-10-29T23:41:50.770Z",
   "icon": "dsh-mesh-waker.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
+        "file": "bin/dispatch.mjs",
+        "line": 124,
+        "text": "const res = await fetch(url, {"
+      },
+      {
         "file": "client.js",
-        "line": 83,
+        "line": 94,
         "text": "const res = await fetch(url, { cache: 'no-store', ...init })"
       },
       {
         "file": "client.js",
-        "line": 352,
+        "line": 386,
         "text": "const res = await fetch(BASE + '/mesh/config', {"
       },
       {
         "file": "client.js",
-        "line": 363,
+        "line": 397,
         "text": "const res = await fetch(BASE + '/mesh/status', { cache: 'no-store' })"
       },
       {
         "file": "index.js",
         "line": 19,
         "text": "import { createServer } from 'node:http'"
-      },
-      {
-        "file": "index.js",
-        "line": 404,
-        "text": "const listRes = await fetch(`${c.hubUrl}/api/conversations?limit=50`, {"
       }
     ]
   },
   "fileSystem": {
     "hit": true,
     "evidence": [
+      {
+        "file": "bin/dispatch.mjs",
+        "line": 13,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "bin/dispatch.mjs",
+        "line": 143,
+        "text": "const text = options.file !== undefined ? await readFile(String(options.file), 'utf8') : String(options.text ?? '')"
+      },
       {
         "file": "index.js",
         "line": 20,
@@ -48,24 +58,25 @@
       },
       {
         "file": "index.js",
-        "line": 32,
+        "line": 33,
         "text": "SELF_PACKAGE = JSON.parse(readFileSync(join(SELF_DIR, 'package.json'), 'utf8'))"
-      },
-      {
-        "file": "index.js",
-        "line": 60,
-        "text": "return String(JSON.parse(readFileSync(join(SELF_DIR, 'package.json'), 'utf8')).version ?? '0.0.0')"
-      },
-      {
-        "file": "index.js",
-        "line": 78,
-        "text": "appendFileSync(LOG_FILE, `${new Date().toISOString()} ${message}\\n`)"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2945,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 2947,
+        "text": "ctx.effect(() => tools.register(definition))"
+      }
+    ]
   },
   "childProcess": {
     "hit": false,

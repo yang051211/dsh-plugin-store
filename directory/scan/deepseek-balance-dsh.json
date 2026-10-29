@@ -1,0 +1,79 @@
+{
+  "name": "deepseek-balance-dsh",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-29T23:41:57.942Z",
+  "icon": "deepseek-balance-dsh.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 338,
+        "text": "const res = await fetch(method === 'GET' ? '/dsbal/state' : '/dsbal/' + method, {"
+      },
+      {
+        "file": "lib/deepseek.js",
+        "line": 53,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 17,
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 50,
+        "text": "await mkdir(dirname(file), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 52,
+        "text": "await writeFile(tmp, text, { mode })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 57,
+        "text": "await rm(tmp, { force: true })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 95,
+        "text": "raw = await readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 57,
+        "text": "dispose = tctx.tools.register(createBalanceTool({ service }))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

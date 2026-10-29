@@ -1,24 +1,24 @@
 {
   "name": "dsh-remote",
-  "version": "0.8.54",
-  "scannedAt": "2026-10-28T14:05:25.218Z",
+  "version": "0.8.60",
+  "scannedAt": "2026-10-29T23:41:47.896Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 723,
+        "line": 759,
         "text": "const res = await fetch(apiPath(path), opts)"
       },
       {
         "file": "lib/client.js",
-        "line": 733,
+        "line": 769,
         "text": "const res = await fetch(apiPath(path), opts)"
       },
       {
         "file": "lib/client.js",
-        "line": 1753,
+        "line": 1873,
         "text": "//    a superseded fetch (fresh navigation, picker reopen) is dropped"
       },
       {
@@ -58,7 +58,7 @@
       },
       {
         "file": "lib/credential.js",
-        "line": 92,
+        "line": 140,
         "text": "mkdirSync(secretsDir || '.', { recursive: true })"
       }
     ]
@@ -73,7 +73,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 2934,
+        "line": 2957,
         "text": "ctx.tools.register(t)"
       }
     ]
@@ -84,12 +84,17 @@
       {
         "file": "lib/credential.js",
         "line": 15,
-        "text": "import { execFile } from 'node:child_process'"
+        "text": "import { spawn } from 'node:child_process'"
       },
       {
         "file": "lib/credential.js",
-        "line": 31,
-        "text": "execFile(bin, args, { timeout: TIMEOUT, maxBuffer: 1 << 20, ...(input != null ? { input } : {}) }, (err, stdout, stderr) => {"
+        "line": 32,
+        "text": "* WHY `spawn` and not `execFile(..., { input })`: measured on a real Ubuntu box"
+      },
+      {
+        "file": "lib/credential.js",
+        "line": 47,
+        "text": "child = spawn(bin, args, { stdio: ['pipe', 'pipe', 'pipe'] })"
       },
       {
         "file": "lib/index.js",
@@ -98,13 +103,8 @@
       },
       {
         "file": "lib/index.js",
-        "line": 3188,
+        "line": 3211,
         "text": "execFile(bin, args, { timeout: PICK_TIMEOUT_MS, maxBuffer: 1 << 20 }, (err, stdout, stderr) => {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 3521,
-        "text": "// an Explorer-style chooser, and the own spawn (PowerShell"
       }
     ]
   },

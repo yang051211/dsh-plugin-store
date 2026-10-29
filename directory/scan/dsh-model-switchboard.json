@@ -1,0 +1,89 @@
+{
+  "name": "dsh-model-switchboard",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-29T23:42:06.305Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 73,
+        "text": "const res = await fetch(`${API}${pathname}`, options)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 96,
+        "text": "const parsed = JSON.parse(fs.readFileSync(stateFile(), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 118,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 120,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(state, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 275,
+        "text": "doc = parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'llm', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 663,
+        "text": "if (typeof ctx.effect === 'function') return ctx.effect(() => ctx.tools.register(def))"
+      },
+      {
+        "file": "index.js",
+        "line": 664,
+        "text": "return ctx.tools.register(def)"
+      },
+      {
+        "file": "index.js",
+        "line": 688,
+        "text": "hasTools: typeof ctx.tools?.register === 'function',"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

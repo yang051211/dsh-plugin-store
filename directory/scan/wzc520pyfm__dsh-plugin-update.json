@@ -1,0 +1,107 @@
+{
+  "name": "@wzc520pyfm/dsh-plugin-update",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-29T23:42:08.592Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "const response = await fetch(\"/dsh-plugin-update/\" + op, {"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 52,
+        "text": "const response = await fetch(npmPackageUrl(registry, item.name), {"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 74,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 93,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "return JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 2,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 8,
+        "text": "async readFile(file) {"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 9,
+        "text": "return fs.readFile(file, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/node-io.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 42,
+        "text": "spawn(command, args, { cwd }) {"
+      },
+      {
+        "file": "lib/node-io.js",
+        "line": 44,
+        "text": "const child = spawn(command, args, { cwd, shell: false, env: process.env })"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 160,
+        "text": "const repair = await io.spawn(manager.command, manager.repairArgs(profileDir, snapshot), { cwd: profileDir })"
+      },
+      {
+        "file": "lib/transaction.js",
+        "line": 202,
+        "text": "return io.spawn(command, args, { cwd })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

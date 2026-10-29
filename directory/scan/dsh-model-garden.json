@@ -1,35 +1,35 @@
 {
   "name": "dsh-model-garden",
-  "version": "0.7.1",
-  "scannedAt": "2026-10-26T10:08:27.965Z",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-29T23:42:06.544Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 442,
-        "text": "return globalThis.fetch(PRICE_URL)"
+        "line": 668,
+        "text": "return globalThis.fetch(PRICE_URL);"
       },
       {
         "file": "client.js",
-        "line": 498,
+        "line": 772,
         "text": "return globalThis.fetch(\"/model-garden/catalog\")"
       },
       {
         "file": "client.js",
-        "line": 633,
-        "text": "globalThis.fetch(\"/model-garden/server-models\")"
+        "line": 876,
+        "text": "const p = globalThis.fetch(\"/model-garden/model-detail?provider=\" + encodeURIComponent(String(provider)) + \"&model=\" + encodeURIComponent(String(model)))"
       },
       {
         "file": "client.js",
-        "line": 665,
-        "text": "globalThis.fetch(\"/model-garden/refresh-models\", { method: \"POST\" })"
+        "line": 917,
+        "text": "globalThis.fetch(\"/model-garden/subagent-model\")"
       },
       {
         "file": "client.js",
-        "line": 918,
-        "text": "globalThis.fetch(\"/model-garden/cost-history?session=\" + encodeURIComponent(String(sessionId)) + \"&limit=200\")"
+        "line": 1054,
+        "text": "return globalThis.fetch(\"/model-garden/subagent-model\", {"
       }
     ]
   },
@@ -38,28 +38,28 @@
     "evidence": [
       {
         "file": "bin/refresh-models.mjs",
-        "line": 16,
-        "text": "import { readFile, rename, writeFile } from \"node:fs/promises\";"
+        "line": 24,
+        "text": "import { readdir, readFile, rename, writeFile } from \"node:fs/promises\";"
       },
       {
         "file": "bin/refresh-models.mjs",
-        "line": 49,
-        "text": "const raw = await readFile(settingsPath, \"utf8\");"
+        "line": 54,
+        "text": "await readFile(path, \"utf8\");"
       },
       {
         "file": "bin/refresh-models.mjs",
-        "line": 62,
-        "text": "const credentialDocument = await readFile(join(home, \".credentials.yaml\"), \"utf8\")"
+        "line": 58,
+        "text": "await readFile(legacySettingsPath, \"utf8\");"
       },
       {
         "file": "bin/refresh-models.mjs",
-        "line": 135,
-        "text": "await writeFile(tmp, String(document), \"utf8\");"
+        "line": 68,
+        "text": "const parsed = JSON.parse(await readFile(manifest, \"utf8\").catch(() => \"{}\"));"
       },
       {
-        "file": "lib/pi-catalog.js",
-        "line": 20,
-        "text": "import { existsSync } from \"node:fs\";"
+        "file": "bin/refresh-models.mjs",
+        "line": 70,
+        "text": "const patch = await readFile(join(home, \"profiles\", entry, \"cordis.patch.yml\"), \"utf8\").catch(() => undefined);"
       }
     ]
   },

@@ -1,0 +1,80 @@
+{
+  "name": "report-automation-skill",
+  "version": "1.3.1",
+  "scannedAt": "2026-10-29T23:42:05.259Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 1,
+        "text": "import { readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "const manifest = JSON.parse(readFileSync(join(sourceDir, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "writeFileSync(join(targetDir, '.dsh-source.json'), `${JSON.stringify({"
+      },
+      {
+        "file": "lib/host-installer.js",
+        "line": 9,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "lib/host-installer.js",
+        "line": 60,
+        "text": "return JSON.parse(readFileSync(join(sourceDir, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/python-check.js",
+        "line": 1,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 39,
+      "text": "Python 依赖只检查、不静默安装；缺失时会打印对应的 `pip install -r` 命令。"
+    },
+    {
+      "file": "README.md",
+      "line": 74,
+      "text": "pip install openpyxl pyyaml jsonschema"
+    },
+    {
+      "file": "README.md",
+      "line": 80,
+      "text": "pip install -r requirements.txt"
+    }
+  ],
+  "skippedEntries": []
+}

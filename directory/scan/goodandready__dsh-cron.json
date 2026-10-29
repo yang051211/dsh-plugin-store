@@ -1,35 +1,35 @@
 {
   "name": "@goodandready/dsh-cron",
-  "version": "0.3.21",
-  "scannedAt": "2026-10-26T10:12:27.757Z",
+  "version": "0.3.27",
+  "scannedAt": "2026-10-29T23:41:51.778Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
-        "file": "lib/client.js",
-        "line": 156,
+        "file": "lib/client-src/10-locales.js",
+        "line": 110,
         "text": "'form.promptPlaceholderScript': 'curl -fsSL https://... || exit 1',"
       },
       {
-        "file": "lib/client.js",
-        "line": 560,
+        "file": "lib/client-src/10-locales.js",
+        "line": 351,
+        "text": "'form.promptPlaceholderScript': 'curl -fsSL https://... || exit 1', 'form.promptPlaceholderLlm': '精确描述智能体要做什么...',"
+      },
+      {
+        "file": "lib/client-src/30-utils.js",
+        "line": 216,
         "text": "const res = await fetch(url, {"
       },
       {
-        "file": "lib/client.js",
-        "line": 1616,
+        "file": "lib/client-src/50-cron-screen-state.js",
+        "line": 321,
         "text": "const res = await fetch('/dsh-cron/tasks?status=' + encodeURIComponent(tab) + '&query=' + encodeURIComponent(query), {"
       },
       {
-        "file": "lib/client.js",
-        "line": 1644,
+        "file": "lib/client-src/50-cron-screen-state.js",
+        "line": 350,
         "text": "const res = await fetch(url, { signal: controller ? controller.signal : undefined });"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 1679,
-        "text": "fetch('/dsh-cron/tasks?status=' + encodeURIComponent(tab) + '&query=' + encodeURIComponent(query), fetchOpts)"
       }
     ]
   },
@@ -37,29 +37,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/artifacts.js",
-        "line": 1,
+        "file": "lib/git-diff.js",
+        "line": 10,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/git-diff.js",
+        "line": 214,
+        "text": "await fs.writeFile(tmpPath, patchContent, 'utf8');"
+      },
+      {
+        "file": "lib/git-diff.js",
+        "line": 221,
+        "text": "await fs.unlink(tmpPath);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
         "text": "import fs from 'node:fs';"
       },
       {
-        "file": "lib/artifacts.js",
-        "line": 28,
-        "text": "fs.mkdirSync(this.baseDir, { recursive: true });"
-      },
-      {
-        "file": "lib/artifacts.js",
-        "line": 81,
-        "text": "fs.writeFileSync(filePath, buf);"
-      },
-      {
-        "file": "lib/artifacts.js",
-        "line": 107,
-        "text": "return fs.readFileSync(filePath);"
-      },
-      {
-        "file": "lib/artifacts.js",
-        "line": 170,
-        "text": "fs.unlinkSync(item.path);"
+        "file": "lib/index.js",
+        "line": 155,
+        "text": "const pkgVersion = JSON.parse(fs.readFileSync(pkgUrl, 'utf8')).version || '0.2.29';"
       }
     ]
   },
@@ -68,12 +68,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 98,
-        "text": "export const inject = ['tools', 'webServer', 'llm', 'agents', 'agentDefaultModel', 'credentials', 'workspaceRegistry'];"
+        "line": 115,
+        "text": "export const inject = ['tools', 'webServer'];"
       },
       {
         "file": "lib/index.js",
-        "line": 365,
+        "line": 396,
         "text": "ctx.tools.register(defineTool({"
       }
     ]
@@ -87,23 +87,23 @@
         "text": "import { execFile } from 'node:child_process';"
       },
       {
-        "file": "lib/runner-external.js",
+        "file": "lib/runtimes/runner-external.js",
         "line": 35,
         "text": "import('node:child_process').then(({ exec }) => {"
       },
       {
-        "file": "lib/runner-external.js",
+        "file": "lib/runtimes/runner-external.js",
         "line": 175,
         "text": "const { spawn, exec } = await import('node:child_process');"
       },
       {
-        "file": "lib/runner-external.js",
-        "line": 219,
+        "file": "lib/runtimes/runner-external.js",
+        "line": 254,
         "text": "child = spawn(invocation.file, invocation.args || [], options);"
       },
       {
-        "file": "lib/runner-external.js",
-        "line": 223,
+        "file": "lib/runtimes/runner-external.js",
+        "line": 262,
         "text": "child = spawn(shellPath, shellArgs, options);"
       }
     ]
@@ -116,13 +116,8 @@
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [
-    "agentDefaultModel",
-    "agents",
-    "credentials",
-    "llm",
     "tools",
-    "webServer",
-    "workspaceRegistry"
+    "webServer"
   ],
   "setupHints": [],
   "skippedEntries": []

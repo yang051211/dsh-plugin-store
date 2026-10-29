@@ -1,0 +1,76 @@
+{
+  "name": "github-release-accelerator",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-29T23:42:08.958Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/ghdl.ps1",
+        "line": 70,
+        "text": "if (-not $curlOk) { 'NO_CURL: 端口探测/镜像/分段不可用；Windows 用 Invoke-WebRequest 单流降级，POSIX 直接停' }"
+      },
+      {
+        "file": "scripts/ghdl.ps1",
+        "line": 304,
+        "text": "$orphans = @(Get-Process curl -ErrorAction SilentlyContinue | ForEach-Object { [int]$_.Id })"
+      },
+      {
+        "file": "scripts/ghdl.sh",
+        "line": 37,
+        "text": "CURL_VER=$(curl -V | head -n1 | awk '{print $2}')"
+      },
+      {
+        "file": "scripts/ghdl.sh",
+        "line": 100,
+        "text": "if curl -s -o /dev/null --connect-timeout 1 \"http://127.0.0.1:$p\" 2>/dev/null; then"
+      },
+      {
+        "file": "scripts/ghdl.sh",
+        "line": 113,
+        "text": "h=$(curl -sS -L -m 20 -r 0-0 -A 'Mozilla/5.0' $dp -D - -o /dev/null \"$URL\" 2>/dev/null || true)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { readFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 90,
+        "text": "const { fm } = parseFrontmatter(await readFile(SKILL_URL, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 119,
+        "text": "const { fm, body } = parseFrontmatter(await readFile(SKILL_URL, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "skills"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

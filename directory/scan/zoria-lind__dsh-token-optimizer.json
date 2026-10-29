@@ -1,7 +1,7 @@
 {
   "name": "@zoria-lind/dsh-token-optimizer",
-  "version": "2.2.2",
-  "scannedAt": "2026-10-26T10:15:30.001Z",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-29T23:41:58.748Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,28 +18,28 @@
     "evidence": [
       {
         "file": "src/index.js",
-        "line": 40,
+        "line": 42,
         "text": "import { appendFileSync } from 'node:fs'"
       },
       {
         "file": "src/index.js",
-        "line": 47,
-        "text": "appendFileSync('D:\\\\dsh\\\\token-optimizer-debug.log', `[${new Date().toISOString()}] ${msg}\\n`, 'utf8')"
+        "line": 52,
+        "text": "appendFileSync(DEBUG_LOG_PATH, `[${new Date().toISOString()}] ${msg}\\n`, 'utf8')"
       },
       {
-        "file": "src/modules/fileDiff.js",
-        "line": 16,
-        "text": "import { mkdirSync, writeFileSync } from 'node:fs'"
+        "file": "src/modules/archive.js",
+        "line": 2,
+        "text": "import * as fs from 'node:fs/promises'"
       },
       {
-        "file": "src/modules/fileDiff.js",
-        "line": 92,
-        "text": "mkdirSync(ORIGINAL_DIR, { recursive: true })"
+        "file": "src/modules/archive.js",
+        "line": 3,
+        "text": "import { createReadStream } from 'node:fs'"
       },
       {
-        "file": "src/modules/fileDiff.js",
-        "line": 94,
-        "text": "writeFileSync(file, text, 'utf8')"
+        "file": "src/modules/archive.js",
+        "line": 122,
+        "text": "await io.mkdir(root, { recursive: true })"
       }
     ]
   },
@@ -48,18 +48,23 @@
     "evidence": [
       {
         "file": "src/config.js",
-        "line": 122,
+        "line": 126,
         "text": "mcpPrefix: 'mcp__',         // MCP 工具名前缀(dsh-mcp-client 的公开名格式)"
       },
       {
-        "file": "src/modules/toolTrim.js",
-        "line": 6,
-        "text": "// v2 新增 mcpLazy:MCP 工具全量 schema 每请求注入(dsh-mcp-client 启动即注册到"
+        "file": "src/modules/archive.js",
+        "line": 335,
+        "text": "entry.dispose = agent.ctx.tools.register(tool)"
       },
       {
         "file": "src/modules/toolTrim.js",
-        "line": 210,
-        "text": "const d = gate.tools.register(definition)"
+        "line": 136,
+        "text": "const effect = gate.tools.register(definition)"
+      },
+      {
+        "file": "src/modules/toolTrim.js",
+        "line": 241,
+        "text": "const gate = { agent, tools: agent.ctx.tools, catalog: new Map(), released: new Set(), dead: false, refreshing: false }"
       }
     ]
   },

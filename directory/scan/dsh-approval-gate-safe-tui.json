@@ -1,0 +1,69 @@
+{
+  "name": "dsh-approval-gate-safe-tui",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-29T23:42:08.770Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 724,
+        "text": "// 写操作特征：写类命令词 / stdout 重定向 / 包管理器安装 / sed|perl -i / curl|wget 落盘"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 732,
+        "text": "|| /(^|[;&|]\\s*)(curl|wget|Invoke-WebRequest|iwr)\\b[^;|]*\\s(-o|--output|-O|OutFile)\\b/i.test(cmdClean)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.mjs",
+        "line": 42,
+        "text": "} from 'node:fs'"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 234,
+        "text": "const buf = readFileSync(absPath)"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 255,
+        "text": "rmSync(absPath, { force: true })"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 267,
+        "text": "writeFileSync(tmpPath, text, typeof mode === 'number' ? { encoding: 'utf8', mode } : 'utf8')"
+      },
+      {
+        "file": "src/index.mjs",
+        "line": 270,
+        "text": "try { rmSync(tmpPath, { force: true }) } catch { /* 清理失败无所谓 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,90 @@
+{
+  "name": "@kinocode/dsh-lcu",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-29T23:42:05.916Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.mjs",
+        "line": 18,
+        "text": "import { mkdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/adapter.mjs",
+        "line": 117,
+        "text": "mkdirSync(SHOT_DIR, { recursive: true });"
+      },
+      {
+        "file": "lib/adapter.mjs",
+        "line": 120,
+        "text": "writeFileSync(file, Buffer.from(block.data, 'base64'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 21,
+        "text": "const p = readFileSync(path.join(prefix, 'current', 'node-path'), 'utf8').trim()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.mjs",
+        "line": 3,
+        "text": "//  - elicitation 対応の MCP クライアントとして LCU に接続する (dsh-mcp-client は非対応のため)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "// through DSH's own @deepseek-ai/dsh-mcp-client, but launches it behind ./adapter.mjs,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import * as mcpClient from '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adapter.mjs",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/adapter.mjs",
+        "line": 42,
+        "text": "const p = spawn(cmd, args, { stdio: 'ignore' });"
+      },
+      {
+        "file": "lib/adapter.mjs",
+        "line": 63,
+        "text": "const p = spawn('/usr/bin/osascript', ['-e', script], { stdio: ['ignore', 'pipe', 'ignore'] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

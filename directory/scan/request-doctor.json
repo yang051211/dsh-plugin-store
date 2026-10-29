@@ -1,0 +1,80 @@
+{
+  "name": "request-doctor",
+  "version": "0.17.13",
+  "scannedAt": "2026-10-29T23:42:08.144Z",
+  "icon": "request-doctor.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 65,
+        "text": "const response = await fetch(path, init)"
+      },
+      {
+        "file": "lib/package-fetch.js",
+        "line": 23,
+        "text": "const response = await fetch(`${REGISTRY}/${encodedName(name)}`, { signal: AbortSignal.timeout(TIMEOUT_MS) });"
+      },
+      {
+        "file": "lib/package-fetch.js",
+        "line": 171,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cache-store.js",
+        "line": 5,
+        "text": "import { readdirSync, rmSync, statSync, utimesSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/cache-store.js",
+        "line": 70,
+        "text": "rmSync(item.path, { recursive: true, force: true });"
+      },
+      {
+        "file": "lib/compat-drift.js",
+        "line": 6,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/compat-env.js",
+        "line": 8,
+        "text": "import { copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/compat-env.js",
+        "line": 32,
+        "text": "const value = JSON.parse(readFileSync(path, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/classify.js",
+        "line": 171,
+        "text": "/spawn (?:.* )?(?:ENOENT|EACCES|failed)/i,"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

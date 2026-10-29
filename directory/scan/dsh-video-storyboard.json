@@ -1,0 +1,155 @@
+{
+  "name": "dsh-video-storyboard",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-29T23:42:07.688Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/asr.js",
+        "line": 64,
+        "text": "* 于是 `fetch('\"http://...\"' + '/audio/transcriptions')` 直接"
+      },
+      {
+        "file": "src/asr.js",
+        "line": 220,
+        "text": "const res = await fetch(`${baseUrl.replace(/\\/$/, '')}/audio/transcriptions`, {"
+      },
+      {
+        "file": "src/browser-time.js",
+        "line": 102,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/json/list`, { signal: ac.signal });"
+      },
+      {
+        "file": "src/browser-time.js",
+        "line": 140,
+        "text": "ws = new WebSocket(wsUrl);"
+      },
+      {
+        "file": "src/browser-time.js",
+        "line": 447,
+        "text": "const res = await fetch(`http://127.0.0.1:${port}/json/version`, { signal: ac.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/storyboard.mjs",
+        "line": 11,
+        "text": "import { writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "bin/storyboard.mjs",
+        "line": 117,
+        "text": "await writeFile(mdPath, `${md}\\n`, 'utf8');"
+      },
+      {
+        "file": "bin/storyboard.mjs",
+        "line": 186,
+        "text": "await writeFile(opt.manifest, `${JSON.stringify(payload, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "scripts/check-syntax.mjs",
+        "line": 7,
+        "text": "import { readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "scripts/install-dev.mjs",
+        "line": 17,
+        "text": "import { cp, readFile, writeFile, rm, readdir, stat } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 7,
+        "text": "*  - `apply` 返回 disposer（把所有 `ctx.tools.register()` 的返回值串起来）"
+      },
+      {
+        "file": "src/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'attachments'];"
+      },
+      {
+        "file": "src/index.js",
+        "line": 379,
+        "text": "ctx.tools.register(storyboard),"
+      },
+      {
+        "file": "src/index.js",
+        "line": 380,
+        "text": "ctx.tools.register(zoom),"
+      },
+      {
+        "file": "src/index.js",
+        "line": 381,
+        "text": "ctx.tools.register(probe),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/check-syntax.mjs",
+        "line": 6,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/asr-lifecycle.js",
+        "line": 19,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/asr-lifecycle.js",
+        "line": 119,
+        "text": "const run = execImpl ?? (await import('node:child_process')).execFile;"
+      },
+      {
+        "file": "src/asr-lifecycle.js",
+        "line": 228,
+        "text": "import('node:child_process')"
+      },
+      {
+        "file": "src/asr-lifecycle.js",
+        "line": 229,
+        "text": ".then(({ execFile }) => execFile('taskkill', ['/PID', String(pid), '/T', '/F'], () => {}))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 39,
+      "text": "pip install --user -U yt-dlp        # 只有贴 B 站/YouTube 链接才需要"
+    },
+    {
+      "file": "README.md",
+      "line": 288,
+      "text": "pip install winrt-runtime winrt-Windows.Media.Control winrt-Windows.Foundation"
+    },
+    {
+      "file": "README.md",
+      "line": 481,
+      "text": "pip install rapidocr-onnxruntime"
+    }
+  ],
+  "skippedEntries": []
+}

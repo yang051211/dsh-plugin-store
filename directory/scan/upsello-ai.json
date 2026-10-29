@@ -1,0 +1,89 @@
+{
+  "name": "upsello-ai",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-29T23:42:08.108Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/registry.mjs",
+        "line": 93,
+        "text": "const response = await fetch(`${base}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/install.mjs",
+        "line": 2,
+        "text": "import { existsSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/install.mjs",
+        "line": 427,
+        "text": "writeFileSync(manifestPath, JSON.stringify(manifest, undefined, 2) + '\\n', { mode: 0o600 })"
+      },
+      {
+        "file": "lib/runtime.mjs",
+        "line": 3,
+        "text": "import { accessSync, constants, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/runtime.mjs",
+        "line": 113,
+        "text": "return JSON.parse(readFileSync(path, 'utf8').replace(/^\\uFEFF/, ''))"
+      },
+      {
+        "file": "lib/runtime.mjs",
+        "line": 122,
+        "text": "return createHash('sha256').update(readFileSync(path)).digest('hex')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "src/host/tools.js",
+        "line": 17,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.mjs",
+        "line": 2,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/runtime.mjs",
+        "line": 92,
+        "text": "const result = spawnSync("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

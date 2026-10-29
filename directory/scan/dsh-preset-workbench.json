@@ -1,14 +1,14 @@
 {
   "name": "dsh-preset-workbench",
-  "version": "1.1.0",
-  "scannedAt": "2026-10-26T10:08:42.506Z",
+  "version": "1.1.1",
+  "scannedAt": "2026-10-29T23:42:05.657Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 105,
+        "line": 144,
         "text": "return fetch('/api/preset-workbench', {"
       }
     ]
@@ -23,63 +23,37 @@
       },
       {
         "file": "lib/index.js",
-        "line": 71,
+        "line": 77,
         "text": "id: 'fs',"
       },
       {
         "file": "lib/index.js",
-        "line": 329,
+        "line": 335,
         "text": "ctx.inject(['agentPresets', 'fs', 'webServer'], (sctx) => {"
       },
       {
         "file": "lib/index.js",
-        "line": 331,
+        "line": 337,
         "text": "const fs = sctx.get('fs')"
       },
       {
         "file": "lib/index.js",
-        "line": 435,
-        "text": "try { text = readFileSync(join(dir, METADATA_FILE), 'utf8') } catch (_) { return out }"
+        "line": 455,
+        "text": "try { lines = readFileSync(join(dir, METADATA_FILE), 'utf8').split(/\\r?\\n/) } catch (_) { lines = [] }"
       }
     ]
   },
   "agentTools": {
-    "hit": true,
-    "evidence": [
-      {
-        "file": "templates/liangshen/agent.cordis.yml",
-        "line": 14,
-        "text": "# declaration lands once per agent scope through agent.ctx.tools.presentAs as"
-      },
-      {
-        "file": "templates/liangshen/agent.cordis.yml",
-        "line": 30,
-        "text": "# and the agent scope is restricted (agent.ctx.tools.restrict) so the same names"
-      },
-      {
-        "file": "templates/liangshen/fact-ledger.mjs",
-        "line": 32,
-        "text": "export const inject = ['tools']"
-      },
-      {
-        "file": "templates/liangshen/fact-ledger.mjs",
-        "line": 87,
-        "text": "ctx.tools.register({"
-      },
-      {
-        "file": "templates/liangshen/tool-activate.mjs",
-        "line": 41,
-        "text": "export const inject = ['tools']"
-      }
-    ]
+    "hit": false,
+    "evidence": []
   },
   "childProcess": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 947,
-        "text": "sp.spawn({"
+        "line": 17,
+        "text": "import { spawn as spawnChild } from 'node:child_process'"
       }
     ]
   },

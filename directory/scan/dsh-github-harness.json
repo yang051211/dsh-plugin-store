@@ -1,0 +1,94 @@
+{
+  "name": "dsh-github-harness",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-29T23:42:02.028Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/github.mjs",
+        "line": 13,
+        "text": "response = await this.fetch(`https://api.github.com${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/desktop-tool.mjs",
+        "line": 1,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/dsh.mjs",
+        "line": 1,
+        "text": "import { writeFileSync, realpathSync } from 'node:fs';"
+      },
+      {
+        "file": "src/dsh.mjs",
+        "line": 35,
+        "text": "  writeFileSync(patch, '- insert:\\n    - id: github-harness-session-link\\n      name: ' + JSON.stringify(plugin) + '\\n      config: ' + JSON.stringify(link) + '"
+      },
+      {
+        "file": "src/dsh.mjs",
+        "line": 37,
+        "text": "writeFileSync(input, prompt, { mode: 0o600 });"
+      },
+      {
+        "file": "src/identity.mjs",
+        "line": 2,
+        "text": "import { existsSync, readdirSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/desktop-plugin.mjs",
+        "line": 6,
+        "text": "export const inject = ['tools', 'sandboxPolicy'];"
+      },
+      {
+        "file": "src/desktop-plugin.mjs",
+        "line": 14,
+        "text": "ctx.tools.register(defineTool(desktopTool(ctx, { approveEscalation, lifetime: lifetime.signal, active })));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/process.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/process.mjs",
+        "line": 9,
+        "text": "const killer = spawn('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "src/process.mjs",
+        "line": 18,
+        "text": "const child = spawn(exe, args, { cwd, env, stdio, windowsHide: true, windowsVerbatimArguments, detached: grouped });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sandboxPolicy",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

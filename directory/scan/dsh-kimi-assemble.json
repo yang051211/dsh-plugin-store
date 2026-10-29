@@ -1,0 +1,139 @@
+{
+  "name": "dsh-kimi-assemble",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-29T23:41:55.607Z",
+  "icon": "dsh-kimi-assemble.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/webbridge.mjs",
+        "line": 20,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/webbridge.mjs",
+        "line": 92,
+        "text": "const req = http.request("
+      },
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 173,
+        "text": "const res = await fetch(KIMI_CU_SETUP)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 19,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'))"
+      },
+      {
+        "file": "lib/diag.mjs",
+        "line": 18,
+        "text": "import { appendFileSync, mkdirSync, renameSync, statSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/diag.mjs",
+        "line": 78,
+        "text": "mkdirSync(state.dir, { recursive: true })"
+      },
+      {
+        "file": "lib/diag.mjs",
+        "line": 91,
+        "text": "appendFileSync(state.file, `${line}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/guidance.mjs",
+        "line": 4,
+        "text": "* 只在对应工具真的可见时输出（`ctx.tools.get(name, scope)`），否则会在关掉某条"
+      },
+      {
+        "file": "lib/guidance.mjs",
+        "line": 24,
+        "text": "const hasBrowser = ctx.tools.get('kimi_browser_open', scope) !== undefined"
+      },
+      {
+        "file": "lib/guidance.mjs",
+        "line": 25,
+        "text": "const hasDesktop = ctx.tools.get('kimi_cu_windows', scope) !== undefined"
+      },
+      {
+        "file": "lib/tool.mjs",
+        "line": 10,
+        "text": "* 宿主的 ctx.tools.register 只要求 output.schema 属于它的 JSON Schema 子集"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/kimicu.mjs",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/webbridge.mjs",
+        "line": 21,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/doctor.mjs",
+        "line": 23,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 43,
+      "text": "npm i -g dsh-kimi-assemble && kimi-assemble-doctor"
+    },
+    {
+      "file": "README.md",
+      "line": 110,
+      "text": "npm i -g dsh-kimi-assemble && kimi-assemble-doctor"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 41,
+      "text": "npm i -g dsh-kimi-assemble && kimi-assemble-doctor"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 106,
+      "text": "npm i -g dsh-kimi-assemble && kimi-assemble-doctor"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,88 @@
+{
+  "name": "dsh-achievement-helper",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-29T23:42:03.716Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 462,
+        "text": "const response = await fetch(API + path, Object.assign({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collector.mjs",
+        "line": 360,
+        "text": "const fs = service('fs');"
+      },
+      {
+        "file": "lib/debug.mjs",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/debug.mjs",
+        "line": 3,
+        "text": "import { mkdtemp, open, rename, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/debug.mjs",
+        "line": 26,
+        "text": "try { await rm(scope.directory, { recursive: true, force: true }); owned.delete(scope); }"
+      },
+      {
+        "file": "lib/debug.mjs",
+        "line": 51,
+        "text": "source = JSON.parse(await handle.readFile('utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.mjs",
+        "line": 17,
+        "text": "export const inject = ['tools', 'sessions', 'webServer', 'connection', 'llm'];"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 189,
+        "text": "const tool = name => { try { return Boolean(ctx.tools?.get?.(name, agent)); } catch { return false; } };"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 277,
+        "text": "const dispose = ctx.tools.register(defineTool({ ...definition, output: toolOutput }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "llm",
+    "sessions",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

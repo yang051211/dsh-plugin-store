@@ -1,7 +1,7 @@
 {
   "name": "dsh-mini",
-  "version": "0.1.8",
-  "scannedAt": "2026-10-29T07:06:31.014Z",
+  "version": "0.1.9",
+  "scannedAt": "2026-10-29T23:42:00.199Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -39,26 +39,26 @@
       {
         "file": "lib/index.js",
         "line": 20,
-        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs'"
+        "text": "import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync, appendFileSync, statSync, readdirSync, copyFileSync } from 'node:fs'"
       },
       {
         "file": "lib/index.js",
-        "line": 82,
+        "line": 78,
+        "text": "mkdirSync(BIN_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "try { unlinkSync(join(BIN_DIR, entry)) } catch { }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 153,
         "text": "mkdirSync(DATA_DIR, { recursive: true })"
       },
       {
         "file": "lib/index.js",
-        "line": 101,
-        "text": "mkdirSync(DATA_DIR, { recursive: true })"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 115,
-        "text": "mkdirSync(DATA_DIR, { recursive: true })"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 124,
+        "line": 173,
         "text": "mkdirSync(DATA_DIR, { recursive: true })"
       }
     ]
@@ -77,22 +77,22 @@
       },
       {
         "file": "lib/index.js",
-        "line": 83,
-        "text": "const child = spawn(NATIVE_EXE, args, { detached: true, stdio: 'ignore', env: shellEnv(), windowsHide: false })"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 102,
-        "text": "spawnSync('schtasks.exe', ['/Create', '/TN', TASK_NAME, '/TR', ('\"' + NATIVE_EXE + '\"'), '/SC', 'ONCE', '/ST', '23:59', '/SD', '2099/12/31', '/F'], {"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 105,
-        "text": "const run = spawnSync('schtasks.exe', ['/Run', '/TN', TASK_NAME], { env: shellEnv(), windowsHide: true, timeout: 20000 })"
+        "line": 154,
+        "text": "const child = spawn(stageExe(), args, { detached: true, stdio: 'ignore', env: shellEnv(), windowsHide: false })"
       },
       {
         "file": "lib/index.js",
         "line": 201,
+        "text": "spawnSync('schtasks.exe', ['/Create', '/TN', taskName, '/XML', xmlPath, '/F'], {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 204,
+        "text": "const run = spawnSync('schtasks.exe', ['/Run', '/TN', taskName], { env: shellEnv(), windowsHide: true, timeout: 20000 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 300,
         "text": "const child = spawn("
       }
     ]

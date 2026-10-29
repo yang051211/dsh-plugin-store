@@ -1,7 +1,7 @@
 {
   "name": "dsh-bili-watch",
-  "version": "0.3.5",
-  "scannedAt": "2026-10-29T07:06:24.081Z",
+  "version": "0.3.7",
+  "scannedAt": "2026-10-29T23:41:50.044Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -9,26 +9,26 @@
       {
         "file": "client.js",
         "line": 29,
-        "text": "const jget = async (p) => (await fetch(API + p, { credentials: 'same-origin' })).json()"
+        "text": "// D40（2026-10-29）：原来两行就是 `(await fetch(...)).json()`，两个坑一起踩："
       },
       {
         "file": "client.js",
-        "line": 31,
-        "text": "(await fetch(API + p, {"
+        "line": 44,
+        "text": "r = await fetch(API + p, { credentials: 'same-origin', signal: guard.signal, ...init })"
       },
       {
         "file": "index.js",
-        "line": 847,
+        "line": 916,
         "text": "const r = await fetch(SPI, { headers: { 'User-Agent': UA } })"
       },
       {
         "file": "index.js",
-        "line": 859,
+        "line": 928,
         "text": "const r = await fetch(QR_GEN, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(8000) })"
       },
       {
         "file": "index.js",
-        "line": 879,
+        "line": 948,
         "text": "const res = await fetch(QR_POLL(key), { headers: { 'User-Agent': UA }, redirect: 'manual', signal: AbortSignal.timeout(8000) })"
       }
     ]
@@ -39,7 +39,7 @@
       {
         "file": "index.js",
         "line": 13,
-        "text": "nc, closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, statSync, writeFileSync } from 'node:fs'"
+        "text": "nc, copyFileSync, existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, rmSync, rmdirSync, statSync, writeFileSync } from 'node:fs'"
       },
       {
         "file": "index.js",
@@ -68,7 +68,7 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 1882,
+        "line": 1999,
         "text": "//    必须用 defineTool 包一层：ctx.tools.register 收的是编译好的 tool 对象，"
       }
     ]
@@ -83,22 +83,22 @@
       },
       {
         "file": "index.js",
-        "line": 789,
+        "line": 858,
         "text": "child = spawn(process.execPath, [LOOK, ...args], {"
       },
       {
         "file": "index.js",
-        "line": 1065,
+        "line": 1136,
         "text": "const ps = spawn('powershell.exe', ['-NoProfile', '-STA', '-Command', script], { windowsHide: false })"
       },
       {
         "file": "index.js",
-        "line": 1233,
+        "line": 1308,
         "text": "execFile(file, args, opts, (err, stdout) => resolveP({ ok: !err, stdout: String(stdout ?? ''), err }))"
       },
       {
         "file": "index.js",
-        "line": 1471,
+        "line": 1560,
         "text": "child = spawn(cmd, args, {"
       }
     ]

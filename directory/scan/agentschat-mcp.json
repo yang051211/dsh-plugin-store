@@ -1,7 +1,7 @@
 {
   "name": "agentschat-mcp",
-  "version": "0.36.20",
-  "scannedAt": "2026-10-28T23:43:50.341Z",
+  "version": "0.36.22",
+  "scannedAt": "2026-10-29T23:41:56.500Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -68,17 +68,12 @@
     "evidence": [
       {
         "file": "cordis.patch.yml",
-        "line": 8,
-        "text": "# automatically at boot. It mounts `@deepseek-ai/dsh-mcp-client` under the"
+        "line": 10,
+        "text": "#   1. `mcp-agentschat` (`@deepseek-ai/dsh-mcp-client`) — outbound AgentsChat MCP tools"
       },
       {
         "file": "cordis.patch.yml",
-        "line": 11,
-        "text": "# `mcp__agentschat__get_history` register on `ctx.tools` with zero manual"
-      },
-      {
-        "file": "cordis.patch.yml",
-        "line": 15,
+        "line": 17,
         "text": "name: '@deepseek-ai/dsh-mcp-client'"
       },
       {
@@ -90,6 +85,11 @@
         "file": "dist/dsh.js",
         "line": 734,
         "text": "2. Patch setup (injects @deepseek-ai/dsh-mcp-client into cordis.patch.yml):"
+      },
+      {
+        "file": "dist/dsh.js",
+        "line": 756,
+        "text": "e.log(changed ? `[dsh] Configured mcp-agentschat (@deepseek-ai/dsh-mcp-client) in ${patchPath}` : `[dsh] mcp-agentschat is already configured in ${patchPath}`);"
       }
     ]
   },

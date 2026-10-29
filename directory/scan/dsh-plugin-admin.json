@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-admin",
-  "version": "1.27.23",
-  "scannedAt": "2026-10-26T10:05:06.439Z",
+  "version": "1.33.5",
+  "scannedAt": "2026-10-29T23:42:05.393Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -53,12 +53,12 @@
       },
       {
         "file": "lib/audit-log.js",
-        "line": 425,
+        "line": 431,
         "text": "writeFileSync(temp, kept.map(function (item) { return JSON.stringify(redactTrailEntry(item, now())) }).join('\\n') + '\\n', { encoding: 'utf8', mode: 0o600 })"
       },
       {
         "file": "lib/audit-log.js",
-        "line": 428,
+        "line": 434,
         "text": "appendFileSync(file, JSON.stringify(entry) + '\\n', { encoding: 'utf8', mode: 0o600 })"
       }
     ]
@@ -68,12 +68,7 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 143,
-        "text": "export const inject = ['typert', 'sessionPersistence', 'tools', 'subagents', 'commands', 'shell']"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 858,
+        "line": 948,
         "text": "// Row-level CRUD over the profile's dsh-mcp-client entries, real handshake"
       },
       {
@@ -83,13 +78,18 @@
       },
       {
         "file": "lib/mcp-admin.js",
-        "line": 27,
-        "text": "const MCP_NAME_ROW = /^\\s*name:\\s*(?:'@deepseek-ai\\/dsh-mcp-client'|\"@deepseek-ai\\/dsh-mcp-client\"|@deepseek-ai\\/dsh-mcp-client)\\s*$/"
+        "line": 30,
+        "text": "const MCP_NAME_ROW = /^\\s*name:\\s*(?:'@deepseek-ai\\/dsh-mcp-client'|\"@deepseek-ai\\/dsh-mcp-client\"|@deepseek-ai\\/dsh-mcp-client)\\s*(?:#.*)?$/"
       },
       {
         "file": "lib/mcp-admin.js",
-        "line": 194,
+        "line": 310,
         "text": "out.push(\"  name: '@deepseek-ai/dsh-mcp-client'\")"
+      },
+      {
+        "file": "lib/mcp-admin.js",
+        "line": 420,
+        "text": "* mirrors what the real dsh-mcp-client launches at boot, and a credential-"
       }
     ]
   },
@@ -130,14 +130,7 @@
   "dependencies": 0,
   "minifiedFiles": [],
   "binaryFiles": [],
-  "requiredServices": [
-    "commands",
-    "sessionPersistence",
-    "shell",
-    "subagents",
-    "tools",
-    "typert"
-  ],
+  "requiredServices": [],
   "setupHints": [],
   "skippedEntries": []
 }

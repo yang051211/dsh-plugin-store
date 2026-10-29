@@ -1,0 +1,83 @@
+{
+  "name": "dsh-profile-stylist",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-29T23:42:00.052Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 128,
+        "text": "var blob = await fetch(req.avatarDataUrl).then(function (r) { return r.blob(); });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/author.js",
+        "line": 15,
+        "text": "import { readdir, readFile, mkdir, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/author.js",
+        "line": 215,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/author.js",
+        "line": 236,
+        "text": "const buf = await readFile(path);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 228,
+        "text": "if (ctx.tools !== undefined && typeof ctx.tools.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 230,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 288,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 363,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

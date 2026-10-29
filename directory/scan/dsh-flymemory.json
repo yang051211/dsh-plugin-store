@@ -1,0 +1,117 @@
+{
+  "name": "dsh-flymemory",
+  "version": "1.3.0",
+  "scannedAt": "2026-10-29T23:41:54.624Z",
+  "icon": "dsh-flymemory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/flymemory.mjs",
+        "line": 302,
+        "text": "const response = await fetch(`https://registry.npmjs.org/${PACKAGE_NAME}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 377,
+        "text": "const response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/flymemory.mjs",
+        "line": 15,
+        "text": "import { existsSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/flymemory.mjs",
+        "line": 72,
+        "text": "const content = readFileSync(path, 'utf8').split(/\\r?\\n/)"
+      },
+      {
+        "file": "bin/flymemory.mjs",
+        "line": 111,
+        "text": "const manifest = JSON.parse(readFileSync(profileManifest, 'utf8'))"
+      },
+      {
+        "file": "bin/flymemory.mjs",
+        "line": 246,
+        "text": "for (const line of readFileSync(path, 'utf8').split(/\\r?\\n/)) {"
+      },
+      {
+        "file": "lib/context.js",
+        "line": 34,
+        "text": "import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 36,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* bundle's `@deepseek-ai/dsh-mcp-client` row needs it, then stay out of the way."
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 24,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 260,
+        "text": "const result = spawnSync(pythonExe, ['-c', probe], { encoding: 'utf8', windowsHide: true, timeout: timeoutMs })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 612,
+        "text": "const child = spawn(pythonExe, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 640,
+        "text": "*   tools: string[], child: import('node:child_process').ChildProcess|null,"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 932,
+        "text": "const result = spawnSync(pythonExe, args, { encoding: 'utf8', windowsHide: true, timeout: 180000, env: engineEnv(options) })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 142,
+      "text": "pip install torch sentence-transformers \"mcp>=1.30,<2\" numpy"
+    },
+    {
+      "file": "README.zh.md",
+      "line": 117,
+      "text": "pip install torch sentence-transformers \"mcp>=1.30,<2\" numpy"
+    }
+  ],
+  "skippedEntries": []
+}

@@ -1,0 +1,109 @@
+{
+  "name": "@bill_nee/dwg-reader",
+  "version": "1.5.1",
+  "scannedAt": "2026-10-29T23:42:06.984Z",
+  "icon": "bill_nee__dwg-reader.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/libredwg-web/wasm/libredwg-web.js",
+        "line": 1,
+        "text": "IS_WORKER){readBinary=url=>{var xhr=new XMLHttpRequest;xhr.open(\"GET\",url,false);xhr.responseType=\"arraybuffer\";xhr.send(null);return new Uint8Array(xhr.respons"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 3,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 572,
+        "text": "export const inject = [\"tools\", \"fs\", \"workingDirectory\"];"
+      },
+      {
+        "file": "vendor/libredwg-web/lib/libredwg.js",
+        "line": 33,
+        "text": "this.wasmInstance.FS.writeFile(fileName, new Uint8Array(fileContent));"
+      },
+      {
+        "file": "vendor/libredwg-web/lib/libredwg.js",
+        "line": 46,
+        "text": "this.wasmInstance.FS.unlink(fileName);"
+      },
+      {
+        "file": "vendor/libredwg-web/lib/libredwg.js",
+        "line": 52,
+        "text": "//   this.wasmInstance.FS.writeFile(fileName, new Uint8Array(fileContent as ArrayBuffer));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 572,
+        "text": "export const inject = [\"tools\", \"fs\", \"workingDirectory\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 575,
+        "text": "const disposeDwg = ctx.tools.register(buildReadDwgTool(ctx));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 576,
+        "text": "const disposeDxf = ctx.tools.register(buildReadDxfTool(ctx));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 577,
+        "text": "const disposePdf = ctx.tools.register(buildReadPdfTool(ctx));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 578,
+        "text": "const disposeImage = ctx.tools.register(buildReadImageTool(ctx));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 528,
+        "text": "const proc = spawn(PYTHON_EXE, pythonArgs, { stdio: [\"pipe\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "vendor/libredwg-web/wasm/libredwg-web.js"
+  ],
+  "binaryFiles": [
+    "vendor/libredwg-web/wasm/libredwg-web.wasm"
+  ],
+  "requiredServices": [
+    "fs",
+    "tools",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,124 @@
+{
+  "name": "bothouse-dsh",
+  "version": "0.1.40",
+  "scannedAt": "2026-10-29T23:42:04.109Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 131,
+        "text": "fetch: (input, init) => fetch(input, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 187,
+        "text": "const response = await transport.fetch(transport.url(path), init);"
+      },
+      {
+        "file": "client/client.js",
+        "line": 17491,
+        "text": "const response = await fetch(`collab/api/members/${encodeURIComponent(id)}/avatar`, {"
+      },
+      {
+        "file": "collab/gate-context.mjs",
+        "line": 34,
+        "text": "const res = await this.fetch(`http://127.0.0.1:${this.port}/context`, {"
+      },
+      {
+        "file": "collab/later.mjs",
+        "line": 104,
+        "text": "    const curl = `curl -sS -X POST ${quote(url)} -H 'content-type: application/json' -H ${quote(`X-Later-Ticket: ${ticket}`)} -d '{\"title\":\"任务标题\",\"owner\":\"接活人id"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "collab/attachments.mjs",
+        "line": 7,
+        "text": "import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "collab/attachments.mjs",
+        "line": 28,
+        "text": "if (list.length) mkdirSync(this.dir, { recursive: true });"
+      },
+      {
+        "file": "collab/attachments.mjs",
+        "line": 33,
+        "text": "writeFileSync(join(this.dir, id), data);"
+      },
+      {
+        "file": "collab/attachments.mjs",
+        "line": 43,
+        "text": "try { return readFileSync(join(this.dir, id)); } catch { return undefined; }"
+      },
+      {
+        "file": "collab/avatar-uploads.mjs",
+        "line": 2,
+        "text": "import { mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "collab/cli-member.mjs",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "collab/cli-member.mjs",
+        "line": 103,
+        "text": "const proc = spawn(cmd, [...args, ...a.args], {"
+      },
+      {
+        "file": "collab/clis.mjs",
+        "line": 3,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "collab/clis.mjs",
+        "line": 9,
+        "text": "execFile('which', [name], (error, stdout) => {"
+      },
+      {
+        "file": "collab/verify-multichannel.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "client/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentDefaultModel",
+    "agentPresets",
+    "agents",
+    "attachments",
+    "connection",
+    "llm",
+    "permissionPresets",
+    "sessionPersistence",
+    "sessionTitle",
+    "webServer",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

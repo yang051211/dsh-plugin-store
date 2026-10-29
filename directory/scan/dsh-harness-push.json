@@ -1,0 +1,128 @@
+{
+  "name": "dsh-harness-push",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-29T23:42:00.393Z",
+  "icon": "dsh-harness-push.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1055,
+        "text": "response = await fetch(path, {"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 1223,
+        "text": "async fetch(path, options = {}) {"
+      },
+      {
+        "file": "src/host/github.js",
+        "line": 21,
+        "text": "import { request as httpsRequest } from 'node:https';"
+      },
+      {
+        "file": "src/host/github.js",
+        "line": 22,
+        "text": "import { request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 1265,
+        "text": "const result = await runner.fetch(path, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "index.js",
+        "line": 56,
+        "text": "const bytes = await readFile(IMPL_URL);"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 33,
+        "text": "import { closeSync, openSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 34,
+        "text": "import { mkdir, readFile, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 774,
+        "text": "const stdout = await readFile(outPath, 'utf8').catch(() => '');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/index.js",
+        "line": 2136,
+        "text": "tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools;"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 2984,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools;"
+      },
+      {
+        "file": "src/host/index.js",
+        "line": 3019,
+        "text": "const dispose = tools.register(definition);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host/git.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 580,
+        "text": "const first = await this.#spawn(args, { ...options, cwd, timeoutMs });"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 590,
+        "text": "return await this.#spawn(args, { ...options, cwd, timeoutMs, config: safeConfig });"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 608,
+        "text": "#spawn(args, options) {"
+      },
+      {
+        "file": "src/host/git.js",
+        "line": 646,
+        "text": "child = spawn(this.#binary, argv, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

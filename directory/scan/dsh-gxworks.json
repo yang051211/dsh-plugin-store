@@ -1,0 +1,91 @@
+{
+  "name": "dsh-gxworks",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-29T23:42:01.834Z",
+  "icon": "dsh-gxworks.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 28,
+        "text": "> { const fs = process.getBuiltinModule('node:fs'); const p = process.getBuiltinModule('node:path'); const u = process.getBuiltinModule('node:url'); const m = p"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 45,
+        "text": "> { const fs = process.getBuiltinModule('node:fs'); const p = process.getBuiltinModule('node:path'); const u = process.getBuiltinModule('node:url'); const m = p"
+      },
+      {
+        "file": "index.mjs",
+        "line": 10,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "launch/mcp-launch.mjs",
+        "line": 18,
+        "text": "import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "launch/mcp-launch.mjs",
+        "line": 87,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 5,
+        "text": "#   1. 用 @deepseek-ai/dsh-mcp-client 以 stdio 方式启动本机 GXWorks Agent MCP，"
+      },
+      {
+        "file": "cordis.patch.yml",
+        "line": 23,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "index.mjs",
+        "line": 4,
+        "text": "* 这个 bundle 的主体是 `cordis.patch.yml`：它插入 `@deepseek-ai/dsh-mcp-client`（以 stdio 启动本机"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "launch/mcp-launch.mjs",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "launch/mcp-launch.mjs",
+        "line": 354,
+        "text": "const child = spawn(plan.command, plan.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 136,
+      "text": "missing Python runtime (create `.venv` and `pip install -r requirements/mcp.txt`), a duplicate"
+    }
+  ],
+  "skippedEntries": []
+}

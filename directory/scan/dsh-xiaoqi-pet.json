@@ -1,0 +1,112 @@
+{
+  "name": "dsh-xiaoqi-pet",
+  "version": "1.5.4",
+  "scannedAt": "2026-10-29T23:42:07.843Z",
+  "icon": "dsh-xiaoqi-pet.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1370,
+        "text": "const response = await fetch(`${BRIDGE_BASE}/api/balance?refresh=1`, { cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 1477,
+        "text": "void fetch(`${BRIDGE_BASE}/api/client-state`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1501,
+        "text": "const response = await fetch(`${BRIDGE_BASE}/api/command`, { cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 1531,
+        "text": "const response = await fetch(`${BRIDGE_BASE}/api/health`, { cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 1554,
+        "text": "const response = await fetch(`${BRIDGE_BASE}/api/progress`, { cache: 'no-store' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/electron/main.js",
+        "line": 4,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "desktop/electron/main.js",
+        "line": 78,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "desktop/electron/main.js",
+        "line": 96,
+        "text": "fs.mkdirSync(path.dirname(prefsPath()), { recursive: true });"
+      },
+      {
+        "file": "desktop/electron/main.js",
+        "line": 97,
+        "text": "fs.writeFileSync(prefsPath(), JSON.stringify(petPosition), { mode: 0o600 });"
+      },
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "desktop/electron/main.js",
+        "line": 7,
+        "text": "const { spawnSync } = require('node:child_process');"
+      },
+      {
+        "file": "desktop/electron/main.js",
+        "line": 130,
+        "text": "const result = spawnSync('pgrep', ['-f', 'Xiaoqi Pet.app/Contents/MacOS/XiaoqiPet'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "desktop/electron/main.js",
+        "line": 546,
+        "text": "require('node:child_process').spawn('open', ['-a', 'DeepSeek Harness'], { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "index.js",
+        "line": 6,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "index.js",
+        "line": 657,
+        "text": "? spawn('open', [appPath], { detached: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
