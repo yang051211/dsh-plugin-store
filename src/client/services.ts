@@ -41,22 +41,50 @@ function oneAtATime() {
 }
 
 /**
+ * What DSH lists for `name` now: its version and enabled state, null when it is not installed, undefined when the
+ * list cannot be read. A failed step does not say what it left behind (DSH can fail an uninstall after the package is
+ * gone, and a dropped connection can hide an install that went through), so the update looks before it goes on.
+ */
+async function stateOf(pm: PluginManagerRemote, name: string): Promise<{ version: string; enabled: boolean } | null | undefined> {
+  try {
+    const found = installedFrom(await pm.listBundles()).find(bundle => bundle.name === name)
+    return found ? { version: found.version ?? '', enabled: found.enabled } : null
+  } catch {
+    return undefined
+  }
+}
+
+/** The later of two outcomes, needing a restart if either does. */
+const thenRestart = (earlier: ChangeOutcome, later: ChangeOutcome): ChangeOutcome => (earlier === 'restart-required' && later === 'applied' ? earlier : later)
+
+/**
  * Install `version` over an installed plugin. DSH's install dialog refuses a name that is already installed, so this
- * goes to the plugin manager directly. With hot reload on, DSH refuses that too; then it does what DSH's own dialog
- * tells people to do: uninstall, install the new version in the same enabled state, and put the old one back if the
- * new one will not install.
+ * goes to the plugin manager directly, keeping the plugin enabled or disabled as it was. With hot reload on, DSH
+ * refuses that too; then it does what DSH's own dialog tells people to do: uninstall, install the new version, and
+ * put the old one back if the new one will not install. The outcome says `restored` when an earlier version is back,
+ * `lost` only when DSH lists no version at all, and `unknown` when the list cannot be read to tell.
  */
 async function updateInPlace(pm: PluginManagerRemote, name: string, version: string, from: { current: string; enabled: boolean }): Promise<ChangeOutcome> {
-  const first = await attempt(() => pm.installBundle(`${name}@${version}`, undefined))
+  const options = { enabled: from.enabled }
+  const first = await attempt(() => pm.installBundle(`${name}@${version}`, options))
   if (typeof first === 'string' || first.code !== 'already-installed') return first
   const removed = await attempt(() => pm.removeBundle(name))
-  if (typeof removed !== 'string') return removed
-  const options = { enabled: from.enabled }
+  if (typeof removed !== 'string') {
+    const left = await stateOf(pm, name)
+    // DSH disables a plugin before it uninstalls it, and may stop there.
+    if (left) return { ...removed, ...(from.enabled && !left.enabled ? { disabled: true } : {}) }
+    if (left === undefined) return removed
+  }
   const fresh = await attempt(() => pm.installBundle(`${name}@${version}`, options))
-  if (typeof fresh === 'string') return fresh
+  if (typeof fresh === 'string') return thenRestart(removed, fresh)
+  const now = await stateOf(pm, name)
+  if (now?.version === version) return thenRestart(removed, 'applied')
+  if (now) return { ...fresh, code: 'restored', version: now.version }
   const back = await attempt(() => pm.installBundle(`${name}@${from.current}`, options))
-  const failure = { ...fresh, ...(typeof back === 'string' ? { code: 'restored', version: from.current } : { code: 'lost' }) }
-  return failure
+  if (typeof back === 'string') return { ...fresh, code: 'restored', version: from.current, ...(back === 'restart-required' || removed === 'restart-required' ? { restart: true } : {}) }
+  const after = await stateOf(pm, name)
+  if (after) return { ...fresh, code: 'restored', version: after.version }
+  return { ...fresh, code: after === null && now === null ? 'lost' : 'unknown' }
 }
 
 export function pluginManagerServices(pm: PluginManagerRemote): Pick<StoreServices, 'loadBundles' | 'setEnabled' | 'remove' | 'update' | 'inspect'> {

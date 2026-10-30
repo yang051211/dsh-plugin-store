@@ -64,38 +64,65 @@ function scripted(script, calls) {
 }
 const failed = (code, extra = {}) => ({ ok: true, value: { application: 'failed', error: { code, diagnostic: `${code} said so` }, ...extra } })
 const done = application => ({ ok: true, value: { application } })
+/** A listBundles answer: `pet` is dsh-pet's { version, enabled }, or null when it is not installed. */
+const listed = pet => ({ ok: true, value: pet ? [{ name: 'dsh-pet', installed: true, official: false, availability: 'profile', removable: true, ...pet }] : [] })
 
 test('under hot reload an update uninstalls the old version, then installs the new one in the same enabled state', async () => {
   const calls = []
   const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), done('applied')], removeBundle: [done('applied')] }, calls))
   assert.equal(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: false }), 'applied')
   assert.deepEqual(calls.map(c => c.slice(0, 2)), [['installBundle', 'dsh-pet@1.1.0'], ['removeBundle', 'dsh-pet'], ['installBundle', 'dsh-pet@1.1.0']])
+  assert.deepEqual(calls[0][2], { enabled: false }, 'without hot reload DSH enables any install not told otherwise, even of an installed name')
   assert.deepEqual(calls[2][2], { enabled: false })
 })
 
 test('when the new version will not install after the uninstall, the old one goes back', async () => {
   const calls = []
-  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), done('applied')], removeBundle: [done('applied')] }, calls))
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), done('applied')], removeBundle: [done('applied')], listBundles: [listed(null), listed({ version: '1.0.0', enabled: true })] }, calls))
   assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'operation-error said so', code: 'restored', version: '1.0.0' })
   assert.deepEqual(calls.at(-1).slice(0, 3), ['installBundle', 'dsh-pet@1.0.0', { enabled: true }])
 })
 
 test('when neither version installs after the uninstall, the plugin is reported missing', async () => {
-  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), failed('operation-error')], removeBundle: [done('applied')] }, []))
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), failed('operation-error')], removeBundle: [done('applied')], listBundles: [listed(null), listed(null)] }, []))
   const outcome = await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true })
   assert.equal(outcome.code, 'lost')
 })
 
-test('an uninstall DSH refuses leaves the old version in place and says why', async () => {
+test('an uninstall DSH refuses after disabling the plugin keeps the old version and says it is now disabled', async () => {
   const calls = []
-  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed')], removeBundle: [failed('bundle-in-use')] }, calls))
-  assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'bundle-in-use said so', code: 'bundle-in-use' })
-  assert.deepEqual(calls.map(c => c[0]), ['installBundle', 'removeBundle'])
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed')], removeBundle: [failed('bundle-in-use')], listBundles: [listed({ version: '1.0.0', enabled: false })] }, calls))
+  assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'bundle-in-use said so', code: 'bundle-in-use', disabled: true })
+  assert.deepEqual(calls.map(c => c[0]), ['installBundle', 'removeBundle', 'listBundles'])
+})
+
+test('an uninstall that fails after the package is gone still goes on to install the new version', async () => {
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), done('applied')], removeBundle: [failed('operation-error')], listBundles: [listed(null)] }, []))
+  assert.equal(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), 'applied')
+})
+
+test('a new version that installed although the call failed counts as updated, and the old one is not put back', async () => {
+  const calls = []
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), new Error('connection reset')], removeBundle: [done('applied')], listBundles: [listed({ version: '1.1.0', enabled: true })] }, calls))
+  assert.equal(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), 'applied')
+  assert.equal(calls.filter(c => c[0] === 'installBundle').length, 2)
+})
+
+test('when the installed list cannot be read after a failure, the outcome says the state is unknown rather than lost', async () => {
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), failed('operation-error')], removeBundle: [done('applied')], listBundles: [new Error('gone'), new Error('gone')] }, []))
+  assert.equal((await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true })).code, 'unknown')
+})
+
+test('a restart any step needs carries into the outcome', async () => {
+  const restartRemove = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), done('applied')], removeBundle: [done('restart-required')] }, []))
+  assert.equal(await restartRemove.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), 'restart-required')
+  const restartBack = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), failed('operation-error'), done('restart-required')], removeBundle: [done('applied')], listBundles: [listed(null), listed({ version: '1.0.0', enabled: true })] }, []))
+  assert.deepEqual(await restartBack.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'operation-error said so', code: 'restored', version: '1.0.0', restart: true })
 })
 
 test('an install that throws after the uninstall still puts the old version back', async () => {
   const calls = []
-  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), new Error('lock wait timed out'), done('applied')], removeBundle: [done('applied')] }, calls))
+  const services = pluginManagerServices(scripted({ installBundle: [failed('already-installed'), new Error('lock wait timed out'), done('applied')], removeBundle: [done('applied')], listBundles: [listed(null)] }, calls))
   assert.deepEqual(await services.update('dsh-pet', '1.1.0', { current: '1.0.0', enabled: true }), { error: 'lock wait timed out', code: 'restored', version: '1.0.0' })
   assert.deepEqual(calls.at(-1).slice(0, 2), ['installBundle', 'dsh-pet@1.0.0'])
 })

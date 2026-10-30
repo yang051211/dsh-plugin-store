@@ -76,11 +76,18 @@ type ChangeResult = { ok: true; value: { application: string; error?: unknown; p
 /** Why a change did not happen: the text, DSH's error code when it gave one, and packages whose scripts wait for approval. */
 export interface ChangeFailure {
   error: string
-  /** DSH's error code; the store adds `restored` (an update fell back to the old version) and `lost` (neither installs). */
+  /**
+   * DSH's error code; an update adds `restored` (an earlier version is installed again), `lost` (DSH lists no version)
+   * and `unknown` (the installed list could not be read to tell).
+   */
   code?: string
   pendingBuilds?: string[]
-  /** With `restored`: the version that went back. */
+  /** With `restored`: the version installed now. */
   version?: string
+  /** With `restored`: putting it back needs a restart. */
+  restart?: boolean
+  /** An uninstall that stopped after disabling the plugin. */
+  disabled?: boolean
 }
 
 /** Readable text for an Error, DSH's `{ code, diagnostic }` management error, or anything else. */

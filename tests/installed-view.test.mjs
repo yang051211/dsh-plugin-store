@@ -56,6 +56,7 @@ async function open({ bundles = [], services = {}, storeVersion, ...props } = {}
   return { root, calls }
 }
 
+const tabButton = (root, label) => root.root.find(n => n.type === 'button' && n.parent?.type === 'nav' && textIn(n).startsWith(label))
 const navButton = root => root.root.find(n => n.type === 'button' && n.parent?.type === 'nav' && textIn(n).startsWith(zh.navInstalled))
 const row = (root, name) => root.root.find(n => n.props['data-name'] === name)
 const rows = (root, group) => root.root.find(n => n.props['data-group'] === group).findAll(n => n.props['data-name'] !== undefined).map(n => n.props['data-name'])
@@ -253,10 +254,34 @@ const confirmUpdate = async root => {
   await click(buttonIn(root.root.find(n => n.props.role === 'dialog'), zh.updateConfirm))
 }
 
-test('an update DSH refuses under hot reload says to uninstall and install again', async () => {
-  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'already-installed', code: 'already-installed' }) } })
+test('an update that left the plugin disabled says so; one that put the old version back and needs a restart says that too', async () => {
+  const disabled = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'in use', code: 'bundle-in-use', disabled: true }) } })
+  await confirmUpdate(disabled.root)
+  assert.ok(textIn(row(disabled.root, 'dsh-pet')).includes(zh.updateLeftDisabled), textIn(row(disabled.root, 'dsh-pet')))
+  const restart = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'no such version', code: 'restored', version: '0.9.0', restart: true }) } })
+  await confirmUpdate(restart.root)
+  assert.ok(textIn(row(restart.root, 'dsh-pet')).includes(zh.restartRequired), textIn(row(restart.root, 'dsh-pet')))
+})
+
+test('an update whose outcome is unknown says to check the Plugins page', async () => {
+  const { root } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: async () => ({ error: 'gone', code: 'unknown' }) } })
   await confirmUpdate(root)
-  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updateNeedsReinstall))
+  assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updateUnknown.split('{')[0]), textIn(row(root, 'dsh-pet')))
+})
+
+test('an update keeps its state across a tab switch: it shows as running, cannot start twice, and its outcome still shows', async () => {
+  let finish
+  const { root, calls } = await open({ bundles: [bundle('dsh-pet', '0.9.0')], services: { update: (...args) => { calls.update.push(args); return new Promise(resolve => { finish = resolve }) } } })
+  await confirmUpdate(root)
+  await click(tabButton(root, zh.navHome))
+  await click(tabButton(root, zh.navInstalled))
+  const button = buttonIn(row(root, 'dsh-pet'), zh.updating)
+  assert.equal(button.props.disabled, true)
+  await click(tabButton(root, zh.navHome))
+  await act(async () => { finish({ error: 'registry down', code: 'lost' }) })
+  await click(tabButton(root, zh.navInstalled))
+  assert.equal(calls.update.length, 1)
+  assert.ok(textIn(root.root).includes('请到插件页重新安装'), 'the outcome shows after the page comes back')
 })
 
 test('an update whose new version needs install scripts approved names them', async () => {
@@ -320,4 +345,23 @@ test('an update behind another says it is waiting, then updating once its turn c
   assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updateQueued), textIn(row(root, 'dsh-pet')))
   await act(async () => { progress('running') })
   assert.ok(textIn(row(root, 'dsh-pet')).includes(zh.updating))
+})
+
+test('an update under hot reload, which uninstalls and reinstalls, is not announced as a new install', async () => {
+  let list = [bundle('dsh-pet', '0.9.0')]
+  let changed = () => {}
+  const { root } = await open({
+    services: {
+      loadBundles: async () => list,
+      subscribeInstalled: fn => { changed = fn; return () => {} },
+      update: async () => {
+        list = []; changed(); await new Promise(r => setTimeout(r, 0))
+        list = [bundle('dsh-pet', '1.0.0')]; changed(); await new Promise(r => setTimeout(r, 0))
+        return 'applied'
+      },
+    },
+  })
+  await confirmUpdate(root)
+  await flush()
+  assert.ok(!textIn(root.root).includes(zh.installedHint), textIn(root.root))
 })

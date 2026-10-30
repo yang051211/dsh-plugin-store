@@ -14,6 +14,7 @@ import { Home, type ListFilter } from './Home.tsx'
 import { ListView, type ListSettings } from './ListView.tsx'
 import { AboutView } from './About.tsx'
 import { InstalledView, type Inspection } from './InstalledView.tsx'
+import { createChangeBook, type ChangeBook } from './change-book.ts'
 import { BRAND_ICON } from './brand-icon.ts'
 
 export type ChangeProgress = (state: 'waiting' | 'running') => void
@@ -62,10 +63,12 @@ export interface StoreMemory {
   installed: Set<string> | null
   catalog: Catalog | null
   bundles: InstalledBundle[] | null
+  /** Changes to installed plugins in flight, and their outcomes. */
+  changes: ChangeBook
 }
 
 export function createStoreMemory(): StoreMemory {
-  return { tab: 'home', installed: null, catalog: null, bundles: null }
+  return { tab: 'home', installed: null, catalog: null, bundles: null, changes: createChangeBook() }
 }
 
 export type View = { view: 'home' } | ({ view: 'list'; filter: ListFilter } & ListSettings) | { view: 'detail'; name: string } | { view: 'installed' } | { view: 'about' }
@@ -182,7 +185,9 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
           const before = memory.installed
           const fresh = before ? list.map(b => b.name).filter(name => !before.has(name)) : []
           if (fresh.length > 0) setJustInstalled(fresh[fresh.length - 1]!)
-          memory.installed = new Set(list.map(b => b.name))
+          // A plugin under change stays counted as installed: an update under hot reload uninstalls it and installs it
+          // again, which is not a new install.
+          memory.installed = new Set([...list.map(b => b.name), ...Object.keys(memory.changes.get().changes)])
           memory.bundles = list
           setBundles(list)
           setBundlesError(null)
@@ -284,7 +289,7 @@ export function StoreApp({ lang, t, services, onInstall, onSelfUpdate, onOpenPac
     body = (
       <InstalledView rows={rows} error={bundlesError} selfUpdate={selfUpdate} t={t} keepOnly={keepOnly}
         onRetry={() => refreshBundles.current()} onOpenPackage={onOpenPackage} onSelfUpdate={onSelfUpdate}
-        setEnabled={services.setEnabled} remove={services.remove} update={services.update} inspect={services.inspect} onInstallSpec={onInstallSpec} />
+        setEnabled={services.setEnabled} remove={services.remove} update={services.update} inspect={services.inspect} onInstallSpec={onInstallSpec} book={memory.changes} />
     )
   } else if (catalog.status === 'loading') {
     body = <div className="ps-pad ps-muted">{t('loading')}</div>

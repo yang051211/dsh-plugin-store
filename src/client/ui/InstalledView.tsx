@@ -1,12 +1,14 @@
 /**
  * The Installed page: plugins with a newer version first, then the rest, then DSH's own. Updates install in the
- * store, one at a time; the store's own update goes to DSH's installer, and settings open DSH's page for the plugin. Enable and disable apply
+ * store, one at a time; the store's own update goes to DSH's installer, and settings open DSH's page for the plugin.
+ * Changes in flight and their outcomes live in the store's change book, so leaving the page loses neither. Enable and disable apply
  * at once, uninstall asks first, and the keep-only switch lives in the top right corner.
  */
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useState, useSyncExternalStore, type ReactNode } from 'react'
 import type { ChangeOutcome, InstalledRow, InstalledRows } from '../model/installed.ts'
 import type { SelfUpdate } from '../model/install-state.ts'
 import type { ChangeProgress } from './StoreApp.tsx'
+import { without, type Action, type ChangeBook, type RowChange } from './change-book.ts'
 import { PageHeader, PluginIcon, type Translate } from './common.tsx'
 import { ConfirmSpec, ConfirmUpdate } from './ConfirmInstall.tsx'
 import { ConfirmRemove } from './ConfirmRemove.tsx'
@@ -30,6 +32,8 @@ export interface InstalledViewProps {
   update: (name: string, version: string, from: { current: string; enabled: boolean }, progress?: ChangeProgress) => Promise<ChangeOutcome>
   inspect: (spec: string) => Promise<Inspection>
   onInstallSpec: (target: { spec: string; title: string; version: string }) => void
+  /** Changes in flight and their outcomes, kept while the page is away. */
+  book: ChangeBook
 }
 
 const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
@@ -38,18 +42,19 @@ const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
 const MAX_NOTE = 300
 const clip = (text: string) => (text.length > MAX_NOTE ? `${text.slice(0, MAX_NOTE)}…` : text)
 
-type Action = 'enable' | 'remove' | 'update'
-
 /** The words for a change that did not simply apply, in DSH's terms where it gave a code. */
 function outcomeNote(outcome: Exclude<ChangeOutcome, 'applied'>, action: Action, version: string | null, t: Translate): { text: string; error: boolean } {
   if (outcome === 'restart-required') return { text: action === 'update' && version ? t('updatedRestart', { version }) : t('restartRequired'), error: false }
-  if (action === 'update' && outcome.code === 'already-installed') return { text: t('updateNeedsReinstall'), error: true }
   const reason = outcome.pendingBuilds ? t('updateNeedsBuilds', { names: outcome.pendingBuilds.join('、') }) : clip(outcome.error)
-  if (outcome.code === 'restored') return { text: t('updateRestored', { version: outcome.version ?? '', reason }), error: true }
+  if (outcome.code === 'restored') {
+    const text = t('updateRestored', { version: outcome.version ?? '', reason })
+    return { text: outcome.restart ? `${text} ${t('restartRequired')}` : text, error: true }
+  }
   if (outcome.code === 'lost') return { text: t('updateLost', { reason }), error: true }
+  if (outcome.code === 'unknown') return { text: t('updateUnknown', { reason }), error: true }
   if (outcome.pendingBuilds) return { text: reason, error: true }
   if (action === 'remove' && outcome.code === 'stop-profile') return { text: t('removeNeedsStop'), error: true }
-  return { text: clip(outcome.error), error: true }
+  return { text: outcome.disabled ? `${clip(outcome.error)} ${t('updateLeftDisabled')}` : clip(outcome.error), error: true }
 }
 
 function Switch({ on, label, className = '', disabled, onChange }: { on: boolean; label: string; className?: string; disabled?: boolean; onChange: (on: boolean) => void }): ReactNode {
@@ -100,50 +105,40 @@ function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't'
 }
 
 export function InstalledView(props: InstalledViewProps): ReactNode {
-  const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove, update } = props
-  // Notes keep the row's title, so an outcome outlives a row that a refresh removed.
-  const [notes, setNotes] = useState<Record<string, { title: string; text: string; error: boolean }>>({})
-  const [busy, setBusy] = useState<Record<string, boolean>>({})
+  const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove, update, book } = props
+  const { changes, notes } = useSyncExternalStore(book.subscribe, book.get)
   const [removing, setRemoving] = useState<InstalledRow | null>(null)
   const [updating, setUpdating] = useState<InstalledRow | null>(null)
-  const [running, setRunning] = useState<Record<string, Action>>({})
-  // Changes waiting behind another one; DSH makes them one at a time.
-  const [waiting, setWaiting] = useState<Record<string, boolean>>({})
-  // Rows under update, as they were when it started: an update may uninstall before it installs, and the row should
-  // not blink out of the list in between.
-  const [pinned, setPinned] = useState<Record<string, { row: InstalledRow; group: keyof InstalledRows }>>({})
+  const pinned = Object.fromEntries(Object.entries(changes).flatMap(([name, c]) => (c.pinned ? [[name, c.pinned]] : [])))
 
-  /** Run one change for a row; a restart or a failure is noted under it, an applied change shows on refresh. */
-  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: (progress: ChangeProgress) => Promise<ChangeOutcome>, version: string | null = null) => {
-    setBusy(prev => ({ ...prev, [name]: true }))
-    setRunning(prev => ({ ...prev, [name]: action }))
-    setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })
+  /**
+   * Run one change for a row, unless one is already under way for it; a restart or a failure is noted under it, an
+   * applied change shows on refresh. The record lives in `book`, so it carries on while the page is away.
+   */
+  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: (progress: ChangeProgress) => Promise<ChangeOutcome>, version: string | null = null, pin: RowChange['pinned'] = null) => {
+    if (book.get().changes[name]) return
+    book.update(s => ({ changes: { ...s.changes, [name]: { action, waiting: false, pinned: pin } }, notes: without(s.notes, name) }))
     let outcome: ChangeOutcome
     try {
-      outcome = await run(state => setWaiting(prev => ({ ...prev, [name]: state === 'waiting' })))
+      outcome = await run(state => book.update(s => {
+        const current = s.changes[name]
+        return current ? { ...s, changes: { ...s.changes, [name]: { ...current, waiting: state === 'waiting' } } } : s
+      }))
     } catch (error) {
       outcome = { error: messageOf(error) }
     }
-    setBusy(prev => ({ ...prev, [name]: false }))
-    setRunning(prev => { const { [name]: _, ...rest } = prev; return rest })
-    setWaiting(prev => { const { [name]: _, ...rest } = prev; return rest })
-    setPinned(prev => { const { [name]: _, ...rest } = prev; return rest })
-    if (outcome !== 'applied') {
-      const note = outcomeNote(outcome, action, version, t)
-      setNotes(prev => ({ ...prev, [name]: { title, ...note } }))
-    }
-  }, [t])
+    const note = outcome === 'applied' ? null : { title, ...outcomeNote(outcome, action, version, t) }
+    book.update(s => ({ changes: without(s.changes, name), notes: note ? { ...s.notes, [name]: note } : s.notes }))
+  }, [book, t])
 
   const cancelUpdate = useCallback(() => setUpdating(null), [])
   const acceptUpdate = useCallback(() => {
     const row = updating
     setUpdating(null)
-    if (row?.latest && row.version) {
-      const group = (['updates', 'others', 'official'] as const).find(id => rows?.[id].some(r => r.name === row.name)) ?? 'updates'
-      setPinned(prev => ({ ...prev, [row.name]: { row, group } }))
-    }
-    if (row?.latest && row.version) void change(row, 'update', progress => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }, progress), row.latest)
-  }, [updating, change, update])
+    if (!row?.latest || !row.version) return
+    const group = (['updates', 'others', 'official'] as const).find(id => rows?.[id].some(r => r.name === row.name)) ?? 'updates'
+    void change(row, 'update', progress => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }, progress), row.latest, { row, group })
+  }, [updating, change, update, rows])
 
   const cancelRemove = useCallback(() => setRemoving(null), [])
   const acceptRemove = useCallback(() => {
@@ -156,6 +151,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
     const hasUpdate = row.latest !== null && row.version !== null && (rows?.updates.includes(row) || pinned[row.name]?.row === row)
     const manageable = !row.official && !row.self
     const note = notes[row.name]
+    const busy = changes[row.name] !== undefined
     return (
       <li key={row.name} className="ps-inst-row" data-name={row.name}>
         <PluginIcon plugin={{ name: row.name, icon: row.icon }} size={36} />
@@ -172,16 +168,16 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
         </div>
         <div className="ps-inst-actions">
           {hasUpdate && (
-            <button type="button" className="ps-btn ps-btn-primary" disabled={row.self ? !selfUpdate : busy[row.name]}
+            <button type="button" className="ps-btn ps-btn-primary" disabled={row.self ? !selfUpdate : busy}
               onClick={() => (row.self ? selfUpdate && onSelfUpdate(selfUpdate) : setUpdating(row))}>
-              {running[row.name] === 'update' ? t(waiting[row.name] ? 'updateQueued' : 'updating') : t('updateAction')}
+              {changes[row.name]?.action === 'update' ? t(changes[row.name]!.waiting ? 'updateQueued' : 'updating') : t('updateAction')}
             </button>
           )}
           {manageable && !row.missing && (
-            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy[row.name] || row.locked} onChange={on => void change(row, 'enable', progress => setEnabled(row.name, on, progress))} />
+            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy || row.locked} onChange={on => void change(row, 'enable', progress => setEnabled(row.name, on, progress))} />
           )}
           {manageable && row.removable && !row.missing && (
-            <button type="button" className="ps-btn ps-btn-quiet" disabled={busy[row.name]} onClick={() => setRemoving(row)}>{t('remove')}</button>
+            <button type="button" className="ps-btn ps-btn-quiet" disabled={busy} onClick={() => setRemoving(row)}>{t('remove')}</button>
           )}
           <button type="button" className="ps-btn" onClick={() => onOpenPackage(row.name)}>{t('settings')}</button>
         </div>
@@ -234,7 +230,7 @@ export function InstalledView(props: InstalledViewProps): ReactNode {
       {orphans.map(([name, note]) => (
         <div key={name} className={`ps-notice ps-notice-bar ${note.error ? 'ps-row-error' : ''}`}>
           <span>{note.title}：{note.text}</span>
-          <button type="button" className="ps-link-btn" onClick={() => setNotes(prev => { const { [name]: _, ...rest } = prev; return rest })}>{t('dismiss')}</button>
+          <button type="button" className="ps-link-btn" onClick={() => book.update(s => ({ ...s, notes: without(s.notes, name) }))}>{t('dismiss')}</button>
         </div>
       ))}
       {keepOnly.value && <SpecInstall t={t} inspect={props.inspect} onInstallSpec={props.onInstallSpec} />}
