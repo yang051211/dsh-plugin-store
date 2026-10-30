@@ -1,7 +1,7 @@
 {
   "name": "dsh-desktop-sidecar",
-  "version": "0.5.5",
-  "scannedAt": "2026-10-28T23:43:49.897Z",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-30T23:38:21.626Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -42,19 +42,29 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 27,
+        "line": 30,
         "text": "export const inject = ['tools', 'attachments'];"
       },
       {
         "file": "lib/index.js",
-        "line": 146,
-        "text": "  const reg = (t) => ctx.tools.register({ ...t, parameters: compileParameters(t.parameters || {}), output: t.output || textOutput, execute: async (...args) => p"
+        "line": 290,
+        "text": "return ctx.tools.register({"
       }
     ]
   },
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn as spawnProcess, execSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 944,
+        "text": "            const found = String(execSync('where.exe ' + bare, { timeout: 2500, windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] }) || '').split(String.fr"
+      },
       {
         "file": "lib/ocr.mjs",
         "line": 4,
@@ -69,16 +79,6 @@
         "file": "lib/ocr.mjs",
         "line": 61,
         "text": "const r = spawnSync(resolvePs(), ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', OCR_PS1, '-Path', path, '-Language', language], {"
-      },
-      {
-        "file": "lib/uia.mjs",
-        "line": 3,
-        "text": "import { spawnSync } from 'node:child_process';"
-      },
-      {
-        "file": "lib/uia.mjs",
-        "line": 10,
-        "text": "const r = spawnSync(PS, ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', UIA_PS1, ...args], {"
       }
     ]
   },

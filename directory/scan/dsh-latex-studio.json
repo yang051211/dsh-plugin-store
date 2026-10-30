@@ -1,0 +1,118 @@
+{
+  "name": "dsh-latex-studio",
+  "version": "0.4.4",
+  "scannedAt": "2026-10-30T23:38:42.507Z",
+  "icon": "dsh-latex-studio.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/bib.js",
+        "line": 306,
+        "text": "const response = await fetch(url, { headers: { 'User-Agent': 'dsh-latex-studio/0.1 (bib fill)' } })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/bib.js",
+        "line": 17,
+        "text": "import { copyFileSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/core/bib.js",
+        "line": 216,
+        "text": "rmSync(scratch, { recursive: true, force: true })"
+      },
+      {
+        "file": "lib/core/bib.js",
+        "line": 247,
+        "text": "sources.push({ path, text: readFileSync(path, 'utf8') })"
+      },
+      {
+        "file": "lib/core/bib.js",
+        "line": 263,
+        "text": "writeFileSync(bibPath, text, 'utf8')"
+      },
+      {
+        "file": "lib/core/bib.js",
+        "line": 273,
+        "text": "verifyText = readFileSync(bibPath, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 41,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tools/daily.js",
+        "line": 460,
+        "text": "disposers.push(ctx.tools.register(factory(config, resolveRoot)))"
+      },
+      {
+        "file": "lib/tools/vto.js",
+        "line": 9,
+        "text": "*    bridges to the harness (`@deepseek-ai/dsh-tools`, `ctx.tools`,"
+      },
+      {
+        "file": "lib/tools/vto.js",
+        "line": 633,
+        "text": "const toolsService = ctx && ctx.tools"
+      },
+      {
+        "file": "lib/tools/vto.js",
+        "line": 655,
+        "text": "const service = ctx && ctx.tools"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/bib.js",
+        "line": 20,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/bib.js",
+        "line": 192,
+        "text": "    const result = spawnSync(binary, ['--tool', '--quiet', '--logfile', join(scratch, 'biber.log'), '--output-format=bibtex', '--output-file', join(scratch, 'ou"
+      },
+      {
+        "file": "lib/core/compile.js",
+        "line": 21,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/core/compile.js",
+        "line": 97,
+        "text": "spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true, timeout: 5000 })"
+      },
+      {
+        "file": "lib/core/compile.js",
+        "line": 117,
+        "text": "child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

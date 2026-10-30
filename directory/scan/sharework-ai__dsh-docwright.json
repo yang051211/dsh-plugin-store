@@ -1,15 +1,41 @@
 {
   "name": "@sharework-ai/dsh-docwright",
-  "version": "0.1.1",
-  "scannedAt": "2026-10-26T10:14:15.872Z",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-30T23:38:47.919Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/api.js",
+        "line": 22,
+        "text": "return fetch('/api/docwright/params', { headers: { accept: 'application/json' } }).then(parse);"
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 26,
+        "text": "await parse(await fetch('/api/docwright/config', {"
+      },
+      {
+        "file": "lib/client/api.js",
+        "line": 34,
+        "text": "await parse(await fetch('/api/docwright/pack-param', {"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/authoring-skill.js",
+        "line": 1,
+        "text": "import { readFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/authoring-skill.js",
+        "line": 23,
+        "text": "return await readFile(path, 'utf8');"
+      },
       {
         "file": "lib/doc-service.js",
         "line": 1,
@@ -17,23 +43,13 @@
       },
       {
         "file": "lib/doc-service.js",
-        "line": 95,
+        "line": 96,
         "text": "await writeFile(`${path}.tmp`, content, 'utf8');"
       },
       {
         "file": "lib/doc-service.js",
-        "line": 176,
+        "line": 211,
         "text": "await mkdir(outDir, { recursive: true });"
-      },
-      {
-        "file": "lib/materials.js",
-        "line": 1,
-        "text": "import { readFile, realpath } from 'node:fs/promises';"
-      },
-      {
-        "file": "lib/materials.js",
-        "line": 44,
-        "text": "out.push(await readFile(real, 'utf8'));"
       }
     ]
   },
@@ -42,22 +58,27 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 12,
+        "line": 16,
         "text": "export const inject = ['tools', 'llm'];"
       },
       {
         "file": "lib/index.js",
-        "line": 39,
+        "line": 54,
         "text": "ctx.tools.register(defineDocPacksTool(deps));"
       },
       {
         "file": "lib/index.js",
-        "line": 40,
+        "line": 55,
         "text": "ctx.tools.register(defineDocGenerateTool(deps));"
       },
       {
         "file": "lib/index.js",
-        "line": 41,
+        "line": 56,
+        "text": "ctx.tools.register(defineDocExtractTool(deps));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 57,
         "text": "ctx.tools.register(defineDocValidateTool(deps));"
       }
     ]

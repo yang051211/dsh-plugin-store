@@ -1,0 +1,121 @@
+{
+  "name": "dsh-maa-cli",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-30T23:38:48.706Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/operators/training-advice.js",
+        "line": 48,
+        "text": "if (typeof fetchImpl !== 'function') return cachedFallback(cached, '当前 Node.js 没有 fetch()，无法检查社区强度榜更新。', now)"
+      },
+      {
+        "file": "src/runtime/runtime.js",
+        "line": 158,
+        "text": "if (typeof fetchImpl !== 'function') throw new Error('This Node.js runtime has no fetch() to download maa-cli')"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/capabilities/discovery.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/capabilities/discovery.js",
+        "line": 260,
+        "text": "const value = JSON.parse(await readFile(capabilityCachePath(env), 'utf8'))"
+      },
+      {
+        "file": "src/capabilities/discovery.js",
+        "line": 267,
+        "text": "await mkdir(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "src/capabilities/discovery.js",
+        "line": 269,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "src/capabilities/discovery.js",
+        "line": 270,
+        "text": "try { await rename(temporary, file) } catch (error) { await rm(temporary, { force: true }); throw error }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 592,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 601,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 622,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "src/index.js",
+        "line": 670,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/runtime/runner.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/runtime/runner.js",
+        "line": 105,
+        "text": "const child = spawn(command, {"
+      },
+      {
+        "file": "src/runtime/runner.js",
+        "line": 163,
+        "text": "const killer = spawn('taskkill.exe', ['/pid', String(child.pid), '/t', '/f'], {"
+      },
+      {
+        "file": "src/runtime/runtime.js",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/runtime/runtime.js",
+        "line": 598,
+        "text": "const child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'], signal: options.signal })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,80 @@
+{
+  "name": "dsh-remote-connector",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T23:38:38.765Z",
+  "icon": "dsh-remote-connector.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/remote.js",
+        "line": 73,
+        "text": "`  curl -fsSL -o /tmp/dsh-node.tar.xz ${this.tarball} || { echo NODE_DOWNLOAD_FAIL; exit 1; }`,"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-modules.js",
+        "line": 8,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 4,
+        "text": "import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 28,
+        "text": "const parsed = JSON.parse(readFileSync(this.file, 'utf8'));"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 37,
+        "text": "mkdirSync(this.dir, { recursive: true });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 38,
+        "text": "writeFileSync(this.file, JSON.stringify(this.servers, null, 2));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ssh.js",
+        "line": 4,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/ssh.js",
+        "line": 38,
+        "text": "child = spawn(sshBinary, argv, { stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/ssh.js",
+        "line": 79,
+        "text": "const child = spawn(sshBinary, argv, { stdio: 'ignore' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

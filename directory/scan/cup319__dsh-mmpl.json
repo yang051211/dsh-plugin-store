@@ -1,63 +1,105 @@
 {
   "name": "@cup319/dsh-mmpl",
-  "version": "3.4.0",
-  "scannedAt": "2026-10-27T02:44:39.240Z",
+  "version": "3.6.2",
+  "scannedAt": "2026-10-30T23:38:25.044Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
+        "file": "client.js",
+        "line": 78,
+        "text": "const response = await fetch(url, { ...fetchOptions, redirect: 'error', signal: ctrl.signal })"
+      },
+      {
         "file": "index.js",
-        "line": 109,
+        "line": 394,
         "text": "const res = await fetch("
       },
       {
         "file": "index.js",
-        "line": 124,
+        "line": 409,
         "text": "const res = await fetch("
       },
       {
         "file": "index.js",
-        "line": 225,
+        "line": 510,
         "text": "const res = await fetch(`${base}/admin/api/capture`, {"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "import { existsSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 179,
+        "text": "const raw = JSON.parse(readFileSync(bridgePath, 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 194,
+        "text": "try { writeFileSync(bridgePath, JSON.stringify(v, null, 2)) } catch (e) { debug('bridge config write failed', e) }"
+      }
+    ]
   },
   "agentTools": {
     "hit": true,
     "evidence": [
       {
         "file": "cordis.patch.yml",
-        "line": 11,
+        "line": 16,
         "text": "name: '@deepseek-ai/dsh-mcp-client'"
       },
       {
         "file": "index.js",
         "line": 6,
         "text": "*    `@deepseek-ai/dsh-mcp-client`, exposing MMPL's 10 tools as"
+      },
+      {
+        "file": "index.js",
+        "line": 279,
+        "text": "e?.options?.name === '@deepseek-ai/dsh-mcp-client' &&"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 29,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 118,
+        "text": "execFile('npm', ['root', '--global'], { timeout: 8000, windowsHide: true, shell: process.platform === 'win32' }, (err, out) =>"
+      },
+      {
+        "file": "index.js",
+        "line": 239,
+        "text": "const child = spawn(exe, [], { cwd: pkgDir, env, detached: true, stdio: 'ignore', windowsHide: true })"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,
     "evidence": []
   },
-  "dependencies": 0,
+  "dependencies": 1,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [],
   "setupHints": [
     {
       "file": "README.md",
-      "line": 68,
+      "line": 75,
       "text": "npm install -g @cup319/mmpl"
     }
   ],

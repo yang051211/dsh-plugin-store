@@ -1,0 +1,90 @@
+{
+  "name": "dsh-compact-manager",
+  "version": "1.0.0",
+  "scannedAt": "2026-10-30T23:38:49.644Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 5577,
+        "text": "const response = await fetch(ENDPOINT + params, {"
+      },
+      {
+        "file": "tools/client-app.js",
+        "line": 26,
+        "text": "const response = await fetch(ENDPOINT + params, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/ledger/snapfont.js",
+        "line": 2,
+        "text": "import { readFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/ledger/snapfont.js",
+        "line": 14,
+        "text": "const font8 = readFileSync(join(here, \"fonts\", \"font8x13.bin\"));"
+      },
+      {
+        "file": "lib/ledger/snapfont.js",
+        "line": 15,
+        "text": "const fontCjk = readFileSync(join(here, \"fonts\", \"snapcjk.bin\"));"
+      },
+      {
+        "file": "tools/build-client.mjs",
+        "line": 16,
+        "text": "import { readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "tools/build-client.mjs",
+        "line": 22,
+        "text": "const read = (path) => readFileSync(path, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "tools/extract-vendor.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "tools/extract-vendor.mjs",
+        "line": 94,
+        "text": "const stripping = spawnSync(process.execPath, [join(here, \"strip-ring-gesture.mjs\")], { stdio: \"inherit\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "commands",
+    "connection",
+    "llm",
+    "sessionProjections",
+    "settings",
+    "tokenMeter",
+    "typert",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

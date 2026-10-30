@@ -1,0 +1,120 @@
+{
+  "name": "dsh-bili-danmaku-lite",
+  "version": "0.4.7",
+  "scannedAt": "2026-10-30T23:38:48.428Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 17,
+        "text": "const r = await fetch('/dsh-bili-live/' + path, opt)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 31,
+        "text": "import { appendFileSync, existsSync, mkdirSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 91,
+        "text": "mkdirSync(LOG_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 92,
+        "text": "appendFileSync(PLUGIN_LOG, line, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 97,
+        "text": "try { return JSON.parse(readFileSync(path, 'utf8')) } catch { return fallback }"
+      },
+      {
+        "file": "index.js",
+        "line": 102,
+        "text": "mkdirSync(dirname(path), { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 42,
+        "text": "export const inject = ['webServer', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 661,
+        "text": "const tool = (spec) => ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/mcp.mjs",
+        "line": 4,
+        "text": "* 为什么不用 `@deepseek-ai/dsh-mcp-client`：那是个\"把 MCP 挂成 dsh 工具\"的完整插件，"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 30,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 265,
+        "text": "child = spawn(exe, args, { cwd: HOME, env: pythonEnv(), windowsHide: true })"
+      },
+      {
+        "file": "lib/mcp.mjs",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/mcp.mjs",
+        "line": 36,
+        "text": "this.proc = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 74,
+      "text": "\"$DSH_HOME/bili-live/.venv/Scripts/python.exe\" -m pip install -r requirements.txt   # Windows"
+    },
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "# \"$DSH_HOME/bili-live/.venv/bin/python\" -m pip install -r requirements.txt          # macOS / Linux"
+    },
+    {
+      "file": "README.md",
+      "line": 109,
+      "text": "- **faster-whisper**（CPU）：`pip install faster-whisper` 到插件用的那个 venv；装在别的 venv 就用 `DSH_BILI_LIVE_ASR_PYTHON` 指过去。"
+    }
+  ],
+  "skippedEntries": []
+}

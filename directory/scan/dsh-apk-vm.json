@@ -1,0 +1,127 @@
+{
+  "name": "dsh-apk-vm",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-30T23:38:25.703Z",
+  "icon": "dsh-apk-vm.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 776,
+        "text": "return fetch(url, init)"
+      },
+      {
+        "file": "client.js",
+        "line": 823,
+        "text": "return fetch(framePath || ('/apk-vm/frame?t=' + Date.now()), { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 1700,
+        "text": "fetch('/apk-vm/client-report', {"
+      },
+      {
+        "file": "client.js",
+        "line": 2023,
+        "text": "ws = new WebSocket(wsBase + wsPath);"
+      },
+      {
+        "file": "client.js",
+        "line": 3216,
+        "text": "var xhr = new XMLHttpRequest();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import { createReadStream, existsSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 18,
+        "text": "import { promises as fsp } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 39,
+        "text": "return JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8')).version || 'unknown';"
+      },
+      {
+        "file": "index.js",
+        "line": 706,
+        "text": "await fsp.mkdir(uploadDir, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 714,
+        "text": "if (stat && stat.isFile() && stat.mtimeMs < cutoff) await fsp.rm(file, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 3335,
+        "text": "return host.tools.register(apkVmTool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/aab.js",
+        "line": 19,
+        "text": "* `child_process.spawn(file, argvArray)`; no command string is assembled, so"
+      },
+      {
+        "file": "lib/aab.js",
+        "line": 45,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/aab.js",
+        "line": 385,
+        "text": "child = spawn(target.file, target.args, {"
+      },
+      {
+        "file": "lib/android.js",
+        "line": 19,
+        "text": "* child_process.spawn(exe, argvArray). The only string command is the *remote* command"
+      },
+      {
+        "file": "lib/android.js",
+        "line": 47,
+        "text": "import { spawn } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 240,
+      "text": "- **Cross-platform SDK discovery.** `lib/setup.js` and `lib/android.js` discover Android SDK,"
+    },
+    {
+      "file": "README.md",
+      "line": 528,
+      "text": "│  ├─ lib/setup.js    Environment detection, createAvd, installSystemImage │"
+    }
+  ],
+  "skippedEntries": []
+}

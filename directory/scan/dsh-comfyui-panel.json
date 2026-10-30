@@ -1,0 +1,130 @@
+{
+  "name": "dsh-comfyui-panel",
+  "version": "0.6.10",
+  "scannedAt": "2026-10-30T23:38:33.804Z",
+  "icon": "dsh-comfyui-panel.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1070,
+        "text": "const response = await fetch(SERVICE_URL)"
+      },
+      {
+        "file": "client.js",
+        "line": 1093,
+        "text": "const response = await fetch(SERVICE_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1170,
+        "text": "const response = await fetch(`${STATE_URL}?sessionId=${encodeURIComponent(sessionId)}`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1260,
+        "text": "const response = await fetch(COMMAND_POLL_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 1280,
+        "text": "await fetch(COMMAND_RESULT_URL, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "import { mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 1042,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 1044,
+        "text": "await writeFile(file, bytes)"
+      },
+      {
+        "file": "service.js",
+        "line": 15,
+        "text": "import { existsSync, realpathSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "supervisor.js",
+        "line": 15,
+        "text": "import { closeSync, mkdirSync, openSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "export const inject = ['webServer', 'connection', 'tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 673,
+        "text": "add(() => sessionCtx.tools.register(statusTool(sessionId)))"
+      },
+      {
+        "file": "index.js",
+        "line": 674,
+        "text": "add(() => sessionCtx.tools.register(graphReadTool(sessionId)))"
+      },
+      {
+        "file": "index.js",
+        "line": 675,
+        "text": "add(() => sessionCtx.tools.register(runTool(sessionId)))"
+      },
+      {
+        "file": "index.js",
+        "line": 676,
+        "text": "add(() => sessionCtx.tools.register(progressTool(sessionId)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "service.js",
+        "line": 14,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "supervisor.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "supervisor.js",
+        "line": 185,
+        "text": "proc = spawn(config.command, config.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,77 @@
+{
+  "name": "@cassius0924/dsh-medals",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-30T23:38:34.462Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 41,
+        "text": "const response = await fetch(\"/api/dsh-medals/status\", { signal: controller.signal });"
+      },
+      {
+        "file": "lib/ui/app.js",
+        "line": 97,
+        "text": "    try {const response=await fetch('/api/dsh-medals/status',{cache:'no-store'});const data=await response.json();if(response.status===401)throw Object.assign(n"
+      },
+      {
+        "file": "lib/ui/app.js",
+        "line": 102,
+        "text": "veal-dialog').close();try{const r=await fetch('/api/dsh-medals/challenges/ack',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({i"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { mkdir, open, readFile, rename, unlink } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 225,
+        "text": "await mkdir(dirname(this.path), { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 240,
+        "text": "await lock.writeFile(String(process.pid));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 243,
+        "text": "state = validate(JSON.parse(await readFile(this.path, \"utf8\")));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 252,
+        "text": "await file.writeFile(JSON.stringify(state));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/ui/i18n.js",
+    "lib/ui/medal-renderer.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

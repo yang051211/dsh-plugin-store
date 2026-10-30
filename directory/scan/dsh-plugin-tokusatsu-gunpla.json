@@ -1,0 +1,118 @@
+{
+  "name": "dsh-plugin-tokusatsu-gunpla",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:43.899Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime.js",
+        "line": 216,
+        "text": "const response = await fetch(url, { method: 'HEAD', signal: controller.signal, redirect: 'manual' })"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 142,
+        "text": "const response = await fetch(`${root}/models`, { signal: AbortSignal.timeout(2500) })"
+      },
+      {
+        "file": "lib/vision.js",
+        "line": 245,
+        "text": "const response = await fetch(`${endpoint.baseUrl}/chat/completions`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 104,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 105,
+        "text": "writeFileSync(file, line)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "appendFileSync(file, line)"
+      },
+      {
+        "file": "lib/runtime.js",
+        "line": 10,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 42,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 87,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 179,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 231,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 272,
+        "text": "disposers.push(ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/install-deps.mjs",
+        "line": 18,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test.mjs",
+        "line": 7,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/test.mjs",
+        "line": 21,
+        "text": "const result = spawnSync(process.execPath, [path], { stdio: 'inherit' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

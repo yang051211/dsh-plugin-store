@@ -1,0 +1,71 @@
+{
+  "name": "dsh-peak-hours",
+  "version": "1.13.20",
+  "scannedAt": "2026-10-30T23:38:48.845Z",
+  "icon": "dsh-peak-hours.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 1465,
+        "text": "fetch(url, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 1679,
+        "text": "fetch(USAGE_API + (tick > 0 ? '?fresh=1' : ''), { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/usage.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 147,
+        "text": "const json = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 157,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 159,
+        "text": "fs.writeFileSync(tmp, JSON.stringify(data))"
+      },
+      {
+        "file": "lib/usage.js",
+        "line": 199,
+        "text": "buf = fs.readFileSync(file)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

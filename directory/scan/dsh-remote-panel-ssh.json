@@ -1,0 +1,86 @@
+{
+  "name": "dsh-remote-panel-ssh",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T23:38:50.238Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 115,
+        "text": "fetch('/api/remote-dsh/hosts', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 159,
+        "text": "const state = await jsonOf(await fetch('/api/remote-dsh/state', { headers: { accept: 'application/json' } }))"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 180,
+        "text": "fetch('/api/remote-dsh/connect', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 202,
+        "text": "fetch('/api/remote-dsh/disconnect', {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 213,
+        "text": "fetch('/api/remote-dsh/hosts', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/hosts.js",
+        "line": 11,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/hosts.js",
+        "line": 28,
+        "text": "try { return JSON.parse(fs.readFileSync(file, 'utf8')) } catch { return null }"
+      },
+      {
+        "file": "lib/hosts.js",
+        "line": 38,
+        "text": "fs.mkdirSync(DSH_HOME, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/hosts.js",
+        "line": 40,
+        "text": "fs.writeFileSync(tmp, JSON.stringify({ version: 1, hosts }, null, 2), { mode: 0o600 })"
+      },
+      {
+        "file": "lib/hosts.js",
+        "line": 111,
+        "text": "fs.writeFileSync(tmp, JSON.stringify({ ...value, hosts: next }, null, 2), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

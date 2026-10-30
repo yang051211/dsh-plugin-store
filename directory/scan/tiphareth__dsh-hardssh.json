@@ -1,0 +1,144 @@
+{
+  "name": "@tiphareth/dsh-hardssh",
+  "version": "0.2.7",
+  "scannedAt": "2026-10-30T23:38:43.363Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 125,
+        "text": "return (await readJson(await fetch(WORKSPACE_API.sshWorkspaces))).workspaces;"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 129,
+        "text": "return (await readJson(await fetch(WORKSPACE_API.sshWorkspaces, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "return (await readJson(await fetch(WORKSPACE_API.sshWorkspaces + \"/item\" + buildQuery({ id }), {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 145,
+        "text": "await readJson(await fetch(WORKSPACE_API.sshWorkspaces + \"/item\" + buildQuery({ id }), { method: \"DELETE\" }));"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 149,
+        "text": "return await readJson(await fetch(WORKSPACE_API.sshWorkspaceDir + buildQuery({"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/fs.js",
+        "line": 356,
+        "text": "const localCtx = ctx.isolate(\"fs\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7,
+        "text": "teStream, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { access, lstat, mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 548,
+        "text": "const parsed = JSON.parse(readFileSync(this.path, \"utf8\"));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 555,
+        "text": "if (!existsSync(dir)) mkdirSync(dir, {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 7088,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9413,
+        "text": "const inject = [\"tools\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9740,
+        "text": "const guardDispose = ctx.tools.guard((execution) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 9810,
+        "text": "const disposers = tools.map((tool) => ctx.tools.register(tool));"
+      },
+      {
+        "file": "src/index.ts",
+        "line": 66,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 25,
+        "text": "import { exec } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8307,
+        "text": "spawn(spec) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8310,
+        "text": "return this.searchSpawner.spawn(spec);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8619,
+        "text": "* LocalSubprocessRuntime.spawn() deliberately treat cwd as a default rather"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8691,
+        "text": "/** LocalSubprocessRuntime.spawn() accepts any cwd, so this method fences it. */"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsdown"
+      }
+    ]
+  },
+  "dependencies": 4,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

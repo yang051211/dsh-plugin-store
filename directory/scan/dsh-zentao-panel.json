@@ -1,0 +1,79 @@
+{
+  "name": "dsh-zentao-panel",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-30T23:38:29.785Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/rpc.mjs",
+        "line": 60,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/rpc.mjs",
+        "line": 147,
+        "text": "const response = await fetchFn.fetch(request);"
+      },
+      {
+        "file": "lib/zentao-client.mjs",
+        "line": 94,
+        "text": "const res = await fetch(url, init);"
+      },
+      {
+        "file": "lib/zentao-client.mjs",
+        "line": 149,
+        "text": "...(ajax ? { 'X-Requested-With': 'XMLHttpRequest' } : {}),"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.mjs",
+        "line": 11,
+        "text": "import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/store.mjs",
+        "line": 56,
+        "text": "const d = JSON.parse(readFileSync(configPath(), 'utf8'));"
+      },
+      {
+        "file": "lib/store.mjs",
+        "line": 91,
+        "text": "mkdirSync(panelDir(), { recursive: true });"
+      },
+      {
+        "file": "lib/store.mjs",
+        "line": 102,
+        "text": "writeFileSync(configPath(), JSON.stringify(payload, null, 2) + '\\n', { mode: 0o600 });"
+      },
+      {
+        "file": "lib/store.mjs",
+        "line": 108,
+        "text": "if (existsSync(configPath())) writeFileSync(configPath(), JSON.stringify({ version: 2, accounts: [], savedAt: Date.now() }) + '\\n', { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

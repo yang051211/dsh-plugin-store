@@ -1,0 +1,80 @@
+{
+  "name": "@pan-318/dsh-solidworks",
+  "version": "0.5.1",
+  "scannedAt": "2026-10-30T23:38:30.608Z",
+  "icon": "pan-318__dsh-solidworks.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { readFile, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "index.js",
+        "line": 397,
+        "text": "const bytes = await readFile(data.previewPng);"
+      },
+      {
+        "file": "index.js",
+        "line": 405,
+        "text": "await rm(data.previewPng, { force: true }).catch(() => {});"
+      },
+      {
+        "file": "index.js",
+        "line": 472,
+        "text": "const bytes = await readFile(data.previewPng);"
+      },
+      {
+        "file": "index.js",
+        "line": 480,
+        "text": "await rm(data.previewPng, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "export const inject = [\"tools\", \"attachments\"];"
+      },
+      {
+        "file": "index.js",
+        "line": 625,
+        "text": "ctx.effect(() => ctx.tools.register(tool), `solidworks: tool ${tool.name}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runner.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/runner.js",
+        "line": 30,
+        "text": "const child = spawn(command, args, { windowsHide: true, stdio: [\"ignore\", \"pipe\", \"pipe\"] });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

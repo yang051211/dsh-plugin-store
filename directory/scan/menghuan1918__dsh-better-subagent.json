@@ -1,0 +1,106 @@
+{
+  "name": "@menghuan1918/dsh-better-subagent",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-30T23:38:30.165Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 515,
+        "text": "const res = await fetch(url, controller === undefined ? undefined : { signal: controller.signal });"
+      },
+      {
+        "file": "src/client.js",
+        "line": 965,
+        "text": "const response = await fetch(MODELS_URL + '?cli=' + encodeURIComponent(spec.cli));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/panel.js",
+        "line": 44,
+        "text": "import { accessSync, constants, readFileSync, readdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "src/panel.js",
+        "line": 229,
+        "text": "return readFileSync(path, 'utf8').split('\\n')"
+      },
+      {
+        "file": "src/panel.js",
+        "line": 483,
+        "text": "const parsed = JSON.parse(String(readFile(path)))"
+      },
+      {
+        "file": "src/panel.js",
+        "line": 503,
+        "text": "const readFile = options.readFile ?? ((file) => readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/subagents.js",
+        "line": 174,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "src/wait-subagent.js",
+        "line": 37,
+        "text": "export const inject = ['tools', 'subagents', 'agents', 'sessionQuery']"
+      },
+      {
+        "file": "src/wait-subagent.js",
+        "line": 335,
+        "text": "const offTool = ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cli-adapter.js",
+        "line": 142,
+        "text": "handle = subprocess.spawn({"
+      },
+      {
+        "file": "src/cli/version.js",
+        "line": 16,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/cli/version.js",
+        "line": 84,
+        "text": "execFile(executable, ['--version'], {"
+      },
+      {
+        "file": "src/panel.js",
+        "line": 43,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/panel.js",
+        "line": 211,
+        "text": "execFile(path, ['--version'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

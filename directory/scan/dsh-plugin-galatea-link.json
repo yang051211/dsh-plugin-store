@@ -1,0 +1,98 @@
+{
+  "name": "dsh-plugin-galatea-link",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:38.911Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 34,
+        "text": "const response = await fetch(`${this.baseUrl}${path}`, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 62,
+        "text": "return new WebSocket(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/bridge.js",
+        "line": 3,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/bridge.js",
+        "line": 11,
+        "text": "try { return JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version || '0.0.0'; }"
+      },
+      {
+        "file": "src/client.js",
+        "line": 2,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "src/client.js",
+        "line": 22,
+        "text": "const fromFile = readFileSync(this.config.apiTokenFile, 'utf8').trim();"
+      },
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/harness.js",
+        "line": 12,
+        "text": "const denied = agent.ctx.tools.schemas(agent).map(tool => tool.name).filter(name => !['structured_output', 'run_code'].includes(name));"
+      },
+      {
+        "file": "src/harness.js",
+        "line": 13,
+        "text": "if (denied.length) agent.ctx.tools.restrict({ deny: denied });"
+      },
+      {
+        "file": "src/harness.js",
+        "line": 14,
+        "text": "agent.ctx.tools.guard(exec => ['structured_output', 'run_code'].includes(exec.name) ? undefined : '游戏后台任务只允许提交结构化结果');"
+      },
+      {
+        "file": "src/harness.js",
+        "line": 33,
+        "text": "const denied = owner.ctx.tools.schemas(owner).map(tool => tool.name).filter(name => !['structured_output', 'run_code'].includes(name));"
+      },
+      {
+        "file": "src/index.js",
+        "line": 11,
+        "text": "export const inject = ['tools', 'subagents'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "subagents",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

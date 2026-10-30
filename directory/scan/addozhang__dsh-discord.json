@@ -1,14 +1,14 @@
 {
   "name": "@addozhang/dsh-discord",
-  "version": "0.5.0",
-  "scannedAt": "2026-10-26T10:10:48.892Z",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-30T23:38:26.195Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/discord/rest.js",
-        "line": 46,
+        "line": 68,
         "text": "return fetch(request.url, init);"
       },
       {
@@ -28,14 +28,25 @@
       },
       {
         "file": "lib/index.js",
-        "line": 972,
+        "line": 1077,
         "text": "const ws = new WebSocket(url);"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/version.js",
+        "line": 6,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/version.js",
+        "line": 10,
+        "text": "export const ADAPTER_VERSION = JSON.parse(readFileSync(pkgPath, 'utf8')).version;"
+      }
+    ]
   },
   "agentTools": {
     "hit": false,
@@ -49,7 +60,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 4,
+  "dependencies": 3,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

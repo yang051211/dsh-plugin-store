@@ -1,0 +1,85 @@
+{
+  "name": "dsh-vscode-connect",
+  "version": "0.1.13",
+  "scannedAt": "2026-10-30T23:38:35.299Z",
+  "icon": "dsh-vscode-connect.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/client.js",
+        "line": 280,
+        "text": "const response = await fetch(CONNECT_PATH, {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1016,
+        "text": "import { createServer as createServer2 } from \"node:http\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1789,
+        "text": "const response = await carrier.fetch(request, lease.value);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1907,
+        "text": "import { mkdir, rename, unlink, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1947,
+        "text": "const remove = () => unlink(filename).catch(() => {"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1959,
+        "text": "await mkdir(directory, { recursive: true, mode: 448 });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1961,
+        "text": "await writeFile(temporary, JSON.stringify({ version: 1, pid: process.pid, createdAt, updatedAt: Date.now(), protectedKey }), { mode: 384 });"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1968,
+        "text": "await unlink(temporary).catch(() => {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/index.js",
+        "line": 1906,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "dist/index.js",
+        "line": 1914,
+        "text": "    const child = spawn(\"powershell.exe\", [\"-NoLogo\", \"-NoProfile\", \"-NonInteractive\", \"-Command\", SCRIPT], { windowsHide: true, stdio: [\"pipe\", \"pipe\", \"ignore"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

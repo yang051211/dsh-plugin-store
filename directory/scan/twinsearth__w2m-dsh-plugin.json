@@ -1,7 +1,7 @@
 {
   "name": "@twinsearth/w2m-dsh-plugin",
-  "version": "2.0.9",
-  "scannedAt": "2026-10-30T07:08:47.334Z",
+  "version": "2.0.10",
+  "scannedAt": "2026-10-30T23:38:14.944Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -37,6 +37,16 @@
     "hit": true,
     "evidence": [
       {
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 17,
+        "text": "import { existsSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 109,
+        "text": "try { writeFileSync(out, JSON.stringify(result, null, 2)); result.result_file = out; } catch { /* stdout only */ }"
+      },
+      {
         "file": "bin/w2m-bootstrap-sign.mjs",
         "line": 14,
         "text": "import { readFileSync, writeFileSync } from 'node:fs';"
@@ -50,16 +60,6 @@
         "file": "bin/w2m-bootstrap-sign.mjs",
         "line": 42,
         "text": "const key = createPrivateKey(readFileSync(operatorKeyPath));"
-      },
-      {
-        "file": "bin/w2m-bootstrap-sign.mjs",
-        "line": 46,
-        "text": "if (outPath) { writeFileSync(outPath, text, 'utf8'); process.stdout.write('w2m-bootstrap-sign: wrote ' + outPath + ' (fleet ' + fleetId.slice(0, 16) + '…, expir"
-      },
-      {
-        "file": "bin/w2m-bootstrap.mjs",
-        "line": 39,
-        "text": "import { existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs';"
       }
     ]
   },
@@ -97,29 +97,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "bin/w2m-hidden-task.mjs",
-        "line": 15,
-        "text": "import { execFileSync } from 'node:child_process';"
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process';"
       },
       {
-        "file": "bin/w2m-secondary-link.mjs",
-        "line": 41,
-        "text": "import { spawn } from 'node:child_process';"
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 49,
+        "text": "const run = spawnSync('screencapture', ['-x', '-t', 'jpg', file], { timeout: 15000, encoding: 'utf8' });"
       },
       {
-        "file": "deploy/mac/mac-self-update.mjs",
-        "line": 34,
-        "text": "import { execFileSync } from 'node:child_process';"
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 55,
+        "text": "const sips = spawnSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', file], { timeout: 5000, encoding: 'utf8' });"
       },
       {
-        "file": "deploy/windows/verify-supervisor.mjs",
-        "line": 31,
-        "text": "import { spawn, spawnSync } from 'node:child_process';"
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 89,
+        "text": "const ff = spawnSync('ffmpeg', ['-version'], { timeout: 1500, encoding: 'utf8' });"
       },
       {
-        "file": "deploy/windows/verify-supervisor.mjs",
-        "line": 103,
-        "text": "const out = spawnSync('ps', ['-eo', 'pid=,args='], { encoding: 'utf8' });"
+        "file": "bin/remote-s2-capture.mjs",
+        "line": 95,
+        "text": "try { spawnSync('mkdir', ['-p', dir], { timeout: 5000 }); } catch { /* best effort */ }"
       }
     ]
   },

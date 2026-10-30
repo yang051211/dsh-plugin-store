@@ -1,14 +1,14 @@
 {
   "name": "dsh-mcp-btwy",
-  "version": "1.0.1",
-  "scannedAt": "2026-10-30T07:08:53.732Z",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-30T23:38:32.344Z",
   "icon": "dsh-mcp-btwy.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 145,
+        "line": 201,
         "text": "const response = await fetch(endpoint.url, {"
       },
       {
@@ -28,18 +28,13 @@
     "evidence": [
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 25,
+        "line": 27,
         "text": "import { readFileSync } from 'node:fs'"
       },
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 57,
-        "text": "fileValue = JSON.parse(readFileSync(endpointFile, 'utf8'))"
-      },
-      {
-        "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 65,
-        "text": "const file = fromEnv && envToken ? undefined : readFile()"
+        "line": 67,
+        "text": "file = JSON.parse(readFileSync(endpointFile, 'utf8'))"
       },
       {
         "file": "index.js",
@@ -50,6 +45,11 @@
         "file": "index.js",
         "line": 16,
         "text": "import { chmod, mkdir, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 38,
+        "text": "return JSON.parse(readFileSync(join(import.meta.dirname, 'package.json'), 'utf8')).name"
       }
     ]
   },
@@ -58,12 +58,12 @@
     "evidence": [
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 91,
+        "line": 98,
         "text": "/** The label this bridge reports to the DSH endpoint, sent as `x-dsh-mcp-client`. */"
       },
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 151,
+        "line": 207,
         "text": "'x-dsh-mcp-client': clientLabel,"
       },
       {
@@ -88,7 +88,7 @@
     "evidence": [
       {
         "file": "bin/dsh-mcp-stdio.mjs",
-        "line": 24,
+        "line": 26,
         "text": "import { execFileSync } from 'node:child_process'"
       }
     ]

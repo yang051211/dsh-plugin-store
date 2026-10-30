@@ -1,7 +1,7 @@
 {
   "name": "dsh-native-browser",
-  "version": "0.1.0-alpha.9",
-  "scannedAt": "2026-10-30T07:08:58.662Z",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:44.210Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -42,24 +42,35 @@
     "evidence": [
       {
         "file": "dist/packages/dsh-adapter/src/index.js",
-        "line": 9,
+        "line": 11,
         "text": "export const inject = ['tools', 'connection'];"
       },
       {
         "file": "dist/packages/dsh-adapter/src/index.js",
-        "line": 206,
-        "text": "ctx.tools.register({ name, description, parameters: { type: 'object', properties, required, additionalProperties: false },"
-      },
-      {
-        "file": "dist/packages/dsh-adapter/src/index.js",
-        "line": 335,
-        "text": "ctx.tools.register({ name: 'browser_screenshot',"
+        "line": 212,
+        "text": "ctx.tools.register({ name, ...definition });"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/packages/dsh-adapter/src/setup.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/packages/installer/src/open-setup.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "dist/packages/installer/src/service.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,

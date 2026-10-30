@@ -1,35 +1,30 @@
 {
   "name": "@luoshuizhiwei/dsh-desktop-restart",
-  "version": "0.4.5",
-  "scannedAt": "2026-10-28T06:59:38.825Z",
+  "version": "0.4.6",
+  "scannedAt": "2026-10-30T23:38:31.559Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1174,
-        "text": "const response = await fetch(STATUS_ROUTE, { method: \"GET\" });"
+        "line": 1326,
+        "text": "const response = await fetch(url, Object.assign({}, options, controller ? {signal:controller.signal} : {}));"
       },
       {
         "file": "lib/client.js",
-        "line": 1270,
-        "text": "response = await fetch(RESTART_ROUTE + query, { method: \"POST\" });"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 1749,
+        "line": 2094,
         "text": "const response = await fetch(PREFS_ROUTE + \"?readNotice=\" + encodeURIComponent(id), {method:\"POST\"});"
       },
       {
         "file": "lib/client.js",
-        "line": 2458,
-        "text": "const response = await fetch(PREFS_ROUTE + \"?countdown=\" + encodeURIComponent(draft), { method: \"POST\", credentials: \"same-origin\" });"
+        "line": 3189,
+        "text": "fetch((query === \"?cancelSweep=1\" ? PREFS_ROUTE : SWEEP_ROUTE) + query, { method: \"POST\" })"
       },
       {
-        "file": "lib/client.js",
-        "line": 2631,
-        "text": "fetch((query === \"?cancelSweep=1\" ? PREFS_ROUTE : SWEEP_ROUTE) + query, { method: \"POST\" })"
+        "file": "lib/index.js",
+        "line": 372,
+        "text": "* 桌面版的页面是以 `dsh-app://` 协议装载的，页面里的 `fetch('/…')` 由壳层"
       }
     ]
   },
@@ -43,22 +38,22 @@
       },
       {
         "file": "lib/helper.cjs",
-        "line": 399,
+        "line": 400,
         "text": "try { fs.writeFileSync(paths.delivery, JSON.stringify({ status: 'failed', code: 'toast-process-failed' }), 'utf8') }"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 409,
+        "line": 410,
         "text": "const parse = file => JSON.parse(io.readFileSync(file,'utf8'))"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 477,
+        "line": 478,
         "text": "try { io.unlinkSync(paths[kind]) }"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 494,
+        "line": 495,
         "text": "io.mkdirSync(dir,{recursive:true})"
       }
     ]
@@ -77,12 +72,12 @@
       },
       {
         "file": "lib/helper.cjs",
-        "line": 397,
+        "line": 398,
         "text": "  const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-WindowStyle', 'Hidden', '-EncodedCommand', encoded], { detached: true, stdio: 'ignor"
       },
       {
         "file": "lib/helper.cjs",
-        "line": 829,
+        "line": 986,
         "text": "const child = spawn(exe, relaunchArgs ?? [], {"
       },
       {
@@ -92,7 +87,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 843,
+        "line": 904,
         "text": "const helper = spawn(process.execPath, [HELPER_PATH, handoffPath], {"
       }
     ]

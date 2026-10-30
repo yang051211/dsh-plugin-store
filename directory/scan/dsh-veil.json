@@ -1,0 +1,71 @@
+{
+  "name": "dsh-veil",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T23:38:40.257Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { closeSync, mkdirSync, openSync, readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 58,
+        "text": "return readFileSync(file, 'utf8').trimEnd().split('\\n').slice(-lines).join('\\n');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "mkdirSync(dirname(logFile), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 93,
+        "text": "child = spawn(command, args, { stdio: ['ignore', fd, fd], env: { ...process.env, NO_PROXY: noProxy, no_proxy: noProxy } });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "package.json",
+        "line": 0,
+        "text": "scripts.prepare: tsc -p tsconfig.json"
+      }
+    ]
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 20,
+      "text": "pip install veil-proxy             # or: brew install lemonadesaltbagel/veil/veil"
+    }
+  ],
+  "skippedEntries": []
+}

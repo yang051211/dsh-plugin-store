@@ -1,7 +1,7 @@
 {
   "name": "dsh-armory",
-  "version": "2.4.3",
-  "scannedAt": "2026-10-27T04:17:05.561Z",
+  "version": "2.4.5",
+  "scannedAt": "2026-10-30T23:38:19.349Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -18,7 +18,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 586,
+        "line": 612,
         "text": "const response = await fetch(UPDATE_CHECK_URL, {"
       },
       {
@@ -68,22 +68,22 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 974,
+        "line": 1009,
         "text": "//   3) 当前注册表里的全部工具 Schema（ctx.tools.schemas()，全局 + 项目 + 内置）。"
       },
       {
         "file": "lib/index.js",
-        "line": 999,
+        "line": 1062,
         "text": "const schemas = [...ctx.tools.schemas()].map(projectToolSchema);"
       },
       {
         "file": "lib/index.js",
-        "line": 1352,
+        "line": 1431,
         "text": "static inject = [\"loader\", \"tools\"];"
       },
       {
         "file": "lib/mcp-config.js",
-        "line": 4,
+        "line": 5,
         "text": "export const MCP_PLUGIN_NAME = '@deepseek-ai/dsh-mcp-client'"
       },
       {
@@ -97,29 +97,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
-        "line": 228,
-        "text": "const { spawn } = await import(\"node:child_process\");"
+        "file": "lib/mcp-config.js",
+        "line": 187,
+        "text": "// win32 上裸 npx / npm 是 .cmd 壳，宿主 `spawn(command, args, {shell:false})` 直接 ENOENT，"
       },
       {
-        "file": "lib/index.js",
-        "line": 234,
-        "text": "spawn(\"rundll32\", [\"url.dll,FileProtocolHandler\", target], { detached: true, stdio: \"ignore\" }).unref();"
+        "file": "lib/system-open.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process';"
       },
       {
-        "file": "lib/index.js",
-        "line": 236,
-        "text": "spawn(process.platform === \"darwin\" ? \"open\" : \"xdg-open\", [target], { detached: true, stdio: \"ignore\" }).unref();"
+        "file": "lib/system-open.js",
+        "line": 70,
+        "text": "child = spawn(command, args, { detached: true, stdio: 'ignore' });"
       },
       {
-        "file": "lib/index.js",
-        "line": 1799,
-        "text": "const { spawn } = await import(\"node:child_process\");"
+        "file": "lib/win32-stdio.js",
+        "line": 5,
+        "text": "*   宿主 `@deepseek-ai/dsh-mcp-client` 用 `child_process.spawn(command, args, { shell: false })`"
       },
       {
-        "file": "lib/index.js",
-        "line": 1800,
-        "text": "if (process.platform === \"win32\") spawn(\"explorer\", [\"/select,\", path], { detached: true, stdio: \"ignore\" }).unref();"
+        "file": "lib/win32-stdio.js",
+        "line": 8,
+        "text": "*     - spawn('npx', …, {shell:false})   → ENOENT，实测 6ms 内子进程根本没起来"
       }
     ]
   },

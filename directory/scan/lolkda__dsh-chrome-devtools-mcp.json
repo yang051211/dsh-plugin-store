@@ -1,0 +1,76 @@
+{
+  "name": "@lolkda/dsh-chrome-devtools-mcp",
+  "version": "0.3.2",
+  "scannedAt": "2026-10-30T23:38:33.207Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 44,
+        "text": "const response = await fetch(`${ROUTE}${path}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state.js",
+        "line": 9,
+        "text": "import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 54,
+        "text": "return JSON.parse(await readFile(path, 'utf8'))"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 62,
+        "text": "await mkdir(dirname(path), { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 64,
+        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 16,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/launcher.mjs",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "bin/launcher.mjs",
+        "line": 39,
+        "text": "const child = spawn(command, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,35 +1,35 @@
 {
   "name": "@fonlan/dsh-model-parameters",
-  "version": "0.1.9",
-  "scannedAt": "2026-10-26T10:12:21.756Z",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-30T23:38:34.832Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 115,
+        "line": 127,
         "text": "response = await fetch(`/plugins/@fonlan/dsh-model-parameters/api/${method}`, {"
       },
       {
         "file": "lib/index.js",
-        "line": 263,
-        "text": "response = await fetch(CATALOG_URL, {"
-      },
-      {
-        "file": "src/client/api.ts",
-        "line": 34,
-        "text": "response = await fetch(`/plugins/@fonlan/dsh-model-parameters/api/${method}`, {"
-      },
-      {
-        "file": "src/server/catalog.ts",
-        "line": 215,
-        "text": "response = await fetch(CATALOG_URL, { signal: controller.signal, headers: { accept: 'application/json' } })"
-      },
-      {
-        "file": "src/server/rpc.ts",
         "line": 7,
-        "text": "import type { IncomingMessage, ServerResponse } from 'node:http'"
+        "text": "import { request } from \"node:http\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8,
+        "text": "import { Agent, request as request$1 } from \"node:https\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 134,
+        "text": "* The harness already routes plain `fetch()` through undici's global"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 500,
+        "text": "const response = await fetch(url, {"
       }
     ]
   },
@@ -43,23 +43,23 @@
       },
       {
         "file": "lib/index.js",
-        "line": 246,
+        "line": 6,
+        "text": "import { existsSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 817,
         "text": "const raw = await readFile(this.cachePath, \"utf8\");"
       },
       {
         "file": "lib/index.js",
-        "line": 274,
+        "line": 835,
         "text": "await mkdir(this.dir, { recursive: true });"
       },
       {
         "file": "lib/index.js",
-        "line": 279,
+        "line": 840,
         "text": "await writeFile(this.cachePath, JSON.stringify(doc), \"utf8\");"
-      },
-      {
-        "file": "src/server/catalog.ts",
-        "line": 18,
-        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
       }
     ]
   },
@@ -68,8 +68,29 @@
     "evidence": []
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "import { execFile } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 182,
+        "text": "execFile(command, args, {"
+      },
+      {
+        "file": "src/server/system-proxy.ts",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "src/server/system-proxy.ts",
+        "line": 127,
+        "text": "execFile(command, args, { encoding: 'utf8', timeout: timeoutMs, windowsHide: true, maxBuffer: 1024 * 1024 }, (error, stdout, stderr) => {"
+      }
+    ]
   },
   "installScripts": {
     "hit": true,

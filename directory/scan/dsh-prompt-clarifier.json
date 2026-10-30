@@ -1,0 +1,81 @@
+{
+  "name": "dsh-prompt-clarifier",
+  "version": "0.3.6",
+  "scannedAt": "2026-10-30T23:38:50.098Z",
+  "icon": "dsh-prompt-clarifier.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 335,
+        "text": "const res = await fetch('/api/prompt-clarifier', {"
+      },
+      {
+        "file": "client.js",
+        "line": 470,
+        "text": "fetch(`/api/prompt-clarifier${query}`).then((r) => (r.ok ? r.json() : null)).then((value) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 847,
+        "text": "async fetch(request) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { appendFileSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 406,
+        "text": "if (statSync(config.timingLog).size > 512 * 1024) writeFileSync(config.timingLog, '');"
+      },
+      {
+        "file": "index.js",
+        "line": 408,
+        "text": "appendFileSync(config.timingLog, `${JSON.stringify(entry)}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "export const inject = ['llm', 'tools', 'agents', 'sessionProjections', 'sessions'];"
+      },
+      {
+        "file": "index.js",
+        "line": 793,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "llm",
+    "sessionProjections",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

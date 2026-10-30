@@ -1,0 +1,77 @@
+{
+  "name": "dsh-conv-calendar",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:32.858Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 294,
+        "text": "const response = await fetch(refresh ? `${target}?refresh=1` : target, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { mkdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 111,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 126,
+        "text": "mkdirSync(dirname(file), { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 127,
+        "text": "writeFileSync(temporary, `${JSON.stringify(state)}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 132,
+        "text": "unlinkSync(temporary)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 105,
+      "text": "`$DSH_HOME/plugins/dsh-conv-calendar/state.json`, written atomically (temp file + rename):"
+    },
+    {
+      "file": "README.zh-CN.md",
+      "line": 105,
+      "text": "`$DSH_HOME/plugins/dsh-conv-calendar/state.json`，原子写入（临时文件 + rename）："
+    }
+  ],
+  "skippedEntries": []
+}

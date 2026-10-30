@@ -1,0 +1,95 @@
+{
+  "name": "dsh-lit-library",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-30T23:38:48.574Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extract.js",
+        "line": 13,
+        "text": "import { readFile, mkdtemp, readdir, rm } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 251,
+        "text": "return new Uint8Array(await readFile(absPath));"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 254,
+        "text": "return await readFile(absPath, 'utf8');"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 407,
+        "text": "contents.push(String(await readFile(outputPath, 'utf8')));"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 444,
+        "text": "await rm(workDir, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 46,
+        "text": "export const inject = ['tools', 'fs', 'sessions', 'sandboxPolicy'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 643,
+        "text": "for (const spec of tools) ctx.tools.register(defineTool(spec));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/extract.js",
+        "line": 14,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 333,
+        "text": "child = spawn(command, args, { stdio: 'ignore', windowsHide: true });"
+      },
+      {
+        "file": "lib/library.js",
+        "line": 15,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/library.js",
+        "line": 662,
+        "text": "child = spawn(command, args, { stdio: 'ignore', windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "fs",
+    "sandboxPolicy",
+    "sessions",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

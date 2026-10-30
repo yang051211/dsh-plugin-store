@@ -1,0 +1,105 @@
+{
+  "name": "dsh-scope-manager",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:50.257Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 179,
+        "text": "const res = await fetch(new URL(API_PATH, document.baseURI), {"
+      },
+      {
+        "file": "lib/mcp.js",
+        "line": 529,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/skillhub.js",
+        "line": 47,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/skillhub.js",
+        "line": 365,
+        "text": "const response = await fetch(`${MARKET_BASE}/api/v1/download?${params.toString()}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/atomic.js",
+        "line": 3,
+        "text": "import { mkdir, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 13,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 16,
+        "text": "await writeFile(tmp, text, 'utf8');"
+      },
+      {
+        "file": "lib/atomic.js",
+        "line": 20,
+        "text": "await rm(tmp, { force: true }).catch(() => { });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { realpath } from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http-api.js",
+        "line": 89,
+        "text": "* 这一步不能省：`ctx.skills.list()` / `ctx.tools.schemas()` 不传 scope 时"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 201,
+        "text": "inject: ['webServer', 'tools', 'skills', 'sessions', 'agents', 'workspaceRegistry'],"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 211,
+        "text": "// 只查 `ctx.tools.schemas()`（全局层）会漏掉按 preset 注册的那一整批"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 909,
+        "text": "ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1114,
+        "text": "schemas = ctx.tools.schemas(agent ?? undefined) ?? [];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

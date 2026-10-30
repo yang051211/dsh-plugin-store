@@ -1,0 +1,102 @@
+{
+  "name": "dsh-wechatide-mcp",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-30T23:38:34.098Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/devtools.js",
+        "line": 18,
+        "text": "import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/devtools.js",
+        "line": 221,
+        "text": "return readFileSync(path, 'utf8');"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 279,
+        "text": "data = await readFile(path);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 357,
+        "text": "const decoded = decodePng(await readFile(shotPath));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 4,
+        "text": "* 为什么手写而不用 `@deepseek-ai/dsh-mcp-client`：IDE 的桥接是以换行分隔的 stdio"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 40,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 451,
+        "text": "ctx.tools.register(defineTool({ isConcurrencySafe: () => concurrencySafe, ...tool }));"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 20,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 113,
+        "text": "#spawn() {"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 228,
+        "text": "if (!this.child || this.child.exitCode !== null) this.#spawn();"
+      },
+      {
+        "file": "lib/devtools.js",
+        "line": 17,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/devtools.js",
+        "line": 272,
+        "text": "* 基于 `spawn(spawnTarget(...))` 而不是 `execFile`：Windows 上 CLI 是"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

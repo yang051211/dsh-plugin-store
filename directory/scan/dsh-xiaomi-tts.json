@@ -1,34 +1,34 @@
 {
   "name": "dsh-xiaomi-tts",
-  "version": "4.2.4",
-  "scannedAt": "2026-10-28T06:59:32.044Z",
+  "version": "4.2.8",
+  "scannedAt": "2026-10-30T23:38:18.340Z",
   "icon": "dsh-xiaomi-tts.webp",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 11122,
-        "text": "request: fetch(`${hostRoute(TTS_API_KEY_STATUS_ROUTE)}?provider=${provider}`, { headers: { accept: \"application/json\" } }).then(async (response) => {"
+        "line": 11210,
+        "text": "const response = await fetch(`${hostRoute(TTS_API_KEY_STATUS_ROUTE)}?provider=${provider}`, {"
       },
       {
         "file": "lib/client.js",
-        "line": 12457,
+        "line": 13461,
         "text": "const response = await fetch(hostRoute(TTS_STREAM_ROUTE), {"
       },
       {
         "file": "lib/client.js",
-        "line": 12749,
+        "line": 13753,
         "text": "this.socket = new WebSocket(hostWebSocketUrl(TTS_DUPLEX_ROUTE));"
       },
       {
         "file": "lib/client.js",
-        "line": 13713,
+        "line": 14723,
         "text": "const response = await fetch(hostRoute(TTS_ROUTE), {"
       },
       {
         "file": "lib/client.js",
-        "line": 14102,
+        "line": 15112,
         "text": "const response = await fetch(hostRoute(TTS_ROUTE), {"
       }
     ]
@@ -37,35 +37,61 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 2,
+        "text": "import { readFileSync, statSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
         "line": 4,
-        "text": "import { readFileSync } from \"node:fs\";"
+        "text": "import { mkdir, readFile, readdir, rm, stat, writeFile } from \"node:fs/promises\";"
       },
       {
-        "file": "lib/index.js",
-        "line": 967,
-        "text": "return [`${TTS_VOICE_DESIGN_ASSET_ROUTE}/${preset.id}.webp`, readFileSync(new URL(`../assets/voice-presets/${preset.id}.webp`, import.meta.url))];"
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 17,
+        "text": "const catalog = JSON.parse(readFileSync(join(directory, \"memes.json\"), \"utf8\"));"
       },
       {
-        "file": "lib/index.js",
-        "line": 970,
-        "text": "return [`${TTS_VOICE_ASSET_ROUTE}/${preset.id}.webp`, readFileSync(new URL(`../assets/voice-avatars/${preset.id}.webp`, import.meta.url))];"
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 44,
+        "text": "const skill = readFileSync(join(root, \"skills\", \"qqbot-whale-girl\", \"SKILL.md\"), \"utf8\").replace(/^---\\r?\\n[\\s\\S]*?\\r?\\n---\\r?\\n/u, \"\");"
       },
       {
-        "file": "lib/index.js",
-        "line": 973,
-        "text": "return [`${TTS_TOGGLE_AUDIO_ASSET_ROUTE}/${file}`, readFileSync(new URL(`../assets/audio/${file}`, import.meta.url))];"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 975,
-        "text": "const mimoLogoAsset = readFileSync(new URL(\"../assets/mimo.svg\", import.meta.url));"
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 72,
+        "text": "const data = await readFile(meme.path);"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/qqbot-agent.js",
+        "line": 6,
+        "text": "const inject = [\"tools\", \"qqbotMemes\"];"
+      },
+      {
+        "file": "lib/qqbot-agent.js",
+        "line": 20,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 52,
+        "text": "if (!ctx.tools.get(\"qqbot_send_file\", agent)) throw new TtsProviderError(\"qqbot-send-tool-unavailable\", \"Enable QQBot before sending files.\", 409);"
+      },
+      {
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 53,
+        "text": "const result = await ctx.tools.execute({"
+      },
+      {
+        "file": "lib/qqbot-media-C6-k-Zj1.js",
+        "line": 71,
+        "text": "if (!ctx.tools.get(\"qqbot_send_file\", context.agent)) throw new TtsProviderError(\"qqbot-send-tool-unavailable\", \"Enable QQBot before sending memes.\", 409);"
+      }
+    ]
   },
   "childProcess": {
     "hit": true,
@@ -86,7 +112,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 3,
+  "dependencies": 4,
   "minifiedFiles": [
     "lib/client.js"
   ],

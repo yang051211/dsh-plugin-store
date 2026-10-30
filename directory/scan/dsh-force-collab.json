@@ -1,0 +1,79 @@
+{
+  "name": "dsh-force-collab",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T23:38:34.981Z",
+  "icon": "dsh-force-collab.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 199,
+        "text": "fetch(ROUTE_STATE, { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 238,
+        "text": "fetch(ROUTE_STATE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/state.js",
+        "line": 14,
+        "text": "import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 42,
+        "text": "const parsed = JSON.parse(readFileSync(STATE_FILE, 'utf8'))"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 58,
+        "text": "mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 60,
+        "text": "writeFileSync(tmp, JSON.stringify({ width: clampWidth(width) }, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'webServer', 'systemPrompt']"
+      },
+      {
+        "file": "lib/tools.js",
+        "line": 265,
+        "text": "const disposable = ctx.tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

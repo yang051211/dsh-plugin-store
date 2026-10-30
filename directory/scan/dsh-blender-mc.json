@@ -1,7 +1,7 @@
 {
   "name": "dsh-blender-mc",
-  "version": "0.4.6",
-  "scannedAt": "2026-10-28T06:59:35.536Z",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-30T23:38:24.467Z",
   "icon": "dsh-blender-mc.svg",
   "network": {
     "hit": true,
@@ -33,8 +33,13 @@
       },
       {
         "file": "lib/index.js",
-        "line": 317,
+        "line": 321,
         "text": "return JSON.parse(readFileSync(p, 'utf8'))"
+      },
+      {
+        "file": "lib/map-resolve.js",
+        "line": 19,
+        "text": "import { existsSync } from 'node:fs'"
       },
       {
         "file": "lib/map-routes.js",
@@ -43,13 +48,8 @@
       },
       {
         "file": "lib/map-routes.js",
-        "line": 155,
+        "line": 156,
         "text": "text = await fsp.readFile(logPath, 'utf8')"
-      },
-      {
-        "file": "lib/map-routes.js",
-        "line": 158,
-        "text": "await fsp.rm(logPath, { force: true }).catch(() => {})"
       }
     ]
   },
@@ -58,22 +58,22 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 29,
+        "line": 31,
         "text": "export const inject = ['subprocess', 'tools']"
       },
       {
         "file": "lib/index.js",
-        "line": 191,
+        "line": 193,
         "text": "* 只写 { schema } 会在 ctx.tools.register() 里抛 TypeError → apply 直接中断 →"
       },
       {
         "file": "lib/index.js",
-        "line": 277,
+        "line": 281,
         "text": "// 单个工具注册失败不能拖垮整批：旧写法里 ctx.tools.register 第一次抛错就把"
       },
       {
         "file": "lib/index.js",
-        "line": 281,
+        "line": 285,
         "text": "const dispose = ctx.tools.register(def)"
       }
     ]
@@ -88,7 +88,7 @@
       },
       {
         "file": "lib/index.js",
-        "line": 146,
+        "line": 148,
         "text": "child = spawn(py, argv, {"
       },
       {
@@ -98,7 +98,7 @@
       },
       {
         "file": "lib/map-routes.js",
-        "line": 122,
+        "line": 123,
         "text": "const child = spawn(deps.python, [deps.cli, ...args], {"
       }
     ]

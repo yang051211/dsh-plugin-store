@@ -1,19 +1,19 @@
 {
   "name": "dsh-wallport",
-  "version": "0.2.1",
-  "scannedAt": "2026-10-26T10:09:40.239Z",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-30T23:38:47.435Z",
   "icon": "dsh-wallport.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "client.js",
-        "line": 200,
+        "line": 256,
         "text": "const res = await fetch(API + path, {"
       },
       {
         "file": "src/host/runtime.js",
-        "line": 208,
+        "line": 318,
         "text": "request = window.fetch(url, { cache: 'no-store', credentials: 'same-origin' })"
       }
     ]
@@ -23,28 +23,28 @@
     "evidence": [
       {
         "file": "src/host/store.js",
-        "line": 16,
-        "text": "import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from 'node:fs'"
+        "line": 19,
+        "text": "import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
       },
       {
         "file": "src/host/store.js",
-        "line": 122,
+        "line": 137,
         "text": "mkdirSync(templatesDir, { recursive: true })"
       },
       {
         "file": "src/host/store.js",
-        "line": 127,
+        "line": 143,
         "text": "writeFileSync(tmp, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
       },
       {
         "file": "src/host/store.js",
-        "line": 133,
-        "text": "return JSON.parse(readFileSync(statePath, 'utf8'))"
+        "line": 146,
+        "text": "rmSync(tmp, { force: true })"
       },
       {
         "file": "src/host/store.js",
-        "line": 141,
-        "text": "const raw = JSON.parse(readFileSync(join(templatesDir, `${id}.json`), 'utf8'))"
+        "line": 153,
+        "text": "return JSON.parse(readFileSync(statePath, 'utf8'))"
       }
     ]
   },
@@ -58,7 +58,7 @@
       },
       {
         "file": "src/host/tools.js",
-        "line": 411,
+        "line": 447,
         "text": "for (const tool of tools) ctx.tools.register(tool)"
       }
     ]

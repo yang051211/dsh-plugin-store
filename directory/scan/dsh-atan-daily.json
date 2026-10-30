@@ -1,0 +1,66 @@
+{
+  "name": "dsh-atan-daily",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-30T23:38:39.420Z",
+  "icon": "dsh-atan-daily.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 36,
+        "text": "const browserHttp = (path, init) => fetch(path, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/fs.js",
+        "line": 10,
+        "text": "import { mkdir, rename, rm, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/core/fs.js",
+        "line": 18,
+        "text": "await mkdir(dirname(path), { recursive: true });"
+      },
+      {
+        "file": "lib/core/fs.js",
+        "line": 20,
+        "text": "await writeFile(temp, content, 'utf8');"
+      },
+      {
+        "file": "lib/core/fs.js",
+        "line": 28,
+        "text": "await rm(temp, { force: true }).catch(() => { });"
+      },
+      {
+        "file": "lib/core/fs.js",
+        "line": 50,
+        "text": "await rm(temp, { force: true }).catch(() => { });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

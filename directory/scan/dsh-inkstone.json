@@ -1,0 +1,119 @@
+{
+  "name": "dsh-inkstone",
+  "version": "0.1.2",
+  "scannedAt": "2026-10-30T23:38:37.681Z",
+  "icon": "dsh-inkstone.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/http.mjs",
+        "line": 55,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bib.mjs",
+        "line": 26,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/heal.mjs",
+        "line": 35,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/heal.mjs",
+        "line": 95,
+        "text": "text = fs.readFileSync(file, 'utf8');"
+      },
+      {
+        "file": "lib/heal.mjs",
+        "line": 214,
+        "text": "fs.mkdirSync(root, { recursive: true });"
+      },
+      {
+        "file": "lib/heal.mjs",
+        "line": 222,
+        "text": "fs.mkdirSync(candidate, { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 15,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      },
+      {
+        "file": "lib/tool-kit.mjs",
+        "line": 7,
+        "text": "* definitions through `ctx.tools.register`."
+      },
+      {
+        "file": "plugins/inkstone-flow/index.js",
+        "line": 35,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "plugins/inkstone-flow/index.js",
+        "line": 174,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "plugins/inkstone-flow/index.js",
+        "line": 221,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/typst-runner.mjs",
+        "line": 28,
+        "text": "import { spawn, spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/typst-runner.mjs",
+        "line": 80,
+        "text": "const result = spawnSync(binary, ['--version'], {"
+      },
+      {
+        "file": "lib/typst-runner.mjs",
+        "line": 348,
+        "text": "child = spawn(binary, args, {"
+      },
+      {
+        "file": "lib/zotero-client.mjs",
+        "line": 32,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/zotero-client.mjs",
+        "line": 723,
+        "text": "const probe = spawnSync('pdftotext', ['-v'], { encoding: 'utf8', timeout: 5000, windowsHide: true });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

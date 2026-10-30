@@ -1,0 +1,136 @@
+{
+  "name": "dsh-local-proxy-own",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-30T23:38:41.099Z",
+  "icon": "dsh-local-proxy-own.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/proxy.js",
+        "line": 7,
+        "text": "//   curl -x socks5h://127.0.0.1:PORT ..."
+      },
+      {
+        "file": "bin/proxy.js",
+        "line": 8,
+        "text": "//   curl -x http://127.0.0.1:PORT ..."
+      },
+      {
+        "file": "bin/singbox-node.js",
+        "line": 89,
+        "text": "// works for curl -x http://, curl --socks5-hostname and proxy.js alike."
+      },
+      {
+        "file": "bin/with-proxy.js",
+        "line": 5,
+        "text": "//   node with-proxy.js -- curl -s https://api.ip.sb/geoip"
+      },
+      {
+        "file": "scripts/dns-poison-test.mjs",
+        "line": 97,
+        "text": "async function fetch(url, proxy, maxTime = 12) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/node-parse.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/node-parse.js",
+        "line": 189,
+        "text": "for (const raw of fs.readFileSync(file, 'utf8').split(/\\r?\\n/)) {"
+      },
+      {
+        "file": "bin/pac.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "bin/pac.js",
+        "line": 33,
+        "text": "fs.mkdirSync(path.dirname(out), { recursive: true })"
+      },
+      {
+        "file": "bin/pac.js",
+        "line": 34,
+        "text": "fs.writeFileSync(out, body, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/index.js",
+        "line": 29,
+        "text": "// defensive `ctx.get('tools') || ctx.tools` in registerTools() silently returns"
+      },
+      {
+        "file": "src/index.js",
+        "line": 34,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 2519,
+        "text": "const tools = ctx.get('tools') || ctx.tools"
+      },
+      {
+        "file": "src/index.js",
+        "line": 2524,
+        "text": "tools.register(definition)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/probe.js",
+        "line": 21,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "bin/probe.js",
+        "line": 67,
+        "text": "const p = spawn('curl.exe', args, { windowsHide: true })"
+      },
+      {
+        "file": "bin/probe.js",
+        "line": 108,
+        "text": "const child = spawn(BINARY, ['run', '-c', cfgPath], {"
+      },
+      {
+        "file": "bin/probe.js",
+        "line": 152,
+        "text": "try { if (child.exitCode === null) spawnSync('taskkill', ['/F', '/PID', String(child.pid)], { windowsHide: true }) } catch {}"
+      },
+      {
+        "file": "bin/singbox-node.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/sing-box.exe"
+  ],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

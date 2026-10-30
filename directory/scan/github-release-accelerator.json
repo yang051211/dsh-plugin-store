@@ -1,35 +1,35 @@
 {
   "name": "github-release-accelerator",
-  "version": "0.3.0",
-  "scannedAt": "2026-10-29T23:42:08.958Z",
+  "version": "0.3.4",
+  "scannedAt": "2026-10-30T23:38:49.194Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
-        "file": "scripts/ghdl.ps1",
-        "line": 70,
-        "text": "if (-not $curlOk) { 'NO_CURL: 端口探测/镜像/分段不可用；Windows 用 Invoke-WebRequest 单流降级，POSIX 直接停' }"
+        "file": "scripts/ghdl-min.sh",
+        "line": 12,
+        "text": "fetch() {  # 有代理就带上，没有就不带（不用数组，POSIX sh 没有）"
+      },
+      {
+        "file": "scripts/ghdl-min.sh",
+        "line": 14,
+        "text": "curl -sS -L --connect-timeout 10 --retry 2 -A 'Mozilla/5.0' --proxy \"$proxy\" \"$@\""
+      },
+      {
+        "file": "scripts/ghdl-min.sh",
+        "line": 16,
+        "text": "curl -sS -L --connect-timeout 10 --retry 2 -A 'Mozilla/5.0' \"$@\""
       },
       {
         "file": "scripts/ghdl.ps1",
-        "line": 304,
-        "text": "$orphans = @(Get-Process curl -ErrorAction SilentlyContinue | ForEach-Object { [int]$_.Id })"
+        "line": 79,
+        "text": "# 没有 curl.exe 的 Windows（Win7 / Server 2016 / 精简镜像）：退化成 Invoke-WebRequest 单流。"
       },
       {
-        "file": "scripts/ghdl.sh",
-        "line": 37,
-        "text": "CURL_VER=$(curl -V | head -n1 | awk '{print $2}')"
-      },
-      {
-        "file": "scripts/ghdl.sh",
-        "line": 100,
-        "text": "if curl -s -o /dev/null --connect-timeout 1 \"http://127.0.0.1:$p\" 2>/dev/null; then"
-      },
-      {
-        "file": "scripts/ghdl.sh",
-        "line": 113,
-        "text": "h=$(curl -sS -L -m 20 -r 0-0 -A 'Mozilla/5.0' $dp -D - -o /dev/null \"$URL\" 2>/dev/null || true)"
+        "file": "scripts/ghdl.ps1",
+        "line": 81,
+        "text": "\"IWR_FALLBACK: 没有 curl.exe，改用 Invoke-WebRequest 单流（不选路/不分段/不续传）\""
       }
     ]
   },

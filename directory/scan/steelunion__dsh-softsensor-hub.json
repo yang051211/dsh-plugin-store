@@ -1,0 +1,110 @@
+{
+  "name": "@steelunion/dsh-softsensor-hub",
+  "version": "0.6.4",
+  "scannedAt": "2026-10-30T23:38:42.403Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collectors/weather.mjs",
+        "line": 184,
+        "text": "const r = await fetch(url, { signal: ctrl.signal, headers: { 'user-agent': 'dsh-relay/weather' } });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1040,
+        "text": "const r = await fetch('https://api.github.com/repos/SteelUnion/dsh-relay/releases/latest', {"
+      },
+      {
+        "file": "test/zz-check.mjs",
+        "line": 151,
+        "text": "const r = await fetch(`http://${last.host}:${last.port}${last.path ?? '/inbox'}`, { method: 'GET' });"
+      },
+      {
+        "file": "test/zz-e2e.mjs",
+        "line": 167,
+        "text": "const res = await fetch(`http://127.0.0.1:${PORT}/inbox`, {"
+      },
+      {
+        "file": "test/zz-e2e.mjs",
+        "line": 189,
+        "text": "const res = await fetch(`http://127.0.0.1:${PORT}/inbox`, { method: 'GET' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cities.mjs",
+        "line": 74,
+        "text": "佛山: ['佛山', 'foshan', 'fs', '440600'],"
+      },
+      {
+        "file": "lib/collectors/finance.mjs",
+        "line": 28,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/collectors/system.mjs",
+        "line": 25,
+        "text": "import { statfsSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-sync.mjs",
+        "line": 33,
+        "text": "import { existsSync, readFileSync, writeFileSync, renameSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/config-sync.mjs",
+        "line": 188,
+        "text": "const data = JSON.parse(readFileSync(configPath, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/integration.mjs",
+        "line": 187,
+        "text": "for (const bad of ['spawn(', 'exec(', 'execSync', 'child_process', 'fork(']) {"
+      },
+      {
+        "file": "test/zz-all.mjs",
+        "line": 9,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "test/zz-all.mjs",
+        "line": 44,
+        "text": "const r = spawnSync(process.execPath, [full], { encoding: 'utf8', timeout: 300_000 });"
+      },
+      {
+        "file": "test/zz-check.mjs",
+        "line": 16,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "storageDomain",
+    "userQuestions",
+    "xxx"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

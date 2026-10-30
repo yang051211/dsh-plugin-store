@@ -1,0 +1,110 @@
+{
+  "name": "dsh-miniflux",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-30T23:38:43.680Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 110,
+        "text": "const res = await fetch('/api/dsh-miniflux/config', { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 117,
+        "text": "const res = await fetch('/api/dsh-miniflux/models', { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 122,
+        "text": "const res = await fetch('/api/dsh-miniflux/status', { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 126,
+        "text": "const res = await fetch('/api/dsh-miniflux/files', { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 139,
+        "text": "const res = await fetch('/api/dsh-miniflux/config', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 16,
+        "text": "import { mkdir, writeFile, readFile, readdir, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 676,
+        "text": "await mkdir(dir, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 690,
+        "text": "await writeFile(target, buffer)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1034,
+        "text": "return JSON.parse(await readFile(storePath(), 'utf8'))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1053,
+        "text": "stateCache = JSON.parse(await readFile(statePath(), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 23,
+        "text": "export const inject = ['webServer', 'tools', 'llm']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1372,
+        "text": "const disposeTools = makeTools(ctx, cfg).map((item) => ctx.tools.register(item))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 229,
+        "text": "child = spawn(cmd, args, { stdio: ['pipe', 'pipe', 'pipe'] })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

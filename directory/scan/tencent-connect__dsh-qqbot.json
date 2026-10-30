@@ -1,35 +1,35 @@
 {
   "name": "@tencent-connect/dsh-qqbot",
-  "version": "0.5.3",
-  "scannedAt": "2026-10-27T13:14:09.213Z",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-30T23:38:11.902Z",
   "icon": "tencent-connect__dsh-qqbot.svg",
   "network": {
     "hit": true,
     "evidence": [
       {
-        "file": "dist/media/vision-tool.js",
-        "line": 48,
-        "text": "const resp = await fetch(image, { signal, redirect: 'error' });"
-      },
-      {
-        "file": "dist/transport/attachment.js",
-        "line": 108,
-        "text": "const resp = await fetch(url, { signal: AbortSignal.timeout(DOWNLOAD_TIMEOUT_MS) });"
-      },
-      {
         "file": "lib/client.js",
-        "line": 208,
+        "line": 209,
         "text": "const res = await fetch(BIND_STATE_PATH, { cache: \"no-store\" });"
       },
       {
         "file": "lib/client.js",
-        "line": 260,
+        "line": 261,
         "text": "const res = await fetch(BIND_MANUAL_PATH, {"
       },
       {
         "file": "lib/client.js",
-        "line": 367,
+        "line": 368,
         "text": "fetch(BIND_UNBIND_PATH, { method: \"POST\" }).then(async (res) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 418,
+        "text": "fetch(BIND_REFRESH_PATH, { method: \"POST\" }).catch(() => {});"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 740,
+        "text": "fetch(BIND_CONFIG_PATH, { cache: \"no-store\" }).then(async (res) => {"
       }
     ]
   },
@@ -37,27 +37,27 @@
     "hit": true,
     "evidence": [
       {
-        "file": "dist/media/media-cleaner.js",
+        "file": "lib/media/media-cleaner.js",
         "line": 7,
         "text": "import { existsSync } from 'node:fs';"
       },
       {
-        "file": "dist/media/media-cleaner.js",
+        "file": "lib/media/media-cleaner.js",
         "line": 8,
         "text": "import { readdir, rm, stat } from 'node:fs/promises';"
       },
       {
-        "file": "dist/media/media-cleaner.js",
+        "file": "lib/media/media-cleaner.js",
         "line": 36,
         "text": "await rm(filePath, { force: true });"
       },
       {
-        "file": "dist/media/send-file-tool.js",
+        "file": "lib/media/send-file-tool.js",
         "line": 9,
         "text": "import { existsSync } from 'node:fs';"
       },
       {
-        "file": "dist/media/send-media.js",
+        "file": "lib/media/send-media.js",
         "line": 7,
         "text": "import { stat } from 'node:fs/promises';"
       }
@@ -67,13 +67,13 @@
     "hit": true,
     "evidence": [
       {
-        "file": "dist/media/send-file-tool.js",
+        "file": "lib/media/send-file-tool.js",
         "line": 119,
         "text": "tools.register(definition);"
       },
       {
-        "file": "dist/media/vision-tool.js",
-        "line": 238,
+        "file": "lib/media/vision-tool.js",
+        "line": 285,
         "text": "tools.register(definition);"
       }
     ]
@@ -82,12 +82,12 @@
     "hit": true,
     "evidence": [
       {
-        "file": "dist/setup/presenters.js",
+        "file": "lib/setup/presenters.js",
         "line": 8,
         "text": "import { spawn } from 'node:child_process';"
       },
       {
-        "file": "dist/setup/presenters.js",
+        "file": "lib/setup/presenters.js",
         "line": 74,
         "text": "const child = spawn(command, args, { detached: true, stdio: 'ignore', windowsHide: true });"
       }
@@ -97,7 +97,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 4,
+  "dependencies": 5,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

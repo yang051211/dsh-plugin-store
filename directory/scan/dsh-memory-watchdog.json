@@ -1,0 +1,112 @@
+{
+  "name": "dsh-memory-watchdog",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-30T23:38:28.732Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client/index.js",
+        "line": 800,
+        "text": "const response = await fetch(EVENTS_PATH, { headers: { Accept: \"application/json\" }, cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 815,
+        "text": "const response = await fetch(RESUME_PATH, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 825,
+        "text": "const response = await fetch(path, {"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 843,
+        "text": "const response = await fetch(BUNDLE_PATH, { headers: { Accept: \"application/json\" }, cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client/index.js",
+        "line": 874,
+        "text": "const response = await fetch(PLUGINS_EXPORT_PATH, { headers: { Accept: \"application/json\" }, cache: \"no-store\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collector.js",
+        "line": 2,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 2,
+        "text": "import { mkdir, readFile, readdir, rm as rmDirectory } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 185,
+        "text": "await mkdir(this.guardDir, { recursive: true })"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 192,
+        "text": "await mkdir(root, { recursive: true })"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 196,
+        "text": "await mkdir(handoffDir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/collector.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/handoff.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/ps.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/resources/helper.mjs",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/resources/helper.mjs",
+        "line": 331,
+        "text": "const child = spawn(plan.exe, plan.args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

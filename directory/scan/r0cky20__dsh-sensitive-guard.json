@@ -1,0 +1,83 @@
+{
+  "name": "@r0cky20/dsh-sensitive-guard",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-30T23:38:45.721Z",
+  "icon": "r0cky20__dsh-sensitive-guard.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/egress/server.js",
+        "line": 8,
+        "text": "import { createServer as createHttpServer, request as httpRequest, } from 'node:http';"
+      },
+      {
+        "file": "lib/policy/baseline.yaml",
+        "line": 132,
+        "text": "reason: \"Piping a remote fetch (curl/wget) directly into a shell executes remote code and is blocked\""
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 6,
+        "text": "import { chmod, mkdir, open, rename, stat, unlink } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 59,
+        "text": "await mkdir(path.dirname(this.file), { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/audit.js",
+        "line": 82,
+        "text": "await unlink(this.file + '.' + MAX_ROTATED_FILES).catch(() => undefined);"
+      },
+      {
+        "file": "lib/cli/scan.js",
+        "line": 8,
+        "text": "import { lstat, readFile, readdir } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/cli/scan.js",
+        "line": 111,
+        "text": "buffer = await readFile(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "export const inject = ['tools'];"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli/scan.js",
+        "line": 7,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

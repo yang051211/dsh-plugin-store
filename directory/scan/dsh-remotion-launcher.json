@@ -1,0 +1,112 @@
+{
+  "name": "dsh-remotion-launcher",
+  "version": "1.0.8",
+  "scannedAt": "2026-10-30T23:38:37.974Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 676,
+        "text": "const res = await fetch(`${API}/state?since=${seqRef.current}`, { cache: 'no-store' });"
+      },
+      {
+        "file": "client.js",
+        "line": 794,
+        "text": "const res = await fetch(`${API}${path}`, { method: 'POST' });"
+      },
+      {
+        "file": "client.js",
+        "line": 812,
+        "text": "const res = await fetch(`${API}/port`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 864,
+        "text": "fetch(`${API}/pos`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 905,
+        "text": "const res = await fetch(`${API}/pick-dir`, { method: 'POST' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 149,
+        "text": "return JSON.parse(fs.readFileSync(path.join(PLUGIN_DIR, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 197,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(projectRoot, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 237,
+        "text": "fs.mkdirSync(STATE_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 239,
+        "text": "fs.writeFileSync(SETTINGS_FILE, `${JSON.stringify(data, null, 2)}\\n`, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 12,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 364,
+        "text": "spawn('taskkill', ['/pid', String(pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 411,
+        "text": "child = spawn(cmd, args, { windowsHide: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 441,
+        "text": "child = spawn(cmd, args, { ...options, shell: true, windowsHide: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 1023,
+        "text": "buildProc = spawn('npx', ['vite', 'build'], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

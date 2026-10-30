@@ -1,0 +1,85 @@
+{
+  "name": "dsh-plugin-headless-sessions-panel",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-30T23:38:41.639Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 189,
+        "text": "response = await fetch(url, { credentials: 'same-origin', cache: 'no-store', signal })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 400,
+        "text": "const pending = fetch(url, { credentials: 'same-origin', cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/find-headless.mjs",
+        "line": 18,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/find-headless.mjs",
+        "line": 106,
+        "text": "const buf = fs.readFileSync(file);"
+      },
+      {
+        "file": "lib/find-headless.mjs",
+        "line": 211,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/find-headless.mjs",
+        "line": 213,
+        "text": "fs.writeFileSync(tmp, text);"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 20,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/find-headless.mjs",
+        "line": 22,
+        "text": "import { execFileSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host.mjs",
+        "line": 63,
+        "text": "execFile(file, args, {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

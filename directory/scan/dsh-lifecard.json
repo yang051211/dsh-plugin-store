@@ -1,0 +1,77 @@
+{
+  "name": "dsh-lifecard",
+  "version": "0.2.2",
+  "scannedAt": "2026-10-30T23:38:26.104Z",
+  "icon": "dsh-lifecard.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 31,
+        "text": "res = await fetch(`${API}/${method}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/career.js",
+        "line": 19,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/career.js",
+        "line": 159,
+        "text": "text = await fs.readFile(path.join(root, rel), 'utf8')"
+      },
+      {
+        "file": "lib/career.js",
+        "line": 180,
+        "text": "await fs.mkdir(path.dirname(abs), { recursive: true })"
+      },
+      {
+        "file": "lib/career.js",
+        "line": 181,
+        "text": "await fs.writeFile(tmp, text, 'utf8')"
+      },
+      {
+        "file": "lib/career.js",
+        "line": 184,
+        "text": "await fs.rm(tmp, { force: true }).catch(() => {})"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lifecard-tools.js",
+        "line": 134,
+        "text": "* 把 5 个只读工具挂到 ctx.tools 上。"
+      },
+      {
+        "file": "lifecard-tools.js",
+        "line": 143,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

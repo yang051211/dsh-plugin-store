@@ -1,0 +1,135 @@
+{
+  "name": "dsh-design-studio",
+  "version": "0.6.0",
+  "scannedAt": "2026-10-30T23:38:23.527Z",
+  "icon": "dsh-design-studio.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 1088,
+        "text": "const r = await fetch(`${API}state?session=${encodeURIComponent(sid)}`, { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1123,
+        "text": "const r = await fetch(API + path, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2241,
+        "text": "fetch(bundleOf(L.at || P.current.src, r.sid), { credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2723,
+        "text": "const r = await fetch(API + path, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3329,
+        "text": "fetch(`${API}history?session=${encodeURIComponent(sid)}`, { credentials: 'same-origin', cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 9,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 64,
+        "text": "try { if (now - fs.statSync(p).mtimeMs > STALE_MS) fs.rmSync(p, { recursive: true, force: true }) } catch { /* 下次再说 */ }"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 141,
+        "text": "try { fs.rmSync(d, { recursive: true, force: true }) } catch (e) {"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 146,
+        "text": "rm()"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 159,
+        "text": "onHostExit = () => { try { fs.rmSync(d, { recursive: true, force: true }) } catch { /* 下次开浏览器时按时间清 */ } }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tool.js",
+        "line": 8,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 11,
+        "text": "ctx.tools.register({ ...previewTool })"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 13,
+        "text": "ctx.tools.register({ ...checkTool, execute: (args, exec) => checkTool.execute(args, exec, ctx) })"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 14,
+        "text": "ctx.tools.register({ ...lookTool, execute: (args, exec) => lookTool.execute(args, exec, ctx) })"
+      },
+      {
+        "file": "lib/tool.js",
+        "line": 15,
+        "text": "ctx.tools.register({ ...systemTool, execute: (args, exec) => systemTool.execute(args, exec, ctx) })"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 12,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 184,
+        "text": "execFile('taskkill', ['/pid', String(p.pid), '/T', '/F'], (err) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 47,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1089,
+        "text": "execFile(cmd, args, (e) => { if (e && process.platform !== 'win32') log(e) }) // explorer 正常也返回 1"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

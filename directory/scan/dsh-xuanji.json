@@ -1,0 +1,98 @@
+{
+  "name": "dsh-xuanji",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-30T23:38:27.858Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 137,
+        "text": "response = await fetch(`${API_BASE}${path}`, {"
+      },
+      {
+        "file": "lib/server-api.js",
+        "line": 3,
+        "text": "// 浏览器面板（src/client 构建出的 lib/client.js）通过 fetch() 调这些端点："
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/server-api.js",
+        "line": 16,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/server-api.js",
+        "line": 25,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/server-routes/xuanji.js",
+        "line": 28,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/server-routes/xuanji.js",
+        "line": 35,
+        "text": "const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));"
+      },
+      {
+        "file": "lib/skill-registration.js",
+        "line": 7,
+        "text": "import { readFileSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 38,
+        "text": "export const inject = ['tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 73,
+        "text": "ctx.tools.register(defineBaziTool(ctx, config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 74,
+        "text": "ctx.tools.register(defineZiweiTool(ctx, config));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 75,
+        "text": "ctx.tools.register(defineMeihuaTool());"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "ctx.tools.register(defineAlmanacTool());"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

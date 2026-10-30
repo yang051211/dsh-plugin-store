@@ -1,0 +1,77 @@
+{
+  "name": "dsh-qqbot-guard",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-30T23:38:50.148Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 231,
+        "text": "const response = await fetch(API, { headers: { accept: 'application/json' } });"
+      },
+      {
+        "file": "client/client.js",
+        "line": 276,
+        "text": "const response = await fetch(API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 126,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "index.js",
+        "line": 190,
+        "text": "mkdirSync(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 192,
+        "text": "writeFileSync(tmp, `${JSON.stringify(data, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 200,
+        "text": "const data = JSON.parse(readFileSync(file, 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 200,
+      "text": "未 @ 的消息不会丢上下文：`dsh-qqbot/dist/gateway/middleware-setup.js:29` 把 `historyBuffer` 放在"
+    }
+  ],
+  "skippedEntries": []
+}

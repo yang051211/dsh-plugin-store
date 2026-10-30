@@ -1,20 +1,15 @@
 {
   "name": "trae-cn-provider",
-  "version": "0.2.1",
-  "scannedAt": "2026-10-27T13:14:12.758Z",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-30T23:38:30.087Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "src/admin.js",
-        "line": 387,
+        "line": 681,
         "text": "const res = await fetch(path, {"
-      },
-      {
-        "file": "src/admin.js",
-        "line": 481,
-        "text": "fetch('/admin/api/requests?limit=30').then((res) => res.json()).then(({ requests }) => {"
       },
       {
         "file": "src/openai-server.js",
@@ -28,8 +23,13 @@
       },
       {
         "file": "src/trae-auth.js",
-        "line": 54,
+        "line": 55,
         "text": "res = await fetch(url, {"
+      },
+      {
+        "file": "src/trae-client.js",
+        "line": 250,
+        "text": "res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), signal: ac.signal });"
       }
     ]
   },
@@ -77,8 +77,13 @@
       },
       {
         "file": "lib/index.js",
-        "line": 169,
-        "text": "spawn(command, args, { detached: true, stdio: 'ignore' }).unref();"
+        "line": 192,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 202,
+        "text": "spawn('cmd', ['/c', 'start', '', `\"${url}\"`], {"
       },
       {
         "file": "src/cli.js",
@@ -89,11 +94,6 @@
         "file": "src/cli.js",
         "line": 81,
         "text": "spawn('open', [url], { detached: true, stdio: 'ignore' }).unref();"
-      },
-      {
-        "file": "src/cli.js",
-        "line": 650,
-        "text": "const { execFileSync } = await import('node:child_process');"
       }
     ]
   },

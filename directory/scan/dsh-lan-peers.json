@@ -1,0 +1,130 @@
+{
+  "name": "dsh-lan-peers",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-30T23:38:23.809Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/cli-archives.test.mjs",
+        "line": 8,
+        "text": "import http from 'node:http';"
+      },
+      {
+        "file": "client/cli.mjs",
+        "line": 307,
+        "text": "const res = await fetch(peer.baseUrl + '/v1/health', { signal: AbortSignal.timeout(2000) });"
+      },
+      {
+        "file": "client/cli.mjs",
+        "line": 946,
+        "text": "const reply = await fetch(base + '/api/lan-peers/' + apiPath, {"
+      },
+      {
+        "file": "client/http.test.mjs",
+        "line": 4,
+        "text": "// `fetch(url, { method: 'GET', body: Buffer.alloc(0) })` throws"
+      },
+      {
+        "file": "client/http.test.mjs",
+        "line": 10,
+        "text": "import http from 'node:http';"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/cli-archives.test.mjs",
+        "line": 10,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "client/cli-archives.test.mjs",
+        "line": 46,
+        "text": "t.after(() => fs.rmSync(dir, { recursive: true, force: true }));"
+      },
+      {
+        "file": "client/cli-group.test.mjs",
+        "line": 8,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "client/cli-group.test.mjs",
+        "line": 54,
+        "text": "fs.rmSync(stateDir, { recursive: true, force: true });"
+      },
+      {
+        "file": "client/cli-group.test.mjs",
+        "line": 62,
+        "text": "t.after(() => fs.rmSync(dir, { recursive: true, force: true }));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "export const inject = ['tools', 'sessionController', 'webServer'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 78,
+        "text": "`dsh-lan-peers services: tools=${typeof ctx.tools} sessionController=${typeof sessionController} webServer=${typeof webServer} pairingMode=${pairingMode} answer"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/cli-archives.test.mjs",
+        "line": 9,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "client/cli-archives.test.mjs",
+        "line": 20,
+        "text": "execFile(process.execPath, [CLI, ...args], { encoding: 'utf8' }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "client/cli-group.test.mjs",
+        "line": 7,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      },
+      {
+        "file": "client/cli-group.test.mjs",
+        "line": 24,
+        "text": "execFile(process.execPath, [CLI, ...args], { encoding: 'utf8' }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "client/cli-unpair.test.mjs",
+        "line": 7,
+        "text": "import { execFile, execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionController",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,100 @@
+{
+  "name": "dsh-refresh-restart",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-30T23:38:25.955Z",
+  "icon": "dsh-refresh-restart.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 629,
+        "text": "fetch(ROUTE + '/state', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 674,
+        "text": "fetch(ROUTE + '/status', { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 684,
+        "text": "return fetch(ROUTE + '/restart', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/platform.js",
+        "line": 196,
+        "text": "const fs = require('node:fs')"
+      },
+      {
+        "file": "lib/platform.js",
+        "line": 207,
+        "text": "fs.appendFileSync(plan.logPath, '[' + stamp() + '] refresh-restart: ' + message + '\\\\n')"
+      },
+      {
+        "file": "lib/platform.js",
+        "line": 218,
+        "text": "fs.writeFileSync("
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 28,
+        "text": "import { chmodSync, readFileSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 53,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/platform.js",
+        "line": 195,
+        "text": "const { spawn, spawnSync } = require('node:child_process')"
+      },
+      {
+        "file": "lib/platform.js",
+        "line": 249,
+        "text": "return spawnSync(command, args, { encoding: 'utf8', timeout: 20000, windowsHide: true, env: childEnv })"
+      },
+      {
+        "file": "lib/platform.js",
+        "line": 386,
+        "text": "const child = spawn(plan.launch.path, [], {"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 27,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/restart.js",
+        "line": 220,
+        "text": "const child = spawn(execPath, [scriptPath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

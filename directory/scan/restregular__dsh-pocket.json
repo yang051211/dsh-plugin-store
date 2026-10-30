@@ -1,0 +1,118 @@
+{
+  "name": "@restregular/dsh-pocket",
+  "version": "0.17.0",
+  "scannedAt": "2026-10-30T23:38:23.085Z",
+  "icon": "restregular__dsh-pocket.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 486,
+        "text": "const response = await fetch(url.toString(), body === undefined ? {"
+      },
+      {
+        "file": "lib/gui-proxy.js",
+        "line": 21,
+        "text": "import { Agent, request as httpRequest } from 'node:http';"
+      },
+      {
+        "file": "lib/gui-proxy.js",
+        "line": 112,
+        "text": "const response = await fetch(url, { redirect: 'manual', headers: { accept: 'text/html' } });"
+      },
+      {
+        "file": "lib/server.js",
+        "line": 21,
+        "text": "import { createServer } from 'node:http';"
+      },
+      {
+        "file": "lib/surface/mobile.js",
+        "line": 100,
+        "text": "const response = await fetch(`/__pocket/fs?path=${encodeURIComponent(path ?? '')}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/gui-proxy.js",
+        "line": 20,
+        "text": "import { readFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/gui-proxy.js",
+        "line": 33,
+        "text": "const MOBILE_CSS = readFileSync(join(SURFACE_ROOT, 'mobile.css'), 'utf8');"
+      },
+      {
+        "file": "lib/gui-proxy.js",
+        "line": 34,
+        "text": "const MOBILE_JS = readFileSync(join(SURFACE_ROOT, 'mobile.js'), 'utf8');"
+      },
+      {
+        "file": "lib/restart-helper.cjs",
+        "line": 27,
+        "text": "const fs = require('node:fs');"
+      },
+      {
+        "file": "lib/restart-helper.cjs",
+        "line": 123,
+        "text": "fs.appendFileSync(logPath, `${new Date().toISOString()} ${message}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 333,
+        "text": "() => scoped.tools.register(pocketShareTool(pocket)),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/awake.js",
+        "line": 22,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/awake.js",
+        "line": 37,
+        "text": "* @type {Set<import('node:child_process').ChildProcess>}"
+      },
+      {
+        "file": "lib/awake.js",
+        "line": 77,
+        "text": "/** @type {import('node:child_process').ChildProcess | undefined} */"
+      },
+      {
+        "file": "lib/awake.js",
+        "line": 249,
+        "text": "child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });"
+      },
+      {
+        "file": "lib/restart-helper.cjs",
+        "line": 26,
+        "text": "const { spawn } = require('node:child_process');"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

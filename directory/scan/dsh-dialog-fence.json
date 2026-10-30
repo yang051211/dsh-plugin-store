@@ -1,0 +1,96 @@
+{
+  "name": "dsh-dialog-fence",
+  "version": "0.13.0",
+  "scannedAt": "2026-10-30T23:38:26.841Z",
+  "icon": "dsh-dialog-fence.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 105,
+        "text": "const response = await fetch(body === undefined ? `${API_ROUTE}${query}` : API_ROUTE, init);"
+      },
+      {
+        "file": "scripts/verify-installed.mjs",
+        "line": 94,
+        "text": "const response = await route.fetch("
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 35,
+        "text": "const fs = process.getBuiltinModule('node:fs');"
+      },
+      {
+        "file": "index.js",
+        "line": 124,
+        "text": "const raw = fs.readFileSync(LOCATION_FILE, 'utf8').replace(/^\\uFEFF/, '');"
+      },
+      {
+        "file": "index.js",
+        "line": 135,
+        "text": "fs.mkdirSync(BASE_DIR, { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 140,
+        "text": "fs.writeFileSync(tmp, `${JSON.stringify({ file }, null, 2)}\\n`, 'utf8');"
+      },
+      {
+        "file": "index.js",
+        "line": 254,
+        "text": "const buf = fs.readFileSync(file);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 37,
+        "text": "const childProcess = process.getBuiltinModule('node:child_process');"
+      },
+      {
+        "file": "index.js",
+        "line": 648,
+        "text": "child = childProcess.spawn('explorer.exe', args, options);"
+      },
+      {
+        "file": "index.js",
+        "line": 650,
+        "text": "child = childProcess.spawn('open', ['-R', target], options);"
+      },
+      {
+        "file": "index.js",
+        "line": 652,
+        "text": "child = childProcess.spawn('xdg-open', [dir], options);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 564,
+      "text": "workflow 里钉 Node `24` 并 `npm install -g npm@latest`，就是为了稳过这条线。"
+    }
+  ],
+  "skippedEntries": []
+}

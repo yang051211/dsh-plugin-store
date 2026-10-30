@@ -1,14 +1,14 @@
 {
   "name": "dsh-skill-cockpit",
-  "version": "1.4.1",
-  "scannedAt": "2026-10-27T13:14:08.413Z",
+  "version": "1.5.1",
+  "scannedAt": "2026-10-30T23:38:16.894Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1189,
+        "line": 1191,
         "text": "const res = await fetch(path, init)"
       },
       {
@@ -27,29 +27,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/agent-presets.js",
-        "line": 19,
-        "text": "import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, renameSync, rmdirSync, symlinkSync } from 'node:fs'"
+        "file": "bin/cockpit-doctor.mjs",
+        "line": 14,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'"
       },
       {
-        "file": "lib/agent-presets.js",
-        "line": 31,
-        "text": "text = readFileSync(filePath, 'utf8')"
+        "file": "bin/cockpit-doctor.mjs",
+        "line": 20,
+        "text": "const PKG = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'package.json'), 'utf8'))"
       },
       {
-        "file": "lib/agent-presets.js",
-        "line": 59,
-        "text": "const head = readFileSync(file, 'utf8').slice(0, 8192)"
+        "file": "bin/cockpit-doctor.mjs",
+        "line": 51,
+        "text": "if (doFix) mkdirSync(baseHome, { recursive: true })"
       },
       {
-        "file": "lib/agent-presets.js",
-        "line": 151,
-        "text": "if (!existsSync(skillsDir)) mkdirSync(skillsDir, { recursive: true })"
+        "file": "bin/cockpit-doctor.mjs",
+        "line": 71,
+        "text": "localConfig = JSON.parse(readFileSync(localConfigPath, 'utf8'))"
       },
       {
-        "file": "lib/agent-presets.js",
-        "line": 187,
-        "text": "mkdirSync(pool, { recursive: true })"
+        "file": "bin/cockpit-doctor.mjs",
+        "line": 117,
+        "text": "mkdirSync(stateDir, { recursive: true })"
       }
     ]
   },
@@ -63,12 +63,12 @@
       },
       {
         "file": "lib/index.js",
-        "line": 330,
+        "line": 347,
         "text": "const dispose = ctx.tools.register(skillTool);"
       },
       {
         "file": "lib/index.js",
-        "line": 499,
+        "line": 516,
         "text": "const dispose = ctx.tools.register(autoloadTool);"
       },
       {
@@ -102,9 +102,9 @@
         "text": "import { execFileSync } from 'node:child_process';"
       },
       {
-        "file": "test/run-all.mjs",
-        "line": 10,
-        "text": "import { spawnSync } from 'node:child_process';"
+        "file": "scripts/verify-install.mjs",
+        "line": 17,
+        "text": "import { spawnSync } from 'node:child_process'"
       }
     ]
   },

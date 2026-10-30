@@ -1,0 +1,113 @@
+{
+  "name": "@lorenzo__li/dsh-everos-memory",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-30T23:38:36.380Z",
+  "icon": "lorenzo__li__dsh-everos-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 429,
+        "text": "response = fetch(API_BASE + path, init);"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 49,
+        "text": "const response = await fetch(url, init)"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 64,
+        "text": "const response = await fetch(url, { signal: AbortSignal.timeout(timeoutMs) })"
+      },
+      {
+        "file": "lib/service-manager.js",
+        "line": 31,
+        "text": "const response = await fetch(baseUrl + '/health', { signal: AbortSignal.timeout(timeoutMs) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/everos.js",
+        "line": 12,
+        "text": "import { closeSync, existsSync, mkdirSync, openSync, statSync, writeSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 13,
+        "text": "import { open, readFile, readdir } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 321,
+        "text": "const content = await readFile(target, 'utf8')"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 369,
+        "text": "try { text = await readFile(path, 'utf8') } catch { continue }"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 387,
+        "text": "try { text = await readFile(path, 'utf8') } catch { continue }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/everos.js",
+        "line": 11,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 83,
+        "text": "execFile('netstat', ['-ano', '-p', 'tcp'], { windowsHide: true, timeout: 10000, encoding: 'utf8' },"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 492,
+        "text": "const child = spawn(executable, argv.slice(1), {"
+      },
+      {
+        "file": "lib/everos.js",
+        "line": 531,
+        "text": "execFile('taskkill', ['/PID', String(pid), '/T', '/F'], { windowsHide: true, timeout: 15000 },"
+      },
+      {
+        "file": "lib/service-manager.js",
+        "line": 15,
+        "text": "import { execFile, spawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents"
+  ],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 70,
+      "text": "安装完成后，编辑服务根目录下的 `everos.toml`，将 `[llm] api_key` 替换为自己的 Key；也可通过环境变量 `EVEROS_LLM__API_KEY` 提供。其他操作系统可手动执行 `pip install everos` 并按官方文档准备配置。"
+    }
+  ],
+  "skippedEntries": []
+}

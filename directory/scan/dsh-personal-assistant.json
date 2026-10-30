@@ -1,0 +1,110 @@
+{
+  "name": "dsh-personal-assistant",
+  "version": "0.13.0",
+  "scannedAt": "2026-10-30T23:38:37.174Z",
+  "icon": "dsh-personal-assistant.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 897,
+        "text": "const response = await fetch(STATE_URL, { cache: 'no-store' })"
+      },
+      {
+        "file": "client.js",
+        "line": 906,
+        "text": "const response = await fetch(ACTION_URL, {"
+      },
+      {
+        "file": "client.js",
+        "line": 3077,
+        "text": "const response = await fetch(url, { credentials: 'include', headers: { accept: 'application/json, text/plain, */*' } })"
+      },
+      {
+        "file": "client.js",
+        "line": 3300,
+        "text": "const response = await fetch(url, { credentials: 'include' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin.js",
+        "line": 1,
+        "text": "import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "plugin.js",
+        "line": 1183,
+        "text": "source = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "plugin.js",
+        "line": 1209,
+        "text": "try { await unlink(file) } catch (error) {"
+      },
+      {
+        "file": "plugin.js",
+        "line": 1217,
+        "text": "await writeFile(temp, serialized, { encoding: 'utf8', mode: 0o600, flag: 'wx' })"
+      },
+      {
+        "file": "plugin.js",
+        "line": 1220,
+        "text": "try { await unlink(temp) } catch (cleanupError) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin.js",
+        "line": 9,
+        "text": "export const inject = ['agents', 'systemPrompt', 'tools', 'skills']"
+      },
+      {
+        "file": "plugin.js",
+        "line": 5459,
+        "text": "for (const schema of ctx.tools.schemas(exec.agent)) {"
+      },
+      {
+        "file": "plugin.js",
+        "line": 6026,
+        "text": "for (const definition of definitions) disposers.push(agent.ctx.tools.register(definition))"
+      },
+      {
+        "file": "plugin.js",
+        "line": 6031,
+        "text": "const dispose = scheduleContext.tools.register(routineTool({ schedule: scheduleContext.schedule }, store, readConfig), 'personal-assistant.routine-tool()')"
+      },
+      {
+        "file": "plugin.js",
+        "line": 6043,
+        "text": "disposers.push(agent.ctx.tools.register(routineTool({ schedule }, store, readConfig)))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

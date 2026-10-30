@@ -1,0 +1,100 @@
+{
+  "name": "@kira905/dsh-ecosystem-panel",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-30T23:38:40.998Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 395,
+        "text": "const res = await fetch(API, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 145,
+        "text": "const res = await fetch(P.DSH_BOOT_URL + '/', { cache: 'no-store' });"
+      },
+      {
+        "file": "lib/upgrade.js",
+        "line": 89,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/config.js",
+        "line": 42,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/config.js",
+        "line": 115,
+        "text": "return { ok: true, value: JSON.parse(fs.readFileSync(p, 'utf8')), error: null };"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 9,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 83,
+        "text": "try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; }"
+      },
+      {
+        "file": "lib/state.js",
+        "line": 86,
+        "text": "try { return fs.readFileSync(p, 'utf8'); } catch { return null; }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/upgrade.js",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "lib/upgrade.js",
+        "line": 248,
+        "text": "const r = spawnSync(nodePath, [cliPath, '--json', '--input', '-'], {"
+      },
+      {
+        "file": "scripts/sim-selfcheck.mjs",
+        "line": 23,
+        "text": "import { spawnSync } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/sim-selfcheck.mjs",
+        "line": 53,
+        "text": "const r = spawnSync('git', ['-C', REPO, 'diff', '--name-only', '--diff-filter=A', `${since}..HEAD`, '--', '*.js', '*.mjs', '*.cjs'], { encoding: 'utf8' });"
+      },
+      {
+        "file": "scripts/verify-source.mjs",
+        "line": 32,
+        "text": "import { spawnSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,75 @@
+{
+  "name": "dsh-notify-channel",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:49.874Z",
+  "icon": "dsh-notify-channel.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/lib.mjs",
+        "line": 70,
+        "text": "const res = await fetch(url, { ...init, signal: controller.signal });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 2,
+        "text": "import { appendFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 181,
+        "text": "mkdirSync(dirname(auditFile), { recursive: true });"
+      },
+      {
+        "file": "index.js",
+        "line": 182,
+        "text": "appendFileSync(auditFile, `${JSON.stringify(row)}\\n`, 'utf8');"
+      },
+      {
+        "file": "src/channels/qq.mjs",
+        "line": 23,
+        "text": "import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "src/channels/qq.mjs",
+        "line": 382,
+        "text": "return JSON.parse(readFileSync(resolve(file), 'utf8'));"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.md",
+      "line": 75,
+      "text": "npm i -g dsh-notify-channel"
+    },
+    {
+      "file": "README.md",
+      "line": 145,
+      "text": "npm i -g dsh-notify-channel"
+    }
+  ],
+  "skippedEntries": []
+}

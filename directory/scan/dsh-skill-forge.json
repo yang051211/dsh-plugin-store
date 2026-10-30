@@ -1,0 +1,83 @@
+{
+  "name": "dsh-skill-forge",
+  "version": "1.1.0",
+  "scannedAt": "2026-10-30T23:38:29.747Z",
+  "icon": "dsh-skill-forge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 335,
+        "text": "const res = await fetch(path, { method: opts.method || 'GET', headers, body: body === undefined ? undefined : JSON.stringify(body) })"
+      },
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "*      to over same-origin fetch (list / read / save / delete / sessions /"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 24,
+        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile, copyFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 207,
+        "text": "raw = await readFile(file, 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 469,
+        "text": "await mkdir(target.dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 483,
+        "text": "await writeFile(target.file, text, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 32,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 1228,
+        "text": "disposers.push(ctx.tools.register(definition))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

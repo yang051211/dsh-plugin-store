@@ -1,0 +1,74 @@
+{
+  "name": "dsh-task-mascot",
+  "version": "2.1.0",
+  "scannedAt": "2026-10-30T23:38:27.543Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/packs/dafeiyu/dex/manifest.json",
+        "line": 252,
+        "text": "\"trigger\": \"curl / wget / rsync …\","
+      },
+      {
+        "file": "lib/client.js",
+        "line": 20,
+        "text": "{ tool: '^(bash|pwsh)$', cmd: '(^|[;&|]\\\\s*)(curl|wget|aria2c|Invoke-WebRequest|iwr|scp|rsync)\\\\b', state: 'download' },"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 422,
+        "text": "anifests.has(pack)) manifests.set(pack, fetch(API + '/asset?f=' + encodeURIComponent(pack + '/manifest.json')).then((r) => (r.ok ? r.json() : null)).catch(() =>"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 426,
+        "text": "ion fetchPacks() { packsPromise = packsPromise || fetch(API + '/packs').then((r) => r.json()).then((j) => j.packs || []).catch(() => []); return packsPromise; }"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 730,
+        "text": "  function dexLoad() { dex.p = dex.p || fetch(assetUrl(DEX_PACK, 'dex/manifest.json')).then((r) => r.json()).then((m) => { dex.m = m; return m; }).catch(() => n"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 6,
+        "text": "import { createReadStream, existsSync, statSync, readdirSync, readFileSync, appendFileSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "const m = JSON.parse(readFileSync(mf, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 97,
+        "text": "    try { appendFileSync(DEBUG_LOG, JSON.stringify({ t: new Date().toISOString(), tag, obj }, (k, v) => (typeof v === 'string' && v.length > 300 ? v.slice(0, 30"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

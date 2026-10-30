@@ -1,0 +1,95 @@
+{
+  "name": "dsh-disaster-recovery",
+  "version": "0.8.0",
+  "scannedAt": "2026-10-30T23:38:49.703Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 2933,
+        "text": "const response = await fetch(ROUTE, init)"
+      },
+      {
+        "file": "watchdog/notify.ps1",
+        "line": 151,
+        "text": "$response = Invoke-RestMethod @params"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 35,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 36,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 147,
+        "text": "await fsp.mkdir(path.dirname(abs), { recursive: true })"
+      },
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 149,
+        "text": "await fsp.writeFile(tmp, data)"
+      },
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 154,
+        "text": "try { await fsp.rm(tmp, { force: true }) } catch { /* ignore */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 34,
+        "text": "import { spawn, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "recovery-console/console.mjs",
+        "line": 835,
+        "text": "const result = spawnSync(command, args, {"
+      },
+      {
+        "file": "src/archive/dpapi.js",
+        "line": 16,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "src/archive/dpapi.js",
+        "line": 68,
+        "text": "const result = spawnSync(exe, args, {"
+      },
+      {
+        "file": "src/monitor.js",
+        "line": 27,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

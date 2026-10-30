@@ -1,0 +1,62 @@
+{
+  "name": "@lolkda/dsh-dexsql-mcp",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-30T23:38:37.026Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dexsql.mjs",
+        "line": 3,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 8,
+        "text": "name: '@deepseek-ai/dsh-mcp-client'"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dexsql.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "bin/dexsql.mjs",
+        "line": 37,
+        "text": "const child = spawn(binary, process.argv.slice(2), { stdio: 'inherit' });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/darwin-arm64/dexsql",
+    "vendor/darwin-x64/dexsql",
+    "vendor/linux-arm64/dexsql",
+    "vendor/linux-x64/dexsql",
+    "vendor/win32-arm64/dexsql.exe",
+    "vendor/win32-x64/dexsql.exe"
+  ],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

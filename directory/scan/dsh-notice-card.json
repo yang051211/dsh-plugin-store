@@ -1,11 +1,22 @@
 {
   "name": "dsh-notice-card",
-  "version": "0.2.1",
-  "scannedAt": "2026-10-26T10:05:04.573Z",
+  "version": "0.3.0",
+  "scannedAt": "2026-10-30T23:38:38.195Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 272,
+        "text": "const result = fetch(PREVIEW_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 313,
+        "text": "const result = fetch(PREVIEW_PATH, {"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
@@ -13,27 +24,27 @@
       {
         "file": "lib/index.mjs",
         "line": 28,
-        "text": "import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from \"node:fs\";"
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
       },
       {
         "file": "lib/index.mjs",
-        "line": 188,
+        "line": 230,
         "text": "const source = readFileSync(CARD_SOURCE);"
       },
       {
         "file": "lib/index.mjs",
-        "line": 193,
+        "line": 236,
         "text": "mkdirSync(BUILD_DIR, { recursive: true });"
       },
       {
         "file": "lib/index.mjs",
-        "line": 227,
-        "text": "if (dismiss) rmSync(dismiss, { force: true });"
+        "line": 250,
+        "text": "try { rmSync(temporary, { force: true }); } catch {}"
       },
       {
         "file": "lib/index.mjs",
-        "line": 262,
-        "text": "const write = () => { try { writeFileSync(dismiss, \"\"); } catch {} };"
+        "line": 295,
+        "text": "if (spec.dismiss) rmSync(spec.dismiss, { force: true });"
       }
     ]
   },
@@ -51,12 +62,12 @@
       },
       {
         "file": "lib/index.mjs",
-        "line": 196,
+        "line": 243,
         "text": "const build = spawnSync(compiler, ["
       },
       {
         "file": "lib/index.mjs",
-        "line": 241,
+        "line": 320,
         "text": "const child = spawn(exe, args, { stdio: \"ignore\", windowsHide: true, detached: true });"
       }
     ]
@@ -65,7 +76,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 0,
+  "dependencies": 1,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [],

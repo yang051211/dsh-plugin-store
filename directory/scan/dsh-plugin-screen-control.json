@@ -1,0 +1,69 @@
+{
+  "name": "dsh-plugin-screen-control",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-30T23:38:40.116Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 13,
+        "text": "import { existsSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "export const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 60,
+        "text": "ctx.effect(() => ctx.tools.register(definition), `screen-control/tool:${label}`);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/bridge.js",
+        "line": 11,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 378,
+        "text": "return spawn(process.execPath, [exe, '--pipe', pipePath], {"
+      },
+      {
+        "file": "lib/bridge.js",
+        "line": 383,
+        "text": "return spawn(exe, ['--pipe', pipePath], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "bin/screen-control-engine.exe"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

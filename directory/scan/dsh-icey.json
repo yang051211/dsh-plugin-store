@@ -1,7 +1,7 @@
 {
   "name": "dsh-icey",
-  "version": "0.6.1",
-  "scannedAt": "2026-10-26T10:09:20.040Z",
+  "version": "0.8.1",
+  "scannedAt": "2026-10-30T23:38:26.281Z",
   "icon": "dsh-icey.svg",
   "network": {
     "hit": true,
@@ -32,29 +32,29 @@
     "hit": true,
     "evidence": [
       {
+        "file": "lib/devctl.mjs",
+        "line": 23,
+        "text": "import { readFileSync, readdirSync, statSync, mkdirSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/devctl.mjs",
+        "line": 212,
+        "text": "try { mkdirSync(dir, { recursive: true }) } catch { /* ignore */ }"
+      },
+      {
+        "file": "lib/devctl.mjs",
+        "line": 219,
+        "text": "try { writeFileSync(path, stamp + lines.join('\\n') + '\\n', { flag: 'a' }) } catch { /* ignore */ }"
+      },
+      {
+        "file": "lib/devctl.mjs",
+        "line": 227,
+        "text": "try { text = readFileSync(path, 'utf8') } catch (e) { return `读不到日志：${e?.message || e}` }"
+      },
+      {
         "file": "lib/game.mjs",
         "line": 19,
         "text": "import { existsSync } from 'node:fs'"
-      },
-      {
-        "file": "lib/hostdeps.mjs",
-        "line": 19,
-        "text": "import { existsSync, readFileSync, readdirSync } from 'node:fs'"
-      },
-      {
-        "file": "lib/hostdeps.mjs",
-        "line": 69,
-        "text": "const pkg = JSON.parse(readFileSync(pkgFile, 'utf8'))"
-      },
-      {
-        "file": "lib/run-history.mjs",
-        "line": 14,
-        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
-      },
-      {
-        "file": "lib/run-history.mjs",
-        "line": 35,
-        "text": "const raw = JSON.parse(readFileSync(file, 'utf8'))"
       }
     ]
   },
@@ -63,12 +63,12 @@
     "evidence": [
       {
         "file": "agent.js",
-        "line": 24,
+        "line": 25,
         "text": "export const inject = ['tools', 'attachments']"
       },
       {
         "file": "agent.js",
-        "line": 121,
+        "line": 154,
         "text": "const tool = (spec) => ctx.effect(() => ctx.tools.register(defineTool({"
       },
       {
@@ -90,6 +90,16 @@
         "file": "index.js",
         "line": 122,
         "text": "const child = spawn(spec.command, spec.args || [], {"
+      },
+      {
+        "file": "lib/devctl.mjs",
+        "line": 334,
+        "text": "const { spawn } = await import('node:child_process')"
+      },
+      {
+        "file": "lib/devctl.mjs",
+        "line": 338,
+        "text": "const child = spawn(process.execPath, [script], { cwd: PLUGIN_ROOT, windowsHide: true })"
       }
     ]
   },

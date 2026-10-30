@@ -1,15 +1,25 @@
 {
   "name": "dsh-mcp-link",
-  "version": "0.1.0",
-  "scannedAt": "2026-10-29T07:06:32.428Z",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:38.218Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 333,
+        "line": 412,
         "text": "const response = await fetch(`${API_BASE}${path}`, {"
+      },
+      {
+        "file": "lib/host/probe.js",
+        "line": 336,
+        "text": "const response = await fetch(this.url, {"
+      },
+      {
+        "file": "lib/host/probe.js",
+        "line": 356,
+        "text": "const response = await fetch(this.url, {"
       }
     ]
   },
@@ -18,17 +28,17 @@
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 142,
+        "line": 147,
         "text": "async unlink(entryId) {"
       },
       {
         "file": "lib/client.js",
-        "line": 257,
+        "line": 325,
         "text": "unlink: (entryId) => this.unlink(entryId),"
       },
       {
         "file": "lib/client.js",
-        "line": 1302,
+        "line": 1451,
         "text": "const ok = await unlink(pendingUnlink.entryId);"
       },
       {
@@ -58,19 +68,35 @@
       },
       {
         "file": "lib/host/patch.js",
-        "line": 272,
+        "line": 291,
         "text": "return name === MCP_MODULE || name.endsWith('/dsh-mcp-client');"
       },
       {
         "file": "lib/host/scan.js",
         "line": 352,
         "text": "return name === '@deepseek-ai/dsh-mcp-client' || name.endsWith('/dsh-mcp-client');"
+      },
+      {
+        "file": "lib/host/test.js",
+        "line": 178,
+        "text": "return name === '@deepseek-ai/dsh-mcp-client' || (name?.endsWith('/dsh-mcp-client') ?? false);"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host/probe.js",
+        "line": 7,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/probe.js",
+        "line": 169,
+        "text": "this.child = spawn(command, args, {"
+      }
+    ]
   },
   "installScripts": {
     "hit": true,
@@ -87,7 +113,8 @@
   "binaryFiles": [],
   "requiredServices": [
     "connection",
-    "loader"
+    "loader",
+    "tools"
   ],
   "setupHints": [],
   "skippedEntries": []

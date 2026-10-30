@@ -1,0 +1,104 @@
+{
+  "name": "dsh-ego-lite",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:49.795Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 619,
+        "text": "o an element: reload | close | focus (an element) | events (recent page events) | file_chooser | fetch (a request in the page's browser context) | wait_event.\","
+      },
+      {
+        "file": "lib/index.js",
+        "line": 633,
+        "text": "\t\t\t\tbody: `const response = await page.fetch(${j(args.url ?? \"\")}${args.options ? `, ${j(args.options)}` : \"\"});\\nconst described = { status: response.status, u"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 29,
+        "text": "import { existsSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 86,
+        "text": "writeFileSync(file, script, { encoding: \"utf8\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 99,
+        "text": "try { rmSync(dir, { recursive: true, force: true }); } catch {}"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = [\"tools\", \"systemPrompt\"];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 172,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 197,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 212,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 433,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 76,
+        "text": "if (process.platform === \"win32\") spawn(\"taskkill\", [\"/pid\", String(pid), \"/T\", \"/F\"], { windowsHide: true, stdio: \"ignore\" });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 103,
+        "text": "child = spawn(executable, [\"nodejs\", \"-e\", entry], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

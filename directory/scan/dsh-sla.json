@@ -1,0 +1,99 @@
+{
+  "name": "dsh-sla",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-30T23:38:36.554Z",
+  "icon": "dsh-sla.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/extensions/parameters.js",
+        "line": 3,
+        "text": "import { readFile, writeFile } from 'node:fs/promises';"
+      },
+      {
+        "file": "dist/extensions/parameters.js",
+        "line": 14,
+        "text": "if (await readFile(target, 'utf8') !== packageContent(state, artifact))"
+      },
+      {
+        "file": "dist/extensions/parameters.js",
+        "line": 37,
+        "text": "const dataset = validateDataset(JSON.parse(await readFile(path.join(state.cwd, 'retrieval-eval.json'), 'utf8')));"
+      },
+      {
+        "file": "dist/extensions/parameters.js",
+        "line": 40,
+        "text": "initial = JSON.parse(await readFile(path.join(state.cwd, 'retrieval-params.json'), 'utf8'));"
+      },
+      {
+        "file": "dist/extensions/parameters.js",
+        "line": 62,
+        "text": "await writeFile(target, packageContent(state, artifact), { flag: 'wx' });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/src/host.js",
+        "line": 44,
+        "text": "agent.ctx.tools.presentAs('native');"
+      },
+      {
+        "file": "dist/src/host.js",
+        "line": 56,
+        "text": "agent.ctx.tools.guard(exec => submitting() && (!structured || exec.name !== 'structured_output')"
+      },
+      {
+        "file": "dist/src/tools.js",
+        "line": 4,
+        "text": "export const inject = ['sla', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "dist/src/tools.js",
+        "line": 7,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dist/extensions/code-runtime.js",
+        "line": 2,
+        "text": "EPERM 时，保留启动错误，不能据此判断 Python 或项目不可运行。可用 spawnSync(command, args, {stdio:'inherit', timeout:...}) 诊断管道问题；让子进程直接输出最终协议行，或把结构化结果写入 .dsh/cache/ 的唯一临时文件，由 Node 读取并清理"
+      },
+      {
+        "file": "dist/src/workspace.js",
+        "line": 8,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sandboxPolicy",
+    "shell",
+    "sla",
+    "storageDomain",
+    "subagents",
+    "typert",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

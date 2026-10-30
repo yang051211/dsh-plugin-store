@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-dev-kb",
-  "version": "1.5.2",
-  "scannedAt": "2026-10-26T10:06:21.893Z",
+  "version": "1.6.0",
+  "scannedAt": "2026-10-30T23:38:32.119Z",
   "icon": null,
   "network": {
     "hit": false,
@@ -12,34 +12,60 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 17,
+        "line": 22,
         "text": "import { existsSync, readdirSync, readFileSync } from 'node:fs'"
       },
       {
         "file": "lib/index.js",
-        "line": 60,
+        "line": 164,
         "text": "const fm = parseFrontmatter(readFileSync(join(SKILLS_DIR, file), 'utf8'))"
+      },
+      {
+        "file": "lib/kb-search.js",
+        "line": 20,
+        "text": "import { readdirSync, readFileSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/kb-search.js",
+        "line": 73,
+        "text": "return readFileSync(absPath, 'utf8').split(/\\r?\\n/)"
       },
       {
         "file": "scripts/rebuild-index.mjs",
         "line": 3,
         "text": "import { readdirSync, readFileSync, writeFileSync, statSync, mkdirSync } from 'node:fs'"
-      },
-      {
-        "file": "scripts/rebuild-index.mjs",
-        "line": 48,
-        "text": "const text = readFileSync(abs, 'utf8')"
-      },
-      {
-        "file": "scripts/rebuild-index.mjs",
-        "line": 61,
-        "text": "mkdirSync(join(KB, 'meta'), { recursive: true })"
       }
     ]
   },
   "agentTools": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "* 从插件目录解析不到）；工具走 ctx.tools.register 的原始 definition"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "export const inject = ['skills', 'tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 89,
+        "text": "'检索关键词，空白分隔多词（如 \"ctx.tools.register\"、\"插件配置 发布\"）；空串或 \"topics\" 返回主题导航。'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 213,
+        "text": "if (typeof ctx.tools?.register === 'function') {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 236,
+        "text": "ctx.effect(() => ctx.tools.register(kbSearchTool(getIndex), 'dsh-plugin-dev-kb: register dsh_kb_search'), 'dsh-plugin-dev-kb: register dsh_kb_search')"
+      }
+    ]
   },
   "childProcess": {
     "hit": false,
@@ -53,7 +79,8 @@
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [
-    "skills"
+    "skills",
+    "tools"
   ],
   "setupHints": [],
   "skippedEntries": []

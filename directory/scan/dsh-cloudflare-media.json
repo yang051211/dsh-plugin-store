@@ -1,0 +1,114 @@
+{
+  "name": "dsh-cloudflare-media",
+  "version": "0.6.5",
+  "scannedAt": "2026-10-30T23:38:25.484Z",
+  "icon": "dsh-cloudflare-media.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 106,
+        "text": "const response = await fetch(path, init)"
+      },
+      {
+        "file": "lib/http-api.js",
+        "line": 151,
+        "text": "const response = await fetch(url, {"
+      },
+      {
+        "file": "lib/http-api.js",
+        "line": 266,
+        "text": "const response = await fetch(`${workersOrigin(access)}/client/v4/accounts/${access.accountId}`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 364,
+        "text": "const response = await fetch(`${API_ORIGIN}/client/v4/accounts`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 575,
+        "text": "response = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "import { mkdir, readFile, writeFile } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 300,
+        "text": "await mkdir(directory, { recursive: true })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 302,
+        "text": "await writeFile(filePath, bytes)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 819,
+        "text": "sourceBytes = new Uint8Array(await readFile(resolveUserPath(exec, args.image)))"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 920,
+        "text": "const bytes = new Uint8Array(await readFile(filePath))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'attachments', 'credentials']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 776,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 837,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 888,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 966,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "attachments",
+    "credentials",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

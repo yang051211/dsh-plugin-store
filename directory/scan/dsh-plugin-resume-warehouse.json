@@ -1,0 +1,78 @@
+{
+  "name": "dsh-plugin-resume-warehouse",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T23:38:35.730Z",
+  "icon": "dsh-plugin-resume-warehouse.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 74,
+        "text": "const response = await fetch(url, { signal: controller.signal })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 10,
+        "text": "import { existsSync, readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "const parsed = JSON.parse(readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 14,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 258,
+        "text": "ctx.effect(() => ctx.tools.register(tool))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 9,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 172,
+        "text": "const child = spawn('bash', [script], { cwd, detached: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 183,
+        "text": "const child = spawn('bash', [script], { cwd, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

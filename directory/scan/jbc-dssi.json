@@ -1,0 +1,106 @@
+{
+  "name": "jbc-dssi",
+  "version": "1.0.2",
+  "scannedAt": "2026-10-30T23:38:50.398Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "pairing/register.js",
+        "line": 35,
+        "text": "const res = await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "index.js",
+        "line": 972,
+        "text": "fs.appendFileSync(logFile, line + '\\n');"
+      },
+      {
+        "file": "index.js",
+        "line": 1273,
+        "text": "cert: fs.readFileSync(config.tls.certFile),"
+      },
+      {
+        "file": "index.js",
+        "line": 1274,
+        "text": "key: fs.readFileSync(config.tls.keyFile),"
+      },
+      {
+        "file": "index.js",
+        "line": 3056,
+        "text": "const buf = await fs.promises.readFile(raw);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2274,
+        "text": "* 而 ctx.tools.register 只校验 output.schema / output.render，不需要 defineTool。"
+      },
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2431,
+        "text": "const tools = ctx.get?.('tools') ?? ctx.tools;"
+      },
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2445,
+        "text": "disposers.push(tools.register({"
+      },
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2465,
+        "text": "disposers.push(tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "pairing/show.js",
+        "line": 31,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "pairing/show.js",
+        "line": 58,
+        "text": "spawn(cmd, args, { detached: true, stdio: 'ignore' }).unref();"
+      },
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2341,
+        "text": "const { execFile } = await import('node:child_process');"
+      },
+      {
+        "file": "vendor/dssAgent/bridge/index.js",
+        "line": 2346,
+        "text": "execFile("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

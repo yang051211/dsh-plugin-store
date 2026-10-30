@@ -1,0 +1,100 @@
+{
+  "name": "dsh-opencode-cli-bridge",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T23:38:41.519Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 190,
+        "text": "res = await fetch(MODELS_URL, { method: \"GET\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 207,
+        "text": "res = await fetch(FILTER_URL, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 250,
+        "text": "res = await fetch(CLI_STATUS_URL, { method: \"GET\" });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog-store.js",
+        "line": 2,
+        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/catalog-store.js",
+        "line": 14,
+        "text": "const parsed = JSON.parse(readFileSync(cachePath, \"utf8\"));"
+      },
+      {
+        "file": "lib/catalog-store.js",
+        "line": 30,
+        "text": "mkdirSync(dirname(cachePath), { recursive: true });"
+      },
+      {
+        "file": "lib/catalog-store.js",
+        "line": 32,
+        "text": "writeFileSync(tmp, JSON.stringify(file), \"utf8\");"
+      },
+      {
+        "file": "lib/cli-bridge.js",
+        "line": 1,
+        "text": "import { statSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/catalog-store.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/catalog-store.js",
+        "line": 41,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/cli-status.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/cli-status.js",
+        "line": 33,
+        "text": "child = spawn(command, args, { stdio: [\"ignore\", \"pipe\", \"pipe\"], windowsHide: true });"
+      },
+      {
+        "file": "lib/run-cli.js",
+        "line": 1,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "@dsh-use/wallpaper-engine",
-  "version": "0.8.2",
-  "scannedAt": "2026-10-26T10:12:10.562Z",
+  "version": "0.10.0",
+  "scannedAt": "2026-10-30T23:38:22.521Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -23,13 +23,13 @@
       },
       {
         "file": "dist/client.js",
-        "line": 2955,
-        "text": "return fetch(alt + wallpaperPath, { mode: \"no-cors\", signal: ac.signal }).then(() => alt, () => null).finally(() => clearTimeout(timer));"
+        "line": 3352,
+        "text": "const r = await fetch(`/wallpapers/properties?id=${encodeURIComponent(id)}`);"
       },
       {
         "file": "dist/client.js",
-        "line": 26123,
-        "text": "const resp = await fetch(url);"
+        "line": 4074,
+        "text": "return (await fetch(opts?.refresh ? \"/wallpapers/list?refresh=1\" : \"/wallpapers/list\")).json();"
       }
     ]
   },
@@ -47,6 +47,11 @@
         "text": "mkdirSync(dir, { recursive: true });"
       },
       {
+        "file": "lib/host/list-cache.js",
+        "line": 2,
+        "text": "import { statSync } from 'node:fs';"
+      },
+      {
         "file": "lib/host/pkg-reader.js",
         "line": 1,
         "text": "import { readFileSync } from 'node:fs';"
@@ -55,11 +60,6 @@
         "file": "lib/host/pkg-reader.js",
         "line": 53,
         "text": "const buf = typeof pkgPathOrBuf === 'string' ? readFileSync(pkgPathOrBuf) : Buffer.from(pkgPathOrBuf);"
-      },
-      {
-        "file": "lib/host/routes.js",
-        "line": 1,
-        "text": "import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';"
       }
     ]
   },
@@ -81,14 +81,19 @@
         "text": "spawn();"
       },
       {
-        "file": "lib/host/steam-paths.js",
-        "line": 11,
-        "text": "import { spawnSync } from 'node:child_process';"
+        "file": "lib/host/media-session.js",
+        "line": 3,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/host/media-session.js",
+        "line": 170,
+        "text": "const spawnWatcher = opts.spawnImpl ?? ((cmd, args) => spawn(cmd, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] }));"
       },
       {
         "file": "lib/host/steam-paths.js",
-        "line": 99,
-        "text": "const r = spawnSync(cmd, args, { encoding: 'utf8', windowsHide: true });"
+        "line": 11,
+        "text": "import { spawnSync } from 'node:child_process';"
       }
     ]
   },
