@@ -1,0 +1,113 @@
+{
+  "name": "dsh-plugin-sql-security-validate",
+  "version": "1.0.0-rc.2",
+  "scannedAt": "2026-10-30T07:08:58.113Z",
+  "icon": "dsh-plugin-sql-security-validate.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 198,
+        "text": "const response = await fetch(AUDIT_ROUTE, {"
+      },
+      {
+        "file": "src/client.js",
+        "line": 244,
+        "text": "const response = await fetch(AUDIT_ROUTE, { method: 'DELETE', credentials: 'same-origin' })"
+      },
+      {
+        "file": "src/client.js",
+        "line": 577,
+        "text": "const response = await fetch(`${AUDIT_ROUTE}?turn=${encodeURIComponent(turn)}`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/audit.js",
+        "line": 18,
+        "text": "import { appendFile, mkdir, rm, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 89,
+        "text": "const handle = await import('node:fs/promises')"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 90,
+        "text": "const text = await handle.readFile(this.path, 'utf8')"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 175,
+        "text": "await mkdir(dirname(this.path), { recursive: true })"
+      },
+      {
+        "file": "src/audit.js",
+        "line": 176,
+        "text": "await appendFile(this.path, line, 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "locale/en.json",
+        "line": 15,
+        "text": "tGuardMode.hint\": \"Uses DSH's monotonic ctx.tools.guard(). A refusal holds regardless of plugin load order, closing the last plugin-layer bypass path. Off by de"
+      },
+      {
+        "file": "locale/zh.json",
+        "line": 15,
+        "text": "\"enableStrictGuardMode.hint\": \"使用 DSH 的单调守卫 ctx.tools.guard()。一旦拒绝，任何后置插件都无法改回放行，彻底封堵多插件覆盖绕过路径。默认关闭，生产环境按需开启。\","
+      },
+      {
+        "file": "src/index.js",
+        "line": 18,
+        "text": "*    即进入 DSH 最高安全级别 `ctx.tools.guard()`——单调、不可被任何后置插件推翻，"
+      },
+      {
+        "file": "src/index.js",
+        "line": 30,
+        "text": "* - `ctx.tools.guard()`（可选）：单调守卫，同步、拒绝后不可推翻。守卫需要同步"
+      },
+      {
+        "file": "src/index.js",
+        "line": 45,
+        "text": "export const inject = ['tools']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "vendor/node-sql-parser/index.cjs"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": [
+    "vendor/node-sql-parser/node_modules/big-integer/LICENSE (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/BigInteger.js (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/BigInteger.min.js (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/bower.json (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/package.json (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/tsconfig.json (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/README.md (outside the package)",
+    "vendor/node-sql-parser/node_modules/big-integer/BigInteger.d.ts (outside the package)"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "name": "dsh-pwsh-plugin",
+  "version": "0.2.16",
+  "scannedAt": "2026-10-30T07:08:55.715Z",
+  "icon": "dsh-pwsh-plugin.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "wsl/acceptance.sh",
+        "line": 80,
+        "text": "chk 'curl 网络' \"$($LL \"$WS\" /bin/bash -c 'curl -s -o /dev/null -w \"%{http_code}\" https://www.bing.com')\" '200'"
+      },
+      {
+        "file": "wsl/acceptance.sh",
+        "line": 104,
+        "text": "chk '-r curl' \"$($LL -r \"$WS\" /bin/bash -c 'curl -s -o /dev/null -w \"%{http_code}\" https://www.bing.com')\" '200'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.mjs",
+        "line": 32,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "plugin/index.mjs",
+        "line": 48,
+        "text": "const SERVER_SOURCE = readFileSync(new URL('./session-server.ps1', import.meta.url), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/index.mjs",
+        "line": 39,
+        "text": "export const inject = ['subprocess', 'tools']"
+      },
+      {
+        "file": "plugin/index.mjs",
+        "line": 354,
+        "text": "// 旧注册不撤的话 ctx.tools.register 会抛 \"already registered\"。"
+      },
+      {
+        "file": "plugin/index.mjs",
+        "line": 355,
+        "text": "ctx.effect(() => ctx.tools.register({"
+      },
+      {
+        "file": "wsl/custom-bash.mjs",
+        "line": 53,
+        "text": "export const inject = ['subprocess', 'tools']"
+      },
+      {
+        "file": "wsl/custom-bash.mjs",
+        "line": 245,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "plugin/session.mjs",
+        "line": 6,
+        "text": "*     spawn(spec): { stdin, stdout, stderr, done, terminate(), waitForExit(signal?) }"
+      },
+      {
+        "file": "plugin/session.mjs",
+        "line": 198,
+        "text": "const handle = subprocess.spawn({"
+      },
+      {
+        "file": "wsl/custom-bash.mjs",
+        "line": 226,
+        "text": "const handle = ctx.subprocess.spawn({"
+      },
+      {
+        "file": "wsl/custom-bash.mjs",
+        "line": 314,
+        "text": "const handle = ctx.subprocess.spawn({"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "wsl/llrun"
+  ],
+  "requiredServices": [
+    "subprocess",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "@lemoncat7/dsh-ssh",
-  "version": "1.13.0",
-  "scannedAt": "2026-10-28T06:59:34.653Z",
+  "version": "1.14.0",
+  "scannedAt": "2026-10-30T07:08:50.814Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -68,8 +68,8 @@
     "evidence": [
       {
         "file": "lib/file-transfer-tools.js",
-        "line": 13,
-        "text": "const disposers = definitions.map(definition => ctx.tools.register(definition));"
+        "line": 14,
+        "text": "const disposers = definitions.map(definition => register ? register(definition) : ctx.tools.register(definition));"
       },
       {
         "file": "lib/index.js",
@@ -78,18 +78,13 @@
       },
       {
         "file": "lib/temporary-access.js",
-        "line": 54,
-        "text": "disposers.push(ctx.tools.register(defineTool({"
-      },
-      {
-        "file": "lib/temporary-access.js",
-        "line": 108,
-        "text": "disposers.push(ctx.tools.register(defineTool({"
+        "line": 19,
+        "text": "export function registerTemporaryAccess(ctx, store, connector, register = tool => ctx.tools.register(tool)) {"
       },
       {
         "file": "lib/tools.js",
-        "line": 26,
-        "text": "const disposers = tools.map(tool => ctx.tools.register(tool));"
+        "line": 43,
+        "text": "disposers.push(ctx.tools.register(sshEntry(store, operations)));"
       }
     ]
   },
@@ -98,7 +93,7 @@
     "evidence": [
       {
         "file": "lib/terminal.js",
-        "line": 16,
+        "line": 17,
         "text": "async spawn(spec) {"
       }
     ]

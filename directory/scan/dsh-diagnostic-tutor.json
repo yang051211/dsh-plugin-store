@@ -1,54 +1,80 @@
 {
   "name": "dsh-diagnostic-tutor",
-  "version": "0.1.1",
-  "scannedAt": "2026-10-26T10:07:06.986Z",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-30T07:08:58.715Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 758,
-        "text": "const response = await fetch(`${BASE}${path}`, {"
+        "line": 94,
+        "text": "fetch(`${BASE$2}/preferences/language`, {"
       },
       {
         "file": "lib/client.js",
-        "line": 831,
-        "text": "const response = await fetch(`${BASE}/export`, { headers: { accept: \"application/json\" } });"
+        "line": 141,
+        "text": "const response = await fetch(`${BASE$2}/preferences`, { headers: { accept: \"application/json\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2805,
+        "text": "const response = await fetch(`${BASE$1}${suffix}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2832,
+        "text": "const response = await fetch(`${API}/source?id=${encodeURIComponent(sourceId)}`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2847,
+        "text": "const response = await fetch(`${API}/plan/task`, {"
       }
     ]
   },
   "fileSystem": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/journal.js",
+        "line": 12,
+        "text": "import { appendFile, mkdir, readFile, rename, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 75,
+        "text": "await mkdir(dirname(file), { recursive: true });"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 85,
+        "text": "await appendFile(file, line, 'utf8');"
+      },
+      {
+        "file": "lib/journal.js",
+        "line": 101,
+        "text": "text = await readFile(file, 'utf8');"
+      },
+      {
+        "file": "lib/sources.js",
+        "line": 3,
+        "text": "import { lstat, readFile } from 'node:fs/promises';"
+      }
+    ]
   },
   "agentTools": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 61,
+        "line": 70,
         "text": "export const inject = ['tools', 'storageDomain'];"
       },
       {
         "file": "lib/tools.js",
-        "line": 1068,
-        "text": "host.tools.register(udtStatusTool(state));"
-      },
-      {
-        "file": "lib/tools.js",
-        "line": 1069,
-        "text": "host.tools.register(udtGoalCreateTool(state));"
-      },
-      {
-        "file": "lib/tools.js",
-        "line": 1070,
-        "text": "host.tools.register(udtMapGetTool(state));"
-      },
-      {
-        "file": "lib/tools.js",
-        "line": 1071,
-        "text": "host.tools.register(udtMapUpdateTool(state));"
+        "line": 1488,
+        "text": "host.tools.register(tool);"
       }
     ]
   },
@@ -60,7 +86,7 @@
     "hit": false,
     "evidence": []
   },
-  "dependencies": 1,
+  "dependencies": 2,
   "minifiedFiles": [],
   "binaryFiles": [],
   "requiredServices": [

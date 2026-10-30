@@ -1,0 +1,118 @@
+{
+  "name": "dsh-mcp-lazyload",
+  "version": "0.4.5",
+  "scannedAt": "2026-10-30T07:08:54.372Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 75,
+        "text": "response = await fetch(url, { headers: { accept: \"application/json\" } });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/release.mjs",
+        "line": 22,
+        "text": "import { readFileSync, writeFileSync, existsSync } from 'node:fs'"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 36,
+        "text": "const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 93,
+        "text": "writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\\n`, 'utf8')"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 200,
+        "text": "? JSON.parse(readFileSync(installed, 'utf8')).version"
+      },
+      {
+        "file": "test/contract.test.mjs",
+        "line": 10,
+        "text": "import { readFileSync } from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 403,
+        "text": "* 官方 dsh-mcp-client 的行为是：重连 maxAttempts 次仍失败后"
+      },
+      {
+        "file": "src/index.js",
+        "line": 6,
+        "text": "* `dsh-mcp-client` 把每个 MCP 工具 `ctx.tools.register()` 进全局工具表，"
+      },
+      {
+        "file": "src/index.js",
+        "line": 12,
+        "text": "* 用官方 API `ctx.tools.restrict({ deny })` 把 `mcp__*` 从模型的可见集合里摘掉，"
+      },
+      {
+        "file": "src/index.js",
+        "line": 64,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "src/index.js",
+        "line": 144,
+        "text": "* `dsh-mcp-client` 的命名空间前缀。"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/release.mjs",
+        "line": 21,
+        "text": "import { execFileSync, spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 79,
+        "text": "const r = spawnSync('node', [join(ROOT, 'test', `${t}.mjs`)], {"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 125,
+        "text": "const r = spawnSync('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', url],"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 148,
+        "text": "spawnSync('sleep', [String(INTERVAL_SEC)], { timeout: INTERVAL_SEC * 1000 + 5000 })"
+      },
+      {
+        "file": "scripts/release.mjs",
+        "line": 189,
+        "text": "const r = spawnSync('npm', ['install', `${pkg.name}@${to}`, '--save-exact',"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,126 @@
+{
+  "name": "dsh-mishu",
+  "version": "0.6.2",
+  "scannedAt": "2026-10-30T07:08:52.059Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 41,
+        "text": "const res = await fetch(new URL(`/api/dsh-mishu${path}`, document.baseURI), {"
+      },
+      {
+        "file": "lib/core/github/client.js",
+        "line": 39,
+        "text": "const response = await this.fetch(url, {"
+      },
+      {
+        "file": "lib/core/mail/imap.js",
+        "line": 85,
+        "text": "for await (const fetched of client.fetch(uids, { uid: true, envelope: true, internalDate: true, bodyStructure: true, headers: HEADERS }, { uid: true })) {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/exec.js",
+        "line": 11,
+        "text": "import { accessSync, constants } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 28,
+        "text": "import { readFileSync, readlinkSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 62,
+        "text": "return readFileSync(`/proc/${ppid}/cmdline`, 'utf8').split('\\0').filter(Boolean);"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 138,
+        "text": "\"const fs = require('node:fs')\","
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 142,
+        "text": "\"const note = (line) => { try { fs.appendFileSync(log, new Date().toISOString() + ' ' + line + '\\\\n') } catch {} }\","
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/dsh/tools.js",
+        "line": 70,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh/tools.js",
+        "line": 100,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh/tools.js",
+        "line": 107,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh/tools.js",
+        "line": 122,
+        "text": "tools.register(defineTool({"
+      },
+      {
+        "file": "lib/dsh/tools.js",
+        "line": 139,
+        "text": "tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/core/exec.js",
+        "line": 10,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/exec.js",
+        "line": 58,
+        "text": "const child = execFile(file, args, { timeout, windowsHide: true, maxBuffer: 1 << 20 }, (error, stdout, stderr) => {"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 27,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 125,
+        "text": "? `spawnSync(${JSON.stringify(tools.osascript)}, ['-e', ${JSON.stringify(`tell ${app} to quit`)}], { timeout: 180000 })`"
+      },
+      {
+        "file": "lib/core/restart.js",
+        "line": 127,
+        "text": "? `spawnSync('taskkill', ['/PID', String(pid)], { windowsHide: true })`"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

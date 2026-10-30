@@ -1,0 +1,89 @@
+{
+  "name": "dsh-session-memory",
+  "version": "0.3.1",
+  "scannedAt": "2026-10-30T07:08:57.987Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 29,
+        "text": "} from 'node:fs';"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 96,
+        "text": "mkdirSync(dir, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 111,
+        "text": "writeFileSync(tmp, content, { encoding: 'utf8', mode: 0o600 });"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 117,
+        "text": "unlinkSync(tmp);"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 458,
+        "text": "raw = readFileSync(this.sessionPath, 'utf8');"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/guard.js",
+        "line": 2,
+        "text": "* guard.js — 秘密片段切分 + `ctx.tools.guard` 分级外泄拦截 + project memory 过滤"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "* `ctx.tools.guard` 分级（balanced/strict/off）只拦危险外发。"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 51,
+        "text": "export const inject = ['tools', 'systemPrompt', 'llm', 'skills'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 220,
+        "text": "effect(() => ctx.tools.register(definition), `dsh-session-memory: tool ${definition.name}`);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 226,
+        "text": "return ctx.tools.guard(makeGuard({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "skills",
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

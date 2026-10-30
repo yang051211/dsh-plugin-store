@@ -1,0 +1,112 @@
+{
+  "name": "dsh-android-tool",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T07:08:59.083Z",
+  "icon": "dsh-android-tool.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 179,
+        "text": "const response = await fetch(url, options)"
+      },
+      {
+        "file": "client.js",
+        "line": 756,
+        "text": "ws = new WebSocket(`${scheme}://${window.location.host}${API}/video.ws`)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 11,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/scrcpy-stream.js",
+        "line": 16,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/scrcpy-window.js",
+        "line": 7,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 7,
+        "text": "import { existsSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 8,
+        "text": "import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 23,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 47,
+        "text": "ctx.effect(() => ctx.tools.register(definition), `dsh-android-tool: ${definition.name}`)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/adb.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 62,
+        "text": "const killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true })"
+      },
+      {
+        "file": "lib/adb.js",
+        "line": 89,
+        "text": "child = spawn(file, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] })"
+      },
+      {
+        "file": "lib/logcat.js",
+        "line": 10,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/logcat.js",
+        "line": 105,
+        "text": "const killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "scrcpy-win64-v5.0.1/adb.exe",
+    "scrcpy-win64-v5.0.1/AdbWinApi.dll",
+    "scrcpy-win64-v5.0.1/AdbWinUsbApi.dll"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

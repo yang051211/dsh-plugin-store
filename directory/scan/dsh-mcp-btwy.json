@@ -1,0 +1,108 @@
+{
+  "name": "dsh-mcp-btwy",
+  "version": "1.0.1",
+  "scannedAt": "2026-10-30T07:08:53.732Z",
+  "icon": "dsh-mcp-btwy.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 145,
+        "text": "const response = await fetch(endpoint.url, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 235,
+        "text": "const response = await fetch(base + ROUTE, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 243,
+        "text": "const response = await fetch(base + ROUTE, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 25,
+        "text": "import { readFileSync } from 'node:fs'"
+      },
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 57,
+        "text": "fileValue = JSON.parse(readFileSync(endpointFile, 'utf8'))"
+      },
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 65,
+        "text": "const file = fromEnv && envToken ? undefined : readFile()"
+      },
+      {
+        "file": "index.js",
+        "line": 15,
+        "text": "import { readFileSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 16,
+        "text": "import { chmod, mkdir, writeFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 91,
+        "text": "/** The label this bridge reports to the DSH endpoint, sent as `x-dsh-mcp-client`. */"
+      },
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 151,
+        "text": "'x-dsh-mcp-client': clientLabel,"
+      },
+      {
+        "file": "index.js",
+        "line": 136,
+        "text": ": join(dshHome, 'mcp', 'dsh-mcp-clients.json')"
+      },
+      {
+        "file": "lib/capabilities/definitions.js",
+        "line": 505,
+        "text": "'created. The label comes from the `x-dsh-mcp-client` request header, else the `clientInfo` block',"
+      },
+      {
+        "file": "lib/clients.js",
+        "line": 6,
+        "text": "* reads the evidence a client actually sends — an explicit `x-dsh-mcp-client`"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/dsh-mcp-stdio.mjs",
+        "line": 24,
+        "text": "import { execFileSync } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

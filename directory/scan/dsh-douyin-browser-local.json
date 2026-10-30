@@ -1,7 +1,7 @@
 {
   "name": "dsh-douyin-browser-local",
-  "version": "1.4.5",
-  "scannedAt": "2026-10-26T10:05:05.091Z",
+  "version": "1.4.6",
+  "scannedAt": "2026-10-30T07:08:46.097Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -13,7 +13,7 @@
       },
       {
         "file": "core.mjs",
-        "line": 108,
+        "line": 222,
         "text": "const response = await fetch(`http://127.0.0.1:${PORT}/json/version`, { signal: AbortSignal.timeout(1200) });"
       },
       {
@@ -43,7 +43,7 @@
       },
       {
         "file": "api-agent.mjs",
-        "line": 30,
+        "line": 31,
         "text": "const parsed = parseEnv(fs.readFileSync(envFile, 'utf8'));"
       },
       {
@@ -68,12 +68,12 @@
     "evidence": [
       {
         "file": "dsh-plugin.mjs",
-        "line": 19,
+        "line": 20,
         "text": "export const inject = ['tools'];"
       },
       {
         "file": "dsh-plugin.mjs",
-        "line": 249,
+        "line": 251,
         "text": "for (const tool of definitions) disposers.push(ctx.tools.register(tool));"
       },
       {
@@ -97,13 +97,18 @@
     "hit": true,
     "evidence": [
       {
+        "file": "browser-host.mjs",
+        "line": 4,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
         "file": "core.mjs",
         "line": 4,
         "text": "import { spawn } from 'node:child_process';"
       },
       {
         "file": "core.mjs",
-        "line": 134,
+        "line": 248,
         "text": "const child = spawn(resolveNodeExecutable(), [path.join(ROOT, 'browser-host.mjs'), PROFILE, CONTROL, String(PORT)], {"
       },
       {
@@ -115,11 +120,6 @@
         "file": "media/index.mjs",
         "line": 7,
         "text": "import { spawn } from 'node:child_process';"
-      },
-      {
-        "file": "media/index.mjs",
-        "line": 115,
-        "text": "const child = spawn(executable, args, { windowsHide: true, shell: false, env: childEnvironment, stdio: ['pipe','pipe','pipe'] });"
       }
     ]
   },

@@ -1,0 +1,106 @@
+{
+  "name": "dsh-connect-doubao",
+  "version": "0.2.0",
+  "scannedAt": "2026-10-30T07:08:54.962Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/cli-doctor.js",
+        "line": 91,
+        "text": "const health = await fetch(`${base}/healthz`, { headers: authed });"
+      },
+      {
+        "file": "lib/cli-doctor.js",
+        "line": 92,
+        "text": "const unauthorized = await fetch(`${base}/healthz`, { headers: { Authorization: \"Bearer wrong-secret\" } });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 201,
+        "text": "const response = await fetch(DOUBAO_QUOTA_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 212,
+        "text": "const response = await fetch(DOUBAO_QUOTA_PATH, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 222,
+        "text": "const response = await fetch(DOUBAO_CATALOG_PATH, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 3,
+        "text": "import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 320,
+        "text": "writeFileSync(scriptPath, script, \"utf8\");"
+      },
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 352,
+        "text": "rmSync(scratch, {"
+      },
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 392,
+        "text": "mkdirSync(dirname(credentialCachePath()), { recursive: true });"
+      },
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 393,
+        "text": "writeFileSync(credentialCachePath(), sealed);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 6,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/doubao-quota-XUFfDd1i.js",
+        "line": 321,
+        "text": "const result = spawnSync(\"powershell.exe\", ["
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [
+    {
+      "file": "README.en.md",
+      "line": 155,
+      "text": "npm install -g dsh-connect-doubao"
+    },
+    {
+      "file": "README.md",
+      "line": 135,
+      "text": "npm install -g dsh-connect-doubao"
+    }
+  ],
+  "skippedEntries": []
+}

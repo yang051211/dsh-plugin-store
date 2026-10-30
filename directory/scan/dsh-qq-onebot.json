@@ -1,7 +1,7 @@
 {
   "name": "dsh-qq-onebot",
-  "version": "1.2.2",
-  "scannedAt": "2026-10-27T13:14:10.016Z",
+  "version": "1.2.8",
+  "scannedAt": "2026-10-30T07:08:48.161Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -23,12 +23,12 @@
       },
       {
         "file": "src/inbound.js",
-        "line": 410,
+        "line": 438,
         "text": "const res = await fetch(url, { signal: AbortSignal.timeout(20000) })"
       },
       {
         "file": "src/index.js",
-        "line": 262,
+        "line": 275,
         "text": "// 没配地址就别去连——空 url 会让 `new WebSocket('')` 抛 Invalid URL，然后静默重连到天荒地老；"
       }
     ]
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "src/tools.js",
-        "line": 115,
+        "line": 134,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 162,
+        "line": 181,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 207,
+        "line": 248,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 260,
+        "line": 328,
         "text": "tools.register({"
       },
       {
         "file": "src/tools.js",
-        "line": 319,
+        "line": 381,
         "text": "tools.register({"
       }
     ]
@@ -98,13 +98,23 @@
     "evidence": [
       {
         "file": "src/inbound.js",
-        "line": 19,
+        "line": 20,
         "text": "import { spawn } from 'node:child_process'"
       },
       {
         "file": "src/inbound.js",
-        "line": 44,
+        "line": 45,
         "text": "child = spawn(py, model ? [script, wavPath, model] : [script, wavPath], { windowsHide: true })"
+      },
+      {
+        "file": "test/run-all.mjs",
+        "line": 18,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "test/run-all.mjs",
+        "line": 38,
+        "text": "const r = spawnSync(process.execPath, [join(here, file)], { cwd: root, encoding: 'utf8' })"
       }
     ]
   },

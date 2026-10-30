@@ -1,0 +1,140 @@
+{
+  "name": "dsh-deepmoyu",
+  "version": "2.4.2",
+  "scannedAt": "2026-10-30T07:08:57.694Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 72,
+        "text": "const jget = async (p) => asJson(await fetch(API + p, { credentials: 'same-origin' }))"
+      },
+      {
+        "file": "client.js",
+        "line": 73,
+        "text": "const jpost = async (p, body) => asJson(await fetch(API + p, {"
+      },
+      {
+        "file": "index.js",
+        "line": 4472,
+        "text": "* 🔴 2026-10-14 事故（使用者那边表现为\"DSH 突然崩了、网页 Failed to fetch (gateway/internal)\"）："
+      },
+      {
+        "file": "lib/login.mjs",
+        "line": 47,
+        "text": "const r = await fetch(SPI, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(15_000) })"
+      },
+      {
+        "file": "lib/login.mjs",
+        "line": 56,
+        "text": "const r = await fetch(GEN, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(20_000) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": " createReadStream, existsSync, lstatSync, mkdirSync, openSync, readdirSync, readFileSync, readSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 342,
+        "text": "try { myVer = String(JSON.parse(readFileSync(join(pluginDir, 'package.json'), 'utf8')).version || '') } catch { myVer = '' }"
+      },
+      {
+        "file": "index.js",
+        "line": 385,
+        "text": "writeFileSync(overrideFile, JSON.stringify(cur, null, 2), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 390,
+        "text": "mkdirSync(outDir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 394,
+        "text": "try { appendFileSync(logFile, line + '\\n', 'utf8') } catch { /* 日志写不进去也不致命 */ }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 131,
+        "text": "export const inject = ['webServer', 'tools', 'settings']"
+      },
+      {
+        "file": "index.js",
+        "line": 3985,
+        "text": "yml.push('- insert:', '    - id: mcp-dafeiyu-learn-review', \"      name: '@deepseek-ai/dsh-mcp-client'\", '      config:',"
+      },
+      {
+        "file": "index.js",
+        "line": 3992,
+        "text": "yml.push('- insert:', '    - id: mcp-dafeiyu-background', \"      name: '@deepseek-ai/dsh-mcp-client'\", '      config:',"
+      },
+      {
+        "file": "lib/mcp.mjs",
+        "line": 4,
+        "text": "* 为什么不用 `@deepseek-ai/dsh-mcp-client`：那是个\"把 MCP 挂成 dsh 工具\"的完整插件，"
+      },
+      {
+        "file": "lib/tool-scope.mjs",
+        "line": 10,
+        "text": "return receiver && receiver !== ctx && registry && registry !== ctx.tools && !invalidContexts.has(receiver)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 3858,
+        "text": "const child = spawn(command.command, command.args, {"
+      },
+      {
+        "file": "index.js",
+        "line": 4136,
+        "text": "const killer = spawn('taskkill', ['/PID', String(child.pid), '/T', '/F'], { windowsHide: true, stdio: 'ignore' })"
+      },
+      {
+        "file": "index.js",
+        "line": 4294,
+        "text": "const child = spawn(dsh.command, args, {"
+      },
+      {
+        "file": "index.js",
+        "line": 6044,
+        "text": "c = spawn(cmd, args, { windowsHide: true, stdio: 'ignore' })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "settings",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

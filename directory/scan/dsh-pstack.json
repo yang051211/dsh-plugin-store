@@ -1,0 +1,105 @@
+{
+  "name": "dsh-pstack",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T07:08:56.200Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 2,
+        "text": "import { existsSync, readFileSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 19,
+        "text": ".update(readFileSync(join(scriptsDirectory, \"package.json\")))"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 21,
+        "text": ".update(readFileSync(join(scriptsDirectory, \"bun.lock\")))"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 30,
+        "text": "readFileSync(installKeyPath, \"utf8\").trim() === installKey"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 52,
+        "text": "writeFileSync(installKeyPath, `${installKey}\\n`);"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cordis.patch.yml",
+        "line": 12,
+        "text": "# The `pstack-subagent` row requires `ctx.tools` and `ctx.subagents`, also in"
+      },
+      {
+        "file": "dist/cordis.patch.yml",
+        "line": 12,
+        "text": "# The `pstack-subagent` row requires `ctx.tools` and `ctx.subagents`, also in"
+      },
+      {
+        "file": "dist/subagent.mjs",
+        "line": 231,
+        "text": "const inject = [\"tools\", \"subagents\"];"
+      },
+      {
+        "file": "dist/subagent.mjs",
+        "line": 431,
+        "text": "ctx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 35,
+        "text": "const result = Bun.spawnSync("
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/bootstrap.ts",
+        "line": 54,
+        "text": "const restarted = Bun.spawnSync([process.execPath, ...process.argv.slice(1)], {"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/check-plan.test.ts",
+        "line": 4,
+        "text": "import { spawnSync } from \"node:child_process\";"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/check-plan.test.ts",
+        "line": 58,
+        "text": "const result = spawnSync(\"node\", [checker, file], { encoding: \"utf8\" });"
+      },
+      {
+        "file": "assets/skills/poteto-mode/scripts/orch/orch.test.ts",
+        "line": 66,
+        "text": "const result = Bun.spawnSync([\"git\", \"-C\", repo, ...args]);"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

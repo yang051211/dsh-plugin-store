@@ -1,0 +1,110 @@
+{
+  "name": "dsh-genshin-pet",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-30T07:08:59.604Z",
+  "icon": "dsh-genshin-pet.png",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 718,
+        "text": "const res = await fetch(url, { cache: \"no-store\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 854,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1614,
+        "text": "const res = await fetch(baseUrl, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2252,
+        "text": "const r = await fetch(\"/dsh-pet-7340/config\");"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 3074,
+        "text": "fetch(\"/dsh-pet-7340/config/meta\").then((r) => r.ok ? r.json() : null).then((p) => setPaths(p)).catch(() => console.warn(\"[dsh-pet] 读取配置文件路径失败\"));"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "nc, createReadStream, existsSync, fstatSync, mkdirSync, promises, readFileSync, readdirSync, realpathSync, renameSync, statSync, writeFileSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2,
+        "text": "import { appendFile, mkdir, readFile, stat, writeFile } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 498,
+        "text": "const ensureDir = () => dirReady ?? (dirReady = mkdir(dirname(file), { recursive: true }).then(() => void 0).catch(() => void 0));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 525,
+        "text": "if (droppedNote > 0) await appendFile(file, formatLogLine(\"warn\", `日志缓冲溢出，丢弃 ${droppedNote} 条`, now()), \"utf8\");"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 526,
+        "text": "await appendFile(file, chunk, \"utf8\");"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7131,
+        "text": "* Node/Electron 的 fs 能读它（读了返回内容），但 `spawn('pwsh', ['-File', <asar 内路径>])`"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 7198,
+        "text": "const child = spawn(ps, ["
+      },
+      {
+        "file": "lib/index.js",
+        "line": 8533,
+        "text": "const child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/node-CKdwitJ-.js",
+        "line": 6,
+        "text": "import * as cp from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 5,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

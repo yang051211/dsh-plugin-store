@@ -1,0 +1,124 @@
+{
+  "name": "dsh-plugin-corpus",
+  "version": "1.4.2",
+  "scannedAt": "2026-10-30T07:08:56.889Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 671,
+        "text": "response = await fetch(path, options || {})"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/access.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/access.js",
+        "line": 97,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 17,
+        "text": "import fsp from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 54,
+        "text": "const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 37,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 136,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 175,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 192,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 207,
+        "text": "ctx.tools.register(defineTool({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 20,
+        "text": "import { execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 13,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 136,
+        "text": "execFile(executable, args, {"
+      },
+      {
+        "file": "lib/extract.js",
+        "line": 296,
+        "text": "execFile(executable, ['close', file], { windowsHide: true, timeout: 30000, env }, () => resolve())"
+      },
+      {
+        "file": "lib/panel.js",
+        "line": 19,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [
+    "vendor/officecli/officecli.exe",
+    "vendor/pdftotext/libgcc_s_seh-1.dll",
+    "vendor/pdftotext/libstdc++-6.dll",
+    "vendor/pdftotext/libwinpthread-1.dll",
+    "vendor/pdftotext/pdftotext.exe"
+  ],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

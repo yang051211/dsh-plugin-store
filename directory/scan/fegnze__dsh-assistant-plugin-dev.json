@@ -1,0 +1,115 @@
+{
+  "name": "@fegnze/dsh-assistant-plugin-dev",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T07:08:56.226Z",
+  "icon": "fegnze__dsh-assistant-plugin-dev.svg",
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host-runner.mjs",
+        "line": 10,
+        "text": "const fs = get(ctx, 'fs');"
+      },
+      {
+        "file": "src/host-runner.mjs",
+        "line": 67,
+        "text": "const fs = get(ctx, 'fs'), subprocess = get(ctx, 'subprocess');"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 6,
+        "text": "export const inject = ['dshAssistants', 'subprocess', 'fs', 'sandboxPolicy'];"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 40,
+        "text": "const fs = ctx.get('fs');"
+      },
+      {
+        "file": "test/host.test.mjs",
+        "line": 3,
+        "text": "import fs from 'node:fs/promises';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "test/native.test.mjs",
+        "line": 32,
+        "text": "assert.deepEqual(ctx.tools.schemas(a).map(x => x.name).sort(), ['dsh_dev_operate', 'dsh_dev_query']);"
+      },
+      {
+        "file": "test/native.test.mjs",
+        "line": 33,
+        "text": "assert.deepEqual(ctx.tools.schemas(b), []);"
+      },
+      {
+        "file": "test/native.test.mjs",
+        "line": 42,
+        "text": "assert.deepEqual(ctx.tools.schemas(a), []);"
+      },
+      {
+        "file": "test/native.test.mjs",
+        "line": 65,
+        "text": "const pending = ctx.tools.get('dsh_dev_query', agent).execute({ action: 'projects' }, { signal: new AbortController().signal });"
+      },
+      {
+        "file": "test/native.test.mjs",
+        "line": 70,
+        "text": "assert.deepEqual(ctx.tools.schemas(agent), []);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "scripts/test-python.mjs",
+        "line": 2,
+        "text": "import { spawn } from 'node:child_process';"
+      },
+      {
+        "file": "scripts/test-python.mjs",
+        "line": 6,
+        "text": "const child = spawn(executable, ['-B', '-m', 'unittest', 'discover', '-s', 'test', '-v'], {"
+      },
+      {
+        "file": "src/host-runner.mjs",
+        "line": 113,
+        "text": "const handle = subprocess.spawn({ argv, cwd: packagePath, graceMs: 1500,"
+      },
+      {
+        "file": "test/host.test.mjs",
+        "line": 33,
+        "text": "subprocess: { async resolveExecutable(value) { return value; }, spawn(spec) {"
+      },
+      {
+        "file": "test/native.test.mjs",
+        "line": 57,
+        "text": "ctx.provide('subprocess', { resolveExecutable: async () => '/test/python', spawn() {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "dshAssistants",
+    "fs",
+    "sandboxPolicy",
+    "subprocess"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,99 @@
+{
+  "name": "dsh-plugin-locked-chats",
+  "version": "0.1.1",
+  "scannedAt": "2026-10-30T07:08:55.764Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 39,
+        "text": "async fetch(request) {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 62,
+        "text": "requestBody: 'streaming', fetch: request => api.fetch(request) });"
+      },
+      {
+        "file": "lib/settings-page.js",
+        "line": 29,
+        "text": "  const response = await fetch('/api/locked-chats/credentials', { method:'POST', cache:'no-store', credentials:'same-origin', headers:{ 'content-type':'applicat"
+      },
+      {
+        "file": "lib/settings-page.js",
+        "line": 114,
+        "text": "  if (windowToken) fetch('/api/locked-chats/credentials', {method:'POST', keepalive:true, credentials:'same-origin', headers:{'content-type':'application/json',"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/credential-store.js",
+        "line": 3,
+        "text": "import { chmodSync, mkdirSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/credential-store.js",
+        "line": 33,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/hidden-chats.js",
+        "line": 3,
+        "text": "import { mkdirSync, chmodSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/hidden-chats.js",
+        "line": 13,
+        "text": "mkdirSync(directory, { recursive: true, mode: 0o700 });"
+      },
+      {
+        "file": "lib/memory-isolation.js",
+        "line": 3,
+        "text": "import { mkdirSync, chmodSync } from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 10,
+        "text": "export const inject = ['connection', 'workspaceRegistry', 'sessions', 'sessionPersistence', 'tools', 'systemPrompt'];"
+      },
+      {
+        "file": "lib/memory-isolation.js",
+        "line": 93,
+        "text": "const disposeTool = host.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "sessionPersistence",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "workspaceRegistry"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

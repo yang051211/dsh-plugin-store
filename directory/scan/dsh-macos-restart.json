@@ -1,0 +1,97 @@
+{
+  "name": "dsh-macos-restart",
+  "version": "0.2.5",
+  "scannedAt": "2026-10-30T07:08:52.164Z",
+  "icon": "dsh-macos-restart.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 773,
+        "text": "const response = await fetch(`${API}/status`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 849,
+        "text": "const response = await fetch(`${API}/open-logs`, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 878,
+        "text": "const response = await fetch(`${API}/restart`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 12,
+        "text": "} from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 454,
+        "text": "writeFileSync(handoffPath, `${JSON.stringify(handoff, null, 2)}\\n`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 469,
+        "text": "appendFileSync("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 493,
+        "text": "writeFileSync(handoffPath, `${JSON.stringify(handoff, null, 2)}\\n`, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 576,
+        "text": "writeFileSync(tmp, `${JSON.stringify(state, null, 2)}\\n`, { mode: 0o600 });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 1,
+        "text": "import { execFileSync, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 502,
+        "text": "const helper = spawn("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 644,
+        "text": "const child = spawn('/usr/bin/open', command, {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 682,
+        "text": "const child = spawn('/bin/sh', [HELPER_PATH, ...args], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

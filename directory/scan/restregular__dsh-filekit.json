@@ -1,0 +1,70 @@
+{
+  "name": "@restregular/dsh-filekit",
+  "version": "0.2.6",
+  "scannedAt": "2026-10-30T07:08:51.884Z",
+  "icon": "restregular__dsh-filekit.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 482,
+        "text": "const response = await fetch(API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/filekit.js",
+        "line": 14,
+        "text": "import fs from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/filekit.js",
+        "line": 106,
+        "text": "/** @param {string} abs @returns {Promise<import('node:fs').Stats | undefined>} */"
+      },
+      {
+        "file": "lib/filekit.js",
+        "line": 115,
+        "text": "/** @param {string} abs @returns {Promise<import('node:fs').Stats | undefined>} */"
+      },
+      {
+        "file": "lib/filekit.js",
+        "line": 297,
+        "text": "await fs.writeFile(tmp, text, 'utf8');"
+      },
+      {
+        "file": "lib/filekit.js",
+        "line": 301,
+        "text": "await fs.rm(tmp, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 648,
+        "text": "scoped.effect(() => scoped.tools.register(filekitTool(scoped)), 'dsh-filekit: filekit tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

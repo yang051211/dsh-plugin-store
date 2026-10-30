@@ -1,0 +1,83 @@
+{
+  "name": "dsh-memory-guard",
+  "version": "0.1.4",
+  "scannedAt": "2026-10-30T07:08:56.902Z",
+  "icon": "dsh-memory-guard.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 23,
+        "text": "const response = await fetch('/memory-guard/stats', { cache: 'no-store' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "bin/vacuum-cli.mjs",
+        "line": 7,
+        "text": "import { stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "index.js",
+        "line": 21,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 310,
+        "text": "await fsp.rm(out, { force: true })"
+      },
+      {
+        "file": "lib/vacuum.js",
+        "line": 19,
+        "text": "import { promises as fsp } from 'node:fs'"
+      },
+      {
+        "file": "lib/vacuum.js",
+        "line": 75,
+        "text": "const buf = await fsp.readFile(filePath)"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 26,
+        "text": "export const inject = ['tools', 'commands']"
+      },
+      {
+        "file": "index.js",
+        "line": 250,
+        "text": "const offGuard = ctx.tools.guard((exec) => {"
+      },
+      {
+        "file": "index.js",
+        "line": 411,
+        "text": "const offTool = ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "commands",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

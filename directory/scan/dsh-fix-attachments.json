@@ -1,0 +1,77 @@
+{
+  "name": "dsh-fix-attachments",
+  "version": "0.1.0",
+  "scannedAt": "2026-10-30T07:08:59.197Z",
+  "icon": null,
+  "network": {
+    "hit": false,
+    "evidence": []
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cli/src/cli.mjs",
+        "line": 14,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "cli/src/repair.mjs",
+        "line": 10,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "cli/src/repair.mjs",
+        "line": 92,
+        "text": "fs.appendFileSync(session.file, frame);"
+      },
+      {
+        "file": "cli/src/repair.mjs",
+        "line": 141,
+        "text": "const { frames } = scanFrames(fs.readFileSync(artifact));"
+      },
+      {
+        "file": "cli/src/session.mjs",
+        "line": 8,
+        "text": "import fs from \"node:fs\";"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "cli/src/cli.mjs",
+        "line": 17,
+        "text": "import { execSync } from \"node:child_process\";"
+      },
+      {
+        "file": "cli/src/cli.mjs",
+        "line": 82,
+        "text": "const out = execSync('tasklist /FI \"IMAGENAME eq DeepSeek Harness.exe\" /NH', {"
+      },
+      {
+        "file": "cli/src/cli.mjs",
+        "line": 88,
+        "text": "const out = execSync(\"pgrep -fl 'DeepSeek Harness|dsh web' || true\", { encoding: \"utf8\" });"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "sessions"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

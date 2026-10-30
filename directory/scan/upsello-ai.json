@@ -1,15 +1,35 @@
 {
   "name": "upsello-ai",
-  "version": "0.1.9",
-  "scannedAt": "2026-10-29T23:42:08.108Z",
+  "version": "0.1.12",
+  "scannedAt": "2026-10-30T07:08:51.045Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
+        "file": "client.js",
+        "line": 38,
+        "text": "const res = await fetch(API_PATH, {"
+      },
+      {
         "file": "lib/registry.mjs",
         "line": 93,
         "text": "const response = await fetch(`${base}${path}`, {"
+      },
+      {
+        "file": "login.js",
+        "line": 9,
+        "text": "llo\";async function gc(t,l){let e=await fetch(U2,{method:\"POST\",credentials:\"same-origin\",headers:{\"content-type\":\"application/json\"},body:JSON.stringify({endpo"
+      },
+      {
+        "file": "src/host/auth.js",
+        "line": 243,
+        "text": "res = await fetch(apiUrl('/auth/sign_in'), {"
+      },
+      {
+        "file": "src/host/auth.js",
+        "line": 369,
+        "text": "const res = await fetch(apiUrl('/auth/google/auth_url'), {"
       }
     ]
   },
@@ -27,19 +47,19 @@
         "text": "writeFileSync(manifestPath, JSON.stringify(manifest, undefined, 2) + '\\n', { mode: 0o600 })"
       },
       {
-        "file": "lib/runtime.mjs",
-        "line": 3,
-        "text": "import { accessSync, constants, readFileSync } from 'node:fs'"
+        "file": "lib/persona.mjs",
+        "line": 19,
+        "text": "import { copyFileSync, existsSync, readFileSync, renameSync, writeFileSync } from 'node:fs'"
       },
       {
-        "file": "lib/runtime.mjs",
-        "line": 113,
+        "file": "lib/persona.mjs",
+        "line": 35,
         "text": "return JSON.parse(readFileSync(path, 'utf8').replace(/^\\uFEFF/, ''))"
       },
       {
-        "file": "lib/runtime.mjs",
-        "line": 122,
-        "text": "return createHash('sha256').update(readFileSync(path)).digest('hex')"
+        "file": "lib/persona.mjs",
+        "line": 75,
+        "text": "holder = JSON.parse(readFileSync(path, 'utf8'))"
       }
     ]
   },
@@ -48,12 +68,12 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 13,
-        "text": "export const inject = ['tools', 'systemPrompt']"
+        "line": 16,
+        "text": "export const inject = ['tools', 'systemPrompt', 'connection', 'webServer']"
       },
       {
         "file": "src/host/tools.js",
-        "line": 17,
+        "line": 19,
         "text": "ctx.tools.register({"
       }
     ]
@@ -78,11 +98,15 @@
     "evidence": []
   },
   "dependencies": 1,
-  "minifiedFiles": [],
+  "minifiedFiles": [
+    "login.js"
+  ],
   "binaryFiles": [],
   "requiredServices": [
+    "connection",
     "systemPrompt",
-    "tools"
+    "tools",
+    "webServer"
   ],
   "setupHints": [],
   "skippedEntries": []

@@ -1,0 +1,92 @@
+{
+  "name": "dsh-plugin-star-radar",
+  "version": "3.2.0",
+  "scannedAt": "2026-10-30T07:08:57.799Z",
+  "icon": "dsh-plugin-star-radar.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 179,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "lib/client.src.js",
+        "line": 179,
+        "text": "return fetch(API + path, {"
+      },
+      {
+        "file": "lib/fetcher.js",
+        "line": 37,
+        "text": "return await fetch(url, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 11,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 255,
+        "text": "void fs.appendFile(path.join(service.dataDir, 'rejected.log'), line).catch(() => {})"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 3,
+        "text": "import { promises as fs } from 'node:fs'"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 90,
+        "text": "await fs.mkdir(this.dataDir, { recursive: true })"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 129,
+        "text": "pkg = JSON.parse(await fs.readFile(path.join(this.profileDir, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 871,
+        "text": "child = spawn(command, args, {"
+      },
+      {
+        "file": "lib/service.js",
+        "line": 912,
+        "text": "const taskkill = spawn('taskkill', ['/pid', String(child.pid), '/t', '/f'], { stdio: 'ignore', windowsHide: true })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,114 @@
+{
+  "name": "@fegnze/dsh-capability-manager",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-30T07:08:56.273Z",
+  "icon": "fegnze__dsh-capability-manager.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/client.js",
+        "line": 126,
+        "text": "const r=await fetch(url,{credentials:'same-origin',headers:{'x-dsh-capability-manager':'1'}}),p=await r.json();"
+      },
+      {
+        "file": "src/client.js",
+        "line": 130,
+        "text": "    const r=await fetch('/dsh-capability-manager/api',{method:'POST',credentials:'same-origin',headers:{'x-dsh-capability-manager':'1','content-type':'applicati"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/host.mjs",
+        "line": 13,
+        "text": "ct = ['webServer','connection','skills','agents','workingDirectory','agentPresets','fs','tools','configEditor','sessions','sessionProjections','storageDomain'];"
+      },
+      {
+        "file": "src/skills/local-store.mjs",
+        "line": 1,
+        "text": "import * as nodeFs from 'node:fs/promises';"
+      },
+      {
+        "file": "src/skills/local-store.mjs",
+        "line": 2,
+        "text": "import { constants } from 'node:fs';"
+      },
+      {
+        "file": "src/skills/local-store.mjs",
+        "line": 83,
+        "text": "try { await fs.mkdir(state, { mode: 0o700 }); } catch (e) { if (e.code !== 'EEXIST') throw e; }"
+      },
+      {
+        "file": "src/skills/local-store.mjs",
+        "line": 89,
+        "text": "async function readFile(p, stat) {"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/assistant-control.mjs",
+        "line": 68,
+        "text": "return ctx.tools.register({"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 2,
+        "text": "import * as McpClient from '@deepseek-ai/dsh-mcp-client';"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 13,
+        "text": "export const inject = ['webServer','connection','skills','agents','workingDirectory','agentPresets','fs','tools','configEditor','sessions','sessionProjections',"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 61,
+        "text": ".filter(entry => entry.options.name === '@deepseek-ai/dsh-mcp-client' && entry.fiber !== ctx.fiber)"
+      },
+      {
+        "file": "src/host.mjs",
+        "line": 63,
+        "text": "tools: () => ctx.tools.schemas(),"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/skills/local-store.mjs",
+        "line": 5,
+        "text": "import { execFile } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 3,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agentPresets",
+    "agents",
+    "configEditor",
+    "connection",
+    "fs",
+    "sessionProjections",
+    "sessions",
+    "skills",
+    "storageDomain",
+    "tools",
+    "webServer",
+    "workingDirectory"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

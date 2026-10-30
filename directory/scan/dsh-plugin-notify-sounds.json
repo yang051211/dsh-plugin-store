@@ -1,35 +1,35 @@
 {
   "name": "dsh-plugin-notify-sounds",
-  "version": "1.8.6",
-  "scannedAt": "2026-10-26T10:05:06.921Z",
+  "version": "1.9.2",
+  "scannedAt": "2026-10-30T07:08:51.231Z",
   "icon": null,
   "network": {
     "hit": true,
     "evidence": [
       {
         "file": "lib/client.js",
-        "line": 1081,
+        "line": 634,
+        "text": "const response = await fetch(`${SOUND_ROUTE}?file=${encodeURIComponent(file)}`, { method: \"GET\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 1307,
         "text": "fetch(FOCUS_PATH, { method: \"POST\" }).catch(() => {});"
       },
       {
         "file": "lib/client.js",
-        "line": 1914,
+        "line": 2007,
+        "text": "fetch(`${SOUND_ROUTE}?file=${encodeURIComponent(file)}`, { method: \"HEAD\" }).then((response) => {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 2262,
         "text": "const response = await fetch(UPDATE_CHECK_PATH + (force ? \"?force=1\" : \"\"), { method: \"GET\" });"
       },
       {
         "file": "lib/client.js",
-        "line": 2445,
-        "text": "const response = await fetch(GOAL_PHASE_PATH + \"?session=\" + encodeURIComponent(sessionId), { method: \"GET\", signal });"
-      },
-      {
-        "file": "lib/client.js",
-        "line": 2720,
-        "text": "fetch(UPDATE_CHECK_PATH, { method: \"GET\" }).catch(() => {});"
-      },
-      {
-        "file": "lib/index.js",
-        "line": 859,
-        "text": "const response = await fetch(`${registry}/${UPDATE_PACKAGE}/latest`, {"
+        "line": 2685,
+        "text": "const response = await fetch(SOUND_ROUTE, { method: \"POST\", body: bytes });"
       }
     ]
   },
@@ -38,18 +38,28 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 36,
-        "text": "import { existsSync, readFileSync } from \"node:fs\";"
+        "line": 41,
+        "text": "import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, writeFileSync } from \"node:fs\";"
       },
       {
         "file": "lib/index.js",
-        "line": 650,
+        "line": 655,
         "text": "const parsed = JSON.parse(readFileSync(manifest, \"utf8\"));"
       },
       {
         "file": "lib/index.js",
-        "line": 757,
-        "text": "const lock = readFileSync(join(profileDir, \"pnpm-lock.yaml\"), \"utf8\");"
+        "line": 783,
+        "text": "mkdirSync(directory, { recursive: true });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 785,
+        "text": "writeFileSync(temporary, buffer);"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 794,
+        "text": "rmSync(temporary, { force: true });"
       }
     ]
   },
@@ -62,12 +72,12 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 34,
+        "line": 38,
         "text": "import { spawn } from \"node:child_process\";"
       },
       {
         "file": "lib/index.js",
-        "line": 410,
+        "line": 415,
         "text": "const child = spawn(command, args, { windowsHide: true, stdio: \"ignore\" });"
       }
     ]

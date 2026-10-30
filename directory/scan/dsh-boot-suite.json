@@ -1,0 +1,110 @@
+{
+  "name": "dsh-boot-suite",
+  "version": "2.13.20",
+  "scannedAt": "2026-10-30T07:08:57.575Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 299,
+        "text": "return fetch(API, { headers: { Accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 316,
+        "text": "return fetch('/dsh-startup/templates', { headers: { Accept: 'application/json' }, cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 328,
+        "text": "return fetch('/dsh-startup/voices', { headers: { Accept: 'application/json' }, cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 353,
+        "text": "fetch(API, {"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 370,
+        "text": "fetch(API, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-startup.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 27,
+        "text": "const list = JSON.parse(fs.readFileSync(path.join(VOICE_ROOT, 'manifest.json'), 'utf8'))"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 47,
+        "text": "try { fs.appendFileSync(DIAG_FILE, new Date().toISOString() + '  ' + line + '\\n', 'utf8') } catch (err) { /* 忽略 */ }"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 55,
+        "text": "try { fs.writeFileSync(path.join(DSH_HOME, 'boot-suite-diag-html-' + (dumpBudget + 1) + '.html'), html, 'utf8') } catch (err) { /* 忽略 */ }"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 62,
+        "text": "const pkg = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'package.json'), 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/host-startup.js",
+        "line": 17,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 1394,
+        "text": "if (process.platform === 'win32') spawn('explorer.exe', [dir], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 1395,
+        "text": "else if (process.platform === 'darwin') spawn('open', [dir], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 1396,
+        "text": "else spawn('xdg-open', [dir], { detached: true, stdio: 'ignore' }).unref()"
+      },
+      {
+        "file": "lib/host-startup.js",
+        "line": 1419,
+        "text": "spawn(chrome, [url], { detached: true, stdio: 'ignore', windowsHide: false }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

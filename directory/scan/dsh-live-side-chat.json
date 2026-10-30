@@ -1,0 +1,70 @@
+{
+  "name": "dsh-live-side-chat",
+  "version": "0.4.1",
+  "scannedAt": "2026-10-30T07:08:59.316Z",
+  "icon": "dsh-live-side-chat.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client/client.js",
+        "line": 438,
+        "text": "const response = await fetch(`${RPC_CHANNEL}/${endpoint}`, {"
+      },
+      {
+        "file": "client/client.js",
+        "line": 995,
+        "text": "const response = await fetch(NPM_LATEST_URL)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/session-files.js",
+        "line": 16,
+        "text": "import { readdir, rm, stat } from 'node:fs/promises';"
+      },
+      {
+        "file": "lib/session-files.js",
+        "line": 63,
+        "text": "await rm(candidate, { recursive: true, force: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/service.js",
+        "line": 257,
+        "text": "agentCtx.tools.register(tool);"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "connection",
+    "llm",
+    "sessionProjections",
+    "sessionQuery",
+    "sessions",
+    "systemPrompt",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "dsh-doyourweb",
-  "version": "0.1.6",
-  "scannedAt": "2026-10-26T10:06:03.417Z",
+  "version": "0.1.7",
+  "scannedAt": "2026-10-30T07:08:50.897Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -28,7 +28,7 @@
       },
       {
         "file": "lib/host.js",
-        "line": 2676,
+        "line": 2919,
         "text": "  const response = await fetch(url, { signal: AbortSignal.any([AbortSignal.timeout(15e3), ...signal ? [signal] : []]), headers: { \"User-Agent\": \"dsh-doyourweb\" "
       }
     ]
@@ -68,27 +68,27 @@
     "evidence": [
       {
         "file": "lib/host.js",
-        "line": 3544,
+        "line": 3787,
         "text": "var inject = [\"tools\", \"typert\"];"
       },
       {
         "file": "lib/host.js",
-        "line": 3734,
+        "line": 3999,
         "text": "ctx.tools.register(tool("
       },
       {
         "file": "lib/host.js",
-        "line": 3740,
+        "line": 4005,
         "text": "ctx.tools.register(tool("
       },
       {
         "file": "lib/host.js",
-        "line": 3746,
+        "line": 4015,
         "text": "ctx.tools.register(tool("
       },
       {
         "file": "lib/host.js",
-        "line": 3752,
+        "line": 4025,
         "text": "ctx.tools.register(tool("
       }
     ]
@@ -98,13 +98,18 @@
     "evidence": [
       {
         "file": "lib/host.js",
-        "line": 1930,
-        "text": "import { execFile, spawn } from \"node:child_process\";"
+        "line": 2086,
+        "text": "import { execFile, spawn as spawn2 } from \"node:child_process\";"
       },
       {
         "file": "lib/host.js",
-        "line": 2036,
-        "text": "const child = spawn(app.path, [], { detached: true, stdio: \"ignore\", windowsHide: false, shell: false });"
+        "line": 2181,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/host.js",
+        "line": 2202,
+        "text": "        const child = spawn(\"powershell.exe\", [\"-NoLogo\", \"-NoProfile\", \"-NonInteractive\", \"-EncodedCommand\", Buffer.from(source, \"utf16le\").toString(\"base64\")]"
       }
     ]
   },

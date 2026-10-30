@@ -1,0 +1,85 @@
+{
+  "name": "dsh-jev-progress",
+  "version": "0.5.5",
+  "scannedAt": "2026-10-30T07:08:54.692Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/jev-client.js",
+        "line": 47,
+        "text": "const response = await this.fetch('https://decision.vllm-sr.ai/v1/systemone', {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/cost-integration.js",
+        "line": 1,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "src/cost-integration.js",
+        "line": 7,
+        "text": "if(fs.statSync(outboxFile).size<=16*1024*1024)for(const payload of JSON.parse(fs.readFileSync(outboxFile,'utf8')))"
+      },
+      {
+        "file": "src/cost-integration.js",
+        "line": 12,
+        "text": "    try {fs.mkdirSync(path.dirname(outboxFile),{recursive:true});const temp=outboxFile+'.tmp';fs.writeFileSync(temp,JSON.stringify([...pending.values()].map(ite"
+      },
+      {
+        "file": "src/credentials.js",
+        "line": 3,
+        "text": "import { existsSync } from 'node:fs';"
+      },
+      {
+        "file": "src/host.js",
+        "line": 8,
+        "text": "import fs from 'node:fs';"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "src/credentials.js",
+        "line": 1,
+        "text": "import { execFile } from 'node:child_process';"
+      },
+      {
+        "file": "src/key-manager.js",
+        "line": 3,
+        "text": "import {spawn} from 'node:child_process';"
+      },
+      {
+        "file": "src/key-manager.js",
+        "line": 11,
+        "text": "const child=spawn('powershell.exe',['-NoProfile','-NonInteractive','-EncodedCommand',Buffer.from(script,'utf16le').toString('base64')],"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "lib/client.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "llm",
+    "translator"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
