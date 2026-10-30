@@ -188,7 +188,7 @@ test('an older installed store shows the update prompt, and its button asks for 
   const [bar] = selfBar(root)
   assert.ok(bar)
   await act(async () => { bar.findByType('button').props.onClick() })
-  assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-startide#v0.2.0' }])
+  assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'https://registry.npmjs.org/dsh-startide/-/dsh-startide-0.2.0.tgz' }])
   const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadBundles: async () => [bundle('dsh-startide', '0.2.0')] } })
   assert.equal(selfBar(upToDate).length, 0)
 })

@@ -102,7 +102,7 @@ test('the store itself has no switch or uninstall; its update button asks for th
   assert.equal(buttonsIn(self, zh.remove).length, 0)
   assert.equal(textIn(self).includes(zh.notNpm), false)
   await click(buttonIn(self, zh.updateAction))
-  assert.deepEqual(calls.selfUpdate, ['github:yang051211/dsh-startide#v0.3.0'])
+  assert.deepEqual(calls.selfUpdate, ['https://registry.npmjs.org/dsh-startide/-/dsh-startide-0.3.0.tgz'])
   assert.deepEqual(calls.openPackage, [])
 })
 

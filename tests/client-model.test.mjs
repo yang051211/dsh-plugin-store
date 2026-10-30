@@ -93,7 +93,7 @@ test('install state', () => {
 
 test('the store offers its own update only when the installed copy is older', () => {
   const installed = version => new Map([['dsh-startide', version === undefined ? {} : { version }]])
-  assert.deepEqual(selfUpdateOf('0.2.0', installed('0.1.8')), { current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-startide#v0.2.0' })
+  assert.deepEqual(selfUpdateOf('0.2.0', installed('0.1.8')), { current: '0.1.8', latest: '0.2.0', spec: 'https://registry.npmjs.org/dsh-startide/-/dsh-startide-0.2.0.tgz' })
   assert.equal(selfUpdateOf('0.2.0', installed('0.2.0')), null)
   assert.equal(selfUpdateOf('0.2.0', installed(undefined)), null)
   assert.equal(selfUpdateOf('0.2.0', new Map()), null)

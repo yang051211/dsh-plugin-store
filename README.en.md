@@ -110,11 +110,10 @@ npm run verify      # build + lib/ matches src/ + directory check + tests
 
 ### Releasing
 
-Every release goes to both GitHub and npm:
+Every release goes to both npm and GitHub, **npm first**. The store updates itself from the new version's npm tarball, and once main is pushed the index's new version makes installed stores offer the update, so npm must already have it.
 
-1. Bump `version` in `package.json`, run `npm run verify`, commit.
-2. Tag and push together: `git tag v<version> && git push --atomic origin main v<version>`. The store updates itself from this tag, so the tag must land with main.
-3. Export the tag to an empty directory and publish from there (the npm account needs two-factor authentication):
+1. Bump `version` in `package.json`, run `npm run verify`, commit, and tag locally with `git tag -a v<version>`.
+2. Export the tag to an empty directory and publish from there (the npm account needs two-factor authentication):
 
    ```sh
    git archive v<version> | tar -x -C <empty-dir>
@@ -124,6 +123,7 @@ Every release goes to both GitHub and npm:
    ```
 
    The first publish of a new package name puts up a `0.0.0-stage` placeholder; the real version appears tens of seconds later.
+3. Once `npm view dsh-startide version` shows the new version, push main and the tag together: `git push --atomic origin main v<version>`.
 
 ### Directory
 

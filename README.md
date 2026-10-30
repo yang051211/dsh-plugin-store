@@ -110,11 +110,10 @@ npm run verify      # 构建 + 确认 lib/ 与 src/ 一致 + 目录校验 + 测�
 
 ### 发布
 
-每个正式版同时发到 GitHub 和 npm：
+每个正式版同时发到 npm 和 GitHub，**先发 npm**。商店的自我更新从 npm 下载新版本的安装包，而 main 一推上去，索引里的新版本号就会让已安装的商店提示更新，所以那时 npm 上必须已经有这个版本。
 
-1. 改 `package.json` 的 `version`，跑 `npm run verify`，提交。
-2. 打标签并一起推送：`git tag v<版本> && git push --atomic origin main v<版本>`。商店的自我更新从这个标签安装，所以标签要和 main 同时到位。
-3. 把标签导出到一个空目录，在那里发 npm（账号需开启两步验证）：
+1. 改 `package.json` 的 `version`，跑 `npm run verify`，提交，在本地打标签 `git tag -a v<版本>`。
+2. 把标签导出到一个空目录，在那里发 npm（账号需开启两步验证）：
 
    ```sh
    git archive v<版本> | tar -x -C <空目录>
@@ -124,6 +123,7 @@ npm run verify      # 构建 + 确认 lib/ 与 src/ 一致 + 目录校验 + 测�
    ```
 
    新包名第一次发布时，npm 会先放一个 `0.0.0-stage` 占位版本，正式版本几十秒后出现。
+3. 确认 `npm view dsh-startide version` 已是新版本，再把 main 和标签一起推送：`git push --atomic origin main v<版本>`。
 
 ### 目录
 

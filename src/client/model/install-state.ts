@@ -51,8 +51,12 @@ export function installStateOf(plugin: StorePlugin, installed: Installed): Insta
 export const STORE_PACKAGE = 'dsh-startide'
 /** The store's name before 0.2.0. Updating from it installs this package beside it, so the old one is left to remove. */
 export const LEGACY_PACKAGE = 'dsh-plugin-store'
-/** Where this plugin is installed from; a release is the tag `v<version>`. */
-const STORE_REPO = 'github:yang051211/dsh-startide'
+/**
+ * Where a release of this plugin is downloaded from: its npm tarball, about 200 KB. A GitHub tag would fetch the whole
+ * repository, directory data included, which is tens of times larger; and DSH refuses the bare package name of a
+ * plugin that is already installed, so the update names the tarball itself.
+ */
+const storeTarball = (version: string) => `https://registry.npmjs.org/${STORE_PACKAGE}/-/${STORE_PACKAGE}-${version}.tgz`
 
 export interface SelfUpdate { current: string; latest: string; spec: string }
 
@@ -63,5 +67,5 @@ export interface SelfUpdate { current: string; latest: string; spec: string }
 export function selfUpdateOf(latest: string | null, installed: Installed | null): SelfUpdate | null {
   const current = installed?.get(STORE_PACKAGE)?.version
   if (!current || !latest || semver.valid(current) !== current || semver.valid(latest) !== latest) return null
-  return semver.lt(current, latest) ? { current, latest, spec: `${STORE_REPO}#v${latest}` } : null
+  return semver.lt(current, latest) ? { current, latest, spec: storeTarball(latest) } : null
 }
