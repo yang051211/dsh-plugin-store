@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import * as host from '../lib/index.js'
-import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, INDEX_SOURCES, MAX_DETAIL_BYTES, README_ROUTE } from '../lib/test/host.js'
+import { createCatalogCache, createIndexFetch, createDetailFetch, compatibilityOf, runtimeVersion, createVersionReader, INDEX_ROUTE, DETAIL_ROUTE, INDEX_SOURCES, MAX_DETAIL_BYTES, README_ROUTE, UPDATES_ROUTE } from '../lib/test/host.js'
 
 const INDEX_URL = 'https://cdn.example/gh/o/r@main/market/index.json'
 
@@ -140,20 +140,29 @@ test('a detail the serving source cannot give is read from the other source', as
   assert.equal(json.detail.name, 'alpha')
 })
 
-test('registers the catalog, detail and README routes through the authenticated connection channel, GET only', () => {
+test('registers the catalog, detail, README and updates routes through the authenticated connection channel, GET only', () => {
   const registered = []
+  const injected = []
   const ctx = {
     connection: { fetch: { register: (route) => { registered.push(route); return async () => {} } } },
     webServer: { register: () => { throw new Error('must not bypass the /api fence') } },
     effect: (fn) => fn(),
+    inject: (deps, apply) => { injected.push(deps); apply({ ...ctx, pluginManager: {} }) },
   }
   host.apply(ctx)
   assert.deepEqual(host.inject, ['connection'])
-  assert.deepEqual(registered.map(r => r.path).sort(), [DETAIL_ROUTE, INDEX_ROUTE, README_ROUTE].sort())
+  assert.deepEqual(injected, [['connection', 'pluginManager']], 'the updates route waits for the plugin manager on its own')
+  assert.deepEqual(registered.map(r => r.path).sort(), [DETAIL_ROUTE, INDEX_ROUTE, README_ROUTE, UPDATES_ROUTE].sort())
   for (const route of registered) {
     assert.deepEqual(route.methods, ['GET'])
     assert.equal(route.requestBody, 'buffered')
   }
+})
+
+test('without the plugin manager only the updates route is missing', () => {
+  const registered = []
+  host.apply({ connection: { fetch: { register: route => { registered.push(route.path); return async () => {} } } }, effect: fn => fn(), inject: () => {} })
+  assert.deepEqual(registered.sort(), [DETAIL_ROUTE, INDEX_ROUTE, README_ROUTE].sort())
 })
 
 test('loading the plugin starts reading the catalog, so it is ready by the time the store is opened', async () => {
@@ -164,7 +173,7 @@ test('loading the plugin starts reading the catalog, so it is ready by the time 
   globalThis.fetch = async url => { asked.push(String(url)); return new Response(JSON.stringify(doc())) }
   process.env.DSH_HOME = home
   try {
-    host.apply({ connection: { fetch: { register: () => async () => {} } }, effect: fn => fn() })
+    host.apply({ connection: { fetch: { register: () => async () => {} } }, effect: fn => fn(), inject: () => {} })
     await settle()
     assert.ok(asked.includes(INDEX_SOURCES[0].url))
     const saved = join(home, 'cache', 'startide', 'index.json')

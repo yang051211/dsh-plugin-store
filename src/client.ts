@@ -1,7 +1,8 @@
 /**
- * dsh-startide (生态家园), browser half: the Store tab on the Plugins page (the only place that can open DSH's install
- * dialog), a full-page Store panel with its own sidebar entry, a frame-wide notice for installs handed over from
- * the panel to the tab, and a first-run jump to the panel so a fresh install shows where the store lives.
+ * dsh-startide (生态家园), browser half. The whole store lives in its tab on the Plugins page, the only place that can
+ * open DSH's install dialog. The sidebar gets a 生态家园 entry that opens that tab; with "keep only Startide" on, the
+ * entry takes over the official Plugins entry instead, the official heading and tab bar are hidden, and the page
+ * switches back to the store whenever DSH shows its own plugin list. A first run opens the store once.
  */
 import { createElement, useSyncExternalStore, type ReactNode } from 'react'
 import type { Context } from '@deepseek-ai/cordis'
@@ -16,17 +17,17 @@ import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots
 import zh from '../locale/zh.json'
 import en from '../locale/en.json'
 import { shouldAutoOpen } from './client/first-run.ts'
-import { createHandoff, openInstalledFrom, selectTabWhenReady } from './client/handoff.ts'
-import { loadCatalog, loadDetail, loadReadme } from './client/model/api.ts'
-import { installedFrom, STORE_PACKAGE, type SelfUpdate } from './client/model/install-state.ts'
+import { createKeepOnly, injectHideStyle, PLUGINS_PANEL_ID as PLUGINS_PANEL, selectTabByLabel, selectTabWhenReady } from './client/hub.ts'
+import { loadCatalog, loadDetail, loadLatest, loadReadme } from './client/model/api.ts'
+import type { SelfUpdate } from './client/model/install-state.ts'
 import { localize } from './client/model/localize.ts'
 import type { StorePlugin } from './client/model/catalog.ts'
 import { makeTranslate } from './client/ui/common.tsx'
 import { ErrorBoundary } from './client/ui/ErrorBoundary.tsx'
-import { HandoffToast } from './client/ui/HandoffToast.tsx'
-import { StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
+import { createStoreMemory, StoreApp, type StoreServices } from './client/ui/StoreApp.tsx'
 import { BRAND_ICON } from './client/ui/brand-icon.ts'
 import { injectStyles } from './client/ui/styles.ts'
+import { pluginManagerServices } from './client/services.ts'
 
 /** Keys of this plugin's dictionary. */
 export type StoreLocaleKey = keyof typeof zh.ui
@@ -43,10 +44,10 @@ export const name = 'startide'
 /** Dictionary namespace owned by this plugin. */
 export const NS = 'startide'
 
-/** Main panel and sidebar entry id. */
+/** The sidebar entry's id, and the empty main panel it selects on its way to the Plugins page. */
 export const PANEL_ID = 'startide' as MainPanelId
 /** The Plugins page's own panel id. */
-const PLUGINS_PANEL_ID = 'plugins' as MainPanelId
+const PLUGINS_PANEL_ID = PLUGINS_PANEL as MainPanelId
 
 export const inject = ['slots', 'locale', 'layout', 'remote', 'remote.pluginManager']
 
@@ -69,75 +70,92 @@ export function apply(ctx: Context): void {
   ctx.effect(() => ctx.locale.register(NS, { zh: zh.ui, en: en.ui }), 'startide: dictionaries')
   ctx.effect(() => injectStyles(), 'startide: styles')
   const t = ctx.locale.bind(NS)
-  const handoff = createHandoff()
+  const keepOnly = createKeepOnly(() => window.localStorage)
+  // DSH unmounts the store's tab whenever it shows its own Installed list; this brings the store back where it was.
+  const memory = createStoreMemory()
 
   const services: StoreServices = {
     loadCatalog,
     loadDetail,
     loadReadme,
-    loadInstalled: async () => installedFrom(await ctx.remote.pluginManager.listBundles()),
+    ...pluginManagerServices(ctx.remote.pluginManager),
     subscribeInstalled: (onChange) => {
       // A reconnect may have missed change events, so it also triggers a fresh read (as the official Discover does).
       const stops = [ctx.remote.$on('plugin-manager/changed', () => onChange()), ctx.on('connection/reset', () => onChange())]
       return () => { for (const stop of stops) stop() }
     },
+    loadLatest,
   }
   const titleOf = (plugin: StorePlugin, lang: string) => localize(plugin.title, lang) || plugin.name
-  // The Plugins page provides `pluginNavigation` while it is mounted; read it when needed, never require it.
-  const openInstalled = openInstalledFrom({
-    navigation: () => {
-      try {
-        return ctx.get('pluginNavigation') as { openBundle: (name: string) => void } | undefined
-      } catch {
-        return undefined
-      }
-    },
-    selectPanel: id => ctx.layout.selectPanel(id as MainPanelId),
-  })
-
-  /** The panel cannot install; record the request and move to the Plugins page, whose tab takes it. */
-  function handOver(pending: { name: string; title: string }): void {
-    handoff.request(pending)
-    ctx.layout.selectPanel(PLUGINS_PANEL_ID)
-    // Switch the Plugins page to our tab ourselves; if that fails, the notice asks the user to click it.
-    void selectTabWhenReady(() => document, t('tab'))
-  }
 
   function StoreTab(props: PropsRuntime<'plugins.tab'> & LocaleProps): ReactNode {
     const { lang, t: tr } = useCopy(props, ctx.locale)
+    const keepOnlyOn = useSyncExternalStore(keepOnly.subscribe, keepOnly.get)
     return createElement(ErrorBoundary, { t: tr, children: createElement(StoreApp, {
-      mode: 'tab',
       lang,
       t: tr,
       services,
       onInstall: (plugin: StorePlugin) => props.install({ spec: `${plugin.name}@${plugin.version}`, title: titleOf(plugin, lang), version: plugin.version }),
       onSelfUpdate: (update: SelfUpdate) => props.install({ spec: update.spec, title: tr('selfUpdateTitle'), version: update.latest }),
-      onOpenInstalled: (plugin: StorePlugin) => props.openPackage(plugin.name),
-      takePending: handoff.take,
+      onOpenPackage: (name: string) => props.openPackage(name),
+      onInstallSpec: target => props.install(target),
+      keepOnly: { value: keepOnlyOn, set: keepOnly.set },
+      memory,
     }) })
   }
 
-  function StorePanel(props: LocaleProps): ReactNode {
-    const { lang, t: tr } = useCopy(props, ctx.locale)
-    return createElement(ErrorBoundary, { t: tr, children: createElement(StoreApp, {
-      mode: 'panel',
-      lang,
-      t: tr,
-      services,
-      onInstall: (plugin: StorePlugin) => handOver({ name: plugin.name, title: titleOf(plugin, lang) }),
-      onSelfUpdate: () => handOver({ name: STORE_PACKAGE, title: tr('selfUpdateTitle') }),
-      onOpenInstalled: (plugin: StorePlugin) => openInstalled(plugin.name),
-    }) })
+  /** Open the Plugins page on the store's tab. */
+  const openStore = () => {
+    ctx.layout.selectPanel(PLUGINS_PANEL_ID)
+    void selectTabWhenReady(() => document, t('tab'))
   }
 
-  function Notice(props: LocaleProps): ReactNode {
-    const { t: tr } = useCopy(props, ctx.locale)
-    return createElement(HandoffToast, { handoff, t: tr })
+  /** Run `on()` while keep-only is on and `off()` while it is off, swapping at each change; the result stops both. */
+  const followKeepOnly = (on: () => () => void, off: () => () => void) => () => {
+    let stop = keepOnly.get() ? on() : off()
+    const unsubscribe = keepOnly.subscribe(() => { stop(); stop = keepOnly.get() ? on() : off() })
+    return () => { unsubscribe(); stop() }
   }
+
+  /**
+   * While keep-only is on and the Plugins page is shown, select the store's tab whenever DSH shows its own list (it
+   * does after an install, and when coming back from a plugin's page). The tab bar is rendered only with the list,
+   * so a plugin's own page is left alone. Mutations are folded into one check per frame.
+   */
+  const returnToStore = () => {
+    let frame = 0
+    const check = () => {
+      frame = 0
+      if (ctx.layout.panelInfo.getSnapshot().activePanelId === PLUGINS_PANEL_ID) selectTabByLabel(document, t('tab'))
+    }
+    const observer = new MutationObserver(() => { if (!frame) frame = requestAnimationFrame(check) })
+    observer.observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-selected'] })
+    check()
+    return () => {
+      observer.disconnect()
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }
+
+  ctx.effect(followKeepOnly(() => {
+    const stops = [injectHideStyle(), returnToStore()]
+    return () => { for (const stop of stops) stop() }
+  }, () => () => {}), 'startide: keep-only page')
 
   ctx.slots.inject('plugins.tab', () => ctx.slots.register({ name: 'plugins.tab', id: 'store', label: () => t('tab'), locale: NS }, StoreTab))
-  ctx.slots.inject('main', () => ctx.slots.register({ name: 'main', key: PANEL_ID, locale: NS }, StorePanel))
-  ctx.slots.inject('sidebar.panellist', () => ctx.slots.register({ name: 'sidebar.panellist', id: PANEL_ID, order: 1, label: () => t('tab'), locale: NS }, StoreIcon))
-  ctx.slots.inject('shell.overlay', () => ctx.slots.register({ name: 'shell.overlay', id: 'startide.handoff', locale: NS }, Notice))
+  // An empty panel the sidebar entry selects; selecting it moves straight on to the Plugins page.
+  ctx.slots.inject('main', () => ctx.slots.register({ name: 'main', key: PANEL_ID, locale: NS }, () => null))
+  ctx.effect(() => {
+    const onPanel = () => {
+      if (ctx.layout.panelInfo.getSnapshot().activePanelId === PANEL_ID) queueMicrotask(openStore)
+    }
+    onPanel()
+    return ctx.layout.panelInfo.subscribe(onPanel)
+  }, 'startide: sidebar entry opens the store tab')
+  ctx.slots.inject('sidebar.panellist', followKeepOnly(
+    // Shadows the official Plugins entry (same id, lower priority); removing it brings the official one back.
+    () => ctx.slots.register({ name: 'sidebar.panellist', id: PLUGINS_PANEL_ID, order: 0, priority: -1, label: () => t('tab'), locale: NS }, StoreIcon),
+    () => ctx.slots.register({ name: 'sidebar.panellist', id: PANEL_ID, order: 1, label: () => t('tab'), locale: NS }, StoreIcon),
+  ))
   if (shouldAutoOpen(() => window.localStorage)) ctx.layout.selectPanel(PANEL_ID)
 }

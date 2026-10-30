@@ -4,3 +4,4 @@ export { createIndexFetch, createDetailFetch, compatibilityOf, INDEX_ROUTE, DETA
 export { runtimeVersion, createVersionReader } from './runtime-version.ts'
 export { createDiskCopy, defaultCopyFile } from './disk-copy.ts'
 export { createReadmeFetch, README_ROUTE, MAX_README_BYTES } from './readme-route.ts'
+export { createUpdatesFetch, UPDATES_ROUTE, UPDATE_TTL_MS } from './updates-route.ts'

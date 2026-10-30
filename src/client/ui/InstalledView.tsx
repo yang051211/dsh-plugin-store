@@ -1,0 +1,244 @@
+/**
+ * The Installed page: plugins with a newer version first, then the rest, then DSH's own. Updates install in the
+ * store, one at a time; the store's own update goes to DSH's installer, and settings open DSH's page for the plugin.
+ * Changes in flight and their outcomes live in the store's change book, so leaving the page loses neither. Enable and disable apply
+ * at once, uninstall asks first, and the keep-only switch lives in the top right corner.
+ */
+import { useCallback, useState, useSyncExternalStore, type ReactNode } from 'react'
+import type { ChangeOutcome, InstalledRow, InstalledRows } from '../model/installed.ts'
+import type { SelfUpdate } from '../model/install-state.ts'
+import type { ChangeProgress } from './StoreApp.tsx'
+import { without, type Action, type ChangeBook, type RowChange } from './change-book.ts'
+import { PageHeader, PluginIcon, type Translate } from './common.tsx'
+import { ConfirmSpec, ConfirmUpdate } from './ConfirmInstall.tsx'
+import { ConfirmRemove } from './ConfirmRemove.tsx'
+
+export type Inspection = { ok: true; name: string; version: string } | { ok: false; reason: string }
+
+export interface InstalledViewProps {
+  /** Null while the first read is in flight. */
+  rows: InstalledRows | null
+  /** Why the installed list could not be read; the list is not shown then. */
+  error: string | null
+  selfUpdate: SelfUpdate | null
+  t: Translate
+  keepOnly: { value: boolean; set: (on: boolean) => void }
+  onRetry: () => void
+  onOpenPackage: (name: string) => void
+  onSelfUpdate: (update: SelfUpdate) => void
+  setEnabled: (name: string, enabled: boolean, progress?: ChangeProgress) => Promise<ChangeOutcome>
+  remove: (name: string, progress?: ChangeProgress) => Promise<ChangeOutcome>
+  /** Install `version` of an installed plugin in place. */
+  update: (name: string, version: string, from: { current: string; enabled: boolean }, progress?: ChangeProgress) => Promise<ChangeOutcome>
+  inspect: (spec: string) => Promise<Inspection>
+  onInstallSpec: (target: { spec: string; title: string; version: string }) => void
+  /** Changes in flight and their outcomes, kept while the page is away. */
+  book: ChangeBook
+}
+
+const messageOf = (error: unknown) => String((error as Error)?.message ?? error)
+
+/** A failure under a row stays short: pnpm's whole output can be thousands of lines. */
+const MAX_NOTE = 300
+const clip = (text: string) => (text.length > MAX_NOTE ? `${text.slice(0, MAX_NOTE)}…` : text)
+
+/** The words for a change that did not simply apply, in DSH's terms where it gave a code. */
+function outcomeNote(outcome: Exclude<ChangeOutcome, 'applied'>, action: Action, version: string | null, t: Translate): { text: string; error: boolean } {
+  if (outcome === 'restart-required') return { text: action === 'update' && version ? t('updatedRestart', { version }) : t('restartRequired'), error: false }
+  const reason = outcome.pendingBuilds ? t('updateNeedsBuilds', { names: outcome.pendingBuilds.join('、') }) : clip(outcome.error)
+  if (outcome.code === 'restored') {
+    const text = t('updateRestored', { version: outcome.version ?? '', reason })
+    return { text: outcome.restart ? `${text} ${t('restartRequired')}` : text, error: true }
+  }
+  if (outcome.code === 'lost') return { text: t('updateLost', { reason }), error: true }
+  if (outcome.code === 'unknown') return { text: t('updateUnknown', { reason }), error: true }
+  if (outcome.pendingBuilds) return { text: reason, error: true }
+  if (action === 'remove' && outcome.code === 'stop-profile') return { text: t('removeNeedsStop'), error: true }
+  return { text: outcome.disabled ? `${clip(outcome.error)} ${t('updateLeftDisabled')}` : clip(outcome.error), error: true }
+}
+
+function Switch({ on, label, className = '', disabled, onChange }: { on: boolean; label: string; className?: string; disabled?: boolean; onChange: (on: boolean) => void }): ReactNode {
+  return (
+    <button type="button" role="switch" aria-checked={on} aria-label={label} className={`ps-switch ${on ? 'ps-switch-on' : ''} ${className}`} disabled={disabled} onClick={() => onChange(!on)}>
+      <span className="ps-switch-knob" />
+    </button>
+  )
+}
+
+/** The address box shown while keep-only hides DSH's own "Add plugin". */
+function SpecInstall({ t, inspect, onInstallSpec }: Pick<InstalledViewProps, 't' | 'inspect' | 'onInstallSpec'>): ReactNode {
+  const [spec, setSpec] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [reason, setReason] = useState<string | null>(null)
+  const [confirming, setConfirming] = useState<{ spec: string; name: string; version: string } | null>(null)
+  const cancel = useCallback(() => setConfirming(null), [])
+  const submit = async () => {
+    const value = spec.trim()
+    if (!value || busy) return
+    setBusy(true)
+    setReason(null)
+    try {
+      const result = await inspect(value)
+      // DSH's dialog installs a tab's request without asking again, so the store asks first, as it does for listed plugins.
+      if (result.ok) setConfirming({ spec: value, name: result.name, version: result.version })
+      else setReason(result.reason)
+    } catch (error) {
+      setReason(messageOf(error))
+    } finally {
+      setBusy(false)
+    }
+  }
+  return (
+    <form className="ps-spec" onSubmit={e => { e.preventDefault(); void submit() }}>
+      <label className="ps-spec-label">{t('installFromSpec')}</label>
+      <div className="ps-spec-field">
+        <input className="ps-spec-input" value={spec} placeholder={t('installFromSpecPlaceholder')} spellCheck={false} onChange={e => setSpec(e.target.value)} />
+        <button type="button" className="ps-btn ps-btn-primary" disabled={busy || !spec.trim()} onClick={() => void submit()}>{t('installFromSpecAction')}</button>
+      </div>
+      {reason && <div className="ps-row-note ps-row-error">{reason}</div>}
+      {confirming && (
+        <ConfirmSpec {...confirming} t={t} onCancel={cancel}
+          onConfirm={() => { setConfirming(null); onInstallSpec({ spec: confirming.spec, title: confirming.name, version: confirming.version }) }} />
+      )}
+    </form>
+  )
+}
+
+export function InstalledView(props: InstalledViewProps): ReactNode {
+  const { rows, error, selfUpdate, t, keepOnly, onRetry, onOpenPackage, onSelfUpdate, setEnabled, remove, update, book } = props
+  const { changes, notes } = useSyncExternalStore(book.subscribe, book.get)
+  const [removing, setRemoving] = useState<InstalledRow | null>(null)
+  const [updating, setUpdating] = useState<InstalledRow | null>(null)
+  const pinned = Object.fromEntries(Object.entries(changes).flatMap(([name, c]) => (c.pinned ? [[name, c.pinned]] : [])))
+
+  /**
+   * Run one change for a row, unless one is already under way for it; a restart or a failure is noted under it, an
+   * applied change shows on refresh. The record lives in `book`, so it carries on while the page is away.
+   */
+  const change = useCallback(async ({ name, title }: InstalledRow, action: Action, run: (progress: ChangeProgress) => Promise<ChangeOutcome>, version: string | null = null, pin: RowChange['pinned'] = null) => {
+    if (book.get().changes[name]) return
+    book.update(s => ({ changes: { ...s.changes, [name]: { action, waiting: false, pinned: pin } }, notes: without(s.notes, name) }))
+    let outcome: ChangeOutcome
+    try {
+      outcome = await run(state => book.update(s => {
+        const current = s.changes[name]
+        return current ? { ...s, changes: { ...s.changes, [name]: { ...current, waiting: state === 'waiting' } } } : s
+      }))
+    } catch (error) {
+      outcome = { error: messageOf(error) }
+    }
+    const note = outcome === 'applied' ? null : { title, ...outcomeNote(outcome, action, version, t) }
+    book.update(s => ({ changes: without(s.changes, name), notes: note ? { ...s.notes, [name]: note } : s.notes }))
+  }, [book, t])
+
+  const cancelUpdate = useCallback(() => setUpdating(null), [])
+  const acceptUpdate = useCallback(() => {
+    const row = updating
+    setUpdating(null)
+    if (!row?.latest || !row.version) return
+    const group = (['updates', 'others', 'official'] as const).find(id => rows?.[id].some(r => r.name === row.name)) ?? 'updates'
+    void change(row, 'update', progress => update(row.name, row.latest!, { current: row.version!, enabled: row.enabled }, progress), row.latest, { row, group })
+  }, [updating, change, update, rows])
+
+  const cancelRemove = useCallback(() => setRemoving(null), [])
+  const acceptRemove = useCallback(() => {
+    const row = removing
+    setRemoving(null)
+    if (row) void change(row, 'remove', progress => remove(row.name, progress))
+  }, [removing, change, remove])
+
+  const renderRow = (row: InstalledRow) => {
+    const hasUpdate = row.latest !== null && row.version !== null && (rows?.updates.includes(row) || pinned[row.name]?.row === row)
+    const manageable = !row.official && !row.self
+    const note = notes[row.name]
+    const busy = changes[row.name] !== undefined
+    return (
+      <li key={row.name} className="ps-inst-row" data-name={row.name}>
+        <PluginIcon plugin={{ name: row.name, icon: row.icon }} size={36} />
+        <div className="ps-inst-main">
+          <div className="ps-row-title">{row.title}</div>
+          <div className="ps-inst-meta">
+            <span>{row.name}</span>
+            {row.version && <span>v{row.version}</span>}
+            {hasUpdate && <span className="ps-inst-arrow">{t('updateArrow', { current: row.version!, latest: row.latest! })}</span>}
+            {row.check === 'not-npm' && !row.official && <span className="ps-muted">{t('notNpm')}</span>}
+          </div>
+          {row.problem && <div className="ps-row-note ps-row-error">{row.problem}</div>}
+          {note && <div className={`ps-row-note ${note.error ? 'ps-row-error' : ''}`}>{note.text}</div>}
+        </div>
+        <div className="ps-inst-actions">
+          {hasUpdate && (
+            <button type="button" className="ps-btn ps-btn-primary" disabled={row.self ? !selfUpdate : busy}
+              onClick={() => (row.self ? selfUpdate && onSelfUpdate(selfUpdate) : setUpdating(row))}>
+              {changes[row.name]?.action === 'update' ? t(changes[row.name]!.waiting ? 'updateQueued' : 'updating') : t('updateAction')}
+            </button>
+          )}
+          {manageable && !row.missing && (
+            <Switch on={row.enabled} label={t('enabledLabel')} disabled={busy || row.locked} onChange={on => void change(row, 'enable', progress => setEnabled(row.name, on, progress))} />
+          )}
+          {manageable && row.removable && !row.missing && (
+            <button type="button" className="ps-btn ps-btn-quiet" disabled={busy} onClick={() => setRemoving(row)}>{t('remove')}</button>
+          )}
+          <button type="button" className="ps-btn" onClick={() => onOpenPackage(row.name)}>{t('settings')}</button>
+        </div>
+      </li>
+    )
+  }
+
+  const present = new Set(rows ? [...rows.updates, ...rows.others, ...rows.official].map(r => r.name) : [])
+  const group = (id: keyof InstalledRows, titleKey: string) => {
+    if (!rows) return null
+    const shown = [...rows[id], ...Object.values(pinned).filter(p => p.group === id && !present.has(p.row.name)).map(p => p.row)]
+    return shown.length > 0 && (
+      <section className="ps-inst-group" data-group={id} key={id}>
+        <h2 className="ps-inst-group-title">{t(titleKey)} <span className="ps-muted">{shown.length}</span></h2>
+        <ul className="ps-inst-list">{shown.map(renderRow)}</ul>
+      </section>
+    )
+  }
+
+  let body: ReactNode
+  if (error) {
+    body = (
+      <div className="ps-error ps-pad">
+        <span>{t('bundlesFailed')}：{error}</span>
+        <button type="button" className="ps-btn" onClick={onRetry}>{t('retry')}</button>
+      </div>
+    )
+  } else if (!rows) {
+    body = <div className="ps-pad ps-muted">{t('loading')}</div>
+  } else if (present.size === 0 && Object.keys(pinned).length === 0) {
+    body = <div className="ps-empty">{t('installedEmpty')}</div>
+  } else {
+    body = <>{group('updates', 'groupUpdates')}{group('others', 'groupOthers')}{group('official', 'groupOfficial')}</>
+  }
+
+  // Outcomes whose row is gone, such as an uninstall that takes effect after a restart.
+  const orphans = Object.entries(notes).filter(([name]) => !present.has(name) && !pinned[name])
+
+  return (
+    <div className="ps-installed">
+      <PageHeader crumb={t('installedCrumb')} title={t('installedTitle')} intro={t('installedIntro')}>
+        <div className="ps-keep">
+          <div className="ps-keep-row">
+            <span className="ps-row-title">{t('keepOnly')}</span>
+            <Switch on={keepOnly.value} label={t('keepOnly')} className="ps-keep-only" onChange={keepOnly.set} />
+          </div>
+          <p className="ps-fine">{t('keepOnlyHint')}</p>
+        </div>
+      </PageHeader>
+      {orphans.map(([name, note]) => (
+        <div key={name} className={`ps-notice ps-notice-bar ${note.error ? 'ps-row-error' : ''}`}>
+          <span>{note.title}：{note.text}</span>
+          <button type="button" className="ps-link-btn" onClick={() => book.update(s => ({ ...s, notes: without(s.notes, name) }))}>{t('dismiss')}</button>
+        </div>
+      ))}
+      {keepOnly.value && <SpecInstall t={t} inspect={props.inspect} onInstallSpec={props.onInstallSpec} />}
+      {body}
+      {updating && updating.version && updating.latest && (
+        <ConfirmUpdate title={updating.title} current={updating.version} latest={updating.latest} t={t} onCancel={cancelUpdate} onConfirm={acceptUpdate} />
+      )}
+      {removing && <ConfirmRemove title={removing.title} t={t} onCancel={cancelRemove} onConfirm={acceptRemove} />}
+    </div>
+  )
+}

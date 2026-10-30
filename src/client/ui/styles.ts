@@ -212,7 +212,36 @@ export const STYLE_TEXT = `
 .ps-modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
 .ps-modal-actions .ps-btn-large { width: auto; }
 .ps-crash { padding: 32px; height: auto; }
-.ps-toast { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); pointer-events: auto; display: flex; gap: 14px; align-items: center; background: ${C.bg1}; color: ${C.text}; border: 1px solid ${C.border}; border-radius: ${C.rLg}; padding: 10px 16px; box-shadow: 0 8px 28px rgba(0,0,0,.18); z-index: 1000; font-size: 14px; }
+/* installed page */
+.ps-btn-danger { background: ${C.error}; border-color: ${C.error}; color: #fff; }
+.ps-btn-danger:hover:not(:disabled) { border-color: ${C.error}; filter: brightness(1.08); }
+.ps-nav .ps-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; margin-left: 6px; border-radius: 9px; background: ${C.brand}; color: ${C.onBrand}; font-size: 11px; font-weight: 700; align-self: center; }
+.ps-nav button:has(.ps-badge) { display: inline-flex; align-items: center; }
+.ps-keep { display: grid; gap: 4px; max-width: 300px; justify-items: end; text-align: right; }
+.ps-keep-row { display: flex; align-items: center; gap: 10px; }
+.ps-switch { position: relative; width: 36px; height: 20px; flex: none; border-radius: 10px; border: 0; padding: 0; background: ${C.border}; cursor: pointer; transition: background .15s; }
+.ps-switch-on { background: ${C.brand}; }
+.ps-switch:disabled { opacity: .55; cursor: not-allowed; }
+.ps-switch-knob { position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+.ps-switch-on .ps-switch-knob { transform: translateX(16px); }
+.ps-spec { display: grid; gap: 6px; margin: 4px 0 22px; }
+.ps-spec-label { font-weight: 600; font-size: 13px; }
+.ps-spec-field { display: flex; gap: 8px; }
+.ps-spec-input { flex: 1; min-width: 0; font: inherit; font-family: ${C.mono}; font-size: 13px; color: ${C.text}; background: ${C.bg1}; border: 1px solid ${C.border}; border-radius: ${C.rMd}; padding: 7px 10px; }
+.ps-inst-group { margin-bottom: 26px; }
+.ps-inst-group-title { font-size: 15px; margin: 0 0 8px; }
+.ps-inst-list { list-style: none; margin: 0; padding: 0; border: 1px solid ${C.borderSoft}; border-radius: ${C.rLg}; background: ${C.bg1}; }
+.ps-inst-row { display: flex; align-items: center; gap: 14px; padding: 12px 16px; }
+.ps-inst-row + .ps-inst-row { border-top: 1px solid ${C.borderSoft}; }
+.ps-inst-main { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.ps-inst-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; color: ${C.text3}; font-size: 12.5px; font-family: ${C.mono}; }
+.ps-inst-meta .ps-muted { font-family: inherit; }
+.ps-inst-arrow { color: ${C.brand}; font-weight: 600; }
+.ps-inst-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.ps-row-note { font-size: 12.5px; color: ${C.warn}; }
+.ps-row-error { color: ${C.error}; }
+.ps-spec-text { font-family: ${C.mono}; font-size: 12.5px; word-break: break-all; }
+@container (max-width: 560px) { .ps-inst-row { flex-wrap: wrap; } .ps-inst-actions { width: 100%; justify-content: flex-end; } }
 `
 
 /** Add the stylesheet to the page once; returns a function that removes it. */

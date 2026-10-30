@@ -1,5 +1,12 @@
 /** Small HTTP helpers shared by the Host routes. */
 
+/** The server answered, but not with 2xx. */
+export class HttpStatusError extends Error {
+  constructor(message: string, readonly status: number) {
+    super(message)
+  }
+}
+
 /** Read a response body as text, refusing more than `limit` bytes (announced or actual). */
 export async function readCapped(response: Response, limit: number, what: string): Promise<string> {
   const announced = Number(response.headers.get('content-length'))
@@ -24,13 +31,18 @@ export async function readCapped(response: Response, limit: number, what: string
   return Buffer.concat(chunks).toString('utf8')
 }
 
-/** Fetch `url` as JSON under a size cap and a deadline; non-2xx and invalid JSON become errors. `cancel` stops it early. */
-export async function fetchJson(fetchImpl: typeof fetch, url: string, limit: number, timeoutMs: number, what: string, cancel?: AbortSignal): Promise<unknown> {
+/**
+ * Fetch `url` as JSON under a size cap and a deadline; non-2xx and invalid JSON become errors. `cancel` stops it early;
+ * `headers` go with the request.
+ */
+export async function fetchJson(
+  fetchImpl: typeof fetch, url: string, limit: number, timeoutMs: number, what: string, cancel?: AbortSignal, headers?: Record<string, string>,
+): Promise<unknown> {
   const deadline = AbortSignal.timeout(timeoutMs)
-  const response = await fetchImpl(url, { signal: cancel ? AbortSignal.any([deadline, cancel]) : deadline })
+  const response = await fetchImpl(url, { signal: cancel ? AbortSignal.any([deadline, cancel]) : deadline, ...(headers && { headers }) })
   if (!response.ok) {
     await response.body?.cancel()
-    throw new Error(`${what} answered HTTP ${response.status}`)
+    throw new HttpStatusError(`${what} answered HTTP ${response.status}`, response.status)
   }
   const text = await readCapped(response, limit, what)
   try {

@@ -1,10 +1,11 @@
 /** Calls to the store's Host routes. */
 import type { CatalogSnapshot } from './catalog.ts'
 
-/** Same-origin paths served by the Host half (src/host/index-route.ts); literals because the browser never imports Host code. */
+/** Same-origin paths served by the Host half (src/host/*-route.ts); literals because the browser never imports Host code. */
 const INDEX_ROUTE = '/api/startide/index'
 const DETAIL_ROUTE = '/api/startide/detail'
 const README_ROUTE = '/api/startide/readme'
+const UPDATES_ROUTE = '/api/startide/updates'
 
 async function call<T>(url: string): Promise<T> {
   const response = await fetch(url, { headers: { accept: 'application/json' } })
@@ -31,4 +32,13 @@ export async function loadDetail(name: string): Promise<any> {
 /** A listed plugin's README (markdown, '' when it has none) and the base its relative links resolve against. */
 export function loadReadme(name: string): Promise<{ markdown: string; base: string }> {
   return call<{ markdown: string; base: string }>(`${README_ROUTE}?name=${encodeURIComponent(name)}`)
+}
+
+/** Latest versions of installed npm plugins the catalog does not list; {} when the Host cannot tell. */
+export async function loadLatest(): Promise<Record<string, string>> {
+  try {
+    return (await call<{ latest: Record<string, string> }>(UPDATES_ROUTE)).latest ?? {}
+  } catch {
+    return {}
+  }
 }

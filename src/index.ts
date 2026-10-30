@@ -1,11 +1,13 @@
 /** dsh-startide (生态家园), Host half. The browser half lives in `./client.ts`. */
 import type { Context } from '@deepseek-ai/cordis'
 import type {} from '@deepseek-ai/dsh-client-connection'
+import type {} from '@deepseek-ai/dsh-plugin-manager'
 import { createCatalogCache } from './host/catalog-cache.ts'
 import { createDiskCopy, defaultCopyFile } from './host/disk-copy.ts'
 import { createDetailFetch, createIndexFetch, DETAIL_ROUTE, INDEX_ROUTE, INDEX_SOURCES } from './host/index-route.ts'
 import { createReadmeFetch, README_ROUTE } from './host/readme-route.ts'
 import { createVersionReader } from './host/runtime-version.ts'
+import { createUpdatesFetch, UPDATES_ROUTE } from './host/updates-route.ts'
 
 export const name = 'startide'
 
@@ -29,4 +31,10 @@ export function apply(ctx: Context): void {
   ctx.effect(() => ctx.connection.fetch.register({
     path: README_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createReadmeFetch(cache, fetch),
   }), 'startide: readme route')
+  // Its own fiber, so a profile without the plugin manager still gets the catalog, detail and readme routes.
+  ctx.inject(['connection', 'pluginManager'], sub => {
+    sub.effect(() => sub.connection.fetch.register({
+      path: UPDATES_ROUTE, methods: ['GET'], requestBody: 'buffered', fetch: createUpdatesFetch({ cache, manager: sub.pluginManager, fetch }),
+    }), 'startide: updates route')
+  })
 }

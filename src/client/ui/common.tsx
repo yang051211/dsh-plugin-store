@@ -37,7 +37,7 @@ export function initialsOf(name: string): string {
 }
 
 /** The plugin's icon, or its initials on a soft tile picked by name. Icons only ever go through <img>. */
-export function PluginIcon({ plugin, size = 38 }: { plugin: StorePlugin; lang?: string; size?: number }): ReactNode {
+export function PluginIcon({ plugin, size = 38 }: { plugin: Pick<StorePlugin, 'name' | 'icon'>; lang?: string; size?: number }): ReactNode {
   const style = { width: size, height: size, borderRadius: Math.round(size / 4.2) }
   if (plugin.icon) return <img className="ps-icon" src={plugin.icon} alt="" style={style} referrerPolicy="no-referrer" loading="lazy" />
   let hash = 0

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { createElement } from 'react'
 import TestRenderer from 'react-test-renderer'
-import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf, tabOf } from '../lib/test/ui.js'
+import { StoreApp, ErrorBoundary, makeTranslate, navigate, goBack, scrollParentOf, tabOf, createStoreMemory } from '../lib/test/ui.js'
 
 const { act } = TestRenderer
 globalThis.IS_REACT_ACT_ENVIRONMENT = true
@@ -14,6 +14,7 @@ const zh = read('locale/zh.json').ui
 const t = makeTranslate(key => zh[key] ?? key)
 const snapshot = () => ({ index: read('tests/fixtures/directory/index.json'), indexUrl: 'https://cdn.example/gh/o/r@main/market/index.json', stale: false, dshVersion: '0.2.1-rc.2', compatibility: {} })
 
+const bundle = (name, version) => ({ name, version, installed: true, enabled: true, official: false, availability: 'profile', removable: true, source: `${name}@^${version}` })
 function deferred() { let resolve; const promise = new Promise(r => { resolve = r }); return { promise, resolve } }
 const flush = () => act(async () => { await new Promise(r => setTimeout(r, 0)) })
 const textOf = root => JSON.stringify(root.toJSON())
@@ -23,15 +24,20 @@ function services(overrides = {}) {
     loadCatalog: async () => snapshot(),
     loadDetail: async name => read(`tests/fixtures/directory/plugins/${name.replace('@', '').replace('/', '__')}.json`),
     loadReadme: async name => ({ markdown: `# ${name} readme`, base: 'https://cdn.example/npm/x@1.0.0/' }),
-    loadInstalled: async () => new Map(),
+    loadBundles: async () => [],
     subscribeInstalled: () => () => {},
+    loadLatest: async () => ({}),
+    setEnabled: async () => 'applied',
+    remove: async () => 'applied',
+    update: async () => 'applied',
+    inspect: async () => ({ ok: false, reason: 'not used' }),
     ...overrides,
   }
 }
 async function mount(props = {}) {
   let root
   await act(async () => {
-    root = TestRenderer.create(createElement(StoreApp, { mode: 'tab', lang: 'zh', t, services: services(props.services), onInstall: () => {}, onOpenInstalled: () => {}, onSelfUpdate: () => {}, ...props, services: services(props.services) }))
+    root = TestRenderer.create(createElement(StoreApp, { lang: 'zh', t, onInstall: () => {}, onOpenPackage: () => {}, onSelfUpdate: () => {}, onInstallSpec: () => {}, keepOnly: { value: false, set: () => {} }, ...props, services: services(props.services) }))
   })
   await flush()
   return root
@@ -43,30 +49,21 @@ const tab = (root, label) => root.root.find(n => n.type === 'button' && n.parent
 const currentTab = root => root.root.find(n => n.type === 'button' && n.props['aria-current'] === 'page').children.join('')
 async function click(node) { await act(async () => { node.props.onClick() }); await flush() }
 
-test('a handed-over plugin opens the confirmation only when it is not installed', async () => {
-  let installs = 0
-  const fresh = await mount({ onInstall: () => { installs++ }, takePending: () => 'dsh-pet' })
-  assert.ok(textOf(fresh).includes('继续安装'))
-  const already = await mount({ services: { loadInstalled: async () => new Map([['dsh-pet', { version: '1.0.0' }]]) }, takePending: () => 'dsh-pet' })
-  assert.equal(textOf(already).includes('继续安装'), false)
-  assert.equal(installs, 0)
-})
-
 test('cards have no install buttons; the plugin page has one, disabled until the installed list arrives', async () => {
   const gate = deferred()
-  const root = await mount({ services: { loadInstalled: () => gate.promise } })
+  const root = await mount({ services: { loadBundles: () => gate.promise } })
   assert.ok(cards(root).length >= 8)
   assert.equal(installButtons(root).length, 0)
   await click(cards(root)[0])
   const [waiting] = installButtons(root)
   assert.equal(waiting.props.disabled, true)
-  await act(async () => { gate.resolve(new Map()) })
+  await act(async () => { gate.resolve([]) })
   await flush()
   assert.equal(installButtons(root)[0].props.disabled, false)
 })
 
 test('the install button recovers when the installed list cannot be read, and the failure is shown', async () => {
-  const root = await mount({ services: { loadInstalled: async () => { throw new Error('no profile') } } })
+  const root = await mount({ services: { loadBundles: async () => { throw new Error('no profile') } } })
   assert.equal(root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-unknown')).length, 1)
   await click(cards(root)[0])
   const [button] = installButtons(root)
@@ -82,10 +79,10 @@ test('the plugin page loads its README through the services', async () => {
   assert.ok(textOf(root).includes('Hi from readme'))
 })
 
-test('the nav has home, all plugins and about, and each tab starts its page over', async () => {
+test('the nav has home, all plugins, installed and about, and each tab starts its page over', async () => {
   const root = await mount()
   const labels = root.root.find(n => n.type === 'nav' && n.props.className === 'ps-nav').findAllByType('button').map(b => b.children.join(''))
-  assert.deepEqual(labels, [zh.navHome, zh.navAll, zh.navAbout])
+  assert.deepEqual(labels, [zh.navHome, zh.navAll, zh.navInstalled, zh.navAbout])
   assert.equal(currentTab(root), zh.navHome)
   await click(tab(root, zh.navAll))
   assert.ok(textOf(root).includes('ps-side'))
@@ -187,31 +184,23 @@ const selfBar = root => root.root.findAll(n => n.type === 'div' && n.props.class
 
 test('an older installed store shows the update prompt, and its button asks for the new version', async () => {
   const updates = []
-  const root = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.1.8' }]]) }, onSelfUpdate: u => updates.push(u) })
+  const root = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadBundles: async () => [bundle('dsh-startide', '0.1.8')] }, onSelfUpdate: u => updates.push(u) })
   const [bar] = selfBar(root)
   assert.ok(bar)
   await act(async () => { bar.findByType('button').props.onClick() })
   assert.deepEqual(updates, [{ current: '0.1.8', latest: '0.2.0', spec: 'github:yang051211/dsh-startide#v0.2.0' }])
-  const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.2.0' }]]) } })
+  const upToDate = await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadBundles: async () => [bundle('dsh-startide', '0.2.0')] } })
   assert.equal(selfBar(upToDate).length, 0)
-})
-
-test('a self-update handed over from the panel goes straight to the installer in the tab', async () => {
-  const updates = []
-  let installs = 0
-  await mount({ services: { loadCatalog: withStoreVersion('0.2.0'), loadInstalled: async () => new Map([['dsh-startide', { version: '0.1.8' }]]) }, onInstall: () => { installs++ }, onSelfUpdate: u => updates.push(u), takePending: () => 'dsh-startide' })
-  assert.deepEqual(updates.map(u => u.spec), ['github:yang051211/dsh-startide#v0.2.0'])
-  assert.equal(installs, 0)
 })
 
 const installedNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-installed-notice'))
 
-test('a plugin installed while the store is open gets a notice pointing to the Plugins page', async () => {
-  let installed = new Map([['dsh-context', { version: '1.0.0' }]])
+test('a plugin installed while the store is open gets a notice pointing to the Installed page', async () => {
+  let installed = [bundle('dsh-context', '1.0.0')]
   let changed
-  const root = await mount({ services: { loadInstalled: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } } })
+  const root = await mount({ services: { loadBundles: async () => installed, subscribeInstalled: fn => { changed = fn; return () => {} } } })
   assert.equal(installedNotice(root).length, 0, 'plugins installed before the store opened get no notice')
-  installed = new Map([...installed, ['dsh-pet', { version: '1.0.0' }]])
+  installed = [...installed, bundle('dsh-pet', '1.0.0')]
   await act(async () => { changed() })
   await flush()
   const [notice] = installedNotice(root)
@@ -226,11 +215,40 @@ test('a plugin installed while the store is open gets a notice pointing to the P
 const legacyNotice = root => root.root.findAll(n => n.type === 'div' && n.props.className?.includes('ps-legacy-notice'))
 
 test('with the old dsh-plugin-store still installed, the store says it can be removed', async () => {
-  const both = await mount({ services: { loadInstalled: async () => new Map([['dsh-plugin-store', { version: '0.1.8' }], ['dsh-startide', { version: '0.2.0' }]]) } })
+  const both = await mount({ services: { loadBundles: async () => [bundle('dsh-plugin-store', '0.1.8'), bundle('dsh-startide', '0.2.0')] } })
   const [notice] = legacyNotice(both)
   assert.ok(notice, 'notice shown')
   const textIn = node => node.children.map(c => (typeof c === 'string' ? c : textIn(c))).join('')
   assert.ok(textIn(notice).includes('dsh-plugin-store'))
-  const onlyNew = await mount({ services: { loadInstalled: async () => new Map([['dsh-startide', { version: '0.2.0' }]]) } })
+  const onlyNew = await mount({ services: { loadBundles: async () => [bundle('dsh-startide', '0.2.0')] } })
   assert.equal(legacyNotice(onlyNew).length, 0)
+})
+
+test('the store comes back on the tab it was on, and still notices plugins installed while it was away', async () => {
+  // DSH unmounts the tab whenever it shows its own Installed list (after an install, or for a plugin's own page).
+  const memory = createStoreMemory()
+  let installed = [bundle('dsh-context', '1.0.0')]
+  const first = await mount({ memory, services: { loadBundles: async () => installed } })
+  await click(tab(first, zh.navInstalled))
+  await act(async () => { first.unmount() })
+  installed = [...installed, bundle('dsh-pet', '1.0.0')]
+  const again = await mount({ memory, services: { loadBundles: async () => installed } })
+  assert.equal(currentTab(again), zh.navInstalled)
+  assert.ok(installedNotice(again).length > 0, "the notice for dsh-pet is shown")
+  const fresh = await mount({ services: { loadBundles: async () => installed } })
+  assert.equal(currentTab(fresh), zh.navHome, 'without a memory the store starts at home')
+})
+
+test('a remount shows what the store last read at once, while it reads again', async () => {
+  const memory = createStoreMemory()
+  const first = await mount({ memory, services: { loadBundles: async () => [bundle('dsh-context', '1.0.0')] } })
+  await click(tab(first, zh.navInstalled))
+  await act(async () => { first.unmount() })
+  const never = new Promise(() => {})
+  const again = await mount({ memory, services: { loadCatalog: () => never, loadBundles: () => never } })
+  const text = textOf(again)
+  assert.equal(text.includes(zh.loading), false, 'no loading flash')
+  assert.ok(text.includes('dsh-context'), 'the installed list from before')
+  await click(tab(again, zh.navAll))
+  assert.ok(cards(again).length >= 8, 'the catalog from before')
 })

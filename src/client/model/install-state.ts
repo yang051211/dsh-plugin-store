@@ -5,15 +5,36 @@ import type { StorePlugin } from './catalog.ts'
 export type InstallState = 'install' | 'installed' | 'update' | 'incompatible'
 export type Installed = Map<string, { version?: string }>
 
-type Bundle = { name: string; installed: boolean; version?: string }
+/** An installed bundle as `listBundles()` reports it, keeping only what the store reads. */
+export interface InstalledBundle {
+  name: string
+  version?: string
+  enabled: boolean
+  installed: boolean
+  official: boolean
+  availability: 'installation' | 'profile' | 'missing'
+  /** The spec the bundle was installed from, as `pnpm add` accepts it. */
+  source?: string
+  removable: boolean
+  /** Why DSH will not let this bundle be changed here. */
+  readOnlyReason?: string
+  /** DSH's `{ code, diagnostic }` for a bundle that failed to load or be managed. */
+  error?: { code: string; diagnostic?: string }
+  meta?: { title?: string | Record<string, string>; icon?: string }
+}
 
 /**
- * Installed bundles by name, from `ctx.remote.pluginManager.listBundles()`. The Remote call resolves to
- * `{ ok, value }` rather than the bare array; a failed call throws so the store can say it does not know.
+ * Installed bundles, from `ctx.remote.pluginManager.listBundles()`. The Remote call resolves to `{ ok, value }`
+ * rather than the bare array; a failed call throws so the store can say it does not know.
  */
-export function installedFrom(result: { ok: true; value: Bundle[] } | { ok: false; error: unknown }): Installed {
+export function installedFrom(result: { ok: true; value: InstalledBundle[] } | { ok: false; error: unknown }): InstalledBundle[] {
   if (!result.ok) throw result.error
-  return new Map(result.value.filter(b => b.installed).map(b => [b.name, b.version !== undefined ? { version: b.version } : {}]))
+  return result.value.filter(b => b.installed)
+}
+
+/** Installed versions by name. */
+export function installedOf(bundles: InstalledBundle[]): Installed {
+  return new Map(bundles.map(b => [b.name, b.version !== undefined ? { version: b.version } : {}]))
 }
 
 /** Install, installed, update available, or incompatible with the running DSH. */
