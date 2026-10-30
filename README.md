@@ -5,7 +5,7 @@
 <p align="center">发现适合你自己的 <a href="https://github.com/deepseek-ai/deepseek-harness">DeepSeek Harness</a>（DSH）插件</p>
 
 <p align="center">
-  <a href="https://github.com/yang051211/dsh-startide/tags"><img alt="version" src="https://img.shields.io/github/v/tag/yang051211/dsh-startide?label=version&color=4d6bfe"></a>
+  <a href="https://www.npmjs.com/package/dsh-startide"><img alt="npm" src="https://img.shields.io/npm/v/dsh-startide?color=4d6bfe"></a>
   <a href="https://github.com/yang051211/dsh-startide/blob/main/market/index.json"><img alt="plugins" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fyang051211%2Fdsh-startide%2Fmain%2Fmarket%2Findex.json&query=%24.plugins.length&label=plugins&color=2ea44f"></a>
   <a href="https://github.com/yang051211/dsh-startide/actions/workflows/directory.yml"><img alt="directory" src="https://github.com/yang051211/dsh-startide/actions/workflows/directory.yml/badge.svg"></a>
   <a href="https://github.com/yang051211/dsh-startide/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/yang051211/dsh-startide?style=social"></a>
@@ -42,14 +42,14 @@
 
 ## 安装
 
-适用于 DSH 0.2.1-rc.2 至 0.2.x（不含 0.3 系列，包括其预发布版）。在 DSH 的插件页 →「添加插件」里填写：
+适用于 DSH 0.2.1-rc.2 至 0.2.x（不含 0.3 系列，包括其预发布版）。在 DSH 的插件页 →「添加插件」里填写包名：
 
 ```text
-github:yang051211/dsh-startide#<tag>
+dsh-startide
 ```
 
-- 必须填完整的 `github:` 地址。本插件没有发布到 npm，只填包名会找不到。
-- 对话框右侧的「安装源」保持「npm 官方源」或「中国大陆镜像源」。**不要**设成自定义地址：设成自定义地址后，整个 profile 的依赖都会改到那个源去解析，安装会失败。
+- 「安装源」选「npm 官方源」或「中国大陆镜像源」都可以。**不要**设成自定义地址：设成自定义地址后，整个 profile 的依赖都会改到那个源去解析，安装会失败。
+- 也可以填 GitHub 地址 `github:yang051211/dsh-startide#v<版本>`，装 GitHub 上的某个发布版本。
 
 装好后，DSH 左侧边栏会出现「生态家园」，点它打开插件页上的「生态家园」标签。想让它成为唯一的插件入口，在「已安装」页右上角打开「只保留生态家园」。
 
@@ -107,6 +107,25 @@ npm run build       # 构建 lib/（发布的就是提交里的 lib/，改了 sr
 npm test            # 全部测试
 npm run verify      # 构建 + 确认 lib/ 与 src/ 一致 + 目录校验 + 测试
 ```
+
+### 发布
+
+每个正式版同时发到 GitHub 和 npm：
+
+1. 改 `package.json` 的 `version`，跑 `npm run verify`，提交。
+2. 打标签并一起推送：`git tag v<版本> && git push --atomic origin main v<版本>`。商店的自我更新从这个标签安装，所以标签要和 main 同时到位。
+3. 把标签导出到一个空目录，在那里发 npm（账号需开启两步验证）：
+
+   ```sh
+   git archive v<版本> | tar -x -C <空目录>
+   cd <空目录>
+   npm publish --dry-run   # 核对文件清单：只有 lib/、locale/、README、LICENSE、图标和补丁文件
+   npm publish
+   ```
+
+   新包名第一次发布时，npm 会先放一个 `0.0.0-stage` 占位版本，正式版本几十秒后出现。
+
+### 目录
 
 目录由 [.github/workflows/directory.yml](.github/workflows/directory.yml) 定时重建，目前每 6 小时一次。也可以在本地手动跑：
 
