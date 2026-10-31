@@ -1,0 +1,93 @@
+{
+  "name": "dsh-chrome-bridge",
+  "version": "1.15.1",
+  "scannedAt": "2026-10-31T07:05:27.067Z",
+  "icon": "dsh-chrome-bridge.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 173,
+        "text": "const res = await fetch(ROUTE, action"
+      },
+      {
+        "file": "download.js",
+        "line": 103,
+        "text": "const r = await fetch(${JSON.stringify(url)}, { credentials: 'include' });"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "download.js",
+        "line": 12,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "download.js",
+        "line": 212,
+        "text": "fs.mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "download.js",
+        "line": 227,
+        "text": "try { fs.rmSync(part, { force: true }) } catch {}"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 49,
+        "text": "try { return fs.readFileSync(TOKEN_FILE, 'utf8').split('\\n').map((l) => l.trim()) } catch { return [] }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 183,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "index.js",
+        "line": 1090,
+        "text": "ctx.tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "setup.js",
+        "line": 25,
+        "text": "import { execFileSync, spawn } from 'node:child_process'"
+      },
+      {
+        "file": "setup.js",
+        "line": 373,
+        "text": "spawn(bin, [url], { detached: true, stdio: 'ignore', windowsHide: false }).unref()"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

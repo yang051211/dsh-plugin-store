@@ -1,0 +1,116 @@
+{
+  "name": "dsh-qq-tools",
+  "version": "0.9.4",
+  "scannedAt": "2026-10-31T07:05:26.838Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 96,
+        "text": "fetch(API, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 122,
+        "text": "fetch(API, {"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 372,
+        "text": "const r = await fetch(base + '/' + action, {"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 676,
+        "text": "const r = await fetch(url, { signal: ctrl.signal })"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 689,
+        "text": "const r = await fetch(file)"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/shared.js",
+        "line": 40,
+        "text": "import { existsSync, readFileSync, writeFileSync, mkdirSync, appendFileSync, renameSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 151,
+        "text": "appendFileSync(DIAG_PATH, new Date().toISOString() + '  ' + msg + '\\n', 'utf8')"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 172,
+        "text": "mkdirSync(DSH_HOME, { recursive: true })"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 173,
+        "text": "writeFileSync(CFG_PATH, JSON.stringify(DEFAULT_CFG, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 180,
+        "text": "const raw = JSON.parse(readFileSync(CFG_PATH, 'utf8'))"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 13,
+        "text": "export const inject = ['agents', 'timer', 'tools', 'attachments', 'webServer']"
+      },
+      {
+        "file": "lib/shared.js",
+        "line": 2956,
+        "text": "const off = agent.ctx.tools.register(tool)"
+      },
+      {
+        "file": "tools/qq-favorite-faces/index.js",
+        "line": 4,
+        "text": "export const inject = ['agents', 'timer', 'tools', 'attachments']"
+      },
+      {
+        "file": "tools/qq-friend-management/index.js",
+        "line": 14,
+        "text": "export const inject = ['agents', 'timer', 'tools']"
+      },
+      {
+        "file": "tools/qq-get-group-history/index.js",
+        "line": 4,
+        "text": "export const inject = ['agents', 'timer', 'tools', 'attachments']"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": false,
+    "evidence": []
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "agents",
+    "attachments",
+    "timer",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

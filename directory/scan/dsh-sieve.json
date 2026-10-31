@@ -1,15 +1,31 @@
 {
   "name": "dsh-sieve",
-  "version": "0.3.0",
-  "scannedAt": "2026-10-26T10:06:25.666Z",
+  "version": "0.4.0",
+  "scannedAt": "2026-10-31T07:05:30.605Z",
   "icon": null,
   "network": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/judge/approval/rules.js",
+        "line": 44,
+        "text": " /\\b(Invoke-Expression|iex)\\b[^|;\\n]*\\b(Invoke-WebRequest|iwr|Invoke-RestMethod|irm|curl|wget|DownloadString)\\b|\\b(Invoke-WebRequest|iwr|Invoke-RestMethod|irm|c"
+      },
+      {
+        "file": "lib/judge/approval/rules.js",
+        "line": 62,
+        "text": "ftp|tftp|telnet|rsync|ssh|http|https|xh|Invoke-WebRequest|Invoke-RestMethod|iwr|irm)(?![\\w-])|\\/dev\\/(?:tcp|udp)\\/|\\b(?:python\\d*|node|deno|bun|ruby|perl|php)\\b"
+      }
+    ]
   },
   "fileSystem": {
     "hit": true,
     "evidence": [
+      {
+        "file": "lib/judge/approval/rules.js",
+        "line": 19,
+        "text": "import { lstatSync, readlinkSync, realpathSync } from 'node:fs';"
+      },
       {
         "file": "lib/measurement/tasks.js",
         "line": 53,
@@ -19,6 +35,16 @@
         "file": "lib/measurement/tasks.js",
         "line": 60,
         "text": "if (process.env.${BUILD_LOG_ENV}) appendFileSync(process.env.${BUILD_LOG_ENV}, id + '\\\\n')"
+      },
+      {
+        "file": "lib/runtime/checkpoint/git.js",
+        "line": 12,
+        "text": "import { accessSync, constants, existsSync, statSync } from 'node:fs';"
+      },
+      {
+        "file": "lib/runtime/checkpoint/store.js",
+        "line": 24,
+        "text": " constants, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync, } from 'node:fs';"
       }
     ]
   },
@@ -26,15 +52,51 @@
     "hit": true,
     "evidence": [
       {
-        "file": "lib/index.js",
-        "line": 118,
-        "text": "child.plugin({ name: 'sieve-admission', inject: ['tools', 'spillStore'], apply: (feature) => { registerAdmission(feature, this, runtime); } });"
+        "file": "lib/features/hive/index.js",
+        "line": 143,
+        "text": "const hidden = BEE_DENIED.filter(name => ctx.tools.get(name) !== undefined);"
+      },
+      {
+        "file": "lib/features/hive/index.js",
+        "line": 145,
+        "text": "agent.ctx.tools.restrict({ deny: hidden });"
+      },
+      {
+        "file": "lib/features/hive/index.js",
+        "line": 179,
+        "text": "ctx.tools.register(defineTool({"
+      },
+      {
+        "file": "lib/features/team/index.js",
+        "line": 367,
+        "text": "const hidden = VERIFIER_DENIED.filter(name => ctx.tools.get(name) !== undefined);"
+      },
+      {
+        "file": "lib/features/team/index.js",
+        "line": 369,
+        "text": "agent.ctx.tools.restrict({ deny: hidden });"
       }
     ]
   },
   "childProcess": {
-    "hit": false,
-    "evidence": []
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/runtime/checkpoint/git.js",
+        "line": 11,
+        "text": "import { execFile, spawn } from 'node:child_process';"
+      },
+      {
+        "file": "lib/runtime/checkpoint/git.js",
+        "line": 60,
+        "text": "execFile('/usr/bin/xcode-select', ['-p'], { timeout: 5000 }, (error, stdout) => done(error === null && existsSync(stdout.trim())));"
+      },
+      {
+        "file": "lib/runtime/checkpoint/git.js",
+        "line": 118,
+        "text": "child = spawn(binary, [...args], { env: { ...env }, windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] });"
+      }
+    ]
   },
   "installScripts": {
     "hit": false,

@@ -1,7 +1,7 @@
 {
   "name": "dsh-stm32",
-  "version": "0.1.2",
-  "scannedAt": "2026-10-30T23:38:33.915Z",
+  "version": "0.1.3",
+  "scannedAt": "2026-10-31T07:05:29.661Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -33,28 +33,28 @@
     "evidence": [
       {
         "file": "lib/data/chips.js",
-        "line": 14,
+        "line": 17,
         "text": "import { existsSync, readFileSync } from \"node:fs\";"
       },
       {
         "file": "lib/data/chips.js",
-        "line": 111,
+        "line": 108,
         "text": "const pins = parseMcuDbXmlPins(readFileSync(xmlPath, \"utf8\"));"
+      },
+      {
+        "file": "lib/data/device-facts.js",
+        "line": 17,
+        "text": "import fs from \"node:fs\";"
+      },
+      {
+        "file": "lib/data/device-facts.js",
+        "line": 154,
+        "text": "text = fs.readFileSync(filePath, \"utf8\");"
       },
       {
         "file": "lib/data/firmware-packages.js",
         "line": 15,
         "text": "import { existsSync, readdirSync } from \"node:fs\";"
-      },
-      {
-        "file": "lib/data/search-roots.js",
-        "line": 16,
-        "text": "import { existsSync, readdirSync } from \"node:fs\";"
-      },
-      {
-        "file": "lib/data/toolchain-config.js",
-        "line": 14,
-        "text": "import { existsSync, mkdirSync, readFileSync, renameSync, statSync, unlinkSync, writeFileSync } from \"node:fs\";"
       }
     ]
   },
@@ -63,8 +63,13 @@
     "evidence": [
       {
         "file": "lib/index.js",
-        "line": 36,
+        "line": 39,
         "text": "export const inject = [\"tools\", \"subprocess\", \"jobs\"];"
+      },
+      {
+        "file": "lib/tools/assets.js",
+        "line": 108,
+        "text": "ctx.tools.register({"
       },
       {
         "file": "lib/tools/build.js",
@@ -73,17 +78,12 @@
       },
       {
         "file": "lib/tools/cache.js",
-        "line": 68,
+        "line": 69,
         "text": "ctx.tools.register({"
       },
       {
         "file": "lib/tools/code-patch.js",
         "line": 51,
-        "text": "ctx.tools.register({"
-      },
-      {
-        "file": "lib/tools/debug-session.js",
-        "line": 108,
         "text": "ctx.tools.register({"
       }
     ]
@@ -98,12 +98,12 @@
       },
       {
         "file": "lib/engine/debug-session.js",
-        "line": 173,
+        "line": 239,
         "text": "const handle = subprocess.spawn({"
       },
       {
         "file": "lib/engine/debug.js",
-        "line": 194,
+        "line": 207,
         "text": "const openOcdHandle = subprocess.spawn({"
       },
       {

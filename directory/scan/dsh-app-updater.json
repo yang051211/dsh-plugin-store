@@ -1,0 +1,110 @@
+{
+  "name": "dsh-app-updater",
+  "version": "1.2.0",
+  "scannedAt": "2026-10-31T07:05:30.979Z",
+  "icon": "dsh-app-updater.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 236,
+        "text": "const r = await fetch(url, { cache: \"no-store\", credentials: \"same-origin\" });"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 242,
+        "text": "const r = await fetch(url, {"
+      },
+      {
+        "file": "test/harness.mjs",
+        "line": 8,
+        "text": "import http from \"node:http\";"
+      },
+      {
+        "file": "test/harness.mjs",
+        "line": 56,
+        "text": "const get = async (p) => (await fetch(base + p)).json();"
+      },
+      {
+        "file": "test/harness.mjs",
+        "line": 57,
+        "text": "const post = async (p, body) => (await fetch(base + p, { method: \"POST\", headers: { \"Content-Type\": \"application/json\" }, body: JSON.stringify(body) })).json();"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/engine.js",
+        "line": 12,
+        "text": "import { mkdir, readdir, stat, readFile, rm } from \"node:fs/promises\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 13,
+        "text": "import { lstatSync } from \"node:fs\";"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 463,
+        "text": "await mkdir(dir, { recursive: true });"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 525,
+        "text": "info = parseInstallerManifest(await readFile(manifest, \"utf8\"));"
+      },
+      {
+        "file": "lib/engine.js",
+        "line": 704,
+        "text": "rm(entry.installer, { force: true }).catch(() => {});"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 14,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 278,
+        "text": "const child = spawn(explorer, [path], { detached: true, stdio: \"ignore\", windowsHide: false });"
+      },
+      {
+        "file": "lib/proc.js",
+        "line": 8,
+        "text": "import { spawn } from \"node:child_process\";"
+      },
+      {
+        "file": "lib/proc.js",
+        "line": 50,
+        "text": "child = spawn(exe, args, {"
+      },
+      {
+        "file": "lib/registry.js",
+        "line": 11,
+        "text": "import { spawn } from \"node:child_process\";"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,7 +1,7 @@
 {
   "name": "dsh-plugin-live2d-stage",
-  "version": "0.5.2",
-  "scannedAt": "2026-10-26T10:09:48.586Z",
+  "version": "0.5.3",
+  "scannedAt": "2026-10-31T07:05:31.347Z",
   "icon": "dsh-plugin-live2d-stage.webp",
   "network": {
     "hit": true,
@@ -14,12 +14,12 @@
       {
         "file": "assets/floating.js",
         "line": 24,
-        "text": "var N=class{static loadFileAsBytes(e,r){fetch(e).then(n=>n.arrayBuffer()).then(n=>r(n,n.byteLength))}static getDeltaTime(){return this.deltaTime}static updateTi"
+        "text": "var z=class{static loadFileAsBytes(e,r){fetch(e).then(n=>n.arrayBuffer()).then(n=>r(n,n.byteLength))}static getDeltaTime(){return this.deltaTime}static updateTi"
       },
       {
         "file": "assets/floating.js",
         "line": 26,
-        "text": "{async loadShader(e){return await(await fetch(e)).text()}async loadShaders(){let e=this._shaderPath??this._defaultShaderPath,r=[{path:e+WC,prop:\"_vertShaderSrc\""
+        "text": "{async loadShader(e){return await(await fetch(e)).text()}async loadShaders(){let e=this._shaderPath??this._defaultShaderPath,r=[{path:e+sC,prop:\"_vertShaderSrc\""
       },
       {
         "file": "assets/floating.js",
@@ -29,7 +29,7 @@
       {
         "file": "assets/floating.js",
         "line": 95,
-        "text": "ge/\";async function Fe(t,e){let r=await fetch(cv+t,e===void 0?{}:{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(e)}),n=await r.j"
+        "text": "ge/\";async function ke(t,e){let r=await fetch(wv+t,e===void 0?{}:{method:\"POST\",headers:{\"Content-Type\":\"application/json\"},body:JSON.stringify(e)}),n=await r.j"
       }
     ]
   },
@@ -44,12 +44,7 @@
       {
         "file": "assets/floating.js",
         "line": 6,
-        "text": "omponent?!ns(r,n)||!ns(i,s):!0}function rm(t,e,r){var n=!1,i=yr,s=e.contextType;return typeof s==\"object\"&&s!==null?s=st(s):(i=ze(e)?Fr:Le.current,n=e.contextTy"
-      },
-      {
-        "file": "assets/floating.js",
-        "line": 8,
-        "text": "1;if(Sn(e,i),e.stateNode===null)Mo(t,e),rm(e,r,n),du(e,r,n,i),n=!0;else if(t===null){var o=e.stateNode,l=e.memoizedProps;o.props=l;var a=o.context,u=r.contextTy"
+        "text": "e,r,n){e.value=r,e.getSnapshot=n,tm(e)&&rm(t)}function em(t,e,r){return r(function(){tm(e)&&rm(t)})}function tm(t){var e=t.getSnapshot;t=t.value;try{var r=e();r"
       },
       {
         "file": "lib/index.mjs",
@@ -60,6 +55,11 @@
         "file": "lib/index.mjs",
         "line": 31,
         "text": "wait body(req,16384)).toString());await writeFile(resolve(store.root,'renderer-diagnostics.json'),JSON.stringify({time:new Date().toISOString(),...data},null,2)"
+      },
+      {
+        "file": "lib/index.mjs",
+        "line": 64,
+        "text": "        const bytes=await readFile(file);res.writeHead(200,{'Content-Type':types[extname(file)]??'application/octet-stream','X-Content-Type-Options':'nosniff','"
       }
     ]
   },
@@ -73,7 +73,7 @@
       },
       {
         "file": "lib/index.mjs",
-        "line": 65,
+        "line": 77,
         "text": "inition of definitions)activeTools.push(ctx.tools.register(toolDefinition({...definition,execute:async(...args)=>{if(!store.preferences().actionControl)throw ne"
       }
     ]

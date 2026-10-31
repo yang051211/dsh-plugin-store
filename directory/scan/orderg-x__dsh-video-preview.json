@@ -1,0 +1,115 @@
+{
+  "name": "@orderg-x/dsh-video-preview",
+  "version": "0.5.2",
+  "scannedAt": "2026-10-31T07:05:27.093Z",
+  "icon": "orderg-x__dsh-video-preview.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 174,
+        "text": "return fetch(url, { method: 'HEAD', credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 181,
+        "text": "return fetch(url, { method: 'HEAD', credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 603,
+        "text": "fetch('/dsh-video-preview/preview', { method: 'HEAD', credentials: 'same-origin', cache: 'no-store' })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 28,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/look.js",
+        "line": 202,
+        "text": "const ab = await (await fetch(src)).arrayBuffer()"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/auto-present.js",
+        "line": 16,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 10,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 65,
+        "text": "try { if (now - fs.statSync(p).mtimeMs > STALE_MS) fs.rmSync(p, { recursive: true, force: true }) } catch { /* 下次再说 */ }"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 135,
+        "text": "try { fs.rmSync(d, { recursive: true, force: true }) } catch (e) {"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 140,
+        "text": "rm()"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 36,
+        "text": "export const inject = ['tools', 'webServer', 'sessionProjections']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 453,
+        "text": "ctx.tools.register(tool)"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 462,
+        "text": "ctx.tools.register(lookTool(ctx, () => browser))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 13,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 178,
+        "text": "execFile('taskkill', ['/pid', String(p.pid), '/T', '/F'], (err) => {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessionProjections",
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

@@ -1,0 +1,93 @@
+{
+  "name": "dsh-visual-safety-control",
+  "version": "0.5.0",
+  "scannedAt": "2026-10-31T07:05:28.089Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/client.js",
+        "line": 133,
+        "text": "const response = await fetch(`${BASE}/policy.json`, { headers: { accept: 'application/json' } })"
+      },
+      {
+        "file": "dsh/client.js",
+        "line": 141,
+        "text": "const response = await fetch(`${BASE}/policy.json`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 39,
+        "text": "import { existsSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 299,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 321,
+        "text": "rmSync(f, { force: true })"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 662,
+        "text": "writeFileSync(tempFile, JSON.stringify(seqOps), 'utf8')"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 672,
+        "text": "rmSync(tempFile, { force: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 49,
+        "text": "export const inject = ['tools']"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 604,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "dsh/index.js",
+        "line": 38,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "dsh/index.js",
+        "line": 497,
+        "text": "const child = spawn("
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 1,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

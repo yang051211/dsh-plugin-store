@@ -1,0 +1,101 @@
+{
+  "name": "@bangbang-03/dsh-memory",
+  "version": "0.6.9",
+  "scannedAt": "2026-10-31T07:05:29.032Z",
+  "icon": "bangbang-03__dsh-memory.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "install.ps1",
+        "line": 161,
+        "text": "Invoke-WebRequest -Uri $Url -Headers $Headers -OutFile $OutFile -TimeoutSec 90 -ErrorAction Stop"
+      },
+      {
+        "file": "install.ps1",
+        "line": 175,
+        "text": "$release = Invoke-RestMethod -Uri $releaseUrl -Headers $apiHeaders -TimeoutSec 60 -ErrorAction Stop"
+      },
+      {
+        "file": "install.ps1",
+        "line": 182,
+        "text": "Invoke-WebRequest -Uri \"$apiBase/assets/$($asset.id)\" -Headers $apiHeaders -OutFile $OutFile -TimeoutSec 180 -ErrorAction Stop"
+      },
+      {
+        "file": "install.ps1",
+        "line": 280,
+        "text": "$meta = Invoke-RestMethod -Uri \"$Registry/$encoded\" -Headers $headers"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 442,
+        "text": "const response = await fetch(target, init);"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/api.js",
+        "line": 1160,
+        "text": "const result = store.unlink(id, String(body.target ?? ''), { workspace });"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 17,
+        "text": "import fs from 'node:fs';"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 61,
+        "text": "VERSION = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version || VERSION;"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 190,
+        "text": "return JSON.parse(fs.readFileSync(file, 'utf8'));"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 198,
+        "text": "fs.mkdirSync(path.dirname(file), { recursive: true });"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 56,
+        "text": "const inject = ['tools'];"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 2783,
+        "text": "ctx.effect(() => ctx.tools.register(memoryTool), 'dsh-memory: memory tool');"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/store.js",
+        "line": 46,
+        "text": "import { execFileSync } from 'node:child_process';"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

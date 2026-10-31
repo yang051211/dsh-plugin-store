@@ -1,7 +1,7 @@
 {
   "name": "dsh-maa-cli",
-  "version": "1.0.2",
-  "scannedAt": "2026-10-30T23:38:48.706Z",
+  "version": "1.0.6",
+  "scannedAt": "2026-10-31T07:05:30.242Z",
   "icon": null,
   "network": {
     "hit": true,
@@ -22,29 +22,29 @@
     "hit": true,
     "evidence": [
       {
-        "file": "src/capabilities/discovery.js",
+        "file": "src/agent/goal-manager.js",
         "line": 2,
-        "text": "import { mkdir, readFile, readdir, rename, rm, stat, writeFile } from 'node:fs/promises'"
+        "text": "import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises'"
       },
       {
-        "file": "src/capabilities/discovery.js",
-        "line": 260,
-        "text": "const value = JSON.parse(await readFile(capabilityCachePath(env), 'utf8'))"
+        "file": "src/agent/goal-manager.js",
+        "line": 15,
+        "text": "const parsed = JSON.parse(await readFile(goalFilePath(options.env ?? process.env), 'utf8'))"
       },
       {
-        "file": "src/capabilities/discovery.js",
-        "line": 267,
+        "file": "src/agent/goal-manager.js",
+        "line": 237,
         "text": "await mkdir(path.dirname(file), { recursive: true })"
       },
       {
-        "file": "src/capabilities/discovery.js",
-        "line": 269,
-        "text": "await writeFile(temporary, `${JSON.stringify(value, null, 2)}\\n`, 'utf8')"
+        "file": "src/agent/goal-manager.js",
+        "line": 240,
+        "text": "try { await writeFile(temporary, payload, 'utf8'); await rename(temporary, file) }"
       },
       {
-        "file": "src/capabilities/discovery.js",
-        "line": 270,
-        "text": "try { await rename(temporary, file) } catch (error) { await rm(temporary, { force: true }); throw error }"
+        "file": "src/agent/goal-manager.js",
+        "line": 241,
+        "text": "catch { await writeFile(file, payload, 'utf8'); await rm(temporary, { force: true }).catch(() => {}) }"
       }
     ]
   },
@@ -53,27 +53,27 @@
     "evidence": [
       {
         "file": "src/index.js",
-        "line": 34,
+        "line": 48,
         "text": "export const inject = ['tools', 'commands']"
       },
       {
         "file": "src/index.js",
-        "line": 592,
+        "line": 1106,
         "text": "ctx.tools.register({"
       },
       {
         "file": "src/index.js",
-        "line": 601,
+        "line": 1115,
         "text": "ctx.tools.register({"
       },
       {
         "file": "src/index.js",
-        "line": 622,
+        "line": 1135,
         "text": "ctx.tools.register({"
       },
       {
         "file": "src/index.js",
-        "line": 670,
+        "line": 1156,
         "text": "ctx.tools.register({"
       }
     ]
@@ -81,6 +81,16 @@
   "childProcess": {
     "hit": true,
     "evidence": [
+      {
+        "file": "src/commands/run-state.js",
+        "line": 1,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "src/commands/run-state.js",
+        "line": 317,
+        "text": "const child = spawn('powershell.exe', ['-NoProfile', '-NonInteractive', '-Command', script], {"
+      },
       {
         "file": "src/runtime/runner.js",
         "line": 1,
@@ -93,18 +103,8 @@
       },
       {
         "file": "src/runtime/runner.js",
-        "line": 163,
-        "text": "const killer = spawn('taskkill.exe', ['/pid', String(child.pid), '/t', '/f'], {"
-      },
-      {
-        "file": "src/runtime/runtime.js",
-        "line": 2,
-        "text": "import { spawn } from 'node:child_process'"
-      },
-      {
-        "file": "src/runtime/runtime.js",
-        "line": 598,
-        "text": "const child = spawn(command, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'], signal: options.signal })"
+        "line": 186,
+        "text": "const child = spawn(command, {"
       }
     ]
   },

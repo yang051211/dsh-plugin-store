@@ -1,0 +1,109 @@
+{
+  "name": "@orderg-x/dsh-pages",
+  "version": "0.2.1",
+  "scannedAt": "2026-10-31T07:05:29.565Z",
+  "icon": "orderg-x__dsh-pages.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 333,
+        "text": "return fetch(url, { credentials: 'same-origin' }).then(readReply)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 336,
+        "text": "return fetch(url, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }).then(readReply)"
+      },
+      {
+        "file": "lib/client.js",
+        "line": 366,
+        "text": "      const send = () => fetch(API + 'state', { method: 'POST', credentials: 'same-origin', keepalive: !!keepalive, headers: { 'Content-Type': 'application/json"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 9,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 64,
+        "text": "try { if (now - fs.statSync(p).mtimeMs > STALE_MS) fs.rmSync(p, { recursive: true, force: true }) } catch { /* 下次再说 */ }"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 143,
+        "text": "try { fs.rmSync(d, { recursive: true, force: true }) } catch (e) {"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 148,
+        "text": "rm()"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 161,
+        "text": "onHostExit = () => { try { fs.rmSync(d, { recursive: true, force: true }) } catch { /* 下次开浏览器时按时间清 */ } }"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 33,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 514,
+        "text": "ctx.tools.register(pageTool(run))"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/browser.js",
+        "line": 12,
+        "text": "import { spawn, execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/browser.js",
+        "line": 189,
+        "text": "execFile('taskkill', ['/pid', String(p.pid), '/T', '/F'], (err) => {"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 22,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 413,
+        "text": "execFile(cmd, args, (e) => { if (e && process.platform !== 'win32') log(e) }) // explorer 正常也返回 1"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

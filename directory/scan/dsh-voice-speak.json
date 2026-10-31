@@ -1,0 +1,109 @@
+{
+  "name": "dsh-voice-speak",
+  "version": "3.4.2",
+  "scannedAt": "2026-10-31T07:05:30.039Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/edge.js",
+        "line": 130,
+        "text": "const response = await fetch('https://speech.platform.bing.com/', { method: 'HEAD' })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 18,
+        "text": "import { existsSync, unlinkSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 158,
+        "text": "unlinkSync(markerPath)"
+      },
+      {
+        "file": "lib/pet-bridge.js",
+        "line": 26,
+        "text": "import { openSync, appendFileSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/pet-bridge.js",
+        "line": 270,
+        "text": "appendFileSync(LOG_PATH, `${stamp} ${line}\\n`, 'utf8')"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 44,
+        "text": "import { openSync, writeFileSync, appendFileSync, unlinkSync } from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "*   1. the `say` tool (`ctx.tools.register`), whose handler hands the sentence"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 27,
+        "text": "export const inject = ['tools', 'systemPrompt']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 169,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/pet-bridge.js",
+        "line": 25,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/pet-bridge.js",
+        "line": 205,
+        "text": "child = spawn(POWERSHELL, ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-EncodedCommand', BUBBLE_COMMAND], {"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 43,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 380,
+        "text": "child = spawn(HELPER_PATH, args, { stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })"
+      },
+      {
+        "file": "lib/tts.js",
+        "line": 540,
+        "text": "child = spawn(command, ['-NoProfile', '-NonInteractive', '-EncodedCommand', encodedCommand], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "systemPrompt",
+    "tools"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

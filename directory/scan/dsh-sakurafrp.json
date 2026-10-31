@@ -1,0 +1,115 @@
+{
+  "name": "dsh-sakurafrp",
+  "version": "2.2.0",
+  "scannedAt": "2026-10-31T07:05:30.931Z",
+  "icon": "dsh-sakurafrp.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 113,
+        "text": "const r = await fetch(`${API}${path}`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "client.js",
+        "line": 124,
+        "text": "const r = await fetch(`${API}${path}`, init)"
+      },
+      {
+        "file": "client.js",
+        "line": 130,
+        "text": "const r = await fetch(`${API}/config`, {"
+      },
+      {
+        "file": "client.js",
+        "line": 953,
+        "text": "const r = await fetch(`${API}/logs`, { credentials: 'same-origin' })"
+      },
+      {
+        "file": "gate.mjs",
+        "line": 13,
+        "text": "import { createServer, request as httpRequest } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "frpc.mjs",
+        "line": 12,
+        "text": "import { accessSync, constants } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 13,
+        "text": "import { readFileSync, mkdirSync, writeFileSync, rmSync, existsSync, rmdirSync, statSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 36,
+        "text": "return String(JSON.parse(readFileSync(join(here, 'package.json'), 'utf8')).version ?? '0.0.0')"
+      },
+      {
+        "file": "index.js",
+        "line": 63,
+        "text": "mkdirSync(DATA_DIR, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 68,
+        "text": "writeFileSync(join(DATA_DIR, file), readFileSync(from), { mode: 0o600 })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "frpc.mjs",
+        "line": 11,
+        "text": "import { spawn as nodeSpawn } from 'node:child_process'"
+      },
+      {
+        "file": "installer.mjs",
+        "line": 18,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "installer.mjs",
+        "line": 141,
+        "text": "child = spawn(binPath, ['-V'], { windowsHide: true })"
+      },
+      {
+        "file": "test-all.mjs",
+        "line": 13,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "test-all.mjs",
+        "line": 36,
+        "text": "const r = spawnSync(process.execPath, [join(suiteDir, file)], { encoding: 'utf8', timeout: 120_000 })"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "connection",
+    "credentials",
+    "timer",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

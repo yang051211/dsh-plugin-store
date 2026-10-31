@@ -1,7 +1,7 @@
 {
   "name": "dsh-mesh-waker",
-  "version": "0.5.6",
-  "scannedAt": "2026-10-29T23:41:50.770Z",
+  "version": "0.7.5",
+  "scannedAt": "2026-10-31T07:05:23.531Z",
   "icon": "dsh-mesh-waker.svg",
   "network": {
     "hit": true,
@@ -49,17 +49,17 @@
       {
         "file": "index.js",
         "line": 20,
-        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'"
+        "text": "import { appendFileSync, existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs'"
       },
       {
         "file": "index.js",
-        "line": 21,
-        "text": "import { statSync } from 'node:fs'"
-      },
-      {
-        "file": "index.js",
-        "line": 33,
+        "line": 32,
         "text": "SELF_PACKAGE = JSON.parse(readFileSync(join(SELF_DIR, 'package.json'), 'utf8'))"
+      },
+      {
+        "file": "index.js",
+        "line": 60,
+        "text": "return String(JSON.parse(readFileSync(join(SELF_DIR, 'package.json'), 'utf8')).version ?? '0.0.0')"
       }
     ]
   },
@@ -68,12 +68,22 @@
     "evidence": [
       {
         "file": "index.js",
-        "line": 2945,
+        "line": 3620,
         "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools"
       },
       {
         "file": "index.js",
-        "line": 2947,
+        "line": 3622,
+        "text": "ctx.effect(() => tools.register(definition))"
+      },
+      {
+        "file": "index.js",
+        "line": 3662,
+        "text": "const tools = typeof ctx.get === 'function' ? ctx.get('tools') : ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 3664,
         "text": "ctx.effect(() => tools.register(definition))"
       }
     ]

@@ -1,0 +1,156 @@
+{
+  "name": "antigravity-executor",
+  "version": "0.7.0",
+  "scannedAt": "2026-10-31T07:05:26.416Z",
+  "icon": "antigravity-executor.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit.js",
+        "line": 134,
+        "text": "re: /\\b(?:curl|wget|irm|iwr|Invoke-WebRequest|Invoke-RestMethod)\\b[^\\n]*\\|\\s*(?:iex|Invoke-Expression|sh|bash|node|python)/i,"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 35,
+        "text": "import { request as httpsRequest } from 'node:https'"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 441,
+        "text": "const response = await fetch(`http://127.0.0.1:${numeric}/`, {"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 8,
+        "text": "* GUI origin therefore cannot `fetch('http://127.0.0.1:18420/api/state')` or hold"
+      },
+      {
+        "file": "lib/proxy.mjs",
+        "line": 28,
+        "text": "import { request as httpRequest } from 'node:http'"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 27,
+        "text": "import { readdir, readFile, stat } from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 133,
+        "text": "return await readFile(path, 'utf8')"
+      },
+      {
+        "file": "lib/artifacts.js",
+        "line": 502,
+        "text": "text = await readFile(full, 'utf8')"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 33,
+        "text": "import { statSync } from 'node:fs'"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 34,
+        "text": "import { readFile } from 'node:fs/promises'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 5,
+        "text": "* directly on `ctx.tools`. No MCP server, no Python child process: this module"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 88,
+        "text": "export const inject = ['tools', 'skills', 'sessions']"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1863,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1879,
+        "text": "ctx.tools.register("
+      },
+      {
+        "file": "lib/index.js",
+        "line": 1896,
+        "text": "ctx.tools.register("
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/artifacts.js",
+        "line": 26,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/discovery.js",
+        "line": 32,
+        "text": "import { execFile } from 'node:child_process'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 30,
+        "text": "import { execFile } from 'node:child_process'"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "sessions",
+    "skills",
+    "tools"
+  ],
+  "setupHints": [
+    {
+      "file": "cordis.patch.yml",
+      "line": 6,
+      "text": "# Antigravity desktop Language Server over its own HTTP + CLI surface."
+    },
+    {
+      "file": "cordis.patch.yml",
+      "line": 41,
+      "text": "# A finished turn is detected from the Language Server's own RPC state,"
+    },
+    {
+      "file": "README.md",
+      "line": 16,
+      "text": "> It drives the Antigravity Language Server through its local `agentapi`"
+    },
+    {
+      "file": "README.md",
+      "line": 264,
+      "text": "A turn ends on the Language Server's own RPC state, not on a fixed quiet window,"
+    },
+    {
+      "file": "README.md",
+      "line": 432,
+      "text": "3. The Language Server's own **ConnectRPC** surface (`POST /exa.language_server_pb.LanguageServerService/<Method>`)"
+    }
+  ],
+  "skippedEntries": []
+}

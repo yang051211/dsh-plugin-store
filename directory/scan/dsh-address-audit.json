@@ -1,0 +1,86 @@
+{
+  "name": "dsh-address-audit",
+  "version": "3.0.0",
+  "scannedAt": "2026-10-31T07:05:30.813Z",
+  "icon": "dsh-address-audit.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 58,
+        "text": "const response = await fetch(options.endpoint, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/audit-run.js",
+        "line": 9,
+        "text": "import fs from 'node:fs/promises'"
+      },
+      {
+        "file": "lib/audit-run.js",
+        "line": 81,
+        "text": "await fs.mkdir(path.join(dir, 'evidence'), { recursive: true })"
+      },
+      {
+        "file": "lib/audit-run.js",
+        "line": 82,
+        "text": "await fs.mkdir(path.join(dir, 'tmp'), { recursive: true })"
+      },
+      {
+        "file": "lib/audit-run.js",
+        "line": 106,
+        "text": "await fs.writeFile(path.join(dir, '核对结果.json'), JSON.stringify(payload, null, 2), 'utf8')"
+      },
+      {
+        "file": "lib/audit-run.js",
+        "line": 116,
+        "text": "await fs.writeFile(path.join(dir, '证据索引.json'), JSON.stringify({ meta, evidence }, null, 2), 'utf8')"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 153,
+        "text": "tools = agent.ctx.tools"
+      },
+      {
+        "file": "index.js",
+        "line": 158,
+        "text": "const dispose = tools.register(tool)"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/worker-client.js",
+        "line": 8,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "lib/worker-client.js",
+        "line": 35,
+        "text": "this.child = spawn(process.execPath, [WORKER_PATH], {"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 2,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [],
+  "setupHints": [],
+  "skippedEntries": []
+}

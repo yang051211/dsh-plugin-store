@@ -1,0 +1,97 @@
+{
+  "name": "@orderg-x/dsh-mobile",
+  "version": "0.4.2",
+  "scannedAt": "2026-10-31T07:05:28.412Z",
+  "icon": "orderg-x__dsh-mobile.svg",
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/client.js",
+        "line": 268,
+        "text": "const res = await fetch(ROUTE, action"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 20,
+        "text": "import http from 'node:http'"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 216,
+        "text": "    const r = http.request({ host: '127.0.0.1', port, method: 'GET', path: u.pathname + u.search, headers: { host: `127.0.0.1:${port}`, accept: 'text/html' } },"
+      },
+      {
+        "file": "lib/gateway.js",
+        "line": 361,
+        "text": "const r = http.request({ host: '127.0.0.1', port: p, method: req.method, path: req.url, headers: upstreamHeaders(req, p, cookie) }, (up) => {"
+      },
+      {
+        "file": "lib/pages.js",
+        "line": 51,
+        "text": "fetch('/__dshm/pair', { method: 'POST', credentials: 'same-origin', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: m[1] }) })"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/index.js",
+        "line": 19,
+        "text": "import fs from 'node:fs'"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 54,
+        "text": "try { return JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version } catch { return '' }"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 107,
+        "text": "fs.mkdirSync(dir, { recursive: true, mode: 0o700 })"
+      },
+      {
+        "file": "lib/index.js",
+        "line": 109,
+        "text": "fs.appendFileSync(file, `${new Date().toISOString()} ${msg}\\n`, { mode: 0o600 })"
+      },
+      {
+        "file": "lib/store.js",
+        "line": 15,
+        "text": "import fs from 'node:fs'"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": false,
+    "evidence": []
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "lib/tunnel.js",
+        "line": 14,
+        "text": "import { spawn, execFile, execFileSync } from 'node:child_process'"
+      },
+      {
+        "file": "lib/tunnel.js",
+        "line": 80,
+        "text": "await new Promise((resolve, reject) => execFile('tar', ['-xzf', tmp, '-C', binDir, 'cloudflared'], (e) => (e ? reject(e) : resolve())))"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [],
+  "binaryFiles": [],
+  "requiredServices": [
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}

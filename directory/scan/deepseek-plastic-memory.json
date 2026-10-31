@@ -1,0 +1,142 @@
+{
+  "name": "deepseek-plastic-memory",
+  "version": "3.4.4",
+  "scannedAt": "2026-10-31T07:05:28.715Z",
+  "icon": null,
+  "network": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "client.js",
+        "line": 12,
+        "text": "const get = (p, scope) => fetch(API + p + (p.includes('?') ? '&' : q(scope))).then((r) => r.json())"
+      },
+      {
+        "file": "client.js",
+        "line": 13,
+        "text": "const postJson = (p, body, scope) => fetch(API + p + q(scope), {"
+      },
+      {
+        "file": "client.js",
+        "line": 462,
+        "text": "fetch('/api/memory-sky/open', {"
+      },
+      {
+        "file": "client.js",
+        "line": 500,
+        "text": "fetch('/api/memory-sky/open', {"
+      },
+      {
+        "file": "public/sky/app.js",
+        "line": 1737,
+        "text": "const r = await fetch(`${API}/folder/rm`, {"
+      }
+    ]
+  },
+  "fileSystem": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 8,
+        "text": "import { readFileSync, existsSync, readdirSync, mkdirSync, writeFileSync, appendFileSync, renameSync, rmSync } from 'node:fs'"
+      },
+      {
+        "file": "index.js",
+        "line": 46,
+        "text": "try { meta = JSON.parse(readFileSync(metaPath, 'utf8')) } catch {}"
+      },
+      {
+        "file": "index.js",
+        "line": 57,
+        "text": "mkdirSync(dir, { recursive: true })"
+      },
+      {
+        "file": "index.js",
+        "line": 59,
+        "text": "writeFileSync(join(dir, 'meta.json'), JSON.stringify(meta, null, 1), 'utf8')"
+      },
+      {
+        "file": "index.js",
+        "line": 97,
+        "text": "mkdirSync(dir, { recursive: true })"
+      }
+    ]
+  },
+  "agentTools": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 20,
+        "text": "export const inject = ['tools', 'webServer']"
+      },
+      {
+        "file": "index.js",
+        "line": 311,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 332,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 339,
+        "text": "ctx.tools.register({"
+      },
+      {
+        "file": "index.js",
+        "line": 346,
+        "text": "ctx.tools.register({"
+      }
+    ]
+  },
+  "childProcess": {
+    "hit": true,
+    "evidence": [
+      {
+        "file": "index.js",
+        "line": 5,
+        "text": "import { spawnSync } from 'node:child_process'"
+      },
+      {
+        "file": "index.js",
+        "line": 34,
+        "text": "const r = spawnSync(process.execPath, [SCRIPT, ...args], { encoding: 'utf8', env, windowsHide: true })"
+      },
+      {
+        "file": "sky.js",
+        "line": 5,
+        "text": "import { spawn } from 'node:child_process'"
+      },
+      {
+        "file": "sky.js",
+        "line": 211,
+        "text": "const child = spawn(info.path, ['--new-window', url], { detached: true, stdio: 'ignore', windowsHide: false })"
+      },
+      {
+        "file": "sky.js",
+        "line": 224,
+        "text": "      child = spawn('winget', ['install', '--id', 'Microsoft.Edge', '-e', '--silent', '--accept-package-agreements', '--accept-source-agreements'], { windowsHid"
+      }
+    ]
+  },
+  "installScripts": {
+    "hit": false,
+    "evidence": []
+  },
+  "dependencies": 0,
+  "minifiedFiles": [
+    "public/sky/vendor/three.core.js",
+    "public/sky/vendor/three.module.js"
+  ],
+  "binaryFiles": [],
+  "requiredServices": [
+    "tools",
+    "webServer"
+  ],
+  "setupHints": [],
+  "skippedEntries": []
+}
